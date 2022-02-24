@@ -1,0 +1,10 @@
+**/packer_compiled.lua
+
+README.md
+LICENSE.txt
+
+.stylua.toml
+.gitignore
+
+.git/
+.github/

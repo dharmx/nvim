@@ -1,0 +1,44 @@
+local E = {}
+
+function _prepare_plugin(plugin)
+  return require("highlights.groups.plugins." .. plugin)
+end
+
+function _prepare_syntax(language)
+  return require("highlights.groups.syntax." .. language)
+end
+
+E.base = {
+  ["syntax"] = {
+    ["lua"] = _prepare_syntax("lua").get,
+    ["general"] = _prepare_syntax("general").get,
+    ["markdown"] = _prepare_syntax("markdown").get,
+    ["html"] = _prepare_syntax("html").get,
+  },
+  ["terminal"] = require("highlights.groups.terminal").set,
+  ["ui"] = require("highlights.groups.ui").get,
+}
+
+E.supports = {
+  theme = {
+    ["blankline"] = _prepare_plugin("blankline").get,
+    ["gitsigns"] = _prepare_plugin("gitsigns").get,
+    ["neogit"] = _prepare_plugin("neogit").get,
+    ["hop"] = _prepare_plugin("hop").get,
+    ["trouble"] = _prepare_plugin("trouble").get,
+    ["diff"] = _prepare_plugin("diff").get,
+    ["whichkey"] = _prepare_plugin("whichkey").get,
+    ["telescope"] = _prepare_plugin("telescope").get,
+    ["dashboard"] = _prepare_plugin("dashboard").get,
+    ["rainbow"] = _prepare_plugin("rainbow").get,
+    ["todo"] = _prepare_plugin("todo").get,
+    ["nvimtree"] = _prepare_plugin("nvimtree").get,
+    ["notify"] = _prepare_plugin("notify").get,
+  },
+  syntax = {
+    ["cmp"] = _prepare_plugin("cmp").get,
+    ["lsp"] = _prepare_plugin("lsp").get,
+  },
+}
+
+return E
