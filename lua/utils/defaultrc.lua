@@ -67,7 +67,7 @@ M.options = {
     ["list"] = true,
     ["menuitems"] = 30,
     ["magic"] = true,
-    ["icon"] = true,
+    ["icon"] = true,   
   },
   ["append"] = {
     ["whichwrap"] = "<>[]hl",
@@ -114,13 +114,13 @@ M.globals = {
 
 M.miscmds = {
   ["ease_quit"] = false,
+  ["force_quit"] = false,
 }
 
-local file_name = "_compiled"
 M.compiled = {
-  ["file_name"] = file_name,
-  ["full_path"] = vim.fn.stdpath "config" .. "/lua/configs/core/" .. file_name .. ".lua",
-  ["impatient"] = "configs.core." .. file_name,
+  ["file_name"] = "_compiled",
+  ["full_path"] = vim.fn.stdpath "config" .. "/lua/configs/core/_compiled.lua",
+  ["impatient"] = "configs.core._compiled",
 }
 
 M.builtins = {

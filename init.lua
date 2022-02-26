@@ -1,4 +1,5 @@
 cmd = vim.api.nvim_command
+
 local present, nvimrc = pcall(require, "nvimrc")
 if present then
   __KRAKEN = vim.tbl_deep_extend("keep", nvimrc, require "utils.defaultrc")
@@ -11,8 +12,8 @@ if __KRAKEN.ILOVEBLOAT ~= "YES!" then
   return
 end
 
-require "theming"
 require "settings"
+require "theming"
 
 if vim.version().minor < 5 then
   vim.api.nvim_notify("This config needs at least nvim-0.5 to work!", vim.log.levels.ERROR, { title = "[KrakenVim]" })
