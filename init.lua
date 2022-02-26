@@ -7,6 +7,10 @@ else
   __KRAKEN = require "utils.defaultrc"
 end
 
+if __KRAKEN.ILOVEBLOAT ~= "YES!" then
+  return
+end
+
 require "theming"
 require "settings"
 
