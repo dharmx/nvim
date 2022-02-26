@@ -1,11 +1,11 @@
 local E = {}
 
 function _prepare_plugin(plugin)
-  return require("highlights.groups.plugins." .. plugin)
+  return require("theming.groups.plugins." .. plugin)
 end
 
 function _prepare_syntax(language)
-  return require("highlights.groups.syntax." .. language)
+  return require("theming.groups.syntax." .. language)
 end
 
 E.base = {
@@ -15,8 +15,8 @@ E.base = {
     ["markdown"] = _prepare_syntax("markdown").get,
     ["html"] = _prepare_syntax("html").get,
   },
-  ["terminal"] = require("highlights.groups.terminal").set,
-  ["ui"] = require("highlights.groups.ui").get,
+  ["terminal"] = require("theming.groups.terminal").set,
+  ["ui"] = require("theming.groups.ui").get,
 }
 
 E.supports = {

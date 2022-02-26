@@ -1,42 +1,47 @@
 local cmd = vim.api.nvim_command
 
-local enabled = {
-  relative = false,
-  listchars = true,
-  cursorline = true,
-  yank_feedback = true,
-  scrollbar = false,
-  no_term_relative = true,
-  ft_fmt = true,
-  block_read_only = true,
-}
+local M = {}
 
-if enabled.relative then
-  cmd "autocmd InsertEnter * set norelativenumber"
-  cmd "autocmd InsertLeave * set relativenumber"
+M["relative_feedback"] = function()
+  cmd "augroup RelativeFeedback"
+  cmd "  autocmd!"
+  cmd "  autocmd InsertEnter * set norelativenumber"
+  cmd "  autocmd InsertLeave * set relativenumber"
+  cmd "augroup END"
 end
 
-if enabled.listchars then
-  cmd "autocmd InsertLeave * lua vim.opt_local.listchars = { tab = ' ', trail = '·', space = '⋅', eol = '↴' }"
-  cmd "autocmd InsertEnter * lua vim.opt_local.listchars = ''"
+M["number_feedback"] = function()
+  cmd "augroup RelativeFeedback"
+  cmd "  autocmd!"
+  cmd "  autocmd InsertEnter * set number"
+  cmd "  autocmd InsertLeave * set nonumber"
+  cmd "augroup END"
 end
 
-if enabled.yank_feedback then
-  cmd "augroup VisualiseYank"
+M["listchars_feedback"] = function()
+  cmd "augroup ListCharsFeedback"
+  cmd "  autocmd!"
+  cmd "  autocmd InsertLeave * lua vim.opt_local.listchars = { tab = ' ', trail = '·', space = '⋅', eol = '↴' }"
+  cmd "  autocmd InsertEnter * lua vim.opt_local.listchars = ''"
+  cmd "augroup END"
+end
+
+M["yank_feedback"] = function()
+  cmd "augroup YankFeedback"
   cmd "  autocmd!"
   cmd "  autocmd TextYankPost * silent! lua vim.highlight.on_yank({higroup='YankFeed', timeout=150})"
   cmd "augroup END"
 end
 
-if enabled.cursorline then
-  cmd "augroup CursorLine"
+M["cursorline_feedback"] = function()
+  cmd "augroup CursorLineFeedback"
   cmd "  autocmd!"
   cmd "  autocmd BufEnter,WinEnter,InsertLeave * silent! lua vim.opt_local.cursorline = false"
   cmd "  autocmd BufLeave,WinLeave,InsertEnter * silent! lua vim.opt_local.cursorline = true"
   cmd "augroup END"
 end
 
-if enabled.scrollbar then
+M["scrollbar_init"] = function()
   cmd "augroup ScrollbarInit"
   cmd "  autocmd!"
   cmd "  autocmd WinScrolled,VimResized,QuitPre * silent! lua require('scrollbar').show()"
@@ -45,17 +50,33 @@ if enabled.scrollbar then
   cmd "augroup end"
 end
 
-if enabled.no_term_relative then
+M["term_non_relative"] = function()
   cmd "autocmd TermOpen term://* setlocal nonumber norelativenumber | setfiletype terminal"
 end
 
-if enabled.fl_fmt then
+M["filetype_format"] = function()
   cmd "autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o"
 end
 
-if enabled.block_read_only then
+M["block_read_only"] = function()
   cmd "augroup BlockReadOnly"
   cmd "  autocmd!"
   cmd "  autocmd BufReadPost * let &l:modifiable = !&readonly"
   cmd "augroup end"
 end
+
+M["plugins_auto_source"] = function()
+  cmd "augroup AutoSourcePluginSpecsOnChange"
+  cmd "  autocmd!"
+  cmd "  autocmd BufWritePost */lua/plugins/*.lua lua require('packer').compile()"
+  cmd "augroup end"
+end
+
+M["nvimrc_auto_source"] = function()
+  cmd "augroup AutoSourcePluginSpecsOnChange"
+  cmd "  autocmd!"
+  cmd "  autocmd BufWritePost */lua/nvimrc.lua lua require('packer').compile()"
+  cmd "augroup end"
+end
+
+return M

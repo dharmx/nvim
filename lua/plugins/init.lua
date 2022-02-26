@@ -17,7 +17,7 @@ local util = require "packer.util"
 
 packer.init {
   ensure_dependencies = true,
-  compile_path = util.join_paths(vim.fn.stdpath "config", "lua", "packer_compiled.lua"),
+  compile_path = __KRAKEN.compiled.full_path,
   auto_clean = true,
   compile_on_sync = true,
   max_jobs = 50,
@@ -55,15 +55,15 @@ packer.reset()
 
 for _, category in
   ipairs {
-    "cmp",
-    "code",
+    "completion",
+    "editing",
     "core",
-    "dev",
-    "flow",
+    "development",
+    "workflow",
     "health",
-    "misc",
-    "theme",
-    "util",
+    "others",
+    "ui",
+    "utils",
   }
 do
   require("plugins." .. category)
@@ -72,7 +72,7 @@ end
 if bootstrap then
   packer.install()
   packer.compile()
-  vim.api.nvim_notify("Krakenvim is now ready to go!", vim.log.levels.INFO, { title = "packer.nvim", icon = " " })
+  vim.api.nvim_notify("KrakenVim is now ready to go!", vim.log.levels.INFO, { title = "packer.nvim", icon = " " })
 end
 
 return setmetatable({}, {

@@ -3,7 +3,7 @@ local H = {}
 local cmd = vim.api.nvim_command
 
 function H.get_active_scheme()
-  return require("highlights.schemes." .. vim.g.current_scheme)
+  return require("theming.schemes." .. __KRAKEN.theme.colorscheme)
 end
 
 function H.highlight(group, colors)
@@ -35,13 +35,13 @@ function H.link(from, to)
 end
 
 function H.apply(options)
-  local enums = require "highlights.utils.enums"
+  local enums = require "theming.utils.enums"
   local base = enums.base
 
   local theme = enums.supports.theme
   local syntax = enums.supports.syntax
 
-  local loaded_theme = require("highlights.schemes." .. options.scheme)
+  local loaded_theme = require("theming.schemes." .. options.scheme)
 
   local set = function(groups)
     for group, colors in pairs(groups) do

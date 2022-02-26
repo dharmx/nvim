@@ -5,4 +5,4 @@ if not present then
 end
 
 impatient.enable_profile()
-require "packer_compiled"
+require(__KRAKEN.compiled.impatient)

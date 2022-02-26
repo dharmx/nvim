@@ -6,8 +6,7 @@ function I.setup(options)
   if vim.fn.exists "syntax_on" then
     cmd "syntax reset"
   end
-  vim.g.current_scheme = options.scheme
-  local apply = require("highlights.utils.helpers").apply(options)
+  local apply = require("theming.utils.helpers").apply(options)
 end
 
 return I

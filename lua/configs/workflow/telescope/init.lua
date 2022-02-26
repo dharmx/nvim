@@ -6,15 +6,15 @@ end
 
 local config = {
   extensions = {
-    command_palette = require "configs.flow.telescope.ext.command_palette",
-    bookmarks = require "configs.flow.telescope.ext.bookmarks",
-    frecency = require "configs.flow.telescope.ext.frecency",
-    media_files = require "configs.flow.telescope.ext.media_files",
-    packer = require "configs.flow.telescope.ext.packer",
-    tele_tabby = require "configs.flow.telescope.ext.tele_tabby",
-    project = require "configs.flow.telescope.ext.project",
-    file_browser = require "configs.flow.telescope.ext.file_browser",
-    fzf = require "configs.flow.telescope.ext.fzf_native",
+    command_palette = require "configs.workflow.telescope.extensions.command_palette",
+    bookmarks = require "configs.workflow.telescope.extensions.bookmarks",
+    frecency = require "configs.workflow.telescope.extensions.frecency",
+    media_files = require "configs.workflow.telescope.extensions.media_files",
+    packer = require "configs.workflow.telescope.extensions.packer",
+    tele_tabby = require "configs.workflow.telescope.extensions.tele_tabby",
+    project = require "configs.workflow.telescope.extensions.project",
+    file_browser = require "configs.workflow.telescope.extensions.file_browser",
+    fzf = require "configs.workflow.telescope.extensions.fzf_native",
   },
   defaults = {
     vimgrep_arguments = {

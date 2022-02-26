@@ -1,3 +1,3 @@
 lua << EOF
-require('highlights').setup({ scheme = "nordic" })
+require("theming").setup { scheme = "nordic" }
 EOF

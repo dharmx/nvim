@@ -1,3 +1,3 @@
 lua << EOF
-require('highlights').setup({ scheme = "everforest" })
+require("theming").setup { scheme = "everforest" }
 EOF

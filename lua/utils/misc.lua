@@ -12,7 +12,7 @@ function M.manage_plugins()
   cmd "command! PackerClean lua require('packer').clean()"
   cmd "command! PackerStatus lua require('packer').status()"
   cmd "command! PackerProfile lua require('packer').profile_output()"
-  cmd "command! PackerCompile lua require('packer').compile('~/.config/nvim/lua/packer_compiled.lua')"
+  cmd "command! PackerCompile lua require('packer').compile()"
   cmd "command! -bang -nargs=+ -complete=customlist,v:lua.require'packer'.loader_complete PackerLoad lua require('packer').loader(<f-args>, '<bang>')"
   vim.api.nvim_notify(
     [[ Plugin management commands are now available!
@@ -28,6 +28,25 @@ function M.manage_plugins()
     vim.log.levels.INFO,
     { title = "packer.nvim", icon = " " }
   )
+end
+
+function M.toggle_status()
+  local opt = vim.opt
+  local hidden = opt.laststatus._value == 2 and true or false
+  if hidden then
+    opt.laststatus = 0
+    return
+  end
+  opt.laststatus = 2
+end
+
+function M.toggle_number()
+  local opt = vim.opt
+  if opt.number._value then
+    opt.number = false
+    return
+  end
+  opt.number = true
 end
 
 return M
