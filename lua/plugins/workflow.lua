@@ -96,7 +96,7 @@ use {
     require("telescope").load_extension "luasnip"
   end,
   after = { "LuaSnip", "telescope.nvim" },
-  disable = not enabled["telescope-luasnip.nvim"],
+  disable = not enabled["telescope-luasnip.nvim"] and __KRAKEN.plugins["completion"]["cmp_luasnip"],
 }
 
 use {

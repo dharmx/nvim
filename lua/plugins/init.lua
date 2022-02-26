@@ -51,22 +51,13 @@ packer.init {
 }
 
 use = packer.use
+use_rocks = packer.use_rocks
 packer.reset()
 
-for _, category in
-  ipairs {
-    "completion",
-    "editing",
-    "core",
-    "development",
-    "workflow",
-    "health",
-    "others",
-    "ui",
-    "utils",
-  }
-do
-  require("plugins." .. category)
+for _, state in pairs(__KRAKEN.modules) do
+  if state.enabled then
+    require(state.import)
+  end
 end
 
 if bootstrap then
