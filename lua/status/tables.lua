@@ -1,5 +1,5 @@
 local T = {}
-local colors = require("highlights.schemes." .. vim.g.current_scheme)
+local colors = require("theming.schemes." .. __KRAKEN.theme.colorscheme)
 
 T.modes = setmetatable({
   ["n"] = { style = { "NORMAL", "", "NRM" }, color = colors.modes["n"] },

@@ -1,5 +1,4 @@
 local I = {}
-local cmd = vim.api.nvim_command
 
 function I.setup(options)
   cmd "highlight clear"

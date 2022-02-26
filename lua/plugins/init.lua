@@ -9,7 +9,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     "https://github.com/wbthomason/packer.nvim",
     install_path,
   }
-  vim.api.nvim_command "packadd packer.nvim"
+  cmd "packadd packer.nvim"
 end
 
 local packer = require "packer"
@@ -38,7 +38,7 @@ packer.init {
     working_sym = " ",
     error_sym = "",
     done_sym = "",
-    removed_sym = " ",
+    removed_sym = "",
     moved_sym = " ",
     header_sym = "━ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ━",
     show_all_info = false,

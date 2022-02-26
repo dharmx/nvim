@@ -1,3 +1,4 @@
+cmd = vim.api.nvim_command
 local present, nvimrc = pcall(require, "nvimrc")
 if present then
   __KRAKEN = vim.tbl_deep_extend("keep", nvimrc, require "utils.defaultrc")

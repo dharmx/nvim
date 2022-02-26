@@ -1,11 +1,10 @@
 local M = {}
 
 function M.alias(from, to)
-  vim.api.nvim_command("command! " .. from .. " " .. to)
+  cmd("command! " .. from .. " " .. to)
 end
 
 function M.manage_plugins()
-  local cmd = vim.api.nvim_command
   cmd "command! -nargs=* -complete=customlist,v:lua.require'packer'.plugin_complete  PackerInstall lua require('packer').install(<f-args>)"
   cmd "command! -nargs=* -complete=customlist,v:lua.require'packer'.plugin_complete PackerUpdate lua require('packer').update(<f-args>)"
   cmd "command! -nargs=* -complete=customlist,v:lua.require'packer'.plugin_complete PackerSync lua require('packer').sync(<f-args>)"

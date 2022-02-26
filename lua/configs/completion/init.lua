@@ -5,8 +5,8 @@ if not present then
 end
 
 local fn = vim.fn
-local kind_icons = require "configs.completion.itemkind"
-local kind_sources = require "configs.completion.sourcekind"
+local kind_icons = __KRAKEN.kinds.item
+local kind_sources = __KRAKEN.kinds.source
 
 local function cmp_item_format(entry, vim_item)
   vim_item.menu = kind_sources[entry.source.name]

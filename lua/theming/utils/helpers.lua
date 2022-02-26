@@ -1,7 +1,5 @@
 local H = {}
 
-local cmd = vim.api.nvim_command
-
 function H.get_active_scheme()
   return require("theming.schemes." .. __KRAKEN.theme.colorscheme)
 end

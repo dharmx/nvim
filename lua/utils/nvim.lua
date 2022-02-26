@@ -1,12 +1,10 @@
 local M = {}
 
-local api = vim.api
 local fn = vim.fn
 
 function M.delete_buffer()
   local buflisted = fn.getbufinfo { buflisted = 1 }
   local cur_winnr, cur_bufnr = fn.winnr(), fn.bufnr()
-  local cmd = api.nvim_command
   if #buflisted < 2 then
     cmd "confirm qall"
     return
@@ -21,11 +19,11 @@ function M.delete_buffer()
 end
 
 function M.map(...)
-  api.nvim_buf_set_keymap(bufnr, ...)
+  vim.api.nvim_buf_set_keymap(bufnr, ...)
 end
 
 function M.buf_opt(...)
-  api.nvim_buf_set_option(bufnr, ...)
+  vim.api.nvim_buf_set_option(bufnr, ...)
 end
 
 return M
