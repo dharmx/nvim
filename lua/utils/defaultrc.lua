@@ -1,5 +1,19 @@
 local M = {}
 
+M.autocmds = {
+  ["relative_feedback"] = false,
+  ["number_feedback"] = false,
+  ["listchars_feedback"] = false,
+  ["cursorline_feedback"] = false,
+  ["yank_feedback"] = false,
+  ["scrollbar_init"] = false,
+  ["term_non_relative"] = true,
+  ["filetype_format"] = true,
+  ["block_read_only"] = true,
+  ["plugins_auto_source"] = false,
+  ["nvimrc_auto_source"] = false,
+}
+
 M.options = {
   ["normal"] = {
     ["termguicolors"] = true,
@@ -67,27 +81,13 @@ M.options = {
     ["list"] = true,
     ["menuitems"] = 30,
     ["magic"] = true,
-    ["icon"] = true,   
+    ["icon"] = true,
   },
   ["append"] = {
     ["whichwrap"] = "<>[]hl",
     ["errorformat"] = "%f|%l col %c|%m",
     ["shortmess"] = "sI",
   },
-}
-
-M.autocmds = {
-  ["relative_feedback"] = false,
-  ["number_feedback"] = false,
-  ["listchars_feedback"] = false,
-  ["cursorline_feedback"] = false,
-  ["yank_feedback"] = false,
-  ["scrollbar_init"] = false,
-  ["term_non_relative"] = true,
-  ["filetype_format"] = true,
-  ["block_read_only"] = true,
-  ["plugins_auto_source"] = false,
-  ["nvimrc_auto_source"] = false,
 }
 
 M.theme = { ["colorscheme"] = "everforest", ["background"] = "dark" }
@@ -302,5 +302,7 @@ M.kinds = {
     TypeParameter = "",
   },
 }
+
+M.banner = "KRAKEN"
 
 return M

@@ -29,7 +29,23 @@ packer.init {
   display = {
     non_interactive = false,
     open_fn = function()
-      return util.float { border = "rounded" }
+      local width = 65
+      local height = 40
+      local col = math.ceil((vim.o.columns - width) * 1.05)
+      local row = math.ceil((vim.o.lines - height) * 0.8 - 1)
+      local borders = {
+        rounded = "rounded",
+        single = "single",
+        double = "double",
+        none = "none",
+        solid = "solid",
+        shadow = "shadow",
+        custom = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+      }
+
+      return util.float {
+        border = borders.rounded,
+      }
     end,
     open_cmd = "65vnew \\[packer\\]",
     item_sym = "",

@@ -42,13 +42,13 @@ N.shades = {
 }
 
 N.rainbow = {
-  ["cobalt"] = "#87C2E5",
-  ["pink"] = "#E48EAD",
-  ["cyan"] = "#67B5B1",
+  ["cobalt"] = "#AFC2E5",
+  ["pink"] = "#C48EAD",
+  ["cyan"] = "#DDBBB1",
   ["green"] = "#AFBE8C",
   ["yellow"] = "#FFBB8B",
   ["orange"] = "#D08770",
-  ["purple"] = "#C090F0",
+  ["purple"] = "#C0A0F0",
 }
 
 N.modes = setmetatable({
@@ -57,20 +57,20 @@ N.modes = setmetatable({
   ["v"] = "#A3BE8C",
   ["V"] = "#E0AF8B",
   [""] = "#DBA08B",
-  ["s"] = "#DE878F",
-  ["S"] = "#DE878F",
-  [""] = "#DE878F",
-  ["i"] = "#C09AE0",
-  ["ic"] = "#C09AE0",
+  ["s"] = "#CE878F",
+  ["S"] = "#CE878F",
+  [""] = "#CE878F",
+  ["i"] = "#C09AC0",
+  ["ic"] = "#C09AC0",
   ["R"] = "#D08770",
   ["Rv"] = "#D08770",
   ["c"] = "#BF616A",
   ["cv"] = "#BF616A",
   ["ce"] = "#BF616A",
-  ["r"] = "#FFBB8B",
+  ["r"] = "#DFBB8B",
   ["rm"] = "#EBCB8B",
   ["r?"] = "#DE878F",
-  ["!"] = "#FFBB8B",
+  ["!"] = "#DFBF8B",
   ["t"] = "#5E81AC",
 }, {
   __index = function()

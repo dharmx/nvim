@@ -5,11 +5,11 @@ function S.get(syntax)
     luaBuiltIn = { link = "Keyword" },
     luaCond = { link = "Conditional" },
     luaIn = { link = "Keyword" },
-    luaSpecial = { foreground = syntax.color05, decoration = "bold" },
-    luaSpecialTable = { foreground = syntax.color11, decoration = "bold" },
     luaCond = { link = "Conditional" },
     luaIfThen = { link = "Conditional" },
     luaElse = { link = "Conditional" },
+    luaSpecialTable = { foreground = syntax.color11, decoration = "bold" },
+    luaSpecial = { foreground = syntax.color05, decoration = "bold" },
   }
 end
 
