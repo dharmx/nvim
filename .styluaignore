@@ -3,6 +3,7 @@
 
 README.md
 LICENSE.txt
+commands.lua
 
 .stylua.toml
 .gitignore

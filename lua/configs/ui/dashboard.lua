@@ -1,5 +1,5 @@
 local g = vim.g
-local banners = require("settings.banners")
+local banners = require "settings.banners"
 local commands = {
   a = {
     description = { "  Find File                 SPC f f" },
