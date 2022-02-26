@@ -6,7 +6,6 @@ M.options = {
     ["laststatus"] = 2,
     ["completeopt"] = "menuone,noselect",
     ["shadafile"] = "",
-    ["ttyfast"] = false,
     ["title"] = true,
     ["hidden"] = true,
     ["signcolumn"] = "yes",
@@ -117,10 +116,11 @@ M.miscmds = {
   ["ease_quit"] = false,
 }
 
+local file_name = "_compiled"
 M.compiled = {
-  ["file_name"] = "packer_compiled",
-  ["full_path"] = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
-  ["impatient"] = "configs.core.packer_compiled",
+  ["file_name"] = file_name,
+  ["full_path"] = vim.fn.stdpath "config" .. "/lua/configs/core/" .. file_name .. ".lua",
+  ["impatient"] = "configs.core." .. file_name,
 }
 
 M.builtins = {
@@ -232,6 +232,17 @@ M.plugins = {
   ["ui"] = {},
   ["others"] = {},
   ["development"] = {},
+}
+
+M.modules = {
+  ["ui"] = { enabled = true, import = "plugins.ui" },
+  ["others"] = { enabled = true, import = "plugins.others" },
+  ["development"] = { enabled = true, import = "plugins.development" },
+  ["workflow"] = { enabled = true, import = "plugins.workflow" },
+  ["utils"] = { enabled = true, import = "plugins.utils" },
+  ["editing"] = { enabled = true, import = "plugins.editing" },
+  ["core"] = { enabled = true, import = "plugins.core" },
+  ["completion"] = { enabled = true, import = "plugins.completion" },
 }
 
 return M
