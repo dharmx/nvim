@@ -41,6 +41,8 @@ luac.out
 
 # Neovim
 plugin/
-lua/packer_compiled.lua
+**/packer_compiled.lua
+**/*compiled.lua
+lua/nvimrc.lua
 
 **/*.spl
