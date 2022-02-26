@@ -5,24 +5,24 @@ local M = {}
 M["relative_feedback"] = function()
   cmd "augroup RelativeFeedback"
   cmd "  autocmd!"
-  cmd "  autocmd InsertEnter * set norelativenumber"
-  cmd "  autocmd InsertLeave * set relativenumber"
+  cmd "  autocmd InsertEnter * silent! set norelativenumber"
+  cmd "  autocmd InsertLeave * silent! set relativenumber"
   cmd "augroup END"
 end
 
 M["number_feedback"] = function()
   cmd "augroup RelativeFeedback"
   cmd "  autocmd!"
-  cmd "  autocmd InsertEnter * set number"
-  cmd "  autocmd InsertLeave * set nonumber"
+  cmd "  autocmd InsertEnter * silent! set number"
+  cmd "  autocmd InsertLeave * silent! set nonumber"
   cmd "augroup END"
 end
 
 M["listchars_feedback"] = function()
   cmd "augroup ListCharsFeedback"
   cmd "  autocmd!"
-  cmd "  autocmd InsertLeave * lua vim.opt_local.listchars = { tab = ' ', trail = '·', space = '⋅', eol = '↴' }"
-  cmd "  autocmd InsertEnter * lua vim.opt_local.listchars = ''"
+  cmd "  autocmd InsertLeave * silent! lua vim.opt_local.listchars = { tab = ' ', trail = '·', space = '⋅', eol = '↴' }"
+  cmd "  autocmd InsertEnter * silent! lua vim.opt_local.listchars = ''"
   cmd "augroup END"
 end
 
@@ -68,14 +68,14 @@ end
 M["plugins_auto_source"] = function()
   cmd "augroup AutoSourcePluginSpecsOnChange"
   cmd "  autocmd!"
-  cmd "  autocmd BufWritePost */lua/plugins/*.lua lua require('packer').compile()"
+  cmd "  autocmd BufWritePost */lua/plugins/*.lua silent! lua require('packer').compile()"
   cmd "augroup end"
 end
 
 M["nvimrc_auto_source"] = function()
-  cmd "augroup AutoSourcePluginSpecsOnChange"
+  cmd "augroup AutoSourceNVIMRCOnChange"
   cmd "  autocmd!"
-  cmd "  autocmd BufWritePost */lua/nvimrc.lua lua require('packer').compile()"
+  cmd "  autocmd BufWritePost */lua/nvimrc.lua silent! lua require('packer').compile()"
   cmd "augroup end"
 end
 
