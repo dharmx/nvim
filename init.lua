@@ -1,6 +1,10 @@
 cmd = vim.api.nvim_command
 
 local present, nvimrc = pcall(require, "nvimrc")
+if not present then
+  present, nvimrc = pcall(require, "usercfg.nvimrc")
+end
+
 if present then
   __KRAKEN = vim.tbl_deep_extend("keep", nvimrc, require "utils.defaultrc")
 else
@@ -25,6 +29,4 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   require "plugins"
 end
 
-pcall(function()
-  require "configs.core.impatient"
-end)
+require "configs.core.impatient"

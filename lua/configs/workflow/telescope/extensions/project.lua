@@ -14,7 +14,7 @@ return {
       path = "~/Dotfiles/nordfall",
     },
     {
-      path = "~/Dotfiles/krakenvim",
+      path = "~/Dotfiles/KrakenVim",
     },
     {
       path = "~/Dotfiles/nordfiles",

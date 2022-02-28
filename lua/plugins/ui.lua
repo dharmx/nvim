@@ -1,8 +1,11 @@
+local enabled = __KRAKEN.plugins["ui"]
+
 use {
   "akinsho/bufferline.nvim",
   config = function()
     require "configs.ui.bufferline"
   end,
+  disable = not enabled["bufferline.nvim"],
 }
 
 use {
@@ -10,6 +13,7 @@ use {
   config = function()
     require "configs.ui.devicons"
   end,
+  disable = not enabled["nvim-web-devicons"],
 }
 
 use {
@@ -24,6 +28,7 @@ use {
   config = function()
     require "configs.ui.blankline"
   end,
+  disable = not enabled["indent-blankline.nvim"],
 }
 
 use {
@@ -40,4 +45,5 @@ use {
     "DashboardJumpMarks",
     "DashboardNewFile",
   },
+  disable = not enabled["dashboard-nvim"],
 }

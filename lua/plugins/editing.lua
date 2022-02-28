@@ -64,3 +64,19 @@ use {
   end,
   disable = not enabled["trouble.nvim"],
 }
+
+use {
+  "nvim-orgmode/orgmode",
+  ft = "org",
+  config = function()
+    require "configs.workflow.orgmode"
+  end,
+}
+
+use {
+  "jbyuki/nabla.nvim",
+  after = "orgmode",
+  config = function()
+    require("plugins.others").nabla()
+  end,
+}

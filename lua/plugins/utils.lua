@@ -15,3 +15,5 @@ use {
   end,
   disable = not enabled["nvim-notify"],
 }
+
+use { "tami5/sqlite.lua", module = "sqlite", disable = not enabled["sqlite.lua"] }

@@ -122,7 +122,7 @@ use {
 use {
   "dhruvmanila/telescope-bookmarks.nvim",
   after = "telescope.nvim",
-  requires = { { "tami5/sqlite.lua", module = "sqlite" } },
+  wants = "sqlite.lua",
   config = function()
     require("telescope").load_extension "bookmarks"
   end,
@@ -132,7 +132,7 @@ use {
 use {
   "nvim-telescope/telescope-frecency.nvim",
   after = "telescope.nvim",
-  requires = { { "tami5/sqlite.lua", module = "sqlite" } },
+  wants = "sqlite.lua",
   config = function()
     require("telescope").load_extension "frecency"
   end,
@@ -198,3 +198,42 @@ use {
   end,
   disable = not enabled["telescope-file-browser.nvim"],
 }
+
+use {
+  "phaazon/hop.nvim",
+  cmd = { "HopWord", "HopLine", "HopChar1", "HopChar2", "HopPattern" },
+  as = "hop",
+  config = function()
+    require "configs.workflow.hop"
+  end,
+  disable = not enabled["hop.nvim"],
+}
+
+use {
+  "Pocco81/AutoSave.nvim",
+  cmd = { "ASOn", "ASOff", "ASToggle" },
+  config = function()
+    require "configs.workflow.autosave"
+  end,
+  disable = not enabled["AutoSave.nvim"],
+}
+
+use { "Shatur/neovim-session-manager", cmd = "SessionManager", disable = not enabled["neovim-session-manager"] }
+
+use { "andymass/vim-matchup", opt = true, disable = not enabled["vim-matchup"] }
+
+use { "mbbill/undotree", opt = true, disable = not enabled["undotree"] } 
+
+use {
+  "max397574/better-escape.nvim", 
+  opt = true,
+  disable = not enabled["better-escape.nvim"]
+}
+
+use {
+  "akinsho/toggleterm.nvim",
+  cmd = { "ToggleTerm", "ToggleTermToggleAll" },
+  disable = not enabled["toggleterm.nvim"],
+}
+
+use { "folke/which-key.nvim", disable = not enabled["which-key.nvim"] }

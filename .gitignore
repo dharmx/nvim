@@ -44,5 +44,6 @@ plugin/
 **/packer_compiled.lua
 **/*compiled.lua
 lua/nvimrc.lua
+usercfg/
 
 **/*.spl
