@@ -7,7 +7,7 @@ use {
   config = function()
     require "plugins"
   end,
-  disable = not enabled["packer.nvim"],
+  disable = not enabled["packer_nvim"],
 }
 
-use { "lewis6991/impatient.nvim", disable = not enabled["impatient.nvim"] }
+use { "lewis6991/impatient.nvim", disable = not enabled["impatient_nvim"] }

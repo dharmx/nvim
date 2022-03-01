@@ -1,4 +1,5 @@
 local M = {}
+local cmd = vim.api.nvim_command
 
 function M.alias(from, to)
   cmd("command! " .. from .. " " .. to)

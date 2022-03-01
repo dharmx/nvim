@@ -5,17 +5,7 @@ if not present then
 end
 
 local config = {
-  extensions = {
-    command_palette = require "configs.workflow.telescope.extensions.command_palette",
-    bookmarks = require "configs.workflow.telescope.extensions.bookmarks",
-    frecency = require "configs.workflow.telescope.extensions.frecency",
-    media_files = require "configs.workflow.telescope.extensions.media_files",
-    packer = require "configs.workflow.telescope.extensions.packer",
-    tele_tabby = require "configs.workflow.telescope.extensions.tele_tabby",
-    project = require "configs.workflow.telescope.extensions.project",
-    file_browser = require "configs.workflow.telescope.extensions.file_browser",
-    fzf = require "configs.workflow.telescope.extensions.fzf_native",
-  },
+  extensions = require "configs.workflow.telescope.extensions",
   defaults = {
     vimgrep_arguments = {
       "rg",

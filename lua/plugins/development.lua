@@ -6,9 +6,10 @@ use {
   setup = function()
     require "configs.development.betterlua"
   end,
-  disable = not enabled["BetterLua.vim"],
+  disable = not enabled["BetterLua_vim"],
 }
 
-use { "bfredl/nvim-luadev", cmd = "Luadev", disable = not enabled["nvim-luadev"] }
-use { "rafcamlet/nvim-luapad", cmd = { "Luapad", "LuaRun" }, disable = not enabled["nvim-luapad"] }
-use { "milisims/nvim-luaref", ft = { "vim", "lua" }, disable = not enabled["nvim-luaref"] }
+use { "bfredl/nvim-luadev", cmd = "Luadev", disable = not enabled["nvim_luadev"] }
+use { "rafcamlet/nvim-luapad", cmd = { "Luapad", "LuaRun" }, disable = not enabled["nvim_luapad"] }
+use { "milisims/nvim-luaref", ft = { "vim", "lua" }, disable = not enabled["nvim_luaref"] }
+use { "nanotee/luv-vimdocs", ft = { "vim", "lua" }, disable = not enabled["luv_vimdocs"] }

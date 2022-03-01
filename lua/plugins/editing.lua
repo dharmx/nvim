@@ -1,11 +1,11 @@
 local enabled = __KRAKEN.plugins["editing"]
 
-use { "Fymyte/rasi.vim", ft = "rasi", disable = not enabled["rasi.vim"] }
-use { "elkowar/yuck.vim", ft = "yuck", disable = not enabled["yuck.vim"] }
-use { "kovetskiy/sxhkd-vim", ft = "sxhkdrc", disable = not enabled["sxhkd-vim"] }
-use { "MTDL9/vim-log-highlighting", ft = "log", disable = not enabled["vim-log-highlighting"] }
+use { "Fymyte/rasi.vim", ft = "rasi", disable = not enabled["rasi_vim"] }
+use { "elkowar/yuck.vim", ft = "yuck", disable = not enabled["yuck_vim"] }
+use { "kovetskiy/sxhkd-vim", ft = "sxhkdrc", disable = not enabled["sxhkd_vim"] }
+use { "MTDL9/vim-log-highlighting", ft = "log", disable = not enabled["vim_log_highlighting"] }
 
-use { "sheerun/vim-polyglot", disable = not enabled["vim-polyglot"] }
+use { "sheerun/vim-polyglot", disable = not enabled["vim_polyglot"] }
 
 use {
   "TimUntersberger/neogit",
@@ -22,17 +22,18 @@ use {
   config = function()
     require "configs.editing.gitsigns"
   end,
-  disable = not enabled["gitsigns.nvim"],
+  disable = not enabled["gitsigns_nvim"],
 }
 
-use { "numToStr/Comment.nvim", module = "Comment", disable = not enabled["Comment.nvim"] }
+use { "numToStr/Comment.nvim", module = "Comment", disable = not enabled["Comment_nvim"] }
+
 use {
   "folke/todo-comments.nvim",
   event = "BufRead",
   config = function()
     require "configs.editing.todo_comments"
   end,
-  disable = not enabled["todo-comments.nvim"],
+  disable = not enabled["todo_comments_nvim"],
 }
 
 use {
@@ -42,7 +43,7 @@ use {
   end,
   run = "cd app && yarn install",
   ft = "markdown",
-  disable = not enabled["markdown-preview.nvim"],
+  disable = not enabled["markdown_preview_nvim"],
 }
 
 use {
@@ -53,7 +54,7 @@ use {
     "ColorizerAttachToBuffers",
     "ColorizerDetachFromBuffers",
   },
-  disable = not enabled["nvim-colorizer.lua"],
+  disable = not enabled["nvim_colorizer_lua"],
 }
 
 use {
@@ -62,7 +63,7 @@ use {
   config = function()
     require "configs.editing.trouble"
   end,
-  disable = not enabled["trouble.nvim"],
+  disable = not enabled["trouble_nvim"],
 }
 
 use {
@@ -71,12 +72,11 @@ use {
   config = function()
     require "configs.workflow.orgmode"
   end,
+  disable = not enabled["orgmode"],
 }
 
 use {
   "jbyuki/nabla.nvim",
   after = "orgmode",
-  config = function()
-    require("plugins.others").nabla()
-  end,
+  disable = not enabled["nabla_nvim"],
 }

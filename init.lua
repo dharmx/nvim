@@ -1,5 +1,3 @@
-cmd = vim.api.nvim_command
-
 local present, nvimrc = pcall(require, "nvimrc")
 if not present then
   present, nvimrc = pcall(require, "usercfg.nvimrc")

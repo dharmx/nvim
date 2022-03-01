@@ -1,5 +1,8 @@
 _ = require "settings.commands"
+local cmd = vim.api.nvim_command
+
 cmd("colorscheme " .. __KRAKEN.theme.colorscheme)
+
 vim.o.background = __KRAKEN.theme.background
 vim.env.FZF_DEFAULT_OPTS =
   "--layout=reverse --prompt ' ' --pointer '->' --preview='less {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"

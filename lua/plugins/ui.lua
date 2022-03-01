@@ -5,7 +5,7 @@ use {
   config = function()
     require "configs.ui.bufferline"
   end,
-  disable = not enabled["bufferline.nvim"],
+  disable = not enabled["bufferline_nvim"],
 }
 
 use {
@@ -13,7 +13,7 @@ use {
   config = function()
     require "configs.ui.devicons"
   end,
-  disable = not enabled["nvim-web-devicons"],
+  disable = not enabled["nvim_web_devicons"],
 }
 
 use {
@@ -28,7 +28,7 @@ use {
   config = function()
     require "configs.ui.blankline"
   end,
-  disable = not enabled["indent-blankline.nvim"],
+  disable = not enabled["indent_blankline_nvim"],
 }
 
 use {
@@ -45,5 +45,5 @@ use {
     "DashboardJumpMarks",
     "DashboardNewFile",
   },
-  disable = not enabled["dashboard-nvim"],
+  disable = not enabled["dashboard_nvim"],
 }

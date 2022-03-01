@@ -1,4 +1,5 @@
 local M = {}
+local cmd = vim.api.nvim_command
 
 M["ease_quit"] = function()
   cmd "cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))"
