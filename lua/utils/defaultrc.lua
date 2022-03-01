@@ -13,6 +13,7 @@ M.autocmds = {
   ["plugins_auto_source"] = false,
   ["nvimrc_auto_source"] = false,
   ["packer_commands"] = true,
+  ["hide_bufferline_on_dashboard"] = false,
 }
 
 M.options = {
@@ -31,7 +32,10 @@ M.options = {
     ["expandtab"] = true,
     ["shiftwidth"] = 2,
     ["softtabstop"] = 2,
-    ["wildignore"] = { "*/cache/*", "*/tmp/*" },
+    ["wildignore"] = {
+      "*/cache/*",
+      "*/tmp/*",
+    },
     ["smartindent"] = true,
     ["fillchars"] = {
       ["eob"] = " ",
@@ -91,7 +95,10 @@ M.options = {
   },
 }
 
-M.theme = { ["colorscheme"] = "everforest", ["background"] = "dark" }
+M.theme = {
+  ["colorscheme"] = "everforest",
+  ["background"] = "dark",
+}
 
 M.globals = {
   ["mapleader"] = " ",
@@ -253,7 +260,14 @@ M.plugins = {
     ["indent_blankline_nvim"] = true,
     ["dashboard_nvim"] = true,
   },
-  ["others"] = {},
+  ["others"] = {
+    ["nvim_minimap"] = true,
+    ["vim_dispatch"] = true,
+    ["presence_nvim"] = true,
+    ["vim_wakatime"] = true,
+    ["neoscroll_nvim"] = true,
+    ["scrollbar_nvim"] = true,
+  },
   ["health"] = {
     ["nvim_transparent"] = true,
     ["twilight_nvim"] = true,

@@ -14,7 +14,7 @@ function T.get(theme)
       background = theme.shades.shade07,
     },
     ["TelescopeSelectionCaret"] = {
-      foreground = theme.common.base11,
+      foreground = theme.common.base09,
       background = theme.common.base01,
     },
     ["TelescopeSelection"] = {
@@ -33,23 +33,23 @@ function T.get(theme)
       foreground = theme.common.base04,
     },
     ["TelescopeMatching"] = {
-      foreground = theme.common.base11,
+      foreground = theme.common.base09,
     },
     ["TelescopePromptPrefix"] = {
       foreground = theme.common.base01,
-      background = theme.common.base11,
+      background = theme.common.base09,
     },
     ["TelescopePromptBorder"] = {
-      background = theme.common.base11,
-      foreground = theme.common.base11,
+      background = theme.common.base09,
+      foreground = theme.common.base09,
     },
     ["TelescopePromptNormal"] = {
-      background = theme.common.base11,
+      background = theme.common.base09,
       foreground = theme.common.base01,
     },
     ["TelescopePromptTitle"] = {
       foreground = theme.common.base01,
-      background = theme.common.base14,
+      background = theme.common.base07,
     },
     ["TelescopePromptCounter"] = {
       foreground = theme.common.base02,

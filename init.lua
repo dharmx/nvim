@@ -10,7 +10,7 @@ else
   __KRAKEN = require "utils.defaultrc"
 end
 
-if __KRAKEN.ILOVEBLOAT ~= "YES!" then
+if not __KRAKEN.ILOVEBLOAT then
   return
 end
 

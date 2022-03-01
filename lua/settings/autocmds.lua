@@ -46,7 +46,7 @@ M["scrollbar_init"] = function()
   cmd "  autocmd WinScrolled,VimResized,QuitPre * silent! lua require('scrollbar').show()"
   cmd "  autocmd WinEnter,FocusGained * silent! lua require('scrollbar').show()"
   cmd "  autocmd WinLeave,BufLeave,BufWinLeave,FocusLost * silent! lua require('scrollbar').clear()"
-  cmd "augroup end"
+  cmd "augroup END"
 end
 
 M["term_non_relative"] = function()
@@ -61,21 +61,21 @@ M["block_read_only"] = function()
   cmd "augroup BlockReadOnly"
   cmd "  autocmd!"
   cmd "  autocmd BufReadPost * let &l:modifiable = !&readonly"
-  cmd "augroup end"
+  cmd "augroup END"
 end
 
 M["plugins_auto_source"] = function()
   cmd "augroup AutoSourcePluginSpecsOnChange"
   cmd "  autocmd!"
   cmd "  autocmd BufWritePost */lua/plugins/*.lua silent! lua require('packer').compile()"
-  cmd "augroup end"
+  cmd "augroup END"
 end
 
 M["nvimrc_auto_source"] = function()
   cmd "augroup AutoSourceNVIMRCOnChange"
   cmd "  autocmd!"
   cmd "  autocmd BufWritePost */lua/nvimrc.lua silent! lua require('packer').compile()"
-  cmd "augroup end"
+  cmd "augroup END"
 end
 
 M["packer_commands"] = function()
@@ -87,6 +87,13 @@ M["packer_commands"] = function()
   cmd "command! PackerProfile lua require('packer').profile_output()"
   cmd "command! PackerCompile lua require('packer').compile()"
   cmd "command! -bang -nargs=+ -complete=customlist,v:lua.require'packer'.loader_complete PackerLoad lua require('packer').loader(<f-args>, '<bang>')"
+end
+
+M["hide_bufferline_on_dashboard"] = function()
+  cmd "augroup ToggleBufferlineOnDashboard"
+  cmd "  autocmd!"
+  cmd "  autocmd CmdlineEnter * lua require('utils.misc').toggle_tabline_on_dashboard()"
+  cmd "augroup END"
 end
 
 return M

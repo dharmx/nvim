@@ -84,10 +84,10 @@ cmp.setup(config)
 
 local cmdlines = {
   sources = cmp.config.sources {
-    { name = "cmdline_history", keyword_length = 4 },
-    { name = "nvim_lsp_document_symbol", keyword_length = 4 },
     { name = "cmdline", keyword_length = 2 },
     { name = "buffer", keyword_length = 5 },
+    { name = "cmdline_history", keyword_length = 4 },
+    { name = "nvim_lsp_document_symbol", keyword_length = 4 },
   },
   formatting = {
     format = cmp_item_format,

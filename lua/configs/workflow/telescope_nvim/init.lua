@@ -25,13 +25,13 @@ local config = {
     layout_strategy = "horizontal",
     layout_config = {
       horizontal = {
-        prompt_position = "top",
+        prompt_position = "bottom",
         preview_width = 0.6,
         results_width = 0.5,
       },
       vertical = { mirror = true },
-      width = 0.75,
-      height = 0.85,
+      width = 0.65,
+      height = 0.75,
       preview_cutoff = 120,
     },
     file_sorter = require("telescope.sorters").get_fuzzy_file,

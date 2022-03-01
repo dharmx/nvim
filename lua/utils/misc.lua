@@ -24,4 +24,22 @@ function M.toggle_number()
   opt.number = true
 end
 
+function M.toggle_tabline_on_dashboard()
+  local hi = require("theming.utils.helpers").highlight
+  if vim.api.nvim_buf_get_option(0, "ft") == "dashboard" then
+    local colors = require("theming.utils.helpers").get_active_scheme()
+    hi("TabLine", {
+      foreground = colors.common.base00,
+      background = colors.common.base00,
+    })
+    hi("TabLineFill", {
+      foreground = colors.common.base00,
+      background = colors.common.base00,
+    })
+    cmd "set tabline=`"
+    return
+  end
+  return cmd "set tabline=%!v:lua.nvim_bufferline()"
+end
+
 return M

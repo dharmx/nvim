@@ -38,7 +38,7 @@ N.shades = {
   ["shade08"] = "#272B37",
   ["shade09"] = "#252A33",
   ["shade10"] = "#252B37",
-  ["shade11"] = "#3C424F",
+  ["shade11"] = "#262c38",
 }
 
 N.rainbow = {
@@ -90,7 +90,7 @@ N.syntax = {
   ["color17"] = "#BF616A",
   ["color20"] = "#D08770",
 
-  ["color13"] = "#EBA08B",
+  ["color13"] = "#C08770",
   ["color01"] = "#D0A78F",
   ["color05"] = "#CBA08B",
 
