@@ -16,7 +16,7 @@ for _, extension in
     "history",
   }
 do
-  extensions[extension] = require("configs.workflow.telescope.extensions." .. extension)
+  extensions[extension] = require("configs.workflow.telescope_nvim.extensions." .. extension)
 end
 
 return extensions

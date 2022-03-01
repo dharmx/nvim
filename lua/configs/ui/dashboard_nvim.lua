@@ -54,4 +54,4 @@ g.dashboard_custom_footer = {
   "─────────── Powered By  LuaJIT ───────────",
 }
 
--- vim: nowrap
+-- vim:nowrap

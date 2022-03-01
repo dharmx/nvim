@@ -4,7 +4,7 @@ use {
   "euclidianAce/BetterLua.vim",
   ft = "lua",
   setup = function()
-    require "configs.development.betterlua"
+    require "configs.development.BetterLua_vim"
   end,
   disable = not enabled["BetterLua_vim"],
 }

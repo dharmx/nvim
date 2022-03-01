@@ -5,7 +5,7 @@ if not present then
 end
 
 local config = {
-  extensions = require "configs.workflow.telescope.extensions",
+  extensions = require "configs.workflow.telescope_nvim.extensions",
   defaults = {
     vimgrep_arguments = {
       "rg",

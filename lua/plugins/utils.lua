@@ -11,7 +11,7 @@ use { "luukvbaal/stabilize.nvim", event = { "CmdlineEnter", "InsertEnter" }, dis
 use {
   "rcarriga/nvim-notify",
   config = function()
-    require "configs.utils.notify"
+    require "configs.utils.nvim_notify"
   end,
   disable = not enabled["nvim_notify"],
 }

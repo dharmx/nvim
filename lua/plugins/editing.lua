@@ -20,7 +20,7 @@ use {
   wants = "plenary.nvim",
   cmd = "Gitsigns",
   config = function()
-    require "configs.editing.gitsigns"
+    require "configs.editing.gitsigns_nvim"
   end,
   disable = not enabled["gitsigns_nvim"],
 }
@@ -31,7 +31,7 @@ use {
   "folke/todo-comments.nvim",
   event = "BufRead",
   config = function()
-    require "configs.editing.todo_comments"
+    require "configs.editing.todo_comments_nvim"
   end,
   disable = not enabled["todo_comments_nvim"],
 }
@@ -39,7 +39,7 @@ use {
 use {
   "iamcco/markdown-preview.nvim",
   setup = function()
-    require "configs.editing.markdown_preview"
+    require "configs.editing.markdown_preview_nvim"
   end,
   run = "cd app && yarn install",
   ft = "markdown",
@@ -61,7 +61,7 @@ use {
   "folke/trouble.nvim",
   cmd = { "Trouble", "TroubleClose", "TroubleRefresh", "TroubleToggle" },
   config = function()
-    require "configs.editing.trouble"
+    require "configs.editing.trouble_nvim"
   end,
   disable = not enabled["trouble_nvim"],
 }

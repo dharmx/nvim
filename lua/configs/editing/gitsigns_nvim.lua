@@ -68,4 +68,4 @@ local config = {
 
 gitsigns.setup(config)
 
--- vim:number:nowrap
+-- vim:nowrap

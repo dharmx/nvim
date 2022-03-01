@@ -10,10 +10,10 @@ use {
   "kyazdani42/nvim-tree.lua",
   cmd = { "NvimTreeToggle", "NvimTreeRefresh", "NvimTreeFocus" },
   setup = function()
-    require "configs.workflow.nvim_tree.setup"
+    require "configs.workflow.nvim_tree_lua.setup"
   end,
   config = function()
-    require "configs.workflow.nvim_tree.config"
+    require "configs.workflow.nvim_tree_lua.config"
   end,
   disable = not enabled["nvim_tree_lua"],
 }
@@ -22,7 +22,7 @@ use {
   "nvim-telescope/telescope.nvim",
   cmd = "Telescope",
   config = function()
-    require "configs.workflow.telescope"
+    require "configs.workflow.telescope_nvim"
     require("telescope").load_extension "notify"
   end,
   disable = not enabled["telescope_nvim"],
@@ -58,7 +58,7 @@ use {
   "AckslD/nvim-neoclip.lua",
   after = "telescope.nvim",
   config = function()
-    require "configs.workflow.telescope.extensions.neoclip"
+    require "configs.workflow.telescope_nvim.extensions.neoclip"
     require("telescope").load_extension "neoclip"
   end,
   disable = not enabled["nvim_neoclip_lua"],
@@ -105,7 +105,7 @@ use {
   "sudormrfbin/cheatsheet.nvim",
   requires = { "popup.nvim", "plenary.nvim" },
   config = function()
-    require "configs.workflow.telescope.extensions.cheatsheet"
+    require "configs.workflow.telescope_nvim.extensions.cheatsheet"
     require("telescope").load_extension "cheatsheet"
   end,
   cmd = { "Cheatsheet", "CheatsheetEdit" },
@@ -135,7 +135,7 @@ use {
   "xiyaowong/telescope-emoji.nvim",
   after = "telescope.nvim",
   config = function()
-    require "configs.workflow.telescope.extensions.emoji"
+    require "configs.workflow.telescope_nvim.extensions.emoji"
     require("telescope").load_extension "emoji"
   end,
   disable = not enabled["telescope_emoji_nvim"],
@@ -236,7 +236,7 @@ use {
   cmd = { "HopWord", "HopLine", "HopChar1", "HopChar2", "HopPattern" },
   as = "hop",
   config = function()
-    require "configs.workflow.hop"
+    require "configs.workflow.hop_nvim"
   end,
   disable = not enabled["hop_nvim"],
 }
@@ -245,7 +245,7 @@ use {
   "Pocco81/AutoSave.nvim",
   cmd = { "ASOn", "ASOff", "ASToggle" },
   config = function()
-    require "configs.workflow.autosave"
+    require "configs.workflow.AutoSave_nvim"
   end,
   disable = not enabled["AutoSave_nvim"],
 }

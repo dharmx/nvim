@@ -12,6 +12,7 @@ M.autocmds = {
   ["block_read_only"] = true,
   ["plugins_auto_source"] = false,
   ["nvimrc_auto_source"] = false,
+  ["packer_commands"] = true,
 }
 
 M.options = {

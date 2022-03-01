@@ -27,4 +27,4 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   require "plugins"
 end
 
-require "configs.core.impatient"
+require "configs.core.impatient_nvim"

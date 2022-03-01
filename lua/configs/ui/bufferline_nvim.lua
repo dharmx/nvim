@@ -226,4 +226,4 @@ local config = {
 
 bufferline.setup(config)
 
--- vim:nowrap:number
+-- vim:nowrap
