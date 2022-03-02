@@ -1,13 +1,10 @@
 local present, nvimrc = pcall(require, "nvimrc")
-if not present then
-  present, nvimrc = pcall(require, "usercfg.nvimrc")
-end
 
 if present then
-  __KRAKEN = vim.tbl_deep_extend("keep", nvimrc, require "utils.defaultrc")
+  __KRAKEN = vim.tbl_deep_extend("keep", nvimrc, require "usercfg")
 else
   vim.api.nvim_notify("nvimrc absent, using defaultrc instead", vim.log.levels.WARN, { title = "[KrakenVim]" })
-  __KRAKEN = require "utils.defaultrc"
+  __KRAKEN = require "usercfg"
 end
 
 if not __KRAKEN.ILOVEBLOAT then
