@@ -268,4 +268,10 @@ use {
   disable = not enabled["toggleterm_nvim"],
 }
 
-use { "folke/which-key.nvim", disable = not enabled["which_key_nvim"] }
+use {
+  "folke/which-key.nvim",
+  config = function()
+    require "configs.workflow.which_key_nvim"
+  end,
+  disable = not enabled["which_key_nvim"],
+}

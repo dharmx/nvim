@@ -46,6 +46,7 @@ local config = {
       name = "look",
       keyword_length = 2,
       option = { convert_case = true, loud = true },
+      dict = vim.fn.stdpath "config" .. "/lua/spell/en.dict",
     },
     { name = "npm", keyword_length = 4 },
     { name = "orgmode" },

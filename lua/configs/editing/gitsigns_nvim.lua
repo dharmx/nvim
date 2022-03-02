@@ -41,7 +41,7 @@ local config = {
   numhl = false,
   linehl = false,
   word_diff = false,
-  keymaps = require("mappings.unknown").gitsigns,
+  keymaps = require("mappings.unknown").gitsigns_nvim,
   watch_gitdir = { interval = 1000, follow_files = true },
   attach_to_untracked = true,
   current_line_blame = false,

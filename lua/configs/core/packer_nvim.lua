@@ -30,7 +30,7 @@ config.display = {
   header_sym = "━ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ━",
   show_all_info = false,
   prompt_border = "rounded",
-  keybindings = require("mappings.unknown").packer,
+  keybindings = require("mappings.unknown").packer_nvim,
 }
 
 config.display.open_fn = function()

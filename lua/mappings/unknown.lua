@@ -1,6 +1,6 @@
 local M = {}
 
-M.autopairs = "qwertyuiopzxcvbnmasdfghjkl"
+M.nvim_autopairs = "qwertyuiopzxcvbnmasdfghjkl"
 
 M.nvim_cmp = function(cmp)
   local fn = vim.fn
@@ -148,7 +148,7 @@ M.symbols_outline = { -- These keymaps can be a string or a table for multiple k
 
 M.better_escape = { "jk", "jj" }
 
-M.gitsigns = {
+M.gitsigns_nvim = {
   noremap = true,
 
   ["n]c"] = { expr = true, "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'" },
@@ -170,7 +170,7 @@ M.gitsigns = {
   ["xih"] = ":<C-U>Gitsigns select_hunk<CR>",
 }
 
-M.neoscroll = {
+M.neoscroll_nvim = {
   "<C-u>",
   "<C-d>",
   "<C-b>",
@@ -207,11 +207,11 @@ M.neoclip = {
   },
 }
 
-M.packer = { quit = "q", toggle_info = "<CR>", diff = "d", prompt_revert = "r" }
+M.packer_nvim = { quit = "q", toggle_info = "<CR>", diff = "d", prompt_revert = "r" }
 
-M.toggle_term = { open_mapping = "<c-\\>" }
+M.toggleterm_nvim = { open_mapping = "<c-\\>" }
 
-M.trouble = { -- key mappings for actions in the trouble list
+M.trouble_nvim = { -- key mappings for actions in the trouble list
   -- map to {} to remove a mapping, for example:
   -- close = {},
   close = "q", -- close the list
@@ -233,7 +233,7 @@ M.trouble = { -- key mappings for actions in the trouble list
   next = "j", -- next item
 }
 
-M.which_key = { popup_mappings = { scroll_down = "<c-d>", scroll_up = "<c-u>" } }
+M.which_key_nvim = { popup_mappings = { scroll_down = "<c-d>", scroll_up = "<c-u>" } }
 
 M.lsp_installer = {
   toggle_server_expand = "<CR>",

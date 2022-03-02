@@ -17,7 +17,8 @@ use {
 
 use {
   "tamago324/cmp-zsh",
-  after = "nvim-cmp",
+  wants = "nvim-cmp",
+  ft = "zsh",
   config = function()
     require "configs.completion.cmp_zsh"
   end,
@@ -115,5 +116,5 @@ use { "kdheepak/cmp-latex-symbols", ft = "tex", wants = "nvim-cmp", disable = no
 use { "saadparwaiz1/cmp_luasnip", after = { "LuaSnip", "nvim-cmp" }, disable = not enabled["cmp_luasnip"] }
 use { "hrsh7th/cmp-cmdline", event = "CmdlineEnter", disable = not enabled["cmp_cmdline"] }
 use { "hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua", disable = not enabled["cmp_nvim_lsp"] }
-use { "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp", disable = not enabled["cmp_buffer"] }
+use { "hrsh7th/cmp-buffer", after = "nvim-cmp", disable = not enabled["cmp_buffer"] }
 use { "hrsh7th/cmp-path", after = "cmp-buffer", disable = not enabled["cmp_path"] }
