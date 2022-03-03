@@ -382,12 +382,8 @@ use {
 use {
   "kyazdani42/nvim-tree.lua",
   cmd = { "NvimTreeToggle", "NvimTreeRefresh", "NvimTreeFocus" },
-  setup = function()
-    require "configs.nvimtree.setup"
-  end,
-  config = function()
-    require "configs.nvimtree.config"
-  end,
+  setup = require("configs.nvim_tree_lua").before,
+  config = require("configs.nvim_tree_lua").after,
 }
 
 use {

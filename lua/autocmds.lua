@@ -24,7 +24,7 @@ cmd "augroup END"
 
 cmd "augroup AutoSourcePluginSpecsOnChange"
 cmd "  autocmd!"
-cmd "  autocmd BufWritePost */lua/plugins/*.lua silent! lua require('packer').compile()"
+cmd "  autocmd BufWritePost */lua/plugins.lua silent! lua require('packer').compile()"
 cmd "augroup END"
 
 cmd "augroup ToggleBufferlineOnDashboard"
