@@ -47,6 +47,7 @@ use {
   config = function()
     require "configs.cmp.cmp_dictionary"
   end,
+  disable = true,
 }
 
 use {
@@ -73,6 +74,7 @@ use {
     require "configs.cmp.cmp_git"
   end,
   after = "nvim-cmp",
+  disable = true,
 }
 
 use {
@@ -91,29 +93,43 @@ use {
   "dmitmel/cmp-cmdline-history",
   wants = "nvim-cmp",
   event = "CmdlineEnter",
+  disable = true,
 }
 
 use {
   "quangnguyen30192/cmp-nvim-tags",
   wants = "nvim-cmp",
   ft = { "md", "markdown", "html", "xml", "javascript", "js" },
+  disable = true,
 }
 
 use {
   "David-Kunz/cmp-npm",
   wants = { "plenary.nvim", "nvim-cmp" },
   ft = "package.json",
+  disable = true,
 }
 
 use {
   "andersevenrud/cmp-tmux",
   wants = "nvim-cmp",
   ft = { "sh", "bash", "zsh", "fish", "conf" },
+  disable = true,
 }
 
-use { "hrsh7th/cmp-emoji", after = "nvim-cmp" }
+use {
+  "hrsh7th/cmp-emoji",
+  after = "nvim-cmp",
+  disable = true,
+}
+
 use { "octaltree/cmp-look", after = "nvim-cmp" }
-use { "hrsh7th/cmp-calc", after = "nvim-cmp" }
+use {
+  "hrsh7th/cmp-calc",
+  after = "nvim-cmp",
+  disable = true,
+}
+
 use { "f3fora/cmp-spell", after = "nvim-cmp" }
 use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
 use { "lukas-reineke/cmp-rg", after = "nvim-cmp" }
@@ -123,7 +139,7 @@ use { "mtoohey31/cmp-fish", ft = "fish", wants = "nvim-cmp", ft = "fish" }
 use { "kdheepak/cmp-latex-symbols", ft = "tex", wants = "nvim-cmp" }
 use { "saadparwaiz1/cmp_luasnip", after = { "LuaSnip", "nvim-cmp" } }
 use { "hrsh7th/cmp-cmdline", event = "CmdlineEnter" }
-use { "hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua" }
+use { "hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua", disable = true }
 use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
 use { "hrsh7th/cmp-path", after = "cmp-buffer" }
 
@@ -163,6 +179,7 @@ use {
   wants = "plenary.nvim",
   cmd = "Neogit",
   module = "neogit",
+  disable = true,
 }
 
 use {
@@ -217,11 +234,13 @@ use {
   config = function()
     require "configs.orgmode"
   end,
+  disable = true,
 }
 
 use {
   "jbyuki/nabla.nvim",
   after = "orgmode",
+  disable = true,
 }
 
 use {
@@ -230,6 +249,7 @@ use {
   config = function()
     require "configs.nvim_transparent"
   end,
+  disable = true,
 }
 
 use {
@@ -238,6 +258,7 @@ use {
   config = function()
     require "configs.twilight_nvim"
   end,
+  disable = true,
 }
 
 use {
@@ -246,26 +267,31 @@ use {
   config = function()
     require "configs.zen_mode_nvim"
   end,
+  disable = true,
 }
 
 use {
   "junegunn/goyo.vim",
   cmd = "Goyo",
+  disable = true,
 }
 
 use {
   "junegunn/limelight.vim",
   after = "goyo.vim",
+  disable = true,
 }
 
 use {
   "rinx/nvim-minimap",
   cmd = { "MinimapOpen", "MinimapClose", "MinimapRefresh", "MinimapToggle" },
+  disable = true,
 }
 
 use {
   "tpope/vim-dispatch",
   cmd = { "Dispatch", "Make", "Focus", "Start" },
+  disable = true,
 }
 
 use {
@@ -294,6 +320,7 @@ use {
   config = function()
     require "configs.neoscroll_nvim"
   end,
+  disable = true,
 }
 
 use {
@@ -302,6 +329,7 @@ use {
   setup = function()
     require "configs.scrollbar_nvim"
   end,
+  disable = true,
 }
 
 use {
@@ -330,6 +358,7 @@ use {
   config = function()
     require "configs.indent_blankline_nvim"
   end,
+  disable = true,
 }
 
 use {
@@ -345,7 +374,7 @@ use {
     "DashboardFindWord",
     "DashboardJumpMarks",
     "DashboardNewFile",
-  }
+  },
 }
 
 use { "nvim-lua/plenary.nvim" }
@@ -377,6 +406,7 @@ use {
 use {
   "tweekmonster/haunted.vim",
   cmd = "Haunt",
+  disable = true,
 }
 
 use {
@@ -402,6 +432,7 @@ use {
     require("telescope").load_extension "ui-select"
   end,
   after = "telescope.nvim",
+  disable = true,
 }
 use {
   "nvim-telescope/telescope-smart-history.nvim",
@@ -446,6 +477,7 @@ use {
   config = function()
     require("telescope").load_extension "dict"
   end,
+  disable = true,
 }
 
 use {
@@ -454,6 +486,7 @@ use {
   config = function()
     require("telescope").load_extension "command_palette"
   end,
+  disable = true,
 }
 
 use {
@@ -481,6 +514,7 @@ use {
   config = function()
     require("telescope").load_extension "node_modules"
   end,
+  disable = true,
 }
 
 use {
@@ -489,6 +523,7 @@ use {
     require("telescope").load_extension "luasnip"
   end,
   after = { "LuaSnip", "telescope.nvim" },
+  disable = true,
 }
 
 use {
@@ -525,6 +560,7 @@ use {
   config = function()
     require("telescope").load_extension "frecency"
   end,
+  disable = true,
 }
 
 use {
@@ -533,6 +569,7 @@ use {
   config = function()
     require("telescope").load_extension "tele_tabby"
   end,
+  disable = true,
 }
 
 use {
@@ -587,6 +624,7 @@ use {
   config = function()
     require "configs.hop_nvim"
   end,
+  disable = true,
 }
 
 use {
@@ -601,7 +639,11 @@ use { "Shatur/neovim-session-manager", cmd = "SessionManager" }
 
 use { "andymass/vim-matchup", opt = true }
 
-use { "mbbill/undotree", opt = true }
+use {
+  "mbbill/undotree",
+  opt = true,
+  disable = true,
+}
 
 use {
   "max397574/better-escape.nvim",
@@ -611,6 +653,7 @@ use {
 use {
   "akinsho/toggleterm.nvim",
   cmd = { "ToggleTerm", "ToggleTermToggleAll" },
+  disable = true,
 }
 
 use {
