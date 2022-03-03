@@ -34,6 +34,7 @@ E.supports = {
     ["todo"] = _prepare_plugin("todo").get,
     ["nvimtree"] = _prepare_plugin("nvimtree").get,
     ["notify"] = _prepare_plugin("notify").get,
+    ["packer"] = _prepare_plugin("packer").get,
   },
   syntax = {
     ["cmp"] = _prepare_plugin("cmp").get,

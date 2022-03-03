@@ -25,6 +25,7 @@ use {
   config = function()
     require "configs.cmp"
   end,
+  event = "InsertEnter"
 }
 
 use {
@@ -34,7 +35,7 @@ use {
 
 use {
   "tamago324/cmp-zsh",
-  wants = "nvim-cmp",
+  after = "nvim-cmp",
   ft = "zsh",
   config = function()
     require "configs.cmp.cmp_zsh"
@@ -91,28 +92,29 @@ use {
 
 use {
   "dmitmel/cmp-cmdline-history",
-  wants = "nvim-cmp",
+  after = "nvim-cmp",
   event = "CmdlineEnter",
   disable = true,
 }
 
 use {
   "quangnguyen30192/cmp-nvim-tags",
-  wants = "nvim-cmp",
+  after = "nvim-cmp",
   ft = { "md", "markdown", "html", "xml", "javascript", "js" },
   disable = true,
 }
 
 use {
   "David-Kunz/cmp-npm",
-  wants = { "plenary.nvim", "nvim-cmp" },
+  after = "nvim-cmp",
   ft = "package.json",
   disable = true,
+  wants = "plenary.nvim"
 }
 
 use {
   "andersevenrud/cmp-tmux",
-  wants = "nvim-cmp",
+  after = "nvim-cmp",
   ft = { "sh", "bash", "zsh", "fish", "conf" },
   disable = true,
 }
@@ -134,11 +136,11 @@ use { "f3fora/cmp-spell", after = "nvim-cmp" }
 use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
 use { "lukas-reineke/cmp-rg", after = "nvim-cmp" }
 use { "ray-x/cmp-treesitter", after = { "nvim-cmp", "nvim-treesitter" }, disable = true }
-use { "hrsh7th/cmp-nvim-lua", wants = "nvim-cmp", ft = "lua" }
-use { "mtoohey31/cmp-fish", ft = "fish", wants = "nvim-cmp", ft = "fish" }
-use { "kdheepak/cmp-latex-symbols", ft = "tex", wants = "nvim-cmp" }
+use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp", ft = "lua" }
+use { "mtoohey31/cmp-fish", ft = "fish", after = "nvim-cmp", ft = "fish" }
+use { "kdheepak/cmp-latex-symbols", ft = "tex", after = "nvim-cmp" }
 use { "saadparwaiz1/cmp_luasnip", after = { "LuaSnip", "nvim-cmp" } }
-use { "hrsh7th/cmp-cmdline", event = "CmdlineEnter" }
+use { "hrsh7th/cmp-cmdline", after = "nvim-cmp" }
 use { "hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua", disable = true }
 use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
 use { "hrsh7th/cmp-path", after = "cmp-buffer" }
