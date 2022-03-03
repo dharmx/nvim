@@ -384,6 +384,7 @@ use {
   cmd = { "NvimTreeToggle", "NvimTreeRefresh", "NvimTreeFocus" },
   setup = require("configs.nvim_tree_lua").before,
   config = require("configs.nvim_tree_lua").after,
+  wants = "nvim-notify",
 }
 
 use {
