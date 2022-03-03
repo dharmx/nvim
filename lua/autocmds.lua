@@ -4,33 +4,15 @@ cmd "cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):
 cmd "cnoreabbrev <expr> Q ((getcmdtype() is# ':' && getcmdline() is# 'Q')?('q'):('Q'))"
 cmd "cnoreabbrev <expr> WQ ((getcmdtype() is# ':' && getcmdline() is# 'WQ')?('wq'):('WQ'))"
 cmd "cnoreabbrev <expr> Wq ((getcmdtype() is# ':' && getcmdline() is# 'Wq')?('wq'):('Wq'))"
-
 cmd "cnoreabbrev <expr> Q ((getcmdtype() is# ':' && getcmdline() is# 'Q')?('q!'):('q'))"
 cmd "cnoreabbrev <expr> q ((getcmdtype() is# ':' && getcmdline() is# 'q')?('q!'):('q'))"
 
-cmd "augroup YankFeedback"
-cmd "  autocmd!"
-cmd "  autocmd TextYankPost * silent! lua vim.highlight.on_yank({higroup='YankFeed', timeout=150})"
-cmd "augroup END"
-
+cmd "autocmd TextYankPost * silent! lua vim.highlight.on_yank({higroup='YankFeed', timeout=150})"
 cmd "autocmd TermOpen term://* setlocal nonumber norelativenumber | setfiletype terminal"
-
 cmd "autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o"
-
-cmd "augroup BlockReadOnly"
-cmd "  autocmd!"
-cmd "  autocmd BufReadPost * let &l:modifiable = !&readonly"
-cmd "augroup END"
-
-cmd "augroup AutoSourcePluginSpecsOnChange"
-cmd "  autocmd!"
-cmd "  autocmd BufWritePost */lua/plugins.lua silent! lua require('packer').compile()"
-cmd "augroup END"
-
-cmd "augroup ToggleBufferlineOnDashboard"
-cmd "  autocmd!"
-cmd "  autocmd CmdlineEnter * lua require('utils').toggle_tabline_on_dashboard()"
-cmd "augroup END"
+cmd "autocmd BufReadPost * let &l:modifiable = !&readonly"
+cmd "autocmd BufWritePost */lua/plugins.lua silent! lua require('packer').compile()"
+cmd "autocmd VimEnter * silent! lua require('utils').dashboard_vimenter()"
 
 --[[
 cmd "augroup RelativeFeedback"

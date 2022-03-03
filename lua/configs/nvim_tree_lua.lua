@@ -54,7 +54,7 @@ M.after = function()
       relativenumber = false,
       signcolumn = "yes",
       italic_comments = false,
-      transparency = true,
+      transparency = false,
     },
     trash = {
       cmd = "trash",

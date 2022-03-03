@@ -41,6 +41,8 @@ local config = {
       name = "TrueTypeFont",
     },
     rb = { icon = "", color = colors.rainbow.pink, name = "Rb" },
+    yuck = { icon = "", color = colors.rainbow.orange, name = "Yuck" },
+    vim = { icon = "", color = colors.rainbow.green, name = "Vim" },
     rpm = { icon = "", color = colors.rainbow.orange, name = "RPM" },
     vue = { icon = "﵂", color = colors.rainbow.green, name = "Vue" },
     woff = {

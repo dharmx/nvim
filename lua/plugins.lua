@@ -345,7 +345,7 @@ use {
     "DashboardFindWord",
     "DashboardJumpMarks",
     "DashboardNewFile",
-  },
+  }
 }
 
 use { "nvim-lua/plenary.nvim" }
