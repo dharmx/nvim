@@ -102,7 +102,7 @@ M.SLEEKRAKEN = {
 M.commands = {
   ["KRAKEN"] = 5,
   ["KRAKEDKING"] = 3,
-  ["HYDRA"] = 7,
+  ["HYDRA"] = 10,
   ["SLEEKRAKEN"] = 5,
 }
 

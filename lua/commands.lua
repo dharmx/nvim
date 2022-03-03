@@ -11,6 +11,7 @@ alias("Keymaps", "Telescope keymaps")
 alias("GitHL", "Gitsigns toggle_signs")
 alias("FormatConfigAll", "lua vim.fn.system('stylua --config-path ' .. vim.fn.stdpath('config') .. '/.stylua.toml ' .. vim.fn.stdpath('config'))")
 
+alias("StartPage", "lua vim.cmd 'Dashboard'; vim.cmd 'TabLineTGL'")
 alias("TabLineTGL", "if &stal == 2 | set stal=0 | else | set stal=2 | endif")
 alias("StatusLineTGL", "if &ls == 2 | set ls=0 | else | set ls=2 | endif")
 alias("NumberColumnTGL", "lua if vim.opt.number._value then vim.opt.number = false else vim.opt.number = true end")

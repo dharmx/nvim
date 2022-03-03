@@ -1,15 +1,15 @@
 local g = vim.g
 local commands = {
   a = {
-    description = { "  Find File                 SPC f f" },
+    description = { "  Find File                 SPC t f" },
     command = "Telescope find_files",
   },
   b = {
-    description = { "  Recents                   SPC f h" },
+    description = { "  Recents                   SPC t h" },
     command = "Telescope oldfiles",
   },
   c = {
-    description = { "  Find Word                 SPC f w" },
+    description = { "  Find Word                 SPC t w" },
     command = "Telescope live_grep",
   },
   d = {
@@ -17,25 +17,38 @@ local commands = {
     command = "DashboardNewFile",
   },
   e = {
-    description = { "  Last Session              SPC l s" },
+    description = { "  Last Session              SPC s l" },
     command = "SessionLoad",
   },
   f = {
-    description = { "  Media Files               SPC f i" },
+    description = { "  Media Files               SPC t i" },
     command = "Telescope media_files",
   },
   g = {
     description = { "  Todo Lists                SPC t l" },
     command = "TodoTrouble",
   },
+  h = {
+    description = { "  Installed Plugins         SPC t p" },
+    command = "PackerStatus",
+  },
+  i = {
+    description = { "  Symbols                   SPC t s" },
+    command = "Telescope symbols",
+  },
+  j = {
+    description = { "  Keymaps                   SPC t k" },
+    command = "Telescope keymaps",
+  }
 }
 
 g.dashboard_disable_at_vimenter = 1
 g.dashboard_disable_statusline = 1
 g.dashboard_default_executive = "telescope"
 
+local BANNER = "HYDRA"
 local banners = require "tables.banners"
-g.dashboard_custom_header = banners["KRAKEN"]
+g.dashboard_custom_header = banners[BANNER]
 
 local function subtable(items, upto)
   local box = {}
@@ -49,10 +62,13 @@ local function subtable(items, upto)
   return box
 end
 
-g.dashboard_custom_section = subtable(commands, banners.commands["KRAKEN"])
+g.dashboard_custom_section = subtable(commands, banners.commands[BANNER])
+g.dashboard_custom_footer = {""}
 
+--[[
 g.dashboard_custom_footer = {
   "─────────── Powered By  LuaJIT ───────────",
 }
+]]
 
 -- vim:nowrap
