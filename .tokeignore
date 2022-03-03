@@ -1,0 +1,8 @@
+.git
+spell/
+snippets/
+.gitignore
+.styluaignore
+.stylua.toml
+LICENSE.txt
+package.json
