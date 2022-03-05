@@ -15,7 +15,7 @@ M.mappings = {
   ["<leader>v"] = { "<CMD>vs<CR>", " Vertical Split" },
   ["<leader>h"] = { "<CMD>sp<CR>", " Horizontal Split" },
   ["<Esc>"] = { "<CMD>noh<CR>", " Remove Highlights" },
-  ["<C-a>"] = { "<CMD>%y+<CR>", "﯂ Copy all" },
+  ["<C-y>"] = { "<CMD>%y+<CR>", "﯂ Copy all" },
 }
 
 M.options = {

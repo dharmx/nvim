@@ -2,7 +2,7 @@ local M = {}
 local cmd = vim.api.nvim_command
 
 function M.dashboard_vimenter()
-  if vim.api.nvim_buf_get_option(0, "ft") == "" then
+  if vim.api.nvim_buf_get_name(0) == "" then
     vim.api.nvim_command "Dashboard"
   end
 end

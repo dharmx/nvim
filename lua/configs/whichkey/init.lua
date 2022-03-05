@@ -40,8 +40,9 @@ local config = {
     ["<Esc>"] = "ESC",
   },
   icons = {
+    -- ▐
     breadcrumb = " ",
-    separator = "▐",
+    separator = " ▎",
     group = " ",
   },
   popup_mappings = require("mappings").which_key_nvim,
@@ -50,7 +51,7 @@ local config = {
     position = "bottom", -- bottom, top
     margin = { 0, 0, 0, 0 }, -- extra window margin [top, right, bottom, left]
     padding = { 3, 3, 3, 3 }, -- extra window padding [top, right, bottom, left]
-    winblend = 0,
+    winblend = 1,
   },
   layout = {
     height = { min = 4, max = 25 },
