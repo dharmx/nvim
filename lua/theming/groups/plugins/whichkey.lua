@@ -2,7 +2,7 @@ local W = {}
 
 function W.get(theme)
   return {
-    WhichKeyFloat = { background = theme.shades.shade09, foreground = theme.common.base09 },
+    WhichKeyFloat = { background = theme.shades.shade05, foreground = theme.common.base09 },
     WhichKeyGroup = { foreground = theme.common.base11 },
     WhichKeyDesc = { foreground = theme.common.base08 },
     WhichKeySeparator = { foreground = theme.shades.shade01 },

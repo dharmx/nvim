@@ -2,7 +2,7 @@ local M = {}
 
 M.mappings = {
   ["<C-n>"] = { "<CMD>NvimTreeToggle<CR>", "פּ Explorer" },
-  ["<C-m>"] = { "<CMD>NvimTreeFocus<CR>", "פּ Explorer Focus" },
+  ["<C-m>"] = { "<CMD>NvimTreeFocus<CR>", "פּ Explorer focus" },
   ["<leader>u"] = {
     ["name"] = "⏼ Toggles",
     ["s"] = { "<CMD>StatusLineTGL<CR>", " Statusline" },
@@ -12,10 +12,12 @@ M.mappings = {
   },
   ["<C-s>"] = { "<CMD>w<CR>", " Save file" },
   ["<C-\\>"] = { "<CMD>terminal<CR>", " Terminal" },
-  ["<leader>v"] = { "<CMD>vs<CR>", " Vertical Split" },
-  ["<leader>h"] = { "<CMD>sp<CR>", " Horizontal Split" },
-  ["<Esc>"] = { "<CMD>noh<CR>", " Remove Highlights" },
+  ["<leader>v"] = { "<CMD>vs<CR>", " Vertical split" },
+  ["<leader>h"] = { "<CMD>sp<CR>", " Horizontal split" },
+  ["<Esc>"] = { "<CMD>noh<CR>", " Remove highlights" },
   ["<C-y>"] = { "<CMD>%y+<CR>", "﯂ Copy all" },
+  ["<F3>"] = { "<CMD>ColorizerToggle<CR>", "﯂ Enable colorizer" },
+  ["<F2>"] = { "<CMD>SpellingTGL<CR>", " Spelling" },
 }
 
 M.options = {
