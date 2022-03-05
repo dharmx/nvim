@@ -14,7 +14,8 @@ alias("FormatConfigAll", "lua vim.fn.system('stylua --config-path ' .. vim.fn.st
 alias("StartPage", "lua vim.cmd 'Dashboard'; vim.cmd 'TabLineTGL'")
 alias("TabLineTGL", "if &stal == 2 | set stal=0 | else | set stal=2 | endif")
 alias("StatusLineTGL", "if &ls == 2 | set ls=0 | else | set ls=2 | endif")
-alias("NumberColumnTGL", "lua if vim.opt.number._value then vim.opt.number = false else vim.opt.number = true end")
+alias("NumberColumnTGL", "set nu!")
+alias("RelativeNumberColumnTGL", "set rnu!")
 
 hi("YankFeed", { foreground = colors.rainbow.cobalt, decoration = "bold" })
 hi("Hidden", { foreground = colors.common.base00, background = colors.common.base00 })

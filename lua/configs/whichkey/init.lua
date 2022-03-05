@@ -26,17 +26,23 @@ local config = {
   key_labels = {
     ["<space>"] = "SPC",
     ["<Space>"] = "SPC",
+    ["<leader>"] = "SPC",
+    ["<Leader>"] = "SPC",
     ["<cr>"] = "RET",
     ["<Cr>"] = "RET",
     ["<CR>"] = "RET",
     ["<tab>"] = "TAB",
     ["<Tab>"] = "TAB",
     ["<TAB>"] = "TAB",
+    ["<bs>"] = "BSPC",
+    ["<esc>"] = "ESC",
+    ["<BS>"] = "BSPC",
+    ["<Esc>"] = "ESC",
   },
   icons = {
     breadcrumb = " ",
-    separator = " ",
-    group = " ",
+    separator = "▐",
+    group = " ",
   },
   popup_mappings = require("mappings").which_key_nvim,
   window = {
@@ -49,7 +55,7 @@ local config = {
   layout = {
     height = { min = 4, max = 25 },
     width = { min = 20, max = 50 },
-    spacing = 3,
+    spacing = 4,
     align = "left",
   },
   ignore_missing = true,
@@ -61,5 +67,10 @@ local config = {
     v = { "j", "k" },
   },
 }
+
+for _, plugin in ipairs { "buffers", "plugins", "others", "prompts" } do
+  local loaded = require("configs.whichkey." .. plugin)
+  which_key.register(loaded.mappings, loaded.options)
+end
 
 which_key.setup(config)

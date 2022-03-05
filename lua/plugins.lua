@@ -25,7 +25,7 @@ use {
   config = function()
     require "configs.cmp"
   end,
-  event = "InsertEnter"
+  event = "InsertEnter",
 }
 
 use {
@@ -109,7 +109,7 @@ use {
   after = "nvim-cmp",
   ft = "package.json",
   disable = true,
-  wants = "plenary.nvim"
+  wants = "plenary.nvim",
 }
 
 use {
@@ -269,6 +269,12 @@ use {
   config = function()
     require "configs.zen_mode_nvim"
   end,
+  disable = true,
+}
+
+use {
+  "Pocco81/TrueZen.nvim",
+  cmd = { "TZAtaraxisOn", "TZAtaraxisOff", "TZMinimalistOn", "TZMinimalistOff", "TZFocusOn", "TZFocusOff" },
   disable = true,
 }
 
@@ -661,7 +667,7 @@ use {
 use {
   "folke/which-key.nvim",
   config = function()
-    require "configs.which_key_nvim"
+    require "configs.whichkey"
   end,
 }
 

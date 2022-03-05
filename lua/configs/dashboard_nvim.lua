@@ -29,17 +29,17 @@ local commands = {
     command = "TodoTrouble",
   },
   h = {
-    description = { "  Installed Plugins         SPC t p" },
+    description = { "  Plugins                   SPC t p" },
     command = "PackerStatus",
   },
   i = {
-    description = { "  Symbols                   SPC t s" },
+    description = { "  Symbols                   SPC t s" },
     command = "Telescope symbols",
   },
   j = {
-    description = { "  Keymaps                   SPC t k" },
+    description = { "  Keymaps                   SPC t k" },
     command = "Telescope keymaps",
-  }
+  },
 }
 
 g.dashboard_disable_at_vimenter = 1
@@ -63,7 +63,7 @@ local function subtable(items, upto)
 end
 
 g.dashboard_custom_section = subtable(commands, banners.commands[BANNER])
-g.dashboard_custom_footer = {""}
+g.dashboard_custom_footer = { "" }
 
 --[[
 g.dashboard_custom_footer = {

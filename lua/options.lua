@@ -6,7 +6,6 @@ opt.termguicolors = true
 opt.laststatus = 0
 opt.completeopt = "menuone,noselect"
 
-opt.shadafile = ""
 opt.title = true
 opt.hidden = true
 
@@ -151,3 +150,9 @@ vim.o.background = "dark"
 
 vim.env.FZF_DEFAULT_OPTS =
   "--layout=reverse --prompt ' ' --pointer '->' --preview='less {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
+
+opt.shadafile = "NONE"
+vim.schedule(function()
+  opt.shadafile = ""
+  cmd "silent! rsh"
+end)
