@@ -46,7 +46,7 @@ g.dashboard_disable_at_vimenter = 1
 g.dashboard_disable_statusline = 1
 g.dashboard_default_executive = "telescope"
 
-local BANNER = "HYDRA"
+local BANNER = "SLEEKRAKEN"
 local banners = require "tables.banners"
 g.dashboard_custom_header = banners[BANNER]
 

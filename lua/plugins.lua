@@ -19,6 +19,51 @@ packer.init(require "configs.packer_nvim")
 use = packer.use
 packer.reset()
 
+use { "nvim-treesitter/nvim-treesitter-refactor", opt = true }
+use { "p00f/nvim-ts-rainbow", opt = true }
+use { "nvim-treesitter/nvim-treesitter-textobjects", opt = true }
+use { "nvim-treesitter/playground", opt = true }
+use { "windwp/nvim-ts-autotag", opt = true }
+
+use {
+  "romgrk/nvim-treesitter-context",
+  after = "nvim-treesitter",
+  config = function()
+    require "configs.treesitter.plugins.context"
+  end,
+}
+
+use {
+  "nvim-treesitter/nvim-treesitter",
+  config = function()
+    require "configs.treesitter"
+  end,
+  wants = {
+    "nvim-treesitter-refactor",
+    "nvim-ts-rainbow",
+    "nvim-treesitter-textobjects",
+    "playground",
+    "nvim-ts-autotag",
+  },
+  cmd = "TSUpdate",
+}
+
+use {
+  "SmiteshP/nvim-gps",
+  after = "nvim-treesitter",
+  config = function()
+    require "configs.treesitter.plugins.gps"
+  end,
+}
+
+use {
+  "lewis6991/spellsitter.nvim",
+  config = function()
+    require "configs.treesitter.plugins.spellsitter"
+  end,
+  after = "nvim-treesitter",
+}
+
 use {
   "hrsh7th/nvim-cmp",
   wants = "cmp-under-comparator",
