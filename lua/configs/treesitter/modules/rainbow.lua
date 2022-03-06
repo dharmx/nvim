@@ -1,5 +1,3 @@
-local colors = nil
-
 local M = {
   enable = false,
   extended_mode = true,

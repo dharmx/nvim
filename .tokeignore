@@ -1,6 +1,7 @@
 .git
 spell/
 snippets/
+**/*.spl
 .gitignore
 .styluaignore
 .stylua.toml

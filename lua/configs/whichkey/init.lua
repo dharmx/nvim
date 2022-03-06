@@ -51,7 +51,7 @@ local config = {
     position = "bottom", -- bottom, top
     margin = { 0, 0, 0, 0 }, -- extra window margin [top, right, bottom, left]
     padding = { 3, 3, 3, 3 }, -- extra window padding [top, right, bottom, left]
-    winblend = 1,
+    winblend = 0,
   },
   layout = {
     height = { min = 4, max = 25 },

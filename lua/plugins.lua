@@ -19,6 +19,24 @@ packer.init(require "configs.packer_nvim")
 use = packer.use
 packer.reset()
 
+use {
+  "jose-elias-alvarez/null-ls.nvim",
+  wants = "plenary.nvim",
+  event = "InsertEnter",
+  config = function()
+    require "configs.null_ls_nvim"
+  end,
+}
+
+use {
+  "ThePrimeagen/refactoring.nvim",
+  after = { "null-ls.nvim", "telescope.nvim" },
+  config = function()
+    require "configs.refactoring_nvim"
+    require("telescope").load_extension "refactoring"
+  end,
+}
+
 use { "nvim-treesitter/nvim-treesitter-refactor", opt = true }
 use { "p00f/nvim-ts-rainbow", opt = true }
 use { "nvim-treesitter/nvim-treesitter-textobjects", opt = true }
@@ -415,6 +433,22 @@ use {
 }
 
 use {
+  "VonHeikemen/fine-cmdline.nvim",
+  cmd = "FineCmdline",
+  config = function()
+    require "configs.fine_cmdline_nvim"
+  end,
+}
+
+use {
+  "VonHeikemen/searchbox.nvim",
+  cmd = "SearchBoxIncSearch",
+  config = function()
+    require "configs.searchbox_nvim"
+  end,
+}
+
+use {
   "glepnir/dashboard-nvim",
   setup = function()
     require "configs.dashboard_nvim"
@@ -444,6 +478,8 @@ use {
     require "configs.nvim_notify"
   end,
 }
+
+use { "MunifTanjim/nui.nvim", module = "nui" }
 
 use { "tami5/sqlite.lua", module = "sqlite" }
 

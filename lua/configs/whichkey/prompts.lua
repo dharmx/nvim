@@ -12,6 +12,7 @@ M.mappings = {
   ["n"] = { "<CMD>Telescope notify<CR>", " Notifications" },
   ["m"] = { "<CMD>PackerClean<CR><CMD>Telescope packer<CR>", " Packer plugins" },
   ["k"] = { "<CMD>Telescope pickers<CR>", " Pickers" },
+  ["l"] = { "<CMD>Telescope resume<CR>", " Load previous state" },
 
   ["f"] = {
     ["name"] = " File operations",
