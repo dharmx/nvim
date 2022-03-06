@@ -1,6 +1,13 @@
 local M = {}
 local cmd = vim.api.nvim_command
 
+function M.lsp_signdef(group, icon, text_group)
+  vim.fn.sign_define(group, {
+    text = icon,
+    texthl = text_group,
+  })
+end
+
 function M.dashboard_vimenter()
   if vim.api.nvim_buf_get_name(0) == "" then
     vim.api.nvim_command "Dashboard"

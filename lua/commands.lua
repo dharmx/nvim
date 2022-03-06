@@ -10,6 +10,8 @@ alias("CommandPalette", "Telescope command_palette")
 alias("Keymaps", "Telescope keymaps")
 alias("GitHL", "Gitsigns toggle_signs")
 alias("FormatConfigAll", "lua vim.fn.system('stylua --config-path ' .. vim.fn.stdpath('config') .. '/.stylua.toml ' .. vim.fn.stdpath('config'))")
+alias("Format", "lua vim.lsp.buf.formatting_sync()")
+alias("LspLog", "edit " .. vim.lsp.get_log_path())
 
 alias("StartPage", "lua vim.cmd 'Dashboard'; vim.cmd 'TabLineTGL'")
 alias("TabLineTGL", "if &stal == 2 | set stal=0 | else | set stal=2 | endif")
@@ -17,6 +19,8 @@ alias("StatusLineTGL", "if &ls == 2 | set ls=0 | else | set ls=2 | endif")
 alias("NumberColumnTGL", "set nu!")
 alias("RelativeNumberColumnTGL", "set rnu!")
 alias("SpellingTGL", "set spell!")
+
+alias("NullLoad", "lua require 'configs.null_ls_nvim'")
 
 hi("YankFeed", { foreground = colors.rainbow.cobalt, decoration = "bold" })
 hi("Hidden", { foreground = colors.common.base00, background = colors.common.base00 })

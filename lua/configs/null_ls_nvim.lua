@@ -105,3 +105,8 @@ null_ls.register(markdownlint)
 local config = { sources = sources, on_attach = nil }
 
 null_ls.setup(config)
+vim.api.nvim_notify(
+  "Loaded null-ls.nvim and refactoring.nvim",
+  vim.log.levels.INFO,
+  { title = "null-ls.nvim", icon = "ﳠ" }
+)

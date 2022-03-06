@@ -42,33 +42,7 @@ M.nvim_cmp = function(cmp)
   }
 end
 
-M.lsp_config = function(client, bufnr)
-  local util = require "utils.nvim"
-  util.buf_opt("omnifunc", "v:lua.vim.lsp.omnifunc")
-  function map(key, cmd)
-    util.map("n", key, cmd, { noremap = true, silent = true })
-  end
-
-  map("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-  map("gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-  map("K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-  map("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-  map("<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-  map("<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
-  map("<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
-  map("<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
-  map("<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-  map("<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-  map("<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-  map("gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-  map("<space>E", "<cmd>lua vim.diagnostic.open_float()<CR>")
-  map("[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
-  map("]d", "<cmd>lua vim.diagnostic.goto_next()<CR>")
-  map("<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
-  map("<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
-end
-
-M.lsp_saga = {
+M.lspsaga_nvim = {
   finder_action_keys = {
     open = "o",
     vsplit = "s",
@@ -136,7 +110,7 @@ M.ts_textobjects = {
   },
 }
 
-M.symbols_outline = { -- These keymaps can be a string or a table for multiple keys
+M.symbols_outline_nvim = {
   close = { "<Esc>", "q" },
   goto_location = "<Cr>",
   focus_location = "o",
@@ -146,7 +120,7 @@ M.symbols_outline = { -- These keymaps can be a string or a table for multiple k
   code_actions = "a",
 }
 
-M.better_escape = { "jk", "jj" }
+M.better_escape_nvim = { "jk", "jj" }
 
 M.gitsigns_nvim = {
   noremap = true,
@@ -235,7 +209,7 @@ M.trouble_nvim = { -- key mappings for actions in the trouble list
 
 M.which_key_nvim = { popup_mappings = { scroll_down = "<c-d>", scroll_up = "<c-u>" } }
 
-M.lsp_installer = {
+M.lsp_installer_nvim = {
   toggle_server_expand = "<CR>",
   install_server = "i",
   update_server = "u",

@@ -29,6 +29,7 @@ opt.wildignore = {
 }
 
 opt.errorformat = "%f|%l col %c|%m"
+vim.opt.diffopt:append { "algorithm:patience" }
 
 opt.fillchars = {
   eob = " ",

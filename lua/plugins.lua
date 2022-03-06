@@ -22,10 +22,7 @@ packer.reset()
 use {
   "jose-elias-alvarez/null-ls.nvim",
   wants = "plenary.nvim",
-  event = "InsertEnter",
-  config = function()
-    require "configs.null_ls_nvim"
-  end,
+  cmd = "NullLoad",
 }
 
 use {
@@ -34,6 +31,79 @@ use {
   config = function()
     require "configs.refactoring_nvim"
     require("telescope").load_extension "refactoring"
+  end,
+}
+
+use {
+  "williamboman/nvim-lsp-installer",
+  config = function()
+    require "configs.lsp"
+  end,
+  cmd = {
+    "LspInstallInfo",
+    "LspInstallLog",
+    "LspInstall",
+    "LspUpdateAll",
+    "LspStart",
+    "LspInfo",
+    "LspPrintInstalled",
+    "LspRestart",
+    "LspStop",
+    "LspUninstall",
+    "LspUninstallall",
+  },
+}
+
+use { "b0o/schemastore.nvim", after = "nvim-lspconfig" }
+
+use {
+  "glepnir/lspsaga.nvim",
+  after = "nvim-lspconfig",
+  config = function()
+    require "configs.lsp.lspsaga_nvim"
+  end,
+}
+
+use {
+  "kosayoda/nvim-lightbulb",
+  opt = true,
+  config = function()
+    vim.api.nvim_command "autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()"
+  end,
+}
+
+use {
+  "neovim/nvim-lspconfig",
+  cmd = {
+    "LspStart",
+    "LspInfo",
+    "LspPrintInstalled",
+    "LspRestart",
+    "LspStop",
+    "LspUninstall",
+    "LspUninstallall",
+  },
+  wants = { "schemastore.nvim", "nvim-lightbulb" },
+}
+
+use {
+  "simrat39/symbols-outline.nvim",
+  config = function()
+    require "configs.lsp.symbols_outline_nvim"
+  end,
+  after = "nvim-lspconfig",
+  cmd = {
+    "SymbolsOutline",
+    "SymbolsOutlineClose",
+    "SymbolsOutlineOpen",
+  },
+}
+
+use {
+  "ray-x/lsp_signature.nvim",
+  after = "nvim-lspconfig",
+  config = function()
+    require "configs.lsp.lsp_signature_nvim"
   end,
 }
 
@@ -737,6 +807,7 @@ use {
 use {
   "max397574/better-escape.nvim",
   opt = true,
+  disable = true,
 }
 
 use {
@@ -750,6 +821,12 @@ use {
   config = function()
     require "configs.whichkey"
   end,
+}
+
+use {
+  "ggandor/lightspeed.nvim",
+  cmd = "LightSpeedInit",
+  disable = true,
 }
 
 if bootstrap then
