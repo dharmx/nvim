@@ -75,7 +75,7 @@ use {
 
 use {
   "neovim/nvim-lspconfig",
-  opt = true
+  opt = true,
 }
 
 use {
@@ -250,12 +250,12 @@ use {
   disable = true,
 }
 
-use { 
-  "hrsh7th/cmp-nvim-lsp", 
-  after = { "nvim-lspconfig", "nvim-cmp" }, 
+use {
+  "hrsh7th/cmp-nvim-lsp",
+  after = { "nvim-lspconfig", "nvim-cmp" },
   config = function()
-    require("configs.cmp.cmp_nvim_lsp")
-  end 
+    require "configs.cmp.cmp_nvim_lsp"
+  end,
 }
 
 use {
@@ -806,9 +806,9 @@ use {
 use {
   "max397574/better-escape.nvim",
   config = function()
-    require("configs.better_escape_nvim")
+    require "configs.better_escape_nvim"
   end,
-  keys = require("mappings").better_escape_nvim
+  keys = require("mappings").better_escape_nvim,
 }
 
 use {

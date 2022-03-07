@@ -25,7 +25,7 @@ M.nvim_cmp = function(cmp)
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ["<Tab>"] = function(fallback)
+    ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif require("luasnip").expand_or_jumpable() then
@@ -33,8 +33,8 @@ M.nvim_cmp = function(cmp)
       else
         fallback()
       end
-    end,
-    ["<S-Tab>"] = function(fallback)
+    end),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif require("luasnip").jumpable(-1) then
@@ -42,7 +42,7 @@ M.nvim_cmp = function(cmp)
       else
         fallback()
       end
-    end,
+    end, { "i", "s" }),
   }
 end
 
