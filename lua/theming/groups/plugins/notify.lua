@@ -2,9 +2,9 @@ local B = {}
 
 function B.get(theme)
   return {
-    ["NotifyINFOBody"] = { background = theme.shades.shade05, foreground = theme.common.base09 },
+    ["NotifyINFOBody"] = { background = theme.shades.shade04, foreground = theme.common.base09 },
     ["NotifyINFOBody2"] = { link = "NotifyINFOBody" },
-    ["NotifyINFOBorder"] = { background = theme.shades.shade05, foreground = theme.shades.shade05 },
+    ["NotifyINFOBorder"] = { background = theme.shades.shade04, foreground = theme.shades.shade04 },
     ["NotifyINFOBorder2"] = { link = "NotifyINFOBody" },
     ["NotifyINFOIcon"] = { foreground = theme.common.base15 },
     ["NotifyINFOIcon2"] = { foreground = theme.common.base09 },

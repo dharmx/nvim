@@ -35,6 +35,7 @@ E.supports = {
     ["nvimtree"] = _prepare_plugin("nvimtree").get,
     ["notify"] = _prepare_plugin("notify").get,
     ["packer"] = _prepare_plugin("packer").get,
+    ["outline"] = _prepare_plugin("outline").get,
   },
   syntax = {
     ["cmp"] = _prepare_plugin("cmp").get,

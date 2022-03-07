@@ -3,15 +3,15 @@ local T = {}
 function T.get(theme)
   return {
     ["TelescopePreviewBorder"] = {
-      foreground = theme.shades.shade07,
-      background = theme.shades.shade07,
+      foreground = theme.shades.shade08,
+      background = theme.shades.shade08,
     },
     ["TelescopePreviewTitle"] = {
       foreground = theme.common.base01,
       background = theme.common.base09,
     },
     ["TelescopePreviewNormal"] = {
-      background = theme.shades.shade07,
+      background = theme.shades.shade08,
     },
     ["TelescopeSelectionCaret"] = {
       foreground = theme.common.base14,
@@ -37,20 +37,20 @@ function T.get(theme)
       foreground = theme.common.base11,
     },
     ["TelescopePromptPrefix"] = {
-      foreground = theme.common.base01,
-      background = theme.common.base11,
+      foreground = theme.common.base09,
+      background = theme.shades.shade03,
     },
     ["TelescopePromptBorder"] = {
-      background = theme.common.base11,
-      foreground = theme.common.base11,
+      background = theme.shades.shade03,
+      foreground = theme.shades.shade03,
     },
     ["TelescopePromptNormal"] = {
-      background = theme.common.base11,
-      foreground = theme.common.base01,
+      background = theme.shades.shade03,
+      foreground = theme.common.base09,
     },
     ["TelescopePromptTitle"] = {
       foreground = theme.common.base01,
-      background = theme.common.base14,
+      background = theme.common.base11,
     },
     ["TelescopePromptCounter"] = {
       foreground = theme.common.base02,

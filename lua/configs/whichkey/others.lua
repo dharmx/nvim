@@ -26,7 +26,7 @@ M.mappings = {
     ["o"] = { "<CMD>Spotify<CR>", " Start" },
     ["d"] = { "<CMD>SpotifyDevices<CR>", " Devices" },
     ["b"] = { "<Plug>(SpotifyPrev)", "ﭢ Previous" },
-  }
+  },
 }
 
 M.options = {

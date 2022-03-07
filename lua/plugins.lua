@@ -454,7 +454,7 @@ use {
     require "configs.nvim_spotify"
   end,
   run = "make",
-  cmd = { "SpotifyDevices", "Spotify" }
+  cmd = { "SpotifyDevices", "Spotify" },
 }
 
 use {
@@ -543,7 +543,7 @@ use {
   },
 }
 
-use { "nvim-lua/plenary.nvim" }
+use { "nvim-lua/plenary.nvim", opt = true }
 
 use { "nvim-lua/popup.nvim" }
 
@@ -586,8 +586,10 @@ use {
 }
 
 use {
-  "nvim-telescope/telescope.nvim",
+  "https://github.com/Conni2461/telescope.nvim",
+  branch = "fix/treesitter_with_lua",
   cmd = "Telescope",
+  wants = "plenary.nvim",
   config = function()
     require "configs.telescope"
     require("telescope").load_extension "notify"

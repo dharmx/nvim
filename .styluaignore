@@ -4,6 +4,7 @@
 README.md
 LICENSE.txt
 commands.lua
+lualine_nvim.lua
 
 .stylua.toml
 .gitignore
