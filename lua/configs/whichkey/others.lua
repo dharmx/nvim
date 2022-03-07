@@ -18,6 +18,15 @@ M.mappings = {
   ["<C-y>"] = { "<CMD>%y+<CR>", "﯂ Copy all" },
   ["<F3>"] = { "<CMD>ColorizerToggle<CR>", "﯂ Enable colorizer" },
   ["<F2>"] = { "<CMD>SpellingTGL<CR>", " Spelling" },
+  ["<leader>s"] = {
+    ["name"] = " Spotify",
+    ["n"] = { "<Plug>(SpotifySkip)", "ﭠ Skip" },
+    ["p"] = { "<Plug>(SpotifyPause)", " Pause" },
+    ["s"] = { "<Plug>(SpotifySave)", " Save" },
+    ["o"] = { "<CMD>Spotify<CR>", " Start" },
+    ["d"] = { "<CMD>SpotifyDevices<CR>", " Devices" },
+    ["b"] = { "<Plug>(SpotifyPrev)", "ﭢ Previous" },
+  }
 }
 
 M.options = {

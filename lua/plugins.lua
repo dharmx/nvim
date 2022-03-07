@@ -448,6 +448,16 @@ use {
 }
 
 use {
+  "KadoBOT/nvim-spotify",
+  wants = "telescope.nvim",
+  config = function()
+    require "configs.nvim_spotify"
+  end,
+  run = "make",
+  cmd = { "SpotifyDevices", "Spotify" }
+}
+
+use {
   "karb94/neoscroll.nvim",
   cmd = {
     "NeoscrollEnablePM",
