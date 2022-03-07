@@ -806,8 +806,10 @@ use {
 
 use {
   "max397574/better-escape.nvim",
-  opt = true,
-  disable = true,
+  config = function()
+    require("configs.better_escape_nvim")
+  end,
+  keys = require("mappings").better_escape_nvim
 }
 
 use {
