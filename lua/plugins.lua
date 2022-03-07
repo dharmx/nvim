@@ -39,6 +39,7 @@ use {
   config = function()
     require "configs.lsp"
   end,
+  wants = { "nvim-lspconfig" },
   cmd = {
     "LspInstallInfo",
     "LspInstallLog",
@@ -54,7 +55,7 @@ use {
   },
 }
 
-use { "b0o/schemastore.nvim", after = "nvim-lspconfig" }
+use { "b0o/schemastore.nvim", module = "schemastore" }
 
 use {
   "glepnir/lspsaga.nvim",
@@ -66,7 +67,7 @@ use {
 
 use {
   "kosayoda/nvim-lightbulb",
-  opt = true,
+  after = "nvim-lsp-installer",
   config = function()
     vim.api.nvim_command "autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()"
   end,
@@ -83,7 +84,6 @@ use {
     "LspUninstall",
     "LspUninstallall",
   },
-  wants = { "schemastore.nvim", "nvim-lightbulb" },
 }
 
 use {
@@ -103,7 +103,7 @@ use {
   "ray-x/lsp_signature.nvim",
   after = "nvim-lspconfig",
   config = function()
-    require "configs.lsp.lsp_signature_nvim"
+    require "configs.lsp.lspsignature_nvim"
   end,
 }
 
@@ -268,13 +268,13 @@ use {
 use { "f3fora/cmp-spell", after = "nvim-cmp" }
 use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
 use { "lukas-reineke/cmp-rg", after = "nvim-cmp" }
-use { "ray-x/cmp-treesitter", after = { "nvim-cmp", "nvim-treesitter" }, disable = true }
+use { "ray-x/cmp-treesitter", after = { "nvim-cmp", "nvim-treesitter" } }
 use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp", ft = "lua" }
 use { "mtoohey31/cmp-fish", ft = "fish", after = "nvim-cmp", ft = "fish" }
 use { "kdheepak/cmp-latex-symbols", ft = "tex", after = "nvim-cmp" }
 use { "saadparwaiz1/cmp_luasnip", after = { "LuaSnip", "nvim-cmp" } }
 use { "hrsh7th/cmp-cmdline", after = "nvim-cmp" }
-use { "hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua", disable = true }
+use { "hrsh7th/cmp-nvim-lsp", after = { "nvim-lspconfig", "nvim-cmp" } }
 use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
 use { "hrsh7th/cmp-path", after = "cmp-buffer" }
 
@@ -826,6 +826,16 @@ use {
 use {
   "ggandor/lightspeed.nvim",
   cmd = "LightSpeedInit",
+  disable = true,
+}
+
+use {
+  "bennypowers/nvim-regexplainer",
+  config = function()
+    require "configs.nvim_regexplainer"
+  end,
+  wants = { "plenary.nvim", "nui.nvim", "nvim-treesitter" },
+  ft = { "sh", "bash", "zsh", "fish", "python", "java", "javascript" },
   disable = true,
 }
 

@@ -2,6 +2,10 @@ local M = {}
 
 M.nvim_autopairs = "qwertyuiopzxcvbnmasdfghjkl"
 
+M.nvim_regexplainer = {
+  show = "gR",
+}
+
 M.nvim_cmp = function(cmp)
   local fn = vim.fn
   local api = vim.api
