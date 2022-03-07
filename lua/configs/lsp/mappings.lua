@@ -26,7 +26,7 @@ M.setup = function(client_name, buffer)
   }
 
   for _, definiton in pairs(mappings) do
-    definiton[2] = definiton[2] .. " " .. pretty
+    definiton[2] = definiton[2] .. " [" .. pretty .. "]"
   end
   mappings["name"] = pretty
 

@@ -75,15 +75,7 @@ use {
 
 use {
   "neovim/nvim-lspconfig",
-  cmd = {
-    "LspStart",
-    "LspInfo",
-    "LspPrintInstalled",
-    "LspRestart",
-    "LspStop",
-    "LspUninstall",
-    "LspUninstallall",
-  },
+  opt = true
 }
 
 use {
@@ -133,7 +125,7 @@ use {
     "playground",
     "nvim-ts-autotag",
   },
-  cmd = "TSUpdate",
+  after = "nvim-lspconfig",
 }
 
 use {
@@ -258,13 +250,21 @@ use {
   disable = true,
 }
 
-use { "octaltree/cmp-look", after = "nvim-cmp" }
+use { 
+  "hrsh7th/cmp-nvim-lsp", 
+  after = { "nvim-lspconfig", "nvim-cmp" }, 
+  config = function()
+    require("configs.cmp.cmp_nvim_lsp")
+  end 
+}
+
 use {
   "hrsh7th/cmp-calc",
   after = "nvim-cmp",
   disable = true,
 }
 
+use { "octaltree/cmp-look", after = "nvim-cmp" }
 use { "f3fora/cmp-spell", after = "nvim-cmp" }
 use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
 use { "lukas-reineke/cmp-rg", after = "nvim-cmp" }
@@ -274,7 +274,6 @@ use { "mtoohey31/cmp-fish", ft = "fish", after = "nvim-cmp", ft = "fish" }
 use { "kdheepak/cmp-latex-symbols", ft = "tex", after = "nvim-cmp" }
 use { "saadparwaiz1/cmp_luasnip", after = { "LuaSnip", "nvim-cmp" } }
 use { "hrsh7th/cmp-cmdline", after = "nvim-cmp" }
-use { "hrsh7th/cmp-nvim-lsp", after = { "nvim-lspconfig", "nvim-cmp" } }
 use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
 use { "hrsh7th/cmp-path", after = "cmp-buffer" }
 
