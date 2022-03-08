@@ -23,6 +23,11 @@ use {
   "jose-elias-alvarez/null-ls.nvim",
   wants = "plenary.nvim",
   cmd = "NullLoad",
+  setup = function()
+    require("utils").alias("NullLoad", "lua require 'configs.null_ls_nvim'")
+  end,
+  module = "null-ls",
+  disable = true,
 }
 
 use {
@@ -32,6 +37,7 @@ use {
     require "configs.refactoring_nvim"
     require("telescope").load_extension "refactoring"
   end,
+  disable = true,
 }
 
 use {
@@ -63,6 +69,7 @@ use {
   config = function()
     require "configs.lsp.lspsaga_nvim"
   end,
+  disable = true,
 }
 
 use {
@@ -71,6 +78,7 @@ use {
   config = function()
     vim.api.nvim_command "autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()"
   end,
+  disable = true,
 }
 
 use {
@@ -89,6 +97,7 @@ use {
     "SymbolsOutlineClose",
     "SymbolsOutlineOpen",
   },
+  disable = true,
 }
 
 use {
@@ -97,6 +106,7 @@ use {
   config = function()
     require "configs.lsp.lspsignature_nvim"
   end,
+  disable = true,
 }
 
 use { "nvim-treesitter/nvim-treesitter-refactor", opt = true }
@@ -125,7 +135,7 @@ use {
     "playground",
     "nvim-ts-autotag",
   },
-  after = "nvim-lspconfig",
+  cmd = "TSStart",
 }
 
 use {
@@ -142,6 +152,7 @@ use {
     require "configs.treesitter.plugins.spellsitter"
   end,
   after = "nvim-treesitter",
+  disable = true,
 }
 
 use {
@@ -264,14 +275,14 @@ use {
   disable = true,
 }
 
-use { "octaltree/cmp-look", after = "nvim-cmp" }
+use { "octaltree/cmp-look", after = "nvim-cmp", disable = true }
 use { "f3fora/cmp-spell", after = "nvim-cmp" }
 use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
 use { "lukas-reineke/cmp-rg", after = "nvim-cmp" }
 use { "ray-x/cmp-treesitter", after = { "nvim-cmp", "nvim-treesitter" } }
 use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp", ft = "lua" }
 use { "mtoohey31/cmp-fish", ft = "fish", after = "nvim-cmp", ft = "fish" }
-use { "kdheepak/cmp-latex-symbols", ft = "tex", after = "nvim-cmp" }
+use { "kdheepak/cmp-latex-symbols", ft = "tex", wants = "nvim-cmp" }
 use { "saadparwaiz1/cmp_luasnip", after = { "LuaSnip", "nvim-cmp" } }
 use { "hrsh7th/cmp-cmdline", after = "nvim-cmp" }
 use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
@@ -300,6 +311,7 @@ use { "bfredl/nvim-luadev", cmd = "Luadev" }
 use { "rafcamlet/nvim-luapad", cmd = { "Luapad", "LuaRun" } }
 use { "milisims/nvim-luaref", ft = { "vim", "lua" } }
 use { "nanotee/luv-vimdocs", ft = { "vim", "lua" } }
+use { "nanotee/nvim-lua-guide", ft = { "vim", "lua" } }
 
 use { "Fymyte/rasi.vim", ft = "rasi" }
 use { "elkowar/yuck.vim", ft = "yuck" }
@@ -360,6 +372,7 @@ use {
   config = function()
     require "configs.trouble_nvim"
   end,
+  disable = true,
 }
 
 use {
@@ -444,7 +457,7 @@ use {
 
 use {
   "wakatime/vim-wakatime",
-  cmd = "WakatimeToday",
+  event = "InsertEnter",
 }
 
 use {
@@ -517,6 +530,7 @@ use {
   config = function()
     require "configs.fine_cmdline_nvim"
   end,
+  disable = true,
 }
 
 use {
@@ -525,6 +539,7 @@ use {
   config = function()
     require "configs.searchbox_nvim"
   end,
+  disable = true,
 }
 
 use {
@@ -565,6 +580,7 @@ use { "tami5/sqlite.lua", module = "sqlite" }
 use {
   "dstein64/vim-startuptime",
   cmd = "StartupTime",
+  disable = true,
 }
 
 use {
@@ -621,6 +637,7 @@ use {
   config = function()
     require("telescope").load_extension "arecibo"
   end,
+  disable = true,
 }
 
 use {
@@ -788,6 +805,15 @@ use {
 }
 
 use {
+  "pagankeymaster/telescope-cheat.nvim",
+  config = function()
+    require("telescope").load_extension "cheat"
+  end,
+  after = "telescope.nvim",
+  disable = true,
+}
+
+use {
   "phaazon/hop.nvim",
   cmd = { "HopWord", "HopLine", "HopChar1", "HopChar2", "HopPattern" },
   as = "hop",
@@ -821,6 +847,7 @@ use {
     require "configs.better_escape_nvim"
   end,
   keys = require("mappings").better_escape_nvim,
+  disable = true,
 }
 
 use {
@@ -848,7 +875,12 @@ use {
     require "configs.nvim_regexplainer"
   end,
   wants = { "plenary.nvim", "nui.nvim", "nvim-treesitter" },
-  ft = { "sh", "bash", "zsh", "fish", "python", "java", "javascript" },
+  cmd = {
+    "RegexplainerHide",
+    "RegexplainerShow",
+    "RegexplainerShowPopup",
+    "RegexplainerShowSplit",
+  },
   disable = true,
 }
 

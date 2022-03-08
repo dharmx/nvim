@@ -1,7 +1,6 @@
 local present, rgxplain = pcall(require, "regexplainer")
 
 if not present then
-  vim.notify "LOL"
   return
 end
 
