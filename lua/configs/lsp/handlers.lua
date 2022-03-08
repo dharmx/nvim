@@ -42,13 +42,14 @@ M.handlers = {
   ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
   ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
   ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = { prefix = " ", spacing = 1 },
+    virtual_text = { prefix = "■", spacing = 1 },
     signs = true,
     underline = true,
     update_in_insert = false,
     severity_sort = true,
   }),
   ["textDocument/definition"] = goto_definition "split",
+  ["textDocument/references"] = vim.lsp.with(on_references, { loclist = true }),
 }
 
 M.setup = function()

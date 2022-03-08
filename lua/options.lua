@@ -93,6 +93,7 @@ opt.list = true
 opt.menuitems = 30
 opt.magic = true
 opt.icon = true
+opt.omnifunc = "syntaxcomplete#Complete"
 
 for _, plugin in
   ipairs {
@@ -145,6 +146,7 @@ vim.g.markdown_fenced_languages = {
 }
 
 vim.g.python3_host_prog = "python3"
+vim.g.vim_json_warnings = false
 
 vim.api.nvim_command "colorscheme nordic"
 vim.o.background = "dark"

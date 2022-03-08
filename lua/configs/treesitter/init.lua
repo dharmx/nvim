@@ -35,6 +35,7 @@ local config = {
     "cmake",
     "commonlisp",
     "comment",
+    "latex",
   },
   sync_installed = false,
   ignore_install = { "haskell" },

@@ -10,3 +10,5 @@ end
 pcall(function()
   require "configs.impatient_nvim"
 end)
+
+-- vim:ft=lua

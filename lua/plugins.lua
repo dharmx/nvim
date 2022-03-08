@@ -22,10 +22,7 @@ packer.reset()
 use {
   "jose-elias-alvarez/null-ls.nvim",
   wants = "plenary.nvim",
-  cmd = "NullLoad",
-  setup = function()
-    require("utils").alias("NullLoad", "lua require 'configs.null_ls_nvim'")
-  end,
+  cmd = "NullLsLoad",
   module = "null-ls",
   disable = true,
 }
@@ -602,8 +599,7 @@ use {
 }
 
 use {
-  "https://github.com/Conni2461/telescope.nvim",
-  branch = "fix/treesitter_with_lua",
+  "nvim-telescope/telescope.nvim",
   cmd = "Telescope",
   wants = "plenary.nvim",
   config = function()
@@ -720,6 +716,7 @@ use {
     require "configs.telescope.extensions.emoji"
     require("telescope").load_extension "emoji"
   end,
+  disable = true,
 }
 
 use {

@@ -63,12 +63,7 @@ local function subtable(items, upto)
 end
 
 g.dashboard_custom_section = subtable(commands, banners.commands[BANNER])
-g.dashboard_custom_footer = { "" }
-
---[[
-g.dashboard_custom_footer = {
-  "─────────── Powered By  LuaJIT ───────────",
-}
-]]
+-- g.dashboard_custom_footer = { "─────────── Powered By  LuaJIT ───────────" }
+g.dashboard_custom_footer = { "Powered By  LuaJIT" }
 
 -- vim:nowrap

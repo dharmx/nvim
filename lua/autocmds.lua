@@ -1,3 +1,6 @@
+local util = require "utils"
+local autocmd = util.autocmd
+local augroup = util.augroup
 local cmd = vim.api.nvim_command
 
 cmd "cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))"
@@ -7,12 +10,30 @@ cmd "cnoreabbrev <expr> Wq ((getcmdtype() is# ':' && getcmdline() is# 'Wq')?('wq
 cmd "cnoreabbrev <expr> Q ((getcmdtype() is# ':' && getcmdline() is# 'Q')?('q!'):('q'))"
 cmd "cnoreabbrev <expr> q ((getcmdtype() is# ':' && getcmdline() is# 'q')?('q!'):('q'))"
 
-cmd "autocmd TextYankPost * silent! lua vim.highlight.on_yank({higroup='YankFeed', timeout=150})"
-cmd "autocmd TermOpen term://* setlocal nonumber norelativenumber | setfiletype terminal"
-cmd "autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o"
-cmd "autocmd BufReadPost * let &l:modifiable = !&readonly"
-cmd "autocmd BufWritePost */lua/plugins.lua silent! lua require('packer').compile()"
-cmd "autocmd VimEnter * silent! lua require('utils').dashboard_vimenter()"
+autocmd("TextYankPost", function() vim.highlight.on_yank { higroup = "YankFeed", timeout = 150 } end)
+autocmd("TermOpen", "setlocal nonumber norelativenumber | setfiletype terminal", { patterns = "term://" })
+autocmd("FileType", "setlocal formatoptions-=c formatoptions-=r formatoptions-=o")
+autocmd("BufReadPost", "let &l:modifiable = !&readonly")
+autocmd("BufWritePost", function() require("packer").compile() end, { patterns = "*/lua/plugins.lua" })
+autocmd("VimEnter", function() util.dashboard_vimenter() end, "*/lua/plugins.lua")
+
+augroup("ListCharsFeedback", {
+  { 
+    events = "InsertEnter", 
+    command = function() 
+      vim.opt_local.listchars = { 
+        tab = ' ', 
+        trail = '·', 
+        space = '⋅', 
+        eol = '↴',
+      } 
+    end
+  },
+  { 
+    events = "InsertLeave", 
+    command = function() vim.opt_local.listchars = '' end 
+  },
+})
 
 --[[
 cmd "augroup RelativeFeedback"
@@ -27,11 +48,6 @@ cmd "  autocmd InsertEnter * silent! set number"
 cmd "  autocmd InsertLeave * silent! set nonumber"
 cmd "augroup END"
 
-cmd "augroup ListCharsFeedback"
-cmd "  autocmd!"
-cmd "  autocmd InsertLeave * silent! lua vim.opt_local.listchars = { tab = ' ', trail = '·', space = '⋅', eol = '↴' }"
-cmd "  autocmd InsertEnter * silent! lua vim.opt_local.listchars = ''"
-cmd "augroup END"
 
 cmd "augroup CursorLineFeedback"
 cmd "  autocmd!"
@@ -46,3 +62,5 @@ cmd "  autocmd WinEnter,FocusGained * silent! lua require('scrollbar').show()"
 cmd "  autocmd WinLeave,BufLeave,BufWinLeave,FocusLost * silent! lua require('scrollbar').clear()"
 cmd "augroup END"
 ]]
+
+-- vim:ft=lua
