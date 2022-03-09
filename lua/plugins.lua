@@ -15,7 +15,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 local packer = require "packer"
-packer.init(require "configs.packer_nvim")
+packer.init(require "configs.packer")
 use = packer.use
 packer.reset()
 
@@ -31,7 +31,7 @@ use {
   "ThePrimeagen/refactoring.nvim",
   after = { "null-ls.nvim", "telescope.nvim" },
   config = function()
-    require "configs.refactoring_nvim"
+    require "configs.refactoring"
     require("telescope").load_extension "refactoring"
   end,
   disable = true,
@@ -64,7 +64,7 @@ use {
   "glepnir/lspsaga.nvim",
   after = "nvim-lspconfig",
   config = function()
-    require "configs.lsp.lspsaga_nvim"
+    require "configs.lsp.lspsaga"
   end,
   disable = true,
 }
@@ -86,7 +86,7 @@ use {
 use {
   "simrat39/symbols-outline.nvim",
   config = function()
-    require "configs.lsp.symbols_outline_nvim"
+    require "configs.lsp.outline"
   end,
   after = "nvim-lspconfig",
   cmd = {
@@ -101,7 +101,7 @@ use {
   "ray-x/lsp_signature.nvim",
   after = "nvim-lspconfig",
   config = function()
-    require "configs.lsp.lspsignature_nvim"
+    require "configs.lsp.signature"
   end,
   disable = true,
 }
@@ -171,7 +171,7 @@ use {
   after = "nvim-cmp",
   ft = "zsh",
   config = function()
-    require "configs.cmp.cmp_zsh"
+    require "configs.cmp.zsh"
   end,
 }
 
@@ -179,7 +179,7 @@ use {
   "uga-rosa/cmp-dictionary",
   after = "nvim-cmp",
   config = function()
-    require "configs.cmp.cmp_dictionary"
+    require "configs.cmp.dictionary"
   end,
   disable = true,
 }
@@ -188,7 +188,7 @@ use {
   "L3MON4D3/LuaSnip",
   after = "nvim-cmp",
   config = function()
-    require "configs.cmp.LuaSnip"
+    require "configs.cmp.luasnip"
   end,
 }
 
@@ -197,7 +197,7 @@ use {
   after = "nvim-cmp",
   module = "nvim-autopairs",
   config = function()
-    require "configs.cmp.nvim_autopairs"
+    require "configs.cmp.autopairs"
   end,
 }
 
@@ -205,7 +205,7 @@ use {
   "petertriho/cmp-git",
   wants = "plenary.nvim",
   config = function()
-    require "configs.cmp.cmp_git"
+    require "configs.cmp.git"
   end,
   after = "nvim-cmp",
   disable = true,
@@ -262,7 +262,7 @@ use {
   "hrsh7th/cmp-nvim-lsp",
   after = { "nvim-lspconfig", "nvim-cmp" },
   config = function()
-    require "configs.cmp.cmp_nvim_lsp"
+    require "configs.cmp.lsp"
   end,
 }
 
@@ -300,7 +300,7 @@ use {
   "euclidianAce/BetterLua.vim",
   ft = "lua",
   setup = function()
-    require "configs.BetterLua_vim"
+    require "configs.betterlua"
   end,
 }
 
@@ -319,9 +319,6 @@ use { "vuki656/package-info.nvim", ft = "package.json", disable = true }
 
 use {
   "danymat/neogen",
-  config = function()
-    require("neogen").setup {}
-  end,
   wants = "nvim-treesitter",
   disable = true,
 }
@@ -341,7 +338,7 @@ use {
   wants = "plenary.nvim",
   cmd = "Gitsigns",
   config = function()
-    require "configs.gitsigns_nvim"
+    require "configs.gitsigns"
   end,
 }
 
@@ -351,14 +348,14 @@ use {
   "folke/todo-comments.nvim",
   event = "BufRead",
   config = function()
-    require "configs.todo_comments_nvim"
+    require "configs.todocomments"
   end,
 }
 
 use {
   "iamcco/markdown-preview.nvim",
   setup = function()
-    require "configs.markdown_preview_nvim"
+    require "configs.mdpreview"
   end,
   run = "cd app && yarn install",
   ft = "markdown",
@@ -378,7 +375,7 @@ use {
   "folke/trouble.nvim",
   cmd = { "Trouble", "TroubleClose", "TroubleRefresh", "TroubleToggle" },
   config = function()
-    require "configs.trouble_nvim"
+    require "configs.trouble"
   end,
   disable = true,
 }
@@ -443,7 +440,7 @@ use {
   "xiyaowong/nvim-transparent",
   cmd = { "TransparentDisable", "TransparentEnable", "TransparentToggle" },
   config = function()
-    require "configs.nvim_transparent"
+    require "configs.transparent"
   end,
   disable = true,
 }
@@ -457,7 +454,7 @@ use {
   "folke/twilight.nvim",
   cmd = { "Twilight", "TwilightEnable", "TwilightDisable" },
   config = function()
-    require "configs.twilight_nvim"
+    require "configs.twilight"
   end,
   disable = true,
 }
@@ -466,7 +463,7 @@ use {
   "folke/zen-mode.nvim",
   cmd = "ZenMode",
   config = function()
-    require "configs.zen_mode_nvim"
+    require "configs.zenmode"
   end,
   disable = true,
 }
@@ -505,7 +502,7 @@ use {
   "andweeb/presence.nvim",
   event = "InsertEnter",
   config = function()
-    require "configs.presence_nvim"
+    require "configs.presence"
   end,
 }
 
@@ -518,7 +515,7 @@ use {
   "KadoBOT/nvim-spotify",
   wants = "telescope.nvim",
   config = function()
-    require "configs.nvim_spotify"
+    require "configs.spotify"
   end,
   run = "make",
   cmd = { "SpotifyDevices", "Spotify" },
@@ -535,7 +532,7 @@ use {
     "NeoscrollDisableBufferPM",
   },
   config = function()
-    require "configs.neoscroll_nvim"
+    require "configs.neoscroll"
   end,
   disable = true,
 }
@@ -544,7 +541,7 @@ use {
   "Xuyuanp/scrollbar.nvim",
   events = { "WinScrolled", "VimResized", "QuitPre" },
   setup = function()
-    require "configs.scrollbar_nvim"
+    require "configs.scrollbar"
   end,
   disable = true,
 }
@@ -552,14 +549,14 @@ use {
 use {
   "akinsho/bufferline.nvim",
   config = function()
-    require "configs.bufferline_nvim"
+    require "configs.bufferline"
   end,
 }
 
 use {
   "kyazdani42/nvim-web-devicons",
   config = function()
-    require "configs.nvim_web_devicons"
+    require "configs.devicons"
   end,
 }
 
@@ -573,7 +570,7 @@ use {
     "IndentBlanklineRefreshScroll",
   },
   config = function()
-    require "configs.indent_blankline_nvim"
+    require "configs.blankline"
   end,
   disable = true,
 }
@@ -582,7 +579,7 @@ use {
   "VonHeikemen/fine-cmdline.nvim",
   cmd = "FineCmdline",
   config = function()
-    require "configs.fine_cmdline_nvim"
+    require "configs.finecmdline"
   end,
   disable = true,
 }
@@ -591,7 +588,7 @@ use {
   "VonHeikemen/searchbox.nvim",
   cmd = "SearchBoxIncSearch",
   config = function()
-    require "configs.searchbox_nvim"
+    require "configs.searchbox"
   end,
   disable = true,
 }
@@ -599,7 +596,7 @@ use {
 use {
   "glepnir/dashboard-nvim",
   setup = function()
-    require "configs.dashboard_nvim"
+    require "configs.dashboard"
   end,
   cmd = {
     "Dashboard",
@@ -623,7 +620,7 @@ use { "luukvbaal/stabilize.nvim", event = { "CmdlineEnter", "InsertEnter" } }
 use {
   "rcarriga/nvim-notify",
   config = function()
-    require "configs.nvim_notify"
+    require "configs.notify"
   end,
 }
 
@@ -650,8 +647,8 @@ use {
 use {
   "kyazdani42/nvim-tree.lua",
   cmd = { "NvimTreeToggle", "NvimTreeRefresh", "NvimTreeFocus" },
-  setup = require("configs.nvim_tree_lua").before,
-  config = require("configs.nvim_tree_lua").after,
+  setup = require("configs.nvimtree").before,
+  config = require("configs.nvimtree").after,
   wants = "nvim-notify",
 }
 
@@ -872,7 +869,7 @@ use {
   cmd = { "HopWord", "HopLine", "HopChar1", "HopChar2", "HopPattern" },
   as = "hop",
   config = function()
-    require "configs.hop_nvim"
+    require "configs.hop"
   end,
   disable = true,
 }
@@ -881,7 +878,7 @@ use {
   "Pocco81/AutoSave.nvim",
   cmd = { "ASOn", "ASOff", "ASToggle" },
   config = function()
-    require "configs.AutoSave_nvim"
+    require "configs.autosave"
   end,
 }
 
@@ -898,7 +895,7 @@ use {
 use {
   "max397574/better-escape.nvim",
   config = function()
-    require "configs.better_escape_nvim"
+    require "configs.betteresc"
   end,
   keys = require("mappings").better_escape_nvim,
   disable = true,
@@ -931,7 +928,7 @@ use {
 use {
   "bennypowers/nvim-regexplainer",
   config = function()
-    require "configs.nvim_regexplainer"
+    require "configs.regexplainer"
   end,
   wants = { "plenary.nvim", "nui.nvim", "nvim-treesitter" },
   cmd = {

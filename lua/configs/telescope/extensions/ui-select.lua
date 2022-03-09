@@ -3,3 +3,5 @@ return {
     -- even more opts
   },
 }
+
+-- vim:ft=lua

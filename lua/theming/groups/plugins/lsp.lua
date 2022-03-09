@@ -64,3 +64,5 @@ function L.get(syntax)
 end
 
 return L
+
+-- vim:ft=lua

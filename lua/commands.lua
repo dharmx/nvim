@@ -3,6 +3,7 @@ local hi = require("theming.utils.helpers").highlight
 local colors = require("theming.utils.helpers").get_active_scheme()
 local cmd = vim.api.nvim_command
 
+-- MIGRATE: to nvim_add_user_command
 alias("CommitList", "Telescope git_commits")
 alias("EnvList", "Telescope env")
 alias("Projects", "Telescope project")
@@ -19,7 +20,7 @@ alias("NvimLog", "edit " .. vim.fn.stdpath "cache" .. "/log")
 alias("PackerLog", "edit " .. vim.fn.stdpath "cache" .. "/packer.nvim.log")
 alias("TelescopeLog", "edit " .. vim.fn.stdpath "cache" .. "/telescope.log")
 
-alias("NullLsLoad", "lua require 'configs.null_ls_nvim'")
+alias("NullLsLoad", "lua require 'configs.nullls'")
 alias("StartPage", "Dashboard | TabLineTGL")
 alias("TabLineTGL", "if &stal == 2 | set stal=0 | else | set stal=2 | endif")
 alias("StatusLineTGL", "if &ls == 2 | set ls=0 | else | set ls=2 | endif")
@@ -38,3 +39,5 @@ cmd "command! PackerStatus lua require('packer').status()"
 cmd "command! PackerProfile lua require('packer').profile_output()"
 cmd "command! PackerCompile lua require('packer').compile()"
 cmd "command! -bang -nargs=+ -complete=customlist,v:lua.require'packer'.loader_complete PackerLoad lua require('packer').loader(<f-args>, '<bang>')"
+
+-- vim:ft=lua

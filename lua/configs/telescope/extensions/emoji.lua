@@ -14,3 +14,5 @@ local config = {
 }
 
 emoji.setup(config)
+
+-- vim:ft=lua

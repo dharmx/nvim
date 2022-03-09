@@ -80,3 +80,5 @@ local schema = {
 }
 
 return schema
+
+-- vim:ft=lua

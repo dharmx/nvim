@@ -222,3 +222,5 @@ M.lsp_installer_nvim = {
 }
 
 return M
+
+-- vim:ft=vim

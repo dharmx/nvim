@@ -49,3 +49,5 @@ local editor = {
 }
 
 return { file, help, editor }
+
+-- vim:ft=lua

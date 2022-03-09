@@ -55,3 +55,5 @@ return {
     TypeParameter = "",
   },
 }
+
+-- vim:ft=lua

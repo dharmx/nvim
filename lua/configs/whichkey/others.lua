@@ -37,3 +37,5 @@ M.options = {
 }
 
 return M
+
+-- vim:ft=lua

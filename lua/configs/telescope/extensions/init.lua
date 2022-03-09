@@ -20,3 +20,5 @@ do
 end
 
 return extensions
+
+-- vim:ft=lua

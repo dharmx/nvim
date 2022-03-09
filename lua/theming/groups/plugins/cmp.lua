@@ -16,3 +16,5 @@ function C.get(syntax)
 end
 
 return C
+
+-- vim:ft=lua

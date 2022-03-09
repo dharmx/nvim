@@ -107,3 +107,5 @@ M.commands = {
 }
 
 return M
+
+-- vim:ft=lua

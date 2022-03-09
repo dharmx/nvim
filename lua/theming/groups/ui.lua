@@ -69,3 +69,5 @@ function U.get(theme)
 end
 
 return U
+
+-- vim:ft=lua

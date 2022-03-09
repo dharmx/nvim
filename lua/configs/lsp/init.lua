@@ -97,3 +97,5 @@ configure_diagnostics()
 configure_installer()
 ensure_servers()
 configure_servers()
+
+-- vim:ft=lua

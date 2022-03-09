@@ -106,3 +106,5 @@ N.syntax = {
 }
 
 return N
+
+-- vim:ft=vim

@@ -13,3 +13,5 @@ return {
   disable_devicons = false,
   workspaces = workspaces,
 }
+
+-- vim:ft=lua

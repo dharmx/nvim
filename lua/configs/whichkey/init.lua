@@ -75,3 +75,5 @@ for _, plugin in ipairs { "buffers", "plugins", "others", "prompts" } do
 end
 
 which_key.setup(config)
+
+-- vim:ft=lua

@@ -67,3 +67,5 @@ local config = {
 }
 
 ts.setup(config)
+
+-- vim:ft=lua

@@ -5,3 +5,5 @@ if not present then
 end
 
 spellsitter.setup { enable = false }
+
+-- vim:ft=lua

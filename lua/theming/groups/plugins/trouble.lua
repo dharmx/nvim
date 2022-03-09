@@ -7,3 +7,5 @@ function T.get(theme)
 end
 
 return T
+
+-- vim:ft=lua

@@ -59,3 +59,5 @@ M.setup = function()
 end
 
 return M
+
+-- vim:ft=lua

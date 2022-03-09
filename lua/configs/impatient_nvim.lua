@@ -6,3 +6,5 @@ end
 
 impatient.enable_profile()
 require "_compiled"
+
+-- vim:ft=lua

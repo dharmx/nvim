@@ -21,3 +21,5 @@ local config = {
 }
 
 neoclip.setup(config)
+
+-- vim:ft=lua

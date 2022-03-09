@@ -30,3 +30,5 @@ return {
 }
 
 -- '~/dev/src', {'~/dev/src2'}, {'~/dev/src3', max_depth = 4}, {path = '~/Dotfiles/vile', max_depth = 2}
+
+-- vim:ft=lua

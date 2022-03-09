@@ -12,3 +12,5 @@ function W.get(theme)
 end
 
 return W
+
+-- vim:ft=lua

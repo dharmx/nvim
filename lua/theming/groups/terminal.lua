@@ -20,3 +20,5 @@ function T.set(theme)
 end
 
 return T
+
+-- vim:ft=vim

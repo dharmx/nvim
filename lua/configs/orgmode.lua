@@ -5,3 +5,5 @@ if not present then
 end
 
 orgmode.setup()
+
+-- vim:ft=lua

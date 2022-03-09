@@ -20,3 +20,5 @@ do
 end
 
 return capabilities
+
+-- lua:ft=lua

@@ -42,3 +42,5 @@ M.setup = function(client_name, buffer)
 end
 
 return M
+
+-- vim:ft=lua

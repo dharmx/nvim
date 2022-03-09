@@ -52,3 +52,5 @@ local config = {
 }
 
 telescope.setup(config)
+
+-- vim:ft=lua

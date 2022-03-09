@@ -36,3 +36,5 @@ local config = {
 }
 
 cheatsheet.setup(config)
+
+-- vim:ft=lua

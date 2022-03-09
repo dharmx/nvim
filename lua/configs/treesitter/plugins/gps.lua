@@ -75,3 +75,5 @@ local config = {
 }
 
 gps.setup(config)
+
+-- vim:ft=lua

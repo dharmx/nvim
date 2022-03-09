@@ -4,3 +4,5 @@ return {
   full_path = true,
   firefox_profile_name = "Minimal",
 }
+
+-- vim:ft=lua

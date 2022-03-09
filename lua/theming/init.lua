@@ -10,3 +10,5 @@ function I.setup(options)
 end
 
 return I
+
+-- vim:ft=vim

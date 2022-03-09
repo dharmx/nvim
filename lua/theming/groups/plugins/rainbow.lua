@@ -13,3 +13,5 @@ function R.get(theme)
 end
 
 return R
+
+-- vim:ft=lua

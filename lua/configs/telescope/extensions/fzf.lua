@@ -6,3 +6,5 @@ local config = {
 }
 
 return config
+
+-- vim:ft=lua

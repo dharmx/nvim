@@ -159,3 +159,5 @@ vim.schedule(function()
   opt.shadafile = ""
   cmd "silent! rsh"
 end)
+
+-- vim:ft=vim

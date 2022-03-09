@@ -4,3 +4,5 @@ return {
   ["show_http_headers"] = true,
   ["show_domain_icons"] = true,
 }
+
+-- vim:ft=lua

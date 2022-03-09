@@ -14,3 +14,5 @@ return {
   offsets = { x = -1, y = -2 },
   sizes = { width = -1, height = 0 },
 }
+
+-- vim:ft=lua

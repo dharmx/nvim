@@ -85,3 +85,5 @@ function H.apply(options)
 end
 
 return H
+
+-- vim:ft=vim

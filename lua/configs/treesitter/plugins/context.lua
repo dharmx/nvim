@@ -33,3 +33,5 @@ local config = {
 }
 
 context.setup(config)
+
+-- vim:ft=lua

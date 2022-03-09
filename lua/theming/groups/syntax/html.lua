@@ -12,3 +12,5 @@ function S.get(syntax)
 end
 
 return S
+
+-- vim:ft=lua

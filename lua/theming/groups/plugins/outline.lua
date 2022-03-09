@@ -8,3 +8,5 @@ function H.get(theme)
 end
 
 return H
+
+-- vim:ft=lua

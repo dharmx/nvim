@@ -111,7 +111,11 @@ function M.autocmd(events, command, options)
   local autocmd_opts = {}
 
   autocmd_opts[type(command) == "string" and "command" or "callback"] = command
-  autocmd_opts["pattern"] = not options.patterns and "*" or options.patterns
+  if not options.buffer then
+    autocmd_opts.pattern = not options.patterns and "*" or options.patterns
+  else
+    autocmd_opts.buffer = options.buffer or options.bufnr
+  end
 
   if options.group then
     autocmd_opts.group = options.group
