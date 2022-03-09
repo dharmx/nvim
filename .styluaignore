@@ -3,6 +3,9 @@
 
 README.md
 LICENSE.txt
+commands.lua
+autocmds.lua
+abbrevs.lua
 lualine_nvim.lua
 
 .stylua.toml

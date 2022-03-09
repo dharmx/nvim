@@ -14,7 +14,7 @@ api = vim.api
 lsp = vim.lsp
 
 hi = require("theming.utils.helpers").highlight
-utils = require("utils")
+utils = require "utils"
 alias = utils.alias
 augroup = utils.augroup
 autocmd = utils.autocmd

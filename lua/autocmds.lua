@@ -5,7 +5,6 @@ local augroups = {
       command = function()
         utils.dashboard_vimenter()
       end,
-      options = { patterns = "*/lua/plugins.lua" },
     },
   },
   ["AutoPlugSpecCompileOnChange"] = {
@@ -44,10 +43,10 @@ local augroups = {
     {
       events = "InsertEnter",
       command = function()
-        vim.opt_local.listchars = {
+        opt_local.listchars = {
           tab = " ",
-          trail = "·",
-          space = "⋅",
+          trail = "˽",
+          space = "·",
           eol = "↴",
         }
       end,
@@ -55,7 +54,7 @@ local augroups = {
     {
       events = "InsertLeave",
       command = function()
-        vim.opt_local.listchars = ""
+        opt_local.listchars = ""
       end,
     },
   },
@@ -63,13 +62,13 @@ local augroups = {
     {
       events = "InsertEnter",
       command = function()
-        vim.opt_local.relativenumber = true
+        opt_local.relativenumber = true
       end,
     },
     {
       events = "InsertLeave",
       command = function()
-        vim.opt_local.relativenumber = false
+        opt_local.relativenumber = false
       end,
     },
   },
@@ -77,13 +76,13 @@ local augroups = {
     {
       events = "InsertEnter",
       command = function()
-        vim.opt_local.number = true
+        opt_local.number = true
       end,
     },
     {
       events = "InsertLeave",
       command = function()
-        vim.opt_local.number = false
+        opt_local.number = false
       end,
     },
   },
@@ -91,13 +90,13 @@ local augroups = {
     {
       events = { "BufEnter", "WinEnter", "InsertEnter" },
       command = function()
-        vim.opt_local.cursorline = true
+        opt_local.cursorline = true
       end,
     },
     {
       events = { "BufEnter", "WinEnter", "InsertLeave" },
       command = function()
-        vim.opt_local.cursorline = false
+        opt_local.cursorline = false
       end,
     },
   },

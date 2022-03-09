@@ -9,7 +9,8 @@ end
 
 function M.dashboard_vimenter()
   if api.nvim_buf_get_name(0) == "" then
-    api.nvim_command "Dashboard"
+    api.nvim_notify("Welcome to KrakenVim!", vim.log.levels.INFO, { icon = "", title = "KrakenVim" })
+    cmd "Dashboard"
   end
 end
 
