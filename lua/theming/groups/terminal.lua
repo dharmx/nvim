@@ -21,4 +21,4 @@ end
 
 return T
 
--- vim:ft=vim
+-- vim:ft=lua

@@ -1,4 +1,4 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = lsp.protocol.make_client_capabilities()
 local cmp = capabilities.textDocument.completion.completionItem
 
 for item, config in
@@ -21,4 +21,4 @@ end
 
 return capabilities
 
--- lua:ft=lua
+-- vim:ft=lua

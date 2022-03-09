@@ -1,20 +1,9 @@
-local util = require "utils"
-local autocmd = util.autocmd
-local cmd = vim.api.nvim_command
-
-cmd "cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))"
-cmd "cnoreabbrev <expr> Q ((getcmdtype() is# ':' && getcmdline() is# 'Q')?('q'):('Q'))"
-cmd "cnoreabbrev <expr> WQ ((getcmdtype() is# ':' && getcmdline() is# 'WQ')?('wq'):('WQ'))"
-cmd "cnoreabbrev <expr> Wq ((getcmdtype() is# ':' && getcmdline() is# 'Wq')?('wq'):('Wq'))"
-cmd "cnoreabbrev <expr> Q ((getcmdtype() is# ':' && getcmdline() is# 'Q')?('q!'):('q'))"
-cmd "cnoreabbrev <expr> q ((getcmdtype() is# ':' && getcmdline() is# 'q')?('q!'):('q'))"
-
 local augroups = {
   ["OpenDashboardOnBlankBuffer"] = {
     {
       events = "VimEnter",
       command = function()
-        util.dashboard_vimenter()
+        utils.dashboard_vimenter()
       end,
       options = { patterns = "*/lua/plugins.lua" },
     },
@@ -136,7 +125,7 @@ for _, name in
     "YankFeedback",
   }
 do
-  util.augroup(name, augroups[name])
+  augroup(name, augroups[name])
 end
 
 -- vim:ft=lua

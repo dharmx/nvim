@@ -1,14 +1,15 @@
-require "theming"
+require "globals"
 require "options"
 require "commands"
 require "autocmds"
+require "abbrevs"
 
-if vim.fn.empty(vim.fn.glob(vim.fn.stdpath "data" .. "/site/pack/packer/opt/packer.nvim")) > 0 then
+if fn.empty(fn.glob(stdpath "data" .. "/site/pack/packer/opt/packer.nvim")) > 0 then
   require "plugins"
 end
 
 pcall(function()
-  require "configs.impatient_nvim"
+  require "configs.impatient"
 end)
 
 -- vim:ft=lua

@@ -4,8 +4,6 @@ if not present then
   return
 end
 
-local colors = require("theming.utils.helpers").get_active_scheme()
-
 local config = {
   signs = true, -- show icons in the signs column
   sign_priority = 8, -- sign priority

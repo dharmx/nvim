@@ -6,7 +6,7 @@ end
 
 local config = {
   debug = false,
-  log_path = vim.fn.stdpath "cache" .. "/lsp_signature.log",
+  log_path = stdpath "cache" .. "/lsp_signature.log",
   verbose = false,
   bind = true,
   doc_lines = 20,

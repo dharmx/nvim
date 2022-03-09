@@ -1,4 +1,3 @@
-local g = vim.g
 local commands = {
   a = {
     description = { "  Find File                 SPC t f" },

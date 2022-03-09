@@ -1,7 +1,3 @@
-local cmd = vim.api.nvim_command
-local opt = vim.opt
-local wo = vim.wo
-
 opt.termguicolors = true
 opt.laststatus = 0
 opt.completeopt = "menuone,noselect"
@@ -29,7 +25,7 @@ opt.wildignore = {
 }
 
 opt.errorformat = "%f|%l col %c|%m"
-vim.opt.diffopt:append { "algorithm:patience" }
+opt.diffopt:append { "algorithm:patience" }
 
 opt.fillchars = {
   eob = " ",
@@ -123,15 +119,15 @@ for _, plugin in
     "ftplugof",
   }
 do
-  vim.g["loaded_" .. plugin] = 1
+  g["loaded_" .. plugin] = 1
 end
 
-vim.g.mapleader = " "
-vim.g.did_load_filetypes = 1
+g.mapleader = " "
+g.did_load_filetypes = 1
 
-vim.g["zoom#statustext"] = "Z"
+g["zoom#statustext"] = "Z"
 
-vim.g.markdown_fenced_languages = {
+g.markdown_fenced_languages = {
   "lua",
   "vim",
   "json",
@@ -145,13 +141,12 @@ vim.g.markdown_fenced_languages = {
   "console=sh",
 }
 
-vim.g.python3_host_prog = "python3"
-vim.g.vim_json_warnings = false
+g.python3_host_prog = "python3"
+g.vim_json_warnings = false
 
-vim.api.nvim_command "colorscheme nordic"
-vim.o.background = "dark"
+o.background = "dark"
 
-vim.env.FZF_DEFAULT_OPTS =
+env.FZF_DEFAULT_OPTS =
   "--layout=reverse --prompt ' ' --pointer '->' --preview='less {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
 
 opt.shadafile = "NONE"
@@ -160,4 +155,4 @@ vim.schedule(function()
   cmd "silent! rsh"
 end)
 
--- vim:ft=vim
+-- vim:ft=lua

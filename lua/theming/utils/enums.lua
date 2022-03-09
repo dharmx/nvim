@@ -45,4 +45,4 @@ E.supports = {
 
 return E
 
--- vim:ft=vim
+-- vim:ft=lua

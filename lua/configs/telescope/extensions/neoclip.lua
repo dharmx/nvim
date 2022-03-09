@@ -4,7 +4,7 @@ if not present then
   return
 end
 
-local database_path = vim.fn.stdpath "data" .. "/databases/neoclip.sqlite3"
+local database_path = stdpath "data" .. "/databases/neoclip.sqlite3"
 
 local config = {
   history = 5000,

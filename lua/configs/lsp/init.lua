@@ -56,7 +56,7 @@ local function ensure_servers()
       server:install()
     end
   end
-  vim.api.nvim_notify(
+  api.nvim_notify(
     "Installed " .. table.concat(vim.tbl_keys(servers), "\n"),
     vim.log.levels.INFO,
     { icon = " ", title = "nvim-lsp-installer" }

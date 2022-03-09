@@ -5,14 +5,14 @@ if not present then
 end
 
 local function prepare(lang)
-  return vim.fn.stdpath "config" .. "/spell/" .. lang .. ".dict"
+  return stdpath "config" .. "/spell/" .. lang .. ".dict"
 end
 
 local config = {
   dic = {
     ["*"] = {
       prepare "en",
-      vim.fn.stdpath "config" .. "/spell/en.utf-8.add",
+      stdpath "config" .. "/spell/en.utf-8.add",
     },
     filepath = {
       ["*.txt"] = {

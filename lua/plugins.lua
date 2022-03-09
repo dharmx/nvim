@@ -1,7 +1,5 @@
-local cmd = vim.api.nvim_command
-
-local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+local install_path = stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
+if fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.notify "packer.nvim doesn't exist. Cloning..."
   bootstrap = vim.fn.system {
     "git",
@@ -16,7 +14,7 @@ end
 
 local packer = require "packer"
 packer.init(require "configs.packer")
-use = packer.use
+local use = packer.use
 packer.reset()
 
 use {

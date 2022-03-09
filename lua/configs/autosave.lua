@@ -6,7 +6,7 @@ end
 
 local config = {
   enabled = false,
-  execution_message = "AutoSave: saved at " .. vim.fn.strftime "%H:%M:%S",
+  execution_message = "AutoSave: saved at " .. fn.strftime "%H:%M:%S",
   events = { "InsertLeave", "TextChanged" },
   conditions = {
     exists = true,

@@ -4,8 +4,6 @@ if not present then
   return
 end
 
-local colors = require("theming.utils.helpers").get_active_scheme()
-
 local config = {
   override = {
     c = { icon = "", color = colors.rainbow.cobalt, name = "C" },

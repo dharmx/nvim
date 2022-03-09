@@ -32,7 +32,7 @@ luasnip.snippets = {
       -- Get the author and URL in the clipboard and auto populate the author and project
       fnode(function(_)
         local default = ""
-        local clip = vim.fn.getreg "*"
+        local clip = fn.getreg "*"
         if not vim.startswith(clip, "https://github.com/") then
           return default
         end
@@ -56,7 +56,7 @@ luasnip.snippets = {
       -- Get the author and URL in the clipboard and auto populate the author and project
       fnode(function(_)
         local default = ""
-        local clip = vim.fn.getreg "*"
+        local clip = fn.getreg "*"
         if not vim.startswith(clip, "https://github.com/") then
           return default
         end
@@ -87,7 +87,7 @@ luasnip.snippets = {
 }
 
 require("luasnip.loaders.from_vscode").lazy_load {
-  paths = vim.fn.stdpath "config",
+  paths = stdpath "config",
   include = { "lua", "python", "java", "sh", "markdown" },
 }
 

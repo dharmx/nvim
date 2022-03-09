@@ -2,7 +2,7 @@ local util = require "packer.util"
 
 local config = {
   ensure_dependencies = true,
-  compile_path = util.join_paths(vim.fn.stdpath "config", "lua", "_compiled.lua"),
+  compile_path = util.join_paths(stdpath "config", "lua", "_compiled.lua"),
   auto_clean = true,
   compile_on_sync = true,
   max_jobs = 50,

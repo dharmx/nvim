@@ -13,4 +13,3 @@ end
 return H
 
 -- vim:ft=lua
-

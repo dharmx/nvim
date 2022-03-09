@@ -21,8 +21,6 @@ local offsets = {
   },
 }
 
-local colors = require("theming.utils.helpers").get_active_scheme()
-
 local config = {
   options = {
     middle_mouse_command = "bdelete! %d",

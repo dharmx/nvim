@@ -7,9 +7,6 @@ M.nvim_regexplainer = {
 }
 
 M.nvim_cmp = function(cmp)
-  local fn = vim.fn
-  local api = vim.api
-
   return {
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
@@ -223,4 +220,4 @@ M.lsp_installer_nvim = {
 
 return M
 
--- vim:ft=vim
+-- vim:ft=lua

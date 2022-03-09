@@ -1,5 +1,3 @@
-local g = vim.g
-
 g.mkdp_auto_start = 0
 g.mkdp_auto_close = 1
 g.mkdp_refresh_slow = 0

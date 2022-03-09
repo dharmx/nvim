@@ -82,8 +82,6 @@ M.after = function()
 end
 
 M.before = function()
-  local g = vim.g
-
   g.nvim_tree_create_in_closed_folder = 1
   g.nvim_tree_add_trailing = 1
   g.nvim_tree_git_hl = 1
