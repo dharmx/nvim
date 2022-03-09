@@ -30,14 +30,6 @@ function M.delete_buffer()
   cmd(is_terminal and "bd! #" or "silent! confirm bd #")
 end
 
-function M.bmap(...)
-  vim.api.nvim_buf_set_keymap(bufnr, ...)
-end
-
-function M.bopt(...)
-  vim.api.nvim_buf_set_option(bufnr, ...)
-end
-
 function M.notify_info(message, title)
   vim.api.nvim_notify(message, vim.log.levels.INFO, { title = title or "Alert!", icon = " " })
 end
@@ -133,10 +125,10 @@ function M.augroup(name, autocmds, clear)
   local append = M.autocmd
   local group = vim.api.nvim_create_augroup(name, { clear = clear })
   for _, autocmd in ipairs(autocmds) do
-    if not autocmd.options then 
+    if not autocmd.options then
       autocmd.options = {}
-      autocmd.options.group = group
     end
+    autocmd.options.group = group
     append(autocmd.events, autocmd.command, autocmd.options)
   end
 end

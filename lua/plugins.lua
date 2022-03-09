@@ -304,6 +304,7 @@ use {
   end,
 }
 
+use { "tjdevries/vlog.nvim", disable = true }
 use { "bfredl/nvim-luadev", cmd = "Luadev" }
 use { "rafcamlet/nvim-luapad", cmd = { "Luapad", "LuaRun" } }
 use { "milisims/nvim-luaref", ft = { "vim", "lua" } }
@@ -314,6 +315,16 @@ use { "Fymyte/rasi.vim", ft = "rasi" }
 use { "elkowar/yuck.vim", ft = "yuck" }
 use { "kovetskiy/sxhkd-vim", ft = "sxhkdrc" }
 use { "MTDL9/vim-log-highlighting", ft = "log" }
+use { "vuki656/package-info.nvim", ft = "package.json", disable = true }
+
+use {
+  "danymat/neogen",
+  config = function()
+    require("neogen").setup {}
+  end,
+  wants = "nvim-treesitter",
+  disable = true,
+}
 
 use { "sheerun/vim-polyglot" }
 
@@ -373,6 +384,47 @@ use {
 }
 
 use {
+  "NFrid/due.nvim",
+  cmd = {
+    "DueDraw",
+    "DueRedraw",
+    "DueClean",
+    "DueAsyncUpdate",
+  },
+  disable = true,
+}
+
+use {
+  "stevearc/gkeep.nvim",
+  run = ":UpdateRemotePlugins",
+  after = "telescope.nvim",
+  disable = true,
+}
+
+use {
+  "jbyuki/venn.nvim",
+  cmd = "ToggleVenn",
+  disable = true,
+}
+
+use {
+  "oberblastmeister/neuron.nvim",
+  wants = { "popup.nvim", "plenary.nvim" },
+  after = "telescope.nvim",
+  disable = true,
+}
+
+use {
+  "nvim-neorg/neorg",
+  ft = "norg",
+  after = "nvim-treesitter",
+  config = function()
+    require "configs.neorg"
+  end,
+  disable = true,
+}
+
+use {
   "nvim-orgmode/orgmode",
   ft = "org",
   config = function()
@@ -393,6 +445,11 @@ use {
   config = function()
     require "configs.nvim_transparent"
   end,
+  disable = true,
+}
+
+use {
+  "sunjon/shade.nvim",
   disable = true,
 }
 
@@ -848,6 +905,11 @@ use {
 }
 
 use {
+  "abecodes/tabout.nvim",
+  disable = true,
+}
+
+use {
   "akinsho/toggleterm.nvim",
   cmd = { "ToggleTerm", "ToggleTermToggleAll" },
   disable = true,
@@ -881,6 +943,17 @@ use {
   disable = true,
 }
 
+use {
+  "winston0410/cmd-parser.nvim",
+  event = "CmdlineEnter",
+  disable = true,
+}
+
+use {
+  "nvim-pack/nvim-spectre",
+  disable = true,
+}
+
 if bootstrap then
   packer.clean()
   packer.install()
@@ -892,3 +965,5 @@ return setmetatable({}, {
     return packer[operation]
   end,
 })
+
+-- vim:ft=lua

@@ -9,12 +9,15 @@ alias("Projects", "Telescope project")
 alias("CommandPalette", "Telescope command_palette")
 alias("Keymaps", "Telescope keymaps")
 alias("GitHL", "Gitsigns toggle_signs")
-alias("FormatConfigAll", "lua vim.fn.system('stylua --config-path ' .. vim.fn.stdpath('config') .. '/.stylua.toml ' .. vim.fn.stdpath('config'))")
+alias(
+  "FormatConfigAll",
+  "lua vim.fn.system('stylua --config-path ' .. vim.fn.stdpath('config') .. '/.stylua.toml ' .. vim.fn.stdpath('config'))"
+)
 
 alias("LspLog", "edit " .. vim.lsp.get_log_path())
-alias("NvimLog", "edit " .. vim.fn.stdpath("cache") .. "/log")
-alias("PackerLog", "edit " .. vim.fn.stdpath("cache") .. "/packer.nvim.log")
-alias("TelescopeLog", "edit " .. vim.fn.stdpath("cache") .. "/telescope.log")
+alias("NvimLog", "edit " .. vim.fn.stdpath "cache" .. "/log")
+alias("PackerLog", "edit " .. vim.fn.stdpath "cache" .. "/packer.nvim.log")
+alias("TelescopeLog", "edit " .. vim.fn.stdpath "cache" .. "/telescope.log")
 
 alias("NullLsLoad", "lua require 'configs.null_ls_nvim'")
 alias("StartPage", "Dashboard | TabLineTGL")
