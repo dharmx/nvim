@@ -21,7 +21,7 @@ local M = {
   },
   lsp_interop = {
     enable = false,
-    border = "rounded",
+    border = "single",
     peek_definition_code = maps.lsp_interop.peek_definition_code,
   },
 }

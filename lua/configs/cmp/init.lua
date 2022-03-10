@@ -66,13 +66,18 @@ local config = {
     format = cmp_item_format,
   },
 
+  experimental = {
+    native_menu = false,
+    ghost_text = true,
+  },
+
   completion = { completeopt = "menu,menuone,noselect" },
   sorting = {
     comparators = {
       cmp.config.compare.offset,
       cmp.config.compare.exact,
       cmp.config.compare.score,
-      require("cmp-under-comparator").under,
+      utils.cmp_under,
       cmp.config.compare.kind,
       cmp.config.compare.sort_text,
       cmp.config.compare.length,

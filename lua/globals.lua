@@ -4,6 +4,7 @@ opt_local = vim.opt_local
 g = vim.g
 o = vim.o
 wo = vim.wo
+bo = vim.bo
 env = vim.env
 
 cmd = vim.api.nvim_command
@@ -18,6 +19,7 @@ utils = require "utils"
 alias = utils.alias
 augroup = utils.augroup
 autocmd = utils.autocmd
+notify = utils.notify
 
 cmd "colorscheme nordic"
 colors = require("theming.utils.helpers").get_active_scheme()

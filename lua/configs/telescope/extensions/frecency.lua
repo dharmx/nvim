@@ -3,7 +3,7 @@ local workspaces = {
   ["project"] = "/home/maker/Dotfiles",
 }
 
-local database_path = vim.fn.stdpath "data" .. "/databases"
+local database_path = stdpath "data" .. "/databases"
 
 return {
   db_root = database_path,

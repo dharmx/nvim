@@ -9,9 +9,19 @@ end
 
 function M.dashboard_vimenter()
   if api.nvim_buf_get_name(0) == "" then
-    api.nvim_notify("Welcome to KrakenVim!", vim.log.levels.INFO, { icon = "", title = "KrakenVim" })
+    api.nvim_notify("Welcome to KrakenVim!", vim.log.levels.INFO, { icon = "", title = "KrakenVim" })
     cmd "Dashboard"
   end
+end
+
+function M.notify(options)
+  local forced = vim.tbl_extend("force", {
+    message = "This is a sample notification.",
+    icon = "",
+    title = "Notification",
+    level = vim.log.levels.INFO,
+  }, options or {})
+  api.nvim_notify(forced.message, forced.level, { title = forced.title, icon = forced.icon })
 end
 
 function M.delete_buffer()
@@ -86,6 +96,18 @@ function M.augroup(name, autocmds, clear)
     end
     autocmd.options.group = group
     append(autocmd.events, autocmd.command, autocmd.options)
+  end
+end
+
+function M.cmp_under(entry1, entry2)
+  local _, entry1_under = entry1.completion_item.label:find "^_+"
+  local _, entry2_under = entry2.completion_item.label:find "^_+"
+  entry1_under = entry1_under or 0
+  entry2_under = entry2_under or 0
+  if entry1_under > entry2_under then
+    return false
+  elseif entry1_under < entry2_under then
+    return true
   end
 end
 

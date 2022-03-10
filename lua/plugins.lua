@@ -1,6 +1,6 @@
 local install_path = stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-  vim.notify "packer.nvim doesn't exist. Cloning..."
+  notify "packer.nvim doesn't exist. Cloning..."
   bootstrap = system {
     "git",
     "clone",
@@ -152,16 +152,10 @@ use {
 
 use {
   "hrsh7th/nvim-cmp",
-  wants = "cmp-under-comparator",
   config = function()
     require "configs.cmp"
   end,
   event = "InsertEnter",
-}
-
-use {
-  "lukas-reineke/cmp-under-comparator",
-  module = "cmp-under-comparator",
 }
 
 use {

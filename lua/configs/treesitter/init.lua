@@ -37,11 +37,9 @@ local config = {
     "comment",
     "latex",
     "norg",
-    "norg_meta",
-    "norg_table",
   },
   sync_installed = false,
-  ignore_install = { "haskell" },
+  ignore_install = {},
   highlight = {
     enable = true,
     use_languagetree = true,

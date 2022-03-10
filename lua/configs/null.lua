@@ -105,6 +105,6 @@ null_ls.register(markdownlint)
 local config = { sources = sources, on_attach = nil }
 
 null_ls.setup(config)
-vim.api.nvim_notify("Loaded null-ls.nvim", vim.log.levels.INFO, { title = "null-ls.nvim", icon = "ﳠ" })
+notify { message = "Loaded null-ls.nvim", title = "null-ls.nvim", icon = "ﳠ" }
 
 -- vim:ft=lua

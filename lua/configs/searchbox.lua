@@ -27,8 +27,8 @@ local config = {
   },
   hooks = {
     before_mount = function(input)
-      vim.api.nvim_set_keymap("n", "/", ":SearchBoxIncSearch<CR>", { noremap = true })
-      vim.api.nvim_set_keymap("x", "/", ":SearchBoxIncSearch visual_mode=true<CR>", { noremap = true })
+      api.nvim_set_keymap("n", "/", ":SearchBoxIncSearch<CR>", { noremap = true })
+      api.nvim_set_keymap("x", "/", ":SearchBoxIncSearch visual_mode=true<CR>", { noremap = true })
     end,
     after_mount = function(input) end,
     on_done = function(value, search_type) end,

@@ -19,7 +19,7 @@ M.setup = function(client_name, buffer)
       " Workspaces",
     },
     ["<space>D"] = { "<CMD>lua vim.lsp.buf.type_definition()<CR>", " Type definition" },
-    ["<space>rn"] = { "<CMD>lua vim.lsp.buf.rename()<CR>", " Rename" },
+    ["<space>rn"] = { "<CMD>lua require('configs.lsp.rename').lsp_rename()<CR>", " Rename" },
     ["<space>ca"] = { "<CMD>lua vim.lsp.buf.code_action()<CR>", " Code action" },
     ["gr"] = { "<CMD>lua vim.lsp.buf.references()<CR>", " References" },
     ["<space>f"] = { "<CMD>lua vim.lsp.buf.formatting()<CR>", "ﯕ Format" },

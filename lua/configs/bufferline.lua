@@ -122,7 +122,7 @@ local config = {
       end
       return result
     end,
-  }
+  },
 }
 
 bufferline.setup(config)

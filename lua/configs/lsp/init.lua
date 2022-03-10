@@ -42,25 +42,29 @@ local function configure_installer()
       },
       keymaps = require("mappings").lsp_installer_nvim,
     },
-    install_root_dir = vim.fn.stdpath "data" .. "/lsp_servers",
+    install_root_dir = stdpath "data" .. "/servers",
     log_level = vim.log.levels.INFO,
     max_concurrent_installers = 5,
   }
 end
 
 local function ensure_servers()
+  local installed = {}
   for name, _ in pairs(servers) do
     local found, server = installer.get_server(name)
     if found and not server:is_installed() then
       print("Installing " .. name)
       server:install()
+      table.insert(installed, name)
     end
   end
-  api.nvim_notify(
-    "Installed " .. table.concat(vim.tbl_keys(servers), "\n"),
-    vim.log.levels.INFO,
-    { icon = " ", title = "nvim-lsp-installer" }
-  )
+  if #installed ~= 0 then
+    notify {
+      message = "Installed\n\t" .. table.concat(vim.tbl_keys(installed), "\n\t"),
+      icon = " ",
+      title = "nvim-lsp-installer",
+    }
+  end
 end
 
 local function configure_servers()
