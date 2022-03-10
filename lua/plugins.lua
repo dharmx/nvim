@@ -1,7 +1,7 @@
 local install_path = stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
-if fn.empty(vim.fn.glob(install_path)) > 0 then
+if fn.empty(fn.glob(install_path)) > 0 then
   vim.notify "packer.nvim doesn't exist. Cloning..."
-  bootstrap = vim.fn.system {
+  bootstrap = system {
     "git",
     "clone",
     "--depth",
@@ -546,6 +546,7 @@ use {
 
 use {
   "akinsho/bufferline.nvim",
+  branch = "feature/themeable-option",
   config = function()
     require "configs.bufferline"
   end,

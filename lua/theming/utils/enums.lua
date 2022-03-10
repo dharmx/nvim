@@ -22,6 +22,7 @@ E.base = {
 E.supports = {
   theme = {
     ["blankline"] = _prepare_plugin("blankline").get,
+    ["bufferline"] = _prepare_plugin("bufferline").get,
     ["gitsigns"] = _prepare_plugin("gitsigns").get,
     ["neogit"] = _prepare_plugin("neogit").get,
     ["hop"] = _prepare_plugin("hop").get,
