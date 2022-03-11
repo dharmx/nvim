@@ -86,7 +86,7 @@ local function nui_lsp_rename()
     default_value = curr_name,
     -- pass the `on_submit` callback function we wrote earlier
     on_submit = on_submit,
-    prompt = " ﯽ ",
+    prompt = " ﯽ ",
   })
 
   input:mount()

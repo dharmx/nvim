@@ -69,7 +69,7 @@ local config = {
   },
 }
 
-for _, plugin in ipairs { "buffers", "plugins", "others", "prompts" } do
+for _, plugin in ipairs { "buffers", "plugins", "others", "prompts", "lsp" } do
   local loaded = require("configs.whichkey." .. plugin)
   which_key.register(loaded.mappings, loaded.options)
 end

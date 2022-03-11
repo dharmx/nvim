@@ -14,7 +14,7 @@ system = fn.system
 api = vim.api
 lsp = vim.lsp
 
-hi = require("theming.utils.helpers").highlight
+hi = require("utils").highlight
 utils = require "utils"
 alias = utils.alias
 augroup = utils.augroup
@@ -22,6 +22,6 @@ autocmd = utils.autocmd
 notify = utils.notify
 
 cmd "colorscheme nordic"
-colors = require("theming.utils.helpers").get_active_scheme()
+colors = require("utils").get_active_scheme()
 
 -- vim:ft=lua

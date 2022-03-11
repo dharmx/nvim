@@ -4,6 +4,8 @@ if not present then
   return
 end
 
+-- if you want to wrap the previewer
+-- autocmd User TelescopePreviewerLoaded setlocal wrap
 local config = {
   extensions = require "configs.telescope.extensions",
   defaults = {

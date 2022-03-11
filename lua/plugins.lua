@@ -1,6 +1,6 @@
 local install_path = stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-  notify "packer.nvim doesn't exist. Cloning..."
+  notify { message = "packer.nvim doesn't exist. Cloning..." }
   bootstrap = system {
     "git",
     "clone",
@@ -16,6 +16,12 @@ local packer = require "packer"
 packer.init(require "configs.packer")
 local use = packer.use
 packer.reset()
+
+local compiled = packer.on_compile_done
+packer.on_compile_done = function()
+  compiled()
+  vim.notify('packer.compile: Complete', vim.log.levels.INFO, { title = 'packer.nvim' })
+end
 
 use {
   "jose-elias-alvarez/null-ls.nvim",
@@ -340,7 +346,7 @@ use {
   "folke/todo-comments.nvim",
   event = "BufRead",
   config = function()
-    require "configs.todocomments"
+    require "configs.todo"
   end,
 }
 

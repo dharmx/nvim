@@ -15,7 +15,6 @@ function M.format(err, result, ctx, _)
     fn.winrestview(view)
     if bufnr == api.nvim_get_current_buf() then
       cmd "noautocmd :update"
-
       -- Trigger post-formatting autocommand which can be used to refresh gitsigns
       cmd "silent doautocmd <nomodeline> User FormatterPost"
     end

@@ -1,7 +1,7 @@
 local M = {}
 
 M.setup = function(client_name, buffer)
-  local pretty = string.format(" %s", client_name)
+  local pretty_format = string.format(" %s", client_name)
   local mappings = {
     ["<space>e"] = { "<CMD>lua vim.diagnostic.open_float()<CR>", "ﭧ Diagnostics" },
     ["[d"] = { "<CMD>lua vim.diagnostic.goto_prev()<CR>", "ﭧ Previous errors" },
@@ -19,16 +19,16 @@ M.setup = function(client_name, buffer)
       " Workspaces",
     },
     ["<space>D"] = { "<CMD>lua vim.lsp.buf.type_definition()<CR>", " Type definition" },
-    ["<space>rn"] = { "<CMD>lua require('configs.lsp.rename').lsp_rename()<CR>", " Rename" },
+    ["<space>rn"] = { "<CMD>lua require('configs.lsp.handlers.rename').lsp_rename()<CR>", " Rename" },
     ["<space>ca"] = { "<CMD>lua vim.lsp.buf.code_action()<CR>", " Code action" },
     ["gr"] = { "<CMD>lua vim.lsp.buf.references()<CR>", " References" },
     ["<space>f"] = { "<CMD>lua vim.lsp.buf.formatting()<CR>", "ﯕ Format" },
   }
 
   for _, definiton in pairs(mappings) do
-    definiton[2] = definiton[2] .. " [" .. pretty .. "]"
+    definiton[2] = definiton[2] .. " [" .. pretty_format .. "]"
   end
-  mappings["name"] = pretty
+  mappings["name"] = pretty_format
 
   local options = {
     mode = "n",
