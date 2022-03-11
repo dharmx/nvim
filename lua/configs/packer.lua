@@ -1,8 +1,8 @@
-local util = require "packer.util"
+local packer_util = require "packer.util"
 
 local config = {
   ensure_dependencies = true,
-  compile_path = util.join_paths(stdpath "config", "lua", "_compiled.lua"),
+  compile_path = compile_path,
   auto_clean = true,
   compile_on_sync = true,
   max_jobs = 50,
@@ -47,7 +47,7 @@ config.display = {
       custom = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
     }
 
-    return util.float {
+    return packer_util.float {
       border = borders.single,
     }
   end,
