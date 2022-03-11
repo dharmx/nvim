@@ -9,12 +9,33 @@ end
 
 function M.dashboard_vimenter()
   if api.nvim_buf_get_name(0) == "" then
-    api.nvim_notify("Welcome to KrakenVim!", vim.log.levels.INFO, { icon = "", title = "KrakenVim" })
+    api.nvim_notify([[         ⠀⢀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀   ⠀⠀⠀⣠⣾⠿⠛⠛⠛⠿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+⠀ ⠀⠀⠀  ⣼⡿⠁⠀⠀⠀⠀⠀⠈⢿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+ ⢀⣤⣶⠿⠿⠀⣿⡇⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠿⠿⣶⣄⠀⠀⠀⠀⠀WELCOME  TO KRAKENVIM 
+⢠⣾⡟⠁⠀⣀⠀⣿⡇⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⣀⠀⠈⢻⣷⡄⠀⠀⠀━━━━━━━━━━━━━━━━━━━━━
+⢸⣿⠀⣴⣿⠛⠀⣿⡇⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠛⣿⣆⠀⣿⡇⠀⠀⠀
+⠸⣿⣆⣿⡇⠀⠀⣿⡇⠸⡿⠂⠀⠐⠿⠇⢸⣿⠀⠀⢸⣿⣼⡿⠃⠀⠀⠀Press the <Space> key
+ ⠈⠻⢿⣿⣶⣤⣿⣷⣤⣤⣤⣤⣤⣤⣤⣾⣿⣤⣶⣿⡿⠟⠁⠀⠀⠀⠀   to get started.
+⠀ ⠀⢀⣤⣬⣭⣭⡍⢹⣿⢹⣿⡏⣿⡏⢩⣭⣭⣥⣤⡀⠀⠀⠀⠀⠀⠀
+ ⢀⣤⣬⣭⣭⡅⣿⡇⢸⣿⢸⣿⡇⣿⡇⢸⣿⢨⣤⣤⣤⣤⡀⠀⠀⠀⠀We hope you enjoy your
+ ⠉⠉⠉⠉⣿⡇⣿⡇⢸⣿⢸⣿⡇⣿⡇⢸⣿⢸⣿⠉⠉⠉⠉⠀⠀⠀⠀        stay.
+   ⠀⠀⣿⡇⣿⣇⢸⣿⢸⣿⡇⣿⡇⣸⣿⢸⣿⠀⠀⠀⠀⠀⠀⠀          
+⠀ ⠀  ⢿⣿⣜⠿⠿⢋⣾⣿⣷⡙⠿⠿⣣⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀   ⠀⠙⠻⠿⠿⠟⠋⠀⠙⠻⠿⠿⠟⠋]], vim.log.levels.INFO, { title = "KrakenVim", icon = " " })
     cmd "Dashboard"
   end
 end
 
 function M.notify(options)
+  if type(options) == "string" then
+    api.nvim_notify(options, vim.log.levels.INFO, {
+      icon = "",
+      title = "Notification",
+    })
+    return
+  end
+
   local forced = vim.tbl_extend("force", {
     message = "This is a sample notification.",
     icon = "",
@@ -110,7 +131,6 @@ function M.cmp_under(entry1, entry2)
     return true
   end
 end
-
 
 function M.get_active_scheme()
   return require("theming.schemes." .. colorscheme)

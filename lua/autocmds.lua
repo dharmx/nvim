@@ -114,6 +114,36 @@ local augroups = {
       end,
     },
   },
+  ["NotifyOnPackerOperation"] = {
+    {
+      events = "User",
+      command = function()
+        notify {
+          message = "Operation complete!",
+          title = "packer.nvim",
+          icon = "",
+        }
+      end,
+      options = { patterns = "PackerComplete" }
+    },
+    {
+      events = "User",
+      command = function()
+        notify {
+          message = "Finished compiling!",
+          title = "packer.nvim",
+          icon = "",
+        }
+      end,
+      options = { patterns = "PackerCompileDone" }
+    }
+  },
+  ["PersistentFileEditPosition"] = {
+    {
+      events = "BufReadPost",
+      command = [[if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]
+    }
+  }
 }
 
 for _, name in
@@ -122,6 +152,7 @@ for _, name in
     "OpenDashboardOnBlankBuffer",
     "AutoPlugSpecCompileOnChange",
     "YankFeedback",
+    "NotifyOnPackerOperation",
   }
 do
   augroup(name, augroups[name])

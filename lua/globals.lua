@@ -1,3 +1,9 @@
+fn = vim.fn
+stdpath = fn.stdpath
+
+install_path = stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
+compile_path = stdpath "config" .. "/lua/_compiled.lua"
+
 opt = vim.opt
 opt_local = vim.opt_local
 
@@ -8,8 +14,6 @@ bo = vim.bo
 env = vim.env
 
 cmd = vim.api.nvim_command
-fn = vim.fn
-stdpath = fn.stdpath
 system = fn.system
 api = vim.api
 lsp = vim.lsp

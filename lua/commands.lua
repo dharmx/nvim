@@ -15,14 +15,17 @@ alias("NumberColumnTGL", "set nu!")
 alias("RelativeNumberColumnTGL", "set rnu!")
 alias("SpellingTGL", "set spell!")
 
+cmd "command! -nargs=+ -complete=customlist,v:lua.require'packer.snapshot'.completion.create PackerSnapshot  lua require('packer').snapshot(<f-args>)"
+cmd "command! -nargs=+ -complete=customlist,v:lua.require'packer.snapshot'.completion.rollback PackerSnapshotRollback  lua require('packer').rollback(<f-args>)"
+cmd "command! -nargs=+ -complete=customlist,v:lua.require'packer.snapshot'.completion.snapshot PackerSnapshotDelete lua require('packer.snapshot').delete(<f-args>)"
 cmd "command! -nargs=* -complete=customlist,v:lua.require'packer'.plugin_complete  PackerInstall lua require('packer').install(<f-args>)"
 cmd "command! -nargs=* -complete=customlist,v:lua.require'packer'.plugin_complete PackerUpdate lua require('packer').update(<f-args>)"
 cmd "command! -nargs=* -complete=customlist,v:lua.require'packer'.plugin_complete PackerSync lua require('packer').sync(<f-args>)"
+cmd "command! -bang -nargs=+ -complete=customlist,v:lua.require'packer'.loader_complete PackerLoad lua require('packer').loader(<f-args>, '<bang>')"
 cmd "command! PackerClean lua require('packer').clean()"
 cmd "command! PackerStatus lua require('packer').status()"
 cmd "command! PackerProfile lua require('packer').profile_output()"
 cmd "command! PackerCompile lua require('packer').compile()"
-cmd "command! -bang -nargs=+ -complete=customlist,v:lua.require'packer'.loader_complete PackerLoad lua require('packer').loader(<f-args>, '<bang>')"
 
 hi("YankFeed", { foreground = colors.rainbow.cobalt, decoration = "bold" })
 hi("Hidden", { foreground = colors.common.base00, background = colors.common.base00 })

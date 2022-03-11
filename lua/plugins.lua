@@ -1,4 +1,3 @@
-local install_path = stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
   notify { message = "packer.nvim doesn't exist. Cloning..." }
   bootstrap = system {
@@ -9,6 +8,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
     "https://github.com/wbthomason/packer.nvim",
     install_path,
   }
+  cmd "packadd packer.nvim" 
+end
+
+if fn.empty(fn.glob(compile_path)) > 0 then
+  notify "Couldn't find plugin specifications. Syncing now..."
+  bootstrap = true
   cmd "packadd packer.nvim"
 end
 
@@ -16,12 +21,6 @@ local packer = require "packer"
 packer.init(require "configs.packer")
 local use = packer.use
 packer.reset()
-
-local compiled = packer.on_compile_done
-packer.on_compile_done = function()
-  compiled()
-  vim.notify('packer.compile: Complete', vim.log.levels.INFO, { title = 'packer.nvim' })
-end
 
 use {
   "jose-elias-alvarez/null-ls.nvim",
@@ -76,10 +75,6 @@ use {
 use {
   "kosayoda/nvim-lightbulb",
   after = "nvim-lsp-installer",
-  config = function()
-    vim.api.nvim_command "autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()"
-  end,
-  disable = true,
 }
 
 use {
@@ -610,9 +605,7 @@ use {
 
 use { "nvim-lua/plenary.nvim", opt = true }
 
-use { "nvim-lua/popup.nvim" }
-
-use { "nathom/filetype.nvim" }
+use { "nvim-lua/popup.nvim", opt = true }
 
 use { "luukvbaal/stabilize.nvim", event = { "CmdlineEnter", "InsertEnter" } }
 
@@ -630,11 +623,12 @@ use { "tami5/sqlite.lua", module = "sqlite" }
 use {
   "dstein64/vim-startuptime",
   cmd = "StartupTime",
-  disable = true,
+  disable = false,
 }
 
 use {
   "gyim/vim-boxdraw",
+  event = "BufRead",
 }
 
 use {
@@ -735,7 +729,7 @@ use {
 
 use {
   "sudormrfbin/cheatsheet.nvim",
-  requires = { "popup.nvim", "plenary.nvim" },
+  wants = { "popup.nvim", "plenary.nvim" },
   config = function()
     require "configs.telescope.extensions.cheatsheet"
     require("telescope").load_extension "cheatsheet"
@@ -866,7 +860,6 @@ use {
 use {
   "phaazon/hop.nvim",
   cmd = { "HopWord", "HopLine", "HopChar1", "HopChar2", "HopPattern" },
-  as = "hop",
   config = function()
     require "configs.hop"
   end,

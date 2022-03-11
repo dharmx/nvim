@@ -19,14 +19,10 @@ opt.autoindent = true
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
-opt.wildignore = {
-  "*/cache/*",
-  "*/tmp/*",
-}
+opt.wildignore = { "*/cache/*", "*/tmp/*" }
 
 opt.errorformat = "%f|%l col %c|%m"
 opt.diffopt:append { "algorithm:patience" }
-
 opt.fillchars = {
   eob = " ",
   vert = "▎",
@@ -62,7 +58,6 @@ opt.spellsuggest = "best,9"
 
 opt.scrolloff = 8
 wo.scrolloff = 8
-
 opt.sidescrolloff = 8
 opt.backup = false
 
@@ -91,6 +86,11 @@ opt.magic = true
 opt.icon = true
 opt.omnifunc = "syntaxcomplete#Complete"
 
+--[[
+-- The plugin files always get sourced, regardless of the loaded value, 
+-- but at the top of each plugin there's a check for loaded and if this
+-- is the case they return immediately.
+]]--
 for _, plugin in
   ipairs {
     "2html_plugin",
@@ -113,17 +113,12 @@ for _, plugin in
     "tutor_mode_plugin",
     "fzf",
     "spellfile_plugin",
-    "filetype",
-    "ftoff",
-    "ftplugin",
-    "ftplugof",
   }
 do
   g["loaded_" .. plugin] = 1
 end
 
 g.mapleader = " "
-g.did_load_filetypes = 1
 
 g["zoom#statustext"] = "Z"
 
@@ -143,6 +138,8 @@ g.markdown_fenced_languages = {
 
 g.python3_host_prog = "python3"
 g.vim_json_warnings = false
+g.do_filetype_lua = 1
+g.did_load_filetypes = 0
 
 o.background = "dark"
 

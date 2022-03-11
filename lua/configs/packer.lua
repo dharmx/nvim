@@ -12,7 +12,7 @@ local config = {
   default_url_format = "https://github.com/%s.git",
   auto_reload_compiled = true,
   luarocks = { python_cmd = "python" },
-  log = { level = "info" },
+  log = { level = "warn" },
   profile = { enable = true, threshold = 1 },
 }
 

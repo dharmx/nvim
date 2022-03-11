@@ -9,14 +9,14 @@ local function nui_lsp_rename()
   local function on_submit(new_name)
     if not new_name or #new_name == 0 then
       notify {
-        message = "Rename cancelled: No new name is provided!",
+        message = "Cancelled: New name is empty!",
         icon = "ﰸ",
         title = " LSP",
       }
       return
     elseif curr_name == new_name then
       notify {
-        message = "Rename cancelled: New name and current name are the same!",
+        message = "Cancelled: New and current names are the same!",
         icon = "",
         title = " LSP",
       }
@@ -42,7 +42,7 @@ local function nui_lsp_rename()
       local total_files = vim.tbl_count(result.changes)
       print(string.format("Changed %s file%s. To save them run ':wa'", total_files, total_files > 1 and "s" or ""))
       notify {
-        message = "Renamed!",
+        message = "Renamed " .. new_name .. " to " .. curr_name .. ".",
         icon = "",
         title = " LSP",
       }
