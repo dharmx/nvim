@@ -4,7 +4,7 @@
 README.md
 LICENSE.txt
 commands.lua
-autocmds.lua
+lua/autocmds.lua
 abbrevs.lua
 lualine_nvim.lua
 

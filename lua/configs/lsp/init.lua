@@ -24,7 +24,7 @@ local servers = {
 
 local function on_attach(client, buffer)
   require("configs.lsp.mappings").setup(client.name, buffer)
-  require("configs.lsp.autocmds").setup(client)
+  require("configs.lsp.autocmds").setup(client, buffer)
   require("configs.lsp.commands").setup()
   require("configs.lsp.icons").setup()
 

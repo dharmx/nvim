@@ -8,7 +8,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
     "https://github.com/wbthomason/packer.nvim",
     install_path,
   }
-  cmd "packadd packer.nvim" 
+  cmd "packadd packer.nvim"
 end
 
 if fn.empty(fn.glob(compile_path)) > 0 then
@@ -74,7 +74,10 @@ use {
 
 use {
   "kosayoda/nvim-lightbulb",
-  after = "nvim-lsp-installer",
+  module = "nvim-lightbulb",
+  config = function()
+    require "configs.lsp.handlers.lightbulb"
+  end,
 }
 
 use {
@@ -887,7 +890,7 @@ use {
 use {
   "max397574/better-escape.nvim",
   config = function()
-    require "configs.betteresc"
+    require "configs.escape"
   end,
   keys = require("mappings").better_escape_nvim,
   disable = true,

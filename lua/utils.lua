@@ -9,7 +9,8 @@ end
 
 function M.dashboard_vimenter()
   if api.nvim_buf_get_name(0) == "" then
-    api.nvim_notify([[         ⠀⢀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    api.nvim_notify(
+      [[         ⠀⢀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀   ⠀⠀⠀⣠⣾⠿⠛⠛⠛⠿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
 ⠀ ⠀⠀⠀  ⣼⡿⠁⠀⠀⠀⠀⠀⠈⢿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
  ⢀⣤⣶⠿⠿⠀⣿⡇⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠿⠿⣶⣄⠀⠀⠀⠀⠀WELCOME  TO KRAKENVIM 
@@ -22,7 +23,10 @@ function M.dashboard_vimenter()
  ⠉⠉⠉⠉⣿⡇⣿⡇⢸⣿⢸⣿⡇⣿⡇⢸⣿⢸⣿⠉⠉⠉⠉⠀⠀⠀⠀        stay.
    ⠀⠀⣿⡇⣿⣇⢸⣿⢸⣿⡇⣿⡇⣸⣿⢸⣿⠀⠀⠀⠀⠀⠀⠀          
 ⠀ ⠀  ⢿⣿⣜⠿⠿⢋⣾⣿⣷⡙⠿⠿⣣⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀   ⠀⠙⠻⠿⠿⠟⠋⠀⠙⠻⠿⠿⠟⠋]], vim.log.levels.INFO, { title = "KrakenVim", icon = " " })
+⠀⠀   ⠀⠙⠻⠿⠿⠟⠋⠀⠙⠻⠿⠿⠟⠋]],
+      vim.log.levels.INFO,
+      { title = "KrakenVim", icon = " " }
+    )
     cmd "Dashboard"
   end
 end

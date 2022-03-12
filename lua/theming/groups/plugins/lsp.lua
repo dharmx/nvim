@@ -34,9 +34,9 @@ function L.get(syntax)
       decoration = "undercurl",
       special = syntax.color19,
     },
-    LspReferenceText = { foreground = syntax.color12 },
-    LspReferenceRead = { foreground = syntax.color12 },
-    LspReferenceWrite = { foreground = syntax.color12 },
+    LspReferenceText = { foreground = syntax.color12, background = syntax.color14 },
+    LspReferenceRead = { foreground = syntax.color16, background = syntax.color14 },
+    LspReferenceWrite = { foreground = syntax.color06, background = syntax.color14 },
 
     DiagnosticError = { link = "LspDiagnosticsDefaultError" },
     DiagnosticWarn = { link = "LspDiagnosticsDefaultWarning" },

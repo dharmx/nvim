@@ -3,6 +3,7 @@ local S = {}
 function S.get(syntax)
   return {
     luaBuiltIn = { link = "Keyword" },
+    luaDocTag = { foreground = syntax.color15, decoration = "bold" },
     luaFuncTable = { foreground = syntax.color06, decoration = "bold" },
     luaCond = { link = "Conditional" },
     luaIn = { link = "Keyword" },

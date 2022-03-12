@@ -1,13 +1,26 @@
 return {
-  setup = function(client)
+  setup = function(client, buffer)
     if client and client.resolved_capabilities.document_highlight then
-      cmd "augroup LspDocumentHighlight"
-      cmd "  autocmd! * <buffer>"
-      cmd "  autocmd! CursorHold <buffer> lua vim.lsp.buf.document_highlight()"
-      cmd "  autocmd! CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()"
-      cmd "  autocmd! CursorMoved <buffer> lua vim.lsp.buf.clear_references()"
-      cmd "  autocmd! CursorHold,CursorHoldI <buffer> lua require'nvim-lightbulb'.update_lightbulb()"
-      cmd "augroup END"
+      local autocmds = {
+        {
+          events = { "CursorHold", "CursorHoldI" },
+          command = lsp.buf.document_highlight,
+          options = { buffer = buffer },
+        },
+        {
+          events = "CursorMoved",
+          command = lsp.buf.clear_references,
+          options = { buffer = buffer },
+        },
+        {
+          events = { "CursorHold", "CursorHoldI" },
+          command = function()
+            require("nvim-lightbulb").update_lightbulb()
+          end,
+          options = { buffer = buffer },
+        },
+      }
+      augroup("LspDocumentHighlight", autocmds)
     end
   end,
 }
