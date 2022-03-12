@@ -7,25 +7,32 @@ function M.lsp_signdef(group, icon, text_group)
   })
 end
 
+function M.excallback(callback, ...)
+  callback(...)
+end
+
+function M.abbrev(buffer, command, expression)
+  local formatted = string.format("cnoreabbrev %s %s %s", expression and "<expr>" or "", buffer, command)
+  cmd(formatted)
+end
+
 function M.dashboard_vimenter()
   if api.nvim_buf_get_name(0) == "" then
     api.nvim_notify(
-      [[         ⠀⢀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀   ⠀⠀⠀⣠⣾⠿⠛⠛⠛⠿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
-⠀ ⠀⠀⠀  ⣼⡿⠁⠀⠀⠀⠀⠀⠈⢿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
- ⢀⣤⣶⠿⠿⠀⣿⡇⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠿⠿⣶⣄⠀⠀⠀⠀⠀WELCOME  TO KRAKENVIM 
-⢠⣾⡟⠁⠀⣀⠀⣿⡇⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⣀⠀⠈⢻⣷⡄⠀⠀⠀━━━━━━━━━━━━━━━━━━━━━
-⢸⣿⠀⣴⣿⠛⠀⣿⡇⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠛⣿⣆⠀⣿⡇⠀⠀⠀
-⠸⣿⣆⣿⡇⠀⠀⣿⡇⠸⡿⠂⠀⠐⠿⠇⢸⣿⠀⠀⢸⣿⣼⡿⠃⠀⠀⠀Press the <Space> key
- ⠈⠻⢿⣿⣶⣤⣿⣷⣤⣤⣤⣤⣤⣤⣤⣾⣿⣤⣶⣿⡿⠟⠁⠀⠀⠀⠀   to get started.
-⠀ ⠀⢀⣤⣬⣭⣭⡍⢹⣿⢹⣿⡏⣿⡏⢩⣭⣭⣥⣤⡀⠀⠀⠀⠀⠀⠀
- ⢀⣤⣬⣭⣭⡅⣿⡇⢸⣿⢸⣿⡇⣿⡇⢸⣿⢨⣤⣤⣤⣤⡀⠀⠀⠀⠀We hope you enjoy your
- ⠉⠉⠉⠉⣿⡇⣿⡇⢸⣿⢸⣿⡇⣿⡇⢸⣿⢸⣿⠉⠉⠉⠉⠀⠀⠀⠀        stay.
-   ⠀⠀⣿⡇⣿⣇⢸⣿⢸⣿⡇⣿⡇⣸⣿⢸⣿⠀⠀⠀⠀⠀⠀⠀          
-⠀ ⠀  ⢿⣿⣜⠿⠿⢋⣾⣿⣷⡙⠿⠿⣣⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀   ⠀⠙⠻⠿⠿⠟⠋⠀⠙⠻⠿⠿⠟⠋]],
+      [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀  ⢀⠠⠀⠀⠀⠉⠈⠁⠀⠂⠠⠀⣴⣾⣿⣦⡀⠀⠀
+⠀⠀⠀⠀⠀  ⠂⠁⢀⣠⣴⣶⣶⣶⣶⣶⣤⣀⠘⣿⣿⣿⣿⠃⠀      ﳁ                    ⠀⠀⠀    
+⠀⠀⠀  ⡀⠁⢀⣴⣿⣿⣿⣿⣿⣿⡿⠋⠉⠙⢷⣌⠉⠉⡁⠀⠀   Welcome to KrakenVim.             
+⠀⠀  ⠠⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⡅⠀⠀⠀⢸⣿⣆⠀⠀⡀⠀   Press <Space> to get started.     
+⠀⠀  ⠆⠀⢸⣿⣿⢹⣿⣿⣿⣿⣿⣿⣦⣤⣴⣿⣿⣿⠀⠀⠆⠀   Enjoy your stay.                  
+⠀⠀  ⠃⠀⢸⣿⣿⢸⣿⣿⣿⢸⣿⢸⣯⡴⠶⢹⣿⣿⠀⠀⠆⠀                                     
+⠀⠀  ⠐⠀⠀⢻⣿⣘⣛⣛⣿⣘⣟⣸⣇⣺⣛⣸⣿⠇⠀⠐⠀⠀                Powered By  Lua     
+⠀⠀  ⠀⠡⡀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠁⠀⡠⠁⠀⠀                                  
+⠀⠀⠀  ⠀⠀⠂⡀⠀⠉⠛⠻⠿⠿⠿⠛⠋⠁⠀⡀⠂⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀  ⠀⠀⠐⠂⠤⠀⢀⢀⠀⠠⠄⠒
+    ]],
       vim.log.levels.INFO,
-      { title = "KrakenVim", icon = " " }
+      { title = "KrakenVim ━━ Welcome!", icon = " " }
     )
     cmd "Dashboard"
   end
@@ -72,23 +79,46 @@ function M.alias(alias, command, options)
   api.nvim_add_user_command(alias, command, options)
 end
 
-function M.map(key, command, options)
+function M.map(description, trigger, target, options)
   if not options then
     options = {}
   end
-  require("which-key").register({
-    name = options.heading or "בּ None",
-    [key] = {
-      "<CMD>" .. command .. "<CR>",
-      options.name or "בּ None",
-    },
-  }, {
-    mode = options.mode or "n",
-    buffer = options.buffer,
-    silent = options.silent or true,
-    noremap = options.noremap or true,
-    nowait = options.nowait or false,
-  })
+  local defaults = {
+    mode = "n",
+    silent = true,
+    noremap = true,
+    prefix = nil,
+    buffer = nil,
+    nowait = false,
+  }
+  local mapping = {
+    [trigger] = { "<CMD>" .. target .. "<CR>", description },
+  }
+  require("which-key").register(mapping, vim.tbl_extend("force", defaults, options))
+end
+
+function M.nmap(description, trigger, target, options)
+  if not options then
+    options = {}
+  end
+  options.mode = "n"
+  M.map(description, trigger, target, options)
+end
+
+function M.imap(description, trigger, target, options)
+  if not options then
+    options = {}
+  end
+  options.mode = "i"
+  M.map(description, trigger, target, options)
+end
+
+function M.vmap(description, trigger, target, options)
+  if not options then
+    options = {}
+  end
+  options.mode = "v"
+  M.map(description, trigger, target, options)
 end
 
 function M.autocmd(events, command, options)
@@ -217,6 +247,7 @@ function M.apply(options)
 
   base.terminal(loaded_theme)
   set(base.ui(loaded_theme))
+  set(base.custom(loaded_theme))
 end
 
 return M

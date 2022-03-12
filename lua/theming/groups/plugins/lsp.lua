@@ -26,7 +26,7 @@ function L.get(syntax)
       decoration = "undercurl",
       special = syntax.color19,
     },
-    LspDiagnosticsDefaultHint = { foreground = syntax.color10 },
+    LspDiagnosticsDefaultHint = { foreground = syntax.color09 },
     LspDiagnosticsSignHint = { foreground = syntax.color10 },
     LspDiagnosticsFloatingHint = { foreground = syntax.color10 },
     LspDiagnosticsVirtualTextHint = { foreground = syntax.color10 },

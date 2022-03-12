@@ -13,6 +13,9 @@ wo = vim.wo
 bo = vim.bo
 env = vim.env
 
+schedule = vim.schedule
+schedule_wrap = vim.schedule_wrap
+
 cmd = vim.api.nvim_command
 system = fn.system
 api = vim.api
@@ -20,9 +23,17 @@ lsp = vim.lsp
 
 hi = require("utils").highlight
 utils = require "utils"
+
 alias = utils.alias
+abbrev = utils.abbrev
 augroup = utils.augroup
 autocmd = utils.autocmd
+
+imap = utils.imap
+vmap = utils.vmap
+nmap = utils.nmap
+
+excallback = utils.excallback
 notify = utils.notify
 
 cmd "colorscheme nordic"

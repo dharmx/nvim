@@ -33,6 +33,7 @@ M.mappings = {
     ["m"] = { "<CMD>lua require('reach').marks(require('configs.reach').marks)<CR>", " Marks" },
     ["t"] = { "<CMD>lua require('reach').tabpages(require('configs.reach').tabpages)<CR>", "ﯻ Tabpages" },
   },
+  ["<leader>Q"] = { "<CMD>qa!<CR>", " Quit neovim" },
 }
 
 M.options = {

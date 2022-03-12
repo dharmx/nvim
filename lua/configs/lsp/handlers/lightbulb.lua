@@ -28,7 +28,7 @@ local config = {
     -- - anchor     corner of float to place at the cursor (NW, NE, SW, SE)
     -- - winblend   transparency of the window (0-100)
     enabled = true,
-    text = " Code actions",
+    text = "ﯦ Code actions available",
     win_opts = {
       border = "single",
     },
@@ -36,7 +36,7 @@ local config = {
   virtual_text = {
     enabled = true,
     -- Text to show at virtual text
-    text = "",
+    text = " ﮠ",
     -- highlight mode to use for virtual text (replace, combine, blend), see :help nvim_buf_set_extmark() for reference
     hl_mode = "replace",
   },
@@ -45,9 +45,11 @@ local config = {
     -- Text to provide when code actions are available
     text = " ",
     -- Text to provide when no actions are available
-    text_unavailable = "",
+    text_unavailable = "ﯧ No actions",
   },
 }
+
+utils.lsp_signdef("LightBulbSign", "", "LightBulbSign")
 
 lightbulb.setup(config)
 

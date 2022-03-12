@@ -17,6 +17,7 @@ E.base = {
   },
   ["terminal"] = require("theming.groups.terminal").set,
   ["ui"] = require("theming.groups.ui").get,
+  ["custom"] = require("theming.groups.custom").get,
 }
 
 E.supports = {

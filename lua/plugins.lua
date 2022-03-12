@@ -8,6 +8,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
     "https://github.com/wbthomason/packer.nvim",
     install_path,
   }
+
   cmd "packadd packer.nvim"
 end
 
@@ -319,7 +320,15 @@ use {
   disable = true,
 }
 
-use { "sheerun/vim-polyglot" }
+use {
+  "sheerun/vim-polyglot",
+  event = {
+    "CursorMoved",
+    "InsertEnter",
+    "CmdlineEnter",
+  },
+  disable = true,
+}
 
 use {
   "TimUntersberger/neogit",
@@ -678,7 +687,7 @@ use {
 
 use {
   "nvim-telescope/telescope-arecibo.nvim",
-  rocks = { "openssl", "lua-http-parser" },
+  -- rocks = { "openssl", "lua-http-parser" },
   after = "telescope.nvim",
   config = function()
     require("telescope").load_extension "arecibo"

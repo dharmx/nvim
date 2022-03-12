@@ -1,7 +1,7 @@
 return {
   source = {
     nvim_lua = " LUA",
-    nvim_lsp = " LSP",
+    nvim_lsp = " LSP",
     tags = " TAG",
     zsh = " ZSH",
     fish = " FIS",
