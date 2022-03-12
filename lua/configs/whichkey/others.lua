@@ -27,6 +27,12 @@ M.mappings = {
     ["d"] = { "<CMD>SpotifyDevices<CR>", " Devices" },
     ["b"] = { "<Plug>(SpotifyPrev)", "ﭢ Previous" },
   },
+  ["<leader>r"] = {
+    ["name"] = " Reach",
+    ["b"] = { "<CMD>lua require('reach').buffers(require('configs.reach').buffers)<CR>", "ﴵ Buffers" },
+    ["m"] = { "<CMD>lua require('reach').marks(require('configs.reach').marks)<CR>", " Marks" },
+    ["t"] = { "<CMD>lua require('reach').tabpages(require('configs.reach').tabpages)<CR>", "ﯻ Tabpages" },
+  },
 }
 
 M.options = {

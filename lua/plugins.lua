@@ -936,6 +936,15 @@ use {
 }
 
 use {
+  "toppair/reach.nvim",
+  config = function()
+    require("configs.reach").setup()
+  end,
+  module = "reach",
+  disable = true,
+}
+
+use {
   "winston0410/cmd-parser.nvim",
   event = "CmdlineEnter",
   disable = true,
