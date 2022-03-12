@@ -1,11 +1,11 @@
 _ = require "globals"
 _ = require "settings"
 
-if fn.empty(fn.glob(install_path)) > 0 then
+if not exists(install_path) then
   _ = require "plugins"
 end
 
-if fn.empty(fn.glob(compile_path)) > 0 then
+if not exists(compile_path) then
   _ = require "plugins"
 end
 

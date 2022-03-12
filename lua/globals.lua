@@ -34,6 +34,7 @@ vmap = utils.vmap
 nmap = utils.nmap
 
 excallback = utils.excallback
+exists = utils.exists
 notify = utils.notify
 
 cmd "colorscheme nordic"

@@ -1,5 +1,12 @@
 local M = {}
 
+function M.exists(path)
+  if fn.empty(fn.glob(path)) > 0 then
+    return false
+  end
+  return true
+end
+
 function M.lsp_signdef(group, icon, text_group)
   fn.sign_define(group, {
     text = icon,
