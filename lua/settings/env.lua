@@ -13,6 +13,9 @@ wo = vim.wo
 bo = vim.bo
 env = vim.env
 
+set_map = vim.keymap.set
+rmv_map = vim.keymap.del
+
 schedule = vim.schedule
 schedule_wrap = vim.schedule_wrap
 
@@ -29,6 +32,7 @@ abbrev = utils.abbrev
 augroup = utils.augroup
 autocmd = utils.autocmd
 
+xmap = utils.xmap
 imap = utils.imap
 vmap = utils.vmap
 nmap = utils.nmap

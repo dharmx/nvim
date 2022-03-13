@@ -49,7 +49,7 @@ local config = {
   },
 }
 
-utils.lsp_signdef("LightBulbSign", "", "LightBulbSign")
+utils.lsp_signdef("LightBulbSign", " ", "LightBulbSign")
 
 lightbulb.setup(config)
 

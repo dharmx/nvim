@@ -9,7 +9,7 @@ M["LspLog"] = "edit " .. lsp.get_log_path()
 M["NvimLog"] = "edit " .. stdpath "cache" .. "/log"
 M["PackerLog"] = "edit " .. stdpath "cache" .. "/packer.nvim.log"
 M["TelescopeLog"] = "edit " .. stdpath "cache" .. "/telescope.log"
-M["NullLsLoad"] = "lua require 'configs.null'"
+M["TSStart"] = "lua require 'configs.treesitter'"
 M["StartPage"] = "Dashboard | TabLineTGL"
 M["TabLineTGL"] = "if &stal == 2 | set stal=0 | else | set stal=2 | endif"
 M["StatusLineTGL"] = "if &ls == 2 | set ls=0 | else | set ls=2 | endif"

@@ -62,14 +62,6 @@ local sources = {
   diags.pylint.with { method = null_ls.methods.DIAGNOSTICS_ON_SAVE },
 }
 
--- Autosave function
-local on_attach = function(client)
-  if client.resolved_capabilities.document_formatting then
-    cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
-  end
-end
-
-local null_ls = require "null-ls"
 local helpers = require "null-ls.helpers"
 
 local markdownlint = {
@@ -102,9 +94,11 @@ local markdownlint = {
 
 null_ls.register(markdownlint)
 
-local config = { sources = sources, on_attach = nil }
+local config = { sources = sources }
 
 null_ls.setup(config)
-notify { message = "Loaded null-ls.nvim", title = "null-ls.nvim", icon = "ﳠ" }
+
+g._autosave = false
+alias("ToggleAutoFormat", schedule_wrap(utils.autosave))
 
 -- vim:ft=lua

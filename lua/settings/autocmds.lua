@@ -15,7 +15,7 @@ M["AutoPlugSpecCompileOnChange"] = {
     command = function()
       require("packer").compile()
     end,
-    options = { patterns = "*/lua/plugins.lua" },
+    options = { patterns = "*/lua/plugins/*.lua" },
   },
 }
 
@@ -43,10 +43,6 @@ M["NativeAdjustments"] = {
     command = function()
       opt_local.formatoptions:remove "cro"
     end,
-  },
-  {
-    events = "BufReadPost",
-    command = "let &l:modifiable = !&readonly",
   },
 }
 

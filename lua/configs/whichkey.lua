@@ -69,10 +69,12 @@ local config = {
   },
 }
 
-for _, plugin in ipairs { "buffers", "plugins", "others", "prompts", "lsp" } do
-  local loaded = require("configs.whichkey." .. plugin)
-  which_key.register(loaded.mappings, loaded.options)
-end
+schedule(function()
+  for _, plugin in ipairs { "mappings", "buffers", "plugins", "others", "prompts", "lsp" } do
+    local loaded = require("mappings.presets." .. plugin)
+    which_key.register(loaded.mappings, loaded.options)
+  end
+end)
 
 which_key.setup(config)
 

@@ -1,4 +1,6 @@
-local P = { enable = false, disable = { "ruby" } }
+local P = { enable = true, disable = { "ruby" } }
+
+g.loaded_matchit = 1
 
 return P
 

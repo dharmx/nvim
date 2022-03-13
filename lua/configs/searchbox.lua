@@ -8,7 +8,7 @@ local config = {
   popup = {
     relative = "win",
     position = {
-      row = "3%",
+      row = "4%",
       col = "95%",
     },
     size = "20%",
@@ -16,7 +16,7 @@ local config = {
       style = "single",
       highlight = "FloatBorder",
       text = {
-        bottom = "▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃",
+        bottom = "",
         bottom_align = "center",
         top = "",
       },
@@ -24,14 +24,6 @@ local config = {
     win_options = {
       winhighlight = "TabLine:Boolean",
     },
-  },
-  hooks = {
-    before_mount = function(input)
-      api.nvim_set_keymap("n", "/", ":SearchBoxIncSearch<CR>", { noremap = true })
-      api.nvim_set_keymap("x", "/", ":SearchBoxIncSearch visual_mode=true<CR>", { noremap = true })
-    end,
-    after_mount = function(input) end,
-    on_done = function(value, search_type) end,
   },
 }
 

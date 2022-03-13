@@ -1,5 +1,37 @@
 local M = {}
 
+function M.autosave()
+  local active_clients = lsp.buf_get_clients()
+  for _, client in ipairs(active_clients) do
+    if client.resolved_capabilities.document_formatting then
+      if g._autosave then
+        api.nvim_del_augroup_by_name "AutoSaveOnNormalMode"
+        notify {
+          message = "Autosave disabled",
+          icon = " ",
+          title = " LSP:" .. client.name,
+        }
+        g._autosave = false
+      else
+        augroup("AutoSaveOnNormalMode", {
+          {
+            events = "BufWritePre",
+            command = vim.lsp.buf.formatting_sync,
+            options = { buffer = api.nvim_get_current_buf() },
+          },
+        })
+        notify {
+          message = "Autosave enabled",
+          icon = " ",
+          title = " LSP:" .. client.name,
+        }
+        g._autosave = true
+      end
+      return
+    end
+  end
+end
+
 function M.exists(path)
   if fn.empty(fn.glob(path)) > 0 then
     return false
@@ -8,10 +40,7 @@ function M.exists(path)
 end
 
 function M.lsp_signdef(group, icon, text_group)
-  fn.sign_define(group, {
-    text = icon,
-    texthl = text_group,
-  })
+  fn.sign_define(group, { text = icon, texthl = text_group })
 end
 
 function M.excallback(callback, ...)
@@ -28,13 +57,13 @@ function M.dashboard_vimenter()
     api.nvim_notify(
       [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀  ⢀⠠⠀⠀⠀⠉⠈⠁⠀⠂⠠⠀⣴⣾⣿⣦⡀⠀⠀
-⠀⠀⠀⠀⠀  ⠂⠁⢀⣠⣴⣶⣶⣶⣶⣶⣤⣀⠘⣿⣿⣿⣿⠃⠀      ﳁ                    ⠀⠀⠀    
-⠀⠀⠀  ⡀⠁⢀⣴⣿⣿⣿⣿⣿⣿⡿⠋⠉⠙⢷⣌⠉⠉⡁⠀⠀   Welcome to KrakenVim.             
-⠀⠀  ⠠⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⡅⠀⠀⠀⢸⣿⣆⠀⠀⡀⠀   Press <Space> to get started.     
-⠀⠀  ⠆⠀⢸⣿⣿⢹⣿⣿⣿⣿⣿⣿⣦⣤⣴⣿⣿⣿⠀⠀⠆⠀   Enjoy your stay.                  
-⠀⠀  ⠃⠀⢸⣿⣿⢸⣿⣿⣿⢸⣿⢸⣯⡴⠶⢹⣿⣿⠀⠀⠆⠀                                     
-⠀⠀  ⠐⠀⠀⢻⣿⣘⣛⣛⣿⣘⣟⣸⣇⣺⣛⣸⣿⠇⠀⠐⠀⠀                Powered By  Lua     
-⠀⠀  ⠀⠡⡀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠁⠀⡠⠁⠀⠀                                  
+⠀⠀⠀⠀⠀  ⠂⠁⢀⣠⣴⣶⣶⣶⣶⣶⣤⣀⠘⣿⣿⣿⣿⠃⠀      ﳁ                    ⠀⠀⠀
+⠀⠀⠀  ⡀⠁⢀⣴⣿⣿⣿⣿⣿⣿⡿⠋⠉⠙⢷⣌⠉⠉⡁⠀⠀   Welcome to KrakenVim.
+⠀⠀  ⠠⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⡅⠀⠀⠀⢸⣿⣆⠀⠀⡀⠀   Press <Space> to get started.
+⠀⠀  ⠆⠀⢸⣿⣿⢹⣿⣿⣿⣿⣿⣿⣦⣤⣴⣿⣿⣿⠀⠀⠆⠀   Enjoy your stay.
+⠀⠀  ⠃⠀⢸⣿⣿⢸⣿⣿⣿⢸⣿⢸⣯⡴⠶⢹⣿⣿⠀⠀⠆⠀
+⠀⠀  ⠐⠀⠀⢻⣿⣘⣛⣛⣿⣘⣟⣸⣇⣺⣛⣸⣿⠇⠀⠐⠀⠀                Powered By  Lua
+⠀⠀  ⠀⠡⡀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠁⠀⡠⠁⠀⠀                             
 ⠀⠀⠀  ⠀⠀⠂⡀⠀⠉⠛⠻⠿⠿⠿⠛⠋⠁⠀⡀⠂⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀  ⠀⠀⠐⠂⠤⠀⢀⢀⠀⠠⠄⠒
     ]],
@@ -47,10 +76,7 @@ end
 
 function M.notify(options)
   if type(options) == "string" then
-    api.nvim_notify(options, vim.log.levels.INFO, {
-      icon = "",
-      title = "Notification",
-    })
+    api.nvim_notify(options, vim.log.levels.INFO, { icon = "", title = "Notification" })
     return
   end
 
@@ -98,10 +124,16 @@ function M.map(description, trigger, target, options)
     buffer = nil,
     nowait = false,
   }
-  local mapping = {
-    [trigger] = { "<CMD>" .. target .. "<CR>", description },
-  }
+  local mapping = { [trigger] = { "<CMD>" .. target .. "<CR>", description } }
   require("which-key").register(mapping, vim.tbl_extend("force", defaults, options))
+end
+
+function M.xmap(description, trigger, target, options)
+  if not options then
+    options = {}
+  end
+  options.mode = "x"
+  M.map(description, trigger, target, options)
 end
 
 function M.nmap(description, trigger, target, options)
@@ -159,6 +191,7 @@ function M.augroup(name, autocmds, clear)
     autocmd.options.group = group
     append(autocmd.events, autocmd.command, autocmd.options)
   end
+  return group
 end
 
 function M.cmp_under(entry1, entry2)

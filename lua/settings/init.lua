@@ -1,3 +1,5 @@
+_ = require "settings.env"
+
 excallback(function()
   local builtins = require "settings.builtins"
   for builtin, status in pairs(builtins) do

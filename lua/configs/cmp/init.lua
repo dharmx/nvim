@@ -26,26 +26,52 @@ local config = {
     { name = "luasnip" },
     { name = "zsh" },
     { name = "fish" },
-    { name = "omni" },
+    { name = "omni", keyword_length = 5, max_item_count = 3 },
     { name = "tags" },
     { name = "nvim_lsp", keyword_length = 4 },
     { name = "nvim_lsp_signature_help" },
-    { name = "treesitter", keyword_length = 6 },
+    { name = "treesitter", keyword_length = 3 },
     { name = "path" },
-    { name = "rg", keyword_length = 5 },
+    {
+      name = "rg",
+      keyword_length = 5,
+      max_item_count = 4,
+    },
     {
       name = "dictionary",
       keyword_length = 4,
-      option = { convert_case = true },
+      option = {
+        convert_case = true,
+      },
+      max_item_count = 5,
     },
-    { name = "spell", keyword_length = 5, option = { convert_case = true } },
-    { name = "buffer", keyword_length = 4 },
+    {
+      name = "spell",
+      keyword_length = 5,
+      option = {
+        convert_case = true,
+      },
+      max_item_count = 5,
+    },
+    {
+      name = "buffer",
+      keyword_length = 4,
+      max_item_count = 5,
+    },
     { name = "cmp_git" },
-    { name = "calc" },
+    {
+      name = "calc",
+      keyword_length = 2,
+      max_item_count = 3,
+    },
     {
       name = "look",
       keyword_length = 2,
-      option = { convert_case = true, loud = true },
+      max_item_count = 4,
+      option = {
+        convert_case = true,
+        loud = true,
+      },
       dict = stdpath "config" .. "/lua/spell/en.dict",
     },
     { name = "npm", keyword_length = 4 },
@@ -65,12 +91,10 @@ local config = {
   formatting = {
     format = cmp_item_format,
   },
-
   experimental = {
-    native_menu = false,
+    native = true,
     ghost_text = true,
   },
-
   completion = { completeopt = "menu,menuone,noselect" },
   sorting = {
     comparators = {
@@ -90,10 +114,10 @@ cmp.setup(config)
 
 local cmdlines = {
   sources = cmp.config.sources {
-    { name = "cmdline", keyword_length = 2 },
-    { name = "buffer", keyword_length = 5 },
-    { name = "cmdline_history", keyword_length = 4 },
-    { name = "nvim_lsp_document_symbol", keyword_length = 4 },
+    { name = "cmdline", keyword_length = 2, priority = 3 },
+    { name = "buffer", keyword_length = 5, priority = 2 },
+    { name = "cmdline_history", keyword_length = 4, max_item_count = 2, priority = 1 },
+    { name = "nvim_lsp_document_symbol", keyword_length = 4, priority = 3 },
   },
   formatting = {
     format = cmp_item_format,

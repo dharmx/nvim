@@ -1,7 +1,8 @@
 local M = {}
 
-M.setup = function()
-  alias("Format", "lua vim.lsp.buf.formatting_sync()")
+M.setup = function(client, buffer)
+  alias("Format", schedule_wrap(vim.lsp.buf.formatting_sync))
+  alias("FormatSeq", schedule_wrap(vim.lsp.buf.formatting_seq_sync))
 end
 
 return M

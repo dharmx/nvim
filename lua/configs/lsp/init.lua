@@ -23,13 +23,18 @@ local servers = {
 }
 
 local function on_attach(client, buffer)
-  require("configs.lsp.mappings").setup(client.name, buffer)
+  require("configs.lsp.mappings").setup(client, buffer)
   require("configs.lsp.autocmds").setup(client, buffer)
-  require("configs.lsp.commands").setup()
+  require("configs.lsp.commands").setup(client, buffer)
   require("configs.lsp.icons").setup()
 
-  client.resolved_capabilities.document_formatting = true
-  client.resolved_capabilities.document_range_formatting = true
+  client.resolved_capabilities.document_formatting = false
+  client.resolved_capabilities.document_range_formatting = false
+  notify {
+    message = "LSP has been initialised.",
+    title = "LSP: " .. client.name,
+    icon = " ",
+  }
 end
 
 local function configure_installer()
@@ -81,6 +86,7 @@ local function configure_servers()
     }
 
     server:setup(vim.tbl_extend("keep", server_config, servers[server.name]))
+    _ = require "configs.lsp.handlers.null"
   end)
 end
 
@@ -91,9 +97,7 @@ local function configure_diagnostics()
     underline = true,
     update_in_insert = false,
     severity_sort = true,
-    float = {
-      source = "always",
-    },
+    float = { source = "always" },
   }
 end
 

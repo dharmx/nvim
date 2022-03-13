@@ -1,4 +1,3 @@
-_ = require "globals"
 _ = require "settings"
 
 if not exists(install_path) then
