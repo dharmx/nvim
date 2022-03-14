@@ -11,11 +11,11 @@ M["PackerLog"] = "edit " .. stdpath "cache" .. "/packer.nvim.log"
 M["TelescopeLog"] = "edit " .. stdpath "cache" .. "/telescope.log"
 M["TSStart"] = "lua require 'configs.treesitter'"
 M["StartPage"] = "Dashboard | TabLineTGL"
-M["TabLineTGL"] = "if &stal == 2 | set stal=0 | else | set stal=2 | endif"
-M["StatusLineTGL"] = "if &ls == 2 | set ls=0 | else | set ls=2 | endif"
-M["NumberColumnTGL"] = "set nu!"
-M["RelativeNumberColumnTGL"] = "set rnu!"
-M["SpellingTGL"] = "set spell!"
+M["TabLineTGL"] = "if &stal == 2 | setlocal stal=0 | else | setlocal stal=2 | endif"
+M["StatusLineTGL"] = "if &ls == 2 | setlocal ls=0 | else | setlocal ls=2 | endif"
+M["NumberColumnTGL"] = "setlocal nu!"
+M["RelativeNumberColumnTGL"] = "setlocal rnu!"
+M["SpellingTGL"] = "setlocal spell!"
 
 local N = {
  "command! -nargs=+ -complete=customlist,v:lua.require'packer.snapshot'.completion.create PackerSnapshot  lua require('packer').snapshot(<f-args>)",
