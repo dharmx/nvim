@@ -2,7 +2,7 @@ local M = {}
 
 function M.load_ui_select()
   if not _G.packer_plugins["telescope-ui-select.nvim"].loaded then
-    require("telescope")
+    require "telescope"
   end
 end
 

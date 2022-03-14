@@ -12,7 +12,7 @@ use {
     require "configs.telescope"
     require("telescope").load_extension "notify"
   end,
-  module = "telescope"
+  module = "telescope",
 }
 
 use {

@@ -24,20 +24,24 @@ local packer = require "packer"
 packer.init(require "configs.core.packer")
 packer.reset()
 
-for _, module in ipairs {
-  "plugins.health",
-  "plugins.cmp",
-  "plugins.core",
-  "plugins.utils",
-  "plugins.lsp",
-  "plugins.treesitter",
-  "plugins.others",
-  "plugins.dev",
-  "plugins.editing",
-  "plugins.workflow",
-  "plugins.telescope",
-  "plugins.ui",
-} do utils.load_module(packer, require(module)) end
+for _, module in
+  ipairs {
+    "plugins.health",
+    "plugins.cmp",
+    "plugins.core",
+    "plugins.utils",
+    "plugins.lsp",
+    "plugins.treesitter",
+    "plugins.others",
+    "plugins.dev",
+    "plugins.editing",
+    "plugins.workflow",
+    "plugins.telescope",
+    "plugins.ui",
+  }
+do
+  utils.load_module(packer, require(module))
+end
 
 if bootstrap then
   packer.sync()
