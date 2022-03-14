@@ -3,11 +3,11 @@ local M = {}
 M.setup = function(client, buffer)
   local mappings = {
     ["name"] = " LSP [" .. string.format(" %s", client.name) .. "]",
-    ["r"] = { "<CMD>lua require('configs.lsp.handlers.rename').lsp_rename()<CR>", " Rename" },
+
     ["b"] = {
       ["name"] = " Actions",
       ["K"] = { "<CMD>lua vim.lsp.buf.hover()<CR>", " Hover" },
-      ["c"] = { "<CMD>lua vim.lsp.buf.code_action()<CR>", " Code action" },
+      ["c"] = { "<CMD>lua require('utils').load_ui_select(); vim.lsp.buf.code_action()<CR>", " Code action" },
       ["f"] = { "<CMD>lua vim.lsp.buf.formatting()<CR>", "ﯕ Format" },
       ["F"] = { "<CMD>lua vim.lsp.buf.formatting_seq_sync()<CR>", "ﯕ Format Seq" },
     },
@@ -34,7 +34,6 @@ M.setup = function(client, buffer)
       ["l"] = { "<CMD>lua vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", " Workspaces" },
     },
   }
-
   local options = {
     mode = "n",
     silent = true,
@@ -43,7 +42,6 @@ M.setup = function(client, buffer)
     buffer = buffer,
     nowait = true,
   }
-
   require("which-key").register(mappings, options)
 end
 

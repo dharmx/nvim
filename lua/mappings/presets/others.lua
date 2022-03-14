@@ -3,6 +3,7 @@ local M = {}
 M.mappings = {
   ["<C-n>"] = { "<CMD>NvimTreeToggle<CR>", "פּ Explorer" },
   ["<C-m>"] = { "<CMD>NvimTreeFocus<CR>", "פּ Explorer focus" },
+  ["<F5>"] = { "<CMD>RnvimrToggle<CR>", "פּ Ranger explorer" },
   ["<leader>u"] = {
     ["name"] = "⏼ Toggles",
     ["s"] = { "<CMD>StatusLineTGL<CR>", " Statusline" },
@@ -14,6 +15,8 @@ M.mappings = {
   ["<C-\\>"] = { "<CMD>terminal<CR>", " Terminal" },
   ["<leader>v"] = { "<CMD>vs<CR>", " Vertical split" },
   ["<leader>h"] = { "<CMD>sp<CR>", " Horizontal split" },
+  ["<leader>V"] = { "<CMD>vs | enew<CR>", " Horizontal split" },
+  ["<leader>H"] = { "<CMD>sp | enew<CR>", " Horizontal split" },
   ["<Esc>"] = { "<CMD>noh<CR>", " Remove highlights" },
   ["<C-y>"] = { "<CMD>%y+<CR>", "﯂ Copy all" },
   ["<F3>"] = { "<CMD>ColorizerToggle<CR>", "﯂ Enable colorizer" },
@@ -29,10 +32,10 @@ M.mappings = {
   },
   ["<leader>r"] = {
     ["name"] = " Reach",
-    ["b"] = { "<CMD>lua require('reach').buffers(require('configs.reach').buffers)<CR>", "ﴵ Buffers" },
-    ["m"] = { "<CMD>lua require('reach').marks(require('configs.reach').marks)<CR>", " Marks" },
-    ["t"] = { "<CMD>lua require('reach').tabpages(require('configs.reach').tabpages)<CR>", "ﯻ Tabpages" },
+    ["m"] = { "<CMD>lua require('reach').marks(require('configs.ui.reach').marks)<CR>", " Marks" },
+    ["t"] = { "<CMD>lua require('reach').tabpages(require('configs.ui.reach').tabpages)<CR>", "ﯻ Tabpages" },
   },
+  ["<leader><Tab>"] = { "<CMD>lua require('reach').buffers(require('configs.ui.reach').buffers)<CR>", "ﴵ Buffers" },
   ["<leader>Q"] = { "<CMD>qa!<CR>", " Quit neovim" },
 }
 

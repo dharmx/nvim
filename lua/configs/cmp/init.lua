@@ -88,6 +88,13 @@ local config = {
       },
     },
   },
+  confirm_opts = {
+    behavior = cmp.ConfirmBehavior.Replace,
+    select = false,
+  },
+  documentation = {
+    border = "single",
+  },
   formatting = {
     format = cmp_item_format,
   },

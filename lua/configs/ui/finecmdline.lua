@@ -35,7 +35,7 @@ local config = {
       winhighlight = "TabLine:Boolean,FloatBorder:FloatBorder",
     },
     buf_options = {
-      filetype = "FineCmdlinePrompt",
+      filetype = "cmdline",
     },
   },
 }

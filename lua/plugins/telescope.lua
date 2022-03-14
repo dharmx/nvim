@@ -12,6 +12,7 @@ use {
     require "configs.telescope"
     require("telescope").load_extension "notify"
   end,
+  module = "telescope"
 }
 
 use {
@@ -50,7 +51,7 @@ use {
 }
 
 use {
-  "https://code.sitosis.com/rudism/telescope-dict.nvim.git",
+  "https://code.sitosis.com/rudism/telescope-dict.nvim",
   after = "telescope.nvim",
   config = function()
     require("telescope").load_extension "dict"

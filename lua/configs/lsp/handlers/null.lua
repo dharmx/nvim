@@ -44,8 +44,8 @@ local sources = {
   fmtng.trim_whitespace,
   fmtng.uncrustify,
 
-  cacts.gitsigns,
-  cacts.refactoring,
+  -- cacts.gitsigns,
+  -- cacts.refactoring,
   cacts.shellcheck,
   cacts.statix,
   cacts.proselint,

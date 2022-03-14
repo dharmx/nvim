@@ -90,7 +90,7 @@ local function configure_servers()
   end)
 end
 
-local function configure_diagnostics()
+local function configure_diagnostics() 
   vim.diagnostic.config {
     virtual_text = { prefix = " ", source = "always" },
     signs = true,
