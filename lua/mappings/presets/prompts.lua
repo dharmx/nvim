@@ -19,6 +19,10 @@ M.mappings = {
     ["f"] = {
       ["name"] = " File operations",
       ["f"] = { "<CMD>Telescope find_files<CR>", " Find files" },
+      ["F"] = {
+        "<CMD>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<CR>",
+        " Find files drop",
+      },
       ["o"] = { "<CMD>Telescope oldfiles<CR>", " Old files" },
       ["w"] = { "<CMD>Telescope live_grep<CR>", " Word search [L]" },
       ["W"] = { "<CMD>Telescope grep_string<CR>", " Word search" },
