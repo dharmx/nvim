@@ -3,6 +3,7 @@ local M = {}
 M.mappings = {
   ["name"] = " LSP",
   ["l<CR>"] = { "<CMD>LspStart<CR>", " LSP start" },
+  ["T"] = { "<CMD>TSStart<CR>", " Treesitter start" },
 }
 
 M.options = {

@@ -5,7 +5,7 @@ local config = {
   compile_path = compile_path,
   auto_clean = true,
   compile_on_sync = true,
-  max_jobs = 50,
+  max_jobs = 30,
   disable_commands = false,
   depth = 1,
   clone_timeout = 60,
@@ -27,28 +27,12 @@ config.display = {
   done_sym = "",
   removed_sym = "",
   moved_sym = " ",
-  -- header_sym = "━ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ━",
-  -- header_sym = "▃",
   show_all_info = false,
   prompt_border = "single",
   keybindings = require("mappings").packer_nvim,
   open_fn = function()
-    -- local width = 65
-    -- local height = 40
-    -- local col = math.ceil((o.columns - width) * 1.05)
-    -- local row = math.ceil((o.lines - height) * 0.8 - 1)
-    local borders = {
-      rounded = "rounded",
-      single = "single",
-      double = "double",
-      none = "none",
-      solid = "solid",
-      shadow = "shadow",
-      custom = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-    }
-
     return packer_util.float {
-      border = borders.single,
+      border = "single",
     }
   end,
 }

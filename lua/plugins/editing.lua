@@ -26,9 +26,17 @@ use { "numToStr/Comment.nvim", module = "Comment" }
 
 use {
   "folke/todo-comments.nvim",
-  event = "BufRead",
+  event = "InsertEnter",
   config = function()
     require "configs.todo"
+  end,
+}
+
+use {
+  "ellisonleao/glow.nvim",
+  cmd = "Glow",
+  setup = function()
+    require "configs.glow"
   end,
 }
 

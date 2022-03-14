@@ -12,7 +12,7 @@ return {
     luasnip = " LSN",
     nvim_lsp_signature_help = " SGH",
     orgmode = " ORG",
-    treesitter = " TSR",
+    treesitter = " TSR",
     rg = " RIP",
     omni = " OMN",
     look = " LOK",

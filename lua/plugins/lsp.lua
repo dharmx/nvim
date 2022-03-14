@@ -32,6 +32,7 @@ use {
     "LspUninstall",
     "LspUninstallall",
   },
+  module = "nvim-lsp-installer",
 }
 
 use { "b0o/schemastore.nvim", module = "schemastore" }

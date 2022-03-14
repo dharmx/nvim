@@ -1,20 +1,18 @@
-use { "danymat/neogen", wants = "nvim-treesitter", cmd = "Neogen" }
+use { "danymat/neogen", after = "nvim-treesitter" }
 
 use {
   "nvim-treesitter/nvim-treesitter",
-  config = function()
-    require "configs.treesitter"
-  end,
   wants = {
     "nvim-treesitter-refactor",
     "nvim-ts-rainbow",
     "nvim-treesitter-textobjects",
     "playground",
     "nvim-ts-autotag",
-    "vim-matchup",
   },
-  module = "configs.treesitter",
+  module = "nvim-treesitter.configs",
 }
+
+use { "andymass/vim-matchup", opt = true }
 
 use { "nvim-treesitter/nvim-treesitter-refactor", opt = true }
 
@@ -25,8 +23,6 @@ use { "nvim-treesitter/nvim-treesitter-textobjects", opt = true }
 use { "nvim-treesitter/playground", opt = true }
 
 use { "windwp/nvim-ts-autotag", opt = true }
-
-use { "andymass/vim-matchup", cmd = "MatchupWhereAmI", wants = "nvim-treesitter" }
 
 use {
   "romgrk/nvim-treesitter-context",

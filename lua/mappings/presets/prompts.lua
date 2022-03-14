@@ -74,6 +74,18 @@ M.mappings = {
         ["r"] = { "<CMD>Telescope lsp_references<CR>", " References" },
       },
     },
+    ["a"] = {
+      ["name"] = "ﰍ Web browse",
+      ["b"] = {
+        "<CMD>lua require('browse').browse({ bookmarks = require('configs.telescope.browse') })<CR>",
+        " Browse bookmarks",
+      },
+      ["o"] = {
+        "<CMD>lua require('browse').open_bookmarks({ bookmarks = require('configs.telescope.browse') })<CR>",
+        " Open bookmarks",
+      },
+      ["i"] = { "<CMD>lua require('browse').input_search()<CR>", " Input search" },
+    },
   },
 }
 

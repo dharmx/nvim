@@ -70,7 +70,7 @@ local config = {
 }
 
 schedule(function()
-  for _, plugin in ipairs { "mappings", "buffers", "plugins", "others", "prompts", "lsp" } do
+  for _, plugin in ipairs { "mappings", "buffers", "plugins", "others", "prompts", "neovim" } do
     local loaded = require("mappings.presets." .. plugin)
     which_key.register(loaded.mappings, loaded.options)
   end

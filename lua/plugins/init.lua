@@ -8,13 +8,15 @@ if fn.empty(fn.glob(install_path)) > 0 then
     "https://github.com/wbthomason/packer.nvim",
     install_path,
   }
-  cmd "packadd packer.nvim"
+  if not pcall(cmd, "packadd packer.nvim") then
+    notify "Check your internet connection."
+  end
 end
 
 if fn.empty(fn.glob(compile_path)) > 0 then
   notify "Couldn't find plugin specifications. Syncing now..."
   bootstrap = true
-  cmd "packadd packer.nvim"
+  _ = pcall(cmd, "packadd packer.nvim")
 end
 
 local packer = require "packer"
@@ -34,6 +36,7 @@ for _, module in
     "development",
     "editing",
     "workflow",
+    "telescope",
     "ui",
   }
 do
@@ -41,9 +44,15 @@ do
 end
 
 if bootstrap then
-  packer.clean()
-  packer.install()
-  packer.compile()
+  packer.sync()
+  packer.on_compile_done = schedule_wrap(function()
+    _ = pcall(require, "configs.impatient")
+    notify {
+      message = "Run :LspInstall and :TSStart or, press <leader>l and <leader>T",
+      icon = " ",
+      title = "KrakenVim",
+    }
+  end)
 end
 
 return setmetatable({}, {

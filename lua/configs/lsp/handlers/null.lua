@@ -48,6 +48,7 @@ local sources = {
   cacts.refactoring,
   cacts.shellcheck,
   cacts.statix,
+  cacts.proselint,
 
   hover.dictionary,
   cmplt.luasnip,
