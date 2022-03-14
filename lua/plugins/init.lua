@@ -8,6 +8,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
     "https://github.com/wbthomason/packer.nvim",
     install_path,
   }
+
   if not pcall(cmd, "packadd packer.nvim") then
     notify "Check your internet connection."
   end
@@ -23,24 +24,20 @@ local packer = require "packer"
 packer.init(require "configs.core.packer")
 packer.reset()
 
-for _, module in
-  ipairs {
-    "health",
-    "cmp",
-    "core",
-    "utils",
-    "lsp",
-    "treesitter",
-    "others",
-    "dev",
-    "editing",
-    "workflow",
-    "telescope",
-    "ui",
-  }
-do
-  utils.load_module(packer.use, require("plugins." .. module))
-end
+for _, module in ipairs {
+  "plugins.health",
+  "plugins.cmp",
+  "plugins.core",
+  "plugins.utils",
+  "plugins.lsp",
+  "plugins.treesitter",
+  "plugins.others",
+  "plugins.dev",
+  "plugins.editing",
+  "plugins.workflow",
+  "plugins.telescope",
+  "plugins.ui",
+} do utils.load_module(packer, require(module)) end
 
 if bootstrap then
   packer.sync()

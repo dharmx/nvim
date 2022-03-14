@@ -2,17 +2,17 @@ local maps = require("mappings").ts_textobjects
 
 local M = {
   select = {
-    enable = false,
+    enable = true,
     lookahead = true,
     keymaps = maps.select,
   },
   swap = {
-    enable = false,
+    enable = true,
     swap_next = maps.swap.swap_next,
     swap_previous = maps.swap.swap_previous,
   },
   move = {
-    enable = false,
+    enable = true,
     set_jumps = true,
     goto_next_start = maps.move.goto_next_start,
     goto_next_end = maps.move.goto_next_end,
@@ -20,7 +20,7 @@ local M = {
     goto_previous_end = maps.move.goto_previous_end,
   },
   lsp_interop = {
-    enable = false,
+    enable = true,
     border = "single",
     peek_definition_code = maps.lsp_interop.peek_definition_code,
   },

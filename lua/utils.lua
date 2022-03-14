@@ -22,9 +22,15 @@ function M.cmdline_override()
   set_map("i", "<C-c>", fn.close)
 end
 
-function M.load_module(use, specs)
-  for _, spec in pairs(specs) do
-    use(spec)
+function M.load_module(pacman, module)
+  for _, plugin in pairs(module) do
+    pacman.use(plugin)
+  end
+end
+
+function M.load(pacman, plugins)
+  for _, plugin in pairs(plugins) do
+    pacman.use(plugin)
   end
 end
 
@@ -85,7 +91,7 @@ function M.dashboard_vimenter()
     api.nvim_notify(
       [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀  ⢀⠠⠀⠀⠀⠉⠈⠁⠀⠂⠠⠀⣴⣾⣿⣦⡀⠀⠀
-⠀⠀⠀⠀⠀  ⠂⠁⢀⣠⣴⣶⣶⣶⣶⣶⣤⣀⠘⣿⣿⣿⣿⠃⠀      ﳁ                    ⠀⠀⠀
+⠀⠀⠀⠀⠀  ⠂⠁⢀⣠⣴⣶⣶⣶⣶⣶⣤⣀⠘⣿⣿⣿⣿⠃⠀      ﳁ                    ⠀⠀⠀   
 ⠀⠀⠀  ⡀⠁⢀⣴⣿⣿⣿⣿⣿⣿⡿⠋⠉⠙⢷⣌⠉⠉⡁⠀⠀   Welcome to KrakenVim.
 ⠀⠀  ⠠⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⡅⠀⠀⠀⢸⣿⣆⠀⠀⡀⠀   Press <Space> to get started.
 ⠀⠀  ⠆⠀⢸⣿⣿⢹⣿⣿⣿⣿⣿⣿⣦⣤⣴⣿⣿⣿⠀⠀⠆⠀   Enjoy your stay.

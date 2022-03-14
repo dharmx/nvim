@@ -1,7 +1,7 @@
 local M = {
-  enable = false,
+  enable = true,
   updatetime = 25,
-  persist_queries = false,
+  persist_queries = true,
   keybindings = require("mappings").ts_playground,
 }
 

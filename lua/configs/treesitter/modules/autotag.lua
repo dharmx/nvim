@@ -1,5 +1,5 @@
 local M = {
-  enable = false,
+  enable = true,
   filetypes = {
     "html",
     "javascript",

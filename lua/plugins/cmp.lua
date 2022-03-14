@@ -1,7 +1,7 @@
 local M = {}
 
 local function use(plugin)
-  M[vim.split(plugin[1], "/")[2]] = plugin
+  M[plugin[1]] = plugin
 end
 
 use {

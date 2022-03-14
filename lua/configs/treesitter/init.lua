@@ -35,13 +35,12 @@ local config = {
     "norg",
   },
   sync_installed = false,
-  ignore_install = {},
   highlight = {
     enable = true,
     use_languagetree = true,
     additional_vim_regex_highlighting = true,
   },
-  indent = { enable = false },
+  indent = { enable = true },
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -60,6 +59,8 @@ local config = {
   matchup = require "configs.treesitter.modules.matchup",
 }
 
-ts.setup(config)
+schedule(function()
+  ts.setup(config)
+end)
 
 -- vim:ft=lua

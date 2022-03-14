@@ -67,10 +67,7 @@ local config = {
     },
   },
   separator = "  ",
-  -- limit for amount of context shown
-  -- 0 means no limit
   depth = 7,
-  -- indicator used when context is hits depth limit
   depth_limit_indicator = "..",
 }
 

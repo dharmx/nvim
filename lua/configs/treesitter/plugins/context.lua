@@ -5,9 +5,9 @@ if not present then
 end
 
 local config = {
-  enable = false,
+  enable = true,
   throttle = true,
-  max_lines = 0,
+  max_lines = 2000,
   patterns = {
     default = {
       "class",
@@ -19,16 +19,6 @@ local config = {
       "switch",
       "case",
     },
-    -- Example for a specific filetype.
-    --   rust = {
-    --       'impl_item',
-    --   },
-  },
-  exact_patterns = {
-    -- Example for a specific filetype with Lua patterns
-    -- Treat patterns.rust as a Lua pattern (i.e "^impl_item$" will
-    -- exactly match "impl_item" only)
-    -- rust = true,
   },
 }
 

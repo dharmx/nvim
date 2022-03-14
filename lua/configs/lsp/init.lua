@@ -101,9 +101,11 @@ local function configure_diagnostics()
   }
 end
 
-configure_diagnostics()
-configure_installer()
-ensure_servers()
-configure_servers()
+schedule(function()
+  configure_diagnostics()
+  configure_installer()
+  ensure_servers()
+  configure_servers()
+end)
 
 -- vim:ft=lua

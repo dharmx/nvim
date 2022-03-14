@@ -1,5 +1,5 @@
 local M = {
-  enable = false,
+  enable = true,
   use_virtual_text = true,
   lint_events = { "BufWrite", "CursorHold" },
 }
