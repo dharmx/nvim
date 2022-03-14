@@ -10,6 +10,7 @@ M.setup = function(client, buffer)
       ["c"] = { "<CMD>lua require('utils').load_ui_select(); vim.lsp.buf.code_action()<CR>", " Code action" },
       ["f"] = { "<CMD>lua vim.lsp.buf.formatting()<CR>", "ﯕ Format" },
       ["F"] = { "<CMD>lua vim.lsp.buf.formatting_seq_sync()<CR>", "ﯕ Format Seq" },
+      ["T"] = { "<CMD>ToggleAutoFormat<CR>", "ﯕ  Auto formatting" },
     },
     ["d"] = {
       ["name"] = " Diagnostics",
