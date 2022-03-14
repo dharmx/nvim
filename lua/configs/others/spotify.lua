@@ -11,6 +11,15 @@ local config = {
   },
 }
 
+if api.nvim_exec("!pidof spotifyd", false) == "" then
+  api.nvim_exec("!spotifyd", false)
+  notify {
+    message = "Spotify daemon is now running...",
+    title = "spotifyd",
+    icon = "",
+  }
+end
+
 spotify.setup(config)
 
 -- vim:ft=lua

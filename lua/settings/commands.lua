@@ -16,6 +16,7 @@ M["StatusLineTGL"] = "if &ls == 2 | setlocal ls=0 | else | setlocal ls=2 | endif
 M["NumberColumnTGL"] = "setlocal nu!"
 M["RelativeNumberColumnTGL"] = "setlocal rnu!"
 M["SpellingTGL"] = "setlocal spell!"
+M["SpotifyExit"] = "lua api.nvim_exec('!killall spotifyd &', false)"
 
 local N = {
  "command! -nargs=+ -complete=customlist,v:lua.require'packer.snapshot'.completion.create PackerSnapshot  lua require('packer').snapshot(<f-args>)",
