@@ -1,5 +1,27 @@
 local M = {}
 
+function M.search_override()
+  set_map("n", "/", "<CMD>SearchBoxIncSearch<CR>", { noremap = true })
+  set_map("x", "/", "<CMD>SearchBoxIncSearch visual_mode=true<CR>", { noremap = true })
+end
+
+function M.cmdline_override()
+  local cfn = require("fine-cmdline").fn
+  set_map("n", "<CR>", "<CMD>FineCmdline<CR>", { noremap = true })
+  set_map("n", ":", "<CMD>FineCmdline<CR>", { noremap = true })
+  set_map("i", "<M-s>", function()
+    if vim.fn.pumvisible() == 0 then
+      feedkeys "%s///gc<Left><Left><Left><Left>"
+    end
+  end)
+  set_map("i", "<M-k>", cfn.up_search_history)
+  set_map("i", "<M-j>", cfn.down_search_history)
+  set_map("i", "<Up>", cfn.up_history)
+  set_map("i", "<Down>", cfn.down_history)
+  set_map("i", "<Esc>", fn.close)
+  set_map("i", "<C-c>", fn.close)
+end
+
 function M.load_module(use, specs)
   for _, spec in pairs(specs) do
     use(spec)
