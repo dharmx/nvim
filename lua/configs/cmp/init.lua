@@ -96,6 +96,7 @@ local config = {
     border = "single",
   },
   formatting = {
+    fields = { "kind", "abbr", "menu" },
     format = cmp_item_format,
   },
   experimental = {
