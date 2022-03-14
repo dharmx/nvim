@@ -9,7 +9,6 @@ M["netrw"] = 1
 M["netrwPlugin"] = 1
 M["netrwSettings"] = 1
 M["netrwFileHandlers"] = 1
-M["matchit"] = 1
 M["tar"] = 1
 M["tarPlugin"] = 1
 M["rrhelper"] = 1
