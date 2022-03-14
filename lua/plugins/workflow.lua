@@ -55,12 +55,12 @@ use {
 
 use { "abecodes/tabout.nvim", opt = true }
 
-use { 
-  "akinsho/toggleterm.nvim", 
+use {
+  "akinsho/toggleterm.nvim",
   config = function()
-    require("configs.workflow.toggleterm")
+    require "configs.workflow.toggleterm"
   end,
-  cmd = { "ToggleTerm", "ToggleTermToggleAll" } 
+  cmd = { "ToggleTerm", "ToggleTermToggleAll" },
 }
 
 use {
