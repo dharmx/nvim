@@ -1,5 +1,11 @@
 local M = {}
 
+function M.load_module(use, specs)
+  for _, spec in pairs(specs) do
+    use(spec)
+  end
+end
+
 function M.autosave()
   local active_clients = lsp.buf_get_clients()
   for _, client in ipairs(active_clients) do

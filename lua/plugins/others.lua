@@ -1,3 +1,9 @@
+local M = {}
+
+local function use(plugin)
+  M[vim.split(plugin[1], "/")[2]] = plugin
+end
+
 use {
   "rinx/nvim-minimap",
   cmd = { "MinimapOpen", "MinimapClose", "MinimapRefresh", "MinimapToggle" },
@@ -9,7 +15,7 @@ use {
   "andweeb/presence.nvim",
   event = "InsertEnter",
   config = function()
-    require "configs.presence"
+    require "configs.others.presence"
   end,
 }
 
@@ -19,7 +25,7 @@ use {
   "KadoBOT/nvim-spotify",
   wants = "telescope.nvim",
   config = function()
-    require "configs.spotify"
+    require "configs.others.spotify"
   end,
   run = "make",
   cmd = { "SpotifyDevices", "Spotify" },
@@ -36,7 +42,7 @@ use {
     "NeoscrollDisableBufferPM",
   },
   config = function()
-    require "configs.neoscroll"
+    require "configs.others.neoscroll"
   end,
 }
 
@@ -44,8 +50,10 @@ use {
   "Xuyuanp/scrollbar.nvim",
   events = { "WinScrolled", "VimResized", "QuitPre" },
   setup = function()
-    require "configs.scrollbar"
+    require "configs.others.scrollbar"
   end,
 }
+
+return M
 
 -- vim:ft=lua

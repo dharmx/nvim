@@ -1,7 +1,13 @@
+local M = {}
+
+local function use(plugin)
+  M[vim.split(plugin[1], "/")[2]] = plugin
+end
+
 use {
   "toppair/reach.nvim",
   config = function()
-    require("configs.reach").setup()
+    require("configs.ui.reach").setup()
   end,
   module = "reach",
 }
@@ -10,14 +16,14 @@ use {
   "akinsho/bufferline.nvim",
   branch = "feature/themeable-option",
   config = function()
-    require "configs.bufferline"
+    require "configs.ui.bufferline"
   end,
 }
 
 use {
   "kyazdani42/nvim-web-devicons",
   config = function()
-    require "configs.devicons"
+    require "configs.ui.devicons"
   end,
 }
 
@@ -31,7 +37,7 @@ use {
     "IndentBlanklineRefreshScroll",
   },
   config = function()
-    require "configs.blankline"
+    require "configs.ui.blankline"
   end,
 }
 
@@ -39,7 +45,7 @@ use {
   "VonHeikemen/fine-cmdline.nvim",
   cmd = "FineCmdline",
   config = function()
-    require "configs.finecmdline"
+    require "configs.ui.finecmdline"
   end,
 }
 
@@ -53,14 +59,14 @@ use {
     "SearchBoxMatchAll",
   },
   config = function()
-    require "configs.searchbox"
+    require "configs.ui.searchbox"
   end,
 }
 
 use {
   "glepnir/dashboard-nvim",
   setup = function()
-    require "configs.dashboard"
+    require "configs.ui.dashboard"
   end,
   cmd = {
     "Dashboard",
@@ -72,5 +78,7 @@ use {
     "DashboardNewFile",
   },
 }
+
+return M
 
 -- vim:ft=lua

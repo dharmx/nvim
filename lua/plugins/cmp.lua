@@ -1,3 +1,9 @@
+local M = {}
+
+local function use(plugin)
+  M[vim.split(plugin[1], "/")[2]] = plugin
+end
+
 use {
   "hrsh7th/nvim-cmp",
   config = function()
@@ -115,5 +121,7 @@ use { "hrsh7th/cmp-cmdline", after = "nvim-cmp" }
 use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
 
 use { "hrsh7th/cmp-path", after = "cmp-buffer" }
+
+return M
 
 -- vim:ft=lua

@@ -1,8 +1,14 @@
+local M = {}
+
+local function use(plugin)
+  M[vim.split(plugin[1], "/")[2]] = plugin
+end
+
 use {
   "euclidianAce/BetterLua.vim",
   ft = "lua",
   setup = function()
-    require "configs.betterlua"
+    require "configs.dev.betterlua"
   end,
 }
 
@@ -12,5 +18,7 @@ use { "rafcamlet/nvim-luapad", cmd = { "Luapad", "LuaRun" } }
 use { "milisims/nvim-luaref", ft = { "vim", "lua" } }
 use { "nanotee/luv-vimdocs", ft = { "vim", "lua" } }
 use { "nanotee/nvim-lua-guide", ft = { "vim", "lua" } }
+
+return M
 
 -- vim:ft=lua

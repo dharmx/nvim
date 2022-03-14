@@ -20,35 +20,34 @@ if fn.empty(fn.glob(compile_path)) > 0 then
 end
 
 local packer = require "packer"
-packer.init(require "configs.packer")
-use = packer.use
+packer.init(require "configs.core.packer")
 packer.reset()
 
 for _, module in
   ipairs {
     "health",
-    "completion",
+    "cmp",
     "core",
     "utils",
     "lsp",
     "treesitter",
     "others",
-    "development",
+    "dev",
     "editing",
     "workflow",
     "telescope",
     "ui",
   }
 do
-  _ = require("plugins." .. module)
+  utils.load_module(packer.use, require("plugins." .. module))
 end
 
 if bootstrap then
   packer.sync()
   packer.on_compile_done = schedule_wrap(function()
-    _ = pcall(require, "configs.impatient")
+    _ = pcall(require, "configs.core.impatient")
     notify {
-      message = "Run :LspInstall and :TSStart or, press <leader>l and <leader>T",
+      message = "Run :LspInstall and :TSStart or, press\n<leader>l and <leader>T",
       icon = " ",
       title = "KrakenVim",
     }

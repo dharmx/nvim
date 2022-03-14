@@ -1,3 +1,9 @@
+local M = {}
+
+local function use(plugin)
+  M[vim.split(plugin[1], "/")[2]] = plugin
+end
+
 use { "tweekmonster/haunted.vim", cmd = "Haunt" }
 
 use {
@@ -7,15 +13,15 @@ use {
     "RnvimrResize",
   },
   setup = function()
-    require "configs.rnvimr"
+    require "configs.workflow.rnvimr"
   end,
 }
 
 use {
   "kyazdani42/nvim-tree.lua",
   cmd = { "NvimTreeToggle", "NvimTreeRefresh", "NvimTreeFocus" },
-  setup = require("configs.nvimtree").before,
-  config = require("configs.nvimtree").after,
+  setup = require("configs.workflow.nvimtree").before,
+  config = require("configs.workflow.nvimtree").after,
   wants = "nvim-notify",
 }
 
@@ -23,7 +29,7 @@ use {
   "phaazon/hop.nvim",
   cmd = { "HopWord", "HopLine", "HopChar1", "HopChar2", "HopPattern" },
   config = function()
-    require "configs.hop"
+    require "configs.workflow.hop"
   end,
 }
 
@@ -31,7 +37,7 @@ use {
   "Pocco81/AutoSave.nvim",
   cmd = { "ASOn", "ASOff", "ASToggle" },
   config = function()
-    require "configs.autosave"
+    require "configs.workflow.autosave"
   end,
 }
 
@@ -42,7 +48,7 @@ use { "mbbill/undotree", cmd = "UndotreeToggle" }
 use {
   "max397574/better-escape.nvim",
   config = function()
-    require "configs.escape"
+    require "configs.workflow.escape"
   end,
   keys = require("mappings").better_escape_nvim,
 }
@@ -54,7 +60,7 @@ use { "akinsho/toggleterm.nvim", cmd = { "ToggleTerm", "ToggleTermToggleAll" } }
 use {
   "folke/which-key.nvim",
   config = function()
-    require "configs.whichkey"
+    require "configs.workflow.whichkey"
   end,
 }
 
@@ -63,7 +69,7 @@ use { "ggandor/lightspeed.nvim", cmd = "LightSpeedInit" }
 use {
   "bennypowers/nvim-regexplainer",
   config = function()
-    require "configs.regexplainer"
+    require "configs.workflow.regexplainer"
   end,
   after = "nvim-treesitter",
   wants = { "plenary.nvim", "nui.nvim" },
@@ -78,5 +84,7 @@ use {
 use { "winston0410/cmd-parser.nvim", event = "CmdlineEnter" }
 
 use { "nvim-pack/nvim-spectre", opt = true }
+
+return M
 
 -- vim:ft=lua

@@ -1,3 +1,9 @@
+local M = {}
+
+local function use(plugin)
+  M[vim.split(plugin[1], "/")[2]] = plugin
+end
+
 use { "danymat/neogen", after = "nvim-treesitter" }
 
 use {
@@ -47,5 +53,7 @@ use {
   end,
   after = "nvim-treesitter",
 }
+
+return M
 
 -- vim:ft=lua

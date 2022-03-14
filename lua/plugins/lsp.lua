@@ -1,3 +1,9 @@
+local M = {}
+
+local function use(plugin)
+  M[vim.split(plugin[1], "/")[2]] = plugin
+end
+
 use {
   "jose-elias-alvarez/null-ls.nvim",
   wants = "plenary.nvim",
@@ -71,5 +77,7 @@ use {
     require "configs.lsp.signature"
   end,
 }
+
+return M
 
 -- vim:ft=lua

@@ -1,3 +1,9 @@
+local M = {}
+
+local function use(plugin)
+  M[vim.split(plugin[1], "/")[2]] = plugin
+end
+
 use { "Fymyte/rasi.vim", ft = "rasi" }
 use { "elkowar/yuck.vim", ft = "yuck" }
 use { "kovetskiy/sxhkd-vim", ft = "sxhkdrc" }
@@ -18,7 +24,7 @@ use {
   wants = "plenary.nvim",
   cmd = "Gitsigns",
   config = function()
-    require "configs.gitsigns"
+    require "configs.editing.gitsigns"
   end,
 }
 
@@ -28,7 +34,7 @@ use {
   "folke/todo-comments.nvim",
   event = "InsertEnter",
   config = function()
-    require "configs.todo"
+    require "configs.editing.todo"
   end,
 }
 
@@ -36,14 +42,14 @@ use {
   "ellisonleao/glow.nvim",
   cmd = "Glow",
   setup = function()
-    require "configs.glow"
+    require "configs.editing.glow"
   end,
 }
 
 use {
   "iamcco/markdown-preview.nvim",
   setup = function()
-    require "configs.mdpreview"
+    require "configs.editing.mdpreview"
   end,
   run = "cd app && yarn install",
   ft = "markdown",
@@ -63,7 +69,7 @@ use {
   "folke/trouble.nvim",
   cmd = { "Trouble", "TroubleClose", "TroubleRefresh", "TroubleToggle" },
   config = function()
-    require "configs.trouble"
+    require "configs.editing.trouble"
   end,
 }
 
@@ -91,7 +97,7 @@ use {
   ft = "norg",
   after = "nvim-treesitter",
   config = function()
-    require "configs.neorg"
+    require "configs.editing.neorg"
   end,
 }
 
@@ -99,10 +105,12 @@ use {
   "nvim-orgmode/orgmode",
   ft = "org",
   config = function()
-    require "configs.orgmode"
+    require "configs.editing.orgmode"
   end,
 }
 
 use { "jbyuki/nabla.nvim", after = "orgmode" }
+
+return M
 
 -- vim:ft=lua

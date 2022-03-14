@@ -1,8 +1,14 @@
+local M = {}
+
+local function use(plugin)
+  M[vim.split(plugin[1], "/")[2]] = plugin
+end
+
 use {
   "xiyaowong/nvim-transparent",
   cmd = { "TransparentDisable", "TransparentEnable", "TransparentToggle" },
   config = function()
-    require "configs.transparent"
+    require "configs.health.transparent"
   end,
 }
 
@@ -12,7 +18,7 @@ use {
   "folke/twilight.nvim",
   cmd = { "Twilight", "TwilightEnable", "TwilightDisable" },
   config = function()
-    require "configs.twilight"
+    require "configs.health.twilight"
   end,
 }
 
@@ -20,7 +26,7 @@ use {
   "folke/zen-mode.nvim",
   cmd = "ZenMode",
   config = function()
-    require "configs.zenmode"
+    require "configs.health.zenmode"
   end,
 }
 
@@ -39,5 +45,7 @@ use {
 use { "junegunn/goyo.vim", cmd = "Goyo" }
 
 use { "junegunn/limelight.vim", after = "goyo.vim" }
+
+return M
 
 -- vim:ft=lua

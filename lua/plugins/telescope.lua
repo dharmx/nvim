@@ -1,3 +1,9 @@
+local M = {}
+
+local function use(plugin)
+  M[vim.split(plugin[1], "/")[2]] = plugin
+end
+
 use {
   "nvim-telescope/telescope.nvim",
   cmd = "Telescope",
@@ -192,5 +198,7 @@ use {
   "lalitmee/browse.nvim",
   after = "telescope.nvim",
 }
+
+return M
 
 -- vim:ft=lua
