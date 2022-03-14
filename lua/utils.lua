@@ -54,7 +54,12 @@ function M.autosave()
       else
         augroup("AutoSaveOnNormalMode", {
           {
-            events = "BufWritePre",
+            events = {
+              "BufWritePre",
+              "FocusLost",
+              "BufEnter",
+              "WinEnter",
+            },
             command = vim.lsp.buf.formatting_sync,
             options = { buffer = api.nvim_get_current_buf() },
           },
@@ -96,7 +101,7 @@ function M.dashboard_vimenter()
     api.nvim_notify(
       [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀  ⢀⠠⠀⠀⠀⠉⠈⠁⠀⠂⠠⠀⣴⣾⣿⣦⡀⠀⠀
-⠀⠀⠀⠀⠀  ⠂⠁⢀⣠⣴⣶⣶⣶⣶⣶⣤⣀⠘⣿⣿⣿⣿⠃⠀      ﳁ                    ⠀⠀⠀   
+⠀⠀⠀⠀⠀  ⠂⠁⢀⣠⣴⣶⣶⣶⣶⣶⣤⣀⠘⣿⣿⣿⣿⠃⠀      ﳁ                    ⠀⠀⠀
 ⠀⠀⠀  ⡀⠁⢀⣴⣿⣿⣿⣿⣿⣿⡿⠋⠉⠙⢷⣌⠉⠉⡁⠀⠀   Welcome to KrakenVim.
 ⠀⠀  ⠠⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⡅⠀⠀⠀⢸⣿⣆⠀⠀⡀⠀   Press <Space> to get started.
 ⠀⠀  ⠆⠀⢸⣿⣿⢹⣿⣿⣿⣿⣿⣿⣦⣤⣴⣿⣿⣿⠀⠀⠆⠀   Enjoy your stay.
