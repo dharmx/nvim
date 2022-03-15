@@ -4,9 +4,9 @@ function U.get(theme)
   return {
     MatchParen = { foreground = theme.common.base08, decoration = "bold" },
     Normal = { background = theme.common.base00 },
-    NormalFloat = { foreground = theme.common.base09, background = theme.shades.shade07 },
+    NormalFloat = { foreground = theme.common.base09, background = theme.shades.shade06 },
     cheatSeparator = { foreground = theme.common.base02 },
-    FloatBorder = { foreground = theme.common.base08, background = theme.shades.shade07 },
+    FloatBorder = { foreground = theme.common.base08, background = theme.shades.shade06 },
     ColorColumn = { background = theme.common.base01 },
     StatusLine = { background = theme.shades.shade06, foreground = theme.common.base04 },
     StatusLineNC = { background = theme.common.base00, foreground = theme.shades.shade06 },

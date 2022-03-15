@@ -15,7 +15,7 @@ use {
   config = function()
     require "configs.lsp"
   end,
-  wants = { "nvim-lspconfig" },
+  wants = "nvim-lspconfig",
   cmd = {
     "LspInstallInfo",
     "LspInstallLog",
@@ -67,6 +67,11 @@ use {
   config = function()
     require "configs.lsp.signature"
   end,
+}
+
+use {
+  "tamago324/nlsp-settings.nvim",
+  module = "nlspsettings",
 }
 
 return M

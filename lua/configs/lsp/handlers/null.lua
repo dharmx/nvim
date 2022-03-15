@@ -43,6 +43,7 @@ local sources = {
   fmtng.taplo,
   fmtng.trim_whitespace,
   fmtng.uncrustify,
+  fmtng.astyle,
 
   -- cacts.gitsigns,
   -- cacts.refactoring,

@@ -60,6 +60,7 @@ use {
   config = function()
     require "configs.workflow.toggleterm"
   end,
+  module = { "toggleterm" },
   cmd = { "ToggleTerm", "ToggleTermToggleAll" },
 }
 

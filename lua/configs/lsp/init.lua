@@ -101,11 +101,10 @@ local function configure_diagnostics()
   }
 end
 
-schedule(function()
-  configure_diagnostics()
-  configure_installer()
-  ensure_servers()
-  configure_servers()
-end)
+_ = require "configs.lsp.nlsp"
+configure_diagnostics()
+configure_installer()
+ensure_servers()
+configure_servers()
 
 -- vim:ft=lua

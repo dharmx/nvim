@@ -4,6 +4,11 @@ local schema = {
       schemas = vim.list_extend(
         {
           {
+            description = "json-ls configuration file",
+            fileMatch = { ".jsonls.json", "jsonls.json" },
+            url = "https://gist.githubusercontent.com/tamago324/d09875f231ee4f149ed63766af3cc0ca/raw/ee598f1e8348b94bb5d7a12ef111775679242f21/schema-jsonls.json",
+          },
+          {
             description = "TypeScript compiler configuration file",
             fileMatch = { "tsconfig.json", "tsconfig.*.json" },
             url = "http://json.schemastore.org/tsconfig",

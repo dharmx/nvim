@@ -10,6 +10,7 @@ M.mappings = {
   ["x"] = { "<CMD>lua require('utils.toggleterm')._FISH_TOGGLE()<CR>", " Fish" },
   ["k"] = { "<CMD>lua require('utils.toggleterm')._BASH_TOGGLE()<CR>", " Bash" },
   ["z"] = { "<CMD>lua require('utils.toggleterm')._ZSH_TOGGLE()<CR>", " Zsh" },
+  ["i"] = { "<CMD>lua require('utils.toggleterm')._POSIX_TOGGLE()<CR>", " Sh" },
   ["r"] = { "<CMD>lua require('utils.toggleterm')._RANGER_TOGGLE()<CR>", " Ranger" },
   ["l"] = { "<CMD>lua require('utils.toggleterm')._LUA_TOGGLE()<CR>", " Lua" },
   ["j"] = { "<CMD>lua require('utils.toggleterm')._JSHELL_TOGGLE()<CR>", " JShell" },

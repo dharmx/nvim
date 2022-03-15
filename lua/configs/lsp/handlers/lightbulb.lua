@@ -3,11 +3,12 @@ local present, lightbulb = pcall(require, "nvim-lightbulb")
 if not present then
   return
 end
+
 -- require'nvim-lightbulb'.get_status_text()
 local config = {
   -- LSP client names to ignore
-  -- Example: {"sumneko_lua", "null-ls"}
-  ignore = {},
+  -- Example: {"sumneko_lua", }
+  ignore = { "null-ls" },
   sign = {
     enabled = true,
     priority = 10,

@@ -5,12 +5,11 @@ if not present then
 end
 
 local config = {
-  size = 20,
-  open_mapping = require("mappings").toggleterm_nvim,
+  open_mapping = require("mappings").toggleterm_nvim.open_mapping,
   hide_numbers = true,
   shade_filetypes = {},
   shade_terminals = true,
-  shading_factor = 2,
+  shading_factor = 0.2,
   start_in_insert = true,
   insert_mappings = true,
   persist_size = true,
@@ -18,11 +17,10 @@ local config = {
   close_on_exit = true,
   shell = vim.o.shell,
   float_opts = {
-    border = "curved",
-    winblend = 0,
+    border = "double",
     highlights = {
-      border = "Normal",
-      background = "Normal",
+      border = "FloatBorder",
+      background = "NormalFloat",
     },
   },
 }
