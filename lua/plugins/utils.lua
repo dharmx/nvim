@@ -6,10 +6,6 @@ end
 
 use {
   "nvim-lua/plenary.nvim",
-  module = {
-    "plenary.job",
-    "plenary",
-  },
 }
 
 use { "nvim-lua/popup.nvim", opt = true }
