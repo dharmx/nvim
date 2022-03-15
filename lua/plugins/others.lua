@@ -52,6 +52,7 @@ use {
   setup = function()
     require "configs.others.scrollbar"
   end,
+  module = "scrollbar"
 }
 
 return M
