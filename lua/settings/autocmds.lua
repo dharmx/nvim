@@ -159,6 +159,40 @@ M["PersistentFileEditPosition"] = {
   },
 }
 
+M["NvimINCSearchCursorline"] = {
+  {
+    events = "CmdlineEnter",
+    command = function()
+      opt_local.cursorline = true
+      opt_local.cursorcolumn = true
+      opt_local.hlsearch = true
+    end,
+    options = { patterns = "/,\\?" },
+  },
+  {
+    events = "CmdlineLeave",
+    command = function()
+      opt_local.cursorline = false
+      opt_local.cursorcolumn = false
+      opt_local.hlsearch = false
+    end,
+    options = { patterns = "/,\\?" },
+  },
+}
+
+M["PersistentMarkdownFolds"] = {
+  {
+    events = "BufWinLeave",
+    command = "mkview",
+    options = { patterns = "*.md" },
+  },
+  {
+    events = "BufWinEnter",
+    command = "silent! loadview",
+    options = { patterns = "*.md" },
+  },
+}
+
 return M
 
 -- vim:ft=lua

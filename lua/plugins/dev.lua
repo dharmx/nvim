@@ -6,7 +6,7 @@ end
 
 use {
   "euclidianAce/BetterLua.vim",
-  ft = "lua",
+  event = "CmdlineEnter",
   setup = function()
     require "configs.dev.betterlua"
   end,
@@ -15,9 +15,9 @@ use {
 use { "bfredl/nvim-luadev", cmd = "Luadev" }
 
 use { "rafcamlet/nvim-luapad", cmd = { "Luapad", "LuaRun" } }
-use { "milisims/nvim-luaref", ft = { "vim", "lua" } }
-use { "nanotee/luv-vimdocs", ft = { "vim", "lua" } }
-use { "nanotee/nvim-lua-guide", ft = { "vim", "lua" } }
+use { "milisims/nvim-luaref", event = "CmdlineEnter" }
+use { "nanotee/luv-vimdocs", event = "CmdlineEnter" }
+use { "nanotee/nvim-lua-guide", event = "CmdlineEnter" }
 
 return M
 

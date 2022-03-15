@@ -66,6 +66,17 @@ use {
 }
 
 use {
+  "chrisbra/Colorizer",
+  cmd = {
+    "ColorToggle",
+    "ColorClear",
+    "ColorContrast",
+    "ColorHighlight",
+    "ColorSwapFgBg",
+  },
+}
+
+use {
   "folke/trouble.nvim",
   cmd = { "Trouble", "TroubleClose", "TroubleRefresh", "TroubleToggle" },
   config = function()

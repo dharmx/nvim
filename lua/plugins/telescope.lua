@@ -113,7 +113,7 @@ use {
 use {
   "crispgm/telescope-heading.nvim",
   wants = "telescope.nvim",
-  ft = { "md", "markdown" },
+  after = "telescope.nvim",
   config = function()
     require("telescope").load_extension "heading"
   end,

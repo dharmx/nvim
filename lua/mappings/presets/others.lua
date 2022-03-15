@@ -19,7 +19,6 @@ M.mappings = {
   ["<leader>H"] = { "<CMD>sp | enew<CR>", " Horizontal split" },
   ["<Esc>"] = { "<CMD>noh<CR>", " Remove highlights" },
   ["<C-y>"] = { "<CMD>%y+<CR>", "﯂ Copy all" },
-  ["<F3>"] = { "<CMD>ColorizerToggle<CR>", "﯂ Enable colorizer" },
   ["<F2>"] = { "<CMD>SpellingTGL<CR>", " Spelling" },
   ["<leader>s"] = {
     ["name"] = " Spotify",

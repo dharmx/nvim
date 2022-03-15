@@ -84,6 +84,7 @@ use {
   "andersevenrud/cmp-tmux",
   after = "nvim-cmp",
   ft = { "sh", "bash", "zsh", "fish", "conf" },
+  event = "InsertEnter",
 }
 
 use { "hrsh7th/cmp-emoji", after = "nvim-cmp" }
@@ -108,15 +109,15 @@ use { "lukas-reineke/cmp-rg", after = "nvim-cmp" }
 
 use { "ray-x/cmp-treesitter", after = { "nvim-cmp", "nvim-treesitter" } }
 
-use { "hrsh7th/cmp-nvim-lua", wants = "nvim-cmp", ft = "lua" }
+use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }
 
 use { "mtoohey31/cmp-fish", ft = "fish", after = "nvim-cmp" }
 
-use { "kdheepak/cmp-latex-symbols", ft = "tex", wants = "nvim-cmp" }
+use { "kdheepak/cmp-latex-symbols", ft = "tex", after = "nvim-cmp" }
 
 use { "saadparwaiz1/cmp_luasnip", after = { "LuaSnip", "nvim-cmp" } }
 
-use { "hrsh7th/cmp-cmdline", after = "nvim-cmp" }
+use { "hrsh7th/cmp-cmdline", after = "nvim-cmp", event = "CmdlineEnter" }
 
 use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
 
