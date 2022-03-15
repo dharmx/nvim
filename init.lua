@@ -1,6 +1,6 @@
 _ = require "settings"
 
-if not exists(install_path) or not exists(compile_path) then
+if not exists(INSTALL_PATH) or not exists(COMPILE_PATH) then
   _ = require "plugins"
 end
 

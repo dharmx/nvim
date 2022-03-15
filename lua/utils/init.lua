@@ -33,7 +33,7 @@ function M.load_module(pacman, module)
   end
 end
 
-function M.load(pacman, plugins)
+function M.load_all(pacman, plugins)
   for _, plugin in pairs(plugins) do
     pacman.use(plugin)
   end
@@ -103,7 +103,7 @@ function M.dashboard_vimenter()
 ⠀⠀⠀⠀⠀⠀  ⢀⠠⠀⠀⠀⠉⠈⠁⠀⠂⠠⠀⣴⣾⣿⣦⡀⠀⠀
 ⠀⠀⠀⠀⠀  ⠂⠁⢀⣠⣴⣶⣶⣶⣶⣶⣤⣀⠘⣿⣿⣿⣿⠃⠀      ﳁ                    ⠀⠀⠀
 ⠀⠀⠀  ⡀⠁⢀⣴⣿⣿⣿⣿⣿⣿⡿⠋⠉⠙⢷⣌⠉⠉⡁⠀⠀   Welcome to KrakenVim.
-⠀⠀  ⠠⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⡅⠀⠀⠀⢸⣿⣆⠀⠀⡀⠀   Press <Space> to get started.
+⠀⠀  ⠠⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⡅⠀⠀⠀⢸⣿⣆⠀⠀⡀⠀   Press <Space> to get started.      
 ⠀⠀  ⠆⠀⢸⣿⣿⢹⣿⣿⣿⣿⣿⣿⣦⣤⣴⣿⣿⣿⠀⠀⠆⠀   Enjoy your stay.
 ⠀⠀  ⠃⠀⢸⣿⣿⢸⣿⣿⣿⢸⣿⢸⣯⡴⠶⢹⣿⣿⠀⠀⠆⠀
 ⠀⠀  ⠐⠀⠀⢻⣿⣘⣛⣛⣿⣘⣟⣸⣇⣺⣛⣸⣿⠇⠀⠐⠀⠀                Powered By  Lua

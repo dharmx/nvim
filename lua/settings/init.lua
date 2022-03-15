@@ -1,4 +1,5 @@
 _ = require "settings.env"
+_ = require "settings.utils"
 
 excallback(function()
   local builtins = require "settings.builtins"

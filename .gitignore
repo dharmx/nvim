@@ -43,5 +43,7 @@ luac.out
 plugin/
 **/packer_compiled.lua
 **/*compiled.lua
+.startup-time.log.txt
+.startup.log
 
 **/*.spl

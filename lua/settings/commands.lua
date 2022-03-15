@@ -4,7 +4,7 @@ M["CommitList"] = "Telescope git_commits"
 M["EnvList"] = "Telescope env"
 M["Keymaps"] = "Telescope keymaps"
 M["GitHL"] = "Gitsigns toggle_signs"
-M["FormatConfigAll"] = "lua vim.fn.system('stylua --config-path ' .. vim.fn.stdpath('config') .. '/.stylua.toml ' .. vim.fn.stdpath('config'))"
+M["FormatConfigAll"] = "lua system('stylua --config-path ' .. vim.fn.stdpath('config') .. '/.stylua.toml ' .. vim.fn.stdpath('config'))"
 M["LspLog"] = "edit " .. lsp.get_log_path()
 M["NvimLog"] = "edit " .. stdpath "cache" .. "/log"
 M["PackerLog"] = "edit " .. stdpath "cache" .. "/packer.nvim.log"
@@ -17,6 +17,15 @@ M["NumberColumnTGL"] = "setlocal nu!"
 M["RelativeNumberColumnTGL"] = "setlocal rnu!"
 M["SpellingTGL"] = "setlocal spell!"
 M["SpotifyExit"] = "lua api.nvim_exec('!killall spotifyd &', false)"
+M["StartupTime"] = table.concat({
+  "lua",
+  "api.nvim_exec",
+  "([[!nvim", 
+  "--startuptime", 
+  stdpath("config") .. "/.startup.log", 
+  "s", 
+  "+quitall]], false)", 
+}, " ")
 
 local N = {
  "command! -nargs=+ -complete=customlist,v:lua.require'packer.snapshot'.completion.create PackerSnapshot  lua require('packer').snapshot(<f-args>)",

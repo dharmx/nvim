@@ -1,47 +1,32 @@
-fn = vim.fn
-stdpath = fn.stdpath
+g = vim.g
+o = vim.o
 
-install_path = stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
-compile_path = stdpath "config" .. "/lua/_compiled.lua"
+wo = vim.wo
+bo = vim.bo
+
+fn = vim.fn
+api = vim.api
+lsp = vim.lsp
+env = vim.env
 
 opt = vim.opt
 opt_local = vim.opt_local
-
-g = vim.g
-o = vim.o
-wo = vim.wo
-bo = vim.bo
-env = vim.env
 
 set_map = vim.keymap.set
 rmv_map = vim.keymap.del
 
 schedule = vim.schedule
 schedule_wrap = vim.schedule_wrap
+diagnostic = vim.diagnostic
 
-cmd = vim.api.nvim_command
+cmd = api.nvim_command
+buf = lsp.buf
+
+stdpath = fn.stdpath
 system = fn.system
-api = vim.api
-lsp = vim.lsp
+inspect = vim.inspect
 
-hi = require("utils").highlight
-utils = require "utils"
-
-alias = utils.alias
-abbrev = utils.abbrev
-augroup = utils.augroup
-autocmd = utils.autocmd
-
-xmap = utils.xmap
-imap = utils.imap
-vmap = utils.vmap
-nmap = utils.nmap
-
-excallback = utils.excallback
-exists = utils.exists
-notify = utils.notify
-
-cmd "colorscheme nordic"
-colors = require("utils").get_active_scheme()
+INSTALL_PATH = stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
+COMPILE_PATH = stdpath "config" .. "/lua/_compiled.lua"
 
 -- vim:ft=lua

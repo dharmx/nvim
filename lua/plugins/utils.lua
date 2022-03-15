@@ -8,9 +8,18 @@ use {
   "nvim-lua/plenary.nvim",
 }
 
-use { "nvim-lua/popup.nvim", opt = true }
+use {
+  "nvim-lua/popup.nvim",
+  opt = true,
+}
 
-use { "luukvbaal/stabilize.nvim", event = { "CmdlineEnter", "InsertEnter" } }
+use {
+  "luukvbaal/stabilize.nvim",
+  event = {
+    "CmdlineEnter",
+    "InsertEnter",
+  },
+}
 
 use {
   "rcarriga/nvim-notify",
@@ -22,8 +31,6 @@ use {
 use { "MunifTanjim/nui.nvim", module = "nui" }
 
 use { "tami5/sqlite.lua", module = "sqlite" }
-
-use { "dstein64/vim-startuptime", cmd = "StartupTime" }
 
 return M
 

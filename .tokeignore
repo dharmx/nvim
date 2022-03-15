@@ -7,3 +7,5 @@ snippets/
 .stylua.toml
 LICENSE.txt
 package.json
+.startup-time.log.txt
+.startup.log

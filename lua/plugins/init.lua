@@ -1,12 +1,12 @@
-if fn.empty(fn.glob(install_path)) > 0 then
+if not exists(INSTALL_PATH) then
   notify { message = "packer.nvim doesn't exist. Cloning..." }
-  BOOTSTRAP = system {
+  PACKER_BOOTSTRAP = system {
     "git",
     "clone",
     "--depth",
     "1",
     "https://github.com/wbthomason/packer.nvim",
-    install_path,
+    INSTALL_PATH,
   }
 
   if not pcall(cmd, "packadd packer.nvim") then
@@ -14,9 +14,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
   end
 end
 
-if fn.empty(fn.glob(compile_path)) > 0 then
+if not exists(COMPILE_PATH) then
   notify "Couldn't find plugin specifications. Syncing now..."
-  BOOTSTRAP = true
+  PACKER_BOOTSTRAP = true
   _ = pcall(cmd, "packadd packer.nvim")
 end
 
@@ -43,7 +43,7 @@ do
   utils.load_module(packer, require(module))
 end
 
-if BOOTSTRAP then
+if PACKER_BOOTSTRAP then
   packer.sync()
   packer.on_compile_done = schedule_wrap(function()
     _ = pcall(require, "configs.core.impatient")
