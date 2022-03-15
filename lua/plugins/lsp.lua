@@ -12,7 +12,8 @@ use {
 
 use {
   "ThePrimeagen/refactoring.nvim",
-  after = { "null-ls.nvim", "telescope.nvim" },
+  after = { "null-ls.nvim", "telescope.nvim", "nvim-treesitter" },
+  wants = "plenary.nvim",
   config = function()
     require "configs.telescope.refactoring"
     require("telescope").load_extension "refactoring"
