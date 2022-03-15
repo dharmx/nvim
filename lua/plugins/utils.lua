@@ -4,12 +4,12 @@ local function use(plugin)
   M[plugin[1]] = plugin
 end
 
-use { 
-  "nvim-lua/plenary.nvim", 
-  module = { 
+use {
+  "nvim-lua/plenary.nvim",
+  module = {
     "plenary.job",
-    "plenary"
-  } 
+    "plenary",
+  },
 }
 
 use { "nvim-lua/popup.nvim", opt = true }
