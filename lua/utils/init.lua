@@ -6,6 +6,10 @@ function M.load_ui_select()
   end
 end
 
+function M.pi(item)
+  print(inspect(item))
+end
+
 function M.search_override()
   set_map("n", "/", "<CMD>SearchBoxIncSearch<CR>", { noremap = true })
   set_map("x", "/", "<CMD>SearchBoxIncSearch visual_mode=true<CR>", { noremap = true })
@@ -28,13 +32,13 @@ function M.cmdline_override()
 end
 
 function M.load_module(pacman, module)
-  for _, plugin in pairs(module) do
+  for _, plugin in ipairs(module) do
     pacman.use(plugin)
   end
 end
 
 function M.load_all(pacman, plugins)
-  for _, plugin in pairs(plugins) do
+  for _, plugin in ipairs(plugins) do
     pacman.use(plugin)
   end
 end

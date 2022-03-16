@@ -105,7 +105,7 @@ N.syntax = {
   ["color11"] = "#EBCBAB",
 
   ["color18"] = "#333947",
-  ["color14"] = "#414754",
+  ["color14"] = "#434C5E",
   ["color07"] = "#D8DEE9",
 }
 

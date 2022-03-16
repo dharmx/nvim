@@ -1,7 +1,7 @@
 local M = {}
 
 local function use(plugin)
-  M[plugin[1]] = plugin
+  table.insert(M, plugin)
 end
 
 use { "tweekmonster/haunted.vim", cmd = "Haunt" }

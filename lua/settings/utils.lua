@@ -6,6 +6,7 @@ abbrev = utils.abbrev
 
 augroup = utils.augroup
 autocmd = utils.autocmd
+abbrev = utils.abbrev
 
 xmap = utils.xmap
 imap = utils.imap
@@ -15,6 +16,7 @@ nmap = utils.nmap
 excallback = utils.excallback
 exists = utils.exists
 notify = utils.notify
+pi = utils.pi
 
 cmd "colorscheme nordic"
 colors = require("utils").get_active_scheme()

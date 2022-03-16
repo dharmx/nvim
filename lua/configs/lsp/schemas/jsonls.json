@@ -1,0 +1,7 @@
+{
+    "json.enable": true,
+    "json.format.enable": true,
+    "json.trace.server": "messages",
+    "json.maxItemsComputed": 10000,
+    "json.schemaDownload.enable": true
+}

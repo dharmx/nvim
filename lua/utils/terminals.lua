@@ -1,15 +1,13 @@
-_ = require "toggleterm"
-
 local T = {}
 
 function T._TERM_KEYMAPS()
   local opts = { noremap = true }
-  vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
-  vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], opts)
-  vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
-  vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
-  vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
-  vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
+  api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
+  api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], opts)
+  api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
+  api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
+  api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
+  api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
 end
 
 local Terminal = require("toggleterm.terminal").Terminal
@@ -20,7 +18,7 @@ function T._LAZYGIT_TOGGLE()
     hidden = true,
     direction = "float",
     float_opts = {
-      border = "single",
+      border = "solid",
     },
     size = 28,
   }
@@ -43,7 +41,7 @@ function T._BTOP_TOGGLE()
     direction = "float",
     size = 25,
     float_opts = {
-      border = "single",
+      border = "solid",
     },
   }
   btop:toggle()
@@ -96,7 +94,7 @@ function T._RANGER_TOGGLE()
     direction = "float",
     size = 30,
     float_opts = {
-      border = "single",
+      border = "solid",
     },
   }
   ranger:toggle()

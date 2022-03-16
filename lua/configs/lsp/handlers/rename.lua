@@ -52,7 +52,7 @@ local function nui_lsp_rename()
   local popup_options = {
     -- border for the window
     border = {
-      style = "single",
+      style = "solid",
       text = {
         top = " Rename",
         top_align = "left",

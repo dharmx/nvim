@@ -5,11 +5,11 @@ g.symbols_outline = {
   position = "right",
   relative_width = true,
   width = 40,
-  auto_close = false,
+  auto_close = true,
   show_numbers = false,
   show_relative_numbers = false,
   show_symbol_details = true,
-  preview_bg_highlight = "Pmenu",
+  preview_bg_highlight = "NormalFLoat",
   keymaps = require("mappings").symbols_outline_nvim,
   symbols = {
     File = { icon = "", hl = "TSURI" },

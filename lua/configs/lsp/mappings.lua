@@ -7,6 +7,7 @@ M.setup = function(client, buffer)
     ["b"] = {
       ["name"] = " Actions",
       ["K"] = { "<CMD>lua buf.hover()<CR>", " Hover" },
+      ["k"] = { "<CMD>Lspsaga hover_doc<CR>", " Hover" },
       ["c"] = { "<CMD>lua utils.load_ui_select(); buf.code_action()<CR>", " Code action" },
       ["f"] = { "<CMD>lua buf.formatting()<CR>", "ﯕ Format" },
       ["r"] = { "<CMD>lua require('configs.lsp.handlers.rename').lsp_rename()<CR>", "ﯕ Format" },
@@ -19,6 +20,7 @@ M.setup = function(client, buffer)
       ["["] = { "<CMD>lua diagnostic.goto_prev()<CR>", "ﭧ Previous errors" },
       ["]"] = { "<CMD>lua diagnostic.goto_next()<CR>", "ﭧ Next errors" },
       ["q"] = { "<CMD>lua diagnostic.setloclist()<CR>", " Set loclist" },
+      ["y"] = { "<CMD>Lspsaga yank_line_diagnostics<CR>", " Yank line diagnostics" },
     },
     ["g"] = {
       ["name"] = " Definitions",
@@ -26,8 +28,10 @@ M.setup = function(client, buffer)
       ["d"] = { "<CMD>lua buf.definition()<CR>", " Goto definiton" },
       ["s"] = { "<CMD>lua buf.signature_help()<CR>", "ﲀ Signature" },
       ["i"] = { "<CMD>lua buf.implementation()<CR>", "בּ Implementation" },
+      ["I"] = { "<CMD>Lspsaga implement<CR>", "בּ Implementation" },
       ["t"] = { "<CMD>lua buf.type_definition()<CR>", " Type definition" },
       ["r"] = { "<CMD>lua buf.references()<CR>", " References" },
+      ["f"] = { "<CMD>Lspsaga lsp_finder<CR>", " LSP Finder" },
     },
     ["w"] = {
       ["name"] = " Workspaces",

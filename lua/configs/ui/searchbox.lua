@@ -13,7 +13,7 @@ local config = {
     },
     size = "20%",
     border = {
-      style = "single",
+      style = "solid",
       highlight = "FloatBorder",
       text = {
         bottom = "",
@@ -22,7 +22,7 @@ local config = {
       },
     },
     win_options = {
-      winhighlight = "TabLine:Boolean",
+      winhighlight = "NormalFloat:NormalFloat",
     },
   },
 }

@@ -5,21 +5,9 @@ if not present then
 end
 
 local servers = {
-  ["bashls"] = {},
-  ["diagnosticls"] = {},
-  ["eslint"] = {},
-  ["grammarly"] = {},
-  ["html"] = {},
-  ["cssls"] = {},
   ["jsonls"] = require "configs.lsp.servers.jsonls",
-  ["pyright"] = {},
-  ["sqlls"] = {},
-  ["stylelint_lsp"] = {},
-  ["texlab"] = {},
   ["yamlls"] = {},
   ["sumneko_lua"] = require "configs.lsp.servers.sumneko_lua",
-  ["emmet_ls"] = require "configs.lsp.servers.emmet_ls",
-  ["vimls"] = {},
 }
 
 local function on_attach(client, buffer)
@@ -30,11 +18,7 @@ local function on_attach(client, buffer)
 
   client.resolved_capabilities.document_formatting = false
   client.resolved_capabilities.document_range_formatting = false
-  notify {
-    message = "LSP has been initialised.",
-    title = "LSP: " .. client.name,
-    icon = " ",
-  }
+  notify { message = "LSP has been initialised.", title = "LSP: " .. client.name, icon = " " }
 end
 
 local function configure_installer()
@@ -54,21 +38,13 @@ local function configure_installer()
 end
 
 local function ensure_servers()
-  local installed = {}
   for name, _ in pairs(servers) do
     local found, server = installer.get_server(name)
     if found and not server:is_installed() then
-      print("Installing " .. name)
+      notify { message = "Installing " .. name, icon = "", title = "nvim-lsp-installer" }
       server:install()
-      table.insert(installed, name)
+      notify { message = "Installed " .. name, icon = " ", title = "nvim-lsp-installer" }
     end
-  end
-  if #installed ~= 0 then
-    notify {
-      message = "Installed\n\t" .. table.concat(vim.tbl_keys(installed), "\n\t"),
-      icon = " ",
-      title = "nvim-lsp-installer",
-    }
   end
 end
 
@@ -76,7 +52,7 @@ local function configure_servers()
   installer.on_server_ready(function(server)
     local capabilities = require "configs.lsp.capabilities"
     local flags = { debounce_text_changes = 150 }
-    local handlers = require("configs.lsp.handlers").handlers
+    local handlers = require "configs.lsp.handlers"
 
     local server_config = {
       flags = flags,
@@ -101,7 +77,7 @@ local function configure_diagnostics()
   }
 end
 
-_ = require "configs.lsp.nlsp"
+_ = require "configs.lsp.schema"
 configure_diagnostics()
 configure_installer()
 ensure_servers()

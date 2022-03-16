@@ -35,9 +35,9 @@ M["NativeAdjustments"] = {
       opt_local.number = false
       opt_local.relativenumber = false
       opt_local.filetype = "terminal"
-      require("utils.toggleterm")._TERM_KEYMAPS()
+      require("utils.terminals")._TERM_KEYMAPS()
     end,
-    options = { patterns = { "term://", "zsh", "*/zsh" } },
+    options = { patterns = { "term://", "zsh", "*/zsh", "sh" } },
   },
   {
     events = "FileType",

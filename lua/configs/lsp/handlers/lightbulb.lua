@@ -31,7 +31,7 @@ local config = {
     enabled = true,
     text = "ﯦ Code actions available",
     win_opts = {
-      border = "single",
+      border = "solid",
     },
   },
   virtual_text = {

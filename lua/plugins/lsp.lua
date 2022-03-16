@@ -1,7 +1,7 @@
 local M = {}
 
 local function use(plugin)
-  M[plugin[1]] = plugin
+  table.insert(M, plugin)
 end
 
 use {
@@ -35,10 +35,10 @@ use {
 use { "b0o/schemastore.nvim", module = "schemastore" }
 
 use {
-  "glepnir/lspsaga.nvim",
+  "tami5/lspsaga.nvim",
   after = "nvim-lspconfig",
   config = function()
-    require "configs.lsp.lspsaga"
+    require "configs.lsp.saga"
   end,
 }
 
@@ -59,14 +59,6 @@ use {
   end,
   after = "nvim-lspconfig",
   cmd = { "SymbolsOutline", "SymbolsOutlineClose", "SymbolsOutlineOpen" },
-}
-
-use {
-  "ray-x/lsp_signature.nvim",
-  after = "nvim-lspconfig",
-  config = function()
-    require "configs.lsp.signature"
-  end,
 }
 
 use {

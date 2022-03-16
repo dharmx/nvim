@@ -4,7 +4,7 @@ M["CommitList"] = "Telescope git_commits"
 M["EnvList"] = "Telescope env"
 M["Keymaps"] = "Telescope keymaps"
 M["GitHL"] = "Gitsigns toggle_signs"
-M["FormatConfigAll"] = "lua system('stylua --config-path ' .. vim.fn.stdpath('config') .. '/.stylua.toml ' .. vim.fn.stdpath('config'))"
+M["FormatConfigAll"] = "lua local config = stdpath('config'); system('stylua --config-path ' .. config .. '/.stylua.toml ' .. config)"
 M["LspLog"] = "edit " .. lsp.get_log_path()
 M["NvimLog"] = "edit " .. stdpath "cache" .. "/log"
 M["PackerLog"] = "edit " .. stdpath "cache" .. "/packer.nvim.log"

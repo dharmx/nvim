@@ -1,6 +1,7 @@
 local M = {}
 
 M.mappings = {
+  ["<leader>lf"] = { "<CMD>luafile %<CR>", "Load current Lua file" },
   ["<C-n>"] = { "<CMD>NvimTreeToggle<CR>", "פּ Explorer" },
   ["<C-m>"] = { "<CMD>NvimTreeFocus<CR>", "פּ Explorer focus" },
   ["<F5>"] = { "<CMD>RnvimrToggle<CR>", "פּ Ranger explorer" },

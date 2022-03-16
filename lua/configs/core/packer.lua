@@ -28,11 +28,11 @@ config.display = {
   removed_sym = "",
   moved_sym = " ",
   show_all_info = false,
-  prompt_border = "single",
+  prompt_border = "solid",
   keybindings = require("mappings").packer_nvim,
   open_fn = function()
     return packer_util.float {
-      border = "single",
+      border = "solid",
     }
   end,
 }

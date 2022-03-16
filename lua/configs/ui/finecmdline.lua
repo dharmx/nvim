@@ -19,7 +19,7 @@ local config = {
       width = "60%",
     },
     border = {
-      style = "single",
+      style = { " ", " ", " ", " ", " ", " ", " ", " " },
       padding = {
         top = 0,
         bottom = 0,

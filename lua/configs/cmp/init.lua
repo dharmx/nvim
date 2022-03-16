@@ -103,7 +103,7 @@ local config = {
     },
   },
   documentation = {
-    border = "single",
+    border = "solid",
   },
   formatting = {
     fields = { "abbr", "menu", "kind" },

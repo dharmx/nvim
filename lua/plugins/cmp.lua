@@ -1,7 +1,7 @@
 local M = {}
 
 local function use(plugin)
-  M[plugin[1]] = plugin
+  table.insert(M, plugin)
 end
 
 use {
@@ -9,7 +9,7 @@ use {
   config = function()
     require "configs.cmp"
   end,
-  event = "InsertEnter",
+  event = { "InsertEnter", "CmdlineEnter" },
 }
 
 use {

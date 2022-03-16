@@ -59,8 +59,10 @@ end)
 
 schedule(function()
   local abbrevs = require "settings.abbrevs"
-  for _, preset in ipairs(abbrevs) do
-    abbrev(preset.buffer, preset.command, preset.expression)
+  for _, name in ipairs { "AutoCorrectQuitSaveCase" } do
+    for _, item in ipairs(abbrevs[name]) do
+      abbrev(item.buffer, item.command, item.expression)
+    end
   end
 end)
 

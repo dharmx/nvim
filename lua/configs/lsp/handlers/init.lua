@@ -1,19 +1,8 @@
 local M = {}
 
-local border = {
-  { "┌", "FloatBorder" },
-  { "─", "FloatBorder" },
-  { "┐", "FloatBorder" },
-  { "│", "FloatBorder" },
-  { "┘", "FloatBorder" },
-  { "─", "FloatBorder" },
-  { "└", "FloatBorder" },
-  { "│", "FloatBorder" },
-}
-
 M.handlers = {
-  ["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = border, focusable = false }),
-  ["textDocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, { border = border, focusable = false }),
+  ["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = "solid", focusable = false }),
+  ["textDocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, { border = "solid", focusable = false }),
   ["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = { prefix = "■", spacing = 1 },
     signs = true,

@@ -18,11 +18,11 @@ rmv_map = vim.keymap.del
 schedule = vim.schedule
 schedule_wrap = vim.schedule_wrap
 diagnostic = vim.diagnostic
+stdpath = fn.stdpath
 
 cmd = api.nvim_command
 buf = lsp.buf
 
-stdpath = fn.stdpath
 system = fn.system
 inspect = vim.inspect
 
