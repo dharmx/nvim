@@ -9,7 +9,7 @@ local config = {
   auto = true,
   debug = false,
   display = "popup", -- NOTE: 'split', 'popup'
-  mappings = require("mappings").nvim_regexplainer,
+  mappings = "gR",
   narrative = {
     separator = "\n",
   },

@@ -10,7 +10,15 @@ g.symbols_outline = {
   show_relative_numbers = false,
   show_symbol_details = true,
   preview_bg_highlight = "NormalFLoat",
-  keymaps = require("mappings").symbols_outline_nvim,
+  keymaps = {
+    close = { "<Esc>", "q" },
+    goto_location = "<Cr>",
+    focus_location = "o",
+    hover_symbol = "<C-space>",
+    toggle_preview = "K",
+    rename_symbol = "r",
+    code_actions = "a",
+  },
   symbols = {
     File = { icon = "", hl = "TSURI" },
     Module = { icon = "", hl = "TSNamespace" },

@@ -29,7 +29,7 @@ config.display = {
   moved_sym = " ",
   show_all_info = false,
   prompt_border = "solid",
-  keybindings = require("mappings").packer_nvim,
+  keybindings = { quit = "q", toggle_info = "<CR>", diff = "d", prompt_revert = "r" },
   open_fn = function()
     return packer_util.float {
       border = "solid",

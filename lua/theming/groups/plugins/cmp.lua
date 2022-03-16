@@ -10,7 +10,7 @@ function C.get(syntax)
     ["CmpItemMenu"] = { foreground = syntax.color04 },
     ["CmpItemAbbr"] = { foreground = syntax.color09 },
     ["CmpItemAbbrMatchFuzzy"] = { foreground = syntax.color00 },
-    ["CmpItemAbbrMatch"] = { foreground = syntax.color06, decoration = "bold" },
+    ["CmpItemAbbrMatch"] = { foreground = syntax.color06 },
     ["CmpItemAbbrMatchDeprecated"] = { foreground = syntax.color08 },
   }
 end

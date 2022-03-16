@@ -11,7 +11,7 @@ local servers = {
 }
 
 local function on_attach(client, buffer)
-  require("configs.lsp.mappings").setup(client, buffer)
+  require("mappings.lsp").setup(client, buffer)
   require("configs.lsp.autocmds").setup(client, buffer)
   require("configs.lsp.commands").setup(client, buffer)
   require("configs.lsp.icons").setup()
@@ -29,7 +29,13 @@ local function configure_installer()
         server_pending = "◍",
         server_uninstalled = "ﮁ",
       },
-      keymaps = require("mappings").lsp_installer_nvim,
+      keymaps = {
+        toggle_server_expand = "<CR>",
+        install_server = "i",
+        update_server = "u",
+        update_all_servers = "U",
+        uninstall_server = "X",
+      },
     },
     install_root_dir = stdpath "data" .. "/servers",
     log_level = vim.log.levels.INFO,

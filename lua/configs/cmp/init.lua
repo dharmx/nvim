@@ -7,9 +7,12 @@ end
 local kinds = require "tables.kinds"
 local kind_icons = kinds.item
 local kind_sources = kinds.source
+local sources = require "tables.sources"
+local source_normal = sources.normal
+local source_cmdline = sources.cmdline
 
 local function cmp_item_format(entry, vim_item)
-  -- vim_item.menu = kind_sources[entry.source.name]
+  vim_item.menu = kind_sources[entry.source.name]
   vim_item.kind = " " .. kind_icons[vim_item.kind] .. " " .. vim_item.kind .. " "
   return vim_item
 end
@@ -32,76 +35,41 @@ local config = {
       end)
     end,
   },
-  mapping = require("mappings").nvim_cmp(cmp),
-  sources = cmp.config.sources {
-    { name = "nvim_lua", keyword_length = 2 },
-    { name = "luasnip" },
-    { name = "zsh" },
-    { name = "fish" },
-    { name = "omni", keyword_length = 5, max_item_count = 3 },
-    { name = "tags" },
-    { name = "nvim_lsp", keyword_length = 4, group_index = 1 },
-    { name = "nvim_lsp_signature_help" },
-    { name = "treesitter", keyword_length = 3 },
-    { name = "path" },
-    {
-      name = "rg",
-      keyword_length = 5,
-      max_item_count = 4,
-      option = { debounce = 500 },
+  mapping = {
+    ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+    ["<C-i>"] = cmp.mapping.select_prev_item(),
+    ["<C-p>"] = cmp.mapping.select_next_item(),
+    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+    ["<C-y>"] = cmp.config.disable,
+    ["<C-e>"] = cmp.mapping {
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
     },
-    {
-      name = "dictionary",
-      keyword_length = 4,
-      option = {
-        convert_case = true,
-      },
-      max_item_count = 5,
+    ["<CR>"] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
     },
-    {
-      name = "spell",
-      keyword_length = 5,
-      option = {
-        convert_case = true,
-      },
-      max_item_count = 5,
-    },
-    {
-      name = "buffer",
-      keyword_length = 4,
-      max_item_count = 5,
-      group_index = 2,
-    },
-    { name = "cmp_git" },
-    {
-      name = "calc",
-      keyword_length = 2,
-      max_item_count = 3,
-    },
-    {
-      name = "look",
-      keyword_length = 2,
-      max_item_count = 4,
-      option = {
-        convert_case = true,
-        loud = true,
-      },
-      dict = stdpath "config" .. "/lua/spell/en.dict",
-    },
-    { name = "npm", keyword_length = 4 },
-    { name = "orgmode" },
-    { name = "emoji", max_item_count = 10 },
-    { name = "latex_symbols" },
-    {
-      name = "tmux",
-      option = {
-        all_panes = true,
-        label = "[tmux]",
-        trigger_characters = { "." },
-        trigger_characters_ft = { "." },
-      },
-    },
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif require("luasnip").expand_or_jumpable() then
+        fn.feedkeys(api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+      else
+        fallback()
+      end
+    end),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif require("luasnip").jumpable(-1) then
+        fn.feedkeys(api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
   },
+  sources = cmp.config.sources(source_normal),
   documentation = {
     border = "solid",
   },
@@ -133,12 +101,7 @@ local config = {
 cmp.setup(config)
 
 local cmdlines = {
-  sources = cmp.config.sources {
-    { name = "cmdline", keyword_length = 2, priority = 3 },
-    { name = "buffer", keyword_length = 5, priority = 2 },
-    { name = "cmdline_history", keyword_length = 4, max_item_count = 2, priority = 1 },
-    { name = "nvim_lsp_document_symbol", keyword_length = 4, priority = 3 },
-  },
+  sources = cmp.config.sources(source_cmdline),
   view = {},
   formatting = {
     format = cmp_item_format,

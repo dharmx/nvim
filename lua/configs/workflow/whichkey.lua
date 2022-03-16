@@ -45,7 +45,7 @@ local config = {
     separator = " ▎",
     group = " ",
   },
-  popup_mappings = require("mappings").which_key_nvim,
+  popup_mappings = { popup_mappings = { scroll_down = "<c-d>", scroll_up = "<c-u>" } },
   window = {
     border = "none", -- none, single, double, shadow
     position = "bottom", -- bottom, top
@@ -71,7 +71,7 @@ local config = {
 
 schedule(function()
   for _, plugin in ipairs { "colors", "terminal", "git", "buffers", "plugins", "others", "prompts", "neovim", "modes" } do
-    local loaded = require("mappings.presets." .. plugin)
+    local loaded = require("mappings." .. plugin)
     which_key.register(loaded.mappings, loaded.options)
   end
 end)

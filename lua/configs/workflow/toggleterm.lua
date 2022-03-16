@@ -5,7 +5,7 @@ if not present then
 end
 
 local config = {
-  open_mapping = require("mappings").toggleterm_nvim.open_mapping,
+  open_mapping = [[<C-\>]],
   hide_numbers = true,
   shade_filetypes = {},
   shade_terminals = true,

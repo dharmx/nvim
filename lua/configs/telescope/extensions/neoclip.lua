@@ -17,7 +17,30 @@ local config = {
   content_spec_column = true,
   on_paste = { set_reg = false },
   on_replay = { set_reg = false },
-  keys = require("mappings").neoclip,
+  keys = {
+    telescope = {
+      i = {
+        select = "<cr>",
+        paste = "<c-p>",
+        paste_behind = "<c-k>",
+        replay = "<c-q>",
+        custom = {},
+      },
+      n = {
+        select = "<cr>",
+        paste = "p",
+        paste_behind = "P",
+        replay = "q",
+        custom = {},
+      },
+    },
+    fzf = {
+      select = "default",
+      paste = "ctrl-p",
+      paste_behind = "ctrl-k",
+      custom = {},
+    },
+  },
 }
 
 neoclip.setup(config)

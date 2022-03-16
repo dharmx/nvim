@@ -50,7 +50,7 @@ use {
   config = function()
     require "configs.workflow.escape"
   end,
-  keys = require("mappings").better_escape_nvim,
+  event = "InsertLeave",
 }
 
 use { "abecodes/tabout.nvim", opt = true }

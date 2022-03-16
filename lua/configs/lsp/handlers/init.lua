@@ -1,25 +1,22 @@
 local M = {}
 
-M.handlers = {
-  ["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = "solid", focusable = false }),
-  ["textDocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, { border = "solid", focusable = false }),
-  ["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = { prefix = "■", spacing = 1 },
-    signs = true,
-    underline = true,
-    update_in_insert = false,
-    severity_sort = true,
-  }),
-  ["textDocument/definition"] = require("configs.lsp.handlers.definition").goto_definition "vs",
-  ["textDocument/references"] = lsp.with(vim.lsp.handlers["textDocument/references"], { loclist = true }),
-  ["textDocument/formatting"] = require("configs.lsp.handlers.format").format,
-}
+M["textDocument/hover"] = lsp.with(lsp.handlers.hover, { border = "solid", focusable = false })
 
-M.setup = function()
-  for handler, config in pairs(M.handlers) do
-    lsp.handlers[handler] = config
-  end
-end
+M["textDocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, { border = "solid", focusable = false })
+
+M["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
+  virtual_text = { prefix = "■", spacing = 1 },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
+
+M["textDocument/definition"] = require("configs.lsp.handlers.definition").goto_definition "vs"
+
+M["textDocument/references"] = lsp.with(lsp.handlers["textDocument/references"], { loclist = true })
+
+M["textDocument/formatting"] = require("configs.lsp.handlers.format").format
 
 return M
 
