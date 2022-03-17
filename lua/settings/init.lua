@@ -48,12 +48,12 @@ end)
 
 schedule(function()
   local commands = require "settings.commands"
-  for command, target in pairs(commands.aliases) do
-    alias(command, target)
-  end
-
-  for _, command in ipairs(commands.packer) do
-    cmd(command)
+  for name, target in pairs(commands) do
+    if type(target) == "string" then
+      alias(name, target, {})
+    else
+      alias(name, target.command, target.options)
+    end
   end
 end)
 

@@ -26,6 +26,7 @@ use {
   config = function()
     require "configs.editing.gitsigns"
   end,
+  module = "gitsigns",
 }
 
 use {

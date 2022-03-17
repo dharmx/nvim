@@ -1,49 +1,182 @@
 local M = {}
 
-M["CommitList"] = "Telescope git_commits"
-M["EnvList"] = "Telescope env"
-M["Keymaps"] = "Telescope keymaps"
-M["GitHL"] = "Gitsigns toggle_signs"
-M["FormatConfigAll"] = "lua local config = stdpath('config'); system('stylua --config-path ' .. config .. '/.stylua.toml ' .. config)"
+M["CommitList"] = {
+  command = function()
+    local _ = require("telescope.builtin").git_commits()
+  end,
+}
+
+M["EnvList"] = {
+  command = function()
+    local _ = require("telescope").extensions.env.env()
+  end,
+}
+
+M["Keymaps"] = {
+  command = function()
+    local _ = require("telescope.builtin").keymaps()
+  end,
+}
+
+M["GitHL"] = {
+  command = function()
+    local _ = require("gitsigns").toggle_signs()
+  end,
+}
+
+M["FormatConfigAll"] = {
+  command = function()
+    local config = stdpath "config"
+    cmd("!stylua --config-path " .. config .. "/.stylua.toml " .. config)
+  end,
+}
+
 M["LspLog"] = "edit " .. lsp.get_log_path()
 M["NvimLog"] = "edit " .. stdpath "cache" .. "/log"
 M["PackerLog"] = "edit " .. stdpath "cache" .. "/packer.nvim.log"
 M["TelescopeLog"] = "edit " .. stdpath "cache" .. "/telescope.log"
-M["TSStart"] = "lua require 'configs.treesitter'"
+
+M["TSStart"] = {
+  command = function()
+    local _ = require "configs.treesitter"
+  end,
+}
+
 M["StartPage"] = "Dashboard | TabLineTGL"
+
 M["TabLineTGL"] = "if &stal == 2 | setlocal stal=0 | else | setlocal stal=2 | endif"
+
 M["StatusLineTGL"] = "if &ls == 2 | setlocal ls=0 | else | setlocal ls=2 | endif"
+
 M["NumberColumnTGL"] = "setlocal nu!"
+
 M["RelativeNumberColumnTGL"] = "setlocal rnu!"
+
 M["SpellingTGL"] = "setlocal spell!"
-M["SpotifyExit"] = "lua api.nvim_exec('!killall spotifyd &', false)"
-M["StartupTime"] = table.concat({
-  "lua",
-  "api.nvim_exec",
-  "([[!nvim", 
-  "--startuptime", 
-  stdpath("config") .. "/.startup.log", 
-  "s", 
-  "+quitall]], false)", 
-}, " ")
 
-local N = {
- "command! -nargs=+ -complete=customlist,v:lua.require'packer.snapshot'.completion.create PackerSnapshot  lua require('packer').snapshot(<f-args>)",
- "command! -nargs=+ -complete=customlist,v:lua.require'packer.snapshot'.completion.rollback PackerSnapshotRollback  lua require('packer').rollback(<f-args>)",
- "command! -nargs=+ -complete=customlist,v:lua.require'packer.snapshot'.completion.snapshot PackerSnapshotDelete lua require('packer.snapshot').delete(<f-args>)",
- "command! -nargs=* -complete=customlist,v:lua.require'packer'.plugin_complete  PackerInstall lua require('packer').install(<f-args>)",
- "command! -nargs=* -complete=customlist,v:lua.require'packer'.plugin_complete PackerUpdate lua require('packer').update(<f-args>)",
- "command! -nargs=* -complete=customlist,v:lua.require'packer'.plugin_complete PackerSync lua require('packer').sync(<f-args>)",
- "command! -bang -nargs=+ -complete=customlist,v:lua.require'packer'.loader_complete PackerLoad lua require('packer').loader(<f-args>, '<bang>')",
- "command! PackerClean lua require('packer').clean()",
- "command! PackerStatus lua require('packer').status()",
- "command! PackerProfile lua require('packer').profile_output()",
- "command! PackerCompile lua require('packer').compile()",
+M["SpotifyExit"] = {
+  command = function()
+    api.nvim_exec("!killall spotifyd &", false)
+  end,
 }
 
-return {
-  aliases = M,
-  packer = N,
+M["StartupTime"] = {
+  command = function()
+    local path = stdpath "config" .. "/.startup-time.log"
+    api.nvim_exec(string.format("!nvim --startuptime %s dummy &", path), false)
+    cmd("edit " .. path)
+  end,
 }
+
+M["PackerSnapshot"] = {
+  command = function(args)
+    local _ = require("packer").snapshot(unpack(args.fargs))
+  end,
+  options = {
+    nargs = "+",
+    complete = require("packer.snapshot").completion.create,
+    force = true,
+  },
+}
+
+M["PackerSnapshotRollback"] = {
+  command = function(args)
+    local _ = require("packer").rollback(unpack(args.fargs))
+  end,
+  options = {
+    nargs = "+",
+    complete = require("packer.snapshot").completion.rollback,
+    force = true,
+  },
+}
+
+M["PackerSnapshotDelete"] = {
+  command = function(args)
+    local _ = require("packer").delete(unpack(args.fargs))
+  end,
+  options = {
+    nargs = "+",
+    complete = require("packer.snapshot").completion.snapshot,
+    force = true,
+  },
+}
+
+M["PackerInstall"] = {
+  command = function(args)
+    local _ = require("packer").install(unpack(args.fargs))
+  end,
+  options = {
+    nargs = "*",
+    complete = require("packer").plugin_complete,
+    force = true,
+  },
+}
+
+M["PackerUpdate"] = {
+  command = function(args)
+    local _ = require("packer").update(unpack(args.fargs))
+  end,
+  options = {
+    nargs = "*",
+    complete = require("packer").plugin_complete,
+    force = true,
+  },
+}
+
+M["PackerSync"] = {
+  command = function(args)
+    local _ = require("packer").sync(unpack(args.fargs))
+  end,
+  options = {
+    nargs = "*",
+    complete = require("packer").plugin_complete,
+    force = true,
+  },
+}
+
+M["PackerLoad"] = {
+  command = function(args)
+    local _ = require("packer").loader(args.args, args.bang)
+  end,
+  options = {
+    nargs = "+",
+    bang = true,
+    complete = require("packer").loader_complete,
+    force = true,
+  },
+}
+
+M["PackerClean"] = {
+  command = function()
+    local _ = require("packer").clean()
+  end,
+  options = { force = true },
+}
+
+M["PackerCompile"] = {
+  command = function(args)
+    local _ = require("packer").compile(args.args)
+  end,
+  options = {
+    force = true,
+    nargs = "?"
+  },
+}
+
+M["PackerProfile"] = {
+  command = function()
+    local _ = require("packer").profile_output()
+  end,
+  options = { force = true },
+}
+
+M["PackerStatus"] = {
+  command = function()
+    local _ = require("packer").status()
+  end,
+  options = { force = true },
+}
+
+return M
 
 -- vim:ft=lua
