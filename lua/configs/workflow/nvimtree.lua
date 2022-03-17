@@ -6,8 +6,7 @@ M.after = function()
     hijack_netrw = true,
     open_on_setup = false,
     ignore_buffer_on_setup = false,
-    ignore_ft_on_setup = {},
-    auto_close = false,
+    auto_close = true,
     auto_reload_on_write = true,
     open_on_tab = true,
     hijack_cursor = false,
@@ -20,10 +19,10 @@ M.after = function()
     diagnostics = {
       enable = true,
       icons = {
-        hint = "",
-        info = "",
+        hint = "",
+        info = "",
         warning = "",
-        error = "",
+        error = "",
       },
     },
     update_focused_file = {
@@ -44,7 +43,6 @@ M.after = function()
       hide_root_folder = false,
       side = "left",
       auto_resize = true,
-      mappings = { custom_only = false, list = {} },
       number = false,
       relativenumber = false,
       signcolumn = "yes",

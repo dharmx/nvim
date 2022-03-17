@@ -45,5 +45,7 @@ plugin/
 **/*compiled.lua
 .startup-time.log.txt
 .startup.log
+.startup-time.log
+.luarc.json
 
 **/*.spl

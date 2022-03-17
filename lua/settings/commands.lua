@@ -63,7 +63,7 @@ M["SpotifyExit"] = {
 M["StartupTime"] = {
   command = function()
     local path = stdpath "config" .. "/.startup-time.log"
-    api.nvim_exec(string.format("!nvim --startuptime %s dummy &", path), false)
+    api.nvim_exec(string.format("!nvim --startuptime %s dummy", path), false)
     cmd("edit " .. path)
   end,
 }
@@ -125,7 +125,12 @@ M["PackerUpdate"] = {
 
 M["PackerSync"] = {
   command = function(args)
-    local _ = require("packer").sync(unpack(args.fargs))
+    local sync = require("packer").sync
+    if args.args == "" then 
+      sync() 
+      return 
+    end
+    sync(unpack(args.fargs))
   end,
   options = {
     nargs = "*",
@@ -155,7 +160,12 @@ M["PackerClean"] = {
 
 M["PackerCompile"] = {
   command = function(args)
-    local _ = require("packer").compile(args.args)
+    local compile = require("packer").compile
+    if args.args == "" then 
+      compile() 
+      return 
+    end
+    compile(args.args)
   end,
   options = {
     force = true,

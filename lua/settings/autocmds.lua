@@ -1,10 +1,39 @@
 local M = {}
 
-M["OpenDashboardOnBlankBuffer"] = {
+M["AlphaTriggered"] = {
   {
     events = "VimEnter",
+    command = require("utils.plugins").alpha_vimenter,
+  },
+  {
+    events = "User",
     command = function()
-      utils.dashboard_vimenter()
+      opt_local.laststatus = 0
+      opt_local.showtabline = 0
+    end,
+    options = { patterns = "AlphaReady" },
+  },
+  {
+    events = "BufUnload",
+    command = function()
+      opt_local.laststatus = 2
+      opt_local.showtabline = 2
+    end,
+  },
+}
+
+M["AutoDisableTablineStatusline"] = {
+  {
+    events = "BufEnter",
+    command = function()
+      local blacklisted = require "tables.blacklisted"
+      if vim.tbl_contains(blacklisted, api.nvim_buf_get_option(0, "ft")) then
+        opt_local.laststatus = 0
+        opt_local.showtabline = 0
+      else
+        opt_local.laststatus = 2
+        opt_local.showtabline = 2
+      end
     end,
   },
 }
@@ -12,10 +41,10 @@ M["OpenDashboardOnBlankBuffer"] = {
 M["AutoPlugSpecCompileOnChange"] = {
   {
     events = "BufWritePost",
-    command = function()
+    command = schedule_wrap(function()
       require("packer").compile()
-    end,
-    options = { patterns = "*/lua/plugins/*.lua" },
+    end),
+    options = { patterns = { "*/lua/plugins/*.lua", "*/lua/configs/workflow/nvimtree.lua" } },
   },
 }
 

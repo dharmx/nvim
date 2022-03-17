@@ -1,5 +1,3 @@
-local Job = require "plenary.job"
-
 local M = {}
 
 function M.is_buffer_empty()
@@ -12,8 +10,9 @@ function M.has_width_gt(cols)
   return fn.winwidth(0) / 2 > cols
 end
 
--- Source: 🔭 utils: https://git.io/JK3ht
+-- Source: https://git.io/JK3ht
 function M.get_os_command_output(cmd, cwd)
+  local Job = require "plenary.job"
   if type(cmd) ~= "table" then
     print "Utils: [get_os_command_output]: cmd has to be a table"
     return {}

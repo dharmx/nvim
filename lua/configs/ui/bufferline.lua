@@ -7,15 +7,15 @@ end
 local offsets = {
   {
     filetype = "NvimTree",
-    text = "",
-    padding = 0,
+    text = " ",
+    padding = 1,
     highlight = "NvimTreeNormal",
     text_align = "left",
   },
   {
     filetype = "Outline",
-    text = "",
-    padding = 0,
+    text = " ",
+    padding = 1,
     highlight = "Normal",
     text_align = "left",
   },
@@ -33,6 +33,7 @@ local config = {
     modified_icon = "",
     close_icon = "",
     indicator = "|",
+    icon_pinned = "ﲀ",
     show_close_icon = true,
     left_trunc_marker = "",
     right_trunc_marker = "",
@@ -46,7 +47,7 @@ local config = {
     show_buffer_icons = true,
     separator_style = "thin",
     always_show_bufferline = true,
-    diagnostics = false,
+    diagnostics = true,
     custom_filter = function(buffer_number)
       local present_type, typeof = pcall(function()
         return api.nvim_buf_get_var(buffer_number, "term_type")

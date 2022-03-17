@@ -101,6 +101,6 @@ local config = { sources = sources }
 null_ls.setup(config)
 
 g._autosave = false
-alias("ToggleAutoFormat", schedule_wrap(utils.autosave))
+alias("ToggleAutoFormat", schedule_wrap(require("utils.lsp").autosave))
 
 -- vim:ft=lua

@@ -7,7 +7,7 @@ end
 use {
   "toppair/reach.nvim",
   config = function()
-    require("configs.ui.reach").setup()
+    require "configs.ui.reach"
   end,
   module = "reach",
 }
@@ -18,6 +18,7 @@ use {
   config = function()
     require "configs.ui.bufferline"
   end,
+  wants = "nvim-web-devicons",
 }
 
 use {
@@ -25,6 +26,7 @@ use {
   config = function()
     require "configs.ui.devicons"
   end,
+  opt = true,
 }
 
 use {
@@ -64,18 +66,12 @@ use {
 }
 
 use {
-  "glepnir/dashboard-nvim",
-  setup = function()
-    require "configs.ui.dashboard"
-  end,
+  "goolord/alpha-nvim",
+  wants = "nvim-web-devicons",
+  module = "alpha",
   cmd = {
-    "Dashboard",
-    "DashboardChangeColorscheme",
-    "DashboardFindFile",
-    "DashboardFindHistory",
-    "DashboardFindWord",
-    "DashboardJumpMarks",
-    "DashboardNewFile",
+    "Alpha",
+    "AlphaRedraw",
   },
 }
 

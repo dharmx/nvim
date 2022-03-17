@@ -3,7 +3,7 @@ local A = {}
 local E = {}
 
 O["termguicolors"] = true
-O["laststatus"] = 0
+O["laststatus"] = 2
 O["completeopt"] = "menuone,noselect"
 O["title"] = true
 O["hidden"] = true

@@ -5,7 +5,7 @@ function I.setup(options)
   if fn.exists "syntax_on" then
     cmd "syntax reset"
   end
-  _ = require("utils").apply(options)
+  theming.apply(options)
 end
 
 return I

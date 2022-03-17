@@ -89,7 +89,7 @@ local config = {
       cmp.config.compare.offset,
       cmp.config.compare.exact,
       cmp.config.compare.score,
-      utils.cmp_under,
+      require("utils.plugins").cmp_under,
       cmp.config.compare.kind,
       cmp.config.compare.sort_text,
       cmp.config.compare.length,

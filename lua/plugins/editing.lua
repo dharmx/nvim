@@ -34,7 +34,7 @@ use {
   config = function()
     require "configs.editing.comments"
   end,
-  event = { "CursorMoved", "CursorMovedI" },
+  event = "InsertEnter",
 }
 
 use {

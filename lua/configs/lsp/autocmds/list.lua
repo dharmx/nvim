@@ -12,7 +12,7 @@ M["LspDocumentHighlight"] = {
     options = { buffer = buffer },
   },
   {
-    events = { "CursorMoved", "InsertEnter" },
+    events = { "CursorMoved", "InsertEnter", "CursorMovedI" },
     command = function()
       if not _cap.document_highlight then
         return

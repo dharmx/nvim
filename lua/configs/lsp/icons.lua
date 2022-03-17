@@ -1,7 +1,7 @@
 local M = {}
 
 M.setup = function()
-  local signdef = utils.lsp_signdef
+  local signdef = require("utils.lsp").lsp_signdef
   signdef("DiagnosticSignError", "", "LspDiagnosticsSignError")
   signdef("DiagnosticSignWarn", "", "LspDiagnosticsSignWarning")
   signdef("DiagnosticSignInfo", "", "LspDiagnosticsSignInformation")

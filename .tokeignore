@@ -9,3 +9,5 @@ LICENSE.txt
 package.json
 .startup-time.log.txt
 .startup.log
+.startup-time.log
+.luarc.json

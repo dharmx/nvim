@@ -1,10 +1,10 @@
 local E = {}
 
-function _prepare_plugin(plugin)
+local function _prepare_plugin(plugin)
   return require("theming.groups.plugins." .. plugin)
 end
 
-function _prepare_syntax(language)
+local function _prepare_syntax(language)
   return require("theming.groups.syntax." .. language)
 end
 
@@ -31,7 +31,7 @@ E.supports = {
     ["diff"] = _prepare_plugin("diff").get,
     ["whichkey"] = _prepare_plugin("whichkey").get,
     ["telescope"] = _prepare_plugin("telescope").get,
-    ["dashboard"] = _prepare_plugin("dashboard").get,
+    ["alpha"] = _prepare_plugin("alpha").get,
     ["rainbow"] = _prepare_plugin("rainbow").get,
     ["todo"] = _prepare_plugin("todo").get,
     ["nvimtree"] = _prepare_plugin("nvimtree").get,

@@ -35,11 +35,12 @@ excallback(function()
   for _, preset in
     ipairs {
       "NativeAdjustments",
-      "OpenDashboardOnBlankBuffer",
       "AutoPlugSpecCompileOnChange",
       "YankFeedback",
       "NotifyOnPackerOperation",
       "PersistentFileEditPosition",
+      "AlphaTriggered",
+      "AutoDisableTablineStatusline",
     }
   do
     augroup(preset, autocmds[preset])

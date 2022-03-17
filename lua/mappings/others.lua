@@ -32,10 +32,10 @@ M.mappings = {
   },
   ["<leader>r"] = {
     ["name"] = " Reach",
-    ["m"] = { "<CMD>lua require('reach').marks(require('configs.ui.reach').marks)<CR>", " Marks" },
-    ["t"] = { "<CMD>lua require('reach').tabpages(require('configs.ui.reach').tabpages)<CR>", "ﯻ Tabpages" },
+    ["m"] = { "<CMD>lua require('reach').marks(require('tables.reach').marks)<CR>", " Marks" },
+    ["t"] = { "<CMD>lua require('reach').tabpages(require('tables.reach').tabpages)<CR>", "ﯻ Tabpages" },
   },
-  ["<leader><Tab>"] = { "<CMD>lua require('reach').buffers(require('configs.ui.reach').buffers)<CR>", "ﴵ Buffers" },
+  ["<leader><Tab>"] = { "<CMD>lua require('reach').buffers(require('tables.reach').buffers)<CR>", "ﴵ Buffers" },
   ["<leader>Q"] = { "<CMD>qa!<CR>", " Quit neovim" },
 }
 

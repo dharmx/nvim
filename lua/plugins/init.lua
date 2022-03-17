@@ -1,3 +1,4 @@
+local PACKER_BOOTSTRAP = false
 if not exists(INSTALL_PATH) then
   notify { message = "packer.nvim doesn't exist. Cloning..." }
   PACKER_BOOTSTRAP = system {
@@ -24,6 +25,7 @@ local packer = require "packer"
 packer.init(require "configs.core.packer")
 packer.reset()
 
+local loaders = require "utils.loaders"
 for _, module in
   ipairs {
     "plugins.health",
@@ -40,7 +42,7 @@ for _, module in
     "plugins.ui",
   }
 do
-  utils.load_module(packer, require(module))
+  loaders.load_module(packer, require(module))
 end
 
 if PACKER_BOOTSTRAP then
