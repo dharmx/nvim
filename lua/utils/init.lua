@@ -295,13 +295,13 @@ function M.apply(options)
 
   local loaded_theme = require("theming.schemes." .. options.scheme)
 
-  local set = function(groups)
+  local function set(groups)
     for group, colors in pairs(groups) do
       M.highlight(group, colors)
     end
   end
 
-  local disabled = function(plugin)
+  local function disabled(plugin)
     if not options.disable then
       return false
     end

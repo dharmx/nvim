@@ -44,7 +44,6 @@ do
 end
 
 if PACKER_BOOTSTRAP then
-  packer.sync()
   packer.on_compile_done = schedule_wrap(function()
     _ = pcall(require, "configs.core.impatient")
     notify {
@@ -53,6 +52,7 @@ if PACKER_BOOTSTRAP then
       title = "KrakenVim",
     }
   end)
+  packer.sync()
 end
 
 return setmetatable({}, {

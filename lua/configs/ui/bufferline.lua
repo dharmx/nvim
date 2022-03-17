@@ -48,14 +48,14 @@ local config = {
     always_show_bufferline = true,
     diagnostics = false,
     custom_filter = function(buffer_number)
-      local present_type, type = pcall(function()
-        return vim.api.nvim_buf_get_var(buffer_number, "term_type")
+      local present_type, typeof = pcall(function()
+        return api.nvim_buf_get_var(buffer_number, "term_type")
       end)
 
       if present_type then
-        if type == "vert" then
+        if typeof == "vert" then
           return false
-        elseif type == "hori" then
+        elseif typeof == "hori" then
           return false
         end
         return true

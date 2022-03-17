@@ -48,7 +48,7 @@ use {
 
 use {
   "Xuyuanp/scrollbar.nvim",
-  events = { "WinScrolled", "VimResized", "QuitPre" },
+  event = { "WinScrolled", "VimResized", "QuitPre" },
   setup = function()
     require "configs.others.scrollbar"
   end,

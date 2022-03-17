@@ -30,7 +30,10 @@ use {
 
 use {
   "numToStr/Comment.nvim",
-  module = "Comment",
+  config = function()
+    require "configs.editing.comments"
+  end,
+  event = { "CursorMoved", "CursorMovedI" },
 }
 
 use {

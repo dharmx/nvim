@@ -2,7 +2,7 @@ local N = {}
 
 function N.get(theme)
   return {
-    ["NvimTreeRootFolder"] = { foreground = theme.common.base11, decoration = "bold,underline" },
+    ["NvimTreeRootFolder"] = { foreground = theme.common.base11, decoration = "bold" },
     ["NvimTreeGitDirty"] = { foreground = theme.common.base15 },
     ["NvimTreeGitNew"] = { foreground = theme.common.base14 },
     ["NvimTreeImageFile"] = { foreground = theme.common.base13 },
