@@ -1,5 +1,3 @@
-local maps = require("mappings").ts_textobjects
-
 local M = {
   select = {
     enable = true,

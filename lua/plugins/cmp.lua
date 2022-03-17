@@ -83,8 +83,6 @@ use {
 use {
   "andersevenrud/cmp-tmux",
   after = "nvim-cmp",
-  ft = { "sh", "bash", "zsh", "fish", "conf" },
-  event = "InsertEnter",
 }
 
 use { "hrsh7th/cmp-emoji", after = "nvim-cmp" }
@@ -101,7 +99,10 @@ use { "hrsh7th/cmp-calc", after = "nvim-cmp" }
 
 use { "octaltree/cmp-look", after = "nvim-cmp" }
 
-use { "f3fora/cmp-spell", after = "nvim-cmp" }
+use {
+  "f3fora/cmp-spell",
+  after = "nvim-cmp",
+}
 
 use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
 

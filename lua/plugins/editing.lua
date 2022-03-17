@@ -28,11 +28,14 @@ use {
   end,
 }
 
-use { "numToStr/Comment.nvim", module = "Comment" }
+use {
+  "numToStr/Comment.nvim",
+  module = "Comment",
+}
 
 use {
   "folke/todo-comments.nvim",
-  event = "InsertEnter",
+  event = { "CmdlineEnter", "InsertEnter", "CursorMoved", "CursorHold" },
   config = function()
     require "configs.editing.todo"
   end,

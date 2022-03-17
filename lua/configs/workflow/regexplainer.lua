@@ -5,11 +5,22 @@ if not present then
 end
 
 local config = {
-  mode = "narrative", -- TODO: 'ascii', 'graphical'
+  mode = "narrative",
   auto = true,
-  debug = false,
-  display = "popup", -- NOTE: 'split', 'popup'
-  mappings = "gR",
+  display = "popup",
+  popup = {
+    border = {
+      padding = { 1, 2 },
+      style = "solid",
+    },
+  },
+  mappings = {
+    toggle = "gR",
+    show = "gS",
+    hide = "gH",
+    show_split = "gP",
+    show_popup = "gU",
+  },
   narrative = {
     separator = "\n",
   },
