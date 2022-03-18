@@ -7,8 +7,188 @@ end
 -- if you want to wrap the previewer
 -- autocmd User TelescopePreviewerLoaded setlocal wrap
 local config = {
+  pickers = {
+    buffers = {
+      sort_lastused = true,
+      prompt_prefix = "   ",
+      previewer = false,
+      layout_config = {
+        width = 0.3,
+        height = 0.4,
+      },
+      mappings = {
+        ["i"] = {
+          ["<C-d>"] = "delete_buffer",
+        },
+        ["n"] = {
+          ["<C-d>"] = require("telescope.actions").delete_buffer,
+        },
+      },
+    },
+    file_browser = {
+      prompt_prefix = "   ",
+      hidden = true,
+      initial_mode = "normal",
+    },
+    find_files = {
+      find_command = {
+        "rg",
+        "--no-ignore",
+        "--files",
+      },
+      prompt_prefix = "   ",
+      -- theme = "dropdown",
+      -- previewer = false,
+    },
+    oldfiles = {
+      prompt_prefix = "   ",
+      theme = "dropdown",
+      previewer = false,
+    },
+    colorscheme = {
+      prompt_prefix = "   ",
+      previewer = false,
+      theme = "dropdown",
+    },
+    highlights = {
+      prompt_prefix = "   ",
+    },
+    live_grep = {
+      prompt_prefix = "   ",
+    },
+    git_commits = {
+      prompt_prefix = " ﰖ  ",
+    },
+    git_bcommits = {
+      prompt_prefix = " ﰖ  ",
+    },
+    git_branches = {
+      prompt_prefix = " שׂ  ",
+    },
+    git_status = {
+      prompt_prefix = "   ",
+      git_icons = {
+        added = "+",
+        changed = "~",
+        copied = ">",
+        deleted = "-",
+        renamed = "➡",
+        unmerged = "‡",
+        untracked = "?",
+      },
+    },
+    git_files = {
+      prompt_prefix = " שׂ  ",
+    },
+    commands = {
+      prompt_prefix = "   ",
+      theme = "ivy",
+      layout_config = {
+        height = 10,
+      },
+    },
+    registers = {
+      prompt_prefix = "   ",
+      theme = "ivy",
+      layout_config = {
+        height = 10,
+      },
+    },
+    spell_suggests = {
+      prompt_prefix = "   ",
+      theme = "ivy",
+      layout_config = {
+        height = 10,
+      },
+    },
+    keymaps = {
+      prompt_prefix = "   ",
+      theme = "ivy",
+      layout_config = {
+        height = 10,
+      },
+    },
+    lsp_code_actions = {
+      prompt_prefix = "   ",
+      theme = "cursor",
+    },
+    lsp_references = {
+      prompt_prefix = "   ",
+      theme = "ivy",
+      layout_config = {
+        height = 20,
+      },
+    },
+    lsp_implentations = {
+      prompt_prefix = "   ",
+      theme = "ivy",
+      layout_config = {
+        height = 20,
+      },
+    },
+    lsp_document_diagnostics = {
+      prompt_prefix = " 律 ",
+      theme = "ivy",
+      layout_config = {
+        height = 20,
+      },
+    },
+  },
   extensions = require "configs.telescope.extensions",
   defaults = {
+    file_ignore_patterns = {
+      "steam",
+      ".git",
+      "node_modules",
+      "venv",
+      ".venv",
+      "dosdevices",
+      "drive_c",
+      "compatdata",
+      "cargo",
+      ".conan",
+      "gem",
+      "Brave",
+      ".paradox-launcher",
+      ".cache",
+      "Trash",
+      "unity3d",
+      "Paradox Interactive",
+      "autostart",
+      "pulse",
+      "droidcam",
+      "swap",
+      "kdeconnect",
+      "OpenTabletDriver",
+      ".icons",
+      "downloads",
+      "secret",
+      ".librewolf",
+      "kernel",
+      "dic",
+      "vivaldi",
+      "krita",
+      "mime",
+      "chromium",
+      "inkscape",
+      "syncthing",
+      "xournalpp",
+      ".ssh",
+      "feh",
+      "discord",
+      "BetterDiscord",
+      "lutris",
+      "secrets",
+      ".var",
+      "pictures",
+      "easyeffects",
+      ".android",
+      ".cmake",
+      ".dotnet",
+      ".nuget",
+      ".vnc",
+      ".themes",
+    },
     vimgrep_arguments = {
       "rg",
       "--color=never",
@@ -37,7 +217,6 @@ local config = {
       preview_cutoff = 120,
     },
     file_sorter = require("telescope.sorters").get_fuzzy_file,
-    file_ignore_patterns = { "node_modules", "venv", ".git" },
     generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
     path_display = { "truncate" },
     winblend = 0,

@@ -15,7 +15,7 @@ use {
     "playground",
     "nvim-ts-autotag",
   },
-  module = "nvim-treesitter.configs",
+  module = { "nvim-treesitter.configs", "nvim-treesitter" },
 }
 
 use { "andymass/vim-matchup", opt = true }

@@ -4,7 +4,7 @@ local btn_gen = require("utils.plugins").btn_gen
 
 local heading = {
   type = "text",
-  val = require("tables.banners").ANGYSKULL,
+  val = require("tables.banners")["angyskull"],
   opts = {
     position = "center",
     hl = "AlphaHeading",

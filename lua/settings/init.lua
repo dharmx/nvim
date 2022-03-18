@@ -41,6 +41,10 @@ excallback(function()
       "PersistentFileEditPosition",
       "AlphaTriggered",
       "AutoDisableTablineStatusline",
+      "RelativeFeedback",
+      "CursorLineFeedback",
+      "NvimINCSearchCursorline",
+      "PersistentMarkdownFolds",
     }
   do
     augroup(preset, autocmds[preset])

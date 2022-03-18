@@ -1,28 +1,28 @@
-utils = require "utils"
-mappings = require "utils.mappings"
-neovim = require "utils.neovim"
-theming = require "utils.theming"
+_G.utils = require "utils"
+_G.mappings = require "utils.mappings"
+_G.neovim = require "utils.neovim"
+_G.theming = require "utils.theming"
 
-hi = theming.highlight
+_G.hi = theming.highlight
 
-alias = neovim.alias
-abbrev = neovim.abbrev
-augroup = neovim.augroup
-autocmd = neovim.autocmd
-abbrev = neovim.abbrev
+_G.alias = neovim.alias
+_G.abbrev = neovim.abbrev
+_G.augroup = neovim.augroup
+_G.autocmd = neovim.autocmd
+_G.abbrev = neovim.abbrev
 
-xmap = mappings.xmap
-imap = mappings.imap
-vmap = mappings.vmap
-nmap = mappings.nmap
+_G.xmap = mappings.xmap
+_G.imap = mappings.imap
+_G.vmap = mappings.vmap
+_G.nmap = mappings.nmap
 
-excallback = utils.excallback
-exists = utils.exists
-notify = neovim.notify
-pi = utils.pi
-p = utils.p
+_G.excallback = utils.excallback
+_G.exists = utils.exists
+_G.notify = neovim.notify
+_G.pi = utils.pi
+_G.p = utils.p
 
 cmd "colorscheme nordic"
-colors = theming.get_active_scheme()
+_G.colors = theming.get_active_scheme()
 
 -- vim:ft=lua

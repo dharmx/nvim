@@ -52,7 +52,7 @@ M["YankFeedback"] = {
   {
     events = "TextYankPost",
     command = function()
-      vim.highlight.on_yank { higroup = "YankFeed", timeout = 150 }
+      vim.highlight.on_yank { higroup = "YankFeed", on_macro = true, on_visual = true, timeout = 150 }
     end,
   },
 }
@@ -128,13 +128,13 @@ M["NumberFeedback"] = {
 
 M["CursorLineFeedback"] = {
   {
-    events = { "BufEnter", "WinEnter", "InsertEnter" },
+    events = "InsertEnter",
     command = function()
       opt_local.cursorline = true
     end,
   },
   {
-    events = { "BufEnter", "WinEnter", "InsertLeave" },
+    events = "InsertLeave",
     command = function()
       opt_local.cursorline = false
     end,

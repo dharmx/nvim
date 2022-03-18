@@ -1,32 +1,32 @@
-g = vim.g
-o = vim.o
+_G.g = vim.g
+_G.o = vim.o
 
-wo = vim.wo
-bo = vim.bo
+_G.wo = vim.wo
+_G.bo = vim.bo
 
-fn = vim.fn
-api = vim.api
-lsp = vim.lsp
-env = vim.env
+_G.fn = vim.fn
+_G.api = vim.api
+_G.lsp = vim.lsp
+_G.env = vim.env
 
-opt = vim.opt
-opt_local = vim.opt_local
+_G.opt = vim.opt
+_G.opt_local = vim.opt_local
 
-set_map = vim.keymap.set
-rmv_map = vim.keymap.del
+_G.set_map = vim.keymap.set
+_G.rmv_map = vim.keymap.del
 
-schedule = vim.schedule
-schedule_wrap = vim.schedule_wrap
-diagnostic = vim.diagnostic
-stdpath = fn.stdpath
+_G.schedule = vim.schedule
+_G.schedule_wrap = vim.schedule_wrap
+_G.diagnostic = vim.diagnostic
+_G.stdpath = fn.stdpath
 
-cmd = api.nvim_command
-buf = lsp.buf
+_G.cmd = api.nvim_command
+_G.buf = lsp.buf
 
-system = fn.system
-inspect = vim.inspect
+_G.system = fn.system
+_G.inspect = vim.inspect
 
-INSTALL_PATH = stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
-COMPILE_PATH = stdpath "config" .. "/lua/_compiled.lua"
+_G.INSTALL_PATH = stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
+_G.COMPILE_PATH = stdpath "config" .. "/lua/_compiled.lua"
 
 -- vim:ft=lua
