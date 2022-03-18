@@ -40,7 +40,6 @@ use {
 use {
   "windwp/nvim-autopairs",
   after = "nvim-cmp",
-  module = "nvim-autopairs",
   config = function()
     require "configs.cmp.autopairs"
   end,

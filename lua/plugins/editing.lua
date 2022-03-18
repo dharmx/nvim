@@ -10,7 +10,7 @@ use { "kovetskiy/sxhkd-vim", ft = "sxhkdrc" }
 use { "MTDL9/vim-log-highlighting", ft = "log" }
 use { "vuki656/package-info.nvim", ft = "package.json" }
 
-use { "sheerun/vim-polyglot" }
+use { "sheerun/vim-polyglot", disable = true }
 
 use {
   "TimUntersberger/neogit",

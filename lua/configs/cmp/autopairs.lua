@@ -23,7 +23,7 @@ local config = {
     highlight = "Search",
     highlight_grey = "Comment",
   },
-  disable_filetype = { "TelescopePrompt", "packer", "Trouble" },
+  disable_filetype = { "lsp-installer", "NvimTree", "alpha", "TelescopePrompt", "packer", "Trouble" },
 }
 
 autopairs.setup(config)
