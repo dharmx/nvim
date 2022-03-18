@@ -4,7 +4,7 @@ local btn_gen = require("utils.plugins").btn_gen
 
 local heading = {
   type = "text",
-  val = require("tables.banners")["angyskull"],
+  val = require("tables.banners")["areee??"],
   opts = {
     position = "center",
     hl = "AlphaHeading",
@@ -35,7 +35,7 @@ local loaded = {
 
 local footing = {
   type = "text",
-  val = "-KrakenVim-",
+  val = "-KrakenVim- ",
   opts = {
     position = "center",
     hl = "AlphaFooting",

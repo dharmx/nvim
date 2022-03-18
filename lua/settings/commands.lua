@@ -68,7 +68,12 @@ M["StartupTime"] = {
 
 M["PackerSnapshot"] = {
   command = function(args)
-    local _ = require("packer").snapshot(unpack(args.fargs))
+    local snapshot = require("packer").snapshot
+    if args.args == "" then
+      snapshot()
+      return 
+    end
+    snapshot(unpack(args.fargs))
   end,
   options = {
     nargs = "+",
@@ -79,7 +84,12 @@ M["PackerSnapshot"] = {
 
 M["PackerSnapshotRollback"] = {
   command = function(args)
-    local _ = require("packer").rollback(unpack(args.fargs))
+    local rollback = require("packer").rollback
+    if args.args == "" then
+      rollback()
+      return 
+    end
+    rollback(unpack(args.fargs))
   end,
   options = {
     nargs = "+",
@@ -90,7 +100,12 @@ M["PackerSnapshotRollback"] = {
 
 M["PackerSnapshotDelete"] = {
   command = function(args)
-    local _ = require("packer").delete(unpack(args.fargs))
+    local delete = require("packer").delete
+    if args.args == "" then
+      delete()
+      return 
+    end
+    delete(unpack(args.fargs))
   end,
   options = {
     nargs = "+",
@@ -101,7 +116,12 @@ M["PackerSnapshotDelete"] = {
 
 M["PackerInstall"] = {
   command = function(args)
-    local _ = require("packer").install(unpack(args.fargs))
+    local install = require("packer").install
+    if args.args == "" then
+      install()
+      return 
+    end
+    install(unpack(args.fargs))
   end,
   options = {
     nargs = "*",

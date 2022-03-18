@@ -36,9 +36,7 @@ local config = {
         "--no-ignore",
         "--files",
       },
-      prompt_prefix = "   ",
-      -- theme = "dropdown",
-      -- previewer = false,
+      prompt_prefix = "   ",
     },
     oldfiles = {
       prompt_prefix = "   ",
@@ -46,15 +44,15 @@ local config = {
       previewer = false,
     },
     colorscheme = {
-      prompt_prefix = "   ",
+      prompt_prefix = "   ",
       previewer = false,
       theme = "dropdown",
     },
     highlights = {
-      prompt_prefix = "   ",
+      prompt_prefix = " קּ  ",
     },
     live_grep = {
-      prompt_prefix = "   ",
+      prompt_prefix = "   ",
     },
     git_commits = {
       prompt_prefix = " ﰖ  ",
@@ -133,8 +131,8 @@ local config = {
         height = 20,
       },
     },
+    extensions = require "configs.telescope.extensions",
   },
-  extensions = require "configs.telescope.extensions",
   defaults = {
     file_ignore_patterns = {
       "steam",

@@ -14,7 +14,6 @@ use {
 
 use {
   "tamago324/cmp-zsh",
-  after = "nvim-cmp",
   ft = "zsh",
   config = function()
     require "configs.cmp.zsh"
@@ -43,6 +42,7 @@ use {
   config = function()
     require "configs.cmp.autopairs"
   end,
+  module = "nvim-autopairs.completion.cmp",
 }
 
 use {
@@ -68,15 +68,14 @@ use { "dmitmel/cmp-cmdline-history", after = "nvim-cmp", event = "CmdlineEnter" 
 
 use {
   "quangnguyen30192/cmp-nvim-tags",
-  after = "nvim-cmp",
+  wants = "nvim-cmp",
   ft = { "md", "markdown", "html", "xml", "javascript", "js" },
 }
 
 use {
   "David-Kunz/cmp-npm",
-  after = "nvim-cmp",
   ft = "package.json",
-  wants = "plenary.nvim",
+  wants = { "nvim-cmp", "plenary.nvim" },
 }
 
 use {
@@ -109,7 +108,7 @@ use { "lukas-reineke/cmp-rg", after = "nvim-cmp" }
 
 use {
   "ray-x/cmp-treesitter",
-  after = { "nvim-cmp", "nvim-treesitter" },
+  after = { "nvim-treesitter", "nvim-cmp" },
 }
 
 use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }

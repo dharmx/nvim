@@ -18,16 +18,6 @@ local function cmp_item_format(entry, vim_item)
 end
 
 local config = {
-  enabled = function()
-    -- disable completion in comments
-    local context = require "cmp.config.context"
-    -- keep command mode completion enabled when cursor is in a comment
-    if api.nvim_get_mode().mode == "c" then
-      return true
-    else
-      return not context.in_treesitter_capture "comment" and not context.in_syntax_group "Comment"
-    end
-  end,
   snippet = {
     expand = function(args)
       schedule(function()
@@ -38,7 +28,7 @@ local config = {
   mapping = {
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-    ["<C-i>"] = cmp.mapping.select_prev_item(),
+    ["<C-o>"] = cmp.mapping.select_prev_item(),
     ["<C-p>"] = cmp.mapping.select_next_item(),
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
     ["<C-y>"] = cmp.config.disable,
