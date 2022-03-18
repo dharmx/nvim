@@ -61,7 +61,7 @@ M["SpotifyExit"] = {
 M["StartupTime"] = {
   command = function()
     local path = stdpath "config" .. "/.startup-time.log"
-    api.nvim_exec(string.format("!nvim --startuptime %s dummy", path), false)
+    api.nvim_exec(string.format("silent! nvim --startuptime %s dummy", path), false)
     cmd("edit " .. path)
   end,
 }
@@ -71,7 +71,7 @@ M["PackerSnapshot"] = {
     local snapshot = require("packer").snapshot
     if args.args == "" then
       snapshot()
-      return 
+      return
     end
     snapshot(unpack(args.fargs))
   end,
@@ -87,7 +87,7 @@ M["PackerSnapshotRollback"] = {
     local rollback = require("packer").rollback
     if args.args == "" then
       rollback()
-      return 
+      return
     end
     rollback(unpack(args.fargs))
   end,
@@ -103,7 +103,7 @@ M["PackerSnapshotDelete"] = {
     local delete = require("packer").delete
     if args.args == "" then
       delete()
-      return 
+      return
     end
     delete(unpack(args.fargs))
   end,
@@ -119,7 +119,7 @@ M["PackerInstall"] = {
     local install = require("packer").install
     if args.args == "" then
       install()
-      return 
+      return
     end
     install(unpack(args.fargs))
   end,
@@ -144,9 +144,9 @@ M["PackerUpdate"] = {
 M["PackerSync"] = {
   command = function(args)
     local sync = require("packer").sync
-    if args.args == "" then 
-      sync() 
-      return 
+    if args.args == "" then
+      sync()
+      return
     end
     sync(unpack(args.fargs))
   end,
@@ -179,15 +179,15 @@ M["PackerClean"] = {
 M["PackerCompile"] = {
   command = function(args)
     local compile = require("packer").compile
-    if args.args == "" then 
-      compile() 
-      return 
+    if args.args == "" then
+      compile()
+      return
     end
     compile(args.args)
   end,
   options = {
     force = true,
-    nargs = "?"
+    nargs = "?",
   },
 }
 

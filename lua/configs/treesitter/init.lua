@@ -48,6 +48,11 @@ local config = {
 
 schedule(function()
   ts.setup(config)
+  notify {
+    message = "Treesitter is now enabled!",
+    title = "nvim-treesitter",
+    icon = "",
+  }
 end)
 
 -- vim:ft=lua

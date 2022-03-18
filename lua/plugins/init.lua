@@ -18,7 +18,7 @@ end
 if not exists(COMPILE_PATH) then
   notify "Couldn't find plugin specifications. Syncing now..."
   PACKER_BOOTSTRAP = true
-  _ = pcall(cmd, "packadd packer.nvim")
+  local _ = pcall(cmd, "packadd packer.nvim")
 end
 
 local packer = require "packer"
@@ -47,7 +47,7 @@ end
 
 if PACKER_BOOTSTRAP then
   packer.on_compile_done = schedule_wrap(function()
-    _ = pcall(require, "configs.core.impatient")
+    local _ = pcall(require, "configs.core.impatient")
     notify {
       message = "Run :LspInstall and :TSStart or, press\n<leader>l and <leader>T",
       icon = " ",

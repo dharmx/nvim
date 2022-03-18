@@ -12,8 +12,6 @@ use {
   end,
 }
 
-use { "bfredl/nvim-luadev", cmd = "Luadev" }
-
 use { "rafcamlet/nvim-luapad", cmd = { "Luapad", "LuaRun" } }
 use { "milisims/nvim-luaref", event = "CmdlineEnter" }
 use { "nanotee/luv-vimdocs", event = "CmdlineEnter" }

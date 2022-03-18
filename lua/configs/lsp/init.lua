@@ -68,7 +68,7 @@ local function configure_servers()
     }
 
     server:setup(vim.tbl_extend("keep", server_config, servers[server.name]))
-    _ = require "configs.lsp.handlers.null"
+    local _ = require "configs.lsp.handlers.null"
   end)
 end
 
@@ -83,7 +83,7 @@ local function configure_diagnostics()
   }
 end
 
-_ = require "configs.lsp.schema"
+local _ = require "configs.lsp.schema"
 configure_diagnostics()
 configure_installer()
 ensure_servers()
