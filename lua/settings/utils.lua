@@ -25,4 +25,6 @@ _G.p = utils.p
 cmd "colorscheme nordic"
 _G.colors = theming.get_active_scheme()
 
+_G.statusline = require "statusline.tables"
+
 -- vim:ft=lua

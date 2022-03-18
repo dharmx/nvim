@@ -27,7 +27,7 @@ M["GitHL"] = {
 M["FormatConfigAll"] = {
   command = function()
     local config = stdpath "config"
-    cmd("!stylua --config-path " .. config .. "/.stylua.toml " .. config)
+    cmd("silent !stylua --config-path " .. config .. "/.stylua.toml " .. config)
   end,
 }
 
@@ -54,14 +54,14 @@ M["SpellingTGL"] = "setlocal spell!"
 
 M["SpotifyExit"] = {
   command = function()
-    api.nvim_exec("!killall spotifyd &", false)
+    api.nvim_exec("silent !killall spotifyd", false)
   end,
 }
 
 M["StartupTime"] = {
   command = function()
     local path = stdpath "config" .. "/.startup-time.log"
-    api.nvim_exec(string.format("silent! nvim --startuptime %s dummy", path), false)
+    api.nvim_exec(string.format("silent !nvim --startuptime %s dummy", path), false)
     cmd("edit " .. path)
   end,
 }

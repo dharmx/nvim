@@ -11,8 +11,8 @@ local config = {
   },
 }
 
-if api.nvim_exec("!pidof spotifyd", false) == "" then
-  api.nvim_exec("!spotifyd", false)
+if api.nvim_exec("silent !pidof spotifyd", false) == "" then
+  api.nvim_exec("silent !spotifyd", false)
   notify {
     message = "Spotify daemon is now running...",
     title = "spotifyd",
