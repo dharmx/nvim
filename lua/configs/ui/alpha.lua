@@ -1,14 +1,65 @@
 local present, alpha = pcall(require, "alpha")
 
-if not present then
-  return
-end
+local btn_gen = require("utils.plugins").btn_gen
 
-local logo = require("tables.banners").SLEEKRAKEN
-local config = {}
+local heading = {
+  type = "text",
+  val = require("tables.banners").ANGYSKULL,
+  opts = {
+    position = "center",
+    hl = "AlphaHeading",
+  },
+}
 
-config["layouts"] = {}
+local buttons = {
+  type = "group",
+  val = {
+    btn_gen("  Find File", " LDR tff "),
+    btn_gen("  Recents", " LDR tfo "),
+    btn_gen("  Find Word", " LDR tfw "),
+  },
+  opts = {
+    position = "center",
+    spacing = 1,
+  },
+}
 
-alpha.setup {}
+local loaded = {
+  type = "text",
+  val = string.format(" Loaded %d plugins", vim.tbl_count(packer_plugins)),
+  opts = {
+    position = "center",
+    hl = "AlphaLoaded",
+  },
+}
+
+local footing = {
+  type = "text",
+  val = "-KrakenVim-",
+  opts = {
+    position = "center",
+    hl = "AlphaFooting",
+  },
+}
+
+local layout = {
+  { type = "padding", val = 2 },
+  heading,
+  { type = "padding", val = 5 },
+  footing,
+  { type = "padding", val = 1 },
+  buttons,
+  { type = "padding", val = 4 },
+  loaded,
+}
+
+local config = {
+  layout = layout,
+  opts = { margin = 10 },
+}
+
+alpha.setup(config)
+
+return config
 
 -- vim:ft=lua

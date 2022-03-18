@@ -113,7 +113,7 @@ use {
 use {
   "nvim-neorg/neorg",
   ft = "norg",
-  after = "nvim-treesitter",
+  wants = "nvim-treesitter",
   config = function()
     require "configs.editing.neorg"
   end,

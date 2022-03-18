@@ -26,7 +26,7 @@ use {
   config = function()
     require "configs.ui.devicons"
   end,
-  opt = true,
+  module = "nvim-web-devicons",
 }
 
 use {
@@ -68,7 +68,9 @@ use {
 use {
   "goolord/alpha-nvim",
   wants = "nvim-web-devicons",
-  module = "alpha",
+  config = function()
+    local _ = require "configs.ui.alpha"
+  end,
   cmd = {
     "Alpha",
     "AlphaRedraw",

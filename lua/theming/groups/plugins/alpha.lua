@@ -2,11 +2,12 @@ local D = {}
 
 function D.get(theme)
   return {
-    AlphaShortCut = { foreground = theme.common.base09, style = "bold" },
-    AlphaHeader = { foreground = theme.shades.shade03, decoration = "bold" },
-    AlphaButtons = { foreground = theme.common.base14 },
-    AlphaCenter = { foreground = theme.common.base11 },
-    AlphaFooter = { foreground = theme.common.base01, decoration = "bold" },
+    AlphaKeyPrefix = { foreground = theme.common.base01, background = theme.common.base09, decoration = "bold" },
+    AlphaHeading = { foreground = theme.shades.shade02 },
+    AlphaButton = { foreground = theme.common.base14 },
+    AlphaLoaded = { foreground = theme.shades.shade02 },
+    AlphaFooting = { foreground = theme.common.base15, decoration = "bold" },
+    AlphaScroll = { foreground = theme.common.base15 },
   }
 end
 

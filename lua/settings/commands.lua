@@ -42,8 +42,6 @@ M["TSStart"] = {
   end,
 }
 
-M["StartPage"] = "Dashboard | TabLineTGL"
-
 M["TabLineTGL"] = "if &stal == 2 | setlocal stal=0 | else | setlocal stal=2 | endif"
 
 M["StatusLineTGL"] = "if &ls == 2 | setlocal ls=0 | else | setlocal ls=2 | endif"

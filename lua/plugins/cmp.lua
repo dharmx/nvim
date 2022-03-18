@@ -108,7 +108,11 @@ use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
 
 use { "lukas-reineke/cmp-rg", after = "nvim-cmp" }
 
-use { "ray-x/cmp-treesitter", after = { "nvim-cmp", "nvim-treesitter" } }
+use {
+  "ray-x/cmp-treesitter",
+  wants = "nvim-cmp",
+  after = "nvim-treesitter",
+}
 
 use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }
 

@@ -7,15 +7,15 @@ end
 local offsets = {
   {
     filetype = "NvimTree",
-    text = " ",
-    padding = 1,
+    text = "",
+    padding = 0,
     highlight = "NvimTreeNormal",
     text_align = "left",
   },
   {
     filetype = "Outline",
-    text = " ",
-    padding = 1,
+    text = "",
+    padding = 0,
     highlight = "Normal",
     text_align = "left",
   },

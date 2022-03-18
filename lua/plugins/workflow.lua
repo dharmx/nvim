@@ -78,8 +78,7 @@ use {
   config = function()
     require "configs.workflow.regexplainer"
   end,
-  after = "nvim-treesitter",
-  wants = { "plenary.nvim", "nui.nvim" },
+  wants = { "nvim-treesitter", "plenary.nvim", "nui.nvim" },
   cmd = {
     "RegexplainerHide",
     "RegexplainerShow",
