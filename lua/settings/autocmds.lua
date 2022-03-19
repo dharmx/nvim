@@ -71,7 +71,7 @@ M["NativeAdjustments"] = {
   {
     events = "FileType",
     command = function()
-      opt_local.formatoptions:remove "cro"
+      opt_local.formatoptions:remove { "c", "r", "o" }
     end,
   },
 }
