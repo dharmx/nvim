@@ -18,7 +18,7 @@ local config = {
     jpeg = { icon = "", color = colors.rainbow.purple, name = "JPEG" },
     jpg = { icon = "", color = colors.rainbow.purple, name = "JPG" },
     js = { icon = "", color = colors.common.base13, name = "JS" },
-    kt = { icon = "󱈙", color = colors.rainbow.orange, name = "Kt" },
+    kt = { icon = "", color = colors.rainbow.orange, name = "Kt" },
     lock = { icon = "", color = colors.common.base11, name = "Lock" },
     lua = { icon = "", color = colors.rainbow.cobalt, name = "Lua" },
     mp3 = { icon = "", color = colors.rainbow.yellow, name = "MP3" },
@@ -55,6 +55,8 @@ local config = {
     },
     xz = { icon = "", color = colors.common.base13, name = "XZ" },
     zip = { icon = "", color = colors.common.base13, name = "Zip" },
+    [""] = { icon = "", color = colors.common.base13, name = "NoName" },
+    ["[packer]"] = { icon = "", color = colors.common.base13, name = "Packer" },
   },
   default = true,
 }

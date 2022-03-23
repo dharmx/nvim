@@ -1,7 +1,7 @@
 local M = {}
 
 function M.format(err, result, ctx, _)
-  vim.notify(type(ctx))
+  notify(type(ctx))
   if err ~= nil or result == nil then
     return
   end

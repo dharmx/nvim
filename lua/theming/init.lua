@@ -6,6 +6,7 @@ function I.setup(options)
     cmd "syntax reset"
   end
   theming.apply(options)
+  _G.colors = theming.get_active_scheme()
 end
 
 return I

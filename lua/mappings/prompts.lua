@@ -12,7 +12,7 @@ M.mappings = {
     ["p"] = { "<CMD>Telescope project<CR>", " Projects" },
     ["z"] = { "<CMD>Telescope current_buffer_fuzzy_find<CR>", " FZF" },
     ["n"] = { "<CMD>Telescope notify<CR>", " Notifications" },
-    ["m"] = { "<CMD>PackerClean<CR><CMD>Telescope packer<CR>", " Packer plugins" },
+    ["m"] = { "<CMD>Telescope packer<CR>", " Packer plugins" },
     ["k"] = { "<CMD>Telescope pickers<CR>", " Pickers" },
     ["l"] = { "<CMD>Telescope resume<CR>", " Load previous state" },
 

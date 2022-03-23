@@ -47,5 +47,6 @@ plugin/
 .startup.log
 .startup-time.log
 .luarc.json
+test.lua
 
 **/*.spl

@@ -38,13 +38,21 @@ M["TelescopeLog"] = "edit " .. stdpath "cache" .. "/telescope.log"
 
 M["TSStart"] = {
   command = function()
-    local _ = require "configs.treesitter"
+    require("packer").loader "nvim-treesitter"
   end,
 }
 
 M["TabLineTGL"] = "if &stal == 2 | setlocal stal=0 | else | setlocal stal=2 | endif"
 
-M["StatusLineTGL"] = "if &ls == 2 | setlocal ls=0 | else | setlocal ls=2 | endif"
+M["StatusLineTGL"] = {
+  command = function()
+    if o.laststatus == 0 then
+      o.laststatus = 3
+    else
+      o.laststatus = 0
+    end
+  end,
+}
 
 M["NumberColumnTGL"] = "setlocal nu!"
 

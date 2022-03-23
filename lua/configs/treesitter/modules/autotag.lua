@@ -1,12 +1,27 @@
-local M = {
-  enable = true,
+local present, autotag = pcall(require, "nvim-ts-autotag")
+
+if not present then
+  return
+end
+
+local config = {
   filetypes = {
     "html",
     "javascript",
+    "typescript",
     "javascriptreact",
     "typescriptreact",
     "svelte",
     "vue",
+    "tsx",
+    "jsx",
+    "rescript",
+    "xml",
+    "php",
+    "markdown",
+    "glimmer",
+    "handlebars",
+    "hbs",
   },
   skip_tags = {
     "area",
@@ -30,6 +45,6 @@ local M = {
   },
 }
 
-return M
+autotag.setup(config)
 
 -- vim:ft=lua

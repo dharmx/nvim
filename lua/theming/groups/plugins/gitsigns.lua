@@ -2,11 +2,11 @@ local G = {}
 
 function G.get(theme)
   return {
-    ["GitSignsChange"] = { foreground = theme.common.base15 },
+    ["GitSignsChange"] = { foreground = theme.common.base02 },
     ["GitSignsChangeNr"] = { foreground = theme.common.base15 },
     ["GitSignsChangeLn"] = { foreground = theme.common.base15 },
 
-    ["GitSignsAdd"] = { foreground = theme.common.base14 },
+    ["GitSignsAdd"] = { foreground = theme.common.base09 },
     ["GitSignsAddNr"] = { foreground = theme.common.base14 },
     ["GitSignsAddLn"] = { foreground = theme.common.base14 },
 

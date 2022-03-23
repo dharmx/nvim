@@ -82,6 +82,7 @@ function M.apply(options)
   base.terminal(loaded_theme)
   set(base.ui(loaded_theme))
   set(base.custom(loaded_theme))
+  set(base.statusline(loaded_theme))
 end
 
 return M

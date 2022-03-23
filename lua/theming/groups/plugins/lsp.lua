@@ -18,22 +18,23 @@ function L.get(syntax)
       decoration = "undercurl",
       special = syntax.color08,
     },
-    LspDiagnosticsDefaultInformation = { foreground = syntax.color19 },
-    LspDiagnosticsSignInformation = { foreground = syntax.color19 },
-    LspDiagnosticsFloatingInformation = { foreground = syntax.color19 },
-    LspDiagnosticsVirtualTextInformation = { foreground = syntax.color19 },
+    LspDiagnosticsDefaultInformation = { foreground = syntax.color13 },
+    LspDiagnosticsSignInformation = { foreground = syntax.color13 },
+    LspDiagnosticsFloatingInformation = { foreground = syntax.color13 },
+    LspDiagnosticsVirtualTextInformation = { foreground = syntax.color13 },
     LspDiagnosticsUnderlineInformation = {
       decoration = "undercurl",
-      special = syntax.color19,
+      special = syntax.color13,
     },
     LspDiagnosticsDefaultHint = { foreground = syntax.color09 },
-    LspDiagnosticsSignHint = { foreground = syntax.color10 },
-    LspDiagnosticsFloatingHint = { foreground = syntax.color10 },
-    LspDiagnosticsVirtualTextHint = { foreground = syntax.color10 },
+    LspDiagnosticsSignHint = { foreground = syntax.color09 },
+    LspDiagnosticsFloatingHint = { foreground = syntax.color09 },
+    LspDiagnosticsVirtualTextHint = { foreground = syntax.color09 },
     LspDiagnosticsUnderlineHint = {
       decoration = "undercurl",
-      special = syntax.color19,
+      special = syntax.color09,
     },
+
     LspReferenceText = { foreground = syntax.color12, background = syntax.color14 },
     LspReferenceRead = { foreground = syntax.color16, background = syntax.color14 },
     LspReferenceWrite = { foreground = syntax.color06, background = syntax.color14 },
@@ -59,7 +60,6 @@ function L.get(syntax)
     DiagnosticVirtualTextHint = { link = "LspDiagnosticsVirtualTextHint" },
     DiagnosticUnderlineHint = { link = "LspDiagnosticsUnderlineHint" },
     DiagnosticFloatingHint = { link = "LspDiagnosticsFloatingHint" },
-    DiagnosticSignHint = { link = "LspDiagnosticsSignHint" },
   }
 end
 

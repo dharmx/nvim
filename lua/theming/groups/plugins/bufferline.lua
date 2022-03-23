@@ -6,7 +6,6 @@ function B.get(theme)
     BufferLineBackground = { foreground = theme.shades.shade03, background = theme.shades.shade06 },
     BufferLineTab = { foreground = theme.common.base09, background = theme.shades.shade06 },
     BufferLineTabSelected = { foreground = theme.common.base01, background = theme.common.base09 },
-    BufferLineTabClose = { foreground = theme.common.base11, background = theme.common.base00 },
     BufferLineCloseButton = { foreground = theme.common.base09, background = theme.shades.shade06 },
     BufferLineCloseButtonVisible = { foreground = theme.common.base15, background = theme.common.base01 },
     BufferLineCloseButtonSelected = { foreground = theme.common.base11, background = theme.common.base00 },
@@ -28,7 +27,10 @@ function B.get(theme)
       background = theme.common.base00,
       decoration = "bold",
     },
-    BufferLineDuplicateVisible = { foreground = theme.common.base15, background = theme.common.base00 },
+    BufferLineDuplicateVisible = {
+      foreground = theme.common.base15,
+      background = theme.common.base01,
+    },
     BufferLineDuplicate = { foreground = theme.common.base03, background = theme.shades.shade06 },
     BufferLinePickSelected = {
       foreground = theme.common.base01,

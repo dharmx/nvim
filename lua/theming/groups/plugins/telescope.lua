@@ -37,7 +37,7 @@ function T.get(theme)
       foreground = theme.common.base11,
     },
     ["TelescopePromptPrefix"] = {
-      foreground = theme.common.base11,
+      foreground = theme.common.base08,
       background = theme.shades.shade03,
     },
     ["TelescopePromptBorder"] = {
@@ -50,10 +50,10 @@ function T.get(theme)
     },
     ["TelescopePromptTitle"] = {
       foreground = theme.common.base01,
-      background = theme.common.base11,
+      background = theme.common.base08,
     },
     ["TelescopePromptCounter"] = {
-      foreground = theme.common.base02,
+      foreground = theme.common.base15,
     },
   }
 end

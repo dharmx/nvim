@@ -1,13 +1,18 @@
 local T = {}
 
 function T._TERM_KEYMAPS()
-  local opts = { noremap = true }
-  api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
-  api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], opts)
-  api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
-  api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
-  api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
-  api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
+  local options = {
+    silent = true,
+    noremap = false,
+    nowait = true,
+  }
+
+  api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], options)
+  api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], options)
+  api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], options)
+  api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], options)
+  api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], options)
+  api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], options)
 end
 
 local Terminal = require("toggleterm.terminal").Terminal

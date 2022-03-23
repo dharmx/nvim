@@ -10,10 +10,9 @@ M["markdown_fenced_languages"] = {
   "javascript",
   "js=javascript",
   "ts=typescript",
-  "shell=sh",
+  "shell",
   "python",
-  "sh",
-  "console=sh",
+  "console",
 }
 M["python3_host_prog"] = "python3"
 M["vim_json_warnings"] = false

@@ -20,12 +20,14 @@ local config = {
     end_key = "$",
     keys = "qwertyuiopzxcvbnmasdfghjkl",
     check_comma = true,
-    highlight = "Search",
+    highlight = "PmenuSel",
     highlight_grey = "Comment",
   },
-  disable_filetype = { "lsp-installer", "NvimTree", "alpha", "TelescopePrompt", "packer", "Trouble" },
+  disable_filetype = require("tables.blacklisted").hidden,
+  enable_check_bracket_line = true,
 }
 
 autopairs.setup(config)
+local _ = require "configs.cmp.rules"
 
 -- vim:ft=lua

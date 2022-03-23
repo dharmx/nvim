@@ -9,7 +9,7 @@ M.mappings = {
 M.options = {
   mode = "n",
   silent = true,
-  noremap = true,
+  noremap = false,
   prefix = "<leader>",
   nowait = true,
 }

@@ -49,7 +49,6 @@ local function ensure_servers()
     if found and not server:is_installed() then
       notify { message = "Installing " .. name, icon = "", title = "nvim-lsp-installer" }
       server:install()
-      notify { message = "Installed " .. name, icon = " ", title = "nvim-lsp-installer" }
     end
   end
 end
@@ -73,7 +72,7 @@ local function configure_servers()
 end
 
 local function configure_diagnostics()
-  vim.diagnostic.config {
+  diagnostic.config {
     virtual_text = { prefix = " ", source = "always" },
     signs = true,
     underline = true,

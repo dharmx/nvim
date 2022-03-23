@@ -6,12 +6,12 @@ M.setup = function(client, buffer)
 
     ["b"] = {
       ["name"] = " Actions",
-      ["K"] = { "<CMD>lua buf.hover()<CR>", " Hover" },
+      ["K"] = { "<CMD>lua lsb.hover()<CR>", " Hover" },
       ["k"] = { "<CMD>Lspsaga hover_doc<CR>", " Hover" },
-      ["c"] = { "<CMD>lua require('utils.loaders').load_ui_select(); buf.code_action()<CR>", " Code action" },
-      ["f"] = { "<CMD>lua buf.formatting()<CR>", "ﯕ Format" },
+      ["c"] = { "<CMD>lua require('utils.loaders').load_ui_select(); lsb.code_action()<CR>", " Code action" },
+      ["f"] = { "<CMD>lua lsb.formatting()<CR>", "ﯕ Format" },
       ["r"] = { "<CMD>lua require('configs.lsp.handlers.rename').lsp_rename()<CR>", "ﯕ Format" },
-      ["F"] = { "<CMD>lua buf.formatting_seq_sync()<CR>", "ﯕ Format Seq" },
+      ["F"] = { "<CMD>lua lsb.formatting_seq_sync()<CR>", "ﯕ Format Seq" },
       ["T"] = { "<CMD>ToggleAutoFormat<CR>", "ﯕ  Auto formatting" },
     },
     ["d"] = {
@@ -24,20 +24,20 @@ M.setup = function(client, buffer)
     },
     ["g"] = {
       ["name"] = " Definitions",
-      ["D"] = { "<CMD>lua buf.declaration()<CR>", " Goto declaration" },
-      ["d"] = { "<CMD>lua buf.definition()<CR>", " Goto definiton" },
-      ["s"] = { "<CMD>lua buf.signature_help()<CR>", "ﲀ Signature" },
-      ["i"] = { "<CMD>lua buf.implementation()<CR>", "בּ Implementation" },
+      ["D"] = { "<CMD>lua lsb.declaration()<CR>", " Goto declaration" },
+      ["d"] = { "<CMD>lua lsb.definition()<CR>", " Goto definiton" },
+      ["s"] = { "<CMD>lua lsb.signature_help()<CR>", "ﲀ Signature" },
+      ["i"] = { "<CMD>lua lsb.implementation()<CR>", "בּ Implementation" },
       ["I"] = { "<CMD>Lspsaga implement<CR>", "בּ Implementation" },
-      ["t"] = { "<CMD>lua buf.type_definition()<CR>", " Type definition" },
-      ["r"] = { "<CMD>lua buf.references()<CR>", " References" },
+      ["t"] = { "<CMD>lua lsb.type_definition()<CR>", " Type definition" },
+      ["r"] = { "<CMD>lua lsb.references()<CR>", " References" },
       ["f"] = { "<CMD>Lspsaga lsp_finder<CR>", " LSP Finder" },
     },
     ["w"] = {
       ["name"] = " Workspaces",
-      ["a"] = { "<CMD>lua buf.add_workspace_folder()<CR>", " Add workspace" },
-      ["r"] = { "<CMD>lua buf.remove_workspace_folder()<CR>", " Remove workspace" },
-      ["l"] = { "<CMD>lua notify(inspect(buf.list_workspace_folders()))<CR>", " Workspaces" },
+      ["a"] = { "<CMD>lua lsb.add_workspace_folder()<CR>", " Add workspace" },
+      ["r"] = { "<CMD>lua lsb.remove_workspace_folder()<CR>", " Remove workspace" },
+      ["l"] = { "<CMD>lua notify(inspect(lsb.list_workspace_folders()))<CR>", " Workspaces" },
     },
   }
 

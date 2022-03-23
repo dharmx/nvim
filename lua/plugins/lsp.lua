@@ -54,11 +54,10 @@ use { "neovim/nvim-lspconfig", opt = true }
 
 use {
   "simrat39/symbols-outline.nvim",
-  config = function()
+  setup = function()
     require "configs.lsp.outline"
   end,
   after = "nvim-lspconfig",
-  cmd = { "SymbolsOutline", "SymbolsOutlineClose", "SymbolsOutlineOpen" },
 }
 
 use {

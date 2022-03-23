@@ -31,7 +31,7 @@ local config = {
     numbers = "none",
     buffer_close_icon = "",
     modified_icon = "",
-    close_icon = "",
+    close_icon = "ﳉ",
     indicator = "|",
     icon_pinned = "ﲀ",
     show_close_icon = true,
@@ -91,11 +91,11 @@ local config = {
   custom_areas = {
     right = function()
       local result = {}
-      local seve = vim.diagnostic.severity
-      local error = #vim.diagnostic.get(0, { severity = seve.ERROR })
-      local warning = #vim.diagnostic.get(0, { severity = seve.WARN })
-      local info = #vim.diagnostic.get(0, { severity = seve.INFO })
-      local hint = #vim.diagnostic.get(0, { severity = seve.HINT })
+      local seve = diagnostic.severity
+      local error = #diagnostic.get(0, { severity = seve.ERROR })
+      local warning = #diagnostic.get(0, { severity = seve.WARN })
+      local info = #diagnostic.get(0, { severity = seve.INFO })
+      local hint = #diagnostic.get(0, { severity = seve.HINT })
 
       if error ~= 0 then
         table.insert(result, {

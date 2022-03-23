@@ -14,8 +14,14 @@ use {
     "nvim-treesitter-textobjects",
     "playground",
     "nvim-ts-autotag",
+    "nvim-treesitter-context",
+    "nvim-gps",
+    "spellsitter.nvim",
   },
-  module = "nvim-treesitter.configs",
+  config = function()
+    local _ = require "configs.treesitter"
+  end,
+  opt = true,
 }
 
 use { "andymass/vim-matchup", opt = true }
@@ -32,7 +38,7 @@ use { "windwp/nvim-ts-autotag", opt = true }
 
 use {
   "romgrk/nvim-treesitter-context",
-  after = "nvim-treesitter",
+  opt = true,
   config = function()
     require "configs.treesitter.plugins.context"
   end,
@@ -40,7 +46,7 @@ use {
 
 use {
   "SmiteshP/nvim-gps",
-  after = "nvim-treesitter",
+  opt = true,
   config = function()
     require "configs.treesitter.plugins.gps"
   end,
@@ -48,10 +54,10 @@ use {
 
 use {
   "lewis6991/spellsitter.nvim",
+  opt = true,
   config = function()
     require "configs.treesitter.plugins.spellsitter"
   end,
-  after = "nvim-treesitter",
 }
 
 return M

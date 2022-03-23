@@ -37,6 +37,7 @@ M.mappings = {
   },
   ["<leader><Tab>"] = { "<CMD>lua require('reach').buffers(require('tables.reach').buffers)<CR>", "ﴵ Buffers" },
   ["<leader>Q"] = { "<CMD>qa!<CR>", " Quit neovim" },
+  ["<leader><leader>q"] = { "<CMD>q<CR>", " Quit" },
 }
 
 M.options = {

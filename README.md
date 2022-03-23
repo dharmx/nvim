@@ -8,5 +8,3 @@
 
 Greasiest neovim configurations.
 </div>
-
-

@@ -3,6 +3,7 @@ _G.o = vim.o
 
 _G.wo = vim.wo
 _G.bo = vim.bo
+_G.b = vim.b
 
 _G.fn = vim.fn
 _G.api = vim.api
@@ -21,7 +22,7 @@ _G.diagnostic = vim.diagnostic
 _G.stdpath = fn.stdpath
 
 _G.cmd = api.nvim_command
-_G.buf = lsp.buf
+_G.lsb = lsp.buf
 
 _G.system = fn.system
 _G.inspect = vim.inspect

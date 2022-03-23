@@ -18,7 +18,7 @@ M.mappings = {
     "<CMD>Gitsigns diffthis HEAD<CR>",
     " Diff",
   },
-  ["L"] = { "<CMD>lua require('utils.toggleterm')._LAZYGIT_TOGGLE()<CR>", " Lazygit" },
+  ["L"] = { "<CMD>lua require('utils.terminals')._LAZYGIT_TOGGLE()<CR>", " Lazygit" },
 }
 
 M.options = {

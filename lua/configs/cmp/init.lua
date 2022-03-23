@@ -44,7 +44,7 @@ local config = {
       if cmp.visible() then
         cmp.select_next_item()
       elseif require("luasnip").expand_or_jumpable() then
-        fn.feedkeys(api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+        api.nvim_feedkeys(api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "i", "")
       else
         fallback()
       end
@@ -53,7 +53,7 @@ local config = {
       if cmp.visible() then
         cmp.select_prev_item()
       elseif require("luasnip").jumpable(-1) then
-        fn.feedkeys(api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+        api.nvim_feedkeys(api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "i", "")
       else
         fallback()
       end

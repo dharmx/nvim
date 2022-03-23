@@ -1,9 +1,5 @@
 local M = {}
 
-function M.p(message)
-  print(message)
-end
-
 function M.subtable(items, upto)
   local box = {}
   local keys = vim.tbl_keys(items)
@@ -16,8 +12,16 @@ function M.subtable(items, upto)
   return box
 end
 
+function M.rq(item)
+  return require(item)
+end
+
 function M.pi(item)
   print(inspect(item))
+end
+
+function M.tp(item)
+  print(type(item))
 end
 
 function M.exists(path)

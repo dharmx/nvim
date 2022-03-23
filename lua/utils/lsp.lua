@@ -22,7 +22,7 @@ function M.autosave()
               "InsertLeave",
               "WinEnter",
             },
-            command = buf.formatting_sync,
+            command = lspb.formatting_sync,
             options = { buffer = api.nvim_get_current_buf() },
           },
         })

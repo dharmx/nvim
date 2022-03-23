@@ -78,13 +78,7 @@ use {
   config = function()
     require "configs.workflow.regexplainer"
   end,
-  wants = { "nvim-treesitter", "plenary.nvim", "nui.nvim" },
-  cmd = {
-    "RegexplainerHide",
-    "RegexplainerShow",
-    "RegexplainerShowPopup",
-    "RegexplainerShowSplit",
-  },
+  after = { "nvim-treesitter", "plenary.nvim", "nui.nvim" },
 }
 
 use { "winston0410/cmd-parser.nvim", event = "CmdlineEnter" }

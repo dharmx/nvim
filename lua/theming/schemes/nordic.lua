@@ -7,7 +7,7 @@ N.common = {
   ["base02"] = "#434C5E",
   ["base03"] = "#4C566A",
 
-  -- Snow Storm
+  -- Snowy Storm
   ["base04"] = "#D8DEE9",
   ["base05"] = "#E5E9F0",
   ["base06"] = "#ECEFF4",

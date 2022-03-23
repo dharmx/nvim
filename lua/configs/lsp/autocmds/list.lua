@@ -7,7 +7,7 @@ M["LspDocumentHighlight"] = {
       if not _cap.document_highlight then
         return
       end
-      buf.document_highlight()
+      lsb.document_highlight()
     end,
     options = { buffer = buffer },
   },
@@ -17,7 +17,7 @@ M["LspDocumentHighlight"] = {
       if not _cap.document_highlight then
         return
       end
-      buf.clear_references()
+      lsb.clear_references()
     end,
     options = { buffer = buffer },
   },
@@ -25,7 +25,7 @@ M["LspDocumentHighlight"] = {
 
 M["LspCodeActions"] = {
   {
-    events = { "CursorHold", "CursorHoldI" },
+    events = "CursorHold",
     command = function()
       require("nvim-lightbulb").update_lightbulb()
     end,

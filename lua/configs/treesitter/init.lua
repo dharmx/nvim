@@ -41,13 +41,13 @@ local config = {
   textobjects = require "configs.treesitter.modules.textobjects",
   playground = require "configs.treesitter.modules.playground",
   query_linter = require "configs.treesitter.modules.querylinter",
-  autotag = require "configs.treesitter.modules.autotag",
   refactor = require "configs.treesitter.modules.refactor",
   matchup = require "configs.treesitter.modules.matchup",
 }
 
 schedule(function()
   ts.setup(config)
+  local _ = require "configs.treesitter.modules.autotag"
   notify {
     message = "Treesitter is now enabled!",
     title = "nvim-treesitter",

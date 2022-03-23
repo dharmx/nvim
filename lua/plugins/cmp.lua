@@ -14,7 +14,7 @@ use {
 
 use {
   "tamago324/cmp-zsh",
-  ft = "zsh",
+  after = "nvim-cmp",
   config = function()
     require "configs.cmp.zsh"
   end,
@@ -22,7 +22,8 @@ use {
 
 use {
   "uga-rosa/cmp-dictionary",
-  after = "nvim-cmp",
+  wants = "nvim-cmp",
+  ft = { "txt", "plaintex", "plaintext", "tex", "markdown" },
   config = function()
     require "configs.cmp.dictionary"
   end,
@@ -38,25 +39,25 @@ use {
 
 use {
   "windwp/nvim-autopairs",
-  after = "nvim-cmp",
   config = function()
     require "configs.cmp.autopairs"
   end,
-  module = "nvim-autopairs.completion.cmp",
+  module = "nvim-autopairs",
+  event = "InsertEnter",
 }
 
 use {
   "petertriho/cmp-git",
-  wants = "plenary.nvim",
+  wants = { "nvim-cmp", "plenary.nvim" },
   config = function()
     require "configs.cmp.git"
   end,
-  after = "nvim-cmp",
+  opt = true,
 }
 
 use {
   "hrsh7th/cmp-nvim-lsp-document-symbol",
-  after = { "nvim-lspconfig", "nvim-cmp" },
+  after = { "nvim-cmp", "nvim-lspconfig" },
 }
 
 use {
@@ -69,21 +70,32 @@ use { "dmitmel/cmp-cmdline-history", after = "nvim-cmp", event = "CmdlineEnter" 
 use {
   "quangnguyen30192/cmp-nvim-tags",
   wants = "nvim-cmp",
-  ft = { "md", "markdown", "html", "xml", "javascript", "js" },
+  ft = {
+    "htnl",
+    "xml",
+    "markdown",
+    "svelte",
+    "tsx",
+    "js",
+    "javascript",
+    "typescript",
+    "tsx",
+  },
 }
 
 use {
   "David-Kunz/cmp-npm",
-  ft = "package.json",
   wants = { "nvim-cmp", "plenary.nvim" },
+  ft = "package.json",
 }
+
+use { "andersevenrud/cmp-tmux", wants = "nvim-cmp", ft = "tmux" }
 
 use {
-  "andersevenrud/cmp-tmux",
-  after = "nvim-cmp",
+  "hrsh7th/cmp-emoji",
+  wants = "nvim-cmp",
+  ft = { "tex", "markdown", "txt", "plaintext", "plaintex" },
 }
-
-use { "hrsh7th/cmp-emoji", after = "nvim-cmp" }
 
 use {
   "hrsh7th/cmp-nvim-lsp",
@@ -97,33 +109,27 @@ use { "hrsh7th/cmp-calc", after = "nvim-cmp" }
 
 use { "octaltree/cmp-look", after = "nvim-cmp" }
 
-use {
-  "f3fora/cmp-spell",
-  after = "nvim-cmp",
-}
+use { "f3fora/cmp-spell", after = "nvim-cmp" }
 
 use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
 
 use { "lukas-reineke/cmp-rg", after = "nvim-cmp" }
 
-use {
-  "ray-x/cmp-treesitter",
-  after = { "nvim-treesitter", "nvim-cmp" },
-}
+use { "ray-x/cmp-treesitter", after = { "nvim-treesitter", "nvim-cmp" } }
 
 use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }
 
-use { "mtoohey31/cmp-fish", ft = "fish", after = "nvim-cmp" }
+use { "mtoohey31/cmp-fish", after = "nvim-cmp" }
 
-use { "kdheepak/cmp-latex-symbols", ft = "tex", after = "nvim-cmp" }
+use { "kdheepak/cmp-latex-symbols", after = "nvim-cmp" }
 
 use { "saadparwaiz1/cmp_luasnip", after = { "LuaSnip", "nvim-cmp" } }
 
-use { "hrsh7th/cmp-cmdline", after = "nvim-cmp", event = "CmdlineEnter" }
+use { "hrsh7th/cmp-cmdline", wants = "nvim-cmp", event = "CmdlineEnter" }
 
-use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
+use { "hrsh7th/cmp-buffer", wants = "nvim-cmp", event = "InsertEnter" }
 
-use { "hrsh7th/cmp-path", after = "cmp-buffer" }
+use { "hrsh7th/cmp-path", wants = "cmp-buffer", keys = { { "i", "/" } } }
 
 return M
 

@@ -173,7 +173,7 @@ use {
 
 use {
   "nvim-telescope/telescope-packer.nvim",
-  after = { "packer.nvim", "telescope.nvim" },
+  after = "telescope.nvim",
   config = function()
     require("telescope").load_extension "packer"
   end,

@@ -1,10 +1,34 @@
-return {
+local M = {}
+
+M.invisible = {
+  "dashboard",
+  "alpha",
   "NvimTree",
-  "lsp-installer",
-  "Trouble",
-  "TelescopePrompt",
+  "undotree",
+  "diff",
   "Outline",
-  "terminal",
 }
+
+M.hidden = {
+  "packer",
+  "lsp-installer",
+  "TelescopePrompt",
+  "help",
+  "telescope",
+  "lspinfo",
+  "Trouble",
+  "null-ls-info",
+  "quickfix",
+  "chadtree",
+  "fzf",
+  "NeogitStatus",
+  "terminal",
+  "console",
+  "term://*",
+  "Term://*",
+  "toggleterm",
+}
+
+return M
 
 -- vim:ft=lua
