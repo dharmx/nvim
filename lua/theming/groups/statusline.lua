@@ -19,11 +19,6 @@ function D.get(theme)
       foreground = theme.common.base15,
       background = theme.common.base01,
     },
-    ["StatusLinePositionFirst"] = {
-      foreground = theme.common.base03,
-      background = theme.common.base02,
-      decoration = "bold",
-    },
     ["StatusLinePositionLastExtra"] = {
       foreground = theme.common.base01,
       background = theme.common.base15,

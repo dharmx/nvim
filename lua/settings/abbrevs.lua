@@ -1,5 +1,6 @@
 local M = {}
 
+-- converts :Wq, :WQ, :wQ, etc to :wq
 M["AutoCorrectQuitSaveCase"] = {
   { expression = true, buffer = "W", command = "((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))" },
   { expression = true, buffer = "Q", command = "((getcmdtype() is# ':' && getcmdline() is# 'Q')?('q'):('Q'))" },
@@ -7,6 +8,7 @@ M["AutoCorrectQuitSaveCase"] = {
   { expression = true, buffer = "Wq", command = "((getcmdtype() is# ':' && getcmdline() is# 'Wq')?('wq'):('Wq'))" },
 }
 
+-- converts :Q, :q to q!
 M["ForceQuit"] = {
   { expression = true, buffer = "Q", command = "((getcmdtype() is# ':' && getcmdline() is# 'Q')?('q!'):('q'))" },
   { expression = true, buffer = "q", command = "((getcmdtype() is# ':' && getcmdline() is# 'q')?('q!'):('q'))" },

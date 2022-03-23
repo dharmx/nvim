@@ -19,7 +19,7 @@ use {
     "spellsitter.nvim",
   },
   config = function()
-    local _ = require "configs.treesitter"
+    require "configs.treesitter"
   end,
   opt = true,
 }

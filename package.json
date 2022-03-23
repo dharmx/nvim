@@ -108,7 +108,7 @@
         ],
         "path": "./snippets/css.json"
       },
-      {
+      { 
         "language": [
           "javascript",
           "javascriptreact",

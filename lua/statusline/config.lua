@@ -2,13 +2,21 @@ local M = {}
 
 local style = {
   angled = { left = "", right = "", left_alt = "", right_alt = "" },
+  flame = { left = "", right = "", left_alt = "", right_alt = "" },
   rounded = { left = "", right = "", left_alt = "", right_alt = "" },
-  slanted = { left = "", right = "", left_alt = "", right_alt = "" },
+  slant = { left = "", right = "", left_alt = "", right_alt = "" },
   square = { left = "█", right = "█", left_alt = "", right_alt = "" },
+  pacman = { left = "", right = "", left_alt = "", right_alt = "" },
+  graphy = { left = "", right = "", left_alt = "", right_alt = "" },
+  slantv1 = { left = "", right = "", left_alt = "", right_alt = "" },
+  slantv2 = { left = "", right = "", left_alt = "", right_alt = "" },
+  slantv3 = { left = "", right = "", left_alt = "", right_alt = "" },
+  pixel = { left = "", right = "", left_alt = "", right_alt = "" },
+  fullslant = { left = "", right = "", left_alt = "", right_alt = "" },
 }
 
 M.mode = {
-  style = style.rounded,
+  style = style.fullslant,
   label = 2,
   modes = setmetatable({
     ["n"] = { "NORMAL", "", "NRM" },
@@ -17,10 +25,10 @@ M.mode = {
     ["V"] = { "V-LINE", "", "VIL" },
     [""] = { "V-BLOCK", "", "VIB" },
     ["s"] = { "SELECT", "", "SET" },
-    ["S"] = { "S-LINE", "", "SEL" },
-    [""] = { "S-BLOCK", "", "SEB" },
+    ["S"] = { "S-LINE", "ﳝ", "SEL" },
+    [""] = { "S-BLOCK", "ﳛ", "SEB" },
     ["i"] = { "INSERT", "", "INS" },
-    ["ic"] = { "INSERT", "", "INS" },
+    ["ic"] = { "INSERT", "ﴣ", "INS" },
     ["R"] = { "REPLACE", "", "REP" },
     ["Rv"] = { "V-REPLACE", "", "VRP" },
     ["c"] = { "COMMAND", "", "COM" },
@@ -39,32 +47,32 @@ M.mode = {
 }
 
 M.filename = {
-  style = style.square,
+  style = style.fullslant,
   absolute = false,
   format = false,
   icon = true,
 }
 
 M.dirname = {
-  style = style.square,
+  style = style.fullslant,
   icon = "  ",
 }
 
 M.treesitter = {
-  style = style.square,
+  style = style.fullslant,
   disabled_icon = "  ",
   enabled_icon = " TS לּ  ",
 }
 
 M.position = {
-  style = style.square,
+  style = style.fullslant,
   icon = true,
-  top = " TOP",
-  bottom = " BOT",
+  top = " TOP",
+  bottom = " BOT",
 }
 
 M.lsp = {
-  style = style.square,
+  style = style.fullslant,
   spinners = {
     success = {
       "",
@@ -82,7 +90,7 @@ M.lsp = {
 }
 
 M.git = {
-  style = style.square,
+  style = style.fullslant,
 }
 
 M.diagnostics = {
@@ -92,7 +100,7 @@ M.diagnostics = {
     INFO = "",
     HINT = "",
   },
-  style = style.square,
+  style = style.fullslant,
 }
 
 return M

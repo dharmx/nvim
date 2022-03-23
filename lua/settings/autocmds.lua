@@ -87,7 +87,6 @@ M["NativeAdjustments"] = {
     command = function()
       opt_local.number = false
       opt_local.relativenumber = false
-      opt_local.filetype = "terminal"
       require("utils.terminals")._TERM_KEYMAPS()
     end,
     options = {

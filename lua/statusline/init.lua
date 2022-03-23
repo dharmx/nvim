@@ -21,12 +21,11 @@ StatusLine = function(state)
   set_colors(api.nvim_get_mode().mode)
   local combined = "%#StatusLineInactive#%=" .. modules.filename(true) .. "%="
   if state == "active" then
-    local ok, ts = pcall(modules.treesitter)
     local left = table.concat {
       modules.mode(),
       modules.dirname(),
       modules.filename(),
-      ok and ts or "%#Statusline#",
+      modules.treesitter(),
     }
     local right = table.concat {
       "%=",
