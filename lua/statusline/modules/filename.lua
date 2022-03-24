@@ -42,10 +42,11 @@ function M.filename(disabled)
       )
     else
       format = string.format(
-        "%%#StatusLineFilename#%s %s %s%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s%%#Default#",
+        "%%#StatusLineFilename#%s %s %s%s%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s%%#Default#",
         icon,
         path,
-        readonly ~= "" and readonly or modified,
+        modified,
+        readonly,
         modifiable,
         config.style.left,
         config.style.left

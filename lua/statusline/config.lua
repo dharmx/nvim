@@ -6,6 +6,7 @@ local style = {
   rounded = { left = "", right = "", left_alt = "", right_alt = "" },
   slant = { left = "", right = "", left_alt = "", right_alt = "" },
   square = { left = "█", right = "█", left_alt = "", right_alt = "" },
+  xsquare = { left = "█", right = "█", left_alt = "█", right_alt = "█" },
   pacman = { left = "", right = "", left_alt = "", right_alt = "" },
   graphy = { left = "", right = "", left_alt = "", right_alt = "" },
   slantv1 = { left = "", right = "", left_alt = "", right_alt = "" },
@@ -17,7 +18,7 @@ local style = {
 
 M.mode = {
   truncate = 20,
-  style = style.square,
+  style = style.xsquare,
   label = 2,
   modes = setmetatable({
     ["n"] = { "NORMAL", "", "NRM" },
@@ -49,7 +50,7 @@ M.mode = {
 
 M.filename = {
   truncate = 45,
-  style = style.square,
+  style = style.xsquare,
   absolute = false,
   format = false,
   icon = true,
@@ -57,20 +58,20 @@ M.filename = {
 
 M.dirname = {
   truncate = 20,
-  style = style.square,
+  style = style.xsquare,
   icon = "  ",
 }
 
 M.treesitter = {
   truncate = 130,
-  style = style.square,
-  disabled_icon = "  ",
+  style = style.xsquare,
+  disabled_icon = " ﮤ ",
   enabled_icon = " TS לּ  ",
 }
 
 M.position = {
   truncate = 32,
-  style = style.square,
+  style = style.xsquare,
   icon = true,
   top = " TOP",
   bottom = " BOT",
@@ -78,31 +79,36 @@ M.position = {
 
 M.lsp = {
   truncate = 80,
-  style = style.square,
+  style = style.xsquare,
   spinners = {
     success = {
-      "",
-      "",
-      "",
+      "",
+      "",
+      "",
     },
     loading = {
       "",
+      "",
       "",
       "",
       "",
     },
   },
   short = true,
+  label = " LSP",
 }
 
 M.lightbulb = {
   truncate = 85,
-  style = style.square,
+  style = style.xsquare,
+  unavailable = " ",
+  active = " ",
+  loading = " ",
 }
 
 M.git = {
   truncate = 70,
-  style = style.square,
+  style = style.xsquare,
   short = false,
 }
 
@@ -114,7 +120,7 @@ M.diagnostics = {
     INFO = "",
     HINT = "",
   },
-  style = style.square,
+  style = style.xsquare,
 }
 
 return M

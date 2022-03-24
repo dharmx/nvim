@@ -3,7 +3,7 @@ local D = {}
 function D.get(theme)
   return {
     ["StatusLineBulbON"] = {
-      foreground = theme.common.base14,
+      foreground = theme.common.base13,
       background = theme.common.base01,
       decoration = "bold",
     },
@@ -13,7 +13,7 @@ function D.get(theme)
       decoration = "bold",
     },
     ["StatusLineBulbLOAD"] = {
-      foreground = theme.common.base13,
+      foreground = theme.common.base15,
       background = theme.common.base01,
       decoration = "bold",
     },
