@@ -20,7 +20,7 @@ function M.zero_diag_filter(diag)
   return diag ~= 0
 end
 
--- Highlights and re-highlights dynamic colors 
+-- Highlights and re-highlights dynamic colors
 -- based on modes for the statusline.
 -- @param current string mode string
 -- @see help modes
