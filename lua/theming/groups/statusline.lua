@@ -2,6 +2,21 @@ local D = {}
 
 function D.get(theme)
   return {
+    ["StatusLineBulbON"] = {
+      foreground = theme.common.base14,
+      background = theme.common.base01,
+      decoration = "bold",
+    },
+    ["StatusLineBulbOFF"] = {
+      foreground = theme.common.base11,
+      background = theme.common.base01,
+      decoration = "bold",
+    },
+    ["StatusLineBulbLOAD"] = {
+      foreground = theme.common.base13,
+      background = theme.common.base01,
+      decoration = "bold",
+    },
     ["StatusLineDirname"] = {
       foreground = theme.common.base15,
       background = theme.common.base02,

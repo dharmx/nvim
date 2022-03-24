@@ -16,7 +16,8 @@ local style = {
 }
 
 M.mode = {
-  style = style.fullslant,
+  truncate = 20,
+  style = style.square,
   label = 2,
   modes = setmetatable({
     ["n"] = { "NORMAL", "", "NRM" },
@@ -47,32 +48,37 @@ M.mode = {
 }
 
 M.filename = {
-  style = style.fullslant,
+  truncate = 30,
+  style = style.square,
   absolute = false,
   format = false,
   icon = true,
 }
 
 M.dirname = {
-  style = style.fullslant,
+  truncate = 20,
+  style = style.square,
   icon = "  ",
 }
 
 M.treesitter = {
-  style = style.fullslant,
+  truncate = 130,
+  style = style.square,
   disabled_icon = "  ",
   enabled_icon = " TS לּ  ",
 }
 
 M.position = {
-  style = style.fullslant,
+  truncate = 30,
+  style = style.square,
   icon = true,
   top = " TOP",
   bottom = " BOT",
 }
 
 M.lsp = {
-  style = style.fullslant,
+  truncate = 80,
+  style = style.square,
   spinners = {
     success = {
       "",
@@ -89,18 +95,26 @@ M.lsp = {
   short = true,
 }
 
+M.lightbulb = {
+  truncate = 85,
+  style = style.square,
+}
+
 M.git = {
-  style = style.fullslant,
+  truncate = 70,
+  style = style.square,
+  short = false,
 }
 
 M.diagnostics = {
+  truncate = 63,
   severities = {
     ERROR = "",
     WARN = "",
     INFO = "",
     HINT = "",
   },
-  style = style.fullslant,
+  style = style.square,
 }
 
 return M

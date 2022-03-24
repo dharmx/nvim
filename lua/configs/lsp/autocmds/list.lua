@@ -3,22 +3,12 @@ local M = {}
 M["LspDocumentHighlight"] = {
   {
     events = { "CursorHold", "CursorHoldI" },
-    command = function()
-      if not _cap.document_highlight then
-        return
-      end
-      lsb.document_highlight()
-    end,
+    command = lsb.document_highlight,
     options = { buffer = buffer },
   },
   {
     events = { "CursorMoved", "InsertEnter", "CursorMovedI" },
-    command = function()
-      if not _cap.document_highlight then
-        return
-      end
-      lsb.clear_references()
-    end,
+    command = lsb.clear_references,
     options = { buffer = buffer },
   },
 }
@@ -26,16 +16,14 @@ M["LspDocumentHighlight"] = {
 M["LspCodeActions"] = {
   {
     events = "CursorHold",
-    command = function()
-      require("nvim-lightbulb").update_lightbulb()
-    end,
+    command = require("nvim-lightbulb").update_lightbulb,
     options = { buffer = buffer },
   },
 }
 
 M["LspDiagnosticsAtCursorLocation"] = {
   {
-    events = { "CursorHold", "CursorHoldI" },
+    events = "CursorHold",
     command = function()
       diagnostic.open_float(nil, { focus = false, scope = "cursor", border = "solid" })
     end,
@@ -44,7 +32,7 @@ M["LspDiagnosticsAtCursorLocation"] = {
 
 M["LspDiagnosticsAtCursorLineLocation"] = {
   {
-    events = { "CursorHold", "CursorHoldI" },
+    events = "CursorHold",
     command = function()
       diagnostic.open_float(nil, { focus = false, border = "solid" })
     end,

@@ -8,7 +8,7 @@ end
 local config = {
   -- LSP client names to ignore
   -- Example: {"sumneko_lua", }
-  ignore = { "null-ls" },
+  -- ignore = { "null-ls" },
   sign = {
     enabled = true,
     priority = 10,
@@ -28,7 +28,7 @@ local config = {
     -- - offset_y   y-axis offset of the floating window
     -- - anchor     corner of float to place at the cursor (NW, NE, SW, SE)
     -- - winblend   transparency of the window (0-100)
-    enabled = true,
+    enabled = false,
     text = "ﯦ Code actions available",
     win_opts = {
       border = "solid",
@@ -44,9 +44,9 @@ local config = {
   status_text = {
     enabled = true,
     -- Text to provide when code actions are available
-    text = " ",
+    text = "Actions",
     -- Text to provide when no actions are available
-    text_unavailable = "ﯧ No actions",
+    text_unavailable = "None",
   },
 }
 

@@ -1,7 +1,8 @@
 local hidden = require("tables.blacklisted").hidden
 local set_colors = require("utils.statusline").set_colors
-
+local config = require "statusline.config"
 local modules = {}
+
 for _, module in
   pairs {
     "mode",
@@ -9,6 +10,7 @@ for _, module in
     "filename",
     "treesitter",
     "diagnostics",
+    "lightbulb",
     "lsp",
     "git",
     "position",
@@ -17,22 +19,31 @@ do
   modules[module] = require("statusline.modules." .. module)[module]
 end
 
+local function truncated(module, ...)
+  if api.nvim_win_get_width(0) < config[module].truncate then
+    return ""
+  end
+  return modules[module](...)
+end
+
 StatusLine = function(state)
-  set_colors(api.nvim_get_mode().mode)
-  local combined = "%#StatusLineInactive#%=" .. modules.filename(true) .. "%="
+  local mode = api.nvim_get_mode().mode
+  set_colors(mode)
+  local combined = "%#StatusLineInactive#%=" .. truncated("filename", true) .. "%="
   if state == "active" then
     local left = table.concat {
-      modules.mode(),
-      modules.dirname(),
-      modules.filename(),
-      modules.treesitter(),
+      truncated "mode",
+      truncated "dirname",
+      truncated "filename",
+      truncated "treesitter",
+      "%#Statusline#",
     }
     local right = table.concat {
       "%=",
-      modules.diagnostics(),
-      modules.lsp(),
-      modules.git(),
-      modules.position(),
+      truncated "diagnostics",
+      truncated "lightbulb" .. truncated "lsp",
+      truncated "git",
+      truncated "position",
     }
     combined = left .. right
   elseif state == "inactive" then
