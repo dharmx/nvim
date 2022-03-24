@@ -28,8 +28,14 @@ end
 
 StatusLine = function(state)
   local mode = api.nvim_get_mode().mode
+  local width = api.nvim_win_get_width(0)
   set_colors(mode)
   local combined = "%#StatusLineInactive#%=" .. truncated("filename", true) .. "%="
+
+  if width < 17 then
+    return combined .. modules.mode(true) .. "%="
+  end
+
   if state == "active" then
     local left = table.concat {
       truncated "mode",

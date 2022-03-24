@@ -48,7 +48,7 @@ M.mode = {
 }
 
 M.filename = {
-  truncate = 30,
+  truncate = 45,
   style = style.square,
   absolute = false,
   format = false,
@@ -69,7 +69,7 @@ M.treesitter = {
 }
 
 M.position = {
-  truncate = 30,
+  truncate = 32,
   style = style.square,
   icon = true,
   top = " TOP",
