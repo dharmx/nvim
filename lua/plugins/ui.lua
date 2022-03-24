@@ -69,7 +69,7 @@ use {
   "goolord/alpha-nvim",
   wants = "nvim-web-devicons",
   config = function()
-    local _ = require "configs.ui.alpha"
+    require "configs.ui.alpha"
   end,
   cmd = {
     "Alpha",

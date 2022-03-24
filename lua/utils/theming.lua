@@ -1,9 +1,24 @@
+-- Theming related utility functions
+-- @module utils.theming
+
 local M = {}
 
+-- Returns the current theme colors.
+-- @return table of highlight groups and their color values
 function M.get_active_scheme()
   return require("theming.schemes." .. colorscheme)
 end
 
+-- Applies highlight to a group. Creates the group if it doesn't exists.
+-- If a value doesn't exist within colors table then it is set to NONE.
+-- @param group string name of the highlight group
+-- @param colors table table of color categories such as guifg, guibg, guisp and gui
+-- @field colors.foreground sets the foreground for the highlight.
+-- @field colors.background sets the background for the highlight.
+-- @field colors.decoration sets the decorations such as bold, italic for the highlight.
+-- @field colors.foreground sets the foreground for the highlight.
+-- @field colors.special sets the color of underline for the highlight.
+-- @see help highlight-{guifg,guibg,gui,guisp,link,args,groups}
 function M.highlight(group, colors)
   if colors.link then
     M.link(group, colors.link)
@@ -13,10 +28,10 @@ function M.highlight(group, colors)
   local background = colors.background or "NONE"
   local foreground = colors.foreground or "NONE"
   local decoration = colors.decoration or "NONE"
-  local special = colors.decoration or "NONE"
+  local special = colors.special or "NONE"
 
   local prepared = string.format(
-    "highlight %s guibg=%s guifg=%s gui=%s guisp=%s",
+    "highlight! %s guibg=%s guifg=%s gui=%s guisp=%s",
     group,
     background,
     foreground,
@@ -27,26 +42,40 @@ function M.highlight(group, colors)
   cmd(prepared)
 end
 
+-- Link a highlight group to another.
+-- @param from string the group that needs to be linked.
+-- @param to string the group whose values will be used.
 function M.link(from, to)
   local prepared = string.format("highlight! link %s %s", from, to)
   cmd(prepared)
 end
 
+-- Main function for setting up the highlights.
+-- @param options table additional options
+-- @field options.disable table disabled plugin highlight groups
+-- @todo Needs to be shortened and improved.
 function M.apply(options)
   local enums = require "tables.theming"
-  local base = enums.base
+  local base = enums.base -- contains native highlights
 
-  local theme = enums.supports.theme
-  local syntax = enums.supports.syntax
+  -- plugin highlights
+  local theme = enums.supports.theme -- ui related highlights
+  local syntax = enums.supports.syntax -- syntax related highlights
 
-  local loaded_theme = require("theming.schemes." .. options.scheme)
+  local loaded_theme = M.get_active_scheme()
 
+  -- Helper for setting a highlight set. Like setting a chunk of
+  -- highlight groups.
+  -- @param group table same as the highlight function.
   local function set(groups)
     for group, colors in pairs(groups) do
       M.highlight(group, colors)
     end
   end
 
+  -- Helper for checking if a plugin is excluded.
+  -- @param plugin string name of the plugin that needs to be excluded.
+  -- @return boolean true if in excluded list false, otherwise.
   local function disabled(plugin)
     if not options.disable then
       return false
@@ -61,28 +90,31 @@ function M.apply(options)
     return false
   end
 
+  -- set ui plugin highlights
   for name, config in pairs(theme) do
     if not disabled(name) then
       set(config(loaded_theme))
     end
   end
 
-  for name, config in pairs(syntax) do
-    if not disabled(name) then
-      set(config(loaded_theme.syntax))
-    end
-  end
-
+  -- set syntax plugin highlights
   for name, config in pairs(base.syntax) do
     if not disabled(name) then
       set(config(loaded_theme.syntax))
     end
   end
 
-  base.terminal(loaded_theme)
-  set(base.ui(loaded_theme))
-  set(base.custom(loaded_theme))
-  set(base.statusline(loaded_theme))
+  -- set syntax highlights
+  for name, config in pairs(syntax) do
+    if not disabled(name) then
+      set(config(loaded_theme.syntax))
+    end
+  end
+
+  base.terminal(loaded_theme) -- set terminal highlights
+  set(base.ui(loaded_theme)) -- set native ui highlights
+  set(base.statusline(loaded_theme)) -- set statusline highlights
+  set(base.custom(loaded_theme)) -- set custom highlights
 end
 
 return M

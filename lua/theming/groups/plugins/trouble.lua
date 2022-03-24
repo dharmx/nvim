@@ -2,7 +2,7 @@ local T = {}
 
 function T.get(theme)
   return {
-    ["TroubleNormal"] = { background = theme.shades.shade07 },
+    ["TroubleNormal"] = { background = theme.shades.shade08 },
   }
 end
 

@@ -1,5 +1,13 @@
+-- toggleterm and terminal related utilities
+-- @module utils.terminals
+
 local T = {}
 
+-- Adds sets some ease-of-use keymaps when entering terminals.
+-- For instance it usually takes the mouse to return to normal mode
+-- when using a terminal as, the keypresses get passed onto the shell.
+-- So, with this function called you can now use the <ESC> key again.
+-- @see help nvim_buf_set_keymap
 function T._TERM_KEYMAPS()
   local options = {
     silent = true,
@@ -15,8 +23,10 @@ function T._TERM_KEYMAPS()
   api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], options)
 end
 
+-- @see help toggleterm-Caveats
 local Terminal = require("toggleterm.terminal").Terminal
 
+-- Uses toggleterm to open a lazygit instance within neovim.
 function T._LAZYGIT_TOGGLE()
   local lazygit = Terminal:new {
     cmd = "lazygit",
@@ -30,6 +40,7 @@ function T._LAZYGIT_TOGGLE()
   lazygit:toggle()
 end
 
+-- Uses toggleterm to open a node REPL instance within neovim.
 function T._NODE_TOGGLE()
   local node = Terminal:new {
     cmd = "node",
@@ -39,6 +50,7 @@ function T._NODE_TOGGLE()
   node:toggle()
 end
 
+-- Uses toggleterm to open a BTOP system monitor instance within neovim.
 function T._BTOP_TOGGLE()
   local btop = Terminal:new {
     cmd = "btop",
@@ -52,6 +64,7 @@ function T._BTOP_TOGGLE()
   btop:toggle()
 end
 
+-- Uses toggleterm to open a Python REPL instance within neovim.
 function T._PYTHON_TOGGLE()
   local python = Terminal:new {
     cmd = "python",
@@ -62,6 +75,7 @@ function T._PYTHON_TOGGLE()
   python:toggle()
 end
 
+-- Uses toggleterm to open a Bpython REPL instance within neovim.
 function T._BPYTHON_TOGGLE()
   local bython = Terminal:new {
     cmd = "bpython",
@@ -72,6 +86,7 @@ function T._BPYTHON_TOGGLE()
   bython:toggle()
 end
 
+-- Uses toggleterm to open a Pypy REPL instance within neovim.
 function T._PYPY_TOGGLE()
   local pypy = Terminal:new {
     cmd = "pypy",
@@ -82,6 +97,7 @@ function T._PYPY_TOGGLE()
   pypy:toggle()
 end
 
+-- Uses toggleterm to open a Lua REPL instance within neovim.
 function T._LUA_TOGGLE()
   local lua = Terminal:new {
     cmd = "lua",
@@ -92,6 +108,7 @@ function T._LUA_TOGGLE()
   lua:toggle()
 end
 
+-- Uses toggleterm to open a Ranger instance within neovim.
 function T._RANGER_TOGGLE()
   local ranger = Terminal:new {
     cmd = "ranger",
@@ -105,6 +122,7 @@ function T._RANGER_TOGGLE()
   ranger:toggle()
 end
 
+-- Uses toggleterm to open a ZSH shell instance within neovim.
 function T._ZSH_TOGGLE()
   local zsh = Terminal:new {
     cmd = "zsh",
@@ -115,6 +133,7 @@ function T._ZSH_TOGGLE()
   zsh:toggle()
 end
 
+-- Uses toggleterm to open a BASH shell instance within neovim.
 function T._BASH_TOGGLE()
   local bash = Terminal:new {
     cmd = "bash",
@@ -125,6 +144,7 @@ function T._BASH_TOGGLE()
   bash:toggle()
 end
 
+-- Uses toggleterm to open a FISH shell instance within neovim.
 function T._FISH_TOGGLE()
   local fish = Terminal:new {
     cmd = "fish",
@@ -135,6 +155,7 @@ function T._FISH_TOGGLE()
   fish:toggle()
 end
 
+-- Uses toggleterm to open a POSIX shell instance within neovim.
 function T._POSIX_TOGGLE()
   local fish = Terminal:new {
     cmd = "sh",
@@ -145,6 +166,7 @@ function T._POSIX_TOGGLE()
   fish:toggle()
 end
 
+-- Uses toggleterm to open a Groovy REPL instance within neovim.
 function T._GROOVY_TOGGLE()
   local groovy = Terminal:new {
     cmd = "groovysh",
@@ -155,6 +177,7 @@ function T._GROOVY_TOGGLE()
   groovy:toggle()
 end
 
+-- Uses toggleterm to open a Java REPL instance within neovim.
 function T._JSHELL_TOGGLE()
   local jshell = Terminal:new {
     cmd = "jshell",
@@ -165,6 +188,7 @@ function T._JSHELL_TOGGLE()
   jshell:toggle()
 end
 
+-- Uses toggleterm to open a BluetoothCTL instance within neovim.
 function T._BLUETOOTHCTL_TOGGLE()
   local btctl = Terminal:new {
     cmd = "bluetoothctl",

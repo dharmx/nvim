@@ -34,7 +34,7 @@ function M.cmp_under(entry1, entry2)
   end
 end
 
-function M.btn_gen(label, shortcut)
+function M.btn_gen(label, shortcut, highlight)
   return {
     type = "button",
     on_press = function()
@@ -49,7 +49,7 @@ function M.btn_gen(label, shortcut)
       width = 25,
       align_shortcut = "right",
       hl_shortcut = "AlphaKeyPrefix",
-      hl = "AlphaButton",
+      hl = { { highlight, 2, 3 } },
     },
   }
 end
