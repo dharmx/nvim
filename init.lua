@@ -8,6 +8,7 @@ if not exists(INSTALL_PATH) or not exists(COMPILE_PATH) then
   local _ = require "plugins"
 end
 
+-- Load plugin specs and statusline
 pcall(require, "configs.core.impatient")
 require "statusline"
 

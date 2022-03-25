@@ -24,6 +24,7 @@ local M = {
   nvim_lsp_document_symbol = " DSM",
   buffer = " BUF",
   cmdline = "גּ CML",
+  gh_issues = " GHI",
   cmdline_history = " CMH",
 }
 
