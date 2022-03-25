@@ -89,7 +89,7 @@ end
 --- Uses gitsigns.nvim to get the git branch name.
 -- @return string name of the git branch
 function M.git_branch()
-  return b.gitsigns_head or "", "  "
+  return b.gitsigns_head or "", " "
 end
 
 --- Counts the changes made.

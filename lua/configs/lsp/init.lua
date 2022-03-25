@@ -82,7 +82,7 @@ local function configure_diagnostics()
   }
 end
 
-local _ = require "configs.lsp.schema"
+require "configs.lsp.schema"
 configure_diagnostics()
 configure_installer()
 ensure_servers()

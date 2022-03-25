@@ -15,7 +15,7 @@ function M.git()
   local add, add_icon = util.git_diff_added()
 
   if bran == "main" or bran == "master" then
-    bran_icon = "  "
+    bran_icon = " "
   end
 
   return string.format(

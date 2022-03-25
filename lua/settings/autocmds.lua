@@ -61,10 +61,8 @@ M["AutoDisableTablineStatusline"] = {
       local invisible = require("tables.blacklisted").invisible
       if vim.tbl_contains(invisible, api.nvim_buf_get_option(0, "ft")) then
         opt_local.laststatus = 0
-        opt_local.showtabline = 0
       else
-        opt_local.laststatus = 3
-        opt_local.showtabline = 2
+        opt_local.laststatus = 2
       end
     end,
     options = {

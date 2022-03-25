@@ -6,6 +6,7 @@ M.after = function()
     hijack_netrw = true,
     open_on_setup = false,
     ignore_buffer_on_setup = false,
+    ignore_ft_on_setup = { "dashboard", "alpha" },
     auto_close = true,
     auto_reload_on_write = true,
     open_on_tab = true,

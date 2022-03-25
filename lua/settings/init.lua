@@ -1,5 +1,5 @@
-local _ = require "settings.env"
-local _ = require "settings.utils"
+require "settings.env"
+require "settings.utils"
 
 excallback(function()
   local builtins = require "settings.builtins"
@@ -40,7 +40,6 @@ excallback(function()
       "NotifyOnPackerOperation",
       "AlphaTriggered",
       "ReplaceModes",
-      "AutoDisableTablineStatusline",
     }
   do
     augroup(preset, autocmds[preset])
