@@ -39,6 +39,7 @@ excallback(function()
       "YankFeedback",
       "NotifyOnPackerOperation",
       "AlphaTriggered",
+      "ReplaceModes",
       "AutoDisableTablineStatusline",
     }
   do

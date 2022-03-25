@@ -1,5 +1,28 @@
 local M = {}
 
+M["ReplaceModes"] = {
+  {
+    events = { "BufEnter", "FileType" },
+    command = function()
+      require("utils.mappings").cmdline_override(true)
+    end,
+    options = {
+      desc = "Adds mappings specific to fine-cmdline.nvim",
+      patterns = "cmdline",
+    },
+  },
+  {
+    events = { "BufEnter", "FileType" },
+    command = function()
+      require("utils.mappings").search_override()
+    end,
+    options = {
+      desc = "Adds mappings specific to searchbox.nvim",
+      patterns = "search",
+    },
+  },
+}
+
 M["AlphaTriggered"] = {
   {
     events = "VimEnter",

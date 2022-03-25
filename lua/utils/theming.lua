@@ -1,23 +1,24 @@
--- Theming related utility functions
+--- Theming related utility functions
 -- @module utils.theming
+-- @alias M
 
 local M = {}
 
--- Returns the current theme colors.
+--- Returns the current theme colors.
 -- @return table of highlight groups and their color values
 function M.get_active_scheme()
   return require("theming.schemes." .. colorscheme)
 end
 
--- Applies highlight to a group. Creates the group if it doesn't exists.
--- If a value doesn't exist within colors table then it is set to NONE.
+--- Applies highlight to a group. Creates the group if it doesn't exists.
+--- If a value doesn't exist within colors table then it is set to NONE.
 -- @param group string name of the highlight group
 -- @param colors table table of color categories such as guifg, guibg, guisp and gui
--- @field colors.foreground sets the foreground for the highlight.
--- @field colors.background sets the background for the highlight.
--- @field colors.decoration sets the decorations such as bold, italic for the highlight.
--- @field colors.foreground sets the foreground for the highlight.
--- @field colors.special sets the color of underline for the highlight.
+-- @tparam colors.foreground sets the foreground for the highlight.
+-- @tparam colors.background sets the background for the highlight.
+-- @tparam colors.decoration sets the decorations such as bold, italic for the highlight.
+-- @tparam colors.foreground sets the foreground for the highlight.
+-- @tparam colors.special sets the color of underline for the highlight.
 -- @see help highlight-{guifg,guibg,gui,guisp,link,args,groups}
 function M.highlight(group, colors)
   if colors.link then
@@ -42,7 +43,7 @@ function M.highlight(group, colors)
   cmd(prepared)
 end
 
--- Link a highlight group to another.
+--- Link a highlight group to another.
 -- @param from string the group that needs to be linked.
 -- @param to string the group whose values will be used.
 function M.link(from, to)
@@ -50,9 +51,9 @@ function M.link(from, to)
   cmd(prepared)
 end
 
--- Main function for setting up the highlights.
+--- Main function for setting up the highlights.
 -- @param options table additional options
--- @field options.disable table disabled plugin highlight groups
+-- @tparam options.disable table disabled plugin highlight groups
 -- @todo Needs to be shortened and improved.
 function M.apply(options)
   local enums = require "tables.theming"

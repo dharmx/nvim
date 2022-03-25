@@ -101,9 +101,9 @@ M.lsp = {
 M.lightbulb = {
   truncate = 85,
   style = style.xsquare,
-  unavailable = " ",
-  active = " ",
-  loading = " ",
+  unavailable = " ",
+  active = " ",
+  loading = " ",
 }
 
 M.git = {

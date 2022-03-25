@@ -2,6 +2,7 @@ local B = {}
 
 function B.get(theme)
   return {
+    ["BufferLineTabClose"] = { foreground = theme.shades.shade06, background = theme.shades.shade06 },
     BufferLineFill = { foreground = theme.shades.shade3, background = theme.shades.shade06 },
     BufferLineBackground = { foreground = theme.shades.shade03, background = theme.shades.shade06 },
     BufferLineTab = { foreground = theme.common.base09, background = theme.shades.shade06 },

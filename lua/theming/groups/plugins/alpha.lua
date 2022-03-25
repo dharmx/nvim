@@ -7,6 +7,7 @@ function D.get(theme)
     AlphaLoaded = { foreground = theme.shades.shade02 },
     AlphaFooting = { foreground = theme.common.base15, decoration = "bold" },
     AlphaScroll = { foreground = theme.common.base15 },
+    AlphaButtonLabelText = { foreground = theme.common.base08 },
   }
 end
 

@@ -24,6 +24,9 @@ local config = {
     win_options = {
       winhighlight = "NormalFloat:NormalFloat",
     },
+    buf_options = {
+      filetype = "search",
+    },
   },
 }
 

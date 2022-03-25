@@ -14,9 +14,9 @@ local heading = {
 local buttons = {
   type = "group",
   val = {
-    btn_gen("  Find File", " LDR tff ", "WildMenu"),
-    btn_gen("  Recents", " LDR tfo ", "Boolean"),
-    btn_gen("  Find Word", " LDR tfw ", "String"),
+    btn_gen("  Find File", " LDR tff ", "AlphaButtonLabelText", "WildMenu"),
+    btn_gen("  Recents", " LDR tfo ", "AlphaButtonLabelText", "Boolean"),
+    btn_gen("  Find Word", " LDR tfw ", "AlphaButtonLabelText", "String"),
   },
   opts = {
     position = "center",
