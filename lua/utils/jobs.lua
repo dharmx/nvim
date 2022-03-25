@@ -1,9 +1,9 @@
--- Plenary wrappers.
+--- Plenary wrappers.
 -- @module utils.jobs
 
 local M = {}
 
--- Execute commands using the plenary async API
+--- Execute commands using the plenary async API
 -- @see Adapted from https://git.io/JK3ht
 -- @param cwd the current working directory
 -- @param cm the command

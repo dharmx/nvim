@@ -1,8 +1,8 @@
--- LSP utility functions
--- @module utils.lsp
+--- LSP utility functions
+--- @module utils.lsp
 local M = {}
 
--- Toggles autosave mode for the current buffer.
+--- Toggles autosave mode for the current buffer.
 -- @todo it is dependent on a global variable so that makes it difficult to track
 -- when multiple buffer want auto-format.
 -- NOTE: As of this moment you need to toggle off the autosave in the current buffer
@@ -50,8 +50,8 @@ function M.autosave()
   end
 end
 
--- Applies highlights and defines the icon to LSP symbols like
--- hints, warn, ... they are displayed at the number column.
+--- Applies highlights and defines the icon to LSP symbols like
+--- hints, warn, ... they are displayed at the number column.
 -- @param group the highlight group of the symbol icon.
 -- @param text_group the highlight group of the symbol text.
 -- @param icon the symbol glyph
