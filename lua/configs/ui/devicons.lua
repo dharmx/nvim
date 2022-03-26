@@ -55,8 +55,6 @@ local config = {
     },
     xz = { icon = "", color = colors.common.base13, name = "XZ" },
     zip = { icon = "", color = colors.common.base13, name = "Zip" },
-    [""] = { icon = "", color = colors.common.base13, name = "NoName" },
-    ["[packer]"] = { icon = "", color = colors.common.base13, name = "Packer" },
   },
   default = true,
 }

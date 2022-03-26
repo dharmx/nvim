@@ -26,7 +26,7 @@ function M.filename(disabled)
 
   if config.icon then
     local present, devicons = pcall(require, "nvim-web-devicons")
-    local icon = config.default
+    local icon = ""
     if present then
       icon = " " .. devicons.get_icon(fn.expand "%:t", fn.expand "%:e", { default = true })
     end
@@ -41,6 +41,9 @@ function M.filename(disabled)
         config.style.left
       )
     else
+      if path == "" then
+        path = config.unnamed
+      end
       format = string.format(
         "%%#StatusLineFilename#%s %s%s%s%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s%%#Default#",
         icon,

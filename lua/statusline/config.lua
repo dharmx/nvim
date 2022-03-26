@@ -54,10 +54,10 @@ M.filename = {
   absolute = false,
   format = false,
   icon = true,
+  unnamed = "unnamed",
   modified = "  ",
   readonly = "  ",
   modifiable = "  ",
-  default = " ",
 }
 
 M.dirname = {
