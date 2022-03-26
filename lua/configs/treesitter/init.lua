@@ -9,6 +9,7 @@ require("nvim-treesitter.install").prefer_git = true
 local config = {
   ensure_installed = {
     "lua",
+    "python",
     "http",
     "json",
     "json5",

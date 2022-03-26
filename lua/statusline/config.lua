@@ -73,8 +73,8 @@ M.position = {
   truncate = 32,
   style = style.xsquare,
   icon = true,
-  top = " TOP",
-  bottom = " BOT",
+  top = " TOP",
+  bottom = " BOT",
 }
 
 M.lsp = {
