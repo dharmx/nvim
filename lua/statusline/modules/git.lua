@@ -4,28 +4,28 @@ local config = require("statusline.config").git
 local util = require "utils.statusline"
 
 function M.git()
-  local bran, bran_icon = util.git_branch()
+  local bran = util.git_branch()
 
   if bran == "" then
     return ""
   end
 
-  local chan, chan_icon = util.git_diff_changed()
-  local rmv, rmv_icon = util.git_diff_removed()
-  local add, add_icon = util.git_diff_added()
+  local chan = util.git_diff_changed()
+  local rmv = util.git_diff_removed()
+  local add = util.git_diff_added()
 
   if bran == "main" or bran == "master" then
-    bran_icon = " "
+    bran_icon = config.main
   end
 
   return string.format(
     "%s%s%%#StatusLineGit#%%#StatusLineGitBranch#%s%%#StatusLineGitAdd#%s%%#StatusLineGitChange#%s%%#StatusLineGitDelete#%s",
     #lsp.get_active_clients() == 0 and "%#StatusLineGitExtraExtra#" or "%#StatusLineGitExtra#",
     config.style.right,
-    bran == "" and "" or bran_icon .. bran,
-    add == "" and "" or add_icon .. add,
-    chan == "" and "" or chan_icon .. chan,
-    rmv == "" and "" or rmv_icon .. rmv
+    bran == "" and "" or config.branch .. bran,
+    add == "" and "" or config.added .. add,
+    chan == "" and "" or config.changed .. chan,
+    rmv == "" and "" or config.removed .. rmv
   )
 end
 

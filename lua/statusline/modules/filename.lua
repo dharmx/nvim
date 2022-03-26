@@ -4,9 +4,9 @@ local config = require("statusline.config").filename
 
 function M.filename(disabled)
   local path = fn.expand "%:~"
-  local modified = not bo.modified and "" or " "
-  local readonly = not bo.readonly and "" or " "
-  local modifiable = bo.modifiable and "" or " "
+  local modified = not bo.modified and "" or config.modified
+  local readonly = not bo.readonly and "" or config.readonly
+  local modifiable = bo.modifiable and "" or config.modifiable
 
   if config.format then
     path = fn.expand(config.format)
@@ -15,7 +15,7 @@ function M.filename(disabled)
   end
 
   local format = string.format(
-    "%%#StatusLineFilename# %s %s%s%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s%%#Default#",
+    "%%#StatusLineFilename#%s%s%s%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s%%#Default#",
     path,
     modified,
     readonly,
@@ -26,14 +26,14 @@ function M.filename(disabled)
 
   if config.icon then
     local present, devicons = pcall(require, "nvim-web-devicons")
-    local icon = ""
+    local icon = config.default
     if present then
       icon = " " .. devicons.get_icon(fn.expand "%:t", fn.expand "%:e", { default = true })
     end
 
     if disabled then
       format = string.format(
-        "%s%%#StatusLineFilenameExtraExtraRight#%s%%#StatusLineFilenameExtraRight#%s %%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s%%#Default#",
+        "%s%%#StatusLineFilenameExtraExtraRight#%s%%#StatusLineFilenameExtraRight#%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s%%#Default#",
         config.style.right,
         config.style.right,
         icon,
@@ -42,7 +42,7 @@ function M.filename(disabled)
       )
     else
       format = string.format(
-        "%%#StatusLineFilename#%s %s %s%s%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s%%#Default#",
+        "%%#StatusLineFilename#%s %s%s%s%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s%%#Default#",
         icon,
         path,
         modified,

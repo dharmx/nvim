@@ -17,12 +17,15 @@ use {
     "nvim-treesitter-context",
     "nvim-gps",
     "spellsitter.nvim",
+    "nvim-treesitter-textsubjects",
   },
   config = function()
     require "configs.treesitter"
   end,
   opt = true,
 }
+
+use { "RRethy/nvim-treesitter-textsubjects", opt = true }
 
 use { "andymass/vim-matchup", opt = true }
 

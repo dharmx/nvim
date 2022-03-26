@@ -27,6 +27,7 @@ use {
     require "configs.ui.devicons"
   end,
   module = "nvim-web-devicons",
+  disable = true,
 }
 
 use {

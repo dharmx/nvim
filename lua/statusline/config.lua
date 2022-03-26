@@ -54,6 +54,10 @@ M.filename = {
   absolute = false,
   format = false,
   icon = true,
+  modified = "  ",
+  readonly = "  ",
+  modifiable = "  ",
+  default = " ",
 }
 
 M.dirname = {
@@ -73,8 +77,39 @@ M.position = {
   truncate = 32,
   style = style.xsquare,
   icon = true,
-  top = " TOP",
-  bottom = " BOT",
+  spinners = {
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+  },
+  top = " TOP",
+  bottom = " BOT",
+  extra = " ",
 }
 
 M.lsp = {
@@ -108,8 +143,13 @@ M.lightbulb = {
 
 M.git = {
   truncate = 70,
-  style = style.xsquare,
+  style = style.rounded,
   short = false,
+  branch = "  ",
+  main = "  ",
+  added = "  ",
+  removed = "  ",
+  changed = "  ",
 }
 
 M.diagnostics = {
