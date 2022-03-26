@@ -4,9 +4,9 @@ local config = require("statusline.config").filename
 
 function M.filename(disabled)
   local path = fn.expand "%:~"
-  local modified = not bo.modified and "" or " "
-  local readonly = not bo.readonly and "" or " "
-  local modifiable = bo.modifiable and "" or " "
+  local modified = not bo.modified and "" or config.modified
+  local readonly = not bo.readonly and "" or config.readonly
+  local modifiable = bo.modifiable and "" or config.modifiable
 
   if config.format then
     path = fn.expand(config.format)
@@ -42,10 +42,11 @@ function M.filename(disabled)
       )
     else
       format = string.format(
-        "%%#StatusLineFilename#%s %s %s%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s%%#Default#",
+        "%%#StatusLineFilename#%s %s %s%s%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s%%#Default#",
         icon,
         path,
-        readonly ~= "" and readonly or modified,
+        modified,
+        readonly,
         modifiable,
         config.style.left,
         config.style.left

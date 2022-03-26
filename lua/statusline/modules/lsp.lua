@@ -5,7 +5,7 @@ local util = require "utils.statusline"
 
 function M.lsp()
   local Lsp = lsp.util.get_progress_messages()[1]
-  local label = string.format("%%#StatusLineLSPReverse#%s%%#StatusLineLSP# LSP", config.style.right)
+  local label = string.format("%%#StatusLineLSPReverse#%s%%#StatusLineLSP#%s", config.style.right, config.label)
   if Lsp then
     local msg = Lsp.message or ""
     local percentage = Lsp.percentage or 0

@@ -8,24 +8,25 @@ function M.lightbulb()
   if clients[1] then
     local present, lightbulb = pcall(require, "nvim-lightbulb")
     local status = present and lightbulb.get_status_text() or ""
-
     if status == "" then
       return string.format(
-        "%%#StatusLineLSPReverse#%s%%#StatusLineBulbLOAD#  %%#StatusLineLSPExtra#",
-        config.style.right
+        "%%#StatusLineLSPReverse#%s%%#StatusLineBulbLOAD#%s%%#StatusLineLSPExtra#",
+        config.style.right,
+        config.loading
       )
     end
 
     if status == "None" then
       return string.format(
-        "%%#StatusLineLSPReverse#%s%%#StatusLineBulbOFF#  %%#StatusLineLSPExtra#",
-        config.style.right
+        "%%#StatusLineLSPReverse#%s%%#StatusLineBulbOFF#%s%%#StatusLineLSPExtra#",
+        config.style.right,
+        config.unavailable
       )
     end
-
     return string.format(
-      "%%#StatusLineLSPReverse#%s%%#StatusLineBulbON#  %%#StatusLineLSPExtra#",
-      config.style.right
+      "%%#StatusLineLSPReverse#%s%%#StatusLineBulbON#%s%%#StatusLineLSPExtra#",
+      config.style.right,
+      config.active
     )
   end
   return "%#StatusLineLSPExtraExtra#"

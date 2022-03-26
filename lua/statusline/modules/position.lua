@@ -5,36 +5,7 @@ local config = require("statusline.config").position
 function M.position()
   local current_line = fn.line "."
   local total_lines = fn.line "$"
-  local chars = {
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-  }
+  local chars = config.spinners
   local line_ratio = current_line / total_lines
   local index = math.ceil(line_ratio * #chars)
   local position = math.ceil(line_ratio * 100)
@@ -59,12 +30,13 @@ function M.position()
   end
   hi("StatusLinePositionFirst", transition)
   return string.format(
-    "%s%%#StatusLinePositionFirst#%s%%#StatusLinePositionReverse#%s%%#StatusLinePosition# %s%%#StatusLinePositionLast# %s%%#StatusLinePositionLastExtra# %%#Default#",
+    "%s%%#StatusLinePositionFirst#%s%%#StatusLinePositionReverse#%s%%#StatusLinePosition# %s%%#StatusLinePositionLast# %s%%#StatusLinePositionLastExtra#%s%%#Default#",
     loaded and " " or "",
     config.style.right,
     config.style.right,
     position,
-    config.style.right
+    config.style.right,
+    config.extra
   )
 end
 
