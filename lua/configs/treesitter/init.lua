@@ -43,6 +43,7 @@ local config = {
   query_linter = require "configs.treesitter.modules.querylinter",
   refactor = require "configs.treesitter.modules.refactor",
   matchup = require "configs.treesitter.modules.matchup",
+  textsubjects = require "configs.treesitter.modules.textsubjects",
 }
 
 schedule(function()

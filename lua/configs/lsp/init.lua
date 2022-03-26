@@ -7,6 +7,7 @@ end
 local servers = {
   ["jsonls"] = require "configs.lsp.servers.jsonls",
   ["yamlls"] = {},
+  ["pyright"] = {},
   ["sumneko_lua"] = require "configs.lsp.servers.sumneko_lua",
 }
 

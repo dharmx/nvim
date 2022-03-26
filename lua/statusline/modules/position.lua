@@ -31,7 +31,7 @@ function M.position()
   hi("StatusLinePositionFirst", transition)
   return string.format(
     "%s%%#StatusLinePositionFirst#%s%%#StatusLinePositionReverse#%s%%#StatusLinePosition# %s%%#StatusLinePositionLast# %s%%#StatusLinePositionLastExtra#%s%%#Default#",
-    loaded and " " or "",
+    loaded and "" or "",
     config.style.right,
     config.style.right,
     position,

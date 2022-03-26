@@ -20,8 +20,9 @@ use {
 use {
   "kyazdani42/nvim-tree.lua",
   cmd = { "NvimTreeToggle", "NvimTreeRefresh", "NvimTreeFocus" },
-  setup = require("configs.workflow.nvimtree").before,
-  config = require("configs.workflow.nvimtree").after,
+  config = function()
+    require "configs.workflow.nvimtree"
+  end,
   wants = "nvim-notify",
 }
 
