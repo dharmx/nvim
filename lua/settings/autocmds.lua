@@ -30,10 +30,7 @@ M["AutoPlugSpecCompileOnChange"] = {
       require("packer").compile()
     end),
     options = {
-      patterns = {
-        "*/lua/plugins/*.lua",
-        "*/lua/configs/workflow/nvimtree.lua",
-      },
+      patterns = "*/lua/plugins/*.lua",
       desc = "Automatically re-compile plugin specifications on changing the matched pattern files.",
     },
   },

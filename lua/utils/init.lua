@@ -49,13 +49,6 @@ function M.exists(path)
   return true
 end
 
---- A simple callback that allows arguments.
--- @param callback the callback function
--- @param @{...} the arguments that needs to be passed over to the callback.
-function M.excallback(callback, ...)
-  callback(...)
-end
-
 --- Buffer acts like browser tabs. Closing the last buffer will essentially
 --- close the editor.
 -- @see Adapted from https://is.gd/zosxpN
