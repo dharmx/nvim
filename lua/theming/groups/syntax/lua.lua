@@ -1,10 +1,10 @@
 local S = {}
 
-function S.get(syntax)
+function S.get(theme)
   return {
     luaBuiltIn = { link = "Keyword" },
-    luaDocTag = { foreground = syntax.color15, decoration = "bold" },
-    luaFuncTable = { foreground = syntax.color06, decoration = "bold" },
+    luaDocTag = { foreground = theme.syntax.color15, decoration = "bold" },
+    luaFuncTable = { foreground = theme.syntax.color06, decoration = "bold" },
     luaCond = { link = "Conditional" },
     luaIn = { link = "Keyword" },
     luaCond = { link = "Conditional" },
@@ -15,13 +15,13 @@ function S.get(syntax)
     luaBrackets = { link = "Delimiter" },
     luaIfThen = { link = "Conditional" },
     luaElse = { link = "Conditional" },
-    luaSpecialTable = { foreground = syntax.color10, decoration = "bold" },
-    luaFuncParen = { foreground = syntax.color09 },
-    luaFuncParens = { foreground = syntax.color09 },
-    luaFuncArgName = { foreground = syntax.color19 },
-    luaTable = { foreground = syntax.color00 },
-    luaSpecial = { foreground = syntax.color05, decoration = "bold" },
-    luaEllipsis = { foreground = syntax.color01, decoration = "bold" },
+    luaSpecialTable = { foreground = theme.syntax.color10, decoration = "bold" },
+    luaFuncParen = { foreground = theme.syntax.color09 },
+    luaFuncParens = { foreground = theme.syntax.color09 },
+    luaFuncArgName = { foreground = theme.syntax.color19 },
+    luaTable = { foreground = theme.syntax.color00 },
+    luaSpecial = { foreground = theme.syntax.color05, decoration = "bold" },
+    luaEllipsis = { foreground = theme.syntax.color01, decoration = "bold" },
   }
 end
 

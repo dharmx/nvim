@@ -58,19 +58,18 @@ end
 function M.apply(options)
   local enums = require "tables.theming"
   local base = enums.base -- contains native highlights
+  local loaded_theme = M.get_active_scheme()
 
   -- plugin highlights
   local theme = enums.supports.theme -- ui related highlights
   local syntax = enums.supports.syntax -- syntax related highlights
 
-  local loaded_theme = M.get_active_scheme()
-
   -- Helper for setting a highlight set. Like setting a chunk of
   -- highlight groups.
   -- @param group table same as the highlight function.
   local function set(groups)
-    for group, colors in pairs(groups) do
-      M.highlight(group, colors)
+    for group, highlights in pairs(groups) do
+      M.highlight(group, highlights)
     end
   end
 
@@ -99,13 +98,6 @@ function M.apply(options)
   end
 
   -- set syntax plugin highlights
-  for name, config in pairs(base.syntax) do
-    if not disabled(name) then
-      set(config(loaded_theme.syntax))
-    end
-  end
-
-  -- set syntax highlights
   for name, config in pairs(syntax) do
     if not disabled(name) then
       set(config(loaded_theme.syntax))
@@ -116,6 +108,10 @@ function M.apply(options)
   set(base.ui(loaded_theme)) -- set native ui highlights
   set(base.statusline(loaded_theme)) -- set statusline highlights
   set(base.custom(loaded_theme)) -- set custom highlights
+  set(base.lua(loaded_theme)) -- set lua syntax highlights
+  set(base.html(loaded_theme)) -- set html syntax highlights
+  set(base.general(loaded_theme)) -- set native syntax highlights
+  set(base.markdown(loaded_theme)) -- set md syntax highlights
 end
 
 return M

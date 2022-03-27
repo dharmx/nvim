@@ -38,7 +38,6 @@ excallback(function()
       "AutoPlugSpecCompileOnChange",
       "YankFeedback",
       "NotifyOnPackerOperation",
-      "AlphaTriggered",
       "ReplaceModes",
     }
   do

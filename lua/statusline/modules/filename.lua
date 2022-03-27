@@ -15,7 +15,7 @@ function M.filename(disabled)
   end
 
   local format = string.format(
-    "%%#StatusLineFilename#%s%s%s%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s%%#Default#",
+    "%%#StatusLineFilename#%s%s%s%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s",
     path,
     modified,
     readonly,
@@ -33,7 +33,7 @@ function M.filename(disabled)
 
     if disabled then
       format = string.format(
-        "%s%%#StatusLineFilenameExtraExtraRight#%s%%#StatusLineFilenameExtraRight#%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s%%#Default#",
+        "%s%%#StatusLineFilenameExtraExtraRight#%s%%#StatusLineFilenameExtraRight#%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s",
         config.style.right,
         config.style.right,
         icon,
@@ -45,7 +45,7 @@ function M.filename(disabled)
         path = config.unnamed
       end
       format = string.format(
-        "%%#StatusLineFilename#%s %s%s%s%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s%%#Default#",
+        "%%#StatusLineFilename#%s %s%s%s%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s",
         icon,
         path,
         modified,

@@ -20,8 +20,9 @@ use {
 use {
   "kyazdani42/nvim-tree.lua",
   cmd = { "NvimTreeToggle", "NvimTreeRefresh", "NvimTreeFocus" },
-  setup = require("configs.workflow.nvimtree").before,
-  config = require("configs.workflow.nvimtree").after,
+  config = function()
+    require "configs.workflow.nvimtree"
+  end,
   wants = "nvim-notify",
 }
 
@@ -43,7 +44,13 @@ use {
 
 use { "Shatur/neovim-session-manager", cmd = "SessionManager" }
 
-use { "mbbill/undotree", cmd = "UndotreeToggle" }
+use {
+  "mbbill/undotree",
+  cmd = "UndotreeToggle",
+  config = function()
+    require "configs.workflow.undotree"
+  end,
+}
 
 use {
   "max397574/better-escape.nvim",

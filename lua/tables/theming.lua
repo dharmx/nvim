@@ -9,12 +9,10 @@ local function _prepare_syntax(language)
 end
 
 E.base = {
-  ["syntax"] = {
-    ["lua"] = _prepare_syntax("lua").get,
-    ["general"] = _prepare_syntax("general").get,
-    ["markdown"] = _prepare_syntax("markdown").get,
-    ["html"] = _prepare_syntax("html").get,
-  },
+  ["lua"] = _prepare_syntax("lua").get,
+  ["general"] = _prepare_syntax("general").get,
+  ["markdown"] = _prepare_syntax("markdown").get,
+  ["html"] = _prepare_syntax("html").get,
   ["terminal"] = require("theming.groups.terminal").set,
   ["ui"] = require("theming.groups.ui").get,
   ["custom"] = require("theming.groups.custom").get,

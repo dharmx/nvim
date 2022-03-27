@@ -4,29 +4,6 @@
 
 local M = {}
 
---- Opens startpage and triggers a introduction notification.
-function M.alpha_vimenter()
-  if api.nvim_buf_get_name(0) == "" then
-    api.nvim_notify(
-      [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀  ⢀⠠⠀⠀⠀⠉⠈⠁⠀⠂⠠⠀⣴⣾⣿⣦⡀⠀⠀
-⠀⠀⠀⠀⠀  ⠂⠁⢀⣠⣴⣶⣶⣶⣶⣶⣤⣀⠘⣿⣿⣿⣿⠃⠀   
-⠀⠀⠀  ⡀⠁⢀⣴⣿⣿⣿⣿⣿⣿⡿⠋⠉⠙⢷⣌⠉⠉⡁⠀⠀      ﳁ                    ⠀⠀⠀
-⠀⠀  ⠠⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⡅⠀⠀⠀⢸⣿⣆⠀⠀⡀⠀   Welcome to KrakenVim.              
-⠀⠀  ⠆⠀⢸⣿⣿⢹⣿⣿⣿⣿⣿⣿⣦⣤⣴⣿⣿⣿⠀⠀⠆⠀   Press SPC to get started.    
-⠀⠀  ⠃⠀⢸⣿⣿⢸⣿⣿⣿⢸⣿⢸⣯⡴⠶⢹⣿⣿⠀⠀⠆⠀
-⠀⠀  ⠐⠀⠀⢻⣿⣘⣛⣛⣿⣘⣟⣸⣇⣺⣛⣸⣿⠇⠀⠐⠀⠀                Powered By  Lua
-⠀⠀  ⠀⠡⡀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠁⠀⡠⠁⠀⠀                             
-⠀⠀⠀  ⠀⠀⠂⡀⠀⠉⠛⠻⠿⠿⠿⠛⠋⠁⠀⡀⠂⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀  ⠀⠀⠐⠂⠤⠀⢀⢀⠀⠠⠄⠒
-    ]],
-      vim.log.levels.INFO,
-      { title = "KrakenVim ━━ Welcome!", icon = " " }
-    )
-    cmd "Alpha"
-  end
-end
-
 --- A tiny function for nvim-cmp to better sort completion items
 --- that start with one or more underlines. In most languages, especially
 --- Python, items that start with one or more underlines should be at the

@@ -23,54 +23,6 @@ M["ReplaceModes"] = {
   },
 }
 
-M["AlphaTriggered"] = {
-  {
-    events = "VimEnter",
-    command = require("utils.plugins").alpha_vimenter,
-    options = {
-      desc = "Open Startpage on opening Neovim without any filename.",
-    },
-  },
-  {
-    events = "User",
-    command = function()
-      opt_local.showtabline = 0
-      opt_local.laststatus = 0
-    end,
-    options = {
-      patterns = "AlphaReady",
-      desc = "Hide tabline and statusline when the startpage is visible.",
-    },
-  },
-  {
-    events = "BufUnload",
-    command = function()
-      opt_local.showtabline = 2
-      opt_local.laststatus = 3
-    end,
-    options = {
-      desc = "Show the tabline and the statusline when a file is opened.",
-    },
-  },
-}
-
-M["AutoDisableTablineStatusline"] = {
-  {
-    events = "BufEnter",
-    command = function()
-      local invisible = require("tables.blacklisted").invisible
-      if vim.tbl_contains(invisible, api.nvim_buf_get_option(0, "ft")) then
-        opt_local.laststatus = 0
-      else
-        opt_local.laststatus = 2
-      end
-    end,
-    options = {
-      desc = "Don't show the statusline on the specified filetypes.",
-    },
-  },
-}
-
 M["AutoPlugSpecCompileOnChange"] = {
   {
     events = "BufWritePost",
