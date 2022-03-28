@@ -1,5 +1,13 @@
 local M = {}
 
+M["NvimTreeAutoClose"] = {
+  {
+    events = "BufEnter",
+    command = "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif",
+    options = { nested = true },
+  },
+}
+
 M["ReplaceModes"] = {
   {
     events = { "BufEnter", "FileType" },

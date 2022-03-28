@@ -28,6 +28,7 @@ local autocmds = require "settings.autocmds"
 for _, preset in
   ipairs {
     "NativeAdjustments",
+    "NvimTreeAutoClose",
     "AutoPlugSpecCompileOnChange",
     "YankFeedback",
     "NotifyOnPackerOperation",
@@ -39,7 +40,26 @@ end
 
 schedule(function()
   local commands = require "settings.commands"
-  for name, target in pairs(commands) do
+  for _, name in
+    pairs {
+      "TSStart",
+      "FormatConfigAll",
+      "GitHL",
+      "TabLineTGL",
+      "StatusLineTGL",
+      "SpellingTGL",
+      "SpotifyExit",
+      "PackerInstall",
+      "PackerUpdate",
+      "PackerSync",
+      "PackerLoad",
+      "PackerClean",
+      "PackerCompile",
+      "PackerProfile",
+      "PackerStatus",
+    }
+  do
+    local target = commands[name]
     if type(target) == "string" then
       alias(name, target, {})
     else

@@ -38,6 +38,7 @@ E.supports = {
     ["packer"] = _prepare_plugin("packer").get,
     ["outline"] = _prepare_plugin("outline").get,
     ["lightbulb"] = _prepare_plugin("lightbulb").get,
+    ["rnvimr"] = _prepare_plugin("rnvimr").get,
   },
   syntax = {
     ["cmp"] = _prepare_plugin("cmp").get,

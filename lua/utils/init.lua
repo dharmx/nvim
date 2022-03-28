@@ -3,21 +3,6 @@
 
 local M = {}
 
---- Exactly as it sounds. Takes in a table and returns a sub-table.
--- @param items the table
--- @param upto the ending range
-function M.subtable(items, upto)
-  local box = {}
-  local keys = vim.tbl_keys(items)
-  local values = vim.tbl_values(items)
-  local count = 1
-  while count <= upto do
-    box[keys[count]] = values[count]
-    count = count + 1
-  end
-  return box
-end
-
 --- Shortening the Lua require function
 -- @param module path of the module
 -- @return the item that the file returns after loading

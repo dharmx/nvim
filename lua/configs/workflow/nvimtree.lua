@@ -46,7 +46,6 @@ local config = {
   open_on_setup = false,
   ignore_buffer_on_setup = true,
   ignore_ft_on_setup = { "dashboard", "alpha" },
-  auto_close = true,
   auto_reload_on_write = true,
   open_on_tab = true,
   hijack_cursor = false,
