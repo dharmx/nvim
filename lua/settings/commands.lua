@@ -6,6 +6,12 @@ M["CommitList"] = {
   end,
 }
 
+M["PersistClip"] = {
+  command = function()
+    require("telescope").extensions.neoclip.neoclip()
+  end,
+}
+
 M["EnvList"] = {
   command = function()
     require("telescope").extensions.env.env()

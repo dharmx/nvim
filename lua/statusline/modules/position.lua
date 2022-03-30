@@ -1,6 +1,7 @@
 local M = {}
 
 local config = require("statusline.config").position
+local util = require "utils.statusline"
 
 function M.position()
   local current_line = fn.line "."
@@ -29,9 +30,11 @@ function M.position()
     transition.background = colors.shades.shade06
   end
   hi("StatusLinePositionFirst", transition)
+
+  local loaded_and_is_git = loaded and (util.git_branch() ~= "")
   return string.format(
     "%s%%#StatusLinePositionFirst#%s%%#StatusLinePositionReverse#%s%%#StatusLinePosition#%s%%#StatusLinePositionLast# %s%%#StatusLinePositionLastExtra#%s",
-    loaded and " " or "",
+    loaded_and_is_git and " " or "",
     config.style.right,
     config.style.right,
     position,

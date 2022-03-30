@@ -143,10 +143,10 @@ M.lightbulb = {
 
 M.git = {
   truncate = 70,
-  style = style.rounded,
+  style = style.xsquare,
   short = false,
-  branch = "  ",
-  main = "  ",
+  branch = " ",
+  main = " ",
   added = "  ",
   removed = "  ",
   changed = "  ",

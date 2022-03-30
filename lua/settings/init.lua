@@ -57,6 +57,7 @@ schedule(function()
       "PackerCompile",
       "PackerProfile",
       "PackerStatus",
+      "PersistClip",
     }
   do
     local target = commands[name]
