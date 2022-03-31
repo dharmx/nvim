@@ -25,6 +25,6 @@ _G.rq = utils.rq
 _G.tp = utils.tp
 
 _G.theme = require "theming"
-cmd "colo nordic"
+cmd "colo night"
 
 -- vim:ft=lua
