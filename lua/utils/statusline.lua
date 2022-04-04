@@ -89,7 +89,7 @@ end
 --- Uses gitsigns.nvim to get the git branch name.
 -- @return string name of the git branch
 function M.git_branch()
-  return b.gitsigns_head or "", " "
+  return b.gitsigns_head or ""
 end
 
 --- Counts the changes made.
@@ -108,19 +108,19 @@ end
 --- Counts the chars/lines added to the file.
 -- @return string number of chars/lines added
 function M.git_diff_added()
-  return git_diff "added", "  "
+  return git_diff "added"
 end
 
 --- Counts the chars/lines removed from the file.
 -- @return string number of chars/lines removed
 function M.git_diff_removed()
-  return git_diff "removed", "  "
+  return git_diff "removed"
 end
 
 --- Counts the chars/lines changed from the file.
 -- @return string number of chars/lines changed
 function M.git_diff_changed()
-  return git_diff "changed", "  "
+  return git_diff "changed"
 end
 
 --- Utility function to check if git provider information is available

@@ -1,6 +1,6 @@
 local R = {}
 
-function R.get(theme)
+function R.get(colors)
   return {
     ["RnvimrNormal"] = { link = "NormalFloat" },
   }

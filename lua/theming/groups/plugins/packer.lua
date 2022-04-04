@@ -1,8 +1,8 @@
 local R = {}
 
-function R.get(theme)
+function R.get(colors)
   return {
-    ["packerPackageNotLoaded"] = { foreground = theme.common.base11 },
+    ["packerPackageNotLoaded"] = { foreground = colors.common.base11 },
   }
 end
 

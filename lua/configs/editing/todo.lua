@@ -21,7 +21,8 @@ local config = {
     PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
     NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
     UPDATE = { icon = " ", color = colors.rainbow.purple, alt = { "MIGRATE" } },
-    DEMO = { icon = " ", color = colors.rainbow.cobalt, alt = { "MIGRATE" } },
+    DEMO = { icon = " ", color = colors.rainbow.cobalt, alt = { "SHOW" } },
+    IMPROVE = { icon = " ", color = colors.rainbow.cobalt, alt = { "REFINE", "ENHANCE" } },
   },
   merge_keywords = true, -- when true, custom keywords will be merged with the defaults
   -- highlighting of the line containing the todo comment

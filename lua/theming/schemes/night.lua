@@ -27,18 +27,18 @@ N.common = {
 }
 
 N.shades = {
-  ["shade00"] = "#505763",
-  ["shade01"] = "#505A63",
-  ["shade02"] = "#484d61",
+  ["shade00"] = "#353538",
+  ["shade01"] = "#2d2d30",
+  ["shade02"] = "#252528",
   ["shade03"] = "#1f1f23",
-  ["shade04"] = "#333947",
-  ["shade05"] = "#1c1c1e",
-  ["shade06"] = "#19191c",
-  ["shade07"] = "#2e333d",
+  ["shade04"] = "#1e1e21",
+  ["shade05"] = "#212123",
+  ["shade06"] = "#1a1a1c",
+  ["shade07"] = "#19191c",
   ["shade08"] = "#1a1a1c",
   ["shade09"] = "#151519",
-  ["shade10"] = "#252B37",
-  ["shade11"] = "#262c38",
+  ["shade10"] = "#141416",
+  ["shade11"] = "#121214",
 }
 
 N.rainbow = {
@@ -92,14 +92,14 @@ N.syntax = {
 
   ["color13"] = "#d66f6f",
   ["color01"] = "#e25656",
-  ["color05"] = "#aa5050",
+  ["color05"] = "#AF50C0",
 
   ["color12"] = "#79dcaa",
   ["color15"] = "#79dcaa",
   ["color04"] = "#7dcea6",
 
-  ["color06"] = "#5186b5",
-  ["color08"] = "#eac767",
+  ["color06"] = "#F186b5",
+  ["color08"] = "#Fac767",
 
   ["color10"] = "#ffe59e",
   ["color11"] = "#ffe59e",

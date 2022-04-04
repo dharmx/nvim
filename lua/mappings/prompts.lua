@@ -28,6 +28,7 @@ M.mappings = {
       ["W"] = { "<CMD>Telescope grep_string<CR>", " Word search" },
       ["i"] = { "<CMD>Telescope media_files<CR>", " Media files" },
       ["z"] = { "<CMD>Telescope file_browser<CR>", " File browser" },
+      ["c"] = { "<CMD>Telescope zoxide list<CR>", " ZOxide" },
     },
     ["s"] = {
       ["name"] = "ﲃ Glyphs and symbols",

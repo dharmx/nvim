@@ -23,7 +23,7 @@ use {
 use {
   "uga-rosa/cmp-dictionary",
   wants = "nvim-cmp",
-  ft = { "txt", "plaintex", "plaintext", "tex", "markdown" },
+  ft = { "text", "txt", "plaintex", "plaintext", "tex", "markdown" },
   config = function()
     require "configs.cmp.dictionary"
   end,

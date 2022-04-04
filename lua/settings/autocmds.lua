@@ -4,7 +4,10 @@ M["NvimTreeAutoClose"] = {
   {
     events = "BufEnter",
     command = "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif",
-    options = { nested = true },
+    options = {
+      nested = true,
+      desc = "Auto-close NvimTree on opening a file",
+    },
   },
 }
 
@@ -31,6 +34,7 @@ M["ReplaceModes"] = {
   },
 }
 
+-- IMPROVE: Filter out plugins/init.lua as recompiling on its change is redundant.
 M["AutoPlugSpecCompileOnChange"] = {
   {
     events = "BufWritePost",
@@ -103,6 +107,7 @@ M["ListCharsFeedback"] = {
   },
 }
 
+-- NOTE: This may be removed in the near future.
 M["RelativeFeedback"] = {
   {
     events = "InsertEnter",
@@ -156,6 +161,7 @@ M["CursorLineFeedback"] = {
   },
 }
 
+-- NOTE: Enable this only if you want a scrollbar on extreme right.
 M["ScrollbarInit"] = {
   {
     events = {

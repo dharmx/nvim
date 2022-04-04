@@ -1,14 +1,14 @@
 local R = {}
 
-function R.get(theme)
+function R.get(colors)
   return {
-    ["rainbowcol1"] = { foreground = theme.rainbow.cobalt },
-    ["rainbowcol2"] = { foreground = theme.rainbow.pink },
-    ["rainbowcol3"] = { foreground = theme.rainbow.cyan },
-    ["rainbowcol4"] = { foreground = theme.rainbow.green },
-    ["rainbowcol5"] = { foreground = theme.rainbow.yellow },
-    ["rainbowcol6"] = { foreground = theme.rainbow.orange },
-    ["rainbowcol7"] = { foreground = theme.rainbow.purple },
+    ["rainbowcol1"] = { foreground = colors.rainbow.cobalt },
+    ["rainbowcol2"] = { foreground = colors.rainbow.pink },
+    ["rainbowcol3"] = { foreground = colors.rainbow.cyan },
+    ["rainbowcol4"] = { foreground = colors.rainbow.green },
+    ["rainbowcol5"] = { foreground = colors.rainbow.yellow },
+    ["rainbowcol6"] = { foreground = colors.rainbow.orange },
+    ["rainbowcol7"] = { foreground = colors.rainbow.purple },
   }
 end
 

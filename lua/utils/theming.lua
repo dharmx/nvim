@@ -29,11 +29,15 @@ function M.highlight(group, colors)
   local background = colors.background or "NONE"
   local foreground = colors.foreground or "NONE"
   local decoration = colors.decoration or "NONE"
-  local blend = colors.blend or 0
+  local blend = colors.blend or ""
   local special = colors.special or "NONE"
 
+  if blend ~= "" then
+    blend = "blend=" .. blend
+  end
+
   local prepared = string.format(
-    "highlight! %s guibg=%s guifg=%s gui=%s guisp=%s blend=%s",
+    "highlight! %s guibg=%s guifg=%s gui=%s guisp=%s %s",
     group,
     background,
     foreground,

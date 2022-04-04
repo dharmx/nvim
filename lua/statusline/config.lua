@@ -107,8 +107,8 @@ M.position = {
     " ",
     " ",
   },
-  top = " TOP",
-  bottom = " BOT",
+  top = " TOP",
+  bottom = " BOT",
   extra = " ",
 }
 

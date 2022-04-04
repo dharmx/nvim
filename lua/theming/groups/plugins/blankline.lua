@@ -1,12 +1,12 @@
 local B = {}
 
-function B.get(theme)
+function B.get(colors)
   return {
-    ["IndentBlanklineChar"] = { foreground = theme.shades.shade02 },
-    ["IndentBlanklineContextChar"] = { foreground = theme.common.base10 },
-    ["IndentBlanklineContextStart"] = { foreground = theme.common.base10 },
-    ["IndentBlanklineSpaceChar"] = { foreground = theme.shades.shades02 },
-    ["IndentBlanklineSpaceCharBlankline"] = { foreground = theme.shades.shades02 },
+    ["IndentBlanklineChar"] = { foreground = colors.shades.shade02 },
+    ["IndentBlanklineContextChar"] = { foreground = colors.common.base10 },
+    ["IndentBlanklineContextStart"] = { foreground = colors.common.base10 },
+    ["IndentBlanklineSpaceChar"] = { foreground = colors.shades.shades02 },
+    ["IndentBlanklineSpaceCharBlankline"] = { foreground = colors.shades.shades02 },
   }
 end
 

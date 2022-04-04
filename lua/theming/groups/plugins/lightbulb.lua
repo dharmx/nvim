@@ -1,14 +1,14 @@
 local H = {}
 
-function H.get(theme)
+function H.get(colors)
   return {
     ["LightBulbFloatWin"] = {
-      foreground = theme.common.base09,
-      background = theme.shades.shade08,
+      foreground = colors.common.base09,
+      background = colors.shades.shade08,
       decoration = "bold",
     },
     ["LightBulbVirtualText"] = {
-      foreground = theme.common.base12,
+      foreground = colors.common.base12,
       decoration = "bold",
     },
   }
