@@ -26,22 +26,20 @@ packer.init(require "configs.core.packer")
 packer.reset()
 
 local loaders = require "utils.loaders"
-for _, module in
-  ipairs {
-    "plugins.health",
-    "plugins.cmp",
-    "plugins.core",
-    "plugins.utils",
-    "plugins.lsp",
-    "plugins.treesitter",
-    "plugins.others",
-    "plugins.dev",
-    "plugins.editing",
-    "plugins.workflow",
-    "plugins.telescope",
-    "plugins.ui",
-  }
-do
+for _, module in ipairs {
+  "plugins.health",
+  "plugins.cmp",
+  "plugins.core",
+  "plugins.utils",
+  "plugins.lsp",
+  "plugins.treesitter",
+  "plugins.others",
+  "plugins.dev",
+  "plugins.editing",
+  "plugins.workflow",
+  "plugins.telescope",
+  "plugins.ui",
+} do
   loaders.load_module(packer, require(module))
 end
 

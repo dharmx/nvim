@@ -3,13 +3,11 @@ return {
     if client then
       _cap = client.resolved_capabilities
       local augroups = require "configs.lsp.autocmds.list"
-      for _, name in
-        pairs {
-          "LspDiagnosticsAtCursorLocation",
-          "LspCodeActions",
-          "LspDocumentHighlight",
-        }
-      do
+      for _, name in pairs {
+        "LspDiagnosticsAtCursorLocation",
+        "LspCodeActions",
+        "LspDocumentHighlight",
+      } do
         augroup(name, augroups[name])
       end
     end

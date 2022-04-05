@@ -3,19 +3,17 @@ local set_colors = require("utils.statusline").set_colors
 local config = require "statusline.config"
 local modules = {}
 
-for _, module in
-  pairs {
-    "mode",
-    "dirname",
-    "filename",
-    "treesitter",
-    "diagnostics",
-    "lightbulb",
-    "lsp",
-    "git",
-    "position",
-  }
-do
+for _, module in pairs {
+  "mode",
+  "dirname",
+  "filename",
+  "treesitter",
+  "diagnostics",
+  "lightbulb",
+  "lsp",
+  "git",
+  "position",
+} do
   modules[module] = require("statusline.modules." .. module)[module]
 end
 

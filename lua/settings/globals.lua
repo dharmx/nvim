@@ -11,7 +11,7 @@ M["markdown_fenced_languages"] = {
   "js=javascript",
   "ts=typescript",
   "shell",
-  "python",
+  "py=python",
   "console",
 }
 M["python3_host_prog"] = "python3"

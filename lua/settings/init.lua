@@ -25,41 +25,37 @@ for item, value in pairs(optionals.exports) do
 end
 
 local autocmds = require "settings.autocmds"
-for _, preset in
-  ipairs {
-    "NativeAdjustments",
-    "NvimTreeAutoClose",
-    "AutoPlugSpecCompileOnChange",
-    "YankFeedback",
-    "NotifyOnPackerOperation",
-    "ReplaceModes",
-  }
-do
+for _, preset in ipairs {
+  "NativeAdjustments",
+  "NvimTreeAutoClose",
+  "AutoPlugSpecCompileOnChange",
+  "YankFeedback",
+  "NotifyOnPackerOperation",
+  "ReplaceModes",
+} do
   augroup(preset, autocmds[preset])
 end
 
 schedule(function()
   local commands = require "settings.commands"
-  for _, name in
-    pairs {
-      "TSStart",
-      "FormatConfigAll",
-      "GitHL",
-      "TabLineTGL",
-      "StatusLineTGL",
-      "SpellingTGL",
-      "SpotifyExit",
-      "PackerInstall",
-      "PackerUpdate",
-      "PackerSync",
-      "PackerLoad",
-      "PackerClean",
-      "PackerCompile",
-      "PackerProfile",
-      "PackerStatus",
-      "PersistClip",
-    }
-  do
+  for _, name in pairs {
+    "TSStart",
+    "FormatConfigAll",
+    "GitHL",
+    "TabLineTGL",
+    "StatusLineTGL",
+    "SpellingTGL",
+    "SpotifyExit",
+    "PackerInstall",
+    "PackerUpdate",
+    "PackerSync",
+    "PackerLoad",
+    "PackerClean",
+    "PackerCompile",
+    "PackerProfile",
+    "PackerStatus",
+    "PersistClip",
+  } do
     local target = commands[name]
     if type(target) == "string" then
       alias(name, target, {})

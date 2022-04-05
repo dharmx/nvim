@@ -20,6 +20,7 @@ local config = {
     "yaml",
     "comment",
     "norg",
+    "commonlisp",
   },
   sync_installed = false,
   highlight = {
@@ -46,14 +47,16 @@ local config = {
   textsubjects = require "configs.treesitter.modules.textsubjects",
 }
 
-schedule(function()
-  ts.setup(config)
-  local _ = require "configs.treesitter.modules.autotag"
-  notify {
-    message = "Treesitter is now enabled!",
-    title = "nvim-treesitter",
-    icon = "",
-  }
-end)
+require "configs.treesitter.modules.autotag"
+
+ts.setup(config)
+
+notify {
+  message = "Treesitter is now enabled!",
+  title = "nvim-treesitter",
+  icon = "",
+}
+
+neovim.ensure_treesitter_language_installed()
 
 -- vim:ft=lua

@@ -117,6 +117,27 @@ function M.augroup(name, autocmds, clear)
   return group
 end
 
+--- Checks if a treesitter parser is available for the current file.
+--- If not then prompts to install the parser(s).
+-- @see Adapted from https://is.gd/rETGe2
+function M.ensure_treesitter_language_installed()
+  local parsers = require "nvim-treesitter.parsers"
+  local lang = parsers.get_buf_lang()
+  if parsers.get_parser_configs()[lang] and not parsers.has_parser(lang) then
+    schedule(function()
+      vim.ui.select(
+        { "Sure, I don't mind.", "Nope, fuck yourself!" },
+        { prompt = "Install tree-sitter parsers for " .. lang .. "?" },
+        function(item)
+          if item == "Sure, I don't mind." then
+            cmd("TSInstall " .. lang)
+          end
+        end
+      )
+    end)
+  end
+end
+
 return M
 
 -- vim:ft=lua

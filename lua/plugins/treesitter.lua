@@ -18,12 +18,15 @@ use {
     "nvim-gps",
     "spellsitter.nvim",
     "nvim-treesitter-textsubjects",
+    "nvim-treesitter-commonlisp",
   },
   config = function()
     require "configs.treesitter"
   end,
   opt = true,
 }
+
+use { "theHamsta/nvim-treesitter-commonlisp", opt = true }
 
 use { "RRethy/nvim-treesitter-textsubjects", opt = true }
 
