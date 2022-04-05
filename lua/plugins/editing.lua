@@ -4,6 +4,9 @@ local function use(plugin)
   table.insert(M, plugin)
 end
 
+
+use "sheerun/vim-polyglot"
+
 use {
   "lukas-reineke/headlines.nvim",
   config = function()

@@ -47,9 +47,9 @@ local config = {
   textsubjects = require "configs.treesitter.modules.textsubjects",
 }
 
-require "configs.treesitter.modules.autotag"
-
 ts.setup(config)
+
+require "configs.treesitter.modules.autotag"
 
 notify {
   message = "Treesitter is now enabled!",
