@@ -44,7 +44,7 @@ M["TelescopeLog"] = "edit " .. stdpath "cache" .. "/telescope.log"
 
 M["TSStart"] = {
   command = function()
-    pcall(require("packer").loader, "nvim-treesitter")
+    require("packer").loader "nvim-treesitter"
   end,
 }
 

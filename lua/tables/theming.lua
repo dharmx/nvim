@@ -39,6 +39,7 @@ E.supports = {
     ["outline"] = _prepare_plugin("outline").get,
     ["lightbulb"] = _prepare_plugin("lightbulb").get,
     ["rnvimr"] = _prepare_plugin("rnvimr").get,
+    ["rnvimr"] = _prepare_plugin("bookmarks").get,
   },
   syntax = {
     ["cmp"] = _prepare_plugin("cmp").get,

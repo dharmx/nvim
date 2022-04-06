@@ -7,6 +7,14 @@ end
 use { "tweekmonster/haunted.vim", cmd = "Haunt" }
 
 use {
+  "MattesGroeger/vim-bookmarks",
+  setup = function()
+    require "configs.workflow.bookmarks"
+  end,
+  event = "InsertEnter",
+}
+
+use {
   "kevinhwang91/rnvimr",
   cmd = {
     "RnvimrToggle",
