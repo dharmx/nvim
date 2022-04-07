@@ -10,6 +10,9 @@ local servers = {
   ["bashls"] = {},
   ["pyright"] = {},
   ["sumneko_lua"] = require "configs.lsp.servers.sumneko_lua",
+  ["cssls"] = {},
+  ["stylelint_lsp"] = {},
+  ["tailwindcss"] = {},
 }
 
 local function on_attach(client, buffer)

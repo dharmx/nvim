@@ -29,5 +29,6 @@ _G.inspect = vim.inspect
 
 _G.INSTALL_PATH = stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
 _G.COMPILE_PATH = stdpath "config" .. "/lua/_compiled.lua"
+_G.env.PATH = _G.env.PATH .. ":./node_modules/.bin"
 
 -- vim:ft=lua

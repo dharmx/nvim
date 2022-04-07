@@ -16,6 +16,7 @@ local config = {
     "rasi",
     "regex",
     "scss",
+    "css",
     "toml",
     "yaml",
     "comment",
