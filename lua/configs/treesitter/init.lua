@@ -10,6 +10,7 @@ local config = {
   ensure_installed = {
     "lua",
     "http",
+    "java",
     "json",
     "json5",
     "markdown",

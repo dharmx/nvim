@@ -11,7 +11,12 @@ use {
   setup = function()
     require "configs.workflow.bookmarks"
   end,
-  event = "InsertEnter",
+  cmd = "BookmarkToggle",
+  event = {
+    "InsertEnter",
+    "CmdlineEnter",
+    "CursorMoved",
+  },
 }
 
 use {

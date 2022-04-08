@@ -1,17 +1,17 @@
 local C = {}
 
-function C.get(syntax)
+function C.get(colors)
   return {
-    ["CmpItemKindFunction"] = { foreground = syntax.color09 },
-    ["CmpItemKind"] = { foreground = syntax.color17 },
-    ["CmpItemKindSnippet"] = { foreground = syntax.color01 },
-    ["CmpItemKindFile"] = { foreground = syntax.color06 },
-    ["CmpItemKindFolder"] = { foreground = syntax.color16 },
-    ["CmpItemMenu"] = { foreground = syntax.color04 },
-    ["CmpItemAbbr"] = { foreground = syntax.color09 },
-    ["CmpItemAbbrMatchFuzzy"] = { foreground = syntax.color00 },
-    ["CmpItemAbbrMatch"] = { foreground = syntax.color06 },
-    ["CmpItemAbbrMatchDeprecated"] = { foreground = syntax.color08 },
+    ["CmpItemKindFunction"] = { foreground = colors.syntax.color09 },
+    ["CmpItemKind"] = { foreground = colors.syntax.color17 },
+    ["CmpItemKindSnippet"] = { foreground = colors.syntax.color01 },
+    ["CmpItemKindFile"] = { foreground = colors.syntax.color06 },
+    ["CmpItemKindFolder"] = { foreground = colors.syntax.color16 },
+    ["CmpItemMenu"] = { foreground = colors.syntax.color04 },
+    ["CmpItemAbbr"] = { foreground = colors.syntax.color09 },
+    ["CmpItemAbbrMatchFuzzy"] = { foreground = colors.syntax.color00 },
+    ["CmpItemAbbrMatch"] = { foreground = colors.syntax.color06 },
+    ["CmpItemAbbrMatchDeprecated"] = { foreground = colors.syntax.color08 },
   }
 end
 

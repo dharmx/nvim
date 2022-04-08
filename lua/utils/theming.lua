@@ -106,7 +106,7 @@ function M.apply(options)
   -- set syntax plugin highlights
   for name, config in pairs(syntax) do
     if not disabled(name) then
-      set(config(loaded_theme.syntax))
+      set(config(loaded_theme))
     end
   end
 

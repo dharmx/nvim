@@ -8,6 +8,7 @@ local servers = {
   ["jsonls"] = require "configs.lsp.servers.jsonls",
   ["yamlls"] = {},
   ["bashls"] = {},
+  ["jdtls"] = require "configs.lsp.servers.jdtls",
   ["pyright"] = {},
   ["sumneko_lua"] = require "configs.lsp.servers.sumneko_lua",
   ["cssls"] = {},
@@ -71,7 +72,15 @@ local function configure_servers()
       handlers = handlers,
     }
 
-    server:setup(vim.tbl_extend("keep", server_config, servers[server.name]))
+    if server.name ~= "jdtls" then
+      server:setup(vim.tbl_extend("keep", server_config, servers[server.name]))
+    else
+      if bo.filetype == "java" then
+        local _, jdtls = require("nvim-lsp-installer.servers").get_server "jdtls"
+        server_config.cmd = jdtls:get_default_options().cmd
+        require("jdtls").start_or_attach(vim.tbl_extend("keep", server_config, servers[server.name]))
+      end
+    end
     local _ = require "configs.lsp.handlers.null"
   end)
 end
