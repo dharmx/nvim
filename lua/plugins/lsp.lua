@@ -37,14 +37,6 @@ use { "mfussenegger/nvim-jdtls", after = "nvim-lspconfig" }
 use { "b0o/schemastore.nvim", module = "schemastore" }
 
 use {
-  "tami5/lspsaga.nvim",
-  after = "nvim-lspconfig",
-  config = function()
-    require "configs.lsp.saga"
-  end,
-}
-
-use {
   "kosayoda/nvim-lightbulb",
   module = "nvim-lightbulb",
   config = function()

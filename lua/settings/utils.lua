@@ -6,6 +6,7 @@ _G.theming = require "utils.theming"
 _G.hi = theming.highlight
 
 _G.alias = neovim.alias
+_G.buf_alias = neovim.buf_alias
 _G.abbrev = neovim.abbrev
 _G.augroup = neovim.augroup
 _G.autocmd = neovim.autocmd

@@ -66,6 +66,16 @@ function M.alias(alias, command, options)
   api.nvim_add_user_command(alias, command, options)
 end
 
+--- Same as M.alias but, for buffers
+-- @see M.alias
+function M.buf_alias(buffer, alias, command, options)
+  if not options then
+    -- don't let options be nil
+    options = {}
+  end
+  api.nvim_buf_add_user_command(buffer, alias, command, options)
+end
+
 --- The wrapper for nvim_create_autocmd API function.
 -- @param events a string or a table of vim events.
 -- @param command a Lua function or, a string containing VimL code.
