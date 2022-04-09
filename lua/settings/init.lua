@@ -55,6 +55,7 @@ schedule(function()
     "PackerProfile",
     "PackerStatus",
     "PersistClip",
+    "Shade",
   } do
     local target = commands[name]
     if type(target) == "string" then

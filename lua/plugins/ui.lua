@@ -14,7 +14,7 @@ use {
 
 use {
   "akinsho/bufferline.nvim",
-  branch = "feature/themeable-option",
+  branch = "dev",
   config = function()
     require "configs.ui.bufferline"
   end,

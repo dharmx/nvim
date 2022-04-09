@@ -81,6 +81,7 @@ schedule(function()
     "neovim",
     "modes",
     "inserts",
+    "pandoc",
   } do
     local loaded = require("mappings." .. plugin)
     which_key.register(loaded.mappings, loaded.options)

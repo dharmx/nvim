@@ -28,6 +28,6 @@ local config = {
 }
 
 autopairs.setup(config)
-local _ = require "configs.cmp.rules"
+_ = require "configs.cmp.rules"
 
 -- vim:ft=lua

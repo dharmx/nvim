@@ -30,7 +30,7 @@ local M = {
   },
   lsp_interop = {
     enable = true,
-    border = "single",
+    border = "soild",
     peek_definition_code = {
       ["<leader>df"] = "@function.outer",
       ["<leader>dF"] = "@class.outer",

@@ -17,7 +17,7 @@ function M.position()
   elseif config.icon then
     position = chars[index] .. position .. "%%"
   end
-  local loaded = _G.packer_plugins and _G.packer_plugins["gitsigns.nvim"].loaded
+  local loaded = packer_plugins and packer_plugins["gitsigns.nvim"].loaded
   local transition = {
     foreground = colors.common.base03,
     decoration = "bold",

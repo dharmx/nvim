@@ -32,7 +32,7 @@ local M = {
     name = "rg",
     keyword_length = 5,
     max_item_count = 4,
-    option = { debounce = 500 },
+    option = { debounce = 300 },
   },
   {
     name = "dictionary",
@@ -57,7 +57,7 @@ local M = {
     keyword_length = 5,
     max_item_count = 3,
   },
-  { name = "digraphs" },
+  { name = "digraphs", priority = 3, max_item_count = 5 },
   { name = "cmp_git" },
   {
     name = "calc",

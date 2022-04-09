@@ -8,10 +8,10 @@ local M = {}
 -- @see help vim.popup
 -- @see plugin https://is.gd/Zt9qlo
 function M.load_ui_select()
-  if not _G.packer_plugins then
+  if not packer_plugins then
     return
   end
-  if not _G.packer_plugins["telescope-ui-select.nvim"].loaded then
+  if not packer_plugins["telescope-ui-select.nvim"].loaded then
     require "telescope"
   end
 end

@@ -6,7 +6,7 @@ function M.goto_definition(split_cmd)
 
   return function(_, result, context)
     if result == nil or vim.tbl_isempty(result) then
-      local _ = log() and log(context.method, "No location found")
+      _ = log() and log(context.method, "No location found")
       return
     end
 

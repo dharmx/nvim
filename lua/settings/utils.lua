@@ -1,31 +1,31 @@
-_G.utils = require "utils"
-_G.mappings = require "utils.mappings"
-_G.neovim = require "utils.neovim"
+utils = require "utils"
+mappings = require "utils.mappings"
+neovim = require "utils.neovim"
 
-_G.theming = require "utils.theming"
-_G.hi = theming.highlight
+theming = require "utils.theming"
+hi = theming.highlight
 
-_G.alias = neovim.alias
-_G.buf_alias = neovim.buf_alias
-_G.abbrev = neovim.abbrev
-_G.augroup = neovim.augroup
-_G.autocmd = neovim.autocmd
-_G.abbrev = neovim.abbrev
+alias = neovim.alias
+buf_alias = neovim.buf_alias
+abbrev = neovim.abbrev
+augroup = neovim.augroup
+autocmd = neovim.autocmd
+abbrev = neovim.abbrev
 
-_G.xmap = mappings.xmap
-_G.imap = mappings.imap
-_G.vmap = mappings.vmap
-_G.nmap = mappings.nmap
+xmap = mappings.xmap
+imap = mappings.imap
+vmap = mappings.vmap
+nmap = mappings.nmap
 
-_G.excallback = utils.excallback
-_G.exists = utils.exists
-_G.notify = neovim.notify
-_G.pi = utils.pi
-_G.p = print
-_G.rq = utils.rq
-_G.tp = utils.tp
+excallback = utils.excallback
+exists = utils.exists
+notify = neovim.notify
+pi = utils.pi
+p = print
+rq = utils.rq
+tp = utils.tp
 
-_G.theme = require "theming"
+theme = require "theming"
 cmd "colo night"
 
 -- vim:ft=lua

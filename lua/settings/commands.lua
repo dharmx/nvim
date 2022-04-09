@@ -6,6 +6,12 @@ M["CommitList"] = {
   end,
 }
 
+M["Shade"] = {
+  command = function()
+    require("packer").loader "shade.nvim"
+  end,
+}
+
 M["PersistClip"] = {
   command = function()
     require("telescope").extensions.neoclip.neoclip()

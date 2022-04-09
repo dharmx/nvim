@@ -1,34 +1,34 @@
-_G.g = vim.g
-_G.o = vim.o
+g = vim.g
+o = vim.o
 
-_G.wo = vim.wo
-_G.bo = vim.bo
-_G.b = vim.b
+wo = vim.wo
+bo = vim.bo
+b = vim.b
 
-_G.fn = vim.fn
-_G.api = vim.api
-_G.lsp = vim.lsp
-_G.env = vim.env
+fn = vim.fn
+api = vim.api
+lsp = vim.lsp
+env = vim.env
 
-_G.opt = vim.opt
-_G.opt_local = vim.opt_local
+opt = vim.opt
+opt_local = vim.opt_local
 
-_G.set_map = vim.keymap.set
-_G.rmv_map = vim.keymap.del
+set_map = vim.keymap.set
+rmv_map = vim.keymap.del
 
-_G.schedule = vim.schedule
-_G.schedule_wrap = vim.schedule_wrap
-_G.diagnostic = vim.diagnostic
-_G.stdpath = fn.stdpath
+schedule = vim.schedule
+schedule_wrap = vim.schedule_wrap
+diagnostic = vim.diagnostic
+stdpath = fn.stdpath
 
-_G.cmd = api.nvim_command
-_G.lsb = lsp.buf
+cmd = api.nvim_command
+lsb = lsp.buf
 
-_G.system = fn.system
-_G.inspect = vim.inspect
+system = fn.system
+inspect = vim.inspect
 
-_G.INSTALL_PATH = stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
-_G.COMPILE_PATH = stdpath "config" .. "/lua/_compiled.lua"
-_G.env.PATH = _G.env.PATH .. ":./node_modules/.bin"
+INSTALL_PATH = stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
+COMPILE_PATH = stdpath "config" .. "/lua/_compiled.lua"
+env.PATH = env.PATH .. ":./node_modules/.bin"
 
 -- vim:ft=lua

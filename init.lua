@@ -6,7 +6,7 @@ require "settings"
 -- if packer plugin spec file doesn't exist then generate it
 if not exists(INSTALL_PATH) or not exists(COMPILE_PATH) then
   schedule(function()
-    local _ = require "plugins"
+    require "plugins"
   end)
 end
 

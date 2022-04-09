@@ -24,7 +24,7 @@ local function truncated(module, ...)
   return modules[module](...)
 end
 
-StatusLine = function(state)
+function __StatusLine(state)
   local mode = api.nvim_get_mode().mode
   local width = api.nvim_win_get_width(0)
   set_colors(mode)
@@ -59,18 +59,18 @@ end
 augroup("StatusLine", {
   {
     events = { "WinEnter", "BufEnter", "FileType" },
-    command = "setlocal statusline=%!v:lua.StatusLine()",
+    command = "setlocal statusline=%!v:lua.__StatusLine()",
     options = {
       patterns = hidden,
     },
   },
   {
     events = { "WinEnter", "BufEnter" },
-    command = "setlocal statusline=%!v:lua.StatusLine('active')",
+    command = "setlocal statusline=%!v:lua.__StatusLine('active')",
   },
   {
     events = { "WinLeave", "BufLeave" },
-    command = "setlocal statusline=%!v:lua.StatusLine('inactive')",
+    command = "setlocal statusline=%!v:lua.__StatusLine('inactive')",
   },
 })
 

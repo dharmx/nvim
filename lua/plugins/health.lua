@@ -12,7 +12,14 @@ use {
   end,
 }
 
-use { "sunjon/shade.nvim", cmd = "Shade" }
+use {
+  "sunjon/shade.nvim",
+  config = function()
+    require "configs.health.shade"
+  end,
+  keys = "<leader>s",
+  cmd = "Shade",
+}
 
 use {
   "folke/twilight.nvim",
@@ -33,18 +40,11 @@ use {
 use {
   "Pocco81/TrueZen.nvim",
   cmd = {
-    "TZAtaraxisOn",
-    "TZAtaraxisOff",
-    "TZMinimalistOn",
-    "TZMinimalistOff",
-    "TZFocusOn",
-    "TZFocusOff",
+    "TZAtaraxis",
+    "TZMinimalist",
+    "TZFocus",
   },
 }
-
-use { "junegunn/goyo.vim", cmd = "Goyo" }
-
-use { "junegunn/limelight.vim", after = "goyo.vim" }
 
 return M
 

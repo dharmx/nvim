@@ -26,61 +26,63 @@ end
 -- @param current string mode string
 -- @see help modes
 function M.set_colors(current)
-  hi("StatusLineFilename", {
-    foreground = colors.modes[current],
-    background = colors.common.base01,
-  })
-  hi("StatusLineFilenameReverse", {
-    foreground = colors.common.base01,
-    background = colors.modes[current],
-  })
-  hi("StatusLineFilenameReverseExtra", {
-    foreground = colors.modes[current],
-  })
-  hi("StatusLineMode", {
-    background = colors.modes[current],
-    foreground = colors.common.base02,
-    decoration = "bold",
-  })
-  hi("StatusLineModeReverse", {
-    background = colors.common.base15,
-    foreground = colors.modes[current],
-  })
-  hi("StatusLineInactive", {
-    background = colors.common.base00,
-    foreground = colors.modes[current],
-  })
-  hi("StatusLineFilenameExtraExtraRight", {
-    background = colors.modes[current],
-    foreground = colors.common.base01,
-  })
-  hi("StatusLinePosition", {
-    foreground = colors.common.base01,
-    background = colors.modes[current],
-    decoration = "bold",
-  })
-  hi("StatusLinePositionLast", {
-    foreground = colors.common.base15,
-    background = colors.modes[current],
-    decoration = "bold",
-  })
-  hi("StatusLinePositionReverse", {
-    foreground = colors.modes[current],
-    background = colors.common.base03,
-  })
-  hi("StatusLineFilenameExtraExtraRight", {
-    background = colors.modes[current],
-    foreground = colors.common.base01,
-  })
-  hi("StatusLineLSP", {
-    foreground = colors.modes[current],
-    background = colors.common.base01,
-    decoration = "bold",
-  })
-  hi("BufferLineTabClose", {
-    foreground = colors.common.base01,
-    background = colors.modes[current],
-  })
+  schedule(function()
+    hi("StatusLineFilename", {
+      foreground = colors.modes[current],
+      background = colors.common.base01,
+    })
+    hi("StatusLineFilenameReverse", {
+      foreground = colors.common.base01,
+      background = colors.modes[current],
+    })
+    hi("StatusLineFilenameReverseExtra", {
+      foreground = colors.modes[current],
+    })
+    hi("StatusLineMode", {
+      background = colors.modes[current],
+      foreground = colors.common.base02,
+      decoration = "bold",
+    })
+    hi("StatusLineModeReverse", {
+      background = colors.common.base15,
+      foreground = colors.modes[current],
+    })
+    hi("StatusLineInactive", {
+      background = colors.common.base00,
+      foreground = colors.modes[current],
+    })
+    hi("StatusLineFilenameExtraExtraRight", {
+      background = colors.modes[current],
+      foreground = colors.common.base01,
+    })
+    hi("StatusLinePosition", {
+      foreground = colors.common.base01,
+      background = colors.modes[current],
+      decoration = "bold",
+    })
+    hi("StatusLinePositionLast", {
+      foreground = colors.common.base15,
+      background = colors.modes[current],
+      decoration = "bold",
+    })
+    hi("StatusLinePositionReverse", {
+      foreground = colors.modes[current],
+      background = colors.common.base03,
+    })
+    hi("StatusLineFilenameExtraExtraRight", {
+      background = colors.modes[current],
+      foreground = colors.common.base01,
+    })
+    hi("StatusLineLSP", {
+      foreground = colors.modes[current],
+      background = colors.common.base01,
+      decoration = "bold",
+    })
+    hi("BufferLineTabClose", {
+      foreground = colors.common.base01,
+      background = colors.modes[current],
+    })
+  end)
 end
 
 -- @section Git utilities section

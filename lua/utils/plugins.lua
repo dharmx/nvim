@@ -53,6 +53,22 @@ function M.btn_gen(label, shortcut, hl_label, hl_icon)
   }
 end
 
+function M.pandoc_build()
+  local pandoc = require "pandoc"
+  -- Make your pandoc command
+  local input = vim.api.nvim_get_buf_name(0)
+  pandoc.render.build {
+    input = input,
+    args = {
+      { "--standalone" },
+      { "--toc" },
+      { "--filter", "pandoc-crossref" },
+      { "--pdf-engine", "xelatex" },
+    },
+    output = "pandoc.pdf",
+  }
+end
+
 return M
 
 -- vim:ft=lua
