@@ -12,3 +12,5 @@
 (((dot_index_expression) @keyword (#eq? @keyword "vim.fn"      )) (#set! conceal "#"))
 (((dot_index_expression) @keyword (#eq? @keyword "vim.g"       )) (#set! conceal ""))
 (((dot_index_expression) @keyword (#eq? @keyword "vim.o"       )) (#set! conceal ""))
+
+; vim:ft=lisp

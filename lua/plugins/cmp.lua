@@ -121,11 +121,7 @@ use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }
 
 use { "mtoohey31/cmp-fish", after = "nvim-cmp" }
 
-use {
-  "kdheepak/cmp-latex-symbols",
-  wants = "nvim-cmp",
-  ft = "tex",
-}
+use { "kdheepak/cmp-latex-symbols", wants = "nvim-cmp", ft = "tex" }
 
 use { "saadparwaiz1/cmp_luasnip", after = { "LuaSnip", "nvim-cmp" } }
 
@@ -134,6 +130,14 @@ use { "hrsh7th/cmp-cmdline", wants = "nvim-cmp", event = "CmdlineEnter" }
 use { "hrsh7th/cmp-buffer", wants = "nvim-cmp", event = "InsertEnter" }
 
 use { "hrsh7th/cmp-path", wants = "cmp-buffer", keys = { { "i", "/" } } }
+
+use { "dmitmel/cmp-digraphs", after = "nvim-cmp" }
+
+use { "davidsierradz/cmp-conventionalcommits", after = "cmp-buffer" }
+
+use { "max397574/cmp-greek", after = "nvim-cmp" }
+
+use { "jc-doyle/cmp-pandoc-references", ft = "markdown", wants = "nvim-cmp" }
 
 return M
 

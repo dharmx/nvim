@@ -25,6 +25,10 @@ local M = {
   cmdline = "גּ CML",
   gh_issues = " GHI",
   cmdline_history = " CMH",
+  conventionalcommits = " CVC",
+  pandoc_references = " PAN",
+  digraphs = " DIG",
+  greek = "ﬦGRK",
 }
 
 local N = {

@@ -2,7 +2,9 @@ local M = {
   { name = "zsh", max_item_count = 5 },
   { name = "fish", max_item_count = 5 },
   { name = "tags", max_item_count = 6 },
-  { name = "gh_issues", max_item_count = 5 },
+  { name = "gh_issues", max_item_count = 10 },
+  { name = "conventionalcommits" },
+  { name = "pandoc_references" },
   {
     name = "nvim_lua",
     keyword_length = 2,
@@ -55,6 +57,7 @@ local M = {
     keyword_length = 5,
     max_item_count = 3,
   },
+  { name = "digraphs" },
   { name = "cmp_git" },
   {
     name = "calc",
@@ -71,10 +74,11 @@ local M = {
     },
     dict = stdpath "config" .. "/lua/spell/en.dict",
   },
+  { name = "latex_symbols" },
   { name = "npm", keyword_length = 4 },
   { name = "orgmode" },
   { name = "emoji", max_item_count = 10 },
-  { name = "latex_symbols" },
+  { name = "greek" },
   {
     name = "tmux",
     option = {

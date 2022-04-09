@@ -7,6 +7,22 @@ end
 use "sheerun/vim-polyglot"
 
 use {
+  "aspeddro/pandoc.nvim",
+  ft = {
+    "markdown",
+    "tex",
+    "xml",
+    "org",
+    "html",
+    "plaintext",
+    "txt",
+  },
+  config = function()
+    require "configs.editing.pandoc"
+  end,
+}
+
+use {
   "lukas-reineke/headlines.nvim",
   config = function()
     require "configs.editing.headlines"
