@@ -5,10 +5,10 @@ if not present then
 end
 
 local servers = {
-  ["jsonls"] = require "configs.lsp.servers.jsonls",
-  ["yamlls"] = {},
   ["bashls"] = {},
   ["jdtls"] = require "configs.lsp.servers.jdtls",
+  ["jsonls"] = require "configs.lsp.servers.jsonls",
+  ["yamlls"] = {},
   ["pyright"] = {},
   ["sumneko_lua"] = require "configs.lsp.servers.sumneko_lua",
   ["cssls"] = {},
