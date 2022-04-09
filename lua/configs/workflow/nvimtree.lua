@@ -1,3 +1,9 @@
+local present, nvimtree = pcall(require, "nvim-tree")
+
+if not present then
+  return
+end
+
 g.nvim_tree_indent_markers = 0
 g.nvim_tree_git_hl = 1
 g.nvim_tree_highlight_opened_files = 1
@@ -34,12 +40,12 @@ g.nvim_tree_icons = {
   },
 }
 
-require("nvim-tree").setup {
+local config = {
   disable_netrw = true,
   hijack_netrw = true,
   open_on_setup = false,
-  ignore_buffer_on_setup = false,
-  auto_close = true,
+  ignore_buffer_on_setup = true,
+  ignore_ft_on_setup = { "dashboard", "alpha" },
   auto_reload_on_write = true,
   open_on_tab = true,
   hijack_cursor = false,
@@ -105,5 +111,7 @@ require("nvim-tree").setup {
     },
   },
 }
+
+nvimtree.setup(config)
 
 -- vim:ft=lua

@@ -7,8 +7,7 @@ M.setup = function(client, buffer)
     ["b"] = {
       ["name"] = " Actions",
       ["K"] = { "<CMD>lua lsb.hover()<CR>", " Hover" },
-      ["k"] = { "<CMD>Lspsaga hover_doc<CR>", " Hover" },
-      ["c"] = { "<CMD>lua require('utils.loaders').load_ui_select(); lsb.code_action()<CR>", " Code action" },
+      ["c"] = { "<CMD>lua require('telescope.builtin').lsp_code_actions()<CR>", " Code action" },
       ["f"] = { "<CMD>lua lsb.formatting()<CR>", "ﯕ Format" },
       ["r"] = { "<CMD>lua require('configs.lsp.handlers.rename').lsp_rename()<CR>", "ﯕ Format" },
       ["F"] = { "<CMD>lua lsb.formatting_seq_sync()<CR>", "ﯕ Format Seq" },
@@ -20,7 +19,6 @@ M.setup = function(client, buffer)
       ["["] = { "<CMD>lua diagnostic.goto_prev()<CR>", "ﭧ Previous errors" },
       ["]"] = { "<CMD>lua diagnostic.goto_next()<CR>", "ﭧ Next errors" },
       ["q"] = { "<CMD>lua diagnostic.setloclist()<CR>", " Set loclist" },
-      ["y"] = { "<CMD>Lspsaga yank_line_diagnostics<CR>", " Yank line diagnostics" },
     },
     ["g"] = {
       ["name"] = " Definitions",
@@ -28,10 +26,9 @@ M.setup = function(client, buffer)
       ["d"] = { "<CMD>lua lsb.definition()<CR>", " Goto definiton" },
       ["s"] = { "<CMD>lua lsb.signature_help()<CR>", "ﲀ Signature" },
       ["i"] = { "<CMD>lua lsb.implementation()<CR>", "בּ Implementation" },
-      ["I"] = { "<CMD>Lspsaga implement<CR>", "בּ Implementation" },
+      ["I"] = { "<CMD>lua require('telescope.builtin').lsp_implementations()<CR>", "בּ Implementation" },
       ["t"] = { "<CMD>lua lsb.type_definition()<CR>", " Type definition" },
       ["r"] = { "<CMD>lua lsb.references()<CR>", " References" },
-      ["f"] = { "<CMD>Lspsaga lsp_finder<CR>", " LSP Finder" },
     },
     ["w"] = {
       ["name"] = " Workspaces",
@@ -40,6 +37,24 @@ M.setup = function(client, buffer)
       ["l"] = { "<CMD>lua notify(inspect(lsb.list_workspace_folders()))<CR>", " Workspaces" },
     },
   }
+
+  if bo.filetype == "java" then
+    mappings["j"] = {
+      ["name"] = " JDT Options",
+      ["c"] = { "<CMD>JDTCompile<CR>", " Compile" },
+      ["r"] = { "<CMD>JDTSetRuntime<CR>", "ﰌ Set runtime" },
+      ["c"] = { "<CMD>JDTUpdateProjectConfig<CR>", "ﮮ Update project config" },
+      ["j"] = { "<CMD>JDTJol<CR>", " JOL" },
+      ["b"] = { "<CMD>JDTBytecode<CR>", " View bytecode" },
+      ["s"] = { "<CMD>JDTJshell<CR>", " JShell" },
+      ["o"] = { "<CMD>JDTOrganizeImports<CR>", " Organize imports" },
+      ["v"] = { "<CMD>JDTExtractVariable<CR>", " Extract variable" },
+      ["k"] = { "<CMD>JDTExtractConstant<CR>", " Extract constant" },
+      ["V"] = { "<CMD>JDTExtractVariableTrue<CR>", " Extract variable" },
+      ["K"] = { "<CMD>JDTExtractConstantTrue<CR>", "﴾ Extract constant" },
+      ["M"] = { "<CMD>JDTExtractMethod<CR>", " Extract function" },
+    }
+  end
 
   local options = {
     mode = "n",

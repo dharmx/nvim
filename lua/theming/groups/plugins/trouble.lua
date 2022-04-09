@@ -1,8 +1,8 @@
 local T = {}
 
-function T.get(theme)
+function T.get(colors)
   return {
-    ["TroubleNormal"] = { background = theme.shades.shade07 },
+    ["TroubleNormal"] = { background = colors.shades.shade08 },
   }
 end
 

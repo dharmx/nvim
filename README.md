@@ -6,5 +6,17 @@
 ![Repo License](https://img.shields.io/badge/LICENSE-GPL--3.0-%2388c0d0?style=for-the-badge&logo=GNU)
 ![GitHub repo file count](https://img.shields.io/github/directory-file-count/pagankeymaster/KrakenVim?color=%23ad85a6&logo=files&logoColor=%23ad85a6&style=for-the-badge)
 
-Greasiest neovim configurations.
+```
+---Startuptime---
+037.291  without vim-polyglot [148 Plugs]
+052.544  with vim-polyglot [149 Plugs]
+```
+
+
+`vim-polyglot` will eventually be removed once 
+`filetype.lua` becomes a bit less buggy.
 </div>
+
+<!--
+  vim:ft=markdown
+-->

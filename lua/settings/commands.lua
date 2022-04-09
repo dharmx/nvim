@@ -2,25 +2,31 @@ local M = {}
 
 M["CommitList"] = {
   command = function()
-    local _ = require("telescope.builtin").git_commits()
+    require("telescope.builtin").git_commits()
+  end,
+}
+
+M["PersistClip"] = {
+  command = function()
+    require("telescope").extensions.neoclip.neoclip()
   end,
 }
 
 M["EnvList"] = {
   command = function()
-    local _ = require("telescope").extensions.env.env()
+    require("telescope").extensions.env.env()
   end,
 }
 
 M["Keymaps"] = {
   command = function()
-    local _ = require("telescope.builtin").keymaps()
+    require("telescope.builtin").keymaps()
   end,
 }
 
 M["GitHL"] = {
   command = function()
-    local _ = require("gitsigns").toggle_signs()
+    require("gitsigns").toggle_signs()
   end,
 }
 
@@ -85,7 +91,9 @@ M["PackerSnapshot"] = {
   end,
   options = {
     nargs = "+",
-    complete = require("packer.snapshot").completion.create,
+    complete = function()
+      return require("packer.snapshot").completion.create
+    end,
     force = true,
   },
 }
@@ -101,7 +109,9 @@ M["PackerSnapshotRollback"] = {
   end,
   options = {
     nargs = "+",
-    complete = require("packer.snapshot").completion.rollback,
+    complete = function()
+      return require("packer.snapshot").completion.rollback
+    end,
     force = true,
   },
 }
@@ -117,7 +127,9 @@ M["PackerSnapshotDelete"] = {
   end,
   options = {
     nargs = "+",
-    complete = require("packer.snapshot").completion.snapshot,
+    complete = function()
+      return require("packer.snapshot").completion.snapshot
+    end,
     force = true,
   },
 }
@@ -133,18 +145,22 @@ M["PackerInstall"] = {
   end,
   options = {
     nargs = "*",
-    complete = require("packer").plugin_complete,
+    complete = function()
+      return require("packer").plugin_complete
+    end,
     force = true,
   },
 }
 
 M["PackerUpdate"] = {
   command = function(args)
-    local _ = require("packer").update(unpack(args.fargs))
+    require("packer").update(unpack(args.fargs))
   end,
   options = {
     nargs = "*",
-    complete = require("packer").plugin_complete,
+    complete = function()
+      return require("packer").plugin_complete
+    end,
     force = true,
   },
 }
@@ -160,26 +176,30 @@ M["PackerSync"] = {
   end,
   options = {
     nargs = "*",
-    complete = require("packer").plugin_complete,
+    complete = function()
+      return require("packer").plugin_complete
+    end,
     force = true,
   },
 }
 
 M["PackerLoad"] = {
   command = function(args)
-    local _ = require("packer").loader(args.args, args.bang)
+    require("packer").loader(args.args, args.bang)
   end,
   options = {
     nargs = "+",
     bang = true,
-    complete = require("packer").loader_complete,
+    complete = function()
+      return require("packer").loader_complete
+    end,
     force = true,
   },
 }
 
 M["PackerClean"] = {
   command = function()
-    local _ = require("packer").clean()
+    require("packer").clean()
   end,
   options = { force = true },
 }
@@ -201,14 +221,14 @@ M["PackerCompile"] = {
 
 M["PackerProfile"] = {
   command = function()
-    local _ = require("packer").profile_output()
+    require("packer").profile_output()
   end,
   options = { force = true },
 }
 
 M["PackerStatus"] = {
   command = function()
-    local _ = require("packer").status()
+    require("packer").status()
   end,
   options = { force = true },
 }

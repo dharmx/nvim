@@ -15,7 +15,7 @@ function M.filename(disabled)
   end
 
   local format = string.format(
-    "%%#StatusLineFilename# %s %s%s%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s%%#Default#",
+    "%%#StatusLineFilename#%s%s%s%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s",
     path,
     modified,
     readonly,
@@ -26,14 +26,14 @@ function M.filename(disabled)
 
   if config.icon then
     local present, devicons = pcall(require, "nvim-web-devicons")
-    local icon = ""
+    local icon = ""
     if present then
       icon = " " .. devicons.get_icon(fn.expand "%:t", fn.expand "%:e", { default = true })
     end
 
     if disabled then
       format = string.format(
-        "%s%%#StatusLineFilenameExtraExtraRight#%s%%#StatusLineFilenameExtraRight#%s %%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s%%#Default#",
+        "%s%%#StatusLineFilenameExtraExtraRight#%s%%#StatusLineFilenameExtraRight#%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s",
         config.style.right,
         config.style.right,
         icon,
@@ -41,8 +41,11 @@ function M.filename(disabled)
         config.style.left
       )
     else
+      if path == "" then
+        path = config.unnamed
+      end
       format = string.format(
-        "%%#StatusLineFilename#%s %s %s%s%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s%%#Default#",
+        "%%#StatusLineFilename#%s %s%s%s%s%%#StatusLineFilenameReverse#%s%%#StatusLineFilenameReverseExtra#%s",
         icon,
         path,
         modified,

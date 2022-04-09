@@ -7,6 +7,19 @@ end
 use { "tweekmonster/haunted.vim", cmd = "Haunt" }
 
 use {
+  "MattesGroeger/vim-bookmarks",
+  setup = function()
+    require "configs.workflow.bookmarks"
+  end,
+  cmd = "BookmarkToggle",
+  event = {
+    "InsertEnter",
+    "CmdlineEnter",
+    "CursorMoved",
+  },
+}
+
+use {
   "kevinhwang91/rnvimr",
   cmd = {
     "RnvimrToggle",
@@ -44,7 +57,13 @@ use {
 
 use { "Shatur/neovim-session-manager", cmd = "SessionManager" }
 
-use { "mbbill/undotree", cmd = "UndotreeToggle" }
+use {
+  "mbbill/undotree",
+  cmd = "UndotreeToggle",
+  config = function()
+    require "configs.workflow.undotree"
+  end,
+}
 
 use {
   "max397574/better-escape.nvim",

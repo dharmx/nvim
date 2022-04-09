@@ -3,19 +3,17 @@ local set_colors = require("utils.statusline").set_colors
 local config = require "statusline.config"
 local modules = {}
 
-for _, module in
-  pairs {
-    "mode",
-    "dirname",
-    "filename",
-    "treesitter",
-    "diagnostics",
-    "lightbulb",
-    "lsp",
-    "git",
-    "position",
-  }
-do
+for _, module in pairs {
+  "mode",
+  "dirname",
+  "filename",
+  "treesitter",
+  "diagnostics",
+  "lightbulb",
+  "lsp",
+  "git",
+  "position",
+} do
   modules[module] = require("statusline.modules." .. module)[module]
 end
 
@@ -30,7 +28,7 @@ StatusLine = function(state)
   local mode = api.nvim_get_mode().mode
   local width = api.nvim_win_get_width(0)
   set_colors(mode)
-  local combined = "%#StatusLineInactive#%=" .. truncated("filename", true) .. "%="
+  local combined = "%#StatusLineInactive#%=" .. truncated("mode", true) .. "%="
 
   if width < 17 then
     return combined .. modules.mode(true) .. "%="

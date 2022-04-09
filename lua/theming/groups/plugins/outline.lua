@@ -1,9 +1,9 @@
 local H = {}
 
-function H.get(theme)
+function H.get(colors)
   return {
-    ["SymbolsOutlineConnector"] = { foreground = theme.shades.shade02 },
-    ["FocusedSymbol"] = { background = theme.common.base13, foreground = theme.common.base01 },
+    ["SymbolsOutlineConnector"] = { foreground = colors.shades.shade02 },
+    ["FocusedSymbol"] = { background = colors.common.base13, foreground = colors.common.base01 },
   }
 end
 

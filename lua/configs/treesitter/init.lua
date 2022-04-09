@@ -10,16 +10,19 @@ local config = {
   ensure_installed = {
     "lua",
     "http",
+    "java",
     "json",
     "json5",
     "markdown",
     "rasi",
     "regex",
     "scss",
+    "css",
     "toml",
     "yaml",
     "comment",
     "norg",
+    "commonlisp",
   },
   sync_installed = false,
   highlight = {
@@ -46,14 +49,16 @@ local config = {
   textsubjects = require "configs.treesitter.modules.textsubjects",
 }
 
-schedule(function()
-  ts.setup(config)
-  local _ = require "configs.treesitter.modules.autotag"
-  notify {
-    message = "Treesitter is now enabled!",
-    title = "nvim-treesitter",
-    icon = "",
-  }
-end)
+ts.setup(config)
+
+require "configs.treesitter.modules.autotag"
+
+notify {
+  message = "Treesitter is now enabled!",
+  title = "nvim-treesitter",
+  icon = "",
+}
+
+neovim.ensure_treesitter_language_installed()
 
 -- vim:ft=lua

@@ -4,7 +4,7 @@ local btn_gen = require("utils.plugins").btn_gen
 
 local heading = {
   type = "text",
-  val = require("tables.banners")["areee??"],
+  val = require("tables.banners")["hydra"],
   opts = {
     position = "center",
     hl = "AlphaHeading",
@@ -14,9 +14,9 @@ local heading = {
 local buttons = {
   type = "group",
   val = {
-    btn_gen("  Find File", " LDR tff "),
-    btn_gen("  Recents", " LDR tfo "),
-    btn_gen("  Find Word", " LDR tfw "),
+    btn_gen("  Find File", " LDR tff ", "AlphaButtonLabelText", "WildMenu"),
+    btn_gen("  Recents", " LDR tfo ", "AlphaButtonLabelText", "Boolean"),
+    btn_gen("  Find Word", " LDR tfw ", "AlphaButtonLabelText", "String"),
   },
   opts = {
     position = "center",
@@ -35,7 +35,7 @@ local loaded = {
 
 local footing = {
   type = "text",
-  val = "-KrakenVim- ",
+  val = "-kv- ",
   opts = {
     position = "center",
     hl = "AlphaFooting",
@@ -43,13 +43,13 @@ local footing = {
 }
 
 local layout = {
-  { type = "padding", val = 2 },
+  { type = "padding", val = 9 },
   heading,
-  { type = "padding", val = 5 },
+  { type = "padding", val = 2 },
   footing,
   { type = "padding", val = 1 },
   buttons,
-  { type = "padding", val = 4 },
+  { type = "padding", val = 1 },
   loaded,
 }
 

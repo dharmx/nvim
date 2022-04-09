@@ -4,7 +4,6 @@ local M = {
   tags = " TAG",
   zsh = " ZSH",
   fish = " FIS",
-  buffer = " BUF",
   path = " PTH",
   spell = " SPL",
   dictionary = " DIC",
@@ -24,6 +23,7 @@ local M = {
   nvim_lsp_document_symbol = " DSM",
   buffer = " BUF",
   cmdline = "גּ CML",
+  gh_issues = " GHI",
   cmdline_history = " CMH",
 }
 
@@ -43,7 +43,6 @@ local N = {
   Value = " ",
   Enum = " ",
   Keyword = " ",
-  Snippet = " ",
   Color = " ",
   File = " ",
   Reference = " ",

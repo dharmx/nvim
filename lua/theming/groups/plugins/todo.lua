@@ -1,27 +1,30 @@
 local T = {}
 
-function T.get(theme)
+function T.get(colors)
   return {
-    ["TodoBgFIX"] = { background = theme.common.base13, foreground = theme.common.base01 },
-    ["TodoBgHACK"] = { background = theme.common.base12, foreground = theme.common.base01 },
-    ["TodoBgNOTE"] = { background = theme.common.base14, foreground = theme.common.base01 },
-    ["TodoBgPERF"] = { background = theme.common.base09, foreground = theme.common.base01 },
-    ["TodoBgTODO"] = { background = theme.common.base15, foreground = theme.common.base01 },
-    ["TodoBgWARN"] = { background = theme.common.base11, foreground = theme.common.base01 },
+    ["TodoBgFIX"] = { background = colors.common.base13, foreground = colors.common.base01 },
+    ["TodoBgHACK"] = { background = colors.common.base12, foreground = colors.common.base01 },
+    ["TodoBgNOTE"] = { background = colors.common.base14, foreground = colors.common.base01 },
+    ["TodoBgPERF"] = { background = colors.common.base09, foreground = colors.common.base01 },
+    ["TodoBgTODO"] = { background = colors.common.base15, foreground = colors.common.base01 },
+    ["TodoBgWARN"] = { background = colors.common.base11, foreground = colors.common.base01 },
+    ["TodoBgIMPROVE"] = { background = colors.common.base07, foreground = colors.common.base01 },
 
-    ["TodoFgFIX"] = { foreground = theme.common.base13 },
-    ["TodoFgHACK"] = { foreground = theme.common.base12 },
-    ["TodoFgNOTE"] = { foreground = theme.common.base14 },
-    ["TodoFgPERF"] = { foreground = theme.common.base09 },
-    ["TodoFgTODO"] = { foreground = theme.common.base15 },
-    ["TodoFgWARN"] = { foreground = theme.common.base11 },
+    ["TodoFgFIX"] = { foreground = colors.common.base13 },
+    ["TodoFgHACK"] = { foreground = colors.common.base12 },
+    ["TodoFgNOTE"] = { foreground = colors.common.base14 },
+    ["TodoFgPERF"] = { foreground = colors.common.base09 },
+    ["TodoFgTODO"] = { foreground = colors.common.base15 },
+    ["TodoFgWARN"] = { foreground = colors.common.base11 },
+    ["TodoFgIMPROVE"] = { foreground = colors.common.base07 },
 
-    ["TodoSignFIX"] = { foreground = theme.common.base13 },
-    ["TodoSignHACK"] = { foreground = theme.common.base12 },
-    ["TodoSignNOTE"] = { foreground = theme.common.base14 },
-    ["TodoSignPERF"] = { foreground = theme.common.base09 },
-    ["TodoSignTODO"] = { foreground = theme.common.base15 },
-    ["TodoSignWARN"] = { foreground = theme.common.base11 },
+    ["TodoSignFIX"] = { foreground = colors.common.base13 },
+    ["TodoSignHACK"] = { foreground = colors.common.base12 },
+    ["TodoSignNOTE"] = { foreground = colors.common.base14 },
+    ["TodoSignPERF"] = { foreground = colors.common.base09 },
+    ["TodoSignTODO"] = { foreground = colors.common.base15 },
+    ["TodoSignWARN"] = { foreground = colors.common.base11 },
+    ["TodoSignIMPROVE"] = { foreground = colors.common.base07 },
   }
 end
 

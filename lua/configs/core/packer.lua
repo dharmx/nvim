@@ -27,7 +27,7 @@ config.display = {
   done_sym = "",
   removed_sym = "",
   moved_sym = " ",
-  show_all_info = false,
+  show_all_info = true,
   prompt_border = "solid",
   keybindings = { quit = "q", toggle_info = "<CR>", diff = "d", prompt_revert = "r" },
   open_fn = function()

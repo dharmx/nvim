@@ -9,12 +9,10 @@ local function _prepare_syntax(language)
 end
 
 E.base = {
-  ["syntax"] = {
-    ["lua"] = _prepare_syntax("lua").get,
-    ["general"] = _prepare_syntax("general").get,
-    ["markdown"] = _prepare_syntax("markdown").get,
-    ["html"] = _prepare_syntax("html").get,
-  },
+  ["lua"] = _prepare_syntax("lua").get,
+  ["general"] = _prepare_syntax("general").get,
+  ["markdown"] = _prepare_syntax("markdown").get,
+  ["html"] = _prepare_syntax("html").get,
   ["terminal"] = require("theming.groups.terminal").set,
   ["ui"] = require("theming.groups.ui").get,
   ["custom"] = require("theming.groups.custom").get,
@@ -40,6 +38,8 @@ E.supports = {
     ["packer"] = _prepare_plugin("packer").get,
     ["outline"] = _prepare_plugin("outline").get,
     ["lightbulb"] = _prepare_plugin("lightbulb").get,
+    ["rnvimr"] = _prepare_plugin("rnvimr").get,
+    ["bookmarks"] = _prepare_plugin("bookmarks").get,
   },
   syntax = {
     ["cmp"] = _prepare_plugin("cmp").get,

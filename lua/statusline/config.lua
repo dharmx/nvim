@@ -54,9 +54,10 @@ M.filename = {
   absolute = false,
   format = false,
   icon = true,
-  modified = " ",
-  readonly = " ",
-  modifiable = " ",
+  unnamed = "unnamed",
+  modified = "  ",
+  readonly = "  ",
+  modifiable = "  ",
 }
 
 M.dirname = {
@@ -106,8 +107,8 @@ M.position = {
     " ",
     " ",
   },
-  top = " TOP",
-  bottom = " BOT",
+  top = " TOP",
+  bottom = " BOT",
   extra = " ",
 }
 
@@ -144,8 +145,8 @@ M.git = {
   truncate = 70,
   style = style.xsquare,
   short = false,
-  branch = "  ",
-  main = "  ",
+  branch = " ",
+  main = " ",
   added = "  ",
   removed = "  ",
   changed = "  ",

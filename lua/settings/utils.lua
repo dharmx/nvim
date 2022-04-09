@@ -6,6 +6,7 @@ _G.theming = require "utils.theming"
 _G.hi = theming.highlight
 
 _G.alias = neovim.alias
+_G.buf_alias = neovim.buf_alias
 _G.abbrev = neovim.abbrev
 _G.augroup = neovim.augroup
 _G.autocmd = neovim.autocmd
@@ -25,6 +26,6 @@ _G.rq = utils.rq
 _G.tp = utils.tp
 
 _G.theme = require "theming"
-cmd "colo nordic"
+cmd "colo night"
 
 -- vim:ft=lua

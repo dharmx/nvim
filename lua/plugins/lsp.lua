@@ -32,15 +32,9 @@ use {
   module = "nvim-lsp-installer",
 }
 
-use { "b0o/schemastore.nvim", module = "schemastore" }
+use { "mfussenegger/nvim-jdtls", after = "nvim-lspconfig" }
 
-use {
-  "tami5/lspsaga.nvim",
-  after = "nvim-lspconfig",
-  config = function()
-    require "configs.lsp.saga"
-  end,
-}
+use { "b0o/schemastore.nvim", module = "schemastore" }
 
 use {
   "kosayoda/nvim-lightbulb",
@@ -60,10 +54,7 @@ use {
   after = "nvim-lspconfig",
 }
 
-use {
-  "tamago324/nlsp-settings.nvim",
-  module = "nlspsettings",
-}
+use { "tamago324/nlsp-settings.nvim", module = "nlspsettings" }
 
 return M
 

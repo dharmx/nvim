@@ -8,13 +8,13 @@ return {
       path = "~/Dotfiles/evilbars",
     },
     {
-      path = "~/Dotfiles/neo-fest",
+      path = "~/Dotfiles/phocused",
     },
     {
-      path = "~/Dotfiles/nordfall",
+      path = "~/Dotfiles/nightfall",
     },
     {
-      path = "~/Dotfiles/KrakenVim",
+      path = "~/Dotfiles/nvim-config",
     },
     {
       path = "~/Dotfiles/nordfiles",

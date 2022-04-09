@@ -4,13 +4,27 @@ local function use(plugin)
   table.insert(M, plugin)
 end
 
+use "sheerun/vim-polyglot"
+
+use {
+  "lukas-reineke/headlines.nvim",
+  config = function()
+    require "configs.editing.headlines"
+  end,
+  ft = {
+    "markdown",
+    "rmd",
+    "vimwiki",
+    "org",
+    "yaml",
+  },
+}
+
 use { "Fymyte/rasi.vim", ft = "rasi" }
 use { "elkowar/yuck.vim", ft = "yuck" }
 use { "kovetskiy/sxhkd-vim", ft = "sxhkdrc" }
 use { "MTDL9/vim-log-highlighting", ft = "log" }
 use { "vuki656/package-info.nvim", ft = "package.json" }
-
-use { "sheerun/vim-polyglot" }
 
 use {
   "TimUntersberger/neogit",
@@ -125,6 +139,12 @@ use {
   config = function()
     require "configs.editing.orgmode"
   end,
+}
+
+use {
+  "axieax/urlview.nvim",
+  wants = "telescope-ui-select.nvim",
+  cmd = "UrlView",
 }
 
 use { "jbyuki/nabla.nvim", after = "orgmode" }

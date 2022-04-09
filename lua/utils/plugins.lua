@@ -1,27 +1,17 @@
+--- Utility functions that are used by plugin configurations.
+-- @module utils.plugins
+-- @alias M
+
 local M = {}
 
-function M.alpha_vimenter()
-  if api.nvim_buf_get_name(0) == "" then
-    api.nvim_notify(
-      [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀  ⢀⠠⠀⠀⠀⠉⠈⠁⠀⠂⠠⠀⣴⣾⣿⣦⡀⠀⠀
-⠀⠀⠀⠀⠀  ⠂⠁⢀⣠⣴⣶⣶⣶⣶⣶⣤⣀⠘⣿⣿⣿⣿⠃⠀   
-⠀⠀⠀  ⡀⠁⢀⣴⣿⣿⣿⣿⣿⣿⡿⠋⠉⠙⢷⣌⠉⠉⡁⠀⠀      ﳁ                    ⠀⠀⠀
-⠀⠀  ⠠⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⡅⠀⠀⠀⢸⣿⣆⠀⠀⡀⠀   Welcome to KrakenVim.              
-⠀⠀  ⠆⠀⢸⣿⣿⢹⣿⣿⣿⣿⣿⣿⣦⣤⣴⣿⣿⣿⠀⠀⠆⠀   Press SPC to get started.    
-⠀⠀  ⠃⠀⢸⣿⣿⢸⣿⣿⣿⢸⣿⢸⣯⡴⠶⢹⣿⣿⠀⠀⠆⠀
-⠀⠀  ⠐⠀⠀⢻⣿⣘⣛⣛⣿⣘⣟⣸⣇⣺⣛⣸⣿⠇⠀⠐⠀⠀                Powered By  Lua
-⠀⠀  ⠀⠡⡀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠁⠀⡠⠁⠀⠀                             
-⠀⠀⠀  ⠀⠀⠂⡀⠀⠉⠛⠻⠿⠿⠿⠛⠋⠁⠀⡀⠂⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀  ⠀⠀⠐⠂⠤⠀⢀⢀⠀⠠⠄⠒
-    ]],
-      vim.log.levels.INFO,
-      { title = "KrakenVim ━━ Welcome!", icon = " " }
-    )
-    cmd "Alpha"
-  end
-end
-
+--- A tiny function for nvim-cmp to better sort completion items
+--- that start with one or more underlines. In most languages, especially
+--- Python, items that start with one or more underlines should be at the
+--- end of the completion suggestion.
+-- @param entry1 the completion item that needs to be compared to
+-- @param entry2 the completion item that the entry1 will be compared with.
+-- @return boolean true if entry1 is greater than entry2, false otherwise.
+-- @see Adapted from https://is.gd/FbwlTM
 function M.cmp_under(entry1, entry2)
   local _, entry1_under = entry1.completion_item.label:find "^_+"
   local _, entry2_under = entry2.completion_item.label:find "^_+"
@@ -34,7 +24,13 @@ function M.cmp_under(entry1, entry2)
   end
 end
 
-function M.btn_gen(label, shortcut)
+--- Generates a button for alpha.nvim dashboard configuration.
+-- @param label the text that will be displayed at this button
+-- @param shortcut the shortcut key label text
+-- @param hl_icon the highlight group of the label icon
+-- @param hl_label the highlight group for the button label text
+-- @return table options table that will be passed onto the alpha setup function
+function M.btn_gen(label, shortcut, hl_label, hl_icon)
   return {
     type = "button",
     on_press = function()
@@ -49,7 +45,10 @@ function M.btn_gen(label, shortcut)
       width = 25,
       align_shortcut = "right",
       hl_shortcut = "AlphaKeyPrefix",
-      hl = "AlphaButton",
+      hl = {
+        { hl_icon, 1, 3 }, -- highlight the icon glyph
+        { hl_label, 4, 15 }, -- highlight the part after the icon glyph
+      },
     },
   }
 end

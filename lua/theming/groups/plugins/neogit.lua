@@ -1,14 +1,14 @@
 local N = {}
 
-function N.get(theme)
+function N.get(colors)
   return {
-    ["NeogitBranch"] = { foreground = theme.common.base10 },
-    ["NeogitRemote"] = { foreground = theme.common.base09 },
-    ["NeogitHunkHeader"] = { foreground = theme.common.base08 },
-    ["NeogitHunkHeaderHighlight"] = { foreground = theme.common.base08, background = theme.common.base02 },
-    ["NeogitDiffContextHighlight"] = { background = theme.common.base01 },
-    ["NeogitDiffDeleteHighlight"] = { foreground = theme.common.base11, decoration = "reverse" },
-    ["NeogitDiffAddHighlight"] = { foreground = theme.common.base14, decoration = "reverse" },
+    ["NeogitBranch"] = { foreground = colors.common.base10 },
+    ["NeogitRemote"] = { foreground = colors.common.base09 },
+    ["NeogitHunkHeader"] = { foreground = colors.common.base08 },
+    ["NeogitHunkHeaderHighlight"] = { foreground = colors.common.base08, background = colors.common.base02 },
+    ["NeogitDiffContextHighlight"] = { background = colors.common.base01 },
+    ["NeogitDiffDeleteHighlight"] = { foreground = colors.common.base11, decoration = "reverse" },
+    ["NeogitDiffAddHighlight"] = { foreground = colors.common.base14, decoration = "reverse" },
   }
 end
 

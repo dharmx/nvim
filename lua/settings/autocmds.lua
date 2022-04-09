@@ -1,55 +1,40 @@
 local M = {}
 
-M["AlphaTriggered"] = {
-  {
-    events = "VimEnter",
-    command = require("utils.plugins").alpha_vimenter,
-    options = {
-      desc = "Open Startpage on opening Neovim without any filename.",
-    },
-  },
-  {
-    events = "User",
-    command = function()
-      opt_local.showtabline = 0
-      opt_local.laststatus = 0
-    end,
-    options = {
-      patterns = "AlphaReady",
-      desc = "Hide tabline and statusline when the startpage is visible.",
-    },
-  },
-  {
-    events = "BufUnload",
-    command = function()
-      opt_local.showtabline = 2
-      opt_local.laststatus = 3
-    end,
-    options = {
-      desc = "Show the tabline and the statusline when a file is opened.",
-    },
-  },
-}
-
-M["AutoDisableTablineStatusline"] = {
+M["NvimTreeAutoClose"] = {
   {
     events = "BufEnter",
-    command = function()
-      local invisible = require("tables.blacklisted").invisible
-      if vim.tbl_contains(invisible, api.nvim_buf_get_option(0, "ft")) then
-        opt_local.laststatus = 0
-        opt_local.showtabline = 0
-      else
-        opt_local.laststatus = 3
-        opt_local.showtabline = 2
-      end
-    end,
+    command = "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif",
     options = {
-      desc = "Don't show the statusline on the specified filetypes.",
+      nested = true,
+      desc = "Auto-close NvimTree on opening a file",
     },
   },
 }
 
+M["ReplaceModes"] = {
+  {
+    events = { "BufEnter", "FileType" },
+    command = function()
+      require("utils.mappings").cmdline_override(true)
+    end,
+    options = {
+      desc = "Adds mappings specific to fine-cmdline.nvim",
+      patterns = "cmdline",
+    },
+  },
+  {
+    events = { "BufEnter", "FileType" },
+    command = function()
+      require("utils.mappings").search_override()
+    end,
+    options = {
+      desc = "Adds mappings specific to searchbox.nvim",
+      patterns = "search",
+    },
+  },
+}
+
+-- IMPROVE: Filter out plugins/init.lua as recompiling on its change is redundant.
 M["AutoPlugSpecCompileOnChange"] = {
   {
     events = "BufWritePost",
@@ -57,10 +42,7 @@ M["AutoPlugSpecCompileOnChange"] = {
       require("packer").compile()
     end),
     options = {
-      patterns = {
-        "*/lua/plugins/*.lua",
-        "*/lua/configs/workflow/nvimtree.lua",
-      },
+      patterns = "*/lua/plugins/*.lua",
       desc = "Automatically re-compile plugin specifications on changing the matched pattern files.",
     },
   },
@@ -125,6 +107,7 @@ M["ListCharsFeedback"] = {
   },
 }
 
+-- NOTE: This may be removed in the near future.
 M["RelativeFeedback"] = {
   {
     events = "InsertEnter",
@@ -178,6 +161,7 @@ M["CursorLineFeedback"] = {
   },
 }
 
+-- NOTE: Enable this only if you want a scrollbar on extreme right.
 M["ScrollbarInit"] = {
   {
     events = {

@@ -2,6 +2,7 @@ local M = {
   { name = "zsh", max_item_count = 5 },
   { name = "fish", max_item_count = 5 },
   { name = "tags", max_item_count = 6 },
+  { name = "gh_issues", max_item_count = 5 },
   {
     name = "nvim_lua",
     keyword_length = 2,

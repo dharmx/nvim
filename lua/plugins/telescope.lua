@@ -16,6 +16,22 @@ use {
 }
 
 use {
+  "tom-anders/telescope-vim-bookmarks.nvim",
+  config = function()
+    require("telescope").load_extension "vim_bookmarks"
+  end,
+  after = { "vim-bookmarks", "telescope.nvim" },
+}
+
+use {
+  "jvgrootveld/telescope-zoxide",
+  config = function()
+    require("telescope").load_extension "zoxide"
+  end,
+  after = "telescope.nvim",
+}
+
+use {
   "nvim-telescope/telescope-ui-select.nvim",
   config = function()
     require("telescope").load_extension "ui-select"

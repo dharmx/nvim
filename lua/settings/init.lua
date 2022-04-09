@@ -1,54 +1,62 @@
-local _ = require "settings.env"
-local _ = require "settings.utils"
+require "settings.env"
+require "settings.utils"
 
-excallback(function()
-  local builtins = require "settings.builtins"
-  for builtin, status in pairs(builtins) do
-    g["loaded_" .. builtin] = status
-  end
-end)
+local builtins = require "settings.builtins"
+for builtin, status in pairs(builtins) do
+  g["loaded_" .. builtin] = status
+end
 
-excallback(function()
-  local globals = require "settings.globals"
-  for name, value in pairs(globals) do
-    g[name] = value
-  end
-end)
+local globals = require "settings.globals"
+for name, value in pairs(globals) do
+  g[name] = value
+end
 
-excallback(function()
-  local optionals = require "settings.optionals"
-  for item, value in pairs(optionals.options) do
-    opt[item] = value
-  end
+local optionals = require "settings.optionals"
+for item, value in pairs(optionals.options) do
+  opt[item] = value
+end
 
-  for item, value in pairs(optionals.appends) do
-    opt[item]:append(value)
-  end
+for item, value in pairs(optionals.appends) do
+  opt[item]:append(value)
+end
 
-  for item, value in pairs(optionals.exports) do
-    env[item] = value
-  end
-end)
+for item, value in pairs(optionals.exports) do
+  env[item] = value
+end
 
-excallback(function()
-  local autocmds = require "settings.autocmds"
-  for _, preset in
-    ipairs {
-      "NativeAdjustments",
-      "AutoPlugSpecCompileOnChange",
-      "YankFeedback",
-      "NotifyOnPackerOperation",
-      "AlphaTriggered",
-      "AutoDisableTablineStatusline",
-    }
-  do
-    augroup(preset, autocmds[preset])
-  end
-end)
+local autocmds = require "settings.autocmds"
+for _, preset in ipairs {
+  "NativeAdjustments",
+  "NvimTreeAutoClose",
+  "AutoPlugSpecCompileOnChange",
+  "YankFeedback",
+  "NotifyOnPackerOperation",
+  "ReplaceModes",
+} do
+  augroup(preset, autocmds[preset])
+end
 
 schedule(function()
   local commands = require "settings.commands"
-  for name, target in pairs(commands) do
+  for _, name in pairs {
+    "TSStart",
+    "FormatConfigAll",
+    "GitHL",
+    "TabLineTGL",
+    "StatusLineTGL",
+    "SpellingTGL",
+    "SpotifyExit",
+    "PackerInstall",
+    "PackerUpdate",
+    "PackerSync",
+    "PackerLoad",
+    "PackerClean",
+    "PackerCompile",
+    "PackerProfile",
+    "PackerStatus",
+    "PersistClip",
+  } do
+    local target = commands[name]
     if type(target) == "string" then
       alias(name, target, {})
     else

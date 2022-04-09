@@ -6,8 +6,8 @@ end
 
 use {
   "wbthomason/packer.nvim",
-  module = "packer",
   wants = "plenary.nvim",
+  module = "packer",
   config = function()
     require "plugins"
   end,

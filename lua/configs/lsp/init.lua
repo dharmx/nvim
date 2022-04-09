@@ -5,21 +5,30 @@ if not present then
 end
 
 local servers = {
+  ["bashls"] = {},
+  ["jdtls"] = require "configs.lsp.servers.jdtls",
   ["jsonls"] = require "configs.lsp.servers.jsonls",
   ["yamlls"] = {},
   ["pyright"] = {},
   ["sumneko_lua"] = require "configs.lsp.servers.sumneko_lua",
+  ["cssls"] = {},
+  ["stylelint_lsp"] = {},
+  ["tailwindcss"] = {},
 }
 
 local function on_attach(client, buffer)
-  require("mappings.lsp").setup(client, buffer)
+  require("configs.lsp.mappings").setup(client, buffer)
   require("configs.lsp.autocmds").setup(client, buffer)
   require("configs.lsp.commands").setup(client, buffer)
   require("configs.lsp.icons").setup()
 
   client.resolved_capabilities.document_formatting = false
   client.resolved_capabilities.document_range_formatting = false
-  notify { message = "LSP has been initialised.", title = "LSP: " .. client.name, icon = " " }
+  notify {
+    message = "LSP has been initialised.",
+    title = "LSP: " .. client.name,
+    icon = " ",
+  }
 end
 
 local function configure_installer()
@@ -48,7 +57,11 @@ local function ensure_servers()
   for name, _ in pairs(servers) do
     local found, server = installer.get_server(name)
     if found and not server:is_installed() then
-      notify { message = "Installing " .. name, icon = "", title = "nvim-lsp-installer" }
+      notify {
+        message = "Installing " .. name,
+        icon = "",
+        title = "nvim-lsp-installer",
+      }
       server:install()
     end
   end
@@ -67,7 +80,17 @@ local function configure_servers()
       handlers = handlers,
     }
 
-    server:setup(vim.tbl_extend("keep", server_config, servers[server.name]))
+    if server.name ~= "jdtls" then
+      server:setup(vim.tbl_extend("keep", server_config, servers[server.name]))
+    else
+      if bo.filetype == "java" then
+        local _, jdtls = require("nvim-lsp-installer.servers").get_server "jdtls"
+        server_config.cmd = jdtls:get_default_options().cmd
+        local workspace = os.getenv "HOME" .. "/.workspaces/" .. fn.fnamemodify(fn.getcwd(), ":p:h:t")
+        server_config.cmd[#server_config.cmd] = workspace
+        require("jdtls").start_or_attach(vim.tbl_extend("keep", server_config, servers[server.name]))
+      end
+    end
     local _ = require "configs.lsp.handlers.null"
   end)
 end
@@ -83,7 +106,7 @@ local function configure_diagnostics()
   }
 end
 
-local _ = require "configs.lsp.schema"
+require "configs.lsp.schema"
 configure_diagnostics()
 configure_installer()
 ensure_servers()
