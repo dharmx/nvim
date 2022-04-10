@@ -10,12 +10,6 @@ function M.rq(item)
   return require(item)
 end
 
---- Shortening print and inspect function
--- @param item the table that needs to be inspected
-function M.pi(item)
-  print(inspect(item))
-end
-
 --- Shortening print and type
 -- @param item the value whose type needs to be printed
 function M.tp(item)

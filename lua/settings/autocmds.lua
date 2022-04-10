@@ -1,3 +1,6 @@
+--- Autocommand configuration list.
+-- @module settings.autocmds
+
 local M = {}
 
 M["NvimTreeAutoClose"] = {

@@ -1,5 +1,5 @@
 local PACKER_BOOTSTRAP = false
-if not exists(INSTALL_PATH) then
+if not exists(PACKER_INSTALL_PATH) then
   notify { message = "packer.nvim doesn't exist. Cloning..." }
   PACKER_BOOTSTRAP = system {
     "git",
@@ -7,7 +7,7 @@ if not exists(INSTALL_PATH) then
     "--depth",
     "1",
     "https://github.com/wbthomason/packer.nvim",
-    INSTALL_PATH,
+    PACKER_INSTALL_PATH,
   }
 
   if not pcall(cmd, "packadd packer.nvim") then
@@ -15,7 +15,7 @@ if not exists(INSTALL_PATH) then
   end
 end
 
-if not exists(COMPILE_PATH) then
+if not exists(PACKER_COMPILE_PATH) then
   notify "Couldn't find plugin specifications. Syncing now..."
   PACKER_BOOTSTRAP = true
   pcall(cmd, "packadd packer.nvim")

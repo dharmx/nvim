@@ -2,7 +2,7 @@ local packer_util = require "packer.util"
 
 local config = {
   ensure_dependencies = true,
-  compile_path = COMPILE_PATH,
+  compile_path = PACKER_COMPILE_PATH,
   auto_clean = true,
   compile_on_sync = true,
   max_jobs = 30,

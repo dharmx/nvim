@@ -1,3 +1,6 @@
+--- Command mode command abbreviations.
+-- @module settings.abbrevs
+
 local M = {}
 
 -- converts :Wq, :WQ, :wQ, etc to :wq

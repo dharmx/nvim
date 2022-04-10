@@ -1,34 +1,47 @@
-g = vim.g
-o = vim.o
+--- Aliases for vim dictionary keys.
+-- @module settings.env
 
-wo = vim.wo
-bo = vim.bo
-b = vim.b
+-- NOTE: Global aliases that will be used throughout this config.
 
-fn = vim.fn
-api = vim.api
-lsp = vim.lsp
-env = vim.env
+g = vim.g -- global editor variables
+o = vim.o -- get or set editor options
 
-opt = vim.opt
-opt_local = vim.opt_local
+wo = vim.wo -- get or set window-scoped variables
+bo = vim.bo -- get or set buffer-scoped variables
+go = vim.go -- get or set global-scoped variables
 
-set_map = vim.keymap.set
-rmv_map = vim.keymap.del
+t = vim.t -- tabpage-scoped variables
+w = vim.w -- window-scoped variables
+b = vim.b -- buffer-scoped variables
 
-schedule = vim.schedule
-schedule_wrap = vim.schedule_wrap
-diagnostic = vim.diagnostic
-stdpath = fn.stdpath
+fn = vim.fn -- vim utility functions
+api = vim.api -- neovim utility functions
+lsp = vim.lsp -- lsp variables and functions
+env = vim.env -- env variables defined in the editor session
 
-cmd = api.nvim_command
-lsb = lsp.buf
+opt = vim.opt -- returns an Option object
+opt_local = vim.opt_local -- returns an Option object that is buffer scoped
+opt_global = vim.opt_global -- returns an Option object that is global scoped
 
-system = fn.system
-inspect = vim.inspect
+set_map = vim.keymap.set -- set a keymap
+rmv_map = vim.keymap.del -- delete a keymap
 
-INSTALL_PATH = stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
-COMPILE_PATH = stdpath "config" .. "/lua/_compiled.lua"
+schedule = vim.schedule -- defers callback until the Nvim API is safe to call
+schedule_wrap = vim.schedule_wrap -- schedules to be invoked soon by the main event-loop
+diagnostic = vim.diagnostic -- framework for displaying errors or warnings from external tools
+stdpath = fn.stdpath -- Returns standard-path locations of various default files and directories
+
+cmd = api.nvim_command --  executes an ex-command
+exec = api.nvim_exec -- executes vimscript (multiline block of ex-commands)
+lsb = lsp.buf -- buffer scoped lsp setting variables/functions
+
+system = fn.system -- gets the output of cmd as a string/table returns a table
+inspect = vim.inspect -- return a human-readable representation of the given object
+
+PACKER_INSTALL_PATH = stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
+PACKER_COMPILE_PATH = stdpath "config" .. "/lua/_compiled.lua"
+
+-- append node binaries to path.
 env.PATH = env.PATH .. ":./node_modules/.bin"
 
 -- vim:ft=lua

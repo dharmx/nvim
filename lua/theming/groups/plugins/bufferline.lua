@@ -8,9 +8,9 @@ function B.get(colors)
     ["BufferLineTab"] = { foreground = colors.common.base09, background = colors.shades.shade06 },
     ["BufferLineTabSelected"] = { foreground = colors.common.base01, background = colors.common.base09 },
     ["BufferLineCloseButton"] = { foreground = colors.common.base09, background = colors.shades.shade06 },
-    ["BufferLineCloseButtonVisible"] = { foreground = colors.common.base15, background = colors.common.base01 },
+    ["BufferLineCloseButtonVisible"] = { foreground = colors.common.base15, background = colors.shades.shade06 },
     ["BufferLineCloseButtonSelected"] = { foreground = colors.common.base11, background = colors.common.base00 },
-    ["BufferLineBufferVisible"] = { foreground = colors.common.base15, background = colors.common.base01 },
+    ["BufferLineBufferVisible"] = { foreground = colors.common.base15, background = colors.shades.shade06 },
     ["BufferLineBufferSelected"] = {
       foreground = colors.common.base09,
       background = colors.common.base00,
@@ -21,7 +21,7 @@ function B.get(colors)
     ["BufferLineSeparatorVisible"] = { foreground = colors.shades.shade06, background = colors.shades.shade06 },
     ["BufferLineIndicatorSelected"] = { foreground = colors.common.base00, background = colors.common.base00 },
     ["BufferLineModified"] = { foreground = colors.common.base09, background = colors.shades.shade06 },
-    ["BufferLineModifiedVisible"] = { foreground = colors.common.base15, background = colors.common.base01 },
+    ["BufferLineModifiedVisible"] = { foreground = colors.common.base15, background = colors.shades.shade06 },
     ["BufferLineModifiedSelected"] = { foreground = colors.common.base14, background = colors.common.base00 },
     ["BufferLineDuplicateSelected"] = {
       foreground = colors.common.base09,
@@ -30,7 +30,7 @@ function B.get(colors)
     },
     ["BufferLineDuplicateVisible"] = {
       foreground = colors.common.base15,
-      background = colors.common.base01,
+      background = colors.shades.shade06,
     },
     ["BufferLineDuplicate"] = { foreground = colors.common.base03, background = colors.shades.shade06 },
     ["BufferLinePickSelected"] = {

@@ -1,6 +1,11 @@
+--- Set up vim opts.
+-- @module settings.optionals
+
 local O = {}
 local A = {}
 local E = {}
+local R = {}
+local P = {}
 
 O["termguicolors"] = true
 O["laststatus"] = 3
@@ -89,6 +94,8 @@ return {
   options = O,
   appends = A,
   exports = E,
+  prepends = P,
+  removes = R,
 }
 
 -- vim:ft=lua

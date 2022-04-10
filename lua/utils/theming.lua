@@ -120,6 +120,14 @@ function M.apply(options)
   set(base.markdown(loaded_theme)) -- set md syntax highlights
 end
 
+function M.prepare_plugin(plugin)
+  return require("theming.groups.plugins." .. plugin)
+end
+
+function M.prepare_syntax(language)
+  return require("theming.groups.syntax." .. language)
+end
+
 return M
 
 -- vim:ft=lua

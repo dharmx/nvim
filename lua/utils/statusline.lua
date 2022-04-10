@@ -97,7 +97,7 @@ end
 --- Counts the changes made.
 -- @param type string type of change eg: removed, added, etc.
 -- @return string number of changes
-local function git_diff(type)
+function M.git_diff(type)
   local gsd = b.gitsigns_status_dict
 
   if gsd and gsd[type] and gsd[type] > 0 then
@@ -110,19 +110,19 @@ end
 --- Counts the chars/lines added to the file.
 -- @return string number of chars/lines added
 function M.git_diff_added()
-  return git_diff "added"
+  return M.git_diff "added"
 end
 
 --- Counts the chars/lines removed from the file.
 -- @return string number of chars/lines removed
 function M.git_diff_removed()
-  return git_diff "removed"
+  return M.git_diff "removed"
 end
 
 --- Counts the chars/lines changed from the file.
 -- @return string number of chars/lines changed
 function M.git_diff_changed()
-  return git_diff "changed"
+  return M.git_diff "changed"
 end
 
 --- Utility function to check if git provider information is available

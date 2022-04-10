@@ -1,18 +1,10 @@
 local E = {}
 
-local function prepare_plugin(plugin)
-  return require("theming.groups.plugins." .. plugin)
-end
-
-local function prepare_syntax(language)
-  return require("theming.groups.syntax." .. language)
-end
-
 E.base = {
-  ["lua"] = prepare_syntax("lua").get,
-  ["general"] = prepare_syntax("general").get,
-  ["markdown"] = prepare_syntax("markdown").get,
-  ["html"] = prepare_syntax("html").get,
+  ["lua"] = theming.prepare_syntax("lua").get,
+  ["general"] = theming.prepare_syntax("general").get,
+  ["markdown"] = theming.prepare_syntax("markdown").get,
+  ["html"] = theming.prepare_syntax("html").get,
   ["terminal"] = require("theming.groups.terminal").set,
   ["ui"] = require("theming.groups.ui").get,
   ["custom"] = require("theming.groups.custom").get,
@@ -21,30 +13,30 @@ E.base = {
 
 E.supports = {
   theme = {
-    ["blankline"] = prepare_plugin("blankline").get,
-    ["bufferline"] = prepare_plugin("bufferline").get,
-    ["gitsigns"] = prepare_plugin("gitsigns").get,
-    ["neogit"] = prepare_plugin("neogit").get,
-    ["hop"] = prepare_plugin("hop").get,
-    ["trouble"] = prepare_plugin("trouble").get,
-    ["diff"] = prepare_plugin("diff").get,
-    ["whichkey"] = prepare_plugin("whichkey").get,
-    ["telescope"] = prepare_plugin("telescope").get,
-    ["alpha"] = prepare_plugin("alpha").get,
-    ["rainbow"] = prepare_plugin("rainbow").get,
-    ["todo"] = prepare_plugin("todo").get,
-    ["nvimtree"] = prepare_plugin("nvimtree").get,
-    ["notify"] = prepare_plugin("notify").get,
-    ["packer"] = prepare_plugin("packer").get,
-    ["outline"] = prepare_plugin("outline").get,
-    ["lightbulb"] = prepare_plugin("lightbulb").get,
-    ["rnvimr"] = prepare_plugin("rnvimr").get,
-    ["bookmarks"] = prepare_plugin("bookmarks").get,
-    ["treesitter"] = prepare_plugin("treesitter").get,
+    ["blankline"] = theming.prepare_plugin("blankline").get,
+    ["bufferline"] = theming.prepare_plugin("bufferline").get,
+    ["gitsigns"] = theming.prepare_plugin("gitsigns").get,
+    ["neogit"] = theming.prepare_plugin("neogit").get,
+    ["hop"] = theming.prepare_plugin("hop").get,
+    ["trouble"] = theming.prepare_plugin("trouble").get,
+    ["diff"] = theming.prepare_plugin("diff").get,
+    ["whichkey"] = theming.prepare_plugin("whichkey").get,
+    ["telescope"] = theming.prepare_plugin("telescope").get,
+    ["alpha"] = theming.prepare_plugin("alpha").get,
+    ["rainbow"] = theming.prepare_plugin("rainbow").get,
+    ["todo"] = theming.prepare_plugin("todo").get,
+    ["nvimtree"] = theming.prepare_plugin("nvimtree").get,
+    ["notify"] = theming.prepare_plugin("notify").get,
+    ["packer"] = theming.prepare_plugin("packer").get,
+    ["outline"] = theming.prepare_plugin("outline").get,
+    ["lightbulb"] = theming.prepare_plugin("lightbulb").get,
+    ["rnvimr"] = theming.prepare_plugin("rnvimr").get,
+    ["bookmarks"] = theming.prepare_plugin("bookmarks").get,
+    ["treesitter"] = theming.prepare_plugin("treesitter").get,
   },
   syntax = {
-    ["cmp"] = prepare_plugin("cmp").get,
-    ["lsp"] = prepare_plugin("lsp").get,
+    ["cmp"] = theming.prepare_plugin("cmp").get,
+    ["lsp"] = theming.prepare_plugin("lsp").get,
   },
 }
 
