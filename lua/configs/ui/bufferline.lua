@@ -20,6 +20,12 @@ local offsets = {
     text = "",
     padding = 0,
   },
+  {
+    filetype = "neo-tree",
+    text = "",
+    padding = 0,
+    highlight = "NeoTreeNormal"
+  }
 }
 
 local config = {

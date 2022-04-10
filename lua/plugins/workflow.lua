@@ -31,12 +31,24 @@ use {
 }
 
 use {
-  "kyazdani42/nvim-tree.lua",
-  cmd = { "NvimTreeToggle", "NvimTreeRefresh", "NvimTreeFocus" },
+  "nvim-neo-tree/neo-tree.nvim",
+  branch = "v2.x",
+  wants = {
+    "plenary.nvim",
+    "nvim-web-devicons",
+    "nui.nvim",
+    "nvim-window-picker",
+  },
+  cmd = "Neotree"
+}
+
+use {
+  "s1n7ax/nvim-window-picker",
+  tag = "1.*",
   config = function()
-    require "configs.workflow.nvimtree"
+    require "configs.workflow.picker"
   end,
-  wants = "nvim-notify",
+  opt = true
 }
 
 use {
