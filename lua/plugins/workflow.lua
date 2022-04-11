@@ -39,7 +39,7 @@ use {
     "nui.nvim",
     "nvim-window-picker",
   },
-  cmd = "Neotree"
+  cmd = "Neotree",
 }
 
 use {
@@ -48,7 +48,7 @@ use {
   config = function()
     require "configs.workflow.picker"
   end,
-  opt = true
+  opt = true,
 }
 
 use {

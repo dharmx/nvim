@@ -113,13 +113,11 @@ local config = {
     -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
     use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
     -- instead of relying on nvim autocmd events.
-    window = {
-    },
+    window = {},
   },
   buffers = {
     show_unloaded = true,
-    window = {
-    },
+    window = {},
   },
   git_status = {
     window = {

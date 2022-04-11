@@ -24,8 +24,8 @@ local offsets = {
     filetype = "neo-tree",
     text = "",
     padding = 0,
-    highlight = "NeoTreeNormal"
-  }
+    highlight = "NeoTreeNormal",
+  },
 }
 
 local config = {
