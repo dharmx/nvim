@@ -8,8 +8,8 @@
 
 ```
 ---Startuptime---
-037.291  without vim-polyglot [148 Plugs]
-052.544  with vim-polyglot [149 Plugs]
+031.291  without vim-polyglot [155 Plugs]
+050.544  with vim-polyglot [154 Plugs]
 ```
 
 
