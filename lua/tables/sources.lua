@@ -105,3 +105,5 @@ return {
   normal = M,
   cmdline = N,
 }
+
+-- vim:ft=lua

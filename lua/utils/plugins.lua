@@ -53,6 +53,7 @@ function M.btn_gen(label, shortcut, hl_label, hl_icon)
   }
 end
 
+-- Builds pandoc document.
 function M.pandoc_build()
   local pandoc = require "pandoc"
   -- Make your pandoc command
@@ -67,6 +68,27 @@ function M.pandoc_build()
     },
     output = "pandoc.pdf",
   }
+end
+
+--- Copies an image from given path.
+-- If said image is in JPG format then copy it right away.
+-- And, if the image is in PNG format then convert it to JPG
+-- and then copy its contents.
+-- @see help vim.fn.system
+function M.copy_image(filepath)
+    local basename = vim.split(filepath, "/")
+    if string.find(filepath, ".png$") then
+      local command = "xclip -selection clipboard -target image/png '" .. filepath .. "'"
+      system("bash -c '" .. command .. "'")
+    else
+      local command = "convert '" .. filepath .. "' png:- | xclip -selection clipboard -t image/png"
+      system("bash -c '" .. command .. "'")
+    end
+    notify {
+      message = "Copied " .. basename[#basename] .. " to the  clipboard.",
+      icon = "",
+      title = "telescope-media-files.nvim",
+    }
 end
 
 return M

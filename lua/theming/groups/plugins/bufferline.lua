@@ -48,3 +48,5 @@ function B.get(colors)
 end
 
 return B
+
+-- vim:ft=lua

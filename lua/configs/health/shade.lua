@@ -13,3 +13,5 @@ shade.setup {
     toggle = "<leader>s",
   },
 }
+
+-- vim:ft=lua

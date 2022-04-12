@@ -12,6 +12,7 @@ local config = {
     "http",
     "java",
     "json",
+    "html",
     "json5",
     "markdown",
     "rasi",

@@ -2,7 +2,7 @@ local M = {}
 
 M.mappings = {
   ["<leader>lf"] = { "<CMD>luafile %<CR>", "Load current Lua file" },
-  ["<C-n>"] = { "<CMD>Neotree filesystem toggle left<CR>", "פּ Explorer" },
+  ["<C-n>"] = { "<CMD>NvimTreeToggle<CR>", "פּ Explorer" },
   ["<C-m>"] = { "<CMD>NvimTreeFocus<CR>", "פּ Explorer focus" },
   ["<F5>"] = { "<CMD>RnvimrToggle<CR>", "פּ Ranger explorer" },
   ["<leader>u"] = {
@@ -37,7 +37,6 @@ M.mappings = {
   },
   ["<leader><Tab>"] = { "<CMD>lua require('reach').buffers(require('tables.reach').buffers)<CR>", "ﴵ Buffers" },
   ["<leader>Q"] = { "<CMD>qa!<CR>", " Quit neovim" },
-  ["<leader><leader>q"] = { "<CMD>q<CR>", " Quit" },
   ["<F9>"] = { "<CMD>BookmarkToggle<CR>", "Add/Remove bookmark" },
 }
 

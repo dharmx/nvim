@@ -1,5 +1,6 @@
 --- LSP utility functions
 --- @module utils.lsp
+
 local M = {}
 
 --- Toggles autosave mode for the current buffer.

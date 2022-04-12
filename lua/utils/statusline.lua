@@ -140,3 +140,5 @@ function M.get_client_name(client)
 end
 
 return M
+
+-- vim:ft=lua

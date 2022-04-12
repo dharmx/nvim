@@ -5,9 +5,6 @@ return {
       path = "~/.local/share/nvim/site/pack/packer/opt/telescope-media-files.nvim",
     },
     {
-      path = "~/Dotfiles/evilbars",
-    },
-    {
       path = "~/Dotfiles/phocused",
     },
     {
@@ -28,7 +25,5 @@ return {
   },
   hidden_files = true,
 }
-
--- '~/dev/src', {'~/dev/src2'}, {'~/dev/src3', max_depth = 4}, {path = '~/Dotfiles/vile', max_depth = 2}
 
 -- vim:ft=lua

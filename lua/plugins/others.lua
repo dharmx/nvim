@@ -19,7 +19,7 @@ use {
   end,
 }
 
-use { "wakatime/vim-wakatime", event = "InsertEnter" }
+use "wakatime/vim-wakatime"
 
 use {
   "KadoBOT/nvim-spotify",

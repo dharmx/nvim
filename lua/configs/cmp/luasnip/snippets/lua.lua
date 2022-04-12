@@ -87,3 +87,5 @@ M[4] = {
 }
 
 return M
+
+-- vim:ft=lua
