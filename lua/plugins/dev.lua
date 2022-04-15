@@ -28,6 +28,18 @@ use { "milisims/nvim-luaref", event = "CmdlineEnter" }
 use { "nanotee/luv-vimdocs", event = "CmdlineEnter" }
 use { "nanotee/nvim-lua-guide", event = "CmdlineEnter" }
 
+use {
+  "shift-d/scratch.nvim",
+  wants = "telescope.nvim",
+  config = function()
+    require("telescope").load_extension "scratch"
+  end,
+  cmd = {
+    "ScratchNew",
+    "ScratchEval",
+  },
+}
+
 return M
 
 -- vim:ft=lua

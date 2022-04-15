@@ -95,7 +95,7 @@ local markdownlint = {
 
 null_ls.register(markdownlint)
 
-local config = { sources = sources }
+local config = { sources = sources, capabilities = require "configs.lsp.capabilities" }
 
 null_ls.setup(config)
 

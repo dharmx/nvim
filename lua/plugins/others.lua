@@ -5,6 +5,13 @@ local function use(plugin)
 end
 
 use {
+  "rktjmp/paperplanes.nvim",
+  config = function()
+    require "configs.others.paperplanes"
+  end,
+}
+
+use {
   "rinx/nvim-minimap",
   cmd = { "MinimapOpen", "MinimapClose", "MinimapRefresh", "MinimapToggle" },
 }

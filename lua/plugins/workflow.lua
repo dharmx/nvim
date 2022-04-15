@@ -90,7 +90,9 @@ use {
   end,
 }
 
-use { "ggandor/lightspeed.nvim", cmd = "LightSpeedInit" }
+use { "ggandor/lightspeed.nvim", opt = true }
+
+use { "ggandor/leap.nvim", opt = true }
 
 use {
   "bennypowers/nvim-regexplainer",

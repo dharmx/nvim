@@ -10,6 +10,7 @@ local kind_sources = kinds.source
 local sources = require "tables.sources"
 local source_normal = sources.normal
 local source_cmdline = sources.cmdline
+local snip = require "luasnip"
 
 local function cmp_item_format(entry, vim_item)
   vim_item.menu = kind_sources[entry.source.name]
@@ -20,18 +21,14 @@ end
 local config = {
   snippet = {
     expand = function(args)
-      schedule(function()
         require("luasnip").lsp_expand(args.body)
-      end)
     end,
   },
-  mapping = {
+  mapping = cmp.mapping.preset.insert {
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-    ["<C-o>"] = cmp.mapping.select_prev_item(),
-    ["<C-p>"] = cmp.mapping.select_next_item(),
-    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
     ["<C-y>"] = cmp.config.disable,
+    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
     ["<C-e>"] = cmp.mapping {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
@@ -40,35 +37,45 @@ local config = {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif require("luasnip").expand_or_jumpable() then
-        api.nvim_feedkeys(api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "i", "")
-      else
-        fallback()
-      end
-    end),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif require("luasnip").jumpable(-1) then
+      elseif snip.jumpable(-1) then
         api.nvim_feedkeys(api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "i", "")
       else
         fallback()
       end
     end, { "i", "s" }),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif snip.expand_or_jumpable() then
+        api.nvim_feedkeys(api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "i", "")
+      else
+        fallback()
+      end
+    end),
+    ["<C-l>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        return cmp.complete_common_string()
+      end
+      fallback()
+    end, { "i", "c" }),
   },
   sources = cmp.config.sources(source_normal),
-  documentation = {
-    border = "solid",
+  window = {
+    documentation = {
+      border = "solid",
+    },
+  },
+  view = {
+    entries = cmp.config.disable,
   },
   formatting = {
     fields = { "abbr", "menu", "kind" },
     format = cmp_item_format,
   },
   experimental = {
-    native = false,
     ghost_text = true,
   },
   completion = {
@@ -92,7 +99,7 @@ cmp.setup(config)
 
 local cmdlines = {
   sources = cmp.config.sources(source_cmdline),
-  view = {},
+  mapping = cmp.mapping.preset.cmdline(),
   formatting = {
     format = cmp_item_format,
   },

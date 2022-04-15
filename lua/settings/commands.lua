@@ -3,6 +3,16 @@
 
 local M = {}
 
+M["ScratchTele"] = {
+  command = function()
+    if not packer_plugins["scratch.nvim"].loaded then
+      require("packer").loader "scratch.nvim"
+    end
+    require("telescope").extensions.scratch.scratch()
+  end,
+  options = { desc = "Load and create a new scratch file, with telescope." },
+}
+
 M["CommitList"] = {
   command = function()
     require("telescope.builtin").git_commits()

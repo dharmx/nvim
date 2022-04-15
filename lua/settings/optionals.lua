@@ -27,7 +27,7 @@ O["splitright"] = true -- spawn new buffer to the right
 O["clipboard"] = "unnamedplus" -- uses the system clipboard '*' for all yank, delete, change
 O["cmdheight"] = 1 -- height of the cmdline input field
 O["autowrite"] = true -- write the contents of the file, if it has been modified
-O["autoindent"] = true -- copy indent from current line when starting a new line 
+O["autoindent"] = true -- copy indent from current line when starting a new line
 O["expandtab"] = true -- insert mode: use the appropriate number of spaces to insert <tab>
 O["shiftwidth"] = 2 -- affects >>, << or == maps and autoindent
 O["smartindent"] = true -- reacts to the syntax/style of the code
@@ -75,8 +75,8 @@ O["conceallevel"] = 2 -- determine how text with the "conceal" syntax attribute 
 O["swapfile"] = false -- do not prompt if neovim is forcefully closed or, crashed
 O["cursorline"] = true -- highlight the text line of the cursor with CursorLine
 O["cursorlineopt"] = "both" -- list of settings for how 'cursorline' is displayed
-O["pumheight"] = 25 -- min height for the popup menu 
-O["pumwidth"] = 35 -- min width for the popup menu 
+O["pumheight"] = 25 -- min height for the popup menu
+O["pumwidth"] = 35 -- min width for the popup menu
 O["pumblend"] = 1 -- pseudo-transparency for a popup window
 O["winblend"] = 1 -- pseudo-transparency for a floating window
 O["history"] = 10000 -- no of lines
@@ -90,7 +90,7 @@ O["omnifunc"] = "syntaxcomplete#Complete" -- default omnifunc (completion) setti
 O["background"] = "dark" -- colorscheme style
 
 A["whichwrap"] = "<>[]hl" -- see :h 'whichwrap'
-A["shortmess"] = "sI" -- This option helps to avoid all the hit-enter prompts 
+A["shortmess"] = "sI" -- This option helps to avoid all the hit-enter prompts
 A["diffopt"] = { "algorithm:patience" } -- options for diff mode
 
 -- custom fzf config for neovim

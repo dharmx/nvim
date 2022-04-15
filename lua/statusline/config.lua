@@ -1,5 +1,9 @@
+--- STL config file
+--- @module statusline.config
+
 local M = {}
 
+-- STL seperator style
 local style = {
   angled = { left = "", right = "", left_alt = "", right_alt = "" },
   flame = { left = "", right = "", left_alt = "", right_alt = "" },
@@ -16,6 +20,8 @@ local style = {
   fullslant = { left = "", right = "", left_alt = "", right_alt = "" },
 }
 
+-- STL mode symbols
+-- options: glyphs, full mode name, short mode name
 M.mode = {
   truncate = 20,
   style = style.xsquare,
@@ -48,6 +54,7 @@ M.mode = {
   }),
 }
 
+-- filename module sub-config
 M.filename = {
   truncate = 45,
   style = style.xsquare,
@@ -60,12 +67,14 @@ M.filename = {
   modifiable = "  ",
 }
 
+-- dirname module sub-config
 M.dirname = {
   truncate = 20,
   style = style.xsquare,
   icon = "  ",
 }
 
+-- treesitter module sub-config
 M.treesitter = {
   truncate = 130,
   style = style.xsquare,
@@ -73,6 +82,7 @@ M.treesitter = {
   enabled_icon = " TS לּ  ",
 }
 
+-- line and character location info module sub-config
 M.position = {
   truncate = 32,
   style = style.xsquare,
@@ -112,6 +122,9 @@ M.position = {
   extra = " ",
 }
 
+--- NOTE: LSP configuration section
+
+-- LSP server module sub-config
 M.lsp = {
   truncate = 80,
   style = style.xsquare,
@@ -133,6 +146,7 @@ M.lsp = {
   label = " LSP",
 }
 
+-- LSP server code-actions module sub-config
 M.lightbulb = {
   truncate = 85,
   style = style.xsquare,
@@ -141,6 +155,7 @@ M.lightbulb = {
   loading = " ",
 }
 
+-- git diff module sub-config
 M.git = {
   truncate = 70,
   style = style.xsquare,
@@ -152,6 +167,7 @@ M.git = {
   changed = "  ",
 }
 
+-- LSP diagnostics module sub-config
 M.diagnostics = {
   truncate = 63,
   severities = {

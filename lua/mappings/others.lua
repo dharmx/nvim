@@ -36,7 +36,6 @@ M.mappings = {
     ["t"] = { "<CMD>lua require('reach').tabpages(require('tables.reach').tabpages)<CR>", "ﯻ Tabpages" },
   },
   ["<leader><Tab>"] = { "<CMD>lua require('reach').buffers(require('tables.reach').buffers)<CR>", "ﴵ Buffers" },
-  ["<leader>Q"] = { "<CMD>qa!<CR>", " Quit neovim" },
   ["<F9>"] = { "<CMD>BookmarkToggle<CR>", "Add/Remove bookmark" },
 }
 
