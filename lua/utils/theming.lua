@@ -22,39 +22,10 @@ end
 -- @see help highlight-{guifg,guibg,gui,guisp,link,args,groups}
 function M.highlight(group, colors)
   if colors.link then
-    M.link(group, colors.link)
+    vim.highlight.link(group, colors.link, true)
     return
   end
-
-  local background = colors.background or "NONE"
-  local foreground = colors.foreground or "NONE"
-  local decoration = colors.decoration or "NONE"
-  local blend = colors.blend or ""
-  local special = colors.special or "NONE"
-
-  if blend ~= "" then
-    blend = "blend=" .. blend
-  end
-
-  local prepared = string.format(
-    "highlight! %s guibg=%s guifg=%s gui=%s guisp=%s %s",
-    group,
-    background,
-    foreground,
-    decoration,
-    special,
-    blend
-  )
-
-  cmd(prepared)
-end
-
---- Link a highlight group to another.
--- @param from string the group that needs to be linked.
--- @param to string the group whose values will be used.
-function M.link(from, to)
-  local prepared = string.format("highlight! link %s %s", from, to)
-  cmd(prepared)
+  vim.highlight.create(group, colors)
 end
 
 --- Main function for setting up the highlights.

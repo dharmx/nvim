@@ -2,7 +2,7 @@ local T = {}
 
 function T.get(colors)
   return {
-    ["TroubleNormal"] = { background = colors.shades.shade08 },
+    ["TroubleNormal"] = { guibg = colors.shades.shade08 },
   }
 end
 

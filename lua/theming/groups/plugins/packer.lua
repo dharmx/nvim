@@ -2,7 +2,7 @@ local R = {}
 
 function R.get(colors)
   return {
-    ["packerPackageNotLoaded"] = { foreground = colors.common.base11 },
+    ["packerPackageNotLoaded"] = { guifg = colors.common.base11 },
   }
 end
 

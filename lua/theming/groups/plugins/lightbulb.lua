@@ -3,13 +3,13 @@ local H = {}
 function H.get(colors)
   return {
     ["LightBulbFloatWin"] = {
-      foreground = colors.common.base09,
-      background = colors.shades.shade08,
-      decoration = "bold",
+      guifg = colors.common.base09,
+      guibg = colors.shades.shade08,
+      gui = "bold",
     },
     ["LightBulbVirtualText"] = {
-      foreground = colors.common.base12,
-      decoration = "bold",
+      guifg = colors.common.base12,
+      gui = "bold",
     },
   }
 end

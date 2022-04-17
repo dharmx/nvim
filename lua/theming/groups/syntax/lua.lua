@@ -3,8 +3,8 @@ local S = {}
 function S.get(colors)
   return {
     luaBuiltIn = { link = "Keyword" },
-    luaDocTag = { foreground = colors.syntax.color15, decoration = "bold" },
-    luaFuncTable = { foreground = colors.syntax.color06, decoration = "bold" },
+    luaDocTag = { guifg = colors.syntax.color15, gui = "bold" },
+    luaFuncTable = { guifg = colors.syntax.color06, gui = "bold" },
     luaCond = { link = "Conditional" },
     luaIn = { link = "Keyword" },
     luaCond = { link = "Conditional" },
@@ -15,13 +15,13 @@ function S.get(colors)
     luaBrackets = { link = "Delimiter" },
     luaIfThen = { link = "Conditional" },
     luaElse = { link = "Conditional" },
-    luaSpecialTable = { foreground = colors.syntax.color10, decoration = "bold" },
-    luaFuncParen = { foreground = colors.syntax.color09 },
-    luaFuncParens = { foreground = colors.syntax.color09 },
-    luaFuncArgName = { foreground = colors.syntax.color19 },
-    luaTable = { foreground = colors.syntax.color00 },
-    luaSpecial = { foreground = colors.syntax.color05, decoration = "bold" },
-    luaEllipsis = { foreground = colors.syntax.color01, decoration = "bold" },
+    luaSpecialTable = { guifg = colors.syntax.color10, gui = "bold" },
+    luaFuncParen = { guifg = colors.syntax.color09 },
+    luaFuncParens = { guifg = colors.syntax.color09 },
+    luaFuncArgName = { guifg = colors.syntax.color19 },
+    luaTable = { guifg = colors.syntax.color00 },
+    luaSpecial = { guifg = colors.syntax.color05, gui = "bold" },
+    luaEllipsis = { guifg = colors.syntax.color01, gui = "bold" },
   }
 end
 

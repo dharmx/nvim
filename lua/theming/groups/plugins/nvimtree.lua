@@ -2,19 +2,19 @@ local N = {}
 
 function N.get(colors)
   return {
-    ["NvimTreeRootFolder"] = { foreground = colors.common.base11, decoration = "bold" },
-    ["NvimTreeGitDirty"] = { foreground = colors.common.base15 },
-    ["NvimTreeGitNew"] = { foreground = colors.common.base14 },
-    ["NvimTreeImageFile"] = { foreground = colors.common.base13 },
-    ["NvimTreeExecFile"] = { foreground = colors.common.base07 },
-    ["NvimTreeSpecialFile"] = { foreground = colors.common.base12, decoration = "bold" },
-    ["NvimTreeFolderName"] = { foreground = colors.common.base09 },
-    ["NvimTreeEmptyFolderName"] = { foreground = colors.common.base02 },
-    ["NvimTreeOpenedFolderName"] = { foreground = colors.common.base10 },
-    ["NvimTreeFolderIcon"] = { foreground = colors.common.base09 },
-    ["NvimTreeIndentMarker"] = { foreground = colors.shades.shade00 },
-    ["NvimTreeNormal"] = { background = colors.shades.shade08 },
-    ["NvimTreeRenamed"] = { foreground = colors.common.base07 },
+    ["NvimTreeRootFolder"] = { guifg = colors.common.base11, gui = "bold" },
+    ["NvimTreeGitDirty"] = { guifg = colors.common.base15 },
+    ["NvimTreeGitNew"] = { guifg = colors.common.base14 },
+    ["NvimTreeImageFile"] = { guifg = colors.common.base13 },
+    ["NvimTreeExecFile"] = { guifg = colors.common.base07 },
+    ["NvimTreeSpecialFile"] = { guifg = colors.common.base12, gui = "bold" },
+    ["NvimTreeFolderName"] = { guifg = colors.common.base09 },
+    ["NvimTreeEmptyFolderName"] = { guifg = colors.common.base02 },
+    ["NvimTreeOpenedFolderName"] = { guifg = colors.common.base10 },
+    ["NvimTreeFolderIcon"] = { guifg = colors.common.base09 },
+    ["NvimTreeIndentMarker"] = { guifg = colors.shades.shade00 },
+    ["NvimTreeNormal"] = { guibg = colors.shades.shade08 },
+    ["NvimTreeRenamed"] = { guifg = colors.common.base07 },
   }
 end
 

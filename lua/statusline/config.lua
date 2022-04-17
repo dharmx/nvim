@@ -120,6 +120,7 @@ M.position = {
   top = " TOP",
   bottom = " BOT",
   extra = " ",
+  qf = " ",
 }
 
 --- NOTE: LSP configuration section

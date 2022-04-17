@@ -9,7 +9,7 @@ use {
   config = function()
     require "configs.others.paperplanes"
   end,
-  cmd = "PP"
+  cmd = "PP",
 }
 
 use {

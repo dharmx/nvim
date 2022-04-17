@@ -7,6 +7,16 @@ end
 use "sheerun/vim-polyglot"
 
 use {
+  "lervag/vimtex",
+  ft = "tex",
+}
+
+use {
+  "xuhdev/vim-latex-live-preview",
+  ft = "tex",
+}
+
+use {
   "aspeddro/pandoc.nvim",
   ft = {
     "markdown",

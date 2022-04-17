@@ -9,7 +9,7 @@ M.setup = function(client, buffer)
       ["K"] = { "<CMD>lua lsb.hover()<CR>", " Hover" },
       ["c"] = { "<CMD>lua require('telescope.builtin').lsp_code_actions()<CR>", " Code action" },
       ["f"] = { "<CMD>lua lsb.formatting()<CR>", "ﯕ Format" },
-      ["r"] = { "<CMD>lua require('configs.lsp.handlers.rename').lsp_rename()<CR>", "ﯕ Format" },
+      ["r"] = { "<CMD>lua require('configs.lsp.handlers.rename').lsp_rename()<CR>", "ﯕ Rename" },
       ["F"] = { "<CMD>lua lsb.formatting_seq_sync()<CR>", "ﯕ Format Seq" },
       ["T"] = { "<CMD>ToggleAutoFormat<CR>", "ﯕ  Auto formatting" },
     },

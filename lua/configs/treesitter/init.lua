@@ -11,6 +11,7 @@ local config = {
     "lua",
     "http",
     "java",
+    "latex",
     "json",
     "html",
     "json5",

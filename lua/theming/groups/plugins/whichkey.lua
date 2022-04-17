@@ -2,12 +2,12 @@ local W = {}
 
 function W.get(colors)
   return {
-    ["WhichKeyFloat"] = { background = colors.shades.shade05 },
-    ["WhichKeyGroup"] = { foreground = colors.common.base11 },
-    ["WhichKeyDesc"] = { foreground = colors.common.base08 },
-    ["WhichKeySeparator"] = { foreground = colors.common.base09 },
-    ["WhichKeyValue"] = { foreground = colors.common.base14 },
-    ["WhichKey"] = { foreground = colors.common.base14 },
+    ["WhichKeyFloat"] = { guibg = colors.shades.shade05 },
+    ["WhichKeyGroup"] = { guifg = colors.common.base11 },
+    ["WhichKeyDesc"] = { guifg = colors.common.base08 },
+    ["WhichKeySeparator"] = { guifg = colors.common.base09 },
+    ["WhichKeyValue"] = { guifg = colors.common.base14 },
+    ["WhichKey"] = { guifg = colors.common.base14 },
   }
 end
 

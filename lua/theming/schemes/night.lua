@@ -1,24 +1,20 @@
 local N = {}
 
 N.common = {
-  -- Polar Night
   ["base00"] = "#101317",
   ["base01"] = "#23242A",
   ["base02"] = "#27282d",
   ["base03"] = "#38393f",
 
-  -- Snowy Storm
   ["base04"] = "#dddddd",
   ["base05"] = "#d4d4d5",
   ["base06"] = "#ffffff",
 
-  -- Frost
   ["base07"] = "#54ced6",
   ["base08"] = "#70c0ba",
   ["base09"] = "#7ab0df",
   ["base10"] = "#b77ee0",
 
-  -- Aurora
   ["base11"] = "#f87070",
   ["base12"] = "#36c692",
   ["base13"] = "#ffe59e",

@@ -12,6 +12,8 @@ local servers = {
   ["pyright"] = {},
   ["sumneko_lua"] = require "configs.lsp.servers.sumneko_lua",
   ["cssls"] = {},
+  ["texlab"] = require "configs.lsp.servers.texlab",
+  ["ltex"] = {},
   ["stylelint_lsp"] = {},
   ["tailwindcss"] = {},
 }
@@ -73,25 +75,25 @@ local function configure_servers()
     local flags = { debounce_text_changes = 150 }
     local handlers = require "configs.lsp.handlers"
 
-    local server_config = {
+    local server_config = vim.tbl_extend("keep", {
       flags = flags,
       capabilities = capabilities,
       on_attach = on_attach,
       handlers = handlers,
-    }
+    }, servers[server.name] or {})
 
     if server.name ~= "jdtls" then
-      server:setup(vim.tbl_extend("keep", server_config, servers[server.name]))
+      server:setup(server_config)
     else
       if bo.filetype == "java" then
         local _, jdtls = require("nvim-lsp-installer.servers").get_server "jdtls"
         server_config.cmd = jdtls:get_default_options().cmd
         local workspace = os.getenv "HOME" .. "/.workspaces/" .. fn.fnamemodify(fn.getcwd(), ":p:h:t")
         server_config.cmd[#server_config.cmd] = workspace
-        require("jdtls").start_or_attach(vim.tbl_extend("keep", server_config, servers[server.name]))
+        require("jdtls").start_or_attach(server_config)
       end
     end
-    _ = require "configs.lsp.handlers.null"
+    require "configs.lsp.handlers.null"
   end)
 end
 

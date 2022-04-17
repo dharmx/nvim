@@ -65,7 +65,7 @@ augroup("StatusLine", {
     },
   },
   {
-    events = { "WinEnter", "BufEnter" },
+    events = { "WinEnter", "BufEnter", "FileType" },
     command = "setlocal statusline=%!v:lua.__StatusLine('active')",
   },
   {

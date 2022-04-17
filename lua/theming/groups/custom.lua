@@ -2,10 +2,10 @@ local D = {}
 
 function D.get(colors)
   return {
-    ["YankFeed"] = { foreground = colors.rainbow.cobalt, decoration = "bold" },
-    ["Hidden"] = { foreground = colors.common.base00, background = colors.common.base00 },
-    ["LightBulbSign"] = { foreground = colors.common.base13, background = colors.common.base00 },
-    ["Default"] = { foreground = "NONE", background = "NONE" },
+    ["YankFeed"] = { guifg = colors.rainbow.cobalt, gui = "bold" },
+    ["Hidden"] = { guifg = colors.common.base00, guibg = colors.common.base00 },
+    ["LightBulbSign"] = { guifg = colors.common.base13, guibg = colors.common.base00 },
+    ["Default"] = { guifg = "NONE", guibg = "NONE" },
   }
 end
 

@@ -19,15 +19,15 @@ function M.position()
   end
   local loaded = packer_plugins and packer_plugins["gitsigns.nvim"].loaded
   local transition = {
-    foreground = colors.common.base03,
-    decoration = "bold",
+    guifg = colors.common.base03,
+    gui = "bold",
   }
   if loaded then
-    transition.background = loaded and colors.common.base02 or colors.shades.shade06
+    transition.guibg = loaded and colors.common.base02 or colors.shades.shade06
   elseif #lsp.get_active_clients() ~= 0 then
-    transition.background = colors.common.base01
+    transition.guibg = colors.common.base01
   else
-    transition.background = colors.shades.shade06
+    transition.guibg = colors.shades.shade06
   end
   hi("StatusLinePositionFirst", transition)
 
@@ -39,7 +39,7 @@ function M.position()
     config.style.right,
     position,
     config.style.right,
-    config.extra
+    o.ft == "qf" and config.qf or config.extra
   )
 end
 

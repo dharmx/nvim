@@ -5,14 +5,6 @@ local function use(plugin)
 end
 
 use {
-  "xiyaowong/nvim-transparent",
-  cmd = { "TransparentDisable", "TransparentEnable", "TransparentToggle" },
-  config = function()
-    require "configs.health.transparent"
-  end,
-}
-
-use {
   "sunjon/shade.nvim",
   config = function()
     require "configs.health.shade"

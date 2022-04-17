@@ -2,13 +2,13 @@ local N = {}
 
 function N.get(colors)
   return {
-    ["NeogitBranch"] = { foreground = colors.common.base10 },
-    ["NeogitRemote"] = { foreground = colors.common.base09 },
-    ["NeogitHunkHeader"] = { foreground = colors.common.base08 },
-    ["NeogitHunkHeaderHighlight"] = { foreground = colors.common.base08, background = colors.common.base02 },
-    ["NeogitDiffContextHighlight"] = { background = colors.common.base01 },
-    ["NeogitDiffDeleteHighlight"] = { foreground = colors.common.base11, decoration = "reverse" },
-    ["NeogitDiffAddHighlight"] = { foreground = colors.common.base14, decoration = "reverse" },
+    ["NeogitBranch"] = { guifg = colors.common.base10 },
+    ["NeogitRemote"] = { guifg = colors.common.base09 },
+    ["NeogitHunkHeader"] = { guifg = colors.common.base08 },
+    ["NeogitHunkHeaderHighlight"] = { guifg = colors.common.base08, guibg = colors.common.base02 },
+    ["NeogitDiffContextHighlight"] = { guibg = colors.common.base01 },
+    ["NeogitDiffDeleteHighlight"] = { guifg = colors.common.base11, gui = "reverse" },
+    ["NeogitDiffAddHighlight"] = { guifg = colors.common.base14, gui = "reverse" },
   }
 end
 

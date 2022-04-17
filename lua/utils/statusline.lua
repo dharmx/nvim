@@ -28,59 +28,59 @@ end
 function M.set_colors(current)
   schedule(function()
     hi("StatusLineFilename", {
-      foreground = colors.modes[current],
-      background = colors.common.base01,
+      guifg = colors.modes[current],
+      guibg = colors.common.base01,
     })
     hi("StatusLineFilenameReverse", {
-      foreground = colors.common.base01,
-      background = colors.modes[current],
+      guifg = colors.common.base01,
+      guibg = colors.modes[current],
     })
     hi("StatusLineFilenameReverseExtra", {
-      foreground = colors.modes[current],
+      guifg = colors.modes[current],
     })
     hi("StatusLineMode", {
-      background = colors.modes[current],
-      foreground = colors.common.base02,
-      decoration = "bold",
+      guibg = colors.modes[current],
+      guifg = colors.common.base02,
+      gui = "bold",
     })
     hi("StatusLineModeReverse", {
-      background = colors.common.base15,
-      foreground = colors.modes[current],
+      guibg = colors.common.base15,
+      guifg = colors.modes[current],
     })
     hi("StatusLineInactive", {
-      background = colors.common.base00,
-      foreground = colors.modes[current],
+      guibg = colors.common.base00,
+      guifg = colors.modes[current],
     })
     hi("StatusLineFilenameExtraExtraRight", {
-      background = colors.modes[current],
-      foreground = colors.common.base01,
+      guibg = colors.modes[current],
+      guifg = colors.common.base01,
     })
     hi("StatusLinePosition", {
-      foreground = colors.common.base01,
-      background = colors.modes[current],
-      decoration = "bold",
+      guifg = colors.common.base01,
+      guibg = colors.modes[current],
+      gui = "bold",
     })
     hi("StatusLinePositionLast", {
-      foreground = colors.common.base15,
-      background = colors.modes[current],
-      decoration = "bold",
+      guifg = colors.common.base15,
+      guibg = colors.modes[current],
+      gui = "bold",
     })
     hi("StatusLinePositionReverse", {
-      foreground = colors.modes[current],
-      background = colors.common.base03,
+      guifg = colors.modes[current],
+      guibg = colors.common.base03,
     })
     hi("StatusLineFilenameExtraExtraRight", {
-      background = colors.modes[current],
-      foreground = colors.common.base01,
+      guibg = colors.modes[current],
+      guifg = colors.common.base01,
     })
     hi("StatusLineLSP", {
-      foreground = colors.modes[current],
-      background = colors.common.base01,
-      decoration = "bold",
+      guifg = colors.modes[current],
+      guibg = colors.common.base01,
+      gui = "bold",
     })
     hi("BufferLineTabClose", {
-      foreground = colors.common.base01,
-      background = colors.modes[current],
+      guifg = colors.common.base01,
+      guibg = colors.modes[current],
     })
   end)
 end

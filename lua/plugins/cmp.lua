@@ -119,8 +119,6 @@ use { "ray-x/cmp-treesitter", after = { "nvim-treesitter", "nvim-cmp" } }
 
 use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }
 
-use { "mtoohey31/cmp-fish", after = "nvim-cmp" }
-
 use { "kdheepak/cmp-latex-symbols", wants = "nvim-cmp", ft = "tex" }
 
 use { "saadparwaiz1/cmp_luasnip", after = { "LuaSnip", "nvim-cmp" } }

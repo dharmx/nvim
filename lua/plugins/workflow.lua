@@ -104,7 +104,13 @@ use {
 
 use { "winston0410/cmd-parser.nvim", event = "CmdlineEnter" }
 
-use { "nvim-pack/nvim-spectre", opt = true }
+use {
+  "nvim-pack/nvim-spectre",
+  config = function()
+    require "configs.workflow.spectre"
+  end,
+  module = "spectre",
+}
 
 return M
 
