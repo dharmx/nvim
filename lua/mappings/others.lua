@@ -37,7 +37,6 @@ M.mappings = {
   },
   ["<leader><Tab>"] = { "<CMD>lua require('reach').buffers(require('tables.reach').buffers)<CR>", "ﴵ Buffers" },
   ["<F9>"] = { "<CMD>BookmarkToggle<CR>", "Add/Remove bookmark" },
-  ["<C-i>"] = { "<CMD>lua require('spectre').open()<CR>", "Spectre" },
 }
 
 M.options = {

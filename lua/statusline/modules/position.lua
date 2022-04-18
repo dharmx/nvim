@@ -39,7 +39,7 @@ function M.position()
     config.style.right,
     position,
     config.style.right,
-    o.ft == "qf" and config.qf or config.extra
+    config.extra
   )
 end
 

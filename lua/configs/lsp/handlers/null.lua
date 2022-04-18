@@ -60,7 +60,6 @@ local sources = {
   diags.vint,
   diags.write_good,
   diags.yamllint,
-  diags.pylint.with { method = null_ls.methods.DIAGNOSTICS_ON_SAVE },
 }
 
 local helpers = require "null-ls.helpers"

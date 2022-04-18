@@ -25,6 +25,7 @@ function M.highlight(group, colors)
     vim.highlight.link(group, colors.link, true)
     return
   end
+  colors = vim.tbl_extend("keep", colors, { guifg = "NONE", guibg = "NONE" })
   vim.highlight.create(group, colors)
 end
 

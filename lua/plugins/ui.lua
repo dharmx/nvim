@@ -5,6 +5,14 @@ local function use(plugin)
 end
 
 use {
+  "edluffy/specs.nvim",
+  config = function()
+    require "configs.ui.specs"
+  end,
+  event = { "CursorMoved", "CursorMovedI" },
+}
+
+use {
   "toppair/reach.nvim",
   config = function()
     require "configs.ui.reach"
