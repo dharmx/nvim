@@ -22,6 +22,7 @@ local config = {
     "scss",
     "css",
     "toml",
+    "bash",
     "yaml",
     "comment",
     "norg",
