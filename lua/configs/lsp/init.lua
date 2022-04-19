@@ -15,7 +15,17 @@ local servers = {
   ["texlab"] = require "configs.lsp.servers.texlab",
   ["ltex"] = {},
   ["stylelint_lsp"] = {},
+  ["emmet_ls"] = require "configs.lsp.servers.emmet_ls",
+  ["awl_ls"] = {},
   ["tailwindcss"] = {},
+  ["grammarly"] = {},
+  ["html"] = {},
+  ["zk"] = {},
+  ["groovyls"] = {},
+  ["remark_ls"] = {},
+  ["reason_ls"] = {},
+  ["zeta_note"] = {},
+  ["vimls"] = {},
 }
 
 local function on_attach(client, buffer)

@@ -30,20 +30,6 @@ use {
   end,
 }
 
-use {
-  "lukas-reineke/headlines.nvim",
-  config = function()
-    require "configs.editing.headlines"
-  end,
-  ft = {
-    "markdown",
-    "rmd",
-    "vimwiki",
-    "org",
-    "yaml",
-  },
-}
-
 use { "Fymyte/rasi.vim", ft = "rasi" }
 use { "elkowar/yuck.vim", ft = "yuck" }
 use { "kovetskiy/sxhkd-vim", ft = "sxhkdrc" }

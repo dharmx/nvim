@@ -18,7 +18,7 @@ function U.get(colors)
     ErrorMsg = { guifg = colors.common.base11 },
     Folded = { guifg = colors.common.base03, gui = "italic" },
     FoldColumn = { guifg = colors.common.base07 },
-    IncSearch = { guifg = colors.common.base06, guibg = colors.common.base10 },
+    IncSearch = { guifg = colors.common.base13, guibg = colors.common.base02 },
     LineNr = { guifg = colors.shades.shade01, gui = "bold" },
     LineNrAbove = { guifg = colors.common.base13, gui = "bold" },
     LineNrBelow = { guifg = colors.common.base15, gui = "bold" },
