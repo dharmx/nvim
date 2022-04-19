@@ -192,6 +192,53 @@ function M.shorten()
   input:on(event.BufLeave, input.input_props.on_close, { once = true })
 end
 
+function M.imgur()
+  local format = [[!imgur-upload "%s" | xclip]]
+  local Input = require "nui.input"
+  local event = require("nui.utils.autocmd").event
+
+  local popup_options = {
+    position = { row = 5, col = 5 },
+    highlight = "TabLine:FloatBorder",
+    size = 50,
+    border = {
+      style = "solid",
+    },
+  }
+
+  local input = Input(popup_options, {
+    prompt = "   ",
+    default_value = "Image path...",
+    on_submit = function(value)
+      local raw = api.nvim_exec(string.format(format, fn.expand(value)), true)
+      vim.pretty_print(raw)
+      if value == "Your URL..." then
+        M.notify {
+          message = "ERROR: Unable to upload image!",
+          icon = " ",
+          title = "Imgur",
+          level = vim.log.levels.ERROR,
+        }
+      else
+        notify {
+          message = "Saved link to system clipboard!",
+          icon = " ",
+          title = "Imgur",
+        }
+      end
+    end,
+  })
+
+  input:mount()
+  local kw = opt.iskeyword - "_" - "-"
+  bo.iskeyword = table.concat(kw:get(), ",")
+  vim.schedule(function()
+    cmd "stopinsert"
+  end)
+  input:map("n", "<esc>", input.input_props.on_close, { noremap = true })
+  input:on(event.BufLeave, input.input_props.on_close, { once = true })
+end
+
 return M
 
 -- vim:ft=lua

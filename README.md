@@ -1,6 +1,7 @@
 <div align="center">
 
 # nvim-config
+
 ![Lines of code](https://img.shields.io/tokei/lines/github/pagankeymaster/KrakenVim?color=%2381A1C1&label=LINES/Bloat&logo=BookStack&logoColor=%2381A1C1&style=for-the-badge)
 ![GitHub repo size](https://img.shields.io/github/repo-size/pagankeymaster/KrakenVim?color=red&label=SIZE&logo=serverless&logoColor=red&style=for-the-badge)
 ![Repo License](https://img.shields.io/badge/LICENSE-GPL--3.0-%2388c0d0?style=for-the-badge&logo=GNU)
