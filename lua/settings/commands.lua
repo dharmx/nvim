@@ -87,9 +87,7 @@ M["TelescopeLog"] = {
 }
 
 M["TSStart"] = {
-  command = function()
-    require("packer").loader "nvim-treesitter"
-  end,
+  command = "TSUpdate",
   options = { desc = "Load treesitter plugin." },
 }
 

@@ -78,8 +78,8 @@ M.dirname = {
 M.treesitter = {
   truncate = 130,
   style = style.xsquare,
-  disabled_icon = " ﮤ ",
-  enabled_icon = " TS לּ  ",
+  disabled_icon = " 﫣 ",
+  enabled_icon = " TS   ",
 }
 
 -- line and character location info module sub-config
@@ -119,13 +119,14 @@ M.position = {
   },
   top = " TOP",
   bottom = " BOT",
-  extra = " ",
+  extra = "  ",
 }
 
 --- NOTE: LSP configuration section
 
 -- LSP server module sub-config
 M.lsp = {
+  server_label = " ",
   truncate = 80,
   style = style.xsquare,
   spinners = {

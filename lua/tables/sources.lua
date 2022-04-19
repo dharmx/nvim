@@ -15,7 +15,7 @@ local M = {
   },
   {
     name = "nvim_lsp",
-    keyword_length = 4,
+    keyword_length = 2,
     group_index = 1,
   },
   {
@@ -57,7 +57,7 @@ local M = {
     keyword_length = 5,
     max_item_count = 3,
   },
-  { name = "digraphs", priority = 3, max_item_count = 5 },
+  { name = "digraphs", priority = 3, max_item_count = 5, keyword_length = 5 },
   { name = "cmp_git" },
   {
     name = "calc",

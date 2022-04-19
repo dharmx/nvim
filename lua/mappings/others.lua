@@ -37,13 +37,15 @@ M.mappings = {
   },
   ["<leader><Tab>"] = { "<CMD>lua require('reach').buffers(require('tables.reach').buffers)<CR>", "ﴵ Buffers" },
   ["<F9>"] = { "<CMD>BookmarkToggle<CR>", "Add/Remove bookmark" },
+  ["<C-i><C-l>"] = { "<CMD>lua neovim.shorten()<CR>", "Shorten URL" },
+  ["<C-i><C-p>"] = { "<CMD>PP<CR>", "Save buffer to dpaste.com" },
 }
 
 M.options = {
   mode = "n",
   silent = true,
   noremap = true,
-  nowait = false,
+  nowait = true,
 }
 
 return M

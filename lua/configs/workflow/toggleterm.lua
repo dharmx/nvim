@@ -19,9 +19,17 @@ local config = {
   shell = o.shell,
   float_opts = {
     border = "solid",
-    highlights = {
-      border = "FloatBorder",
-      background = "NormalFloat",
+    winblend = 3,
+  },
+  highlights = {
+    Normal = {
+      link = "NormalFloat",
+    },
+    NormalFloat = {
+      link = "NormalFloat",
+    },
+    FloatBorder = {
+      link = "FloatBorder",
     },
   },
 }

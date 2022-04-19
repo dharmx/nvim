@@ -8,43 +8,55 @@ use { "danymat/neogen", after = "nvim-treesitter" }
 
 use {
   "nvim-treesitter/nvim-treesitter",
-  wants = {
-    "nvim-treesitter-refactor",
-    "nvim-ts-rainbow",
-    "nvim-treesitter-textobjects",
-    "playground",
-    "nvim-ts-autotag",
-    "nvim-treesitter-context",
-    "nvim-gps",
-    "spellsitter.nvim",
-    "nvim-treesitter-textsubjects",
-    "nvim-treesitter-commonlisp",
-  },
   config = function()
     require "configs.treesitter"
   end,
-  opt = true,
+  cmd = "TSUpdate",
 }
 
-use { "theHamsta/nvim-treesitter-commonlisp", opt = true }
+use {
+  "theHamsta/nvim-treesitter-commonlisp",
+  after = "nvim-treesitter",
+}
 
-use { "RRethy/nvim-treesitter-textsubjects", opt = true }
+use {
+  "RRethy/nvim-treesitter-textsubjects",
+  after = "nvim-treesitter",
+}
 
-use { "andymass/vim-matchup", opt = true }
+use {
+  "andymass/vim-matchup",
+  after = "nvim-treesitter",
+}
 
-use { "nvim-treesitter/nvim-treesitter-refactor", opt = true }
+use {
+  "nvim-treesitter/nvim-treesitter-refactor",
+  after = "nvim-treesitter",
+}
 
-use { "p00f/nvim-ts-rainbow", opt = true }
+use {
+  "p00f/nvim-ts-rainbow",
+  after = "nvim-treesitter",
+}
 
-use { "nvim-treesitter/nvim-treesitter-textobjects", opt = true }
+use {
+  "nvim-treesitter/nvim-treesitter-textobjects",
+  after = "nvim-treesitter",
+}
 
-use { "nvim-treesitter/playground", opt = true }
+use {
+  "nvim-treesitter/playground",
+  after = "nvim-treesitter",
+}
 
-use { "windwp/nvim-ts-autotag", opt = true }
+use {
+  "windwp/nvim-ts-autotag",
+  after = "nvim-treesitter",
+}
 
 use {
   "romgrk/nvim-treesitter-context",
-  opt = true,
+  after = "nvim-treesitter",
   config = function()
     require "configs.treesitter.plugins.context"
   end,
@@ -52,7 +64,7 @@ use {
 
 use {
   "SmiteshP/nvim-gps",
-  opt = true,
+  after = "nvim-treesitter",
   config = function()
     require "configs.treesitter.plugins.gps"
   end,
@@ -60,7 +72,7 @@ use {
 
 use {
   "lewis6991/spellsitter.nvim",
-  opt = true,
+  after = "nvim-treesitter",
   config = function()
     require "configs.treesitter.plugins.spellsitter"
   end,

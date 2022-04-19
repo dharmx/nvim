@@ -2,7 +2,6 @@
 --- to decrease the code.
 -- @module utils.neovim
 -- @alias M
-
 local M = {}
 
 --- Check whether the current buffer is empty.
@@ -135,17 +134,60 @@ function M.ensure_treesitter_language_installed()
   local lang = parsers.get_buf_lang()
   if parsers.get_parser_configs()[lang] and not parsers.has_parser(lang) then
     schedule(function()
-      vim.ui.select(
-        { "Sure, I don't mind.", "Nope, fuck yourself!" },
-        { prompt = "Install tree-sitter parsers for " .. lang .. "?" },
-        function(item)
-          if item == "Sure, I don't mind." then
-            cmd("TSInstall " .. lang)
-          end
+      vim.ui.select({ "Sure, I don't mind.", "Nope, fuck yourself!" }, {
+        prompt = "Install tree-sitter parsers for " .. lang .. "?",
+      }, function(item)
+        if item == "Sure, I don't mind." then
+          cmd("TSInstall " .. lang)
         end
-      )
+      end)
     end)
   end
+end
+
+function M.shorten()
+  local format = [[!curl --silent "https://is.gd/create.php?format=simple&url=%s"]]
+  local Input = require "nui.input"
+  local event = require("nui.utils.autocmd").event
+
+  local popup_options = {
+    position = { row = 5, col = 5 },
+    highlight = "TabLine:FloatBorder",
+    size = 50,
+    border = {
+      style = "solid",
+    },
+  }
+
+  local input = Input(popup_options, {
+    prompt = "   ",
+    default_value = "Your URL...",
+    on_submit = function(value)
+      local raw = vim.split(api.nvim_exec(string.format(format, value), true), "\n")
+      if value == "Your URL..." then
+        M.notify {
+          message = "ERROR: Couldn't fetch the shortened URL!",
+          icon = " ",
+          title = "URL Shortner",
+          level = vim.log.levels.ERROR,
+        }
+      else
+        fn.setreg(v.register, raw[#raw])
+        notify {
+          message = "Saved link to system clipboard!",
+          icon = " ",
+          title = "URL Shortner",
+        }
+      end
+    end,
+  })
+
+  input:mount()
+  local kw = opt.iskeyword - "_" - "-"
+  bo.iskeyword = table.concat(kw:get(), ",")
+  vim.schedule(function() cmd "stopinsert" end)
+  input:map("n", "<esc>", input.input_props.on_close, { noremap = true })
+  input:on(event.BufLeave, input.input_props.on_close, { once = true })
 end
 
 return M

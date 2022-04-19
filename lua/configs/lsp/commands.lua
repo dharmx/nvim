@@ -1,3 +1,4 @@
+---@diagnostic disable: unused-local
 local M = {}
 
 M.setup = function(client, buffer)

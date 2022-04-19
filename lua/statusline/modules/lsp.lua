@@ -45,8 +45,9 @@ function M.lsp()
   if clients[1] then
     if config.short then
       return string.format(
-        "%s %%#StatusLineLSPDone#לּ %%#StatusLineLSPClients#%s %%#StatusLineLSPExtra#",
+        "%s %%#StatusLineLSPDone#%s %%#StatusLineLSPClients#%s %%#StatusLineLSPExtra#",
         label,
+        config.server_label,
         #clients
       )
     end

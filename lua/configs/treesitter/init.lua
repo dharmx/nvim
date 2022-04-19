@@ -13,6 +13,7 @@ local config = {
     "java",
     "latex",
     "json",
+    "python",
     "html",
     "json5",
     "markdown",

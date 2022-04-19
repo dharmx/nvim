@@ -32,14 +32,14 @@ function B.get(colors)
     },
     ["NotifyDebugBorder"] = { guifg = colors.common.base15, guibg = colors.common.base15 },
 
-    ["NotifyERRORBody"] = { guifg = colors.common.base01, guibg = colors.common.base11 },
-    ["NotifyERRORIcon"] = { guifg = colors.common.base08, guibg = colors.common.base11 },
+    ["NotifyERRORBody"] = { guibg = colors.common.base01, guifg = colors.common.base11 },
+    ["NotifyERRORIcon"] = { guifg = colors.common.base08, guibg = colors.common.base01 },
     ["NotifyERRORTitle"] = {
-      guifg = colors.common.base01,
-      guibg = colors.common.base11,
+      guibg = colors.common.base01,
+      guifg = colors.common.base11,
       gui = "bold",
     },
-    ["NotifyERRORBorder"] = { guifg = colors.common.base11, guibg = colors.common.base11 },
+    ["NotifyERRORBorder"] = { guibg = colors.common.base01, guifg = colors.common.base01 },
 
     ["NotifyTRACEBody"] = { guifg = colors.common.base01, guibg = colors.common.base10 },
     ["NotifyTRACEIcon"] = { guifg = colors.common.base14, guibg = colors.common.base10 },

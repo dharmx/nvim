@@ -22,13 +22,13 @@ local M = {
   latex_symbols = " TEX",
   nvim_lsp_document_symbol = " DSM",
   buffer = " BUF",
-  cmdline = "גּ CML",
+  cmdline = " CMD",
   gh_issues = " GHI",
   cmdline_history = " CMH",
   conventionalcommits = " CVC",
   pandoc_references = " PAN",
   digraphs = " DIG",
-  greek = "ﬦGRK",
+  greek = "GRK",
 }
 
 local N = {
