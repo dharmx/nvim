@@ -185,7 +185,9 @@ function M.shorten()
   input:mount()
   local kw = opt.iskeyword - "_" - "-"
   bo.iskeyword = table.concat(kw:get(), ",")
-  vim.schedule(function() cmd "stopinsert" end)
+  vim.schedule(function()
+    cmd "stopinsert"
+  end)
   input:map("n", "<esc>", input.input_props.on_close, { noremap = true })
   input:on(event.BufLeave, input.input_props.on_close, { once = true })
 end
