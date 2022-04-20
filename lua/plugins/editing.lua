@@ -4,6 +4,8 @@ local function use(plugin)
   table.insert(M, plugin)
 end
 
+use { "sheerun/vim-polyglot", event = "VimEnter" }
+
 use {
   "lervag/vimtex",
   ft = "tex",

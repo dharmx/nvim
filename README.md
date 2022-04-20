@@ -9,8 +9,7 @@
 
 ```txt
 ---Startuptime---
-031.291  without vim-polyglot [154 Plugs]
-050.544  with vim-polyglot [155 Plugs]
+045.291 (avg) with [157 Plugs]
 ```
 
 `vim-polyglot` will be removed once
