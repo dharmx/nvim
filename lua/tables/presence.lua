@@ -145,6 +145,9 @@ for _, item in ipairs(wrapped) do
 end
 
 M["md"] = { "Markdown", "https://raw.githubusercontent.com/smokes/vscode-discord-assets/master/markdown.png" }
-M["README.md"] = { "Markdown", "https://raw.githubusercontent.com/pagankeymaster/lambda-wallpapers/main/devicons/README.md.png" }
+M["README.md"] = {
+  "Markdown",
+  "https://raw.githubusercontent.com/pagankeymaster/lambda-wallpapers/main/devicons/README.md.png",
+}
 
 return M

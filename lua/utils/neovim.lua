@@ -145,21 +145,53 @@ function M.ensure_treesitter_language_installed()
   end
 end
 
-function M.shorten()
-  local format = [[!curl --silent "https://is.gd/create.php?format=simple&url=%s"]]
+function M.make_input(options, actions)
   local Input = require "nui.input"
-  local event = require("nui.utils.autocmd").event
+  local autocmd = require "nui.utils.autocmd"
+
+  if not options then
+    options = {}
+  end
+  if not actions then
+    actions = {}
+  end
+  local event = autocmd.event
 
   local popup_options = {
-    position = { row = 5, col = 5 },
-    highlight = "TabLine:FloatBorder",
-    size = 50,
-    border = {
-      style = "solid",
-    },
+    position = options.position or { row = 5, col = 5 },
+    highlight = options.highlight or "TabLine:FloatBorder",
+    size = options.size or 50,
+    border = options.border or { style = "solid" },
   }
 
   local input = Input(popup_options, {
+    prompt = actions.prompt or " > ",
+    default_value = actions.default_value or "Enter a value!",
+    on_submit = actions.on_submit,
+    on_close = actions.on_close,
+    on_change = actions.on_change,
+  })
+  input:mount()
+
+  local kw = vim.opt.iskeyword - "_" - "-"
+  vim.bo.iskeyword = table.concat(kw:get(), ",")
+  vim.schedule(function()
+    vim.api.nvim_command "stopinsert"
+  end)
+
+  input:map("n", "<esc>", input.input_props.on_close, { noremap = true })
+  input:on(event.BufLeave, input.input_props.on_close, { once = true })
+end
+
+function M.shorten()
+  local format = [[!curl --silent "https://is.gd/create.php?format=simple&url=%s"]]
+
+  M.make_input({
+    position = { row = 5, col = 5 },
+    highlight = "TabLine:FloatBorder",
+    size = 50,
+    border = { style = "solid" },
+  }, {
     prompt = "   ",
     default_value = "Your URL...",
     on_submit = function(value)
@@ -173,7 +205,7 @@ function M.shorten()
         }
       else
         fn.setreg(v.register, raw[#raw])
-        notify {
+        M.notify {
           message = "Saved link to system clipboard!",
           icon = " ",
           title = "URL Shortner",
@@ -181,37 +213,23 @@ function M.shorten()
       end
     end,
   })
-
-  input:mount()
-  local kw = opt.iskeyword - "_" - "-"
-  bo.iskeyword = table.concat(kw:get(), ",")
-  vim.schedule(function()
-    cmd "stopinsert"
-  end)
-  input:map("n", "<esc>", input.input_props.on_close, { noremap = true })
-  input:on(event.BufLeave, input.input_props.on_close, { once = true })
 end
 
 function M.imgur()
   local format = [[!imgur-upload "%s" | xclip]]
-  local Input = require "nui.input"
-  local event = require("nui.utils.autocmd").event
 
-  local popup_options = {
+  M.make_input({
     position = { row = 5, col = 5 },
     highlight = "TabLine:FloatBorder",
     size = 50,
     border = {
       style = "solid",
     },
-  }
-
-  local input = Input(popup_options, {
+  }, {
     prompt = "   ",
     default_value = "Image path...",
     on_submit = function(value)
       local raw = api.nvim_exec(string.format(format, fn.expand(value)), true)
-      vim.pretty_print(raw)
       if value == "Your URL..." then
         M.notify {
           message = "ERROR: Unable to upload image!",
@@ -220,7 +238,7 @@ function M.imgur()
           level = vim.log.levels.ERROR,
         }
       else
-        notify {
+        M.notify {
           message = "Saved link to system clipboard!",
           icon = " ",
           title = "Imgur",
@@ -228,15 +246,6 @@ function M.imgur()
       end
     end,
   })
-
-  input:mount()
-  local kw = opt.iskeyword - "_" - "-"
-  bo.iskeyword = table.concat(kw:get(), ",")
-  vim.schedule(function()
-    cmd "stopinsert"
-  end)
-  input:map("n", "<esc>", input.input_props.on_close, { noremap = true })
-  input:on(event.BufLeave, input.input_props.on_close, { once = true })
 end
 
 return M
