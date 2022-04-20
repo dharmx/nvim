@@ -12,11 +12,18 @@ local source_normal = sources.normal
 local source_cmdline = sources.cmdline
 local snip = require "luasnip"
 
-local function cmp_item_format(entry, vim_item)
-  vim_item.menu = kind_sources[entry.source.name]
-  vim_item.kind = " " .. kind_icons[vim_item.kind] .. " " .. vim_item.kind .. " "
-  return vim_item
-end
+local cmp_fmt = {
+  icon_only = function(entry, vim_item)
+    vim_item.menu = kind_sources[entry.source.name]
+    vim_item.kind = " " .. kind_icons[vim_item.kind] .. " "
+    return vim_item
+  end,
+  full_info = function(entry, vim_item)
+    vim_item.menu = kind_sources[entry.source.name]
+    vim_item.kind = " " .. kind_icons[vim_item.kind] .. " " .. vim_item.kind .. " "
+    return vim_item
+  end,
+}
 
 local config = {
   snippet = {
@@ -69,11 +76,13 @@ local config = {
     },
   },
   view = {
-    entries = cmp.config.disable,
+    entries = {
+      name = "custom",
+    },
   },
   formatting = {
-    fields = { "abbr", "menu", "kind" },
-    format = cmp_item_format,
+    fields = { "kind", "abbr", "menu" },
+    format = cmp_fmt.icon_only,
   },
   experimental = {
     ghost_text = true,
@@ -103,6 +112,7 @@ local cmdlines = {
   formatting = {
     format = cmp_item_format,
   },
+  entries = { name = "custom", selection_order = "near_cursor" },
 }
 
 for _, cmdtype in ipairs { ":", "/", "?", "@", "=" } do

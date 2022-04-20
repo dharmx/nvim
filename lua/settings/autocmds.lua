@@ -11,9 +11,9 @@ M["SetTelescopeBufferName"] = {
     end,
     options = {
       desc = "Sets the buffer type for telescope",
-      patterns = { "TelescopePrompt", "TelescopeResults" }
-    }
-  }
+      patterns = { "TelescopePrompt", "TelescopeResults" },
+    },
+  },
 }
 
 M["NvimTreeAutoClose"] = {

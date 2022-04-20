@@ -193,7 +193,7 @@ function M.make_input(options, actions)
   input:on(event.BufLeave, input.input_props.on_close, { once = true })
 end
 
---- 
+---
 function M.shorten()
   local format = [[!curl --silent "https://is.gd/create.php?format=simple&url=%s"]]
 

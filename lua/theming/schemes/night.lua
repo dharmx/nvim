@@ -105,6 +105,34 @@ N.syntax = {
   ["color07"] = "#d4d4d5",
 }
 
+N.kinds = {
+  ["Text"] = "#273a4e",
+  ["Method"] = "#471d1d",
+  ["Snippet"] = "#321b42",
+  ["Function"] = "#3a1818",
+  ["Constructor"] = "#3f1628",
+  ["Field"] = "#193d2b",
+  ["Variable"] = "#0c2d21",
+  ["Class"] = "#331212",
+  ["Interface"] = "#2b1e13",
+  ["Module"] = "#2b1e13",
+  ["Property"] = "#13172b",
+  ["Unit"] = "#13252b",
+  ["Value"] = "#302511",
+  ["Enum"] = "#2b1319",
+  ["Keyword"] = "#23132b",
+  ["Color"] = "#0d2614",
+  ["File"] = "#261f0b",
+  ["Reference"] = "#261f0b",
+  ["Folder"] = "#261f0b",
+  ["EnumMember"] = "#13172b",
+  ["Constant"] = "#103330",
+  ["Struct"] = "#280f0f",
+  ["Event"] = "#280f0f",
+  ["Operator"] = "#231517",
+  ["TypeParameter"] = "#2c1033",
+}
+
 return N
 
 -- vim:ft=lua

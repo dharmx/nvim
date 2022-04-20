@@ -6,13 +6,13 @@ end
 
 use { "tweekmonster/haunted.vim", cmd = "Haunt" }
 
-use { 
+use {
   "tjdevries/train.nvim",
   cmd = {
     "TrainUpDown",
     "TrainWord",
     "TrainTextObj",
-  }
+  },
 }
 
 use {
