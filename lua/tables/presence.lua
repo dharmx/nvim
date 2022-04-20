@@ -149,5 +149,13 @@ M["README.md"] = {
   "Markdown",
   "https://raw.githubusercontent.com/pagankeymaster/lambda-wallpapers/main/devicons/README.md.png",
 }
+M["[packer]"] = {
+  "PackerStatus",
+  "https://raw.githubusercontent.com/pagankeymaster/lambda-wallpapers/main/devicons/packer.png"
+}
+M["NvimTree_1"] = {
+  "NvimTree",
+  "https://raw.githubusercontent.com/pagankeymaster/lambda-wallpapers/main/devicons/nvimtree.png"
+}
 
 return M

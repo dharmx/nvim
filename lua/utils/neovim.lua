@@ -145,17 +145,26 @@ function M.ensure_treesitter_language_installed()
   end
 end
 
+--- Creates a make-shift float buffer.
+-- NOTE: Relies on nui.nvim
+-- @param options table popup options
+-- @param actions table popup functions
+-- @tparam actions.on_submit executes after <CR> is pressed
+-- @tparam actions.on_change executes if any character is typed on the buffer
+-- @tparam actions.on_close executes after the buffer is closed
+-- @tparam actions.prompt input prefix
+-- @tparam options.default_value placeholder text
+-- @tparam options.position table row and col value
+-- @tparam options.border border style
+-- @tparam options.size width and height of the buffer
+-- @tparam options.highlight highlight groups for borders and the buffer itself
 function M.make_input(options, actions)
   local Input = require "nui.input"
   local autocmd = require "nui.utils.autocmd"
-
-  if not options then
-    options = {}
-  end
-  if not actions then
-    actions = {}
-  end
   local event = autocmd.event
+
+  options = options or {}
+  actions = actions or {}
 
   local popup_options = {
     position = options.position or { row = 5, col = 5 },
@@ -179,10 +188,12 @@ function M.make_input(options, actions)
     vim.api.nvim_command "stopinsert"
   end)
 
+  -- TODO: Return the input object so that mappings can be defined separately.
   input:map("n", "<esc>", input.input_props.on_close, { noremap = true })
   input:on(event.BufLeave, input.input_props.on_close, { once = true })
 end
 
+--- 
 function M.shorten()
   local format = [[!curl --silent "https://is.gd/create.php?format=simple&url=%s"]]
 

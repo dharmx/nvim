@@ -3,6 +3,19 @@
 
 local M = {}
 
+M["SetTelescopeBufferName"] = {
+  {
+    events = { "FileType", "BufEnter", "WinEnter" },
+    command = function()
+      api.nvim_buf_set_name(0, "telescope")
+    end,
+    options = {
+      desc = "Sets the buffer type for telescope",
+      patterns = { "TelescopePrompt", "TelescopeResults" }
+    }
+  }
+}
+
 M["NvimTreeAutoClose"] = {
   {
     events = "BufEnter",

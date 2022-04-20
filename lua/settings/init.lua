@@ -39,6 +39,7 @@ for _, preset in ipairs {
   "YankFeedback",
   "NotifyOnPackerOperation",
   "ReplaceModes",
+  "SetTelescopeBufferName",
 } do
   augroup(preset, autocmds[preset])
 end
