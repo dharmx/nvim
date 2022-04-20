@@ -6,6 +6,15 @@ end
 
 use { "tweekmonster/haunted.vim", cmd = "Haunt" }
 
+use { 
+  "tjdevries/train.nvim",
+  cmd = {
+    "TrainUpDown",
+    "TrainWord",
+    "TrainTextObj",
+  }
+}
+
 use {
   "MattesGroeger/vim-bookmarks",
   setup = function()
