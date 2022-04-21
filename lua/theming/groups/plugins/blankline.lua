@@ -2,11 +2,11 @@ local B = {}
 
 function B.get(colors)
   return {
-    ["IndentBlanklineChar"] = { foreground = colors.shades.shade02 },
-    ["IndentBlanklineContextChar"] = { foreground = colors.common.base10 },
-    ["IndentBlanklineContextStart"] = { foreground = colors.common.base10 },
-    ["IndentBlanklineSpaceChar"] = { foreground = colors.shades.shades02 },
-    ["IndentBlanklineSpaceCharBlankline"] = { foreground = colors.shades.shades02 },
+    ["IndentBlanklineChar"] = { guifg = colors.shades.shade02 },
+    ["IndentBlanklineContextChar"] = { guifg = colors.common.base10 },
+    ["IndentBlanklineContextStart"] = { guifg = colors.common.base10 },
+    ["IndentBlanklineSpaceChar"] = { guifg = colors.shades.shade02 },
+    ["IndentBlanklineSpaceCharBlankline"] = { guifg = colors.shades.shade02 },
   }
 end
 

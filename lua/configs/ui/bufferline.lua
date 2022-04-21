@@ -20,12 +20,6 @@ local offsets = {
     text = "",
     padding = 0,
   },
-  {
-    filetype = "neo-tree",
-    text = "",
-    padding = 0,
-    highlight = "NeoTreeNormal",
-  },
 }
 
 local config = {
@@ -38,7 +32,7 @@ local config = {
     numbers = "none",
     buffer_close_icon = "",
     modified_icon = "",
-    close_icon = "ﳉ",
+    close_icon = " ",
     indicator = "|",
     icon_pinned = "ﲀ",
     show_close_icon = true,

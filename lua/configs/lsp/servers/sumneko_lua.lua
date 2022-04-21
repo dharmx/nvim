@@ -8,13 +8,6 @@ local schema = {
     ".stylua.toml",
   } or vim.loop.cwd,
   single_file_support = true,
-  settings = {
-    Lua = {
-      workspace = {
-        library = api.nvim_get_runtime_file("", true),
-      },
-    },
-  },
 }
 
 return schema

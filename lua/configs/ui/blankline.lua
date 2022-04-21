@@ -30,23 +30,23 @@ local presets = {}
 
 presets.shaded = function()
   hi("IndentBlanklineIndent1", {
-    foreground = colors.shades.shade06,
-    background = colors.shades.shade06,
-    decoration = "nocombine",
+    guifg = colors.shades.shade06,
+    guibg = colors.shades.shade06,
+    gui = "nocombine",
   })
   hi("IndentBlanklineIndent2", {
-    foreground = colors.common.base00,
-    background = colors.common.base00,
-    decoration = "nocombine",
+    guifg = colors.common.base00,
+    guibg = colors.common.base00,
+    gui = "nocombine",
   })
 
   hi("IndentBlanklineIndent3", {
-    background = colors.shades.shade06,
-    decoration = "nocombine",
+    guibg = colors.shades.shade06,
+    gui = "nocombine",
   })
   hi("IndentBlanklineIndent4", {
-    background = colors.common.base00,
-    decoration = "nocombine",
+    guibg = colors.common.base00,
+    gui = "nocombine",
   })
 
   config.space_char_highlight_list = {
@@ -60,13 +60,13 @@ presets.shaded = function()
 end
 
 presets.rainbow = function()
-  hi("IndentBlanklineIndent1", { foreground = colors.rainbow.pink, decoration = "nocombine" })
-  hi("IndentBlanklineIndent2", { foreground = colors.rainbow.cyan, decoration = "nocombine" })
-  hi("IndentBlanklineIndent3", { foreground = colors.rainbow.green, decoration = "nocombine" })
-  hi("IndentBlanklineIndent4", { foreground = colors.rainbow.purple, decoration = "nocombine" })
-  hi("IndentBlanklineIndent5", { foreground = colors.rainbow.cobalt, decoration = "nocombine" })
-  hi("IndentBlanklineIndent6", { foreground = colors.rainbow.yellow, decoration = "nocombine" })
-  hi("IndentBlanklineIndent7", { foreground = colors.rainbow.orange, decoration = "nocombine" })
+  hi("IndentBlanklineIndent1", { guifg = colors.rainbow.pink, gui = "nocombine" })
+  hi("IndentBlanklineIndent2", { guifg = colors.rainbow.cyan, gui = "nocombine" })
+  hi("IndentBlanklineIndent3", { guifg = colors.rainbow.green, gui = "nocombine" })
+  hi("IndentBlanklineIndent4", { guifg = colors.rainbow.purple, gui = "nocombine" })
+  hi("IndentBlanklineIndent5", { guifg = colors.rainbow.cobalt, gui = "nocombine" })
+  hi("IndentBlanklineIndent6", { guifg = colors.rainbow.yellow, gui = "nocombine" })
+  hi("IndentBlanklineIndent7", { guifg = colors.rainbow.orange, gui = "nocombine" })
 
   config.char_highlight_list = {
     "IndentBlanklineIndent1",
@@ -81,68 +81,68 @@ end
 
 presets.rshaded = function()
   hi("IndentBlanklineIndentS1", {
-    foreground = colors.rainbow.cobalt,
-    background = colors.rainbow.cobalt,
-    decoration = "nocombine",
+    guifg = colors.rainbow.cobalt,
+    guibg = colors.rainbow.cobalt,
+    gui = "nocombine",
   })
   hi("IndentBlanklineIndentS2", {
-    foreground = colors.rainbow.pink,
-    background = colors.rainbow.pink,
-    decoration = "nocombine",
+    guifg = colors.rainbow.pink,
+    guibg = colors.rainbow.pink,
+    gui = "nocombine",
   })
   hi("IndentBlanklineIndentS3", {
-    foreground = colors.rainbow.cyan,
-    background = colors.rainbow.cyan,
-    decoration = "nocombine",
+    guifg = colors.rainbow.cyan,
+    guibg = colors.rainbow.cyan,
+    gui = "nocombine",
   })
   hi("IndentBlanklineIndentS4", {
-    foreground = colors.rainbow.green,
-    background = colors.rainbow.green,
-    decoration = "nocombine",
+    guifg = colors.rainbow.green,
+    guibg = colors.rainbow.green,
+    gui = "nocombine",
   })
   hi("IndentBlanklineIndentS5", {
-    foreground = colors.rainbow.purple,
-    background = colors.rainbow.purple,
-    decoration = "nocombine",
+    guifg = colors.rainbow.purple,
+    guibg = colors.rainbow.purple,
+    gui = "nocombine",
   })
   hi("IndentBlanklineIndentS6", {
-    foreground = colors.rainbow.yellow,
-    background = colors.rainbow.yellow,
-    decoration = "nocombine",
+    guifg = colors.rainbow.yellow,
+    guibg = colors.rainbow.yellow,
+    gui = "nocombine",
   })
   hi("IndentBlanklineIndentS7", {
-    foreground = colors.rainbow.orange,
-    background = colors.rainbow.orange,
-    decoration = "nocombine",
+    guifg = colors.rainbow.orange,
+    guibg = colors.rainbow.orange,
+    gui = "nocombine",
   })
 
   hi("IndentBlanklineIndentF1", {
-    background = colors.rainbow.cobalt,
-    decoration = "nocombine",
+    guibg = colors.rainbow.cobalt,
+    gui = "nocombine",
   })
   hi("IndentBlanklineIndentF2", {
-    background = colors.rainbow.pink,
-    decoration = "nocombine",
+    guibg = colors.rainbow.pink,
+    gui = "nocombine",
   })
   hi("IndentBlanklineIndentF3", {
-    background = colors.rainbow.cyan,
-    decoration = "nocombine",
+    guibg = colors.rainbow.cyan,
+    gui = "nocombine",
   })
   hi("IndentBlanklineIndentF4", {
-    background = colors.rainbow.green,
-    decoration = "nocombine",
+    guibg = colors.rainbow.green,
+    gui = "nocombine",
   })
   hi("IndentBlanklineIndentF5", {
-    background = colors.rainbow.purple,
-    decoration = "nocombine",
+    guibg = colors.rainbow.purple,
+    gui = "nocombine",
   })
   hi("IndentBlanklineIndentF6", {
-    background = colors.rainbow.yellow,
-    decoration = "nocombine",
+    guibg = colors.rainbow.yellow,
+    gui = "nocombine",
   })
   hi("IndentBlanklineIndentF7", {
-    background = colors.rainbow.orange,
-    decoration = "nocombine",
+    guibg = colors.rainbow.orange,
+    gui = "nocombine",
   })
 
   config.space_char_highlight_list = {
@@ -166,7 +166,7 @@ presets.rshaded = function()
 end
 
 presets.normal = function()
-  hi("IndentBlanklineIndent1", { foreground = colors.shades.shade01, decoration = "nocombine" })
+  hi("IndentBlanklineIndent1", { guifg = colors.shades.shade01, gui = "nocombine" })
   config.char_highlight_list = {
     "IndentBlanklineIndent1",
   }

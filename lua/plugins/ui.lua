@@ -1,8 +1,10 @@
-local M = {}
-
-local function use(plugin)
-  table.insert(M, plugin)
-end
+use {
+  "edluffy/specs.nvim",
+  config = function()
+    require "configs.ui.specs"
+  end,
+  event = { "CursorMoved", "CursorMovedI" },
+}
 
 use {
   "toppair/reach.nvim",
@@ -14,7 +16,7 @@ use {
 
 use {
   "akinsho/bufferline.nvim",
-  branch = "dev",
+  commit = "0a83c615a8ab49718d9b4cdc60127003307829b2",
   config = function()
     require "configs.ui.bufferline"
   end,
@@ -76,7 +78,5 @@ use {
     "AlphaRedraw",
   },
 }
-
-return M
 
 -- vim:ft=lua

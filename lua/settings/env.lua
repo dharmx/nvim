@@ -5,6 +5,7 @@
 
 g = vim.g -- global editor variables
 o = vim.o -- get or set editor options
+v = vim.v -- get or set variables
 
 wo = vim.wo -- get or set window-scoped variables
 bo = vim.bo -- get or set buffer-scoped variables

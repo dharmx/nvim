@@ -1,8 +1,10 @@
-local M = {}
-
-local function use(plugin)
-  table.insert(M, plugin)
-end
+use {
+  "rktjmp/paperplanes.nvim",
+  config = function()
+    require "configs.others.paperplanes"
+  end,
+  cmd = "PP",
+}
 
 use {
   "rinx/nvim-minimap",
@@ -19,7 +21,7 @@ use {
   end,
 }
 
-use { "wakatime/vim-wakatime", event = "InsertEnter" }
+use "wakatime/vim-wakatime"
 
 use {
   "KadoBOT/nvim-spotify",
@@ -54,7 +56,5 @@ use {
   end,
   module = "scrollbar",
 }
-
-return M
 
 -- vim:ft=lua

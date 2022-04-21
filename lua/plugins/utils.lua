@@ -1,9 +1,3 @@
-local M = {}
-
-local function use(plugin)
-  table.insert(M, plugin)
-end
-
 use {
   "nvim-lua/plenary.nvim",
 }
@@ -31,7 +25,5 @@ use {
 use { "MunifTanjim/nui.nvim", module = "nui" }
 
 use { "tami5/sqlite.lua", module = "sqlite" }
-
-return M
 
 -- vim:ft=lua

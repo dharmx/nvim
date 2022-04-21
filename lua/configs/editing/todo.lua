@@ -11,18 +11,21 @@ local config = {
   keywords = {
     FIX = {
       icon = " ", -- icon used for the sign, and in search results
-      color = "error", -- can be a hex color, or a named color (see below)
       alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
       -- signs = false, -- configure signs for some keywords individually
     },
-    TODO = { icon = " ", color = "info" },
-    HACK = { icon = " ", color = "warning" },
-    WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+    TODO = { icon = " " },
+    WANTS = { icon = " ", alt = { "REQ", "DEPENDS" } },
+    HACK = { icon = " " },
+    CHORE = { icon = " " },
+    CLEAN = { icon = " ", alt = { "ORGANISE", "ORGANIZE", "CLEANED" } },
+    UPDATE = { icon = "ﮮ " },
+    WARN = { icon = " ", alt = { "WARNING", "XXX" } },
     PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-    NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
-    UPDATE = { icon = " ", color = colors.rainbow.purple, alt = { "MIGRATE" } },
-    DEMO = { icon = " ", color = colors.rainbow.cobalt, alt = { "SHOW" } },
-    IMPROVE = { icon = " ", color = colors.rainbow.cobalt, alt = { "REFINE", "ENHANCE" } },
+    NOTE = { icon = " ", alt = { "INFO" } },
+    UPDATE = { icon = " ", alt = { "MIGRATE" } },
+    DEMO = { icon = " ", alt = { "SHOW" } },
+    IMPROVE = { icon = " ", alt = { "REFINE", "ENHANCE" } },
   },
   merge_keywords = true, -- when true, custom keywords will be merged with the defaults
   -- highlighting of the line containing the todo comment

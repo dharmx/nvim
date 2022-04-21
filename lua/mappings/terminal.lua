@@ -16,6 +16,7 @@ M.mappings = {
   ["j"] = { "<CMD>lua require('utils.terminals')._JSHELL_TOGGLE()<CR>", " JShell" },
   ["g"] = { "<CMD>lua require('utils.terminals')._GROOVY_TOGGLE()<CR>", " GroovySh" },
   ["c"] = { "<CMD>lua require('utils.terminals')._BLUETOOTHCTL_TOGGLE()<CR>", " BluetoothCTL" },
+  ["m"] = { "<CMD>lua require('utils.terminals')._HILBISH_TOGGLE()<CR>", " Hilbish" },
   ["f"] = { "<CMD>ToggleTerm direction=float<CR>", " Float" },
   ["h"] = { "<CMD>ToggleTerm size=10 direction=horizontal<CR>", " Horizontal" },
   ["v"] = { "<CMD>ToggleTerm size=80 direction=vertical<CR>", " Vertical" },

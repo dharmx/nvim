@@ -27,6 +27,7 @@ M.hidden = {
   "term://*",
   "Term://*",
   "toggleterm",
+  "qf",
 }
 
 return M

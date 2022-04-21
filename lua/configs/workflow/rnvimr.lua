@@ -71,3 +71,5 @@ tnoremap <silent> <M-i> <C-\><C-n>:RnvimrResize<CR>
 tnoremap <silent> <M-l> <C-\><C-n>:RnvimrResize 1,8,9,11,5<CR>
 tnoremap <silent> <M-y> <C-\><C-n>:RnvimrResize 6<CR>
 ]]
+
+-- vim:ft=lua

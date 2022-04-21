@@ -1,9 +1,3 @@
-local M = {}
-
-local function use(plugin)
-  table.insert(M, plugin)
-end
-
 use {
   "euclidianAce/BetterLua.vim",
   event = "CmdlineEnter",
@@ -28,6 +22,16 @@ use { "milisims/nvim-luaref", event = "CmdlineEnter" }
 use { "nanotee/luv-vimdocs", event = "CmdlineEnter" }
 use { "nanotee/nvim-lua-guide", event = "CmdlineEnter" }
 
-return M
+use {
+  "shift-d/scratch.nvim",
+  wants = "telescope.nvim",
+  config = function()
+    require("telescope").load_extension "scratch"
+  end,
+  cmd = {
+    "ScratchNew",
+    "ScratchEval",
+  },
+}
 
 -- vim:ft=lua

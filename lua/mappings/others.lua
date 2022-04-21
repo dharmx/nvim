@@ -2,7 +2,7 @@ local M = {}
 
 M.mappings = {
   ["<leader>lf"] = { "<CMD>luafile %<CR>", "Load current Lua file" },
-  ["<C-n>"] = { "<CMD>Neotree filesystem toggle left<CR>", "פּ Explorer" },
+  ["<C-n>"] = { "<CMD>NvimTreeToggle<CR>", "פּ Explorer" },
   ["<C-m>"] = { "<CMD>NvimTreeFocus<CR>", "פּ Explorer focus" },
   ["<F5>"] = { "<CMD>RnvimrToggle<CR>", "פּ Ranger explorer" },
   ["<leader>u"] = {
@@ -36,16 +36,16 @@ M.mappings = {
     ["t"] = { "<CMD>lua require('reach').tabpages(require('tables.reach').tabpages)<CR>", "ﯻ Tabpages" },
   },
   ["<leader><Tab>"] = { "<CMD>lua require('reach').buffers(require('tables.reach').buffers)<CR>", "ﴵ Buffers" },
-  ["<leader>Q"] = { "<CMD>qa!<CR>", " Quit neovim" },
-  ["<leader><leader>q"] = { "<CMD>q<CR>", " Quit" },
   ["<F9>"] = { "<CMD>BookmarkToggle<CR>", "Add/Remove bookmark" },
+  ["<C-i><C-l>"] = { "<CMD>lua neovim.shorten()<CR>", "Shorten URL" },
+  ["<C-i><C-p>"] = { "<CMD>PP<CR>", "Save buffer to dpaste.com" },
 }
 
 M.options = {
   mode = "n",
   silent = true,
   noremap = true,
-  nowait = false,
+  nowait = true,
 }
 
 return M

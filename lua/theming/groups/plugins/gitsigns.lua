@@ -2,17 +2,17 @@ local G = {}
 
 function G.get(colors)
   return {
-    ["GitSignsChange"] = { foreground = colors.common.base02 },
-    ["GitSignsChangeNr"] = { foreground = colors.common.base15 },
-    ["GitSignsChangeLn"] = { foreground = colors.common.base15 },
+    ["GitSignsChange"] = { guifg = colors.common.base02 },
+    ["GitSignsChangeNr"] = { guifg = colors.common.base15 },
+    ["GitSignsChangeLn"] = { guifg = colors.common.base15 },
 
-    ["GitSignsAdd"] = { foreground = colors.common.base09 },
-    ["GitSignsAddNr"] = { foreground = colors.common.base14 },
-    ["GitSignsAddLn"] = { foreground = colors.common.base14 },
+    ["GitSignsAdd"] = { guifg = colors.common.base09 },
+    ["GitSignsAddNr"] = { guifg = colors.common.base14 },
+    ["GitSignsAddLn"] = { guifg = colors.common.base14 },
 
-    ["GitSignsDeleteLn"] = { foreground = colors.common.base11 },
-    ["GitSignsDelete"] = { foreground = colors.common.base11 },
-    ["GitSignsDeleteNr"] = { foreground = colors.common.base11 },
+    ["GitSignsDeleteLn"] = { guifg = colors.common.base11 },
+    ["GitSignsDelete"] = { guifg = colors.common.base11 },
+    ["GitSignsDeleteNr"] = { guifg = colors.common.base11 },
   }
 end
 

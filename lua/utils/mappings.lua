@@ -56,6 +56,16 @@ function M.nmap(description, trigger, target, options)
   M.map(description, trigger, target, options)
 end
 
+--- Registers a which-key map for terminal mode.
+-- @param refer to @{M.map}
+function M.tmap(description, trigger, target, options)
+  if not options then
+    options = {}
+  end
+  options.mode = "t"
+  M.map(description, trigger, target, options)
+end
+
 --- Registers a which-key map for insert mode.
 -- @param refer to @{M.map}
 -- @see help modes
@@ -92,7 +102,8 @@ function M.cmdline_override(temp)
   local cfn = require("fine-cmdline").fn
   set_map("n", ":", "<CMD>FineCmdline<CR>", { noremap = true, buffer = 0 })
 
-  -- NOTE: Apparently using this globally causes problems. So we set it to the current buffer.
+  -- NOTE: Apparently, using this globally causes problems. So we set it to the current buffer.
+  -- NOTE: Might define an auto-command later.
   if temp then
     set_map("i", "<M-s>", function()
       if fn.pumvisible() == 0 then

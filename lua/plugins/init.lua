@@ -24,30 +24,27 @@ end
 local packer = require "packer"
 packer.init(require "configs.core.packer")
 packer.reset()
+use = packer.use
 
-local loaders = require "utils.loaders"
-for _, module in ipairs {
-  "plugins.health",
-  "plugins.cmp",
-  "plugins.core",
-  "plugins.utils",
-  "plugins.lsp",
-  "plugins.treesitter",
-  "plugins.others",
-  "plugins.dev",
-  "plugins.editing",
-  "plugins.workflow",
-  "plugins.telescope",
-  "plugins.ui",
-} do
-  loaders.load_module(packer, require(module))
-end
+require "plugins.dev"
+require "plugins.editing"
+require "plugins.workflow"
+require "plugins.lsp"
+require "plugins.telescope"
+require "plugins.utils"
+require "plugins.treesitter"
+require "plugins.core"
+require "plugins.ui"
+require "plugins.others"
+require "plugins.cmp"
+require "plugins.health"
+require "plugins.local"
 
 if PACKER_BOOTSTRAP then
   packer.on_compile_done = schedule_wrap(function()
     pcall(require, "configs.core.impatient")
     notify {
-      message = "Run :LspInstall and :TSStart or, press\n<leader>l and <leader>T",
+      message = "Run :LspInstall and :TSStart",
       icon = " ",
       title = "KrakenVim",
     }

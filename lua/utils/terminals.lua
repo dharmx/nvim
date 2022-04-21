@@ -156,15 +156,26 @@ function T._FISH_TOGGLE()
   fish:toggle()
 end
 
+--- Uses toggleterm to open a HILBISH shell instance within neovim.
+function T._HILBISH_TOGGLE()
+  local hilbish = Terminal:new {
+    cmd = "hilbish",
+    hidden = true,
+    direction = "horizontal",
+    size = 40,
+  }
+  hilbish:toggle()
+end
+
 --- Uses toggleterm to open a POSIX shell instance within neovim.
 function T._POSIX_TOGGLE()
-  local fish = Terminal:new {
+  local sh = Terminal:new {
     cmd = "sh",
     hidden = true,
     direction = "horizontal",
     size = 17,
   }
-  fish:toggle()
+  sh:toggle()
 end
 
 --- Uses toggleterm to open a Groovy REPL instance within neovim.

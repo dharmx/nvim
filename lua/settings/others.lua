@@ -16,3 +16,5 @@ function M.grey_out_strikethrough()
 end
 
 return M
+
+-- vim:ft=lua

@@ -2,8 +2,8 @@ local H = {}
 
 function H.get(colors)
   return {
-    ["SymbolsOutlineConnector"] = { foreground = colors.shades.shade02 },
-    ["FocusedSymbol"] = { background = colors.common.base13, foreground = colors.common.base01 },
+    ["SymbolsOutlineConnector"] = { guifg = colors.shades.shade02 },
+    ["FocusedSymbol"] = { guibg = colors.common.base13, guifg = colors.common.base01 },
   }
 end
 

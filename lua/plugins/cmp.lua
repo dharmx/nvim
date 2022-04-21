@@ -1,9 +1,3 @@
-local M = {}
-
-local function use(plugin)
-  table.insert(M, plugin)
-end
-
 use {
   "hrsh7th/nvim-cmp",
   config = function()
@@ -119,8 +113,6 @@ use { "ray-x/cmp-treesitter", after = { "nvim-treesitter", "nvim-cmp" } }
 
 use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }
 
-use { "mtoohey31/cmp-fish", after = "nvim-cmp" }
-
 use { "kdheepak/cmp-latex-symbols", wants = "nvim-cmp", ft = "tex" }
 
 use { "saadparwaiz1/cmp_luasnip", after = { "LuaSnip", "nvim-cmp" } }
@@ -138,7 +130,5 @@ use { "davidsierradz/cmp-conventionalcommits", after = "cmp-buffer" }
 use { "max397574/cmp-greek", after = "nvim-cmp" }
 
 use { "jc-doyle/cmp-pandoc-references", ft = "markdown", wants = "nvim-cmp" }
-
-return M
 
 -- vim:ft=lua

@@ -8,9 +8,7 @@ local config = {
   auto_update = true,
   neovim_image_text = "Keymaster's Forgery",
   main_image = "file",
-  client_id = "793271441293967371",
-  log_level = nil,
-  debounce_timeout = 10,
+  debounce_timeout = 30,
   enable_line_number = true,
   blacklist = {},
   buttons = true,
@@ -20,7 +18,8 @@ local config = {
   plugin_manager_text = "Repairing Forgery",
   reading_text = "Mastering %s",
   workspace_text = "Conjuring %s",
-  line_number_text = "Spell Line %s out of %s",
+  line_number_text = "Verse %s out of %s",
+  file_assets = require "tables.presence",
 }
 
 presence:setup(config)

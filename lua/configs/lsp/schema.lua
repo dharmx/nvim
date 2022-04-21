@@ -13,3 +13,5 @@ local config = {
 }
 
 nlsp.setup(config)
+
+-- vim:ft=lua

@@ -1,24 +1,20 @@
 local N = {}
 
 N.common = {
-  -- Polar Night
   ["base00"] = "#101317",
   ["base01"] = "#23242A",
   ["base02"] = "#27282d",
   ["base03"] = "#38393f",
 
-  -- Snowy Storm
   ["base04"] = "#dddddd",
   ["base05"] = "#d4d4d5",
   ["base06"] = "#ffffff",
 
-  -- Frost
   ["base07"] = "#54ced6",
   ["base08"] = "#70c0ba",
   ["base09"] = "#7ab0df",
   ["base10"] = "#b77ee0",
 
-  -- Aurora
   ["base11"] = "#f87070",
   ["base12"] = "#36c692",
   ["base13"] = "#ffe59e",
@@ -35,7 +31,7 @@ N.shades = {
   ["shade05"] = "#212123",
   ["shade06"] = "#1a1a1c",
   ["shade07"] = "#19191c",
-  ["shade08"] = "#1a1a1c",
+  ["shade08"] = "#1a1a1F",
   ["shade09"] = "#151519",
   ["shade10"] = "#141416",
   ["shade11"] = "#121214",
@@ -107,6 +103,34 @@ N.syntax = {
   ["color18"] = "#949494",
   ["color14"] = "#828282",
   ["color07"] = "#d4d4d5",
+}
+
+N.kinds = {
+  ["Text"] = "#273a4e",
+  ["Method"] = "#471d1d",
+  ["Snippet"] = "#321b42",
+  ["Function"] = "#3a1818",
+  ["Constructor"] = "#3f1628",
+  ["Field"] = "#193d2b",
+  ["Variable"] = "#0c2d21",
+  ["Class"] = "#331212",
+  ["Interface"] = "#2b1e13",
+  ["Module"] = "#2b1e13",
+  ["Property"] = "#13172b",
+  ["Unit"] = "#13252b",
+  ["Value"] = "#302511",
+  ["Enum"] = "#2b1319",
+  ["Keyword"] = "#23132b",
+  ["Color"] = "#0d2614",
+  ["File"] = "#261f0b",
+  ["Reference"] = "#261f0b",
+  ["Folder"] = "#261f0b",
+  ["EnumMember"] = "#13172b",
+  ["Constant"] = "#103330",
+  ["Struct"] = "#280f0f",
+  ["Event"] = "#280f0f",
+  ["Operator"] = "#231517",
+  ["TypeParameter"] = "#2c1033",
 }
 
 return N

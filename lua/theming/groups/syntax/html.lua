@@ -2,12 +2,12 @@ local S = {}
 
 function S.get(colors)
   return {
-    htmlLink = { foreground = colors.syntax.color15, decoration = "underline" },
-    htmlH1 = { foreground = colors.syntax.color09, decoration = "bold" },
-    htmlH2 = { foreground = colors.syntax.color17, decoration = "bold" },
-    htmlH3 = { foreground = colors.syntax.color13, decoration = "bold" },
-    htmlH4 = { foreground = colors.syntax.color06, decoration = "bold" },
-    htmlH5 = { foreground = colors.syntax.color00, decoration = "bold" },
+    htmlLink = { guifg = colors.syntax.color15, gui = "underline" },
+    htmlH1 = { guifg = colors.syntax.color09, gui = "bold" },
+    htmlH2 = { guifg = colors.syntax.color17, gui = "bold" },
+    htmlH3 = { guifg = colors.syntax.color13, gui = "bold" },
+    htmlH4 = { guifg = colors.syntax.color06, gui = "bold" },
+    htmlH5 = { guifg = colors.syntax.color00, gui = "bold" },
   }
 end
 

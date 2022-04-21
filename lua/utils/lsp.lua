@@ -1,5 +1,6 @@
 --- LSP utility functions
 --- @module utils.lsp
+
 local M = {}
 
 --- Toggles autosave mode for the current buffer.
@@ -35,7 +36,7 @@ function M.autosave()
               "WinEnter",
             },
             command = lsb.formatting_sync, -- @see help formatting_sync
-            options = { buffer = api.nvim_get_current_buf() },
+            options = { buffer = 0 },
           },
         })
         notify {

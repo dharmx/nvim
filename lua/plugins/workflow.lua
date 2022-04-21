@@ -1,10 +1,13 @@
-local M = {}
-
-local function use(plugin)
-  table.insert(M, plugin)
-end
-
 use { "tweekmonster/haunted.vim", cmd = "Haunt" }
+
+use {
+  "tjdevries/train.nvim",
+  cmd = {
+    "TrainUpDown",
+    "TrainWord",
+    "TrainTextObj",
+  },
+}
 
 use {
   "MattesGroeger/vim-bookmarks",
@@ -31,24 +34,11 @@ use {
 }
 
 use {
-  "nvim-neo-tree/neo-tree.nvim",
-  branch = "v2.x",
-  wants = {
-    "plenary.nvim",
-    "nvim-web-devicons",
-    "nui.nvim",
-    "nvim-window-picker",
-  },
-  cmd = "Neotree",
-}
-
-use {
-  "s1n7ax/nvim-window-picker",
-  tag = "1.*",
+  "kyazdani42/nvim-tree.lua",
+  cmd = { "NvimTreeToggle", "NvimTreeRefresh", "NvimTreeFocus" },
   config = function()
-    require "configs.workflow.picker"
+    require "configs.workflow.nvimtree"
   end,
-  opt = true,
 }
 
 use {
@@ -103,7 +93,9 @@ use {
   end,
 }
 
-use { "ggandor/lightspeed.nvim", cmd = "LightSpeedInit" }
+use { "ggandor/lightspeed.nvim", opt = true }
+
+use { "ggandor/leap.nvim", opt = true }
 
 use {
   "bennypowers/nvim-regexplainer",
@@ -114,9 +106,5 @@ use {
 }
 
 use { "winston0410/cmd-parser.nvim", event = "CmdlineEnter" }
-
-use { "nvim-pack/nvim-spectre", opt = true }
-
-return M
 
 -- vim:ft=lua

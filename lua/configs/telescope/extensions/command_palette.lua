@@ -48,6 +48,10 @@ local editor = {
   { "search highlighting (F12)", ":set hlsearch!" },
 }
 
-return { file, help, editor }
+return {
+  file,
+  help,
+  editor,
+}
 
 -- vim:ft=lua

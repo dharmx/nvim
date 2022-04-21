@@ -2,7 +2,6 @@
 --- to decrease the code.
 -- @module utils.neovim
 -- @alias M
-
 local M = {}
 
 --- Check whether the current buffer is empty.
@@ -59,20 +58,14 @@ end
 -- nvim_add_user_command
 -- @see help nvim_add_user_command
 function M.alias(alias, command, options)
-  if not options then
-    -- don't let options be nil
-    options = {}
-  end
+  options = options or {}
   api.nvim_add_user_command(alias, command, options)
 end
 
 --- Same as M.alias but, for buffers
 -- @see M.alias
 function M.buf_alias(buffer, alias, command, options)
-  if not options then
-    -- don't let options be nil
-    options = {}
-  end
+  options = options or {}
   api.nvim_buf_add_user_command(buffer, alias, command, options)
 end
 
@@ -135,17 +128,129 @@ function M.ensure_treesitter_language_installed()
   local lang = parsers.get_buf_lang()
   if parsers.get_parser_configs()[lang] and not parsers.has_parser(lang) then
     schedule(function()
-      vim.ui.select(
-        { "Sure, I don't mind.", "Nope, fuck yourself!" },
-        { prompt = "Install tree-sitter parsers for " .. lang .. "?" },
-        function(item)
-          if item == "Sure, I don't mind." then
-            cmd("TSInstall " .. lang)
-          end
+      vim.ui.select({ "Sure, I don't mind.", "Nope, fuck yourself!" }, {
+        prompt = "Install tree-sitter parsers for " .. lang .. "?",
+      }, function(item)
+        if item == "Sure, I don't mind." then
+          cmd("TSInstall " .. lang)
         end
-      )
+      end)
     end)
   end
+end
+
+--- Creates a make-shift float buffer.
+-- NOTE: Relies on nui.nvim
+-- @param options table popup options
+-- @param actions table popup functions
+-- @tparam actions.on_submit executes after <CR> is pressed
+-- @tparam actions.on_change executes if any character is typed on the buffer
+-- @tparam actions.on_close executes after the buffer is closed
+-- @tparam actions.prompt input prefix
+-- @tparam options.default_value placeholder text
+-- @tparam options.position table row and col value
+-- @tparam options.border border style
+-- @tparam options.size width and height of the buffer
+-- @tparam options.highlight highlight groups for borders and the buffer itself
+function M.make_input(options, actions)
+  local Input = require "nui.input"
+  local autocmd = require "nui.utils.autocmd"
+  local event = autocmd.event
+
+  options = options or {}
+  actions = actions or {}
+
+  local popup_options = {
+    position = options.position or { row = 5, col = 5 },
+    highlight = options.highlight or "TabLine:FloatBorder",
+    size = options.size or 50,
+    border = options.border or { style = "solid" },
+  }
+
+  local input = Input(popup_options, {
+    prompt = actions.prompt or " > ",
+    default_value = actions.default_value or "Enter a value!",
+    on_submit = actions.on_submit,
+    on_close = actions.on_close,
+    on_change = actions.on_change,
+  })
+  input:mount()
+
+  local kw = vim.opt.iskeyword - "_" - "-"
+  vim.bo.iskeyword = table.concat(kw:get(), ",")
+  vim.schedule(function()
+    vim.api.nvim_command "stopinsert"
+  end)
+
+  -- TODO: Return the input object so that mappings can be defined separately.
+  input:map("n", "<esc>", input.input_props.on_close, { noremap = true })
+  input:on(event.BufLeave, input.input_props.on_close, { once = true })
+end
+
+---
+function M.shorten()
+  local format = [[!curl --silent "https://is.gd/create.php?format=simple&url=%s"]]
+
+  M.make_input({
+    position = { row = 5, col = 5 },
+    highlight = "TabLine:FloatBorder",
+    size = 50,
+    border = { style = "solid" },
+  }, {
+    prompt = "   ",
+    default_value = "Your URL...",
+    on_submit = function(value)
+      local raw = vim.split(api.nvim_exec(string.format(format, value), true), "\n")
+      if value == "Your URL..." then
+        M.notify {
+          message = "ERROR: Couldn't fetch the shortened URL!",
+          icon = " ",
+          title = "URL Shortner",
+          level = vim.log.levels.ERROR,
+        }
+      else
+        fn.setreg(v.register, raw[#raw])
+        M.notify {
+          message = "Saved link to system clipboard!",
+          icon = " ",
+          title = "URL Shortner",
+        }
+      end
+    end,
+  })
+end
+
+function M.imgur()
+  local format = [[!imgur-upload "%s" | xclip]]
+
+  M.make_input({
+    position = { row = 5, col = 5 },
+    highlight = "TabLine:FloatBorder",
+    size = 50,
+    border = {
+      style = "solid",
+    },
+  }, {
+    prompt = "   ",
+    default_value = "Image path...",
+    on_submit = function(value)
+      local raw = api.nvim_exec(string.format(format, fn.expand(value)), true)
+      if value == "Your URL..." then
+        M.notify {
+          message = "ERROR: Unable to upload image!",
+          icon = " ",
+          title = "Imgur",
+          level = vim.log.levels.ERROR,
+        }
+      else
+        M.notify {
+          message = "Saved link to system clipboard!",
+          icon = " ",
+          title = "Imgur",
+        }
+      end
+    end,
+  })
 end
 
 return M

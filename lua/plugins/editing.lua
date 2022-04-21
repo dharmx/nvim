@@ -1,10 +1,14 @@
-local M = {}
+use { "sheerun/vim-polyglot", event = "VimEnter" }
 
-local function use(plugin)
-  table.insert(M, plugin)
-end
+use {
+  "lervag/vimtex",
+  ft = "tex",
+}
 
-use "sheerun/vim-polyglot"
+use {
+  "xuhdev/vim-latex-live-preview",
+  ft = "tex",
+}
 
 use {
   "aspeddro/pandoc.nvim",
@@ -20,20 +24,6 @@ use {
   config = function()
     require "configs.editing.pandoc"
   end,
-}
-
-use {
-  "lukas-reineke/headlines.nvim",
-  config = function()
-    require "configs.editing.headlines"
-  end,
-  ft = {
-    "markdown",
-    "rmd",
-    "vimwiki",
-    "org",
-    "yaml",
-  },
 }
 
 use { "Fymyte/rasi.vim", ft = "rasi" }
@@ -164,7 +154,5 @@ use {
 }
 
 use { "jbyuki/nabla.nvim", after = "orgmode" }
-
-return M
 
 -- vim:ft=lua

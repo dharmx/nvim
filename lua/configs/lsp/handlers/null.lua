@@ -28,14 +28,10 @@ local sources = {
       return utils.root_has_file { "stylua.toml", ".stylua.toml" }
     end,
   },
-  fmtng.lua_format,
   fmtng.latexindent,
   fmtng.markdownlint,
   fmtng.nginx_beautifier,
-  fmtng.nixfmt,
   fmtng.qmlformat,
-  fmtng.rustfmt,
-  fmtng.rustywind,
   fmtng.shellharden,
   fmtng.shfmt,
   fmtng.sqlformat,
@@ -51,7 +47,6 @@ local sources = {
   cacts.proselint,
 
   hover.dictionary,
-  cmplt.luasnip,
   diags.standardjs,
   diags.chktex,
   diags.stylelint,
@@ -60,7 +55,6 @@ local sources = {
   diags.vint,
   diags.write_good,
   diags.yamllint,
-  diags.pylint.with { method = null_ls.methods.DIAGNOSTICS_ON_SAVE },
 }
 
 local helpers = require "null-ls.helpers"
@@ -95,7 +89,7 @@ local markdownlint = {
 
 null_ls.register(markdownlint)
 
-local config = { sources = sources }
+local config = { sources = sources, capabilities = require "configs.lsp.capabilities" }
 
 null_ls.setup(config)
 
