@@ -1,9 +1,3 @@
-local M = {}
-
-local function use(plugin)
-  table.insert(M, plugin)
-end
-
 use { "tweekmonster/haunted.vim", cmd = "Haunt" }
 
 use {
@@ -112,7 +106,5 @@ use {
 }
 
 use { "winston0410/cmd-parser.nvim", event = "CmdlineEnter" }
-
-return M
 
 -- vim:ft=lua

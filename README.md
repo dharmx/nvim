@@ -9,7 +9,7 @@
 
 ```txt
 ---Startuptime---
-045.291 (avg) with [157 Plugs]
+035.291 (avg) with [157 Plugs]
 ```
 
 `vim-polyglot` will be removed once

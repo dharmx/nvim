@@ -157,5 +157,13 @@ M["NvimTree_1"] = {
   "NvimTree",
   "https://raw.githubusercontent.com/pagankeymaster/lambda-wallpapers/main/devicons/nvimtree.png",
 }
+M["Python"] = {
+  "Python",
+  "https://raw.githubusercontent.com/pagankeymaster/lambda-wallpapers/main/devicons/python.png",
+}
+M["py"] = {
+  "Python",
+  "https://raw.githubusercontent.com/smokes/vscode-discord-assets/master/python.png",
+}
 
 return M

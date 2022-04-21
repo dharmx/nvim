@@ -1,9 +1,3 @@
-local M = {}
-
-local function use(plugin)
-  table.insert(M, plugin)
-end
-
 use {
   "jose-elias-alvarez/null-ls.nvim",
   wants = "plenary.nvim",
@@ -55,7 +49,5 @@ use {
 }
 
 use { "tamago324/nlsp-settings.nvim", module = "nlspsettings" }
-
-return M
 
 -- vim:ft=lua

@@ -1,9 +1,3 @@
-local M = {}
-
-local function use(plugin)
-  table.insert(M, plugin)
-end
-
 use {
   "nvim-telescope/telescope.nvim",
   cmd = "Telescope",
@@ -13,6 +7,24 @@ use {
     require("telescope").load_extension "notify"
   end,
   module = "telescope",
+}
+
+use {
+  "aloussase/telescope-gradle.nvim",
+  config = function()
+    require("telescope").load_extension "gradle"
+  end,
+  wants = "telescope.nvim",
+  ft = "groovy",
+}
+
+use {
+  "aloussase/telescope-maven-search",
+  config = function()
+    require("telescope").load_extension "maven_search"
+  end,
+  wants = "telescope.nvim",
+  ft = "xml",
 }
 
 use {
@@ -215,7 +227,5 @@ use {
   "lalitmee/browse.nvim",
   after = "telescope.nvim",
 }
-
-return M
 
 -- vim:ft=lua

@@ -1,9 +1,3 @@
-local M = {}
-
-local function use(plugin)
-  table.insert(M, plugin)
-end
-
 use {
   "sunjon/shade.nvim",
   config = function()
@@ -37,7 +31,5 @@ use {
     "TZFocus",
   },
 }
-
-return M
 
 -- vim:ft=lua

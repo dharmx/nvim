@@ -1,9 +1,3 @@
-local M = {}
-
-local function use(plugin)
-  table.insert(M, plugin)
-end
-
 use {
   "euclidianAce/BetterLua.vim",
   event = "CmdlineEnter",
@@ -39,7 +33,5 @@ use {
     "ScratchEval",
   },
 }
-
-return M
 
 -- vim:ft=lua

@@ -8,12 +8,15 @@ local config = {
   max_jobs = 30,
   disable_commands = false,
   depth = 1,
-  clone_timeout = 60,
+  clone_timeout = 30,
   default_url_format = "https://github.com/%s.git",
   auto_reload_compiled = true,
   luarocks = { python_cmd = "python" },
   log = { level = "warn" },
-  profile = { enable = true, threshold = 1 },
+  profile = {
+    enable = true,
+    threshold = 1,
+  },
 }
 
 config.display = {

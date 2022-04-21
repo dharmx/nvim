@@ -1,9 +1,3 @@
-local M = {}
-
-local function use(plugin)
-  table.insert(M, plugin)
-end
-
 use {
   "rktjmp/paperplanes.nvim",
   config = function()
@@ -62,7 +56,5 @@ use {
   end,
   module = "scrollbar",
 }
-
-return M
 
 -- vim:ft=lua

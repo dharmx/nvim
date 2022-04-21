@@ -1,9 +1,3 @@
-local M = {}
-
-local function use(plugin)
-  table.insert(M, plugin)
-end
-
 use {
   "wbthomason/packer.nvim",
   wants = "plenary.nvim",
@@ -14,7 +8,5 @@ use {
 }
 
 use { "lewis6991/impatient.nvim" }
-
-return M
 
 -- vim:ft=lua

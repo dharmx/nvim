@@ -1,9 +1,3 @@
-local M = {}
-
-local function use(plugin)
-  table.insert(M, plugin)
-end
-
 use { "sheerun/vim-polyglot", event = "VimEnter" }
 
 use {
@@ -160,7 +154,5 @@ use {
 }
 
 use { "jbyuki/nabla.nvim", after = "orgmode" }
-
-return M
 
 -- vim:ft=lua

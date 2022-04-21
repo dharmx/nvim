@@ -1,33 +1,33 @@
 --- Autocommand configuration list.
 -- @module settings.autocmds
 
-local M = {}
+autocmd("BufEnter", "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif", {
+  nested = true,
+  desc = "Auto-close NvimTree on opening a file",
+})
 
-M["SetTelescopeBufferName"] = {
+-- IMPROVE: Filter out plugins/init.lua as recompiling on its change is redundant.
+autocmd(
+  "BufWritePost",
+  schedule_wrap(function()
+    require("packer").compile()
+  end),
   {
-    events = { "FileType", "BufEnter", "WinEnter" },
-    command = function()
-      api.nvim_buf_set_name(0, "telescope")
-    end,
-    options = {
-      desc = "Sets the buffer type for telescope",
-      patterns = { "TelescopePrompt", "TelescopeResults" },
-    },
-  },
-}
+    patterns = "*/lua/plugins/*.lua",
+    desc = "Automatically re-compile plugin specifications on changing the matched pattern files.",
+  }
+)
 
-M["NvimTreeAutoClose"] = {
-  {
-    events = "BufEnter",
-    command = "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif",
-    options = {
-      nested = true,
-      desc = "Auto-close NvimTree on opening a file",
-    },
-  },
-}
+autocmd("TextYankPost", function()
+  vim.highlight.on_yank {
+    higroup = "YankFeed",
+    on_macro = true,
+    on_visual = true,
+    timeout = 150,
+  }
+end, { desc = "Provide a visual color feedback on yanking." })
 
-M["ReplaceModes"] = {
+augroup("ReplaceModes", {
   {
     events = { "BufEnter", "FileType" },
     command = function()
@@ -48,38 +48,9 @@ M["ReplaceModes"] = {
       patterns = "search",
     },
   },
-}
+})
 
--- IMPROVE: Filter out plugins/init.lua as recompiling on its change is redundant.
-M["AutoPlugSpecCompileOnChange"] = {
-  {
-    events = "BufWritePost",
-    command = schedule_wrap(function()
-      require("packer").compile()
-    end),
-    options = {
-      patterns = "*/lua/plugins/*.lua",
-      desc = "Automatically re-compile plugin specifications on changing the matched pattern files.",
-    },
-  },
-}
-
-M["YankFeedback"] = {
-  {
-    events = "TextYankPost",
-    command = function()
-      vim.highlight.on_yank {
-        higroup = "YankFeed",
-        on_macro = true,
-        on_visual = true,
-        timeout = 150,
-      }
-    end,
-    options = { desc = "Provide a visual color feedback on yanking." },
-  },
-}
-
-M["NativeAdjustments"] = {
+augroup("NativeAdjustments", {
   {
     events = { "TermOpen", "BufReadCmd" },
     command = function()
@@ -99,68 +70,9 @@ M["NativeAdjustments"] = {
     end,
     options = { desc = "Removes comment continuations from every file." },
   },
-}
+})
 
-M["ListCharsFeedback"] = {
-  {
-    events = "InsertEnter",
-    command = function()
-      opt_local.listchars = {
-        tab = " ",
-        trail = "˽",
-        space = "·",
-        eol = "↴",
-      }
-    end,
-    options = { desc = "Show escape characters on Insert Mode." },
-  },
-  {
-    events = "InsertLeave",
-    command = function()
-      opt_local.listchars = ""
-    end,
-    options = { desc = "Hide escape characters on leaving the Insert Mode." },
-  },
-}
-
--- NOTE: This may be removed in the near future.
-M["RelativeFeedback"] = {
-  {
-    events = "InsertEnter",
-    command = function()
-      opt_local.relativenumber = true
-    end,
-    options = { desc = "Show relative number column in Insert Mode." },
-  },
-  {
-    events = "InsertLeave",
-    command = function()
-      opt_local.relativenumber = false
-    end,
-    options = {
-      desc = "Hide relative number column when leaving Insert Mode.",
-    },
-  },
-}
-
-M["NumberFeedback"] = {
-  {
-    events = "InsertEnter",
-    command = function()
-      opt_local.number = true
-    end,
-    options = { desc = "Show number column on Insert Mode." },
-  },
-  {
-    events = "InsertLeave",
-    command = function()
-      opt_local.number = false
-    end,
-    options = { desc = "Hide number column when leaving Insert Mode." },
-  },
-}
-
-M["CursorLineFeedback"] = {
+augroup("CursorLineFeedback", {
   {
     events = "InsertEnter",
     command = function()
@@ -175,35 +87,9 @@ M["CursorLineFeedback"] = {
     end,
     options = { desc = "Show cursorline in Insert Mode." },
   },
-}
+})
 
--- NOTE: Enable this only if you want a scrollbar on extreme right.
-M["ScrollbarInit"] = {
-  {
-    events = {
-      "WinEnter",
-      "FocusGained",
-      "WinScrolled",
-      "VimResized",
-      "QuitPre",
-    },
-    command = function()
-      require("scrollbar").show()
-    end,
-    options = { desc = "Show scrollbar when foucsed and when scrolled." },
-  },
-  {
-    events = { "WinLeave", "BufLeave", "BufWinLeave", "FocusLost" },
-    command = function()
-      require("scrollbar").clear()
-    end,
-    options = {
-      desc = "Remove scrollbar when not foucsed or, leaving the current window/buffer.",
-    },
-  },
-}
-
-M["NotifyOnPackerOperation"] = {
+augroup("NotifyOnPackerOperation", {
   {
     events = "User",
     command = function()
@@ -234,46 +120,9 @@ M["NotifyOnPackerOperation"] = {
       },
     },
   },
-}
+})
 
-M["PersistentFileEditPosition"] = {
-  {
-    events = "BufReadPost",
-    command = [[if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]],
-    options = {
-      desc = "Start editing from the point we left off.",
-    },
-  },
-}
-
-M["NvimINCSearchCursorline"] = {
-  {
-    events = "CmdlineEnter",
-    command = function()
-      opt_local.cursorline = true
-      opt_local.cursorcolumn = true
-      opt_local.hlsearch = true
-    end,
-    options = {
-      patterns = "/,\\?",
-      desc = "Add column-cursorline and cursorline values and search value",
-    },
-  },
-  {
-    events = "CmdlineLeave",
-    command = function()
-      opt_local.cursorline = false
-      opt_local.cursorcolumn = false
-      opt_local.hlsearch = false
-    end,
-    options = {
-      desc = "Remove column-cursorline and cursorline values and search value",
-      patterns = "/,\\?",
-    },
-  },
-}
-
-M["PersistentMarkdownFolds"] = {
+augroup("PersistentMarkdownFolds", {
   {
     events = "BufWinLeave",
     command = "mkview",
@@ -290,8 +139,85 @@ M["PersistentMarkdownFolds"] = {
       desc = "Load the view silently when a new window is opened!",
     },
   },
-}
+})
 
-return M
+-- augroup("NvimINCSearchCursorline", {
+--   {
+--     events = "CmdlineEnter",
+--     command = function()
+--       opt_local.cursorline = true
+--       opt_local.cursorcolumn = true
+--       opt_local.hlsearch = true
+--     end,
+--     options = {
+--       patterns = "/,\\?",
+--       desc = "Add column-cursorline and cursorline values and search value",
+--     },
+--   },
+--   {
+--     events = "CmdlineLeave",
+--     command = function()
+--       opt_local.cursorline = false
+--       opt_local.cursorcolumn = false
+--       opt_local.hlsearch = false
+--     end,
+--     options = {
+--       desc = "Remove column-cursorline and cursorline values and search value",
+--       patterns = "/,\\?",
+--     },
+--   },
+-- })
+
+-- autocmd("BufReadPost", [[if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]], {
+--   desc = "Start editing from the point we left off.",
+-- })
+
+-- augroup("ListCharsFeedback", {
+--   {
+--     events = "InsertEnter",
+--     command = function()
+--       opt_local.listchars = {
+--         tab = " ",
+--         trail = "˽",
+--         space = "·",
+--         eol = "↴",
+--       }
+--     end,
+--     options = { desc = "Show escape characters on Insert Mode." },
+--   },
+--   {
+--     events = "InsertLeave",
+--     command = function()
+--       opt_local.listchars = ""
+--     end,
+--     options = { desc = "Hide escape characters on leaving the Insert Mode." },
+--   },
+-- })
+
+-- NOTE: Enable this only if you want a scrollbar on extreme right.
+-- augroup("ScrollbarInit", {
+--   {
+--     events = {
+--       "WinEnter",
+--       "FocusGained",
+--       "WinScrolled",
+--       "VimResized",
+--       "QuitPre",
+--     },
+--     command = function()
+--       require("scrollbar").show()
+--     end,
+--     options = { desc = "Show scrollbar when foucsed and when scrolled." },
+--   },
+--   {
+--     events = { "WinLeave", "BufLeave", "BufWinLeave", "FocusLost" },
+--     command = function()
+--       require("scrollbar").clear()
+--     end,
+--     options = {
+--       desc = "Remove scrollbar when not foucsed or, leaving the current window/buffer.",
+--     },
+--   },
+-- })
 
 -- vim:ft=lua

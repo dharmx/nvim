@@ -1,9 +1,3 @@
-local M = {}
-
-local function use(plugin)
-  table.insert(M, plugin)
-end
-
 use {
   "hrsh7th/nvim-cmp",
   config = function()
@@ -136,7 +130,5 @@ use { "davidsierradz/cmp-conventionalcommits", after = "cmp-buffer" }
 use { "max397574/cmp-greek", after = "nvim-cmp" }
 
 use { "jc-doyle/cmp-pandoc-references", ft = "markdown", wants = "nvim-cmp" }
-
-return M
 
 -- vim:ft=lua

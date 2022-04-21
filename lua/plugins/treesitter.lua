@@ -1,9 +1,3 @@
-local M = {}
-
-local function use(plugin)
-  table.insert(M, plugin)
-end
-
 use { "danymat/neogen", after = "nvim-treesitter" }
 
 use {
@@ -77,7 +71,5 @@ use {
     require "configs.treesitter.plugins.spellsitter"
   end,
 }
-
-return M
 
 -- vim:ft=lua

@@ -1,9 +1,3 @@
-local M = {}
-
-local function use(plugin)
-  table.insert(M, plugin)
-end
-
 use {
   "edluffy/specs.nvim",
   config = function()
@@ -84,7 +78,5 @@ use {
     "AlphaRedraw",
   },
 }
-
-return M
 
 -- vim:ft=lua
