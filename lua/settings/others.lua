@@ -1,5 +1,4 @@
 --- Set up other global stuff.
--- @module settings.others
 
 local M = {}
 

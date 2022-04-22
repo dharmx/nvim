@@ -1,5 +1,4 @@
 --- STL config file
---- @module statusline.config
 
 local M = {}
 

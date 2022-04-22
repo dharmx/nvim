@@ -1,7 +1,8 @@
 use {
   "nvim-telescope/telescope.nvim",
   cmd = "Telescope",
-  wants = "plenary.nvim",
+  commit = "d88094fbfd84b297178252230f6faf0e7d2f7650",
+  wants = { "plenary.nvim", "nvim-treesitter" },
   config = function()
     require "configs.telescope"
     require("telescope").load_extension "notify"
@@ -49,15 +50,6 @@ use {
     require("telescope").load_extension "ui-select"
   end,
   after = "telescope.nvim",
-}
-
-use {
-  "nvim-telescope/telescope-arecibo.nvim",
-  rocks = { "openssl", "lua-http-parser" },
-  after = "telescope.nvim",
-  config = function()
-    require("telescope").load_extension "arecibo"
-  end,
 }
 
 use {
@@ -204,6 +196,14 @@ use {
   after = "telescope.nvim",
   config = function()
     require("telescope").load_extension "packer"
+  end,
+}
+
+use {
+  "nvim-telescope/telescope-bibtex.nvim",
+  after = "telescope.nvim",
+  config = function()
+    require("telescope").load_extension "bibtex"
   end,
 }
 

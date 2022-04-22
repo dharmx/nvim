@@ -1,5 +1,4 @@
 --- Global scoped user command list.
--- @module settings.commands
 
 alias("ScratchTele", function()
   if not packer_plugins["scratch.nvim"].loaded then

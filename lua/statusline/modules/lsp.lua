@@ -1,6 +1,3 @@
---- STL config file
---- @module statusline.config
-
 local M = {}
 
 local config = require("statusline.config").lsp

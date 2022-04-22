@@ -11,14 +11,6 @@ function M.get_active_scheme()
 end
 
 --- Applies highlight to a group. Creates the group if it doesn't exists.
---- If a value doesn't exist within colors table then it is set to NONE.
--- @param group string name of the highlight group
--- @param colors table table of color categories such as guifg, guibg, guisp and gui
--- @tparam colors.foreground sets the foreground for the highlight.
--- @tparam colors.background sets the background for the highlight.
--- @tparam colors.decoration sets the decorations such as bold, italic for the highlight.
--- @tparam colors.foreground sets the foreground for the highlight.
--- @tparam colors.special sets the color of underline for the highlight.
 -- @see help highlight-{guifg,guibg,gui,guisp,link,args,groups}
 function M.highlight(group, colors)
   if colors.link then
@@ -30,66 +22,39 @@ function M.highlight(group, colors)
 end
 
 --- Main function for setting up the highlights.
--- @param options table additional options
--- @tparam options.disable table disabled plugin highlight groups
--- @todo Needs to be shortened and improved.
-function M.apply(options)
-  local enums = require "tables.theming"
-  local base = enums.base -- contains native highlights
-  local loaded_theme = M.get_active_scheme()
+function M.apply(colors)
+  require("theming.groups.custom").setup(colors)
+  require("theming.groups.statusline").setup(colors)
+  require("theming.groups.terminal").setup(colors)
+  require("theming.groups.ui").setup(colors)
 
-  -- plugin highlights
-  local theme = enums.supports.theme -- ui related highlights
-  local syntax = enums.supports.syntax -- syntax related highlights
+  require("theming.groups.syntax.general").setup(colors)
+  require("theming.groups.syntax.html").setup(colors)
+  require("theming.groups.syntax.lua").setup(colors)
+  require("theming.groups.syntax.markdown").setup(colors)
 
-  -- Helper for setting a highlight set. Like setting a chunk of
-  -- highlight groups.
-  -- @param group table same as the highlight function.
-  local function set(groups)
-    for group, highlights in pairs(groups) do
-      M.highlight(group, highlights)
-    end
-  end
-
-  -- Helper for checking if a plugin is excluded.
-  -- @param plugin string name of the plugin that needs to be excluded.
-  -- @return boolean true if in excluded list false, otherwise.
-  local function disabled(plugin)
-    if not options.disable then
-      return false
-    end
-
-    for _, item in ipairs(options.disable) do
-      if plugin == item then
-        return true
-      end
-    end
-
-    return false
-  end
-
-  -- set ui plugin highlights
-  for name, config in pairs(theme) do
-    if not disabled(name) then
-      set(config(loaded_theme))
-    end
-  end
-
-  -- set syntax plugin highlights
-  for name, config in pairs(syntax) do
-    if not disabled(name) then
-      set(config(loaded_theme))
-    end
-  end
-
-  base.terminal(loaded_theme) -- set terminal highlights
-  set(base.ui(loaded_theme)) -- set native ui highlights
-  set(base.statusline(loaded_theme)) -- set statusline highlights
-  set(base.custom(loaded_theme)) -- set custom highlights
-  set(base.lua(loaded_theme)) -- set lua syntax highlights
-  set(base.html(loaded_theme)) -- set html syntax highlights
-  set(base.general(loaded_theme)) -- set native syntax highlights
-  set(base.markdown(loaded_theme)) -- set md syntax highlights
+  require("theming.groups.plugins.alpha").setup(colors)
+  require("theming.groups.plugins.blankline").setup(colors)
+  require("theming.groups.plugins.bookmarks").setup(colors)
+  require("theming.groups.plugins.bufferline").setup(colors)
+  require("theming.groups.plugins.cmp").setup(colors)
+  require("theming.groups.plugins.diff").setup(colors)
+  require("theming.groups.plugins.todo").setup(colors)
+  require("theming.groups.plugins.trouble").setup(colors)
+  require("theming.groups.plugins.whichkey").setup(colors)
+  require("theming.groups.plugins.treesitter").setup(colors)
+  require("theming.groups.plugins.telescope").setup(colors)
+  require("theming.groups.plugins.rnvimr").setup(colors)
+  require("theming.groups.plugins.rainbow").setup(colors)
+  require("theming.groups.plugins.packer").setup(colors)
+  require("theming.groups.plugins.outline").setup(colors)
+  require("theming.groups.plugins.nvimtree").setup(colors)
+  require("theming.groups.plugins.notify").setup(colors)
+  require("theming.groups.plugins.neogit").setup(colors)
+  require("theming.groups.plugins.lsp").setup(colors)
+  require("theming.groups.plugins.lightbulb").setup(colors)
+  require("theming.groups.plugins.hop").setup(colors)
+  require("theming.groups.plugins.gitsigns").setup(colors)
 end
 
 function M.prepare_plugin(plugin)

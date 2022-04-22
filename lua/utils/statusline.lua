@@ -17,8 +17,8 @@ end
 --- then it would be truncated. Turns 0 Hints 0 Warns 2 Errors -> 2 Errors.
 -- @param diag number the severity category.
 -- @return boolean true if the category is 0, false otherwise.
-function M.zero_diag_filter(diag)
-  return diag ~= 0
+function M.zero_diag_filter(diagnostics)
+  return diagnostics ~= 0
 end
 
 --- Highlights and re-highlights dynamic colors
@@ -30,6 +30,7 @@ function M.set_colors(current)
     hi("StatusLineFilename", {
       guifg = colors.modes[current],
       guibg = colors.common.base01,
+      gui = "italic",
     })
     hi("StatusLineFilenameReverse", {
       guifg = colors.common.base01,

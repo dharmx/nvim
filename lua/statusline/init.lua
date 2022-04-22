@@ -1,4 +1,6 @@
-local hidden = require("tables.blacklisted").hidden
+---
+
+local hidden = require("tables.blacklisted").hidden --
 local set_colors = require("utils.statusline").set_colors
 local config = require "statusline.config"
 local modules = {}

@@ -57,7 +57,7 @@ local config = {
     ["zsh"] = false,
     ["perl"] = false,
     ["ruby"] = {
-      separator = "▌",
+      separator = ":",
       icons = {
         ["function-name"] = " ",
         ["tag-name"] = "ﮉ ",
@@ -68,7 +68,7 @@ local config = {
   },
   separator = "  ",
   depth = 7,
-  depth_limit_indicator = "..",
+  depth_limit_indicator = "…",
 }
 
 gps.setup(config)

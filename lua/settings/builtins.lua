@@ -1,5 +1,4 @@
 --- Do not load some builtin plugins for increasing performance.
--- @module settings.builtins
 
 -- disabled native vim plugins in order to make startup time faster.
 for builtin, status in pairs {

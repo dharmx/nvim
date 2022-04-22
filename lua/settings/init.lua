@@ -1,5 +1,4 @@
-require "settings.env" -- convenient vim API utils that are global-scoped
-require "settings.utils" -- user-made utils that are frequently used
+require "settings.aliases" -- user-made utils that are frequently used
 require "settings.builtins" -- disable redundant vim-plugs
 require "settings.abbrevs" -- abbreviations
 require "settings.options" -- vim options

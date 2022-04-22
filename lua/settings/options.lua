@@ -1,5 +1,4 @@
 --- Set up vim opts.
--- @module settings.optionals
 
 opt.termguicolors = true -- Enables 24-bit RGB color in the TUI.  Uses "gui" :highlight
 opt.laststatus = 3 -- enables the global statusline

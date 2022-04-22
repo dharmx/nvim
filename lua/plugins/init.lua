@@ -38,7 +38,6 @@ require "plugins.ui"
 require "plugins.others"
 require "plugins.cmp"
 require "plugins.health"
-require "plugins.local"
 
 if PACKER_BOOTSTRAP then
   packer.on_compile_done = schedule_wrap(function()

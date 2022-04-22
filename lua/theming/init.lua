@@ -5,8 +5,8 @@ function I.setup(options)
   if fn.exists "syntax_on" then
     cmd "syntax reset"
   end
-  theming.apply(options)
   colors = theming.get_active_scheme()
+  theming.apply(colors)
 end
 
 return I

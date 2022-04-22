@@ -1,5 +1,4 @@
 --- Set up vim global variables.
--- @module settings.globals
 
 g.mapleader = " " -- trigger for mappings
 g.python3_host_prog = "python3" -- command to start python3 (executable, not directory)
