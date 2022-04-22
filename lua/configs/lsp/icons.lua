@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function()
+function M.setup(client, buffer)
   local signdef = require("utils.lsp").lsp_signdef
   signdef("DiagnosticSignError", "", "LspDiagnosticsSignError")
   signdef("DiagnosticSignWarn", "", "LspDiagnosticsSignWarning")

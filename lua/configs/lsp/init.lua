@@ -32,7 +32,7 @@ local function on_attach(client, buffer)
   require("mappings.lsp").setup(client, buffer)
   require("configs.lsp.autocmds").setup(client, buffer)
   require("configs.lsp.commands").setup(client, buffer)
-  require("configs.lsp.icons").setup()
+  require("configs.lsp.icons").setup(client, buffer)
 
   client.resolved_capabilities.document_formatting = false
   client.resolved_capabilities.document_range_formatting = false
