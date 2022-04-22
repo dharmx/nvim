@@ -108,7 +108,7 @@ local function configure_servers()
 end
 
 local function configure_diagnostics()
-  diagnostic.config {
+  diag.config {
     virtual_text = { prefix = " ", source = "always" },
     signs = true,
     underline = true,

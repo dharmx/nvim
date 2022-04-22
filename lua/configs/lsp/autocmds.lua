@@ -17,7 +17,7 @@ M.setup = function(client, buffer)
 
   autocmd("CursorHold", require("nvim-lightbulb").update_lightbulb, { buffer = buffer })
   autocmd("CursorHold", function()
-    diagnostic.open_float(nil, { focus = false, scope = "cursor", border = "solid" })
+    diag.open_float(nil, { focus = false, scope = "cursor", border = "solid" })
   end)
 
   -- autocmd("CursorHold", function() diag.open_float(nil, { focus = false, border = "solid" }) end)

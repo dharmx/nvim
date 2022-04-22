@@ -30,7 +30,7 @@ rmv_map = vim.keymap.del -- delete a keymap
 
 schedule = vim.schedule -- defers callback until the Nvim API is safe to call
 schedule_wrap = vim.schedule_wrap -- schedules to be invoked soon by the main event-loop
-diagnostic = vim.diagnostic -- framework for displaying errors or warnings from external tools
+diag = vim.diagnostic -- framework for displaying errors or warnings from external tools
 stdpath = fn.stdpath -- Returns standard-path locations of various default files and directories
 
 cmd = api.nvim_command --  executes an ex-command
