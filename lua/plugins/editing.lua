@@ -1,3 +1,6 @@
+--- NOTE: This file contains plugins that assists general code editing.
+--- NOTE: Such as syntax highlighting, build helpers, URL highlights, previews, etc.
+
 use { "sheerun/vim-polyglot", event = "VimEnter" }
 
 use {

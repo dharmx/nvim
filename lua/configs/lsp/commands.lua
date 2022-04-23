@@ -1,7 +1,7 @@
----@diagnostic disable: unused-local
 local M = {}
+---@diagnostic disable: unused-local
 
-M.setup = function(client, buffer)
+function M.setup(client, buffer)
   buf_alias(buffer, "Format", schedule_wrap(lsb.formatting_sync))
   buf_alias(buffer, "FormatSeq", schedule_wrap(lsb.formatting_seq_sync))
 

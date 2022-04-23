@@ -1,3 +1,5 @@
+--- NOTE: Contains plugins that this config is fully dependent on.
+
 use {
   "wbthomason/packer.nvim",
   wants = "plenary.nvim",

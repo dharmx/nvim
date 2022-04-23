@@ -1,3 +1,6 @@
+--- NOTE: Bling plugins. These are mostly useless. Adds components like
+--- NOTE: urlshortner, minimaps, discord-rpc, scrollbar, etc.
+
 use {
   "rktjmp/paperplanes.nvim",
   config = function()

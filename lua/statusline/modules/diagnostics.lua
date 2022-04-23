@@ -1,15 +1,15 @@
 local M = {}
 
 local config = require("statusline.config").diagnostics
-local get = diagnostic.get
+local get = diag.get
 local clients = lsp.get_active_clients
 
 function M.diagnostics()
   local diags = {
-    ERROR = #get(0, { severity = diagnostic.severity.ERROR }),
-    WARN = #get(0, { severity = diagnostic.severity.WARN }),
-    INFO = #get(0, { severity = diagnostic.severity.INFO }),
-    HINT = #get(0, { severity = diagnostic.severity.HINT }),
+    ERROR = #get(0, { severity = diag.severity.ERROR }),
+    WARN = #get(0, { severity = diag.severity.WARN }),
+    INFO = #get(0, { severity = diag.severity.INFO }),
+    HINT = #get(0, { severity = diag.severity.HINT }),
   }
 
   local icons = config.severities

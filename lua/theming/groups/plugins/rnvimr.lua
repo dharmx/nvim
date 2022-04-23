@@ -1,11 +1,7 @@
-local R = {}
-
-function R.get(colors)
-  return {
-    ["RnvimrNormal"] = { link = "NormalFloat" },
-  }
-end
-
-return R
+return {
+  setup = function(colors)
+    hi("RnvimrNormal", { link = "NormalFloat" })
+  end,
+}
 
 -- vim:ft=lua

@@ -1,3 +1,5 @@
+--- NOTE: shows the type of source in the nvim-cmp floating menu.
+
 local M = {
   nvim_lua = " LUA",
   nvim_lsp = " LSP",

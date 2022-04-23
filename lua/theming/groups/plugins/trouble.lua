@@ -1,11 +1,7 @@
-local T = {}
-
-function T.get(colors)
-  return {
-    ["TroubleNormal"] = { guibg = colors.shades.shade08 },
-  }
-end
-
-return T
+return {
+  setup = function(colors)
+    hi("TroubleNormal", { guibg = colors.shades.shade08 })
+  end,
+}
 
 -- vim:ft=lua

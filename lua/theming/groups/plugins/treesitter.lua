@@ -1,11 +1,8 @@
-local W = {}
-
-function W.get(colors)
-  return {
-    ["TreesitterContext"] = { guibg = colors.shades.shade03, blend = 8 },
-  }
-end
-
-return W
+return {
+  setup = function(colors)
+    hi("TreesitterContext", { guibg = colors.shades.shade03, blend = 8 })
+    hi("TSMethod", { link = "Method" })
+  end,
+}
 
 -- vim:ft=lua

@@ -1,7 +1,6 @@
 --- Wraps frequently used neovim API functions. And passes some default options
 --- to decrease the code.
--- @module utils.neovim
--- @alias M
+
 local M = {}
 
 --- Check whether the current buffer is empty.
@@ -187,7 +186,8 @@ function M.make_input(options, actions)
   input:on(event.BufLeave, input.input_props.on_close, { once = true })
 end
 
----
+--- URL shortner
+-- this depends on nui.nvim
 function M.shorten()
   local format = [[!curl --silent "https://is.gd/create.php?format=simple&url=%s"]]
 
@@ -220,6 +220,8 @@ function M.shorten()
   })
 end
 
+--- Upload an image to imgur via url.
+-- depends on nui.nvim
 function M.imgur()
   local format = [[!imgur-upload "%s" | xclip]]
 

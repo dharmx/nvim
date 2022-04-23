@@ -1,15 +1,11 @@
-local B = {}
-
-function B.get(colors)
-  return {
-    ["IndentBlanklineChar"] = { guifg = colors.shades.shade02 },
-    ["IndentBlanklineContextChar"] = { guifg = colors.common.base10 },
-    ["IndentBlanklineContextStart"] = { guifg = colors.common.base10 },
-    ["IndentBlanklineSpaceChar"] = { guifg = colors.shades.shade02 },
-    ["IndentBlanklineSpaceCharBlankline"] = { guifg = colors.shades.shade02 },
-  }
-end
-
-return B
+return {
+  setup = function(colors)
+    hi("IndentBlanklineChar", { guifg = colors.shades.shade02 })
+    hi("IndentBlanklineContextChar", { guifg = colors.common.base10 })
+    hi("IndentBlanklineContextStart", { guifg = colors.common.base10 })
+    hi("IndentBlanklineSpaceChar", { guifg = colors.shades.shade02 })
+    hi("IndentBlanklineSpaceCharBlankline", { guifg = colors.shades.shade02 })
+  end,
+}
 
 -- vim:ft=lua

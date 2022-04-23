@@ -10,9 +10,9 @@ for _, extension in ipairs {
   "project",
   "file_browser",
   "fzf",
-  "arecibo",
   "ui-select",
   "history",
+  "bibtex",
 } do
   extensions[extension] = require("configs.telescope.extensions." .. extension)
 end

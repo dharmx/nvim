@@ -32,7 +32,7 @@ local function on_attach(client, buffer)
   require("mappings.lsp").setup(client, buffer)
   require("configs.lsp.autocmds").setup(client, buffer)
   require("configs.lsp.commands").setup(client, buffer)
-  require("configs.lsp.icons").setup()
+  require("configs.lsp.icons").setup(client, buffer)
 
   client.resolved_capabilities.document_formatting = false
   client.resolved_capabilities.document_range_formatting = false
@@ -68,12 +68,14 @@ end
 local function ensure_servers()
   for name, _ in pairs(servers) do
     local found, server = installer.get_server(name)
+    ---@diagnostic disable-next-line: undefined-field
     if found and not server:is_installed() then
       notify {
         message = "Installing " .. name,
         icon = "",
         title = "nvim-lsp-installer",
       }
+      ---@diagnostic disable-next-line: undefined-field
       server:install()
     end
   end
@@ -93,10 +95,12 @@ local function configure_servers()
     }, servers[server.name] or {})
 
     if server.name ~= "jdtls" then
+      ---@diagnostic disable-next-line: undefined-field
       server:setup(server_config)
     else
       if bo.filetype == "java" then
         local _, jdtls = require("nvim-lsp-installer.servers").get_server "jdtls"
+        ---@diagnostic disable-next-line: undefined-field
         server_config.cmd = jdtls:get_default_options().cmd
         local workspace = os.getenv "HOME" .. "/.workspaces/" .. fn.fnamemodify(fn.getcwd(), ":p:h:t")
         server_config.cmd[#server_config.cmd] = workspace
@@ -108,7 +112,7 @@ local function configure_servers()
 end
 
 local function configure_diagnostics()
-  diagnostic.config {
+  diag.config {
     virtual_text = { prefix = " ", source = "always" },
     signs = true,
     underline = true,

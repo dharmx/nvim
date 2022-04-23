@@ -7,16 +7,12 @@ autocmd("BufEnter", "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr(
 })
 
 -- IMPROVE: Filter out plugins/init.lua as recompiling on its change is redundant.
-autocmd(
-  "BufWritePost",
-  schedule_wrap(function()
-    require("packer").compile()
-  end),
-  {
-    patterns = "*/lua/plugins/*.lua",
-    desc = "Automatically re-compile plugin specifications on changing the matched pattern files.",
-  }
-)
+autocmd("BufWritePost", function()
+  require("packer").compile()
+end, {
+  patterns = "*/lua/plugins/*.lua",
+  desc = "Automatically re-compile plugin specifications on changing the matched pattern files.",
+})
 
 autocmd("TextYankPost", function()
   vim.highlight.on_yank {
@@ -72,23 +68,6 @@ augroup("NativeAdjustments", {
   },
 })
 
-augroup("CursorLineFeedback", {
-  {
-    events = "InsertEnter",
-    command = function()
-      opt_local.cursorline = true
-    end,
-    options = { desc = "Show cursorline in Insert Mode." },
-  },
-  {
-    events = "InsertLeave",
-    command = function()
-      opt_local.cursorline = false
-    end,
-    options = { desc = "Show cursorline in Insert Mode." },
-  },
-})
-
 augroup("NotifyOnPackerOperation", {
   {
     events = "User",
@@ -122,24 +101,24 @@ augroup("NotifyOnPackerOperation", {
   },
 })
 
-augroup("PersistentMarkdownFolds", {
-  {
-    events = "BufWinLeave",
-    command = "mkview",
-    options = {
-      patterns = "*.md",
-      desc = "Adds persistent window folding to the makrdown files.",
-    },
-  },
-  {
-    events = "BufWinEnter",
-    command = "silent! loadview",
-    options = {
-      patterns = "*.md",
-      desc = "Load the view silently when a new window is opened!",
-    },
-  },
-})
+-- augroup("PersistentMarkdownFolds", {
+--   {
+--     events = "BufWinLeave",
+--     command = "mkview",
+--     options = {
+--       patterns = "*.md",
+--       desc = "Adds persistent window folding to the makrdown files.",
+--     },
+--   },
+--   {
+--     events = "BufWinEnter",
+--     command = "silent! loadview",
+--     options = {
+--       patterns = "*.md",
+--       desc = "Load the view silently when a new window is opened!",
+--     },
+--   },
+-- })
 
 -- augroup("NvimINCSearchCursorline", {
 --   {
@@ -217,6 +196,23 @@ augroup("PersistentMarkdownFolds", {
 --     options = {
 --       desc = "Remove scrollbar when not foucsed or, leaving the current window/buffer.",
 --     },
+--   },
+-- })
+
+-- augroup("CursorLineFeedback", {
+--   {
+--     events = "InsertEnter",
+--     command = function()
+--       opt_local.cursorline = true
+--     end,
+--     options = { desc = "Show cursorline in Insert Mode." },
+--   },
+--   {
+--     events = "InsertLeave",
+--     command = function()
+--       opt_local.cursorline = false
+--     end,
+--     options = { desc = "Show cursorline in Insert Mode." },
 --   },
 -- })
 

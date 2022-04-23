@@ -1,3 +1,5 @@
+--- NOTE: Contains plugins that may assist neovim plugin development.
+
 use {
   "euclidianAce/BetterLua.vim",
   event = "CmdlineEnter",

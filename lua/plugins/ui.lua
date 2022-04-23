@@ -1,3 +1,5 @@
+--- NOTE: Adds and polishes neovim UI components. Such as tabline, indent lines, etc.
+
 use {
   "edluffy/specs.nvim",
   config = function()

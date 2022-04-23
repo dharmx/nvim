@@ -1,3 +1,5 @@
+--- NOTE: Focuses on functions such as brightness, productivity boosts. etc
+
 use {
   "sunjon/shade.nvim",
   config = function()

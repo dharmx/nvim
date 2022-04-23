@@ -1,3 +1,7 @@
+--- NOTE: nvim-cmp source configururation table.
+-- @see :help max_item_count, :help keyword_length and others to see what they do.
+
+-- sources used in buffer window
 local M = {
   { name = "zsh", max_item_count = 5 },
   { name = "fish", max_item_count = 5 },
@@ -90,6 +94,7 @@ local M = {
   },
 }
 
+-- sources used in cmdline
 local N = {
   { name = "cmdline", keyword_length = 2, priority = 3 },
   {

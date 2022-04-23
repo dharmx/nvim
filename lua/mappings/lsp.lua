@@ -15,10 +15,10 @@ M.setup = function(client, buffer)
     },
     ["d"] = {
       ["name"] = " Diagnostics",
-      ["e"] = { "<CMD>lua diagnostic.open_float()<CR>", "ﭧ Diagnostics" },
-      ["["] = { "<CMD>lua diagnostic.goto_prev()<CR>", "ﭧ Previous errors" },
-      ["]"] = { "<CMD>lua diagnostic.goto_next()<CR>", "ﭧ Next errors" },
-      ["q"] = { "<CMD>lua diagnostic.setloclist()<CR>", " Set loclist" },
+      ["e"] = { "<CMD>lua diag.open_float()<CR>", "ﭧ Diagnostics" },
+      ["["] = { "<CMD>lua diag.goto_prev()<CR>", "ﭧ Previous errors" },
+      ["]"] = { "<CMD>lua diag.goto_next()<CR>", "ﭧ Next errors" },
+      ["q"] = { "<CMD>lua diag.setloclist()<CR>", " Set loclist" },
     },
     ["g"] = {
       ["name"] = " Definitions",

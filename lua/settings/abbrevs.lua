@@ -1,5 +1,4 @@
 --- Command mode command abbreviations.
--- @module settings.abbrevs
 
 -- converts :Wq, :WQ, :wQ, etc to :wq
 abbrev("W", "((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))", true)

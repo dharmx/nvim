@@ -1,3 +1,6 @@
+--- NOTE: LSP related plugins. Contains subcategories such as lsp server managers,
+--- NOTE: other LSP server that aren't yet added to nvim-lspconfig and some LSP ui components
+
 use {
   "jose-elias-alvarez/null-ls.nvim",
   wants = "plenary.nvim",

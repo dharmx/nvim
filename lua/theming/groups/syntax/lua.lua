@@ -1,30 +1,26 @@
-local S = {}
-
-function S.get(colors)
-  return {
-    luaBuiltIn = { link = "Keyword" },
-    luaDocTag = { guifg = colors.syntax.color15, gui = "bold" },
-    luaFuncTable = { guifg = colors.syntax.color06, gui = "bold" },
-    luaCond = { link = "Conditional" },
-    luaIn = { link = "Keyword" },
-    luaCond = { link = "Conditional" },
-    luaParen = { link = "Delimiter" },
-    luaParens = { link = "Delimiter" },
-    luaBraces = { link = "Delimiter" },
-    luaBracket = { link = "Delimiter" },
-    luaBrackets = { link = "Delimiter" },
-    luaIfThen = { link = "Conditional" },
-    luaElse = { link = "Conditional" },
-    luaSpecialTable = { guifg = colors.syntax.color10, gui = "bold" },
-    luaFuncParen = { guifg = colors.syntax.color09 },
-    luaFuncParens = { guifg = colors.syntax.color09 },
-    luaFuncArgName = { guifg = colors.syntax.color19 },
-    luaTable = { guifg = colors.syntax.color00 },
-    luaSpecial = { guifg = colors.syntax.color05, gui = "bold" },
-    luaEllipsis = { guifg = colors.syntax.color01, gui = "bold" },
-  }
-end
-
-return S
+return {
+  setup = function(colors)
+    hi("luaBuiltIn", { link = "Keyword" })
+    hi("luaDocTag", { guifg = colors.syntax.color15, gui = "bold" })
+    hi("luaFuncTable", { guifg = colors.syntax.color06, gui = "bold" })
+    hi("luaCond", { link = "Conditional" })
+    hi("luaIn", { link = "Keyword" })
+    hi("luaCond", { link = "Conditional" })
+    hi("luaParen", { link = "Delimiter" })
+    hi("luaParens", { link = "Delimiter" })
+    hi("luaBraces", { link = "Delimiter" })
+    hi("luaBracket", { link = "Delimiter" })
+    hi("luaBrackets", { link = "Delimiter" })
+    hi("luaIfThen", { link = "Conditional" })
+    hi("luaElse", { link = "Conditional" })
+    hi("luaSpecialTable", { guifg = colors.syntax.color10, gui = "bold,italic" })
+    hi("luaFuncParen", { guifg = colors.syntax.color09 })
+    hi("luaFuncParens", { guifg = colors.syntax.color09 })
+    hi("luaFuncArgName", { guifg = colors.syntax.color19 })
+    hi("luaTable", { guifg = colors.syntax.color00 })
+    hi("luaSpecial", { guifg = colors.syntax.color05, gui = "bold" })
+    hi("luaEllipsis", { guifg = colors.syntax.color01, gui = "bold" })
+  end,
+}
 
 -- vim:ft=lua

@@ -1,5 +1,4 @@
 --- LSP utility functions
---- @module utils.lsp
 
 local M = {}
 

@@ -1,68 +1,47 @@
-local L = {}
-
-function L.get(colors)
-  return {
-    ["LspDiagnosticsDefaultError"] = { guifg = colors.syntax.color17 },
-    ["LspDiagnosticsSignError"] = { guifg = colors.syntax.color17 },
-    ["LspDiagnosticsFloatingError"] = { guifg = colors.syntax.color17 },
-    ["LspDiagnosticsVirtualTextError"] = { guifg = colors.syntax.color17 },
-    ["LspDiagnosticsUnderlineError"] = {
-      gui = "undercurl",
-      guisp = colors.syntax.color17,
-    },
-    ["LspDiagnosticsDefaultWarning"] = { guifg = colors.syntax.color08 },
-    ["LspDiagnosticsSignWarning"] = { guifg = colors.syntax.color08 },
-    ["LspDiagnosticsFloatingWarning"] = { guifg = colors.syntax.color08 },
-    ["LspDiagnosticsVirtualTextWarning"] = { guifg = colors.syntax.color08 },
-    ["LspDiagnosticsUnderlineWarning"] = {
-      gui = "undercurl",
-      guisp = colors.syntax.color08,
-    },
-    ["LspDiagnosticsDefaultInformation"] = { guifg = colors.syntax.color13 },
-    ["LspDiagnosticsSignInformation"] = { guifg = colors.syntax.color13 },
-    ["LspDiagnosticsFloatingInformation"] = { guifg = colors.syntax.color13 },
-    ["LspDiagnosticsVirtualTextInformation"] = { guifg = colors.syntax.color13 },
-    ["LspDiagnosticsUnderlineInformation"] = {
-      gui = "undercurl",
-      guisp = colors.syntax.color13,
-    },
-    ["LspDiagnosticsDefaultHint"] = { guifg = colors.syntax.color09 },
-    ["LspDiagnosticsSignHint"] = { guifg = colors.syntax.color09 },
-    ["LspDiagnosticsFloatingHint"] = { guifg = colors.syntax.color09 },
-    ["LspDiagnosticsVirtualTextHint"] = { guifg = colors.syntax.color09 },
-    ["LspDiagnosticsUnderlineHint"] = {
-      gui = "undercurl",
-      guisp = colors.syntax.color09,
-    },
-
-    ["LspReferenceText"] = { guifg = colors.syntax.color12, guibg = colors.common.base01 },
-    ["LspReferenceRead"] = { guifg = colors.syntax.color16, guibg = colors.common.base01 },
-    ["LspReferenceWrite"] = { guifg = colors.syntax.color06, guibg = colors.common.base01 },
-
-    ["DiagnosticError"] = { link = "LspDiagnosticsDefaultError" },
-    ["DiagnosticWarn"] = { link = "LspDiagnosticsDefaultWarning" },
-    ["DiagnosticInfo"] = { link = "LspDiagnosticsDefaultInformation" },
-    ["DiagnosticHint"] = { link = "LspDiagnosticsDefaultHint" },
-    ["DiagnosticVirtualTextWarn"] = { link = "LspDiagnosticsVirtualTextWarning" },
-    ["DiagnosticUnderlineWarn"] = { link = "LspDiagnosticsUnderlineWarning" },
-    ["DiagnosticFloatingWarn"] = { link = "LspDiagnosticsFloatingWarning" },
-    ["DiagnosticSignWarn"] = { link = "LspDiagnosticsSignWarning" },
-    ["DiagnosticVirtualTextError"] = { link = "LspDiagnosticsVirtualTextError" },
-    ["DiagnosticUnderlineError"] = { link = "LspDiagnosticsUnderlineError" },
-    ["DiagnosticFloatingError"] = { link = "LspDiagnosticsFloatingError" },
-    ["DiagnosticSignError"] = { link = "LspDiagnosticsSignError" },
-    ["DiagnosticVirtualTextInfo"] = {
-      link = "LspDiagnosticsVirtualTextInformation",
-    },
-    ["DiagnosticUnderlineInfo"] = { link = "LspDiagnosticsUnderlineInformation" },
-    ["DiagnosticFloatingInfo"] = { link = "LspDiagnosticsFloatingInformation" },
-    ["DiagnosticSignInfo"] = { link = "LspDiagnosticsSignInformation" },
-    ["DiagnosticVirtualTextHint"] = { link = "LspDiagnosticsVirtualTextHint" },
-    ["DiagnosticUnderlineHint"] = { link = "LspDiagnosticsUnderlineHint" },
-    ["DiagnosticFloatingHint"] = { link = "LspDiagnosticsFloatingHint" },
-  }
-end
-
-return L
+return {
+  setup = function(colors)
+    hi("LspDiagnosticsSignError", { guifg = colors.syntax.color17 })
+    hi("LspDiagnosticsFloatingError", { guifg = colors.syntax.color17 })
+    hi("LspDiagnosticsVirtualTextError", { guifg = colors.syntax.color17 })
+    hi("LspDiagnosticsUnderlineError", { gui = "undercurl,italic,bold", guisp = colors.syntax.color17 })
+    hi("LspDiagnosticsDefaultWarning", { guifg = colors.syntax.color08 })
+    hi("LspDiagnosticsSignWarning", { guifg = colors.syntax.color08 })
+    hi("LspDiagnosticsFloatingWarning", { guifg = colors.syntax.color08, gui = "italic,bold" })
+    hi("LspDiagnosticsVirtualTextWarning", { guifg = colors.syntax.color08, gui = "italic,bold" })
+    hi("LspDiagnosticsUnderlineWarning", { gui = "undercurl", guisp = colors.syntax.color08 })
+    hi("LspDiagnosticsDefaultInformation", { guifg = colors.syntax.color13, gui = "italic" })
+    hi("LspDiagnosticsSignInformation", { guifg = colors.syntax.color13 })
+    hi("LspDiagnosticsFloatingInformation", { guifg = colors.syntax.color13 })
+    hi("LspDiagnosticsVirtualTextInformation", { guifg = colors.syntax.color13, gui = "italic" })
+    hi("LspDiagnosticsUnderlineInformation", { gui = "undercurl", guisp = colors.syntax.color13 })
+    hi("LspDiagnosticsDefaultHint", { guifg = colors.syntax.color09 })
+    hi("LspDiagnosticsSignHint", { guifg = colors.syntax.color09 })
+    hi("LspDiagnosticsFloatingHint", { guifg = colors.syntax.color09 })
+    hi("LspDiagnosticsVirtualTextHint", { guifg = colors.syntax.color09 })
+    hi("LspDiagnosticsUnderlineHint", { gui = "undercurl", guisp = colors.syntax.color09 })
+    hi("LspReferenceText", { guifg = colors.syntax.color12, guibg = colors.common.base01, gui = "bold" })
+    hi("LspReferenceRead", { guifg = colors.syntax.color16, guibg = colors.common.base01, gui = "bold,italic" })
+    hi("LspReferenceWrite", { guifg = colors.syntax.color06, guibg = colors.common.base01, gui = "bold" })
+    hi("DiagnosticError", { link = "LspDiagnosticsDefaultError" })
+    hi("DiagnosticWarn", { link = "LspDiagnosticsDefaultWarning" })
+    hi("DiagnosticInfo", { link = "LspDiagnosticsDefaultInformation" })
+    hi("DiagnosticHint", { link = "LspDiagnosticsDefaultHint" })
+    hi("DiagnosticVirtualTextWarn", { link = "LspDiagnosticsVirtualTextWarning" })
+    hi("DiagnosticUnderlineWarn", { link = "LspDiagnosticsUnderlineWarning" })
+    hi("DiagnosticFloatingWarn", { link = "LspDiagnosticsFloatingWarning" })
+    hi("DiagnosticSignWarn", { link = "LspDiagnosticsSignWarning" })
+    hi("DiagnosticVirtualTextError", { link = "LspDiagnosticsVirtualTextError" })
+    hi("DiagnosticUnderlineError", { link = "LspDiagnosticsUnderlineError" })
+    hi("DiagnosticFloatingError", { link = "LspDiagnosticsFloatingError" })
+    hi("DiagnosticSignError", { link = "LspDiagnosticsSignError" })
+    hi("DiagnosticVirtualTextInfo", { link = "LspDiagnosticsVirtualTextInformation" })
+    hi("DiagnosticUnderlineInfo", { link = "LspDiagnosticsUnderlineInformation" })
+    hi("DiagnosticFloatingInfo", { link = "LspDiagnosticsFloatingInformation" })
+    hi("DiagnosticSignInfo", { link = "LspDiagnosticsSignInformation" })
+    hi("DiagnosticVirtualTextHint", { link = "LspDiagnosticsVirtualTextHint" })
+    hi("DiagnosticUnderlineHint", { link = "LspDiagnosticsUnderlineHint" })
+    hi("DiagnosticFloatingHint", { link = "LspDiagnosticsFloatingHint" })
+  end,
+}
 
 -- vim:ft=lua

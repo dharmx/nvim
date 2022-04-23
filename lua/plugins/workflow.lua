@@ -1,3 +1,6 @@
+--- NOTE: This group assists workflow such as efficient motion control, jumps, searches,
+--- NOTE: bookmarks, auto-save, file explorer, etc.
+
 use { "tweekmonster/haunted.vim", cmd = "Haunt" }
 
 use {

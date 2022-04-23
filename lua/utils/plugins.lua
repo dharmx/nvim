@@ -1,6 +1,4 @@
 --- Utility functions that are used by plugin configurations.
--- @module utils.plugins
--- @alias M
 
 local M = {}
 
