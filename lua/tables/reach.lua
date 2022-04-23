@@ -1,3 +1,5 @@
+--- NOTE: reach.nvim plugin config table.
+
 local M = {}
 
 M.buffers = {

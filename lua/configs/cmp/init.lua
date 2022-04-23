@@ -25,6 +25,11 @@ local cmp_fmt = {
   end,
 }
 
+local fmt_order = {
+  { "kind", "abbr", "menu" },
+  { "kind", "abbr" },
+}
+
 local config = {
   snippet = {
     expand = function(args)
@@ -81,7 +86,7 @@ local config = {
     },
   },
   formatting = {
-    fields = { "kind", "abbr", "menu" },
+    fields = fmt_order[1],
     format = cmp_fmt.icon_only,
   },
   experimental = {

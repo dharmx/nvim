@@ -40,14 +40,14 @@ require "plugins.cmp"
 require "plugins.health"
 
 if PACKER_BOOTSTRAP then
-  packer.on_compile_done = schedule_wrap(function()
+  packer.on_compile_done = function()
     pcall(require, "configs.core.impatient")
     notify {
       message = "Run :LspInstall and :TSStart",
       icon = " ",
       title = "KrakenVim",
     }
-  end)
+  end
   packer.sync()
 end
 

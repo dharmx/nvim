@@ -1,6 +1,4 @@
 --- Theming related utility functions
--- @module utils.theming
--- @alias M
 
 local M = {}
 

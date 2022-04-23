@@ -1,6 +1,4 @@
 --- Utilities for setting up various types of mappings.
--- @module utils.mappings
--- @alias M
 
 local M = {}
 

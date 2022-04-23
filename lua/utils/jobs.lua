@@ -1,5 +1,4 @@
 --- Plenary wrappers.
--- @module utils.jobs
 
 local M = {}
 

@@ -1,23 +1,17 @@
----
-
-local hidden = require("tables.blacklisted").hidden --
+local hidden = require("tables.blacklisted").hidden
 local set_colors = require("utils.statusline").set_colors
 local config = require "statusline.config"
-local modules = {}
 
-for _, module in pairs {
-  "mode",
-  "dirname",
-  "filename",
-  "treesitter",
-  "diagnostics",
-  "lightbulb",
-  "lsp",
-  "git",
-  "position",
-} do
-  modules[module] = require("statusline.modules." .. module)[module]
-end
+local modules = {}
+modules["mode"] = require("statusline.modules.mode")["mode"]
+modules["dirname"] = require("statusline.modules.dirname")["dirname"]
+modules["filename"] = require("statusline.modules.filename")["filename"]
+modules["treesitter"] = require("statusline.modules.treesitter")["treesitter"]
+modules["diagnostics"] = require("statusline.modules.diagnostics")["diagnostics"]
+modules["lightbulb"] = require("statusline.modules.lightbulb")["lightbulb"]
+modules["lsp"] = require("statusline.modules.lsp")["lsp"]
+modules["git"] = require("statusline.modules.git")["git"]
+modules["position"] = require("statusline.modules.position")["position"]
 
 local function truncated(module, ...)
   if api.nvim_win_get_width(0) < config[module].truncate then

@@ -1,3 +1,6 @@
+--- NOTE: This file contains treesitter related plugins.
+--- NOTE: Their extensions and modules.
+
 use { "danymat/neogen", after = "nvim-treesitter" }
 
 use {

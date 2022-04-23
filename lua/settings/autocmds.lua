@@ -7,16 +7,12 @@ autocmd("BufEnter", "if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr(
 })
 
 -- IMPROVE: Filter out plugins/init.lua as recompiling on its change is redundant.
-autocmd(
-  "BufWritePost",
-  schedule_wrap(function()
-    require("packer").compile()
-  end),
-  {
-    patterns = "*/lua/plugins/*.lua",
-    desc = "Automatically re-compile plugin specifications on changing the matched pattern files.",
-  }
-)
+autocmd("BufWritePost", function()
+  require("packer").compile()
+end, {
+  patterns = "*/lua/plugins/*.lua",
+  desc = "Automatically re-compile plugin specifications on changing the matched pattern files.",
+})
 
 autocmd("TextYankPost", function()
   vim.highlight.on_yank {

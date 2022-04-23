@@ -16,6 +16,80 @@
 `filetype.lua` becomes a bit less buggy.
 </div>
 
+## Installation 
+Coming soon...
+
+## Keybindings
+Coming soom...
+
+## Statusline
+Coming soon...
+
+## Showcase
+Following are various screenshots of this configuration is action. Enjoy!
+
+## Debuggers
+Coming soon...
+
+### nvim-tree.lua
+![nvim-tree.lua](./assets/nvim-tree.png) 
+
+### which-key.nvim
+![which-key.nvim](./assets/which-key.png) 
+
+### SymbolsOutline.nvim
+![SymbolsOutline.nvim](./assets/outline.png)
+
+### Completion by nvim-cmp
+![nvim-cmp](./assets/cmp.png)
+
+### `vim.notify` backend by nvim-notify
+![nvim-cmp](./assets/notify.png)
+
+### Focus with twilight.nvim
+![twilight.nvim](./assets/twilight.gif)
+
+### FZF though git, files, clipboards, etc using telescope.nvim
+![telescope.nvim](./assets/telescope.gif)
+
+### Edit without any distractions using TruZen.nvim
+![TrueZen.nvim](./assets/truezen.png)
+
+### Brightness control in Neovim
+![Glow.nvim](./assets/glow.gif)
+
+### Treesitter playground extension
+![ts-playground.nvim](./assets/playground.gif)
+
+### Toggle terminals
+![ToggleTerm.nvim](./assets/toggleterm.gif) 
+
+### URL Shortner
+![url-shortner](./assets/url-shortener.gif) 
+
+### Code file host
+![code-host](./assets/paperplanes.gif) 
+
+More coming soon...
+
+## Todos
+Coming soon...
+
+## End goals
+Coming soon...
+
+## Not goals
+Coming soon...
+
+---
+
+<div align="center">
+
+## License
+This project is licensed under [GPL--3.0](./LICENSE.txt).
+
+</div>
+
 <!--
   vim:ft=markdown
 -->

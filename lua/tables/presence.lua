@@ -1,3 +1,5 @@
+--- NOTE: all list of language icons for presence.nvim, the discord-rpc client for neovim.
+
 local function lambda(filename)
   return {
     [filename] = {

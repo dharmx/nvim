@@ -70,18 +70,6 @@ alias("RelativeNumberColumnTGL", "setlocal rnu!", { desc = "Turn on/off relative
 
 alias("SpellingTGL", "setlocal spell!", { desc = "Turn on/off spellcheck." })
 
-alias("SpotifyExit", function()
-  api.nvim_exec("silent !killall spotifyd", false)
-end, { desc = "Kill the spotify daemon." })
-
-alias("StartupTime", function()
-  local path = stdpath "config" .. "/.startup-time.log"
-  api.nvim_exec(string.format("silent !nvim --startuptime %s dummy", path), false)
-  cmd("edit " .. path)
-end, {
-  desc = "Save startuptime to a text file and open it in a buffer.",
-})
-
 -- NOTE: The following commands are for packer. This is required as we are lazy-loading packer.
 
 alias("PackerSnapshot", function(args)

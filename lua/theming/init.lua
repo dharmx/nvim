@@ -1,5 +1,7 @@
 local I = {}
 
+--- This is the trigger function for setting up highlights.
+-- @param options which will contain the colorscheme and other.
 function I.setup(options)
   colorscheme = options.scheme
   if fn.exists "syntax_on" then

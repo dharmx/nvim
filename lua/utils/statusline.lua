@@ -1,6 +1,4 @@
 --- Utility functions used by the statusline.
--- @module utils.statusline
--- @alias M
 
 local M = {}
 
@@ -26,64 +24,62 @@ end
 -- @param current string mode string
 -- @see help modes
 function M.set_colors(current)
-  schedule(function()
-    hi("StatusLineFilename", {
-      guifg = colors.modes[current],
-      guibg = colors.common.base01,
-      gui = "italic",
-    })
-    hi("StatusLineFilenameReverse", {
-      guifg = colors.common.base01,
-      guibg = colors.modes[current],
-    })
-    hi("StatusLineFilenameReverseExtra", {
-      guifg = colors.modes[current],
-    })
-    hi("StatusLineMode", {
-      guibg = colors.modes[current],
-      guifg = colors.common.base02,
-      gui = "bold",
-    })
-    hi("StatusLineModeReverse", {
-      guibg = colors.common.base15,
-      guifg = colors.modes[current],
-    })
-    hi("StatusLineInactive", {
-      guibg = colors.common.base00,
-      guifg = colors.modes[current],
-    })
-    hi("StatusLineFilenameExtraExtraRight", {
-      guibg = colors.modes[current],
-      guifg = colors.common.base01,
-    })
-    hi("StatusLinePosition", {
-      guifg = colors.common.base01,
-      guibg = colors.modes[current],
-      gui = "bold",
-    })
-    hi("StatusLinePositionLast", {
-      guifg = colors.common.base15,
-      guibg = colors.modes[current],
-      gui = "bold",
-    })
-    hi("StatusLinePositionReverse", {
-      guifg = colors.modes[current],
-      guibg = colors.common.base03,
-    })
-    hi("StatusLineFilenameExtraExtraRight", {
-      guibg = colors.modes[current],
-      guifg = colors.common.base01,
-    })
-    hi("StatusLineLSP", {
-      guifg = colors.modes[current],
-      guibg = colors.common.base01,
-      gui = "bold",
-    })
-    hi("BufferLineTabClose", {
-      guifg = colors.common.base01,
-      guibg = colors.modes[current],
-    })
-  end)
+  hi("StatusLineFilename", {
+    guifg = colors.modes[current],
+    guibg = colors.common.base01,
+    gui = "italic",
+  })
+  hi("StatusLineFilenameReverse", {
+    guifg = colors.common.base01,
+    guibg = colors.modes[current],
+  })
+  hi("StatusLineFilenameReverseExtra", {
+    guifg = colors.modes[current],
+  })
+  hi("StatusLineMode", {
+    guibg = colors.modes[current],
+    guifg = colors.common.base02,
+    gui = "bold",
+  })
+  hi("StatusLineModeReverse", {
+    guibg = colors.common.base15,
+    guifg = colors.modes[current],
+  })
+  hi("StatusLineInactive", {
+    guibg = colors.common.base00,
+    guifg = colors.modes[current],
+  })
+  hi("StatusLineFilenameExtraExtraRight", {
+    guibg = colors.modes[current],
+    guifg = colors.common.base01,
+  })
+  hi("StatusLinePosition", {
+    guifg = colors.common.base01,
+    guibg = colors.modes[current],
+    gui = "bold",
+  })
+  hi("StatusLinePositionLast", {
+    guifg = colors.common.base15,
+    guibg = colors.modes[current],
+    gui = "bold",
+  })
+  hi("StatusLinePositionReverse", {
+    guifg = colors.modes[current],
+    guibg = colors.common.base03,
+  })
+  hi("StatusLineFilenameExtraExtraRight", {
+    guibg = colors.modes[current],
+    guifg = colors.common.base01,
+  })
+  hi("StatusLineLSP", {
+    guifg = colors.modes[current],
+    guibg = colors.common.base01,
+    gui = "bold",
+  })
+  hi("BufferLineTabClose", {
+    guifg = colors.common.base01,
+    guibg = colors.modes[current],
+  })
 end
 
 -- @section Git utilities section

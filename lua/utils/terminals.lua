@@ -1,6 +1,4 @@
 --- toggleterm and terminal related utilities
--- @module utils.terminals
--- @alias T
 
 local T = {}
 

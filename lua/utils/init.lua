@@ -1,5 +1,4 @@
 --- Utilities for debugging and convenience.
--- @module utils
 
 local M = {}
 
