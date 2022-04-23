@@ -70,6 +70,9 @@ Coming soon...
 ### Code file host
 ![code-host](./assets/paperplanes.gif) 
 
+### Read, Write and Change reference highlights
+![lsp-reference-hl](./assets/lsp-reference.gif) 
+
 More coming soon...
 
 ## Todos

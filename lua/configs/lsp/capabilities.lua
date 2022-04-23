@@ -1,22 +1,15 @@
 local capabilities = lsp.protocol.make_client_capabilities()
-local completion = capabilities.textDocument.completion.completionItem
-
-for item, value in pairs {
-  ["snippetSupport"] = true,
-  ["preselectSupport"] = true,
-  ["insertReplaceSupport"] = true,
-  ["labelDetailsSupport"] = true,
-  ["deprecatedSupport"] = true,
-  ["commitCharactersSupport"] = true,
-  ["tagSupport"] = { valueSet = { 1 } },
-  ["resolveSupport"] = {
-    properties = { "documentation", "detail", "additionalTextEdits" },
-  },
-  ["documentationFormat"] = { "markdown", "plaintext" },
-} do
-  completion[item] = value
-end
-
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = { "documentation", "detail", "additionalTextEdits" },
+}
+capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
 return capabilities
 
 -- vim:ft=lua

@@ -53,6 +53,7 @@ function M.apply(colors)
   require("theming.groups.plugins.lightbulb").setup(colors)
   require("theming.groups.plugins.hop").setup(colors)
   require("theming.groups.plugins.gitsigns").setup(colors)
+  require("theming.groups.plugins.toggleterm").setup(colors)
 end
 
 function M.prepare_plugin(plugin)
