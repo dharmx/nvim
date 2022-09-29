@@ -1,0 +1,8 @@
+{
+  "rust-analyzer.server.extraEnv": "stable",
+  "rust-analyzer.updates.askBeforeDownload": false,
+  "rust-analyzer.assist.importGranularity": "module",
+  "rust-analyzer.assist.importPrefix": "self",
+  "rust-analyzer.cargo.loadOutDirsFromCheck": true,
+  "rust-analyzer.procMacro.enable": true
+}
