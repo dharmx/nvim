@@ -14,7 +14,7 @@
     "linux"
   ],
   "description": "My personal neovim configurations",
-  "author": "dharmx <dharmx@gmail.com> (https://github.com/dharmx)",
+  "author": "dharmx <dharmx.dev@gmail.com> (https://github.com/dharmx)",
   "engines": {
     "vscode": "^1.11.0"
   },

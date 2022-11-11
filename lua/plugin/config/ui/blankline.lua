@@ -1,14 +1,12 @@
 local present, blankline = pcall(require, "indent_blankline")
 
-local hi = require("utils.theming").hi
-
 if not present then
   return
 end
 
-local theming = require("theming")
+local theming = require("utils.theming")
 local hi = theming.highlight
-local colors = theming.get_active_scheme()
+local colors = theming.get_active_theme()
 
 local config = {
   char = "│",
@@ -16,6 +14,7 @@ local config = {
     "help",
     "terminal",
     "dashboard",
+    "alpha",
     "packer",
     "lspinfo",
     "TelescopePrompt",

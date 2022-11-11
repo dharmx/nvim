@@ -31,11 +31,12 @@ local config = {
       initial_mode = "normal",
     },
     find_files = {
-      find_command = {
-        "rg",
-        "--no-ignore",
-        "--files",
-      },
+      no_ignore = true,
+      -- find_command = {
+      --   "rg",
+      --   "--no-ignore",
+      --   "--files",
+      -- },
       prompt_prefix = "   ",
     },
     oldfiles = {

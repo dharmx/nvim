@@ -6,7 +6,7 @@ return {
     bg = colors.shades.shade06,
   },
   ["BufferLineFill"] = {
-    fg = colors.shades.shade3,
+    fg = colors.shades.shade01,
     bg = colors.shades.shade06,
   },
   ["BufferLineBackground"] = {
@@ -97,6 +97,30 @@ return {
     fg = colors.common.base01,
     bg = colors.common.base09,
     bold = true,
+  },
+  ["BufferLineDiagnostic"] = {
+    fg = colors.common.base03,
+    bg = colors.shades.shade10,
+  },
+  ["BufferLineDocsSeparator"] = {
+    fg = colors.common.base09,
+    bg = colors.shades.shade09,
+  },
+  ["BufferLineDocsSelected"] = {
+    fg = colors.common.base09,
+    bg = colors.shades.shade09,
+  },
+  ["BufferLineDocsLabel"] = {
+    fg = colors.shades.shade09,
+    bg = colors.common.base09,
+  },
+  ["BufferLineDocs"] = {
+    fg = colors.common.base04,
+    bg = colors.shades.shade12,
+  },
+  ["BufferLineDocsVisible"] = {
+    fg = colors.common.base04,
+    bg = colors.shades.shade10,
   },
 }
 

@@ -1,4 +1,6 @@
-function hsl(hue, saturation, luminance)
+local M = {}
+
+function M.hsl(hue, saturation, luminance)
   local red, green, blue
   if saturation == 0.0 then
     red = luminance
@@ -20,7 +22,7 @@ function hsl(hue, saturation, luminance)
   end, { red, green, blue })))
 end
 
-function hue_to_rgb(p, q, t)
+function M.hue_to_rgb(p, q, t)
   if t < 0.0 then
     t = t + 1.0
   end
@@ -38,3 +40,5 @@ function hue_to_rgb(p, q, t)
   end
   return p
 end
+
+return M

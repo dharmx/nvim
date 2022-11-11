@@ -1,5 +1,6 @@
 --- Statusline main file
 
+-- WARN: This needs refactoring. This is just a bunch of scraps glued together.
 local hidden = require("tables.blacklisted").hidden -- load all filetypes where stl would be hidden
 local util = require("utils.stline") -- load statusline specific utility function
 local config = require("stline.config") -- load the config file for the statusline

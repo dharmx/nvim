@@ -4,6 +4,6 @@ if not present then
   return
 end
 
-cmp_lsp.update_capabilities(require("utils.lsp").capabilities())
+cmp_lsp.default_capabilities(require("utils.lsp").capabilities())
 
 -- vim:ft=lua

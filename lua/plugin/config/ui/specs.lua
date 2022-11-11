@@ -1,5 +1,9 @@
 local present, specs = pcall(require, "specs")
 
+if not present then
+  return 
+end
+
 specs.setup({
   show_jumps = true,
   min_jump = 17,
@@ -17,3 +21,5 @@ specs.setup({
     nofile = true,
   },
 })
+
+-- vim:filetype=lua

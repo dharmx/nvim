@@ -13,6 +13,7 @@ for _, extension in ipairs({
   "ui-select",
   "history",
   "bibtex",
+  "emoji",
 }) do
   extensions[extension] = require("plugin.config.telescope.ext." .. extension)
 end

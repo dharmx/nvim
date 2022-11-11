@@ -71,9 +71,10 @@ local config = {
 
 local scan = require("plenary.scandir")
 local _ = vim.tbl_map(function(mapping_path)
-  local module = vim.list_slice(vim.split(vim.fn.fnamemodify(mapping_path, ":r"), "/"), 7)
-  if module[2] ~= "lsp" then
-    local loaded = require(table.concat(module, "."))
+  local modules = vim.split(vim.fn.fnamemodify(mapping_path, ":r"), "/")
+  local module_path = vim.list_slice(modules, 7, #modules)
+  if module_path[2] ~= "lsp" then
+    local loaded = require(table.concat(module_path, "."))
     which_key.register(loaded.mappings, loaded.options)
   end
 end, scan.scan_dir(vim.fn.stdpath("config") .. "/lua/mapping"))

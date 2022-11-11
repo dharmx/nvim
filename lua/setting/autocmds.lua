@@ -116,43 +116,43 @@ autocmd("FileType", [[nnoremap <buffer><silent> q :quit<CR>]], {
 --   once = true,
 -- })
 
--- augroup("NativeAdjustments", {
---   {
---     events = {
---       "TermOpen",
---       "BufReadCmd",
---     },
---     command = function()
---       opt_local.number = false
---       opt_local.relativenumber = false
---       require("utils.term")._TERM_KEYMAPS()
---     end,
---     options = {
---       patterns = {
---         "term://*",
---         "zsh",
---         "*/zsh",
---         "sh",
---         "bash",
---         "toggleterm",
---       },
---       desc = "Add terminal keymaps.",
---     },
---   },
---   {
---     events = "FileType",
---     command = function()
---       opt_local.formatoptions:remove({
---         "c",
---         "r",
---         "o",
---       })
---     end,
---     options = {
---       desc = "Removes comment continuations from every file.",
---     },
---   },
--- })
+augroup("NativeAdjustments", {
+  {
+    events = {
+      "TermOpen",
+      "BufReadCmd",
+    },
+    command = function()
+      opt_local.number = false
+      opt_local.relativenumber = false
+      require("utils.term")._TERM_KEYMAPS()
+    end,
+    options = {
+      patterns = {
+        "term://*",
+        "zsh",
+        "*/zsh",
+        "sh",
+        "bash",
+        "toggleterm",
+      },
+      desc = "Add terminal keymaps.",
+    },
+  },
+  {
+    events = "FileType",
+    command = function()
+      opt_local.formatoptions:remove({
+        "c",
+        "r",
+        "o",
+      })
+    end,
+    options = {
+      desc = "Removes comment continuations from every file.",
+    },
+  },
+})
 
 -- augroup("ReplaceModes", {
 --   {
@@ -183,24 +183,24 @@ autocmd("FileType", [[nnoremap <buffer><silent> q :quit<CR>]], {
 --   },
 -- })
 
--- augroup("PersistentMarkdownFolds", {
---   {
---     events = "BufWinLeave",
---     command = "mkview",
---     options = {
---       patterns = "*.md",
---       desc = "Adds persistent window folding to the makrdown files.",
---     },
---   },
---   {
---     events = "BufWinEnter",
---     command = "silent! loadview",
---     options = {
---       patterns = "*.md",
---       desc = "Load the view silently when a new window is opened!",
---     },
---   },
--- })
+augroup("PersistentMarkdownFolds", {
+  {
+    events = "BufWinLeave",
+    command = "mkview",
+    options = {
+      patterns = "*.md",
+      desc = "Adds persistent window folding to the makrdown files.",
+    },
+  },
+  {
+    events = "BufWinEnter",
+    command = "silent! loadview",
+    options = {
+      patterns = "*.md",
+      desc = "Load the view silently when a new window is opened!",
+    },
+  },
+})
 
 -- augroup("NvimINCSearchCursorline", {
 --   {
@@ -233,27 +233,27 @@ autocmd("FileType", [[nnoremap <buffer><silent> q :quit<CR>]], {
 --   desc = "Start editing from the point we left off.",
 -- })
 
--- augroup("ListCharsFeedback", {
---   {
---     events = "InsertEnter",
---     command = function()
---       opt_local.listchars = {
---         tab = " ",
---         trail = "˽",
---         space = "·",
---         eol = "↴",
---       }
---     end,
---     options = { desc = "Show escape characters on Insert Mode." },
---   },
---   {
---     events = "InsertLeave",
---     command = function()
---       opt_local.listchars = ""
---     end,
---     options = { desc = "Hide escape characters on leaving the Insert Mode." },
---   },
--- })
+augroup("ListCharsFeedback", {
+  {
+    events = "InsertEnter",
+    command = function()
+      opt_local.listchars = {
+        tab = " ",
+        trail = "˽",
+        space = "·",
+        eol = "↴",
+      }
+    end,
+    options = { desc = "Show escape characters on Insert Mode." },
+  },
+  {
+    events = "InsertLeave",
+    command = function()
+      opt_local.listchars = ""
+    end,
+    options = { desc = "Hide escape characters on leaving the Insert Mode." },
+  },
+})
 
 -- NOTE: Enable this only if you want a scrollbar.
 -- augroup("ScrollbarInit", {
@@ -281,22 +281,22 @@ autocmd("FileType", [[nnoremap <buffer><silent> q :quit<CR>]], {
 --   },
 -- })
 
--- augroup("CursorLineFeedback", {
---   {
---     events = "InsertEnter",
---     command = function()
---       opt_local.cursorline = true
---     end,
---     options = { desc = "Show cursorline in Insert Mode." },
---   },
---   {
---     events = "InsertLeave",
---     command = function()
---       opt_local.cursorline = false
---     end,
---     options = { desc = "Show cursorline in Insert Mode." },
---   },
--- })
+augroup("CursorLineFeedback", {
+  {
+    events = "InsertEnter",
+    command = function()
+      opt_local.cursorline = true
+    end,
+    options = { desc = "Show cursorline in Insert Mode." },
+  },
+  {
+    events = "InsertLeave",
+    command = function()
+      opt_local.cursorline = false
+    end,
+    options = { desc = "Show cursorline in Insert Mode." },
+  },
+})
 
 -- augroup("KittyPaddingOnNvim", {
 --   {

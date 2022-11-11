@@ -15,26 +15,6 @@ use({
 })
 
 use({
-  "aloussase/telescope-gradle.nvim",
-  config = function()
-    require("telescope").load_extension("gradle")
-  end,
-  wants = "telescope.nvim",
-  ft = "groovy",
-  disable = disabled["telescope-gradle.nvim"],
-})
-
-use({
-  "aloussase/telescope-maven-search",
-  config = function()
-    require("telescope").load_extension("maven_search")
-  end,
-  wants = "telescope.nvim",
-  ft = "xml",
-  disable = disabled["telescope-maven-search"],
-})
-
-use({
   "tom-anders/telescope-vim-bookmarks.nvim",
   config = function()
     require("telescope").load_extension("vim_bookmarks")
@@ -151,7 +131,6 @@ use({
   "xiyaowong/telescope-emoji.nvim",
   after = "telescope.nvim",
   config = function()
-    require("plugin.config.telescope.ext.emoji")
     require("telescope").load_extension("emoji")
   end,
   disable = disabled["telescope-emoji.nvim"],

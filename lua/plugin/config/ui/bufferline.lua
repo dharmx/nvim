@@ -49,33 +49,32 @@ local config = {
     separator_style = "thin",
     always_show_bufferline = true,
     diagnostics = true,
-  },
-  groups = {
-    options = { toggle_hidden_on_enter = true },
-    items = {
-      {
-        name = "Tests",
-        highlight = { gui = "underline", guisp = "blue" },
-        priority = 2,
-        icon = "",
-        matcher = function(buf)
-          return buf.filename:match("%_test") or buf.filename:match("%_spec")
-        end,
-      },
-      {
-        name = "Docs",
-        highlight = { gui = "undercurl", guisp = "green" },
-        auto_close = false,
-        matcher = function(buf)
-          return buf.filename:match("%.md") or buf.filename:match("%.txt")
-        end,
-        separator = { style = require("bufferline.groups").separator.tab },
+    groups = {
+      options = { toggle_hidden_on_enter = true },
+      items = {
+        {
+          name = "Tests",
+          highlight = { gui = "underline", guisp = "blue" },
+          priority = 2,
+          icon = "",
+          matcher = function(buf)
+            return buf.filename:match("%_test") or buf.filename:match("%_spec")
+          end,
+        },
+        {
+          name = "Docs",
+          highlight = { gui = "undercurl", guisp = "green" },
+          auto_close = false,
+          matcher = function(buf)
+            return buf.filename:match("%.md") or buf.filename:match("%.txt")
+          end,
+          separator = { style = require("bufferline.groups").separator.tab },
+        },
       },
     },
   },
 }
 
 bufferline.setup(config)
-vim.cmd("colo " .. _G.theme)
 
 -- vim:ft=lua

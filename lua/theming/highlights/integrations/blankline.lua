@@ -8,7 +8,8 @@ return {
     fg = colors.common.base10,
   },
   ["IndentBlanklineContextStart"] = {
-    fg = colors.common.base10,
+    bg = colors.shades.shade05,
+    bold = true
   },
   ["IndentBlanklineSpaceChar"] = {
     fg = colors.shades.shade02,

@@ -50,6 +50,7 @@ use({
     "IndentBlanklineRefresh",
     "IndentBlanklineRefreshScroll",
   },
+  after = "nvim-treesitter",
   config = function()
     require("plugin.config.ui.blankline")
   end,
@@ -91,6 +92,21 @@ use({
     "AlphaRedraw",
   },
   disable = disabled["alpha-nvim"],
+})
+
+use({
+  "petertriho/nvim-scrollbar",
+  config = function()
+    require("plugin.config.ui.scrollbar")
+  end,
+  after = "gitsigns.nvim",
+  disable = disabled["nvim-scrollbar"],
+})
+
+use({
+  "sidebar-nvim/sidebar.nvim",
+  disable = disabled["sidebar.nvim"],
+  after = "nvim-lsp-installer",
 })
 
 -- vim:ft=lua

@@ -134,4 +134,13 @@ use({
   disable = disabled["cmd-parser.nvim"],
 })
 
+use({
+  "kevinhwang91/nvim-hlslens",
+  event = "UIEnter",
+  config = function()
+    require("plugin.config.workflow.hlslens")
+  end,
+  disable = disabled["nvim-hlslens"]
+})
+
 -- vim:ft=lua

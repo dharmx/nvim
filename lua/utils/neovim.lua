@@ -326,6 +326,13 @@ function M.reload_module(module_name, starts_with_only)
   end
 end
 
+function M.override_all_hl(bg, fg)
+  local hl_list = vim.fn.getcompletion("", "highlight")
+  for _, hl in ipairs(hl_list) do
+    vim.api.nvim_set_hl(0, hl, { fg = fg, bg = bg })
+  end
+end
+
 return M
 
 -- vim:ft=lua

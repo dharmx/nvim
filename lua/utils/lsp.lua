@@ -42,7 +42,7 @@ function M.format(buffer)
   })
 end
 
-function M.on_attach()
+function M.on_attach(notify)
   return function(client, buffer)
     require("mapping.lsp").setup(client, buffer)
     require("plugin.config.lsp.autocmds").setup(client, buffer)
@@ -53,11 +53,13 @@ function M.on_attach()
       client.config.flags.allow_incremental_sync = true
     end
 
-    nv.notify({
-      message = "LSP has been initialised.",
-      title = "LSP: " .. client.name,
-      icon = " ",
-    })
+    if notify ~= nil or notify then
+      nv.notify({
+        message = "LSP has been initialised.",
+        title = "LSP: " .. client.name,
+        icon = " ",
+      })
+    end
   end
 end
 

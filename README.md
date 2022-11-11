@@ -322,6 +322,8 @@ Coming soon... (there's a lot)
 
 <!-- ![auto-diag](./.assets/diag-on-attach.gif) -->
 
+<!-- https://nvimluau.dev/ -->
+
 ## To-dos
 
 Following are the current goals of this repository.

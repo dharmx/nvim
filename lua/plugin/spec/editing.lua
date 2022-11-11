@@ -5,6 +5,12 @@ local use = require("packer").use
 local disabled = require("control.disabled")
 
 use({
+  "lukas-reineke/virt-column.nvim",
+  event = "UIEnter",
+  disable = disabled["virt-column.nvim"]
+})
+
+use({
   "protex/better-digraphs.nvim",
   after = "telescope.nvim",
   setup = function()
@@ -114,6 +120,15 @@ use({
 })
 
 use({
+  "jubnzv/mdeval.nvim",
+  cmd = "MdEval",
+  config = function()
+    require("plugin.config.editing.mdeval")
+  end,
+  disable = disabled["mdeval.nvim"]
+})
+
+use({
   "iamcco/markdown-preview.nvim",
   setup = function()
     require("plugin.config.editing.mdpreview")
@@ -132,6 +147,20 @@ use({
     "ColorizerDetachFromBuffers",
   },
   disable = disabled["nvim-colorizer.lua"],
+})
+
+use({
+  "RRethy/vim-hexokinase",
+  run = "make hexokinase",
+  setup = function()
+    require("plugin.config.editing.hexokinase")
+  end,
+  cmd = {
+    "HexokinaseToggle",
+    "HexokinaseTurnOn",
+    "HexokinaseTurnOff",
+  },
+  disable = disabled["vim-hexokinase"]
 })
 
 use({
@@ -208,5 +237,14 @@ use({ "jbyuki/nabla.nvim", after = "orgmode", disable = disabled["nabla.nvim"] }
 use({ "phelipetls/vim-hugo", ft = "markdown", disable = disabled["vim-hugo"] })
 
 use({ "robertbasic/vim-hugo-helper", ft = "markdown", disable = disabled["vim-hugo-helper"] })
+
+use({
+  "yamatsum/nvim-cursorline",
+  event = "UIEnter",
+  config = function()
+    require("plugin.config.editing.cursorline")
+  end,
+  disable = disabled["nvim-cursorline"]
+})
 
 -- vim:ft=lua

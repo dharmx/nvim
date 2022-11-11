@@ -28,6 +28,12 @@ use({
   disable = disabled["nvim-notify"],
 })
 
+use({
+  "anuvyklack/hydra.nvim",
+  event = "UIEnter",
+  disable = disabled["hydra.nvim"]
+})
+
 use({ "MunifTanjim/nui.nvim", module = "nui", disable = disabled["nui.nvim"] })
 
 use({ "tami5/sqlite.lua", module = "sqlite", disable = disabled["sqlite.lua"] })

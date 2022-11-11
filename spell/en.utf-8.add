@@ -53,3 +53,6 @@ config
 CNF
 statusline
 tabline
+falseish
+trueish
+coreutil

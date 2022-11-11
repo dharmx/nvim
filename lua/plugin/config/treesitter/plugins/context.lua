@@ -5,7 +5,7 @@ if not present then
 end
 
 local config = {
-  enable = true,
+  enable = false,
   throttle = true,
   max_lines = 20,
   patterns = {

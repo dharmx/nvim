@@ -78,4 +78,21 @@ use({
   disable = disabled["nlsp-settings.nvim"],
 })
 
+use({
+  "j-hui/fidget.nvim",
+  config = function()
+    require("plugin.config.lsp.fidget")
+  end,
+  disable = disabled["fidget.nvim"]
+})
+
+use({
+  "SmiteshP/nvim-navic",
+  after = "nvim-lspconfig",
+  config = function()
+    require("plugin.config.lsp.navic")
+  end,
+  disable = disabled["nvim-navic"]
+})
+
 -- vim:ft=lua

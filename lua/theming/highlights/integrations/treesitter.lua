@@ -3,6 +3,7 @@ local colors = require("utils.theming").get_active_theme()
 return {
   ["TreesitterContext"] = {
     bg = colors.shades.shade04,
+    fg = colors.syntax.color08,
   },
   ["TSMethod"] = {
     link = "Method",

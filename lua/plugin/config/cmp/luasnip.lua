@@ -14,7 +14,8 @@ luasnip.config.set_config({
 -- INFO: A hook i.e. any file inside cmp.snippets will be loaded
 local scan = require("plenary.scandir")
 for _, path in ipairs(scan.scan_dir(vim.fn.stdpath("config") .. "/lua/plugin/config/cmp/snippets")) do
-  local module_path = vim.list_slice(vim.split(vim.fn.fnamemodify(path, ":r"), "/"), 7)
+  local modules = vim.split(vim.fn.fnamemodify(path, ":r"), "/")
+  local module_path = vim.list_slice(modules, 7, #modules)
   luasnip.add_snippets(module_path[#module_path], require(table.concat(module_path, ".")))
 end
 
