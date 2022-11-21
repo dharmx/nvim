@@ -1,6 +1,5 @@
-require("setting.neovide") -- load neovide gui settings
-require("setting.builtins") -- disable redundant vim-plugs
-require("setting.abbrevs") -- abbreviations
+-- require("setting.neovide") -- load neovide gui settings
+-- require("setting.abbrevs") -- abbreviations
 require("setting.opts") -- vim options
 require("setting.globals") -- modify global vim variables
 require("setting.cmds") -- load user-commands

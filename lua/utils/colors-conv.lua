@@ -17,9 +17,12 @@ function M.hsl(hue, saturation, luminance)
     green = hue_to_rgb(p, q, hue)
     blue = hue_to_rgb(p, q, hue - 1.0 / 3.0)
   end
-  return string.format("#%02x%02x%02x", unpack(vim.tbl_map(function(item)
-    return math.min(255, 256 * item)
-  end, { red, green, blue })))
+  return string.format(
+    "#%02x%02x%02x",
+    unpack(vim.tbl_map(function(item)
+      return math.min(255, 256 * item)
+    end, { red, green, blue }))
+  )
 end
 
 function M.hue_to_rgb(p, q, t)

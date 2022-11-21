@@ -1,24 +1,21 @@
 local Input = require("nui.input")
 local event = require("nui.utils.autocmd").event
 
-local lsp = vim.lsp
-local opt = vim.opt
-local notify = require("utils.neovim").notify
-
 local function nui_lsp_rename()
   local curr_name = vim.fn.expand("<cword>")
 
-  local params = lsp.util.make_position_params()
+  local params = vim.lsp.util.make_position_params()
 
   local function on_submit(new_name)
     if not new_name or #new_name == 0 then
+      -- do nothing if `new_name` is empty or not changed.
       notify({
         message = "Cancelled: New name is empty!",
         icon = "ﰸ",
         title = " LSP",
       })
       return
-    elseif curr_name == new_name then
+    elseif new_name == curr_name then
       notify({
         message = "Cancelled: New and current names are the same!",
         icon = "",
@@ -32,19 +29,27 @@ local function nui_lsp_rename()
     params.newName = new_name
 
     -- send the `textDocument/rename` request to LSP server
-    lsp.buf_request(0, "textDocument/rename", params, function(_, result, _, _)
+    vim.lsp.buf_request(0, "textDocument/rename", params, function(_, result, ctx, _)
       if not result then
+        -- do nothing if server returns empty result
         return
       end
 
       -- the `result` contains all the places we need to update the
       -- name of the identifier. so we apply those edits.
-      lsp.util.apply_workspace_edit(result, "utf8")
+      local client = vim.lsp.get_client_by_id(ctx.client_id)
+      vim.lsp.util.apply_workspace_edit(result, client.offset_encoding)
 
       -- after the edits are applied, the files are not saved automatically.
       -- let's remind ourselves to save those...
       local total_files = vim.tbl_count(result.changes)
-      print(string.format("Changed %s file%s. To save them run ':wa'", total_files, total_files > 1 and "s" or ""))
+      print(
+        string.format(
+          "Changed %s file%s. To save them run ':wa'",
+          total_files,
+          total_files > 1 and "s" or ""
+        )
+      )
       notify({
         message = "Renamed " .. new_name .. " to " .. curr_name .. ".",
         icon = "",
@@ -52,18 +57,18 @@ local function nui_lsp_rename()
       })
     end)
   end
-
+  
   local popup_options = {
     -- border for the window
     border = {
-      style = "solid",
+      style = "rounded",
       text = {
         top = " Rename",
         top_align = "left",
       },
     },
     -- highlight for the window.
-    highlight = "TabLine:FloatBorder",
+    highlight = "Normal:Normal",
     -- place the popup window relative to the
     -- buffer position of the identifier
     relative = {
@@ -72,15 +77,16 @@ local function nui_lsp_rename()
         -- this is the same `params` we got earlier
         row = params.position.line,
         col = params.position.character,
-      },
+      }
     },
     -- position the popup window on the line below identifier
     position = {
       row = 1,
       col = 0,
     },
+    -- 25 cells wide, should be enough for most identifier names
     size = {
-      width = math.max(#curr_name + 10, 25),
+      width = 25,
       height = 1,
     },
   }
@@ -94,14 +100,8 @@ local function nui_lsp_rename()
   })
 
   input:mount()
-
-  -- make it easier to move around long words
-  local kw = opt.iskeyword - "_" - "-"
-  vim.bo.iskeyword = table.concat(kw:get(), ",")
-
-  -- go into normal mode
   vim.schedule(function()
-    vim.cmd("stopinsert")
+    vim.api.nvim_command("stopinsert")
   end)
 
   -- close on <esc> in normal mode

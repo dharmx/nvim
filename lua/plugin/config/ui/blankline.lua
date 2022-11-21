@@ -180,5 +180,6 @@ end
 presets.normal()
 
 blankline.setup(config)
+vim.api.nvim_set_hl(0, "IndentBlanklineContextStart", { fg = "NONE", bg = "NONE", bold = true })
 
 -- vim:ft=lua

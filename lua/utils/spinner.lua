@@ -1,4 +1,4 @@
-local notify = require('notify')
+local notify = require("notify")
 
 local Spinner = {}
 Spinner.__index = Spinner
@@ -8,7 +8,7 @@ setmetatable(Spinner, {
   end,
 })
 
-local spinner_frames = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' }
+local spinner_frames = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" }
 
 function Spinner.new(msg, lvl, opts)
   local self = setmetatable({}, Spinner)
@@ -62,9 +62,13 @@ function Spinner:_spin()
   self.opts = nil
 
   self.timer = vim.loop.new_timer()
-  self.timer:start(1000/#spinner_frames, 0, vim.schedule_wrap(function()
-    self:_spin()
-  end))
+  self.timer:start(
+    1000 / #spinner_frames,
+    0,
+    vim.schedule_wrap(function()
+      self:_spin()
+    end)
+  )
 end
 
 function Spinner:done(msg, lvl, opts)

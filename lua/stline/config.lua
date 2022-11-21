@@ -236,19 +236,25 @@ M.lsp = {
   },
   buf_local_clients = true,
   spinners = {
-    success = {
-      "",
-      "",
-      "",
-    },
+    success = setmetatable({
+      "",
+      "",
+      "",
+    }, {
+      __index = function()
+        return ""
+      end,
+    }),
     loading = {
-      "",
-      "",
-      "",
-      "",
-      "",
+      "◜",
+      "◠",
+      "◝",
+      "◞",
+      "◡",
+      "◟",
     },
   },
+  blank = true,
   short = true,
   label = " LSP",
 }

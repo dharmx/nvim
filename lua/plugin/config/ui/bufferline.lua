@@ -16,6 +16,11 @@ local offsets = {
     padding = 0,
   },
   {
+    filetype = "SidebarNvim",
+    text = "",
+    padding = 0,
+  },
+  {
     filetype = "undotree",
     text = "",
     padding = 0,

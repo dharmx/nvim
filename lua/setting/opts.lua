@@ -43,7 +43,7 @@ opt.fillchars = { -- Characters to fill the statuslines and vertical separators.
   vertleft = "┫",
   vertright = "┣",
   verthoriz = "╋",
-  fold = "─"
+  fold = "─",
 }
 opt.foldcolumn = "auto"
 opt.foldmethod = "marker"
@@ -71,7 +71,7 @@ opt.showcmd = true -- show (partial) command in the last line of the screen
 opt.hlsearch = true -- when there is a prev search pattern, hl all its matches
 opt.conceallevel = 2 -- determine how text with the "conceal" syntax attribute is shown
 opt.swapfile = false -- do not prompt if neovim is forcefully closed or, crashed
-opt.cursorline = true -- highlight the text line of the cursor with CursorLine
+opt.cursorline = false -- highlight the text line of the cursor with CursorLine
 opt.cursorlineopt = "both" -- list of settings for how 'cursorline' is displayed
 opt.pumheight = 25 -- min height for the popup menu
 opt.pumwidth = 35 -- min width for the popup menu
@@ -87,11 +87,14 @@ opt.icon = true -- the icon text of the window will be set
 opt.omnifunc = "syntaxcomplete#Complete" -- default omnifunc (completion) settings
 opt.background = "dark" -- colorscheme style
 
+opt.iskeyword = "@,48-57,_,192-255"
 opt.whichwrap:append("<>[]hl") -- see :h 'whichwrap'
 opt.shortmess:append("sI") -- This option helps to avoid all the hit-enter prompts
 opt.diffopt:append("algorithm:patience") -- options for diff mode
+vim.cmd("set showtabline=2")
 
 -- custom fzf config for neovim
-env.FZF_DEFAULT_OPTS = "--layout=reverse --preview='less {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
+env.FZF_DEFAULT_OPTS =
+  "--layout=reverse --preview='less {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
 
 -- vim:ft=lua

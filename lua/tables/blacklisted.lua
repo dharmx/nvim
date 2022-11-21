@@ -7,6 +7,7 @@ M.invisible = {
   "undotree",
   "diff",
   "Outline",
+  "SidebarNvim",
 }
 
 M.hidden = {

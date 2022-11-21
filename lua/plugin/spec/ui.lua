@@ -3,6 +3,15 @@ local use = require("packer").use
 
 local disabled = require("control.disabled")
 
+use {
+    "nvim-zh/colorful-winsep.nvim",
+    config = function ()
+        require("plugin.config.ui.winsep")
+    end,
+    event = "UIEnter",
+    disable = disabled["colorful-winsep.nvim"]
+}
+
 use({
   "edluffy/specs.nvim",
   config = function()
@@ -10,6 +19,15 @@ use({
   end,
   event = { "CursorMoved", "CursorMovedI" },
   disable = disabled["specs.nvim"],
+})
+
+use({
+  "b0o/incline.nvim",
+  config = function()
+    require("plugin.config.ui.incline")
+  end,
+  wants = "nvim-web-devicons",
+  disable = disabled["incline.nvim"]
 })
 
 use({
@@ -105,6 +123,9 @@ use({
 
 use({
   "sidebar-nvim/sidebar.nvim",
+  config = function()
+    require("plugin.config.workflow.sidebar")
+  end,
   disable = disabled["sidebar.nvim"],
   after = "nvim-lsp-installer",
 })

@@ -31,6 +31,10 @@ function M.lsp()
 
     -- NOTE: This part is entered when the LSP client has almost completed loading said libaries/workspaces
     if percentage >= 70 then
+      if config.blank then
+        return string.format("%s %%#StatusLineLSPDark#%%<%s  %%#StatusLineLSPExtra#", label, success_icon[frame + 1])
+      end
+
       return string.format(
         "%s %%#StatusLineLSPDark#%%<%s %s %s (%s%%%%) %%#StatusLineLSPExtra#",
         label,
@@ -41,6 +45,9 @@ function M.lsp()
       )
     end
 
+    if config.blank then
+      return string.format("%s %%#StatusLineLSPDark#%%<%s  %%#StatusLineLSPExtra#", label, spinners[frame + 1])
+    end
     return string.format(
       "%s %%#StatusLineLSPDark#%%<%s %s %s (%s%%%%) %%#StatusLineLSPExtra#",
       label,

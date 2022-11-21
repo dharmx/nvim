@@ -150,8 +150,8 @@ for _, cmdtype in ipairs({ ":", "/", "?", "@", "=" }) do
   cmp.setup.cmdline(cmdtype, cmdlines)
 end
 
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+-- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 
 require("plugin.config.cmp.issues")
 

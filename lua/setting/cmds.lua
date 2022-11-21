@@ -7,6 +7,14 @@ local lsp = vim.lsp
 local fn = vim.fn
 local cmd = vim.cmd
 
+alias("Focus", function()
+  vim.o.laststatus = 0
+  vim.o.showtabline = 0
+  vim.api.nvim_command(":TZAtaraxis")
+end, {
+  desc = "TrueZen Ataraxis + No StatusLine + No BufferLine",
+})
+
 alias("LoadNullLsp", function()
   require("null-ls")
 end, {
@@ -31,7 +39,7 @@ end, {
 alias("Shade", function()
   require("packer").loader("shade.nvim")
 end, {
-  desc = "Load shade.nvim heath plugin.",
+  desc = "Load shade.nvim health plugin.",
 })
 
 alias("PersistClip", function()
@@ -243,20 +251,50 @@ end, {
   desc = "View all installed plugins with load status.",
 })
 
-vim.api.nvim_create_user_command("HtmlPreviewToggle", function(items)
-  local path = vim.fn.fnamemodify(items.args, ":p:h")
-  vim.fn.chdir(path)
-
-  if vim.fn.system("pgrep --full live-server") == "" then
-    vim.api.nvim_command("!live-server --quiet & disown")
-  else
-    vim.fn.system("pgrep --full live-server | xargs kill")
+alias("HugoServer", function()
+  if _G.HUGO_JOBS then
+    local SIGKILL = 9
+    table.foreachi(_G.HUGO_JOBS, function(_, job)
+      job:shutdown()
+      vim.loop.kill(job.pid, SIGKILL)
+    end)
+    _G.HUGO_JOBS = nil
+    return
   end
-end, {
-  complete = "file",
-  desc = "Please.",
-  nargs = "?",
-})
+
+  local path = vim.fn.bufname()
+  if vim.fn.fnamemodify(path, ":t") == "config.toml" then
+    local hugo = require("plenary.job"):new({
+      "hugo",
+      "server",
+      cwd = vim.fn.fnamemodify(path, ":h"),
+    })
+    hugo:start()
+    _G.HUGO_JOBS = _G.HUGO_JOBS and table.insert(_G.HUGO_JOBS, hugo) or { hugo }
+  end
+end, {})
+
+alias("RetypeWatch", function()
+  if _G.RETYPE_JOBS then
+    local SIGKILL = 9
+    table.foreachi(_G.RETYPE_JOBS, function(_, job)
+      job:shutdown()
+      vim.loop.kill(job.pid, SIGKILL)
+    end)
+    _G.RETYPE_JOBS = nil
+    return
+  end
+
+  local path = vim.fn.bufname()
+  if vim.fn.fnamemodify(path, ":t") == "retype.yml" then
+    local retype = require("plenary.job"):new({
+      "retype", "watch",
+      cwd = vim.fn.fnamemodify(path, ":h"),
+    })
+    retype:start()
+    _G.RETYPE_JOBS = _G.RETYPE_JOBS and table.insert(_G.RETYPE_JOBS, retype) or { retype }
+  end
+end, {})
 
 require("utils.format")
 

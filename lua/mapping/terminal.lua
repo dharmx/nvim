@@ -79,7 +79,7 @@ M.mappings = {
   ["<C-\\>"] = {
     "<CMD>ToggleTerm<CR>",
     "ToggleTerm",
-  }
+  },
 }
 
 M.options = {

@@ -125,7 +125,7 @@ augroup("NativeAdjustments", {
     command = function()
       opt_local.number = false
       opt_local.relativenumber = false
-      require("utils.term")._TERM_KEYMAPS()
+      -- require("utils.term")._TERM_KEYMAPS()
     end,
     options = {
       patterns = {
@@ -233,27 +233,27 @@ augroup("PersistentMarkdownFolds", {
 --   desc = "Start editing from the point we left off.",
 -- })
 
-augroup("ListCharsFeedback", {
-  {
-    events = "InsertEnter",
-    command = function()
-      opt_local.listchars = {
-        tab = " ",
-        trail = "˽",
-        space = "·",
-        eol = "↴",
-      }
-    end,
-    options = { desc = "Show escape characters on Insert Mode." },
-  },
-  {
-    events = "InsertLeave",
-    command = function()
-      opt_local.listchars = ""
-    end,
-    options = { desc = "Hide escape characters on leaving the Insert Mode." },
-  },
-})
+-- augroup("ListCharsFeedback", {
+--   {
+--     events = "InsertEnter",
+--     command = function()
+--       opt_local.listchars = {
+--         tab = " ",
+--         trail = "˽",
+--         space = "·",
+--         eol = "↴",
+--       }
+--     end,
+--     options = { desc = "Show escape characters on Insert Mode." },
+--   },
+--   {
+--     events = "InsertLeave",
+--     command = function()
+--       opt_local.listchars = ""
+--     end,
+--     options = { desc = "Hide escape characters on leaving the Insert Mode." },
+--   },
+-- })
 
 -- NOTE: Enable this only if you want a scrollbar.
 -- augroup("ScrollbarInit", {
@@ -281,22 +281,22 @@ augroup("ListCharsFeedback", {
 --   },
 -- })
 
-augroup("CursorLineFeedback", {
-  {
-    events = "InsertEnter",
-    command = function()
-      opt_local.cursorline = true
-    end,
-    options = { desc = "Show cursorline in Insert Mode." },
-  },
-  {
-    events = "InsertLeave",
-    command = function()
-      opt_local.cursorline = false
-    end,
-    options = { desc = "Show cursorline in Insert Mode." },
-  },
-})
+-- augroup("CursorLineFeedback", {
+--   {
+--     events = "InsertEnter",
+--     command = function()
+--       opt_local.cursorline = true
+--     end,
+--     options = { desc = "Show cursorline in Insert Mode." },
+--   },
+--   {
+--     events = "InsertLeave",
+--     command = function()
+--       opt_local.cursorline = false
+--     end,
+--     options = { desc = "Show cursorline in Insert Mode." },
+--   },
+-- })
 
 -- augroup("KittyPaddingOnNvim", {
 --   {
