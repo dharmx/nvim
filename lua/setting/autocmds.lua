@@ -32,6 +32,17 @@ end, {
   desc = "Provide a visual color feedback on yanking.",
 })
 
+vim.api.nvim_create_autocmd("UILeave", {
+  callback = function()
+    local SIGKILL = 9
+    table.foreachi(_G.RETYPE_JOBS or {}, function(_, job)
+      vim.loop.kill(job.pid, SIGKILL)
+    end)
+  end,
+  pattern = "*retype.yml",
+  desc = "Kill all retype jobs.",
+})
+
 augroup("NotifyOnPackerOperation", {
   {
     events = "User",

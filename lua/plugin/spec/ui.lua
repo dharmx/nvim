@@ -4,6 +4,15 @@ local use = require("packer").use
 local disabled = require("control.disabled")
 
 use {
+  'fgheng/winbar.nvim',
+  config = function()
+    require("plugin.config.ui.winbar")
+  end,
+  event = "UIEnter",
+  disable = disabled["winbar.nvim"]
+}
+
+use {
     "nvim-zh/colorful-winsep.nvim",
     config = function ()
         require("plugin.config.ui.winsep")

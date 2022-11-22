@@ -46,7 +46,7 @@ use({
   config = function()
     require("plugin.config.lsp.lspconfig")
   end,
-  wants = { "nlsp-settings.nvim", "null-ls.nvim", "cmp-nvim-lsp" },
+  wants = { "nlsp-settings.nvim", "null-ls.nvim", "cmp-nvim-lsp", "fidget.nvim" },
   after = "nvim-lsp-installer",
   disable = disabled["nvim-lspconfig"],
 })
@@ -83,6 +83,7 @@ use({
   config = function()
     require("plugin.config.lsp.fidget")
   end,
+  opt = true,
   disable = disabled["fidget.nvim"]
 })
 

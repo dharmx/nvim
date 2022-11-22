@@ -16,6 +16,12 @@ use({ "nvim-lua/plenary.nvim", disable = disabled["plenary.nvim"] })
 
 use({ "lewis6991/impatient.nvim", disable = disabled["impatient.nvim"] })
 
-use({ "/home/maker/Dotfiles/nvim-blush" })
+use({
+  "/home/maker/Dotfiles/nvim-colo",
+  config = function()
+    require("plugin.config.core.colo")
+  end,
+  event = "UIEnter",
+})
 
 -- vim:ft=lua

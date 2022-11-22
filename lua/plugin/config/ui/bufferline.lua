@@ -80,6 +80,6 @@ local config = {
   },
 }
 
-bufferline.setup(config)
+-- bufferline.setup(config)
 
 -- vim:ft=lua

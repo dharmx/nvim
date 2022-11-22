@@ -1,5 +1,6 @@
 local Input = require("nui.input")
 local event = require("nui.utils.autocmd").event
+local notify = require("utils.neovim").notify
 
 local function nui_lsp_rename()
   local curr_name = vim.fn.expand("<cword>")
@@ -51,7 +52,7 @@ local function nui_lsp_rename()
         )
       )
       notify({
-        message = "Renamed " .. new_name .. " to " .. curr_name .. ".",
+        message = "Renamed " .. curr_name .. " into " .. new_name .. ".",
         icon = "",
         title = " LSP",
       })

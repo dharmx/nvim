@@ -4,6 +4,12 @@ local use = require("packer").use
 local disabled = require("control.disabled")
 
 use({
+  "tjdevries/tree-sitter-lua",
+  module = "docgen",
+  disable = disabled["tree-sitter-lua"],
+})
+
+use({
   "euclidianAce/BetterLua.vim",
   event = "CmdlineEnter",
   setup = function()

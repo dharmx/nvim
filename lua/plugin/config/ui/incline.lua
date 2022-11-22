@@ -39,7 +39,7 @@ incline.setup({
     local bg = focused and colors.bg or colors.bg_nc
 
     -- Match cursorline background if cursor is on the same line as the statusline
-    local fname = bufname == "" and "[No name]" or vim.fn.fnamemodify(bufname, ":t")
+    local fname = bufname == "" and "[No Name]" or vim.fn.fnamemodify(bufname, ":t")
 
     local icon, icon_fg
     if bufname ~= "" then
@@ -65,7 +65,7 @@ incline.setup({
       { icon, guifg = icon_fg },
       " ",
       { fname, gui = modified and "bold" or nil },
-      { modified and "   " or " ", guifg = colors.fg },
+      { modified and "+ " or " ", guifg = colors.fg_nc },
     }
   end,
   window = {

@@ -4,8 +4,6 @@ local use = require("packer").use
 
 local disabled = require("control.disabled")
 
-use({ "danymat/neogen", after = "nvim-treesitter", disable = disabled["neogen"] })
-
 use({
   "nvim-treesitter/nvim-treesitter",
   config = function()
@@ -13,6 +11,24 @@ use({
   end,
   cmd = "TSUpdate",
   disable = disabled["nvim-treesitter"],
+})
+
+use({ 
+  "danymat/neogen",
+  after = "nvim-treesitter",
+  config = function()
+    require("plugin.config.treesitter.neogen")
+  end,
+  disable = disabled["neogen"]
+})
+
+use({ 
+  "m-demare/hlargs.nvim",
+  config = function()
+    require("plugin.config.treesitter.hlargs")
+  end,
+  after = "nvim-treesitter",
+  disable = disabled["hlargs.nvim"]
 })
 
 use({

@@ -255,7 +255,6 @@ alias("HugoServer", function()
   if _G.HUGO_JOBS then
     local SIGKILL = 9
     table.foreachi(_G.HUGO_JOBS, function(_, job)
-      job:shutdown()
       vim.loop.kill(job.pid, SIGKILL)
     end)
     _G.HUGO_JOBS = nil
@@ -278,7 +277,6 @@ alias("RetypeWatch", function()
   if _G.RETYPE_JOBS then
     local SIGKILL = 9
     table.foreachi(_G.RETYPE_JOBS, function(_, job)
-      job:shutdown()
       vim.loop.kill(job.pid, SIGKILL)
     end)
     _G.RETYPE_JOBS = nil
@@ -288,7 +286,8 @@ alias("RetypeWatch", function()
   local path = vim.fn.bufname()
   if vim.fn.fnamemodify(path, ":t") == "retype.yml" then
     local retype = require("plenary.job"):new({
-      "retype", "watch",
+      "retype",
+      "watch",
       cwd = vim.fn.fnamemodify(path, ":h"),
     })
     retype:start()
