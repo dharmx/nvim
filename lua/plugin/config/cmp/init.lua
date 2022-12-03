@@ -98,7 +98,7 @@ local config = {
       border = "solid",
     },
     completion = {
-      border = "solid",
+      border = "none",
       completeopt = "menu,menuone,noinsert",
       keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
       keyword_length = 1,
@@ -140,7 +140,7 @@ local cmdlines = {
   mapping = cmp.mapping.preset.cmdline(),
   formatting = {
     fields = fmt_orders[2],
-    format = cmp_fmt.icon_only,
+    format = cmp_fmt.full_info,
   },
   entries = { name = "custom", selection_order = "near_cursor" },
   preselect = cmp.PreselectMode.None,

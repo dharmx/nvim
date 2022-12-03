@@ -10,9 +10,19 @@ local cmd = vim.cmd
 alias("Focus", function()
   vim.o.laststatus = 0
   vim.o.showtabline = 0
-  vim.api.nvim_command(":TZAtaraxis")
+  vim.cmd.TZAtaraxis()
 end, {
   desc = "TrueZen Ataraxis + No StatusLine + No BufferLine",
+})
+
+alias("LineWidthColumn", function()
+  if vim.wo.colorcolumn == "0" then
+    vim.wo.colorcolumn = vim.bo.textwidth .. ""
+  else
+    vim.wo.colorcolumn = "0"
+  end
+end, {
+  desc = "Virtual column for measuring text line length.",
 })
 
 alias("LoadNullLsp", function()

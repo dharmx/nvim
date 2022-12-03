@@ -1,9 +1,11 @@
---- Set up vim opts.
+-- Set up vim opts.
 
 local opt = vim.opt
 local env = vim.env
 
 opt.termguicolors = true -- Enables 24-bit RGB color in the TUI.  Uses "gui" :highlight
+opt.textwidth = 120
+opt.colorcolumn = { 0 }
 opt.laststatus = 3 -- enables the global statusline
 opt.backspace = {
   "indent",
@@ -29,7 +31,7 @@ opt.wildignore = {
 } -- these	patterns is ignored when expanding wildcards
 opt.errorformat = "%f|%l col %c|%m" -- option specifies a list of formats that are recognized
 opt.fillchars = { -- Characters to fill the statuslines and vertical separators. See :h 'fillchars'
-  eob = " ",
+  eob = " ", --- setting this to ~ will display ~ on numcol after it ends
   stlnc = " ",
   diff = "░",
   msgsep = "━",
@@ -75,8 +77,8 @@ opt.cursorline = false -- highlight the text line of the cursor with CursorLine
 opt.cursorlineopt = "both" -- list of settings for how 'cursorline' is displayed
 opt.pumheight = 25 -- min height for the popup menu
 opt.pumwidth = 35 -- min width for the popup menu
-opt.pumblend = 1 -- pseudo-transparency for a popup window
-opt.winblend = 1 -- pseudo-transparency for a floating window
+opt.pumblend = 0 -- pseudo-transparency for a popup window
+opt.winblend = 0 -- pseudo-transparency for a floating window
 opt.history = 10000 -- no of lines
 opt.emoji = true -- all Unicode emoji characters are considered to be full width
 opt.ruler = true -- show the line & column no. of the cursor position, separated by comma

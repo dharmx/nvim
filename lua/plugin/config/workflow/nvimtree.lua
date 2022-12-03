@@ -5,7 +5,7 @@ if not present then
 end
 
 -- press g? to show nvimtree shortcuts
-local config = { -- BEGIN_DEFAULT_OPTS
+local config = {
   auto_reload_on_write = true,
   update_cwd = true,
   create_in_closed_folder = true,
@@ -63,7 +63,7 @@ local config = { -- BEGIN_DEFAULT_OPTS
     root_folder_modifier = table.concat({ ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }),
     indent_width = 2,
     indent_markers = {
-      enable = false,
+      enable = true,
       inline_arrows = true,
       icons = {
         corner = "└",
@@ -76,7 +76,7 @@ local config = { -- BEGIN_DEFAULT_OPTS
     icons = {
       webdev_colors = true,
       git_placement = "before",
-      symlink_arrow = " 壟 ",
+      symlink_arrow = "→ ",
       padding = " ",
       show = {
         file = true,
@@ -137,6 +137,10 @@ local config = { -- BEGIN_DEFAULT_OPTS
     enable = true,
     show_on_dirs = true,
     debounce_delay = 50,
+    severity = {
+      min = vim.diagnostic.severity.HINT,
+      max = vim.diagnostic.severity.ERROR
+    },
     icons = {
       hint = "",
       info = "",
@@ -221,7 +225,7 @@ local config = { -- BEGIN_DEFAULT_OPTS
   notify = {
     threshold = vim.log.levels.INFO,
   },
-} -- END_DEFAULT_OPTS
+}
 
 nvimtree.setup(config)
 

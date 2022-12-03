@@ -8,7 +8,7 @@ end
 local config = {
   -- LSP client names to ignore
   -- Example: {"sumneko_lua", }
-  -- ignore = { "null-ls" },
+  ignore = { "null-ls" },
   sign = {
     enabled = true,
     priority = 10,
@@ -37,7 +37,7 @@ local config = {
   virtual_text = {
     enabled = true,
     -- Text to show at virtual text
-    text = " ﮠ",
+    text = "ﮠ",
     -- highlight mode to use for virtual text (replace, combine, blend), see :help nvim_buf_set_extmark() for reference
     hl_mode = "replace",
   },

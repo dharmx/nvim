@@ -3,23 +3,31 @@ local use = require("packer").use
 
 local disabled = require("control.disabled")
 
-use {
-  'fgheng/winbar.nvim',
+use({
+  "lukas-reineke/virt-column.nvim",
+  config = function()
+    require("plugin.config.ui.virtcol")
+  end,
+  disable = disabled["virt-column.nvim"],
+})
+
+use({
+  "fgheng/winbar.nvim",
   config = function()
     require("plugin.config.ui.winbar")
   end,
   event = "UIEnter",
-  disable = disabled["winbar.nvim"]
-}
+  disable = disabled["winbar.nvim"],
+})
 
-use {
-    "nvim-zh/colorful-winsep.nvim",
-    config = function ()
-        require("plugin.config.ui.winsep")
-    end,
-    event = "UIEnter",
-    disable = disabled["colorful-winsep.nvim"]
-}
+use({
+  "nvim-zh/colorful-winsep.nvim",
+  config = function()
+    require("plugin.config.ui.winsep")
+  end,
+  event = "UIEnter",
+  disable = disabled["colorful-winsep.nvim"],
+})
 
 use({
   "edluffy/specs.nvim",
@@ -36,7 +44,7 @@ use({
     require("plugin.config.ui.incline")
   end,
   wants = "nvim-web-devicons",
-  disable = disabled["incline.nvim"]
+  disable = disabled["incline.nvim"],
 })
 
 use({
@@ -50,20 +58,12 @@ use({
 
 use({
   "akinsho/bufferline.nvim",
-  tag = "v2.*",
-  event = "UIEnter",
-  config = function()
-    require("plugin.config.ui.bufferline")
-  end,
-  wants = "nvim-web-devicons",
+  module = "bufferline",
   disable = disabled["bufferline.nvim"],
 })
 
 use({
   "kyazdani42/nvim-web-devicons",
-  config = function()
-    require("plugin.config.ui.devicons")
-  end,
   module = "nvim-web-devicons",
   disable = disabled["nvim-web-devicons"],
 })
@@ -111,9 +111,6 @@ use({
 use({
   "goolord/alpha-nvim",
   wants = "nvim-web-devicons",
-  config = function()
-    require("plugin.config.ui.alpha")
-  end,
   cmd = {
     "Alpha",
     "AlphaRedraw",
@@ -126,7 +123,7 @@ use({
   config = function()
     require("plugin.config.ui.scrollbar")
   end,
-  after = "gitsigns.nvim",
+  after = { "gitsigns.nvim", "nvim-hlslens" },
   disable = disabled["nvim-scrollbar"],
 })
 
@@ -137,6 +134,12 @@ use({
   end,
   disable = disabled["sidebar.nvim"],
   after = "nvim-lsp-installer",
+})
+
+use({
+  "feline-nvim/feline.nvim",
+  module = "feline",
+  disable = disabled["feline.nvim"]
 })
 
 -- vim:ft=lua

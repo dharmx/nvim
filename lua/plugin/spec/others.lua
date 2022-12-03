@@ -40,17 +40,6 @@ use({
 })
 
 use({
-  "KadoBOT/nvim-spotify",
-  wants = "telescope.nvim",
-  config = function()
-    require("plugin.config.others.spotify")
-  end,
-  run = "make",
-  cmd = { "SpotifyDevices", "Spotify" },
-  disable = disabled["nvim-spotify"],
-})
-
-use({
   "karb94/neoscroll.nvim",
   cmd = {
     "NeoscrollEnablePM",
@@ -64,16 +53,6 @@ use({
     require("plugin.config.others.neoscroll")
   end,
   disable = disabled["neoscroll.nvim"],
-})
-
-use({
-  "Xuyuanp/scrollbar.nvim",
-  event = { "WinScrolled", "VimResized", "QuitPre" },
-  setup = function()
-    require("plugin.config.others.scrollbar")
-  end,
-  module = "scrollbar",
-  disable = disabled["scrollbar.nvim"],
 })
 
 -- vim:ft=lua

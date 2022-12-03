@@ -136,7 +136,7 @@ use({
 
 use({
   "kevinhwang91/nvim-hlslens",
-  event = "UIEnter",
+  event = "CmdlineEnter",
   config = function()
     require("plugin.config.workflow.hlslens")
   end,

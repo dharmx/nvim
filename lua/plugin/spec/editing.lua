@@ -5,9 +5,12 @@ local use = require("packer").use
 local disabled = require("control.disabled")
 
 use({
-  "lukas-reineke/virt-column.nvim",
-  event = "UIEnter",
-  disable = disabled["virt-column.nvim"]
+  "dnlhc/glance.nvim",
+  config = function()
+    require('plugin.config.editing.glance')
+  end,
+  disable = disabled["glance.nvim"],
+  after = "nvim-lspconfig",
 })
 
 use({
@@ -78,6 +81,9 @@ use({ "vuki656/package-info.nvim", ft = "package.json", disable = disabled["pack
 use({
   "TimUntersberger/neogit",
   cmd = "Neogit",
+  config = function()
+    require("plugin.config.editing.neogit")
+  end,
   module = "neogit",
   disable = disabled["neogit"],
 })
