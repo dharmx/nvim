@@ -48,6 +48,8 @@ luac.out
 .luarc.json
 test.lua
 node_modules/
+lua/dharmx/plugin/spec/local.lua
 
 **/*.spl
 .sourcery
+lazy-lock.json
