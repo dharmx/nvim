@@ -1,6 +1,5 @@
-local present, neoscroll = pcall(require, "neoscroll")
-
-if not present then return end
+local ok, neoscroll = pcall(require, "neoscroll")
+if not ok then return end
 
 local config = {
   mappings = {
@@ -23,13 +22,13 @@ local config = {
 
   performance_mode = false, -- Disable "Performance Mode" on all buffers.
   pre_hook = function(info)
-    if info == "cursorline" then wo.cursorline = false end
+    if info == "cursorline" then vim.wo.cursorline = false end
   end,
   post_hook = function(info)
-    if info == "cursorline" then wo.cursorline = true end
+    if info == "cursorline" then vim.wo.cursorline = true end
   end,
 }
 
 neoscroll.setup(config)
 
--- vim:ft=lua
+-- vim:filetype=lua

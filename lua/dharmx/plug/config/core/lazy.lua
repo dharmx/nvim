@@ -1,5 +1,5 @@
-local present, lazy = pcall(require, "lazy")
-if not present then return end
+local ok, lazy = pcall(require, "lazy")
+if not ok then return end
 
 lazy.setup({
   spec = "dharmx.plug.spec",

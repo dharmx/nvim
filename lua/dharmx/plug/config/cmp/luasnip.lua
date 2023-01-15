@@ -1,5 +1,5 @@
-local present, luasnip = pcall(require, "luasnip")
-if not present then return end
+local ok, luasnip = pcall(require, "luasnip")
+if not ok then return end
 
 luasnip.config.set_config({
   history = true,
@@ -16,8 +16,10 @@ vim.loop.fs_scandir(
     while true do
       local name, category = vim.loop.fs_scandir_next(userdata)
       if not name then break end
-      local snip_type = vim.fn.fnamemodify(name, ":r")
-      luasnip.add_snippets(snip_type, require("dharmx.plug.config.cmp.snip." .. snip_type))
+      if category == "file" then
+        local snip_type = vim.fn.fnamemodify(name, ":r")
+        luasnip.add_snippets(snip_type, require("dharmx.plug.config.cmp.snip." .. snip_type))
+      end
     end
     require("luasnip.loaders.from_vscode").lazy_load()
   end)

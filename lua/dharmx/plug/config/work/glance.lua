@@ -1,4 +1,4 @@
-local present, glance = pcall(require, "glance")
+local ok, glance = pcall(require, "glance")
 local actions = glance.actions
 
 glance.setup({

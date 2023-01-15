@@ -1,6 +1,5 @@
-local present, cmp = pcall(require, "cmp")
-
-if not present then return end
+local ok, cmp = pcall(require, "cmp")
+if not ok then return end
 
 local kinds = require("dharmx.list.kind")
 local kind_icons = kinds.type_icons

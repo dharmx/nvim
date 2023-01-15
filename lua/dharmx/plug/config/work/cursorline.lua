@@ -1,6 +1,5 @@
-local present, cursorline = pcall(require, "nvim-cursorline")
-
-if not present then return end
+local ok, cursorline = pcall(require, "nvim-cursorline")
+if not ok then return end
 
 cursorline.setup({
   cursorline = {

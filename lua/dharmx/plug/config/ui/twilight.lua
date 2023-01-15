@@ -1,6 +1,5 @@
-local present, twilight = pcall(require, "twilight")
-
-if not present then return end
+local ok, twilight = pcall(require, "twilight")
+if not ok then return end
 
 local config = {
   dimming = {

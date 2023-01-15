@@ -1,6 +1,5 @@
-local present, presence = pcall(require, "presence")
-
-if not present then return end
+local ok, presence = pcall(require, "presence")
+if not ok then return end
 
 local config = {
   auto_update = true,

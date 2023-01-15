@@ -1,6 +1,5 @@
-local present, context = pcall(require, "treesitter-context")
-
-if not present then return end
+local ok, context = pcall(require, "treesitter-context")
+if not ok then return end
 
 local config = {
   enable = true,
@@ -22,4 +21,4 @@ local config = {
 
 context.setup(config)
 
--- vim:ft=lua
+-- vim:filetype=lua

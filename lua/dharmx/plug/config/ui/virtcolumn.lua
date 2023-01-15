@@ -1,6 +1,5 @@
-local present, virtcol = pcall(require, "virt-column")
-
-if not present then return end
+local ok, virtcol = pcall(require, "virt-column")
+if not ok then return end
 
 virtcol.setup({ char = "┃" })
 

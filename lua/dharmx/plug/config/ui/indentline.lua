@@ -1,6 +1,5 @@
-local present, blankline = pcall(require, "indent_blankline")
-
-if not present then return end
+local ok, indentline = pcall(require, "indent_blankline")
+if not ok then return end
 
 local config = {
   char = "│",
@@ -57,6 +56,6 @@ local config = {
   space_char_highlight_list = nil,
 }
 
-blankline.setup(config)
+indentline.setup(config)
 
 -- vim:filetype=lua

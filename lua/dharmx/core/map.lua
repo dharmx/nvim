@@ -10,7 +10,7 @@ nmap("<F3>", vim.cmd.ColorizerToggle, "Toggle colorizer highlights.")
 nmap("<F2>", ":setlocal spell!<CR>", "Toggle spellchecker.")
 nmap("<C-S>", vim.cmd.update, "Write changes only if the buffer is modified.")
 
-nmap("<leader>q", function() require("dharmx.util.bufclose")() end, "Delete buffer.")
+nmap("<leader>q", function() require("dharmx.util.close")() end, "Delete buffer.")
 nmap("<leader>n", vim.cmd.tabnew, "Make new tab.")
 nmap("<leader>]", vim.cmd.bnext, "Goto next buffer.")
 nmap("<leader>[", vim.cmd.bprev, "Goto prev buffer.")

@@ -86,6 +86,12 @@ return {
     "nvim-treesitter/nvim-tree-docs",
     dependencies = "nvim-treesitter/nvim-treesitter",
   },
+  { "tpope/vim-repeat" },
+  {
+    "ggandor/leap.nvim",
+    config = function() require("leap") end,
+    dependencies = "tpope/vim-repeat",
+  },
 }
 
 -- vim:filetype=lua

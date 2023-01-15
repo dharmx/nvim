@@ -1,17 +1,15 @@
 if vim.g.loaded_statusline == 1 then return end
+local ok, incline = pcall(require, "incline")
 
-local present, incline = pcall(require, "incline")
+if not ok then return end
+local _ok, devicons = pcall(require, "nvim-web-devicons")
 
-if not present then return end
-
-local api = vim.api
-local ok, devicons = pcall(require, "nvim-web-devicons")
-
-if not ok then
+if not _ok then
   incline.setup()
   return
 end
 
+local api = vim.api
 local col = require("colo.api").theme.current()
 local colors = {
   theme_bg = col.yellow,

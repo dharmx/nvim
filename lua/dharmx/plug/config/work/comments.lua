@@ -1,6 +1,5 @@
-local present, comments = pcall(require, "Comment")
-
-if not present then return end
+local ok, comments = pcall(require, "Comment")
+if not ok then return end
 
 local config = {
   padding = true,
@@ -48,4 +47,4 @@ local config = {
 
 comments.setup(config)
 
--- vim:ft=lua
+-- vim:filetype=lua

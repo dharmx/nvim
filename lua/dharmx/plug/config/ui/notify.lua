@@ -1,6 +1,5 @@
-local present, notify = pcall(require, "notify")
-
-if not present then return end
+local ok, notify = pcall(require, "notify")
+if not ok then return end
 
 local config = {
   stages = "fade_in_slide_out",

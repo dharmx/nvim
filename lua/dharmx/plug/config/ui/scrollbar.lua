@@ -1,6 +1,5 @@
-local present, scrollbar = pcall(require, "scrollbar")
-
-if not present then return end
+local ok, scrollbar = pcall(require, "scrollbar")
+if not ok then return end
 
 scrollbar.setup({
   show = true,

@@ -9,4 +9,4 @@ api.nvim_set_keymap("n", "<A-h>", ":MoveHChar(-1)<CR>", { noremap = true, silent
 api.nvim_set_keymap("v", "<A-l>", ":MoveHBlock(1)<CR>", { noremap = true, silent = true })
 api.nvim_set_keymap("v", "<A-h>", ":MoveHBlock(-1)<CR>", { noremap = true, silent = true })
 
--- vim:ft=lua
+-- vim:filetype=lua

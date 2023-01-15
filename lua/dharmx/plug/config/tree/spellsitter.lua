@@ -1,7 +1,6 @@
-local present, spellsitter = pcall(require, "spellsitter")
-
-if not present then return end
+local ok, spellsitter = pcall(require, "spellsitter")
+if not ok then return end
 
 spellsitter.setup({ enable = true })
 
--- vim:ft=lua
+-- vim:filetype=lua

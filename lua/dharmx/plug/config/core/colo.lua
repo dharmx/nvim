@@ -1,5 +1,5 @@
-local present, colo = pcall(require, "colo")
-if not present then return end
+local ok, colo = pcall(require, "colo")
+if not ok then return end
 
 colo.setup({
   theme = "radium_dark",

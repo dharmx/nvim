@@ -1,6 +1,5 @@
-local present, pp = pcall(require, "paperplanes")
-
-if not present then return end
+local ok, pp = pcall(require, "paperplanes")
+if not ok then return end
 
 pp.setup({
   register = "+",

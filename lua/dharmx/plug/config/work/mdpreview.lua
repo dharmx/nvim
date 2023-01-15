@@ -10,4 +10,4 @@ g.mkdp_browser = vim.env.BROWSER
 g.mkdp_page_title = "${name}"
 g.mkdp_filetypes = { "markdown" }
 
--- vim:ft=lua
+-- vim:filetype=lua

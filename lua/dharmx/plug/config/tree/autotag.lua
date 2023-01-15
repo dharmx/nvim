@@ -1,6 +1,5 @@
-local present, autotag = pcall(require, "nvim-ts-autotag")
-
-if not present then return end
+local ok, autotag = pcall(require, "nvim-ts-autotag")
+if not ok then return end
 
 local config = {
   filetypes = {
@@ -45,4 +44,4 @@ local config = {
 
 autotag.setup(config)
 
--- vim:ft=lua
+-- vim:filetype=lua

@@ -23,7 +23,7 @@ M[1] = {
       local default = ""
       local clip = fn.getreg("*")
       if not vim.startswith(clip, "https://github.com/") then return default end
-      local parts = vim.split(clip, "/")
+      local parts = vim.split(clip, "/", { plain = true })
       if #parts < 2 then return default end
       local author, project = parts[#parts - 1], parts[#parts]
       return author .. "/" .. project
@@ -47,7 +47,7 @@ M[2] = {
       local default = ""
       local clip = fn.getreg("*")
       if not vim.startswith(clip, "https://github.com/") then return default end
-      local parts = vim.split(clip, "/")
+      local parts = vim.split(clip, "/", { plain = true })
       if #parts < 2 then return default end
       local author, project = parts[#parts - 1], parts[#parts]
       return author .. "/" .. project
@@ -74,7 +74,7 @@ M[4] = {
     dscr = { "safe require module with variables", "e.g.", 'local prsent, module = pcall(require, "module")' },
   },
   {
-    text('local present, module = pcall(require, "module")'),
+    text('local ok, module = pcall(require, "module")'),
   },
 }
 

@@ -1,5 +1,15 @@
 local function alias(name, cmd, opts) vim.api.nvim_create_user_command(name, cmd, vim.F.if_nil(opts, {})) end
 
+alias("LineWidthColumn", function()
+  if vim.wo.colorcolumn == "0" then
+    vim.wo.colorcolumn = vim.bo.textwidth .. ""
+  else
+    vim.wo.colorcolumn = "0"
+  end
+end, {
+  desc = "Virtual column for measuring text line length.",
+})
+
 alias("HugoServer", function()
   if _G.HUGO_JOBS then
     local SIGKILL = 9

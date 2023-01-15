@@ -1,5 +1,5 @@
-local present, treesitter = pcall(require, "nvim-treesitter.configs")
-if not present then return end
+local ok, treesitter = pcall(require, "nvim-treesitter.configs")
+if not ok then return end
 
 local config = {
   ensure_installed = {
@@ -52,7 +52,7 @@ local config = {
 }
 
 vim.loop.fs_scandir(
-  vim.fn.stdpath("config") .. "/lua/dharmx/plug/config/tree/extra",
+  vim.fn.stdpath("config") .. "/lua/dharmx/plug/config/tree/extras",
   vim.schedule_wrap(function(errors, userdata)
     if errors then
       treesitter.setup(config)
@@ -61,7 +61,9 @@ vim.loop.fs_scandir(
     while true do
       local name, category = vim.loop.fs_scandir_next(userdata)
       if not name then break end
-      config[name] = require("dharmx.plug.config.tree.extra." .. vim.fn.fnamemodify(name, ":r"))
+      if category == "file" then
+        config[name] = require("dharmx.plug.config.tree.extras." .. vim.fn.fnamemodify(name, ":r"))
+      end
     end
   end)
 )

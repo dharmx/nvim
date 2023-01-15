@@ -13,7 +13,6 @@ return {
     },
     event = { "CursorHold", "CursorMoved" },
   },
-  { "tami5/sqlite.lua", lazy = true },
 }
 
 -- vim:filetype=lua

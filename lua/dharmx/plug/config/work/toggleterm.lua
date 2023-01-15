@@ -1,5 +1,5 @@
-local present, toggleterm = pcall(require, "toggleterm")
-if not present then return end
+local ok, toggleterm = pcall(require, "toggleterm")
+if not ok then return end
 
 local config = {
   hide_numbers = true,

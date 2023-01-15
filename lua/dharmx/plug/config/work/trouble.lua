@@ -1,6 +1,5 @@
-local present, trouble = pcall(require, "trouble")
-
-if not present then return end
+local ok, trouble = pcall(require, "trouble")
+if not ok then return end
 
 local config = {
   position = "bottom", -- position of the list can be: bottom, top, left, right
@@ -52,4 +51,4 @@ local config = {
 
 trouble.setup(config)
 
--- vim:ft=lua
+-- vim:filetype=lua

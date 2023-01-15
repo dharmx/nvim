@@ -1,13 +1,25 @@
-local present, telescope = pcall(require, "telescope")
-
-if not present then return end
+local ok, telescope = pcall(require, "telescope")
+if not ok then return end
 
 local actions = require("telescope.actions")
 local actions_state = require("telescope.actions.state")
 local layout = require("telescope.actions.layout")
 
--- if you want to wrap the previewer
--- autocmd User TelescopePreviewerLoaded setlocal wrap
+local function vmultiple(prompt_buffer, cmd)
+  local picker = actions_state.get_current_picker(prompt_buffer)
+  local selections = picker:get_multi_selection()
+  local entry = actions_state.get_selected_entry()
+
+  actions.close(prompt_buffer)
+  if #selections < 2 then
+    vim.cmd[cmd](vim.split(entry.value, ":", { plain = true })[1])
+  else
+    for _, selection in ipairs(selections) do
+      vim.cmd[cmd](vim.split(selection.value, ":", { plain = true })[1])
+    end
+  end
+end
+
 local config = {
   dynamic_preview_title = true,
   pickers = {
@@ -35,20 +47,7 @@ local config = {
           ["<C-J>"] = actions.preview_scrolling_down,
         },
         ["n"] = {
-          ["v"] = function(prompt_buffer)
-            local picker = actions_state.get_current_picker(prompt_buffer)
-            local selections = picker:get_multi_selection()
-            local entry = actions_state.get_selected_entry()
-
-            actions.close(prompt_buffer)
-            if #selections < 2 then
-              vim.cmd.vsplit(entry.value)
-            else
-              for _, selection in ipairs(selections) do
-                vim.cmd.vsplit(selection.value)
-              end
-            end
-          end,
+          ["v"] = function(prompt_buffer) vmultiple(prompt_buffer, "vsplit") end,
           ["p"] = layout.toggle_preview,
         },
       },
@@ -68,6 +67,17 @@ local config = {
     },
     live_grep = {
       prompt_prefix = "   ",
+      mappings = {
+        ["i"] = {
+          ["<C-K>"] = actions.preview_scrolling_up,
+          ["<C-J>"] = actions.preview_scrolling_down,
+        },
+        ["n"] = {
+          ["v"] = function(prompt_buffer) vmultiple(prompt_buffer, "vsplit") end,
+          ["p"] = layout.toggle_preview,
+          ["V"] = function(prompt_buffer) vmultiple(prompt_buffer, "edit") end
+        },
+      },
     },
     git_commits = {
       prompt_prefix = " ﰖ  ",

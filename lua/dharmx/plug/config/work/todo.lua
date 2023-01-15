@@ -1,6 +1,5 @@
-local present, todo = pcall(require, "todo-comments")
-
-if not present then return end
+local ok, todo = pcall(require, "todo-comments")
+if not ok then return end
 
 local config = {
   signs = true, -- show icons in the signs column
@@ -53,4 +52,4 @@ local config = {
 
 todo.setup(config)
 
--- vim:ft=lua
+-- vim:filetype=lua

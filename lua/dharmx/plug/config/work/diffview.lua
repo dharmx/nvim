@@ -1,5 +1,5 @@
-local present, diffview = pcall(require, "diffview")
-if not present then return end
+local ok, diffview = pcall(require, "diffview")
+if not ok then return end
 
 diffview.setup()
 

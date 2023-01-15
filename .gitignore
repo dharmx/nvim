@@ -50,6 +50,6 @@ test.lua
 node_modules/
 lua/dharmx/plugin/spec/local.lua
 
-**/*.spl
 .sourcery
+spell/
 lazy-lock.json
