@@ -23,7 +23,7 @@ return {
   {
     "lukas-reineke/virt-column.nvim",
     config = function() req("virtcolumn") end,
-    event = "LspAttach",
+    cmd = "LineWidthColumn",
   },
   {
     "b0o/incline.nvim",
@@ -34,13 +34,14 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    event = "InsertEnter",
+    event = { "CursorMoved", "CursorHold" },
     config = function() req("indentline") end,
   },
   {
     "petertriho/nvim-scrollbar",
     config = function() req("scrollbar") end,
     dependencies = { "gitsigns.nvim", "nvim-hlslens" },
+    event = { "CursorHold", "CursorMoved" },
   },
   {
     "sunjon/shade.nvim",
@@ -61,6 +62,31 @@ return {
     "rcarriga/nvim-notify",
     event = "InsertEnter",
     config = function() req("notify") end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    event = { "CmdlineEnter", "InsertEnter", "CursorMoved" },
+    config = function() req("todo") end,
+  },
+  {
+    "NvChad/nvim-colorizer.lua",
+    keys = { "<F3>" },
+  },
+  {
+    "yamatsum/nvim-cursorline",
+    config = function() req("cursorline") end,
+    lazy = true,
+  },
+  {
+    "anuvyklack/pretty-fold.nvim",
+    config = function() req("fold") end,
+    keys = { "zf", "za", "zc" },
+  },
+  {
+    "doums/monark.nvim",
+    config = function() req("monark") end,
+    event = "InsertEnter",
+    dev = true,
   },
 }
 

@@ -10,22 +10,32 @@ return {
   {
     "andymass/vim-matchup",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    lazy = true,
+    event = "InsertEnter",
   },
   {
     "p00f/nvim-ts-rainbow",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    lazy = true,
+    keys = { { mode = "i", "{", "}" } },
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    lazy = true,
+    cmd = {
+      "TSTextobjectSelect",
+      "TSTextobjectSwapNext",
+      "TSTextobjectGotoNextEnd",
+      "TSTextobjectSwapPrevious",
+      "TSTextobjectGotoNextStart",
+      "TSTextobjectGotoPreviousEnd",
+      "TSTextobjectGotoPreviousStart",
+      "TSTextobjectPeekDefinitionCode",
+    },
+    keys = { "]", "[" },
   },
   {
     "nvim-treesitter/playground",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    lazy = true,
+    cmd = "TSPlaygroundToggle",
   },
   {
     "windwp/nvim-ts-autotag",
@@ -37,12 +47,7 @@ return {
     "romgrk/nvim-treesitter-context",
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = function() req("context") end,
-    lazy = true,
-  },
-  {
-    "lewis6991/spellsitter.nvim",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    config = function() req("spellsitter") end,
+    event = "InsertEnter",
   },
 }
 

@@ -9,17 +9,10 @@ for _, provider in ipairs({
   vim.g["loaded_" .. provider .. "_provider"] = 0
 end
 
-vim.loop.fs_scandir(
-  config .. "/core",
-  vim.schedule_wrap(function(errors, userdata)
-    if errors then return end
-    while true do
-      local name, category = vim.loop.fs_scandir_next(userdata)
-      if not name then break end
-      if name ~= "init.lua" and category == "file" then require("dharmx.core." .. vim.fn.fnamemodify(name, ":r")) end
-    end
-  end)
-)
+local scanned = vim.fn.readdir(config .. "/core")
+for _, file in ipairs(scanned) do
+  if file ~= "init.lua" then require("dharmx.core." .. vim.fn.fnamemodify(file, ":r")) end
+end
 
 vim.opt.shadafile = "NONE"
 vim.schedule(function()

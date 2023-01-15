@@ -33,4 +33,13 @@ vim.fn.sign_define("LightBulbSign", {
   numhl = "LspDiagnosticsSignHint",
 })
 
+vim.diagnostic.config({
+  virtual_text = { prefix = " ", source = "always" },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+  float = { source = "always" },
+})
+
 -- vim:filetype=lua

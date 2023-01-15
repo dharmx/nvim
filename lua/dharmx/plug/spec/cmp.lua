@@ -7,15 +7,18 @@ return {
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = "rafamadriz/friendly-snippets",
     config = function() req("luasnip") end,
+    lazy = true,
   },
   {
     "hrsh7th/nvim-cmp",
     config = function() req("init") end,
     dependencies = "L3MON4D3/LuaSnip",
+    event = { "InsertEnter", "CmdlineEnter" },
   },
   {
     "hrsh7th/cmp-nvim-lua",
     dependencies = "hrsh7th/nvim-cmp",
+    lazy = true,
   },
   {
     "windwp/nvim-autopairs",
@@ -24,6 +27,7 @@ return {
   },
   {
     "hrsh7th/cmp-nvim-lsp-document-symbol",
+    event = "LspAttach",
     dependencies = {
       "hrsh7th/nvim-cmp",
       "neovim/nvim-lspconfig",
@@ -31,6 +35,7 @@ return {
   },
   {
     "hrsh7th/cmp-nvim-lsp-signature-help",
+    event = "LspAttach",
     dependencies = {
       "hrsh7th/nvim-cmp",
       "neovim/nvim-lspconfig",
@@ -43,6 +48,7 @@ return {
       "hrsh7th/nvim-cmp",
       "neovim/nvim-lspconfig",
     },
+    event = "InsertEnter",
   },
   {
     "hrsh7th/cmp-cmdline",
@@ -51,6 +57,7 @@ return {
   },
   {
     "hrsh7th/cmp-buffer",
+    lazy = true,
     dependencies = "hrsh7th/nvim-cmp",
     event = "InsertEnter",
   },
@@ -61,6 +68,7 @@ return {
   },
   {
     "hrsh7th/cmp-nvim-lsp",
+    lazy = true,
     dependencies = {
       "hrsh7th/nvim-cmp",
       "neovim/nvim-lspconfig",

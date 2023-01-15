@@ -20,6 +20,18 @@ function M.xmap(key, action, describe)
   })
 end
 
+function M.imap(key, action, describe)
+  vim.keymap.set("i", key, action, {
+    desc = describe,
+  })
+end
+
+function M.inmap(key, action, describe)
+  vim.keymap.set({ "i", "n" }, key, action, {
+    desc = describe,
+  })
+end
+
 function M.vmap(key, action, describe)
   vim.keymap.set("v", key, action, {
     desc = describe,

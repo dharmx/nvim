@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local notify = require("notify")
 
 local Spinner = {}
@@ -57,7 +58,6 @@ end
 
 function Spinner:done(msg, lvl, opts)
   if not self.timer:is_closing() then self.timer:close() end
-
   opts = opts or {}
   if opts.timeout == nil then opts.timeout = 3000 end
 

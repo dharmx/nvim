@@ -1,11 +1,9 @@
 local ok, schemastore = pcall(require, "schemastore")
 local json_schemas = {}
 
-if ok then
-  json_schemas = schemastore.json.schemas({
-    select = { ".eslintrc", "package.json" },
-  })
-end
+if ok then json_schemas = schemastore.json.schemas({
+  select = { ".eslintrc", "package.json" },
+}) end
 
 local schema = {
   settings = {

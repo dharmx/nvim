@@ -1,7 +1,7 @@
 local function req(file) require("dharmx.plug.config.work." .. file) end
 
 return {
-  { "kevinhwang91/rnvimr", init = function() req("rnvim") end },
+  { "kevinhwang91/rnvimr", init = function() req("ranger") end },
   {
     "sindrets/diffview.nvim",
     cmd = { "DiffViewOpen", "DiffViewClose", "DiffViewToggleFiles" },
@@ -10,18 +10,19 @@ return {
   {
     "akinsho/toggleterm.nvim",
     config = function() req("toggleterm") end,
-    lazy = true,
+    keys = [[<C-\>]],
     cmd = "ToggleTerm",
   },
   {
     "kevinhwang91/nvim-hlslens",
-    event = "CmdlineEnter",
-    config = function() req("hlslens") end,
+    event = { "CursorMoved", "CursorMovedI" },
+    config = function() req("lens") end,
   },
   {
     "dnlhc/glance.nvim",
     config = function() req("glance") end,
     dependencies = "neovim/nvim-lspconfig",
+    cmd = "Glance",
   },
   { "Fymyte/rasi.vim", ft = "rasi" },
   { "elkowar/yuck.vim", ft = "yuck" },
@@ -34,7 +35,7 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
-    cmd = "Gitsigns",
+    event = { "CursorMoved", "CursorMovedI" },
     config = function() req("gitsigns") end,
   },
   {
@@ -43,29 +44,10 @@ return {
     event = { "CursorMoved", "InsertEnter" },
   },
   {
-    "folke/todo-comments.nvim",
-    event = { "CmdlineEnter", "InsertEnter", "CursorMoved" },
-    config = function() req("todo") end,
-  },
-  {
-    "iamcco/markdown-preview.nvim",
-    init = function() req("mdpreview") end,
-    build = "cd app && yarn install",
-    ft = "markdown",
-  },
-  {
-    "NvChad/nvim-colorizer.lua",
-    cmd = {
-      "ColorizerToggle",
-      "ColorizerReloadAllBuffers",
-      "ColorizerAttachToBuffers",
-      "ColorizerDetachFromBuffers",
-    },
-  },
-  {
     "folke/trouble.nvim",
     cmd = { "Trouble", "TroubleClose", "TroubleRefresh", "TroubleToggle" },
     config = function() req("trouble") end,
+    event = "LspAttach",
   },
   {
     "NFrid/due.nvim",
@@ -74,10 +56,6 @@ return {
   { "phelipetls/vim-hugo", ft = "markdown" },
   { "robertbasic/vim-hugo-helper", ft = "markdown" },
   {
-    "yamatsum/nvim-cursorline",
-    config = function() req("cursorline") end,
-  },
-  {
     "hinell/move.nvim",
     event = "InsertEnter",
     config = function() req("move") end,
@@ -85,12 +63,40 @@ return {
   {
     "nvim-treesitter/nvim-tree-docs",
     dependencies = "nvim-treesitter/nvim-treesitter",
+    lazy = true,
   },
-  { "tpope/vim-repeat" },
+  { "tpope/vim-repeat", lazy = true },
   {
     "ggandor/leap.nvim",
-    config = function() require("leap") end,
     dependencies = "tpope/vim-repeat",
+    config = function() req("leap") end,
+    event = { "CursorHold", "CursorMoved" },
+  },
+  {
+    "MattesGroeger/vim-bookmarks",
+    init = function() req("bookmarks") end,
+    cmd = "BookmarkToggle",
+  },
+  {
+    "kyazdani42/nvim-tree.lua",
+    cmd = { "NvimTreeToggle", "NvimTreeRefresh", "NvimTreeFocus" },
+    config = function() req("nvimtree") end,
+  },
+  {
+    "mbbill/undotree",
+    cmd = "UndotreeToggle",
+    config = function() req("undotree") end,
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    init = function() req("markdown") end,
+    build = "cd app && yarn install",
+    ft = "markdown",
+  },
+  {
+    "kshenoy/vim-signature",
+    init = function() req("signature") end,
+    keys = { "<leader>" },
   },
 }
 

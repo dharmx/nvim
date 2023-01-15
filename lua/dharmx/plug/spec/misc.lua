@@ -8,18 +8,11 @@ return {
   },
   {
     "wakatime/vim-wakatime",
-    event = "BufRead",
+    event = "InsertEnter",
   },
   {
     "karb94/neoscroll.nvim",
-    cmd = {
-      "NeoscrollEnablePM",
-      "NeoscrollEnableGlobalPM",
-      "NeoscrollDisablePM",
-      "NeoscrollDisableGlobalePM",
-      "NeoscrollEnableBufferPM",
-      "NeoscrollDisableBufferPM",
-    },
+    keys = { "zz" },
     config = function() req("neoscroll") end,
   },
   {

@@ -71,7 +71,6 @@ local N = {
   Method = " ",
   Function = " ",
   Constructor = " ",
-  Operator = " ",
   Field = " ",
   Variable = " ",
   Class = " ",

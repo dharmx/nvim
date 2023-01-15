@@ -3,7 +3,7 @@ if not ok then return end
 
 colo.setup({
   theme = "radium_dark",
-  manual = true,
+  manual = false,
   cycle = true,
   aggregates = {
     enable = true,

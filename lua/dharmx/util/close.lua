@@ -96,6 +96,7 @@ return function()
     return
   end
 
+  ---@diagnostic disable-next-line: param-type-mismatch
   for _, winid in ipairs(vim.fn.getbufinfo(cur_bufnr)[1].windows) do
     if vim.bo.modified then
       menu_options.on_submit = normal_quit

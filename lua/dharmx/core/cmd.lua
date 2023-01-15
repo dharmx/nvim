@@ -13,6 +13,7 @@ end, {
 alias("HugoServer", function()
   if _G.HUGO_JOBS then
     local SIGKILL = 9
+    ---@diagnostic disable-next-line: deprecated
     table.foreachi(_G.HUGO_JOBS, function(_, job) vim.loop.kill(job.pid, SIGKILL) end)
     _G.HUGO_JOBS = nil
     return

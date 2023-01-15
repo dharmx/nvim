@@ -75,7 +75,7 @@ local config = {
         ["n"] = {
           ["v"] = function(prompt_buffer) vmultiple(prompt_buffer, "vsplit") end,
           ["p"] = layout.toggle_preview,
-          ["V"] = function(prompt_buffer) vmultiple(prompt_buffer, "edit") end
+          ["V"] = function(prompt_buffer) vmultiple(prompt_buffer, "edit") end,
         },
       },
     },

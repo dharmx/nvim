@@ -3,9 +3,9 @@ if not ok then return end
 
 cursorline.setup({
   cursorline = {
-    enable = false,
+    enable = true,
     timeout = 400,
-    number = false,
+    number = true,
   },
   cursorword = {
     enable = true,
