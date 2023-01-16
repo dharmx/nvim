@@ -1,5 +1,5 @@
-local lazypath = require("dharmx").lazypath
-local stat = vim.loop.fs_stat(lazypath)
+local config = require("dharmx")
+local stat = vim.loop.fs_stat(config.pacman.install)
 
 if not stat then
   vim.fn.system({
@@ -8,11 +8,11 @@ if not stat then
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
     "--branch=stable",
-    lazypath,
+    config.pacman.install,
   })
 end
 
-vim.opt.rtp:prepend(lazypath)
+vim.opt.rtp:prepend(config.pacman.install)
 require("dharmx.plug.config.core.lazy")
 
 -- vim:filetype=lua

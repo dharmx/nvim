@@ -63,12 +63,12 @@ end
 
 local function handlers()
   local items = {
-    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "solid", focusable = false }),
+    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = config.ui.border, focusable = false }),
     ["textDocument/definition"] = require("dharmx.plug.config.lsp.handlers.definition").goto_definition("vs"),
     ["textDocument/references"] = vim.lsp.with(vim.lsp.handlers["textDocument/references"], { loclist = true }),
     ["textDocument/signatureHelp"] = vim.lsp.with(
       vim.lsp.handlers.signature_help,
-      { border = "solid", focusable = false }
+      { border = config.ui.border, focusable = false }
     ),
     ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
       virtual_text = { prefix = "■ ", spacing = 1 },
@@ -105,7 +105,7 @@ for _, name in ipairs(servers) do
           server = vim.tbl_deep_extend("keep", {
             root_dir = require("lspconfig.util").root_pattern({ "Cargo.toml", "rust-project.json" }) or vim.loop.cwd(),
           }, configure(name)),
-          tools = { hover_actions = { border = "solid" } },
+          tools = { hover_actions = { border = config.ui.border } },
         })
       end
     )

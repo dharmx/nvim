@@ -1,7 +1,8 @@
 local ok, toggleterm = pcall(require, "toggleterm")
 if not ok then return end
+local config = require("dharmx")
 
-local config = {
+toggleterm.setup({
   hide_numbers = true,
   shade_filetypes = {},
   shade_terminals = true,
@@ -14,7 +15,7 @@ local config = {
   close_on_exit = true,
   shell = vim.o.shell,
   float_opts = {
-    border = "solid",
+    border = config.ui.border,
     winblend = 0,
   },
   highlights = {
@@ -28,8 +29,6 @@ local config = {
       link = "FloatBorder",
     },
   },
-}
-
-toggleterm.setup(config)
+})
 
 -- vim:filetype=lua

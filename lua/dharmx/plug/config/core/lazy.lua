@@ -4,11 +4,11 @@ local config = require("dharmx")
 
 lazy.setup({
   spec = "dharmx.plug.spec",
-  root = vim.fn.stdpath("data") .. "/lazy",
-  lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json",
+  root = config.pacman.root,
+  lockfile = config.pacman.lock,
   concurrency = 50,
   dev = {
-    path = os.getenv("HOME") .. "/Dotfiles/neovim",
+    path = config.pacman.dev,
   },
   install = {
     missing = true,
@@ -16,7 +16,7 @@ lazy.setup({
   },
   ui = {
     size = { width = 0.8, height = 0.8 },
-    border = "solid",
+    border = config.ui.border,
     icons = {
       cmd = " ",
       config = "",

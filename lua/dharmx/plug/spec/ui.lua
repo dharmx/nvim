@@ -29,7 +29,7 @@ return {
     "b0o/incline.nvim",
     config = function() req("incline") end,
     dependencies = { "kyazdani42/nvim-web-devicons", "dharmx/nvim-colo" },
-    event = "CursorMoved",
+    event = "InsertEnter",
   },
   {
     "petertriho/nvim-scrollbar",

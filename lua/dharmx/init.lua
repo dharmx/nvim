@@ -1,9 +1,16 @@
 local M = {}
 
 local defaults = {
-  _done = false,
-  lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim",
   theme = "radium_dark",
+  ui = {
+    border = "solid",
+  },
+  pacman = {
+    install = vim.fn.stdpath("data") .. "/lazy/lazy.nvim",
+    dev = os.getenv("HOME") .. "/Dotfiles/neovim",
+    lock = vim.fn.stdpath("config") .. "/lazy-lock.json",
+    root = vim.fn.stdpath("data") .. "/lazy",
+  },
   core = {
     option = true,
     global = true,

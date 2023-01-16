@@ -69,7 +69,7 @@ local config = {
   preselect = cmp.PreselectMode.Item,
   window = {
     documentation = {
-      border = "solid",
+      border = con.ui.border,
     },
     completion = {
       border = "none",

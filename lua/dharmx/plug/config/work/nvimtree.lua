@@ -1,5 +1,6 @@
 local ok, nvimtree = pcall(require, "nvim-tree")
 if not ok then return end
+local config = require("dharmx")
 
 nvimtree.setup({
   auto_reload_on_write = true,
@@ -42,7 +43,7 @@ nvimtree.setup({
       quit_on_focus_loss = true,
       open_win_config = {
         relative = "editor",
-        border = "rounded",
+        border = config.ui.border,
         width = 30,
         height = 30,
         row = 1,
@@ -176,7 +177,7 @@ nvimtree.setup({
         col = 1,
         row = 1,
         relative = "cursor",
-        border = "shadow",
+        border = config.ui.border,
         style = "minimal",
       },
     },

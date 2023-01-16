@@ -1,7 +1,16 @@
 local function req(file) require("dharmx.plug.config.work." .. file) end
 
 return {
-  { "kevinhwang91/rnvimr", init = function() req("ranger") end },
+  {
+    "kevinhwang91/rnvimr",
+    init = function() req("ranger") end,
+  },
+  {
+    "is0n/jaq-nvim",
+    cmd = "Jaq",
+    config = function() req("jaq") end,
+    enabled = false,
+  },
   {
     "sindrets/diffview.nvim",
     cmd = { "DiffViewOpen", "DiffViewClose", "DiffViewToggleFiles" },
