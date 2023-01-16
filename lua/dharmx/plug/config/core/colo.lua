@@ -2,7 +2,7 @@ local ok, colo = pcall(require, "colo")
 if not ok then return end
 
 colo.setup({
-  theme = "radium_dark",
+  theme = require("dharmx").theme,
   manual = false,
   cycle = true,
   aggregates = {

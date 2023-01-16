@@ -70,12 +70,17 @@ return {
     "ggandor/leap.nvim",
     dependencies = "tpope/vim-repeat",
     config = function() req("leap") end,
+    lazy = true,
+  },
+  {
+    "ggandor/flit.nvim",
+    config = function() req("flit") end,
     event = { "CursorHold", "CursorMoved" },
   },
   {
     "MattesGroeger/vim-bookmarks",
     init = function() req("bookmarks") end,
-    cmd = "BookmarkToggle",
+    event = { "CursorHold", "CursorMoved" },
   },
   {
     "kyazdani42/nvim-tree.lua",

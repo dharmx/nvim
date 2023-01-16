@@ -1,9 +1,14 @@
 local ok, lspconfig = pcall(require, "lspconfig")
 if not ok then return end
 
+local config = require("dharmx")
 local servers = require("dharmx.list.server")
 local navic = require("nvim-navic")
 local cmp = require("cmp_nvim_lsp")
+
+local autocmd = require("dharmx.plug.config.lsp.presets.autocmd")
+local cmd = require("dharmx.plug.config.lsp.presets.cmd")
+local protocol = require("vim.lsp.protocol")
 
 local function on_attach(client, buffer)
   vim.api.nvim_buf_set_option(buffer, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -28,11 +33,12 @@ local function on_attach(client, buffer)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, options)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, options)
   vim.keymap.set("n", "<leader>f", vim.cmd.Format, options)
+  vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, options)
+  vim.keymap.set("n", "<leader>d", vim.diagnostic.setloclist, options)
 
-  require("dharmx.plug.config.lsp.presets.autocmd").setup(client, buffer)
-  require("dharmx.plug.config.lsp.presets.cmd").setup(client, buffer)
-  require("vim.lsp.protocol").CompletionItemKind = require("dharmx.list.kind").item
-
+  if config.lsp.autocmd.enable then autocmd.setup(client, buffer, config.lsp.autocmd) end
+  if config.lsp.cmd then cmd.setup(client, buffer) end
+  if config.kind then protocol.CompletionItemKind = config.kind end
   if client.config.flags then client.config.flags.allow_incremental_sync = true end
   if client.server_capabilities.documentSymbolProvider then navic.attach(client, buffer) end
 end
@@ -55,31 +61,37 @@ local function capabilities(client_name)
   return capability
 end
 
+local function handlers()
+  local items = {
+    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "solid", focusable = false }),
+    ["textDocument/definition"] = require("dharmx.plug.config.lsp.handlers.definition").goto_definition("vs"),
+    ["textDocument/references"] = vim.lsp.with(vim.lsp.handlers["textDocument/references"], { loclist = true }),
+    ["textDocument/signatureHelp"] = vim.lsp.with(
+      vim.lsp.handlers.signature_help,
+      { border = "solid", focusable = false }
+    ),
+    ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = { prefix = "■ ", spacing = 1 },
+      signs = true,
+      underline = true,
+      update_in_insert = false,
+      severity_sort = true,
+    }),
+  }
+  if config.lsp.handlers then return items end
+end
+
 local function configure(server_name)
   local exists, defaults = pcall(require, "dharmx.plug.config.lsp.servers." .. server_name)
   if not exists then defaults = {} end
+
   return vim.tbl_deep_extend("keep", defaults, {
     autostart = true,
     init_options = { documentFormatting = true },
     on_attach = on_attach,
     flags = { debounce_text_changes = 150 },
     capabilities = capabilities(server_name),
-    handlers = {
-      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "solid", focusable = false }),
-      ["textDocument/definition"] = require("dharmx.plug.config.lsp.handlers.definition").goto_definition("vs"),
-      ["textDocument/references"] = vim.lsp.with(vim.lsp.handlers["textDocument/references"], { loclist = true }),
-      ["textDocument/signatureHelp"] = vim.lsp.with(
-        vim.lsp.handlers.signature_help,
-        { border = "solid", focusable = false }
-      ),
-      ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = { prefix = "■ ", spacing = 1 },
-        signs = true,
-        underline = true,
-        update_in_insert = false,
-        severity_sort = true,
-      }),
-    },
+    handlers = handlers(),
   })
 end
 

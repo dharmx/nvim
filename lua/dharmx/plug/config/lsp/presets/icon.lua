@@ -1,40 +1,42 @@
+local config = require("dharmx")
+
 vim.fn.sign_define("DiagnosticSignError", {
-  text = "",
+  text = config.sign.errors,
   linehl = "LspDiagnosticsSignError",
   culhl = "LspDiagnosticsSignError",
   numhl = "LspDiagnosticsSignError",
 })
 
 vim.fn.sign_define("DiagnosticSignHint", {
-  text = "",
+  text = config.hints,
   linehl = "LspDiagnosticsSignHint",
   culhl = "LspDiagnosticsSignHint",
   numhl = "LspDiagnosticsSignHint",
 })
 
 vim.fn.sign_define("DiagnosticSignInfo", {
-  text = "",
+  text = config.info,
   linehl = "LspDiagnosticsSignInfo",
   culhl = "LspDiagnosticsSignInfo",
   numhl = "LspDiagnosticsSignInfo",
 })
 
 vim.fn.sign_define("DiagnosticSignWarn", {
-  text = "",
+  text = config.warning,
   linehl = "LspDiagnosticsSignWarn",
   culhl = "LspDiagnosticsSignWarn",
   numhl = "LspDiagnosticsSignWarn",
 })
 
 vim.fn.sign_define("LightBulbSign", {
-  text = " ",
+  text = config.bulb,
   linehl = "LspDiagnosticsSignHint",
   culhl = "LspDiagnosticsSignHint",
   numhl = "LspDiagnosticsSignHint",
 })
 
 vim.diagnostic.config({
-  virtual_text = { prefix = " ", source = "always" },
+  virtual_text = { prefix = config.diagnostic, source = "always" },
   signs = true,
   underline = true,
   update_in_insert = false,

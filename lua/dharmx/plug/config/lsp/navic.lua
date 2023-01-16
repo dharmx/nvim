@@ -2,7 +2,7 @@ local ok, navic = pcall(require, "nvim-navic")
 if not ok then return end
 
 navic.setup({
-  icons = require("dharmx.list.kind").type_icons,
+  icons = require("dharmx").kind.type,
   highlight = true,
   separator = "  ",
   depth_limit = 0,

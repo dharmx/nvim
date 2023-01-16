@@ -1,4 +1,6 @@
-local function alias(name, cmd, opts) vim.api.nvim_create_user_command(name, cmd, vim.F.if_nil(opts, {})) end
+-- stylua: ignore start
+local util = require("dharmx.util")
+local alias = util.alias
 
 alias("LineWidthColumn", function()
   if vim.wo.colorcolumn == "0" then
@@ -6,9 +8,7 @@ alias("LineWidthColumn", function()
   else
     vim.wo.colorcolumn = "0"
   end
-end, {
-  desc = "Virtual column for measuring text line length.",
-})
+end, "Virtual column for measuring text line length.")
 
 alias("HugoServer", function()
   if _G.HUGO_JOBS then
@@ -19,9 +19,10 @@ alias("HugoServer", function()
     return
   end
 
+  local Job = require("plenary.job")
   local path = vim.fn.bufname()
   if vim.fn.fnamemodify(path, ":t") == "config.toml" then
-    local hugo = require("plenary.job"):new({
+    local hugo = Job:new({
       "hugo",
       "server",
       cwd = vim.fn.fnamemodify(path, ":h"),
@@ -29,8 +30,6 @@ alias("HugoServer", function()
     hugo:start()
     _G.HUGO_JOBS = _G.HUGO_JOBS and table.insert(_G.HUGO_JOBS, hugo) or { hugo }
   end
-end, {
-  desc = "Launch/Stop Hugo live server.",
-})
+end, "Launch/Stop Hugo live server.")
 
 -- vim:filetype=lua

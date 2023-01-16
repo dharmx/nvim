@@ -1,100 +1,53 @@
 local M = {}
 
-local fn = vim.fn
-local api = vim.api
-local cmd = api.nvim_command
+local F = vim.fn
+local A = vim.api
+local cmd = A.nvim_command
 
---- A cnoreabbrev wrapper.
--- @param buffer the buffer number that it applies to
--- @param command the command that will be executed on trigger
--- @param expression the pattern that will trigger the abbrev
--- @see help cnoreabbrev
 function M.abbrev(buffer, command, expression)
   local formatted = string.format("cnoreabbrev %s %s %s", expression and "<expr>" or "", buffer, command)
   cmd(formatted)
 end
 
---- Aliases an already existing command or, creates a new user command
---- or, overwrites the existing command.
--- @param alias the name of the new user command.
--- @param command the callback or a string containing a command
--- that will be triggered on running that alias on cmdline (say)
--- @param options table of other options that will be passed over to
--- nvim_add_user_command
--- @see help nvim_add_user_command
 function M.alias(alias, command, options)
-  options = options or {}
-  api.nvim_create_user_command(alias, command, options)
+  if type(options) == "string" then options = { desc = options } end
+  options = vim.F.if_nil(options, {})
+  A.nvim_create_user_command(alias, command, options)
 end
 
-function M.unalias(command) api.nvim_del_user_command(command) end
+function M.unalias(command) A.nvim_del_user_command(command) end
 
---- Same as M.alias but, for buffers
--- @see M.alias
 function M.balias(buffer, alias, command, options)
   options = options or {}
-  api.nvim_buf_create_user_command(buffer, alias, command, options)
+  A.nvim_buf_create_user_command(buffer, alias, command, options)
 end
 
---- The wrapper for nvim_create_autocmd API function.
--- @param events a string or a table of vim events.
--- @param command a Lua function or, a string containing VimL code.
--- @param options table of other options it is not compulsory FYI
--- @return opaque value to use with nvim_del_autocmd
--- @see help nvim_create_autocmd
 function M.autocmd(events, command, options)
-  if not options then options = {} end
-  local autocmd_opts = {}
-
-  autocmd_opts[type(command) == "string" and "command" or "callback"] = command
+  options = vim.F.if_nil(options, {})
+  if type(options) == "string" then options = { desc = options } end
+  local autocmd_options = {}
+  autocmd_options[type(command) == "string" and "command" or "callback"] = command
   if not options.buffer then
-    autocmd_opts.pattern = not options.patterns and "*" or options.patterns
+    autocmd_options.pattern = options.patterns
   else
-    autocmd_opts.buffer = options.buffer or options.bufnr
+    autocmd_options.buffer = options.buffer or options.bufnr
   end
-
-  if options.group then autocmd_opts.group = options.group end
-
-  api.nvim_create_autocmd(events, autocmd_opts)
-  -- pass the group name if more autocmds are needed to be added to this group
-  return options.group
+  if options.group then autocmd_options.group = options.group end
+  return options.group, A.nvim_create_autocmd(events, autocmd_options)
 end
 
---- Wrapper for nvim_create_augroup.
--- @param name title of the auto group
--- @param autocmds a table of tables that contains the same structure as M.autocmd.
--- @field autocmds.events refer to M.autocmd
--- @field autocmds.command refer to M.autocmd
--- @tparam autocmds.options refer to M.autocmd
--- @tparam clear boolean option if the auto-group will be repeated if it is
--- called again. Will be cleared if set to true.
--- @return same as M.autocmd
 function M.augroup(name, autocmds, clear)
-  clear = clear == false and false or true
-  local append = M.autocmd
-  local group = api.nvim_create_augroup(name, { clear = clear })
+  if type(autocmds) == "boolean" then return A.nvim_create_augroup(name, { clear = autocmds }) end
+  local group = A.nvim_create_augroup(name, { clear = clear == false and false or true })
   for _, autocmd in ipairs(autocmds) do
-    if not autocmd.options then autocmd.options = {} end
+    autocmd.options = vim.F.if_nil(autocmd.options, {})
     autocmd.options.group = group
-    append(autocmd.events, autocmd.command, autocmd.options)
+    M.autocmd(autocmd.events, autocmd.command, autocmd.options)
   end
   return group
 end
 
---- Creates a make-shift float buffer.
--- NOTE: Relies on nui.nvim
--- @param options table popup options
--- @param actions table popup functions
--- @tparam actions.on_submit executes after <CR> is pressed
--- @tparam actions.on_change executes if any character is typed on the buffer
--- @tparam actions.on_close executes after the buffer is closed
--- @tparam actions.prompt input prefix
--- @tparam options.default_value placeholder text
--- @tparam options.position table row and col value
--- @tparam options.border border style
--- @tparam options.size width and height of the buffer
--- @tparam options.highlight highlight groups for borders and the buffer itself
-function M.make_input(options, actions)
+function M.input(options, actions)
   local Input = require("nui.input")
   local autocmd = require("nui.utils.autocmd")
   local event = autocmd.event
@@ -123,8 +76,8 @@ function M.make_input(options, actions)
   })
   input:mount()
 
-  local kw = vim.opt.iskeyword - "_" - "-"
-  vim.bo.iskeyword = table.concat(kw:get(), ",")
+  local keyword = vim.opt.iskeyword - "_" - "-"
+  vim.bo.iskeyword = table.concat(keyword:get(), ",")
   vim.schedule(function() vim.api.nvim_command("stopinsert") end)
 
   -- TODO: Return the input object so that mappings can be defined separately.
@@ -132,12 +85,10 @@ function M.make_input(options, actions)
   input:on(event.BufLeave, input.input_props.on_close, { once = true })
 end
 
---- URL shortner
--- this depends on nui.nvim
 function M.shorten()
   local format = [[!curl --silent "https://is.gd/create.php?format=simple&url=%s"]]
 
-  M.make_input({
+  M.input({
     position = {
       row = 5,
       col = 5,
@@ -150,7 +101,7 @@ function M.shorten()
     prompt = "   ",
     default_value = "Your URL...",
     on_submit = function(value)
-      local raw = vim.split(api.nvim_exec(string.format(format, value), true), "\n", { plain = true })
+      local raw = vim.split(A.nvim_exec(string.format(format, value), true), "\n", { plain = true })
       if value == "Your URL..." then
         M.notify({
           message = "ERROR: Couldn't fetch the shortened URL!",
@@ -159,7 +110,7 @@ function M.shorten()
           level = vim.log.levels.ERROR,
         })
       else
-        fn.setreg(vim.v.register, raw[#raw])
+        F.setreg(vim.v.register, raw[#raw])
         M.notify({
           message = "Saved link to system clipboard!",
           icon = " ",

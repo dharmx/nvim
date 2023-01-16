@@ -1,5 +1,4 @@
 local opt = vim.opt
-local env = vim.env
 
 opt.termguicolors = true
 opt.textwidth = 120

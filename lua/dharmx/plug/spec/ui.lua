@@ -23,19 +23,13 @@ return {
   {
     "lukas-reineke/virt-column.nvim",
     config = function() req("virtcolumn") end,
-    cmd = "LineWidthColumn",
+    event = { "CursorHold", "CursorMoved", "InsertEnter" },
   },
   {
     "b0o/incline.nvim",
     config = function() req("incline") end,
     dependencies = { "kyazdani42/nvim-web-devicons", "dharmx/nvim-colo" },
     event = "CursorMoved",
-  },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    event = { "CursorMoved", "CursorHold" },
-    config = function() req("indentline") end,
   },
   {
     "petertriho/nvim-scrollbar",
@@ -87,6 +81,17 @@ return {
     config = function() req("monark") end,
     event = "InsertEnter",
     dev = true,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    event = { "CursorMoved", "CursorHold" },
+    config = function() req("indentline") end,
+  },
+  {
+    "RRethy/vim-illuminate",
+    config = function() req("illuminate") end,
+    event = { "CursorHold", "CursorMoved" },
   },
 }
 

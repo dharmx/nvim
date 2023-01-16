@@ -1,4 +1,8 @@
 local M = {
+  source = {},
+}
+
+M.source.full = {
   nvim_lua = " LUA",
   plugins = " PLG",
   nvim_lsp = " LSP",
@@ -32,7 +36,7 @@ local M = {
   greek = "GRK",
 }
 
-local S = {
+M.source.icon = {
   nvim_lua = "",
   nvim_lsp = "",
   tags = " ",
@@ -65,7 +69,7 @@ local S = {
   greek = "",
 }
 
-local N = {
+M.type = {
   Namespace = " ",
   Text = " ",
   Method = " ",
@@ -106,12 +110,6 @@ local N = {
   Copilot = " ",
 }
 
-return {
-  source = {
-    full_info = M,
-    icon_only = S,
-  },
-  type_icons = N,
-}
+return M
 
 -- vim:filetype=lua

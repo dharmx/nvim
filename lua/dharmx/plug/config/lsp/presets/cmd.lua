@@ -1,3 +1,4 @@
+---@diagnostic disable: unused-local
 local M = {}
 
 local util = require("dharmx.util")

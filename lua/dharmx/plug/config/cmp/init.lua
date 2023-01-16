@@ -1,50 +1,26 @@
 local ok, cmp = pcall(require, "cmp")
 if not ok then return end
 
-local kinds = require("dharmx.list.kind")
-local kind_icons = kinds.type_icons
-local kind_sources = kinds.source.icon_only
-local sources = require("dharmx.list.source")
-local source_normal = sources.normal
-local source_cmdline = sources.cmdline
-local snip = require("luasnip")
-
-local api = vim.api
-
-local cmp_fmt = {
-  icon_only = function(entry, vim_item)
-    vim_item.menu = kind_sources[entry.source.name]
-    vim_item.kind = kind_icons[vim_item.kind] .. " "
-    return vim_item
-  end,
-  full_info = function(entry, vim_item)
-    vim_item.menu = kind_sources[entry.source.name]
-    vim_item.kind = kind_icons[vim_item.kind] .. " " .. vim_item.kind .. " "
-    return vim_item
-  end,
-  material = function(_, vim_item)
-    vim_item.menu = vim_item.kind
-    vim_item.kind = kind_icons[vim_item.kind] .. " "
-    return vim_item
-  end,
-  colorful = function(_, vim_item)
-    vim_item.kind = kind_icons[vim_item.kind] .. " " .. vim_item.kind
-    return vim_item
-  end,
-}
-
-local fmt_orders = {
-  { "kind", "abbr", "menu" },
-  { "menu", "abbr", "kind" },
-  { "abbr", "kind", "menu" },
-  { "abbr", "kind" },
-  { "abbr", "menu" },
-  { "kind", "abbr" },
-}
+local con = require("dharmx")
+local kind = con.kind.type
+local luasnip = require("luasnip")
+local A = vim.api
 
 local function has_words_before()
-  local line, col = unpack(api.nvim_win_get_cursor(0))
-  return col ~= 0 and api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  local line, col = unpack(A.nvim_win_get_cursor(0))
+  return col ~= 0 and A.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+local function comparator(entry1, entry2)
+  local _, entry1_under = entry1.completion_item.label:find("^_+")
+  local _, entry2_under = entry2.completion_item.label:find("^_+")
+  entry1_under = entry1_under or 0
+  entry2_under = entry2_under or 0
+  if entry1_under > entry2_under then
+    return false
+  elseif entry1_under < entry2_under then
+    return true
+  end
 end
 
 local config = {
@@ -67,8 +43,8 @@ local config = {
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif snip.jumpable(-1) then
-        api.nvim_feedkeys(api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "i", "")
+      elseif luasnip.jumpable(-1) then
+        A.nvim_feedkeys(A.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "i", true)
       else
         fallback()
       end
@@ -76,8 +52,8 @@ local config = {
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif snip.expand_or_jumpable() then
-        api.nvim_feedkeys(api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "i", "")
+      elseif luasnip.expand_or_jumpable() then
+        A.nvim_feedkeys(A.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "i", true)
       elseif has_words_before() then
         cmp.complete()
       else
@@ -89,8 +65,8 @@ local config = {
       fallback()
     end, { "i", "c" }),
   }),
-  sources = cmp.config.sources(source_normal),
-  preselect = cmp.PreselectMode.Item, -- None
+  sources = cmp.config.sources(con.source.normal),
+  preselect = cmp.PreselectMode.Item,
   window = {
     documentation = {
       border = "solid",
@@ -98,7 +74,6 @@ local config = {
     completion = {
       border = "none",
       completeopt = "menu,menuone,noinsert",
-      -- keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
       keyword_length = 1,
     },
   },
@@ -108,32 +83,24 @@ local config = {
     },
   },
   formatting = {
-    fields = fmt_orders[3],
-    format = cmp_fmt.colorful,
+    fields = { "abbr", "kind", "menu" },
+    format = function(_, item)
+      item.kind = kind[item.kind] .. " " .. item.kind
+      return item
+    end,
   },
   experimental = {
     ghost_text = true,
   },
   completion = {
     completeopt = "menu,menuone,noselect",
-    -- autocomplete = true,
   },
   sorting = {
     comparators = {
       cmp.config.compare.offset,
       cmp.config.compare.exact,
       cmp.config.compare.score,
-      function(entry1, entry2)
-        local _, entry1_under = entry1.completion_item.label:find("^_+")
-        local _, entry2_under = entry2.completion_item.label:find("^_+")
-        entry1_under = entry1_under or 0
-        entry2_under = entry2_under or 0
-        if entry1_under > entry2_under then
-          return false
-        elseif entry1_under < entry2_under then
-          return true
-        end
-      end,
+      comparator,
       cmp.config.compare.kind,
       cmp.config.compare.sort_text,
       cmp.config.compare.length,
@@ -145,14 +112,17 @@ local config = {
 cmp.setup(config)
 
 local cmdlines = {
-  sources = cmp.config.sources(source_cmdline),
+  sources = cmp.config.sources(con.source.cmdline),
   mapping = cmp.mapping.preset.cmdline(),
   formatting = {
-    fields = fmt_orders[2],
-    format = cmp_fmt.full_info,
+    fields = { "abbr", "kind", "menu" },
+    format = function(_, item)
+      item.kind = kind[item.kind] .. " " .. item.kind
+      return item
+    end,
   },
   entries = { name = "custom", selection_order = "near_cursor" },
-  preselect = cmp.PreselectMode.Item, -- None
+  preselect = cmp.PreselectMode.Item,
 }
 
 for _, cmdtype in ipairs({ ":", "/", "?", "@", "=" }) do

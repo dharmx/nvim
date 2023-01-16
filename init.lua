@@ -1,4 +1,3 @@
-require("dharmx.core")
-require("dharmx.plug")
+require("dharmx").setup()
 
 -- vim:filetype=lua

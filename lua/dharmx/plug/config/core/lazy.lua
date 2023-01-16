@@ -1,5 +1,6 @@
 local ok, lazy = pcall(require, "lazy")
 if not ok then return end
+local config = require("dharmx")
 
 lazy.setup({
   spec = "dharmx.plug.spec",
@@ -11,7 +12,7 @@ lazy.setup({
   },
   install = {
     missing = true,
-    colorscheme = { "radium_dark" },
+    colorscheme = { "fallback" },
   },
   ui = {
     size = { width = 0.8, height = 0.8 },
@@ -63,7 +64,7 @@ lazy.setup({
     },
     reset_packpath = true,
     rtp = {
-      disabled_plugins = require("dharmx.list.builtin"),
+      disabled_plugins = config.builtin,
     },
   },
   readme = {

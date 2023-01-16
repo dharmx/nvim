@@ -1,43 +1,43 @@
 local M = {}
 
-local neovim = require("dharmx.util")
-local augroup = neovim.augroup
-local autocmd = neovim.autocmd
-local lsp = vim.lsp
-local diag = vim.diagnostic
+local lightbulb = require("nvim-lightbulb")
+local util = require("dharmx.util")
+local augroup = util.augroup
+local autocmd = util.autocmd
 
 ---@diagnostic disable-next-line: unused-local
-M.setup = function(client, buffer)
-  if client.supports_method("textDocument/codeLens") then
+M.setup = function(client, buffer, config)
+  if config.lens and client.supports_method("textDocument/codeLens") then
     autocmd({
       "BufEnter",
       "InsertLeave",
       "BufWritePost",
       "CursorHold",
-    }, lsp.codelens.refresh, { buffer = buffer })
-    vim.schedule(lsp.codelens.refresh)
+    }, vim.lsp.codelens.refresh, { buffer = buffer })
+    vim.lsp.codelens.refresh()
   end
 
-  if client.supports_method("textDocument/documentHighlight") then
+  if config.high and client.supports_method("textDocument/documentHighlight") then
     augroup("LspDocumentHighlight", {
       {
         events = { "CursorHold", "CursorHoldI" },
-        command = lsp.buf.document_highlight,
+        command = vim.lsp.buf.document_highlight,
         options = { buffer = buffer },
       },
       {
         events = { "CursorMoved", "InsertEnter", "CursorMovedI" },
-        command = lsp.buf.clear_references,
+        command = vim.lsp.buf.clear_references,
         options = { buffer = buffer },
       },
     })
   end
 
-  autocmd("InsertEnter", function() vim.diagnostic.disable(0) end)
-  autocmd("InsertEnter", function() vim.diagnostic.enable(0) end)
+  if config.diag then
+    autocmd("InsertLeave", function() vim.diagnostic.disable(0) end)
+    autocmd("InsertEnter", function() vim.diagnostic.enable(0) end)
+  end
 
-  autocmd("CursorHold", require("nvim-lightbulb").update_lightbulb, { buffer = buffer })
-  autocmd("CursorHold", function() diag.open_float(nil, { focus = false, scope = "cursor", border = "solid" }) end)
+  if config.bulb then autocmd("CursorHold", lightbulb.update_lightbulb, { buffer = buffer }) end
 end
 
 return M
