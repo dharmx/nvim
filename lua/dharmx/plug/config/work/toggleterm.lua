@@ -1,8 +1,8 @@
-local ok, toggleterm = pcall(require, "toggleterm")
+local ok, term = pcall(require, "toggleterm")
 if not ok then return end
-local config = require("dharmx")
+local MainConfig = require("dharmx")
 
-toggleterm.setup({
+term.setup({
   hide_numbers = true,
   shade_filetypes = {},
   shade_terminals = true,
@@ -15,7 +15,7 @@ toggleterm.setup({
   close_on_exit = true,
   shell = vim.o.shell,
   float_opts = {
-    border = config.ui.border,
+    border = MainConfig.ui.border,
     winblend = 0,
   },
   highlights = {

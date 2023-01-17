@@ -1,8 +1,8 @@
 local ok, cmp = pcall(require, "cmp")
 if not ok then return end
 
-local con = require("dharmx")
-local kind = con.kind.type
+local MainConfig = require("dharmx")
+local kind = MainConfig.kind.type
 local luasnip = require("luasnip")
 local A = vim.api
 
@@ -65,14 +65,14 @@ local config = {
       fallback()
     end, { "i", "c" }),
   }),
-  sources = cmp.config.sources(con.source.normal),
+  sources = cmp.config.sources(MainConfig.source.normal),
   preselect = cmp.PreselectMode.Item,
   window = {
     documentation = {
-      border = con.ui.border,
+      border = MainConfig.ui.border,
     },
     completion = {
-      border = "none",
+      border = MainConfig.ui.cmp_border,
       completeopt = "menu,menuone,noinsert",
       keyword_length = 1,
     },
@@ -112,7 +112,7 @@ local config = {
 cmp.setup(config)
 
 local cmdlines = {
-  sources = cmp.config.sources(con.source.cmdline),
+  sources = cmp.config.sources(MainConfig.source.cmdline),
   mapping = cmp.mapping.preset.cmdline(),
   formatting = {
     fields = { "abbr", "kind", "menu" },

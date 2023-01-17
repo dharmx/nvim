@@ -12,6 +12,7 @@ mason_null.setup({
     "sqlfluff",
     "stylelint",
     "editorconfig_checker",
+    "ec",
     "shellcheck",
     "vint",
     "write_good",

@@ -1,6 +1,6 @@
 local ok, lightbulb = pcall(require, "nvim-lightbulb")
 if not ok then return end
-local config = require("dharmx")
+local MainConfig = require("dharmx")
 
 lightbulb.setup({
   ignore = { "null-ls" },
@@ -12,7 +12,7 @@ lightbulb.setup({
     enabled = false,
     text = "ﯦ Code actions available",
     win_opts = {
-      border = config.ui.border,
+      border = MainConfig.ui.border,
     },
   },
   virtual_text = {

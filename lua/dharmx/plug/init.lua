@@ -1,18 +1,17 @@
-local config = require("dharmx")
-local stat = vim.loop.fs_stat(config.pacman.install)
+local MainConfig = require("dharmx")
 
-if not stat then
+if not MainConfig.lazy("install") then
   vim.fn.system({
     "git",
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
     "--branch=stable",
-    config.pacman.install,
+    MainConfig.lazy.install,
   })
 end
 
-vim.opt.rtp:prepend(config.pacman.install)
+vim.opt.rtp:prepend(MainConfig.lazy.install)
 require("dharmx.plug.config.core.lazy")
 
 -- vim:filetype=lua

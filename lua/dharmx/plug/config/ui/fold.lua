@@ -1,5 +1,6 @@
 local ok, fold = pcall(require, "pretty-fold")
 if not ok then return end
+local MainConfig = require("dharmx")
 
 fold.setup({
   sections = {
@@ -7,15 +8,15 @@ fold.setup({
       "content",
     },
     right = {
-      " ",
+      MainConfig.ui.fold.number_of_folded_lines,
       "number_of_folded_lines",
-      ": ",
+      MainConfig.ui.fold.percentage,
       "percentage",
-      " ",
+      MainConfig.ui.fold.padding,
       function(config) return config.fill_char:rep(3) end,
     },
   },
-  fill_char = "•",
+  fill_char = MainConfig.ui.fold.fill_char,
   remove_fold_markers = true,
   keep_indentation = true,
   process_comment_signs = "spaces",
@@ -27,7 +28,7 @@ fold.setup({
     { "%(", ")" },
     { "%[", "]" },
   },
-  ft_ignore = { "neorg" },
+  ft_ignore = MainConfig.black.filetype,
 })
 
 -- vim:filetype=lua

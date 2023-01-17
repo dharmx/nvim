@@ -4,11 +4,7 @@ opt.termguicolors = true
 opt.textwidth = 120
 opt.colorcolumn = { 0 }
 opt.laststatus = 3
-opt.backspace = {
-  "indent",
-  "eol",
-  "start",
-}
+opt.backspace = { "indent", "eol", "start" }
 opt.completeopt = "menuone,noselect"
 opt.title = true
 opt.hidden = false
@@ -22,28 +18,8 @@ opt.autoindent = true
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
-opt.wildignore = {
-  "*/cache/*",
-  "*/tmp/*",
-}
+opt.wildignore = { "*/cache/*", "*/tmp/*" }
 opt.errorformat = "%f|%l col %c|%m"
-opt.fillchars = {
-  eob = " ",
-  stlnc = " ",
-  diff = "░",
-  msgsep = "━",
-  foldopen = "",
-  foldsep = "│",
-  foldclose = "",
-  horiz = "━",
-  horizup = "┻",
-  horizdown = "┳",
-  vert = "┃",
-  vertleft = "┫",
-  vertright = "┣",
-  verthoriz = "╋",
-  fold = "─",
-}
 opt.foldcolumn = "auto"
 opt.foldmethod = "marker"
 opt.ignorecase = false
@@ -86,11 +62,29 @@ opt.magic = true
 opt.icon = true
 opt.omnifunc = "syntaxcomplete#Complete"
 opt.background = "dark"
+opt.fillchars = {
+  eob = " ",
+  stlnc = " ",
+  diff = "░",
+  msgsep = "━",
+  foldopen = "",
+  foldsep = "│",
+  foldclose = "",
+  horiz = "━",
+  horizup = "┻",
+  horizdown = "┳",
+  vert = "┃",
+  vertleft = "┫",
+  vertright = "┣",
+  verthoriz = "╋",
+  fold = "─",
+}
 
 opt.iskeyword = "@,48-57,_,192-255"
 opt.whichwrap:append("<>[]hl")
 opt.shortmess:append("sI")
 opt.diffopt:append("algorithm:patience")
+opt.formatoptions:remove({ "c", "r", "o" })
 opt.showtabline = 1
 
 -- vim:filetype=lua

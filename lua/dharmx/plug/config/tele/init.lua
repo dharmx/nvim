@@ -1,4 +1,4 @@
-local ok, telescope = pcall(require, "telescope")
+local ok, tele = pcall(require, "telescope")
 if not ok then return end
 
 local actions = require("telescope.actions")
@@ -243,25 +243,12 @@ local config = {
   },
 }
 
-vim.loop.fs_scandir(
-  vim.fn.stdpath("config") .. "/lua/dharmx/plug/config/tele/extras",
-  vim.schedule_wrap(function(errors, userdata)
-    if errors then
-      telescope.setup(config)
-      return
-    end
-
-    config.extensions = {}
-    while true do
-      local name, category = vim.loop.fs_scandir_next(userdata)
-      if not name then break end
-      if category == "file" then
-        name = vim.fn.fnamemodify(name, ":r")
-        config.extensions[name] = require("dharmx.plug.config.tele.extras." .. name)
-      end
-    end
-    telescope.setup(config)
-  end)
-)
+local scanned = vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/dharmx/plug/config/tele/extras")
+config.extensions = {}
+for _, file in ipairs(scanned) do
+  local name = vim.fn.fnamemodify(file, ":r")
+  config.extensions[name] = require("dharmx.plug.config.tele.extras." .. name)
+end
+tele.setup(config)
 
 -- vim:filetype=lua

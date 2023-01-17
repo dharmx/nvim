@@ -1,5 +1,5 @@
 -- stylua: ignore start
-local util = require("dharmx.util")
+local util = require("dharmx.util.nvim")
 local alias = util.alias
 
 alias("LineWidthColumn", function()

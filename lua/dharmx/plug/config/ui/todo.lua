@@ -1,16 +1,13 @@
 local ok, todo = pcall(require, "todo-comments")
 if not ok then return end
+local MainConfig = require("dharmx")
 
 local config = {
-  signs = true, -- show icons in the signs column
-  sign_priority = 8, -- sign priority
-  -- keywords recognized as todo comments
+  signs = true,
+  sign_priority = 8,
   keywords = {
-    FIX = {
-      icon = " ", -- icon used for the sign, and in search results
-      alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
-      -- signs = false, -- configure signs for some keywords individually
-    },
+    FIX = { icon = " ", alt = { "FIXME", "FIXIT", "ISSUE" } },
+    BUG = { icon = " " },
     TODO = { icon = " " },
     WANTS = { icon = " ", alt = { "REQ", "DEPENDS" } },
     HACK = { icon = " " },
@@ -22,20 +19,17 @@ local config = {
     UPDATE = { icon = " ", alt = { "MIGRATE" } },
     DEMO = { icon = " ", alt = { "SHOW" } },
     IMPROVE = { icon = " ", alt = { "REFINE", "ENHANCE" } },
+    TEST = { icon = "ﭧ", alt = { "MOCK", "UNITTEST", "UNIT" } },
   },
-  merge_keywords = true, -- when true, custom keywords will be merged with the defaults
-  -- highlighting of the line containing the todo comment
-  -- * before: highlights before the keyword (typically comment characters)
-  -- * keyword: highlights of the keyword
-  -- * after: highlights after the keyword (todo text)
+  merge_keywords = true,
   highlight = {
-    before = "", -- "fg" or "bg" or empty
-    keyword = "wide", -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
-    after = "fg", -- "fg" or "bg" or empty
+    before = "",
+    keyword = "wide",
+    after = "fg",
     pattern = [[.*<(KEYWORDS)\s*:]],
     comments_only = true,
     max_line_len = 2500,
-    exclude = {},
+    exclude = MainConfig.black.filetype,
   },
   search = {
     command = "rg",
@@ -49,6 +43,10 @@ local config = {
     pattern = [[\b(KEYWORDS):]],
   },
 }
+
+for name, _ in ipairs(config.keywords) do
+  config.keywords[name].icon = vim.F.if_nil(MainConfig.ui.todo[name], "+")
+end
 
 todo.setup(config)
 

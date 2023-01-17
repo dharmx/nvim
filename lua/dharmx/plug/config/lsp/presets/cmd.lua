@@ -1,7 +1,7 @@
 ---@diagnostic disable: unused-local
 local M = {}
 
-local util = require("dharmx.util")
+local util = require("dharmx.util.nvim")
 local balias = util.balias
 
 function M.setup(client, buffer)

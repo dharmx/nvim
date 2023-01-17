@@ -1,5 +1,6 @@
 local ok, illuminate = pcall(require, "illuminate")
 if not ok then return end
+local MainConfig = require("dharmx")
 
 illuminate.configure({
   providers = {
@@ -9,10 +10,7 @@ illuminate.configure({
   },
   delay = 100,
   filetype_overrides = {},
-  filetypes_denylist = {
-    "dirvish",
-    "fugitive",
-  },
+  filetypes_denylist = MainConfig.black.filetype,
   filetypes_allowlist = {},
   modes_denylist = {},
   modes_allowlist = {},

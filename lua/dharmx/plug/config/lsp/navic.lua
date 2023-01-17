@@ -1,12 +1,13 @@
 local ok, navic = pcall(require, "nvim-navic")
 if not ok then return end
+local MainConfig = require("dharmx")
 
 navic.setup({
-  icons = require("dharmx").kind.type,
+  icons = MainConfig.kind.type,
   highlight = true,
-  separator = "  ",
   depth_limit = 0,
-  depth_limit_indicator = "… ",
+  separator = MainConfig.ui.navic.separator,
+  depth_limit_indicator = MainConfig.ui.navic.depth,
   safe_output = true,
 })
 

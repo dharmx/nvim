@@ -1,5 +1,6 @@
 local ok, scrollbar = pcall(require, "scrollbar")
 if not ok then return end
+local MainConfig = require("dharmx")
 
 scrollbar.setup({
   show = true,
@@ -13,50 +14,44 @@ scrollbar.setup({
   },
   marks = {
     Search = {
-      text = { "-", "=" },
+      text = MainConfig.ui.scrollbar.Search,
       priority = 0,
     },
     Error = {
-      text = { "-", "=" },
+      text = MainConfig.ui.scrollbar.Error,
       priority = 1,
     },
     Warn = {
-      text = { "-", "=" },
+      text = MainConfig.ui.scrollbar.Warn,
       priority = 2,
     },
     Info = {
-      text = { "-", "=" },
+      text = MainConfig.ui.scrollbar.Info,
       priority = 3,
     },
     Hint = {
-      text = { "-", "=" },
+      text = MainConfig.ui.scrollbar.Hint,
       priority = 4,
     },
     Misc = {
-      text = { "-", "=" },
+      text = MainConfig.ui.scrollbar.Misc,
       priority = 5,
     },
     GitAdd = {
-      text = "▁",
+      text = MainConfig.ui.scrollbar.GitAdd,
       priority = 5,
     },
     GitChange = {
-      text = "▁",
+      text = MainConfig.ui.scrollbar.Change,
       priority = 5,
     },
     GitDelete = {
-      text = "▁",
+      text = MainConfig.ui.scrollbar.Delete,
       priority = 5,
     },
   },
-  excluded_buftypes = {
-    "terminal",
-  },
-  excluded_filetypes = {
-    "prompt",
-    "TelescopePrompt",
-    "noice",
-  },
+  excluded_buftypes = MainConfig.black.buftype,
+  excluded_filetypes = MainConfig.black.filetype,
   autocmd = {
     render = {
       "BufWinEnter",

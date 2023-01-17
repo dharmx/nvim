@@ -1,28 +1,16 @@
 local ok, indentline = pcall(require, "indent_blankline")
 if not ok then return end
+local MainConfig = require("dharmx")
 
-local config = {
-  char = "│",
-  context_char_list = {
-    "┃",
-  },
-  filetype_exclude = {
-    "help",
-    "terminal",
-    "dashboard",
-    "alpha",
-    "packer",
-    "lspinfo",
-    "TelescopePrompt",
-    "TelescopeResults",
-    "lsp-installer",
-    "markdown",
-    "mason",
-    "txt",
-    "",
-  },
-  space_char_blankline = " ",
-  buftype_exclude = { "terminal", "nofile" },
+indentline.setup({
+  context_highlight_list = nil,
+  char_highlight_list = nil,
+  space_char_highlight_list = nil,
+  char = MainConfig.ui.blankline.char,
+  context_char_list = MainConfig.ui.blankline.context_char_list,
+  space_char_blankline = MainConfig.ui.blankline.space_char_blankline,
+  filetype_exclude = MainConfig.black.filetype,
+  buftype_exclude = MainConfig.black.buftype,
   show_end_of_line = true,
   show_current_context = true,
   show_current_context_start = true,
@@ -51,11 +39,6 @@ local config = {
     "import_statement",
     "operation_type",
   },
-  context_highlight_list = nil,
-  char_highlight_list = nil,
-  space_char_highlight_list = nil,
-}
-
-indentline.setup(config)
+})
 
 -- vim:filetype=lua

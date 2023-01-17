@@ -1,9 +1,9 @@
 local ok, colo = pcall(require, "colo")
 if not ok then return end
+local MainConfig = require("dharmx")
 
 colo.setup({
-  theme = require("dharmx").theme,
-  manual = false,
+  theme = MainConfig.theme,
   cycle = true,
   aggregates = {
     enable = true,

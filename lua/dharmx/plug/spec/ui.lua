@@ -3,78 +3,62 @@ local function req(file) require("dharmx.plug.config.ui." .. file) end
 return {
   {
     "akinsho/bufferline.nvim",
-    dependencies = "kyazdani42/nvim-web-devicons",
-    lazy = true,
   },
   {
     "kyazdani42/nvim-web-devicons",
-    lazy = true,
   },
   {
     "goolord/alpha-nvim",
-    dependencies = "kyazdani42/nvim-web-devicons",
-    cmd = { "Alpha", "AlphaRedraw" },
   },
   {
     "feline-nvim/feline.nvim",
-    dependencies = "kyazdani42/nvim-web-devicons",
-    lazy = true,
+  },
+  {
+    "b0o/incline.nvim",
+    config = function() require("dharmx.plug.config.ui.incline") end,
+    event = { "InsertEnter", "CursorHold", "CursorMoved" },
   },
   {
     "lukas-reineke/virt-column.nvim",
     config = function() req("virtcolumn") end,
-    event = { "CursorHold", "CursorMoved", "InsertEnter" },
-  },
-  {
-    "b0o/incline.nvim",
-    config = function() req("incline") end,
-    dependencies = { "kyazdani42/nvim-web-devicons", "dharmx/nvim-colo" },
-    event = "InsertEnter",
+    event = { "CursorMoved", "CursorHold" },
   },
   {
     "petertriho/nvim-scrollbar",
     config = function() req("scrollbar") end,
-    dependencies = { "gitsigns.nvim", "nvim-hlslens" },
-    event = { "CursorHold", "CursorMoved" },
-  },
-  {
-    "sunjon/shade.nvim",
-    config = function() req("shade") end,
-    keys = { "<leader>s" },
-    cmd = "Shade",
+    event = { "InsertEnter", "CursorMoved" },
   },
   {
     "folke/twilight.nvim",
-    cmd = { "Twilight", "TwilightEnable", "TwilightDisable" },
     config = function() req("twilight") end,
+    cmd = "Twilight",
   },
   {
     "Pocco81/TrueZen.nvim",
-    cmd = { "TZAtaraxis", "TZMinimalist", "TZFocus" },
+    cmd = { "TZAtaraxis", "TZFocus", "TZMinimalist", "TZNarrow" },
   },
   {
     "rcarriga/nvim-notify",
-    event = "InsertEnter",
     config = function() req("notify") end,
+    event = { "CursorMoved", "CursorHold", "InsertEnter", "CmdlineEnter" },
   },
   {
     "folke/todo-comments.nvim",
-    event = { "CmdlineEnter", "InsertEnter", "CursorMoved" },
     config = function() req("todo") end,
+    event = { "CursorMoved", "CursorHold", "InsertEnter", "CmdlineEnter" },
   },
   {
     "NvChad/nvim-colorizer.lua",
-    keys = { "<F3>" },
+    keys = { "<F3>", { mode = "i", "<F3>" } },
   },
   {
     "yamatsum/nvim-cursorline",
     config = function() req("cursorline") end,
-    lazy = true,
   },
   {
     "anuvyklack/pretty-fold.nvim",
     config = function() req("fold") end,
-    keys = { "zf", "za", "zc" },
+    keys = { "zf", "zd", "za" },
   },
   {
     "doums/monark.nvim",
@@ -84,14 +68,22 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    event = { "CursorMoved", "CursorHold" },
     config = function() req("indentline") end,
+    event = { "CursorMoved", "CursorHold", "InsertEnter" },
+  },
+  {
+    "echasnovski/mini.indentscope",
+    config = function() req("indentscope") end,
   },
   {
     "RRethy/vim-illuminate",
     config = function() req("illuminate") end,
-    event = { "CursorHold", "CursorMoved" },
+    event = { "InsertEnter", "CursorHold", "CursorMoved" },
+  },
+  {
+    "gorbit99/codewindow.nvim",
+    config = function() req("codewindow") end,
+    event = "LspAttach",
   },
 }
 

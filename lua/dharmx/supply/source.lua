@@ -1,4 +1,6 @@
-local M = {
+local M = {}
+
+M.normal = {
   {
     name = "plugins",
     max_item_count = 3,
@@ -140,8 +142,7 @@ local M = {
   },
 }
 
--- sources used in cmdline
-local N = {
+M.cmdline = {
   {
     name = "cmdline",
     keyword_length = 2,
@@ -165,9 +166,6 @@ local N = {
   },
 }
 
-return {
-  normal = M,
-  cmdline = N,
-}
+return M
 
 -- vim:filetype=lua

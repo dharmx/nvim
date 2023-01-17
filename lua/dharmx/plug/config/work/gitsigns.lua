@@ -1,36 +1,36 @@
 local present, gitsigns = pcall(require, "gitsigns")
-
 if not present then return end
+local MainConfig = require("dharmx")
 
 local config = {
   signs = {
     add = {
-      hl = "GitSignsAdd",
-      text = "▌", -- █
+      texthl = "GitSignsAdd",
+      text = MainConfig.ui.gitsigns.add,
       numhl = "GitSignsAddNr",
       linehl = "GitSignsAddLn",
     },
     change = {
-      hl = "GitSignsChange",
-      text = "▌",
+      texthl = "GitSignsChange",
+      text = MainConfig.ui.gitsigns.change,
       numhl = "GitSignsChangeNr",
       linehl = "GitSignsChangeLn",
     },
     delete = {
-      hl = "GitSignsDelete",
-      text = " ",
+      texthl = "GitSignsDelete",
+      text = MainConfig.ui.gitsigns.delete,
       numhl = "GitSignsDeleteNr",
       linehl = "GitSignsDeleteLn",
     },
     topdelete = {
-      hl = "GitSignsDelete",
-      text = " ",
+      texthl = "GitSignsDelete",
+      text = MainConfig.ui.gitsigns.topdelete,
       numhl = "GitSignsDeleteNr",
       linehl = "GitSignsDeleteLn",
     },
     changedelete = {
-      hl = "GitSignsChange",
-      text = "▌",
+      texthl = "GitSignsChange",
+      text = MainConfig.ui.gitsigns.changedelete,
       numhl = "GitSignsChangeNr",
       linehl = "GitSignsChangeLn",
     },
@@ -41,10 +41,8 @@ local config = {
   word_diff = false,
   keymaps = {
     noremap = true,
-
     ["n]c"] = { expr = true, "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'" },
     ["n[c"] = { expr = true, "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'" },
-
     ["n<leader>hs"] = "<cmd>Gitsigns stage_hunk<CR>",
     ["v<leader>hs"] = ":Gitsigns stage_hunk<CR>",
     ["n<leader>hu"] = "<cmd>Gitsigns undo_stage_hunk<CR>",
@@ -55,8 +53,6 @@ local config = {
     ["n<leader>hb"] = '<cmd>lua require"gitsigns".blame_line{full=true}<CR>',
     ["n<leader>hS"] = "<cmd>Gitsigns stage_buffer<CR>",
     ["n<leader>hU"] = "<cmd>Gitsigns reset_buffer_index<CR>",
-
-    -- Text objects
     ["oih"] = ":<C-U>Gitsigns select_hunk<CR>",
     ["xih"] = ":<C-U>Gitsigns select_hunk<CR>",
   },

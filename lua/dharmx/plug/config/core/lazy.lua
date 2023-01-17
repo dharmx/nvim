@@ -1,14 +1,31 @@
 local ok, lazy = pcall(require, "lazy")
 if not ok then return end
-local config = require("dharmx")
+local MainConfig = require("dharmx")
+
+local scanned = vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/dharmx/plug/spec")
+local specs = {}
+for _, spec_file in ipairs(scanned) do
+  local spec = vim.fn.fnamemodify(spec_file, ":r")
+  if not vim.tbl_contains(MainConfig.disable.spec, spec) then
+    local plugs = require("dharmx.plug.spec." .. spec)
+    for _, plug in ipairs(plugs) do
+      if not vim.tbl_contains(MainConfig.disable.plug, plug[1]) then
+        table.insert(specs, plug)
+      end
+    end
+  end
+end
 
 lazy.setup({
-  spec = "dharmx.plug.spec",
-  root = config.pacman.root,
-  lockfile = config.pacman.lock,
+  spec = specs,
+  root = MainConfig.lazy.root,
+  lockfile = MainConfig.lazy.lock,
   concurrency = 50,
+  defaults = {
+    lazy = true,
+  },
   dev = {
-    path = config.pacman.dev,
+    path = MainConfig.lazy.dev,
   },
   install = {
     missing = true,
@@ -16,30 +33,8 @@ lazy.setup({
   },
   ui = {
     size = { width = 0.8, height = 0.8 },
-    border = config.ui.border,
-    icons = {
-      cmd = " ",
-      config = "",
-      event = "",
-      ft = " ",
-      init = " ",
-      import = " ",
-      keys = " ",
-      lazy = "鈴 ",
-      loaded = "●",
-      not_loaded = "○",
-      plugin = " ",
-      runtime = " ",
-      source = " ",
-      start = "",
-      task = "✔ ",
-      list = {
-        "●",
-        "➜",
-        "★",
-        "‒",
-      },
-    },
+    border = MainConfig.ui.border,
+    icons = MainConfig.ui.lazy,
     throttle = 20,
   },
   diff = {
@@ -58,17 +53,17 @@ lazy.setup({
   performance = {
     cache = {
       enabled = true,
-      path = vim.fn.stdpath("cache") .. "/lazy/cache",
+      path = MainConfig.lazy.cache,
       ttl = 3600 * 24 * 5,
       disable_events = { "VimEnter", "BufReadPre", "UIEnter" },
     },
     reset_packpath = true,
     rtp = {
-      disabled_plugins = config.builtin,
+      disabled_plugins = MainConfig.builtin,
     },
   },
   readme = {
-    root = vim.fn.stdpath("state") .. "/lazy/readme",
+    root = MainConfig.lazy.readme,
     files = { "README.md", "lua/**/README.md", ".github/README.md" },
     skip_if_doc_exists = true,
   },

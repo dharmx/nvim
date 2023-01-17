@@ -1,11 +1,10 @@
 local ok, nvimtree = pcall(require, "nvim-tree")
 if not ok then return end
-local config = require("dharmx")
+local MainConfig = require("dharmx")
 
 nvimtree.setup({
   auto_reload_on_write = true,
   update_cwd = true,
-  create_in_closed_folder = true,
   disable_netrw = true,
   hijack_cursor = false,
   hijack_netrw = true,
@@ -43,7 +42,7 @@ nvimtree.setup({
       quit_on_focus_loss = true,
       open_win_config = {
         relative = "editor",
-        border = config.ui.border,
+        border = MainConfig.ui.border,
         width = 30,
         height = 30,
         row = 1,
@@ -62,18 +61,12 @@ nvimtree.setup({
     indent_markers = {
       enable = true,
       inline_arrows = true,
-      icons = {
-        corner = "└",
-        edge = "│",
-        item = "│",
-        bottom = "─",
-        none = " ",
-      },
+      icons = MainConfig.ui.tree.line,
     },
     icons = {
       webdev_colors = true,
       git_placement = "before",
-      symlink_arrow = "→ ",
+      symlink_arrow = MainConfig.ui.tree.symlink,
       padding = " ",
       show = {
         file = true,
@@ -81,30 +74,7 @@ nvimtree.setup({
         folder_arrow = true,
         git = true,
       },
-      glyphs = {
-        default = "",
-        symlink = "",
-        bookmark = "",
-        git = {
-          deleted = "",
-          ignored = "",
-          renamed = "",
-          staged = "",
-          unmerged = "",
-          unstaged = "",
-          untracked = "",
-        },
-        folder = {
-          default = "",
-          arrow_open = "",
-          arrow_closed = "",
-          empty = "",
-          empty_open = "",
-          open = "",
-          symlink = "",
-          symlink_open = "",
-        },
-      },
+      glyphs = MainConfig.ui.tree.glyphs,
     },
     special_files = {
       ["Cargo.toml"] = 1,
@@ -125,7 +95,7 @@ nvimtree.setup({
     update_cwd = true,
     ignore_list = {},
   },
-  ignore_ft_on_setup = { "dashboard", "alpha" },
+  ignore_ft_on_setup = MainConfig.black.filetype,
   system_open = {
     cmd = "",
     args = {},
@@ -138,12 +108,7 @@ nvimtree.setup({
       min = vim.diagnostic.severity.HINT,
       max = vim.diagnostic.severity.ERROR,
     },
-    icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
-    },
+    icons = MainConfig.ui.tree.diagnostic,
   },
   filters = {
     dotfiles = false,
@@ -177,7 +142,7 @@ nvimtree.setup({
         col = 1,
         row = 1,
         relative = "cursor",
-        border = config.ui.border,
+        border = MainConfig.ui.border,
         style = "minimal",
       },
     },
@@ -188,8 +153,8 @@ nvimtree.setup({
         enable = true,
         chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
         exclude = {
-          filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
-          buftype = { "nofile", "terminal", "help" },
+          filetype = MainConfig.black.filetype,
+          buftype = MainConfig.black.buftype,
         },
       },
     },

@@ -1,5 +1,6 @@
 local ok, notify = pcall(require, "notify")
 if not ok then return end
+local MainConfig = require("dharmx")
 
 local config = {
   stages = "fade_in_slide_out",
@@ -11,13 +12,7 @@ local config = {
   max_height = 25,
   background_colour = "TabLine",
   minimum_width = 50,
-  icons = {
-    ERROR = "",
-    WARN = "",
-    INFO = "",
-    DEBUG = "",
-    TRACE = "",
-  },
+  icons = MainConfig.ui.notify,
 }
 
 vim.notify = notify

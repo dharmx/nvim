@@ -1,16 +1,21 @@
 local M = {}
 
-M.invisible = {
+M.filetype = {
+  "TelescopeResults",
+  "lazy",
+  "lsp-installer",
+  "markdown",
+  "mason",
+  "txt",
   "dashboard",
   "alpha",
   "NvimTree",
   "undotree",
   "diff",
+  "fugitive",
+  "fugitiveblame",
   "Outline",
   "SidebarNvim",
-}
-
-M.hidden = {
   "packer",
   "lsp-installer",
   "TelescopePrompt",
@@ -29,6 +34,14 @@ M.hidden = {
   "Term://*",
   "toggleterm",
   "qf",
+  "prompt",
+  "noice",
+  "",
+}
+
+M.buftype = {
+  "terminal",
+  "nofile"
 }
 
 return M

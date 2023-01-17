@@ -1,5 +1,6 @@
 local ok, autopairs = pcall(require, "nvim-autopairs")
 if not ok then return end
+local MainConfig = require("dharmx")
 
 autopairs.setup({
   check_ts = true,
@@ -18,7 +19,7 @@ autopairs.setup({
     keys = "qwertyuiopzxcvbnmasdfghjkl",
     check_comma = true,
   },
-  disable_filetype = require("dharmx.list.black").hidden,
+  disable_filetype = MainConfig.black.filetype,
   enable_check_bracket_line = true,
 })
 require("dharmx.plug.config.cmp.rules")

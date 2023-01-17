@@ -1,6 +1,6 @@
 local M = {}
 
-function M.nnmap(key, action, describe)
+function M.nnoremap(key, action, describe)
   vim.keymap.set("n", key, action, {
     desc = describe,
     noremap = true,

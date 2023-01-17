@@ -1,7 +1,41 @@
 local ok, outline = pcall(require, "symbols-outline")
 if not ok then return end
+local MainConfig = require("dharmx")
 
-local config = {
+local symbols = {
+  File = { hl = "TSURI" },
+  Module = { hl = "TSNamespace" },
+  Namespace = { hl = "TSNamespace" },
+  Package = { hl = "TSNamespace" },
+  Class = { hl = "TSType" },
+  Method = { hl = "TSMethod" },
+  Property = { hl = "TSMethod" },
+  Field = { hl = "TSField" },
+  Constructor = { hl = "TSConstructor" },
+  Enum = { hl = "TSType" },
+  Interface = { hl = "TSType" },
+  Function = { hl = "TSFunction" },
+  Variable = { hl = "TSConstant" },
+  Constant = { hl = "TSConstant" },
+  String = { hl = "TSString" },
+  Number = { hl = "TSNumber" },
+  Boolean = { hl = "TSBoolean" },
+  Array = { hl = "TSConstant" },
+  Object = { hl = "TSType" },
+  Key = { hl = "TSType" },
+  Null = { hl = "TSType" },
+  EnumMember = { hl = "TSField" },
+  Struct = { hl = "TSType" },
+  Event = { hl = "TSType" },
+  Operator = { hl = "TSOperator" },
+  TypeParameter = { hl = "TSParameter" },
+}
+
+for kind_name, _ in pairs(symbols) do
+  symbols[kind_name].icon = MainConfig.kind.type[kind_name]
+end
+
+outline.setup({
   highlight_hovered_item = true,
   show_guides = true,
   auto_preview = true,
@@ -31,38 +65,7 @@ local config = {
     unfold_all = "E",
     fold_reset = "R",
   },
-  lsp_blacklist = {},
-  symbol_blacklist = {},
-  symbols = {
-    File = { icon = "", hl = "TSURI" },
-    Module = { icon = "", hl = "TSNamespace" },
-    Namespace = { icon = "", hl = "TSNamespace" },
-    Package = { icon = "", hl = "TSNamespace" },
-    Class = { icon = "𝓒", hl = "TSType" },
-    Method = { icon = "ƒ", hl = "TSMethod" },
-    Property = { icon = "", hl = "TSMethod" },
-    Field = { icon = "", hl = "TSField" },
-    Constructor = { icon = "", hl = "TSConstructor" },
-    Enum = { icon = "ℰ", hl = "TSType" },
-    Interface = { icon = "ﰮ", hl = "TSType" },
-    Function = { icon = "", hl = "TSFunction" },
-    Variable = { icon = "", hl = "TSConstant" },
-    Constant = { icon = "", hl = "TSConstant" },
-    String = { icon = "𝓐", hl = "TSString" },
-    Number = { icon = "#", hl = "TSNumber" },
-    Boolean = { icon = "⊨", hl = "TSBoolean" },
-    Array = { icon = "", hl = "TSConstant" },
-    Object = { icon = "⦿", hl = "TSType" },
-    Key = { icon = "🔐", hl = "TSType" },
-    Null = { icon = "NULL", hl = "TSType" },
-    EnumMember = { icon = "", hl = "TSField" },
-    Struct = { icon = "𝓢", hl = "TSType" },
-    Event = { icon = "🗲", hl = "TSType" },
-    Operator = { icon = "+", hl = "TSOperator" },
-    TypeParameter = { icon = "𝙏", hl = "TSParameter" },
-  },
-}
-
-outline.setup(config)
+  symbols = symbols,
+})
 
 -- vim:filetype=lua

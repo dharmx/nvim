@@ -1,4 +1,4 @@
-local ok, treesitter = pcall(require, "nvim-treesitter.configs")
+local ok, tree = pcall(require, "nvim-treesitter.configs")
 if not ok then return end
 
 local config = {
@@ -39,7 +39,7 @@ local config = {
     additional_vim_regex_highlighting = true,
   },
   indent = { enable = true },
-  context_commentstring = { enable = true, enable_autocmd = false },
+  context_commentstring = { enable = true, enable_autocmd = true },
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -51,21 +51,6 @@ local config = {
   },
 }
 
-vim.loop.fs_scandir(
-  vim.fn.stdpath("config") .. "/lua/dharmx/plug/config/tree/extras",
-  vim.schedule_wrap(function(errors, userdata)
-    if errors then
-      treesitter.setup(config)
-      return
-    end
-    while true do
-      local name, category = vim.loop.fs_scandir_next(userdata)
-      if not name then break end
-      if category == "file" then
-        config[name] = require("dharmx.plug.config.tree.extras." .. vim.fn.fnamemodify(name, ":r"))
-      end
-    end
-  end)
-)
+tree.setup(config)
 
 -- vim:filetype=lua

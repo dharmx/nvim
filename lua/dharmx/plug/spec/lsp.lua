@@ -2,93 +2,94 @@ local function req(file) require("dharmx.plug.config.lsp." .. file) end
 
 return {
   {
+    "williamboman/mason.nvim",
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      "jayp0521/mason-null-ls.nvim",
+      "jayp0521/mason-nvim-dap.nvim",
+    },
+    config = function() req("mason") end,
+  },
+  {
     "folke/neoconf.nvim",
     config = function() req("neoconf") end,
-    lazy = true,
   },
   {
     "folke/neodev.nvim",
     config = function() req("neodev") end,
-    lazy = true,
   },
   {
-    "williamboman/mason.nvim",
-    config = function() req("mason") end,
-    lazy = true,
+    "b0o/schemastore.nvim",
   },
-  {
-    "neovim/nvim-lspconfig",
-    config = function() req("init") end,
-    dependencies = { "folke/neoconf.nvim", "williamboman/mason.nvim", "folke/neodev.nvim" },
-    event = { "CursorMoved", "CursorHold", "InsertEnter", "CmdlineEnter" },
-  },
-  { "b0o/schemastore.nvim" },
   {
     "kosayoda/nvim-lightbulb",
     config = function() req("lightbulb") end,
-    dependencies = "neovim/nvim-lspconfig",
-    lazy = true,
-  },
-  {
-    "simrat39/symbols-outline.nvim",
-    init = function() req("outline") end,
-    dependencies = "neovim/nvim-lspconfig",
-    cmd = "SymbolsOutline",
-  },
-  {
-    "j-hui/fidget.nvim",
-    config = function() req("fidget") end,
-    dependencies = "neovim/nvim-lspconfig",
-    event = "LspAttach",
   },
   {
     "SmiteshP/nvim-navic",
     config = function() req("navic") end,
-    lazy = true,
+  },
+  {
+    "simrat39/rust-tools.nvim",
+  },
+  {
+    "mfussenegger/nvim-jdtls",
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function() req("masonlsp") end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "folke/neodev.nvim",
+      "folke/neoconf.nvim",
+    },
+    config = function() req("init") end,
+    cmd = "LspStart",
+  },
+  {
+    "simrat39/symbols-outline.nvim",
+    init = function() req("outline") end,
+    event = "LspAttach",
+  },
+  {
+    "j-hui/fidget.nvim",
+    config = function() req("fidget") end,
+    event = "LspAttach",
   },
   {
     "mhartington/formatter.nvim",
     config = function() req("formatter") end,
-    cmd = "Format",
-  },
-  {
-    "simrat39/rust-tools.nvim",
-    lazy = true,
-  },
-  {
-    "mfussenegger/nvim-jdtls",
-    lazy = true,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = "williamboman/mason.nvim",
-    lazy = true,
-    config = function() req("masonlsp") end,
+    event = "LspAttach",
   },
   {
     "jayp0521/mason-null-ls.nvim",
-    dependencies = "williamboman/mason.nvim",
-    lazy = true,
     config = function() req("masonnull") end,
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
     config = function() req("null") end,
-    lazy = true,
-    dependencies = "jayp0521/mason-null-ls.nvim",
+    dependencies = { "WhoIsSethDaniel/mason-tool-installer.nvim", "jayp0521/mason-null-ls.nvim" },
+    event = "LspAttach",
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    dependencies = "williamboman/mason.nvim",
-    lazy = true,
     config = function() req("masontool") end,
   },
-  { "mfussenegger/nvim-dap", lazy = true },
+  {
+    "mfussenegger/nvim-dap",
+  },
   {
     "jayp0521/mason-nvim-dap.nvim",
-    dependencies = { "williamboman/mason.nvim", "mfussenegger/nvim-dap" },
-    cmd = "DapToggleBreakpoint",
     config = function() req("masondap") end,
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    config = function() req("dapui") end,
+    event = "LspAttach",
   },
 }
 

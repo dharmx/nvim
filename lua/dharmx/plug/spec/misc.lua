@@ -8,11 +8,11 @@ return {
   },
   {
     "wakatime/vim-wakatime",
-    event = "InsertEnter",
+    event = "InsertCharPre",
   },
   {
     "karb94/neoscroll.nvim",
-    keys = { "zz" },
+    keys = { "zz", "zt" },
     config = function() req("neoscroll") end,
   },
   {
@@ -22,6 +22,7 @@ return {
   },
   {
     "rafcamlet/nvim-luapad",
+    ft = "lua",
     cmd = { "Luapad", "LuaRun" },
   },
 }

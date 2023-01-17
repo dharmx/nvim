@@ -1,5 +1,6 @@
 local ok, presence = pcall(require, "presence")
 if not ok then return end
+local MainConfig = require("dharmx")
 
 local config = {
   auto_update = true,
@@ -7,7 +8,7 @@ local config = {
   main_image = "file",
   debounce_timeout = 30,
   enable_line_number = true,
-  blacklist = {},
+  blacklist = MainConfig.black.filetype,
   buttons = true,
   editing_text = "Forging %s",
   file_explorer_text = "Browsing %s",
@@ -16,7 +17,7 @@ local config = {
   reading_text = "Mastering %s",
   workspace_text = "Conjuring %s",
   line_number_text = "Verse %s out of %s",
-  file_assets = require("dharmx.list.presence"),
+  file_assets = require("dharmx.supply.presence"),
 }
 
 presence:setup(config)

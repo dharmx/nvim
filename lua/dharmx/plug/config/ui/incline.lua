@@ -28,15 +28,10 @@ end
 incline.setup({
   render = function(props)
     local bufname = api.nvim_buf_get_name(props.buf)
-    local cursor = api.nvim_win_get_cursor(props.win)
-
     local modified = api.nvim_buf_get_option(props.buf, "modified")
     local focused = api.nvim_get_current_win() == props.win
-
     local fg = focused and colors.fg or colors.fg_nc
     local bg = focused and colors.bg or colors.bg_nc
-
-    -- Match cursorline background if cursor is on the same line as the statusline
     local fname = bufname == "" and "[No Name]" or vim.fn.fnamemodify(bufname, ":t")
 
     local icon, icon_fg

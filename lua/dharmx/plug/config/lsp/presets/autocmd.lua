@@ -1,11 +1,10 @@
 local M = {}
 
-local lightbulb = require("nvim-lightbulb")
-local util = require("dharmx.util")
+local ok, lightbulb = pcall(require, "nvim-lightbulb")
+local util = require("dharmx.util.nvim")
 local augroup = util.augroup
 local autocmd = util.autocmd
 
----@diagnostic disable-next-line: unused-local
 M.setup = function(client, buffer, config)
   if config.lens and client.supports_method("textDocument/codeLens") then
     autocmd({
@@ -37,7 +36,7 @@ M.setup = function(client, buffer, config)
     autocmd("InsertEnter", function() vim.diagnostic.enable(0) end)
   end
 
-  if config.bulb then autocmd("CursorHold", lightbulb.update_lightbulb, { buffer = buffer }) end
+  if ok and config.bulb then autocmd("CursorHold", lightbulb.update_lightbulb, { buffer = buffer }) end
 end
 
 return M

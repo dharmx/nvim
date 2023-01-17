@@ -8,7 +8,7 @@ neodev.setup({
     types = true,
     plugins = { "plenary.nvim", "telescope.nvim" },
   },
-  setup_jsonls = true, -- configures jsonls to provide completion for project specific .luarc.json files
+  setup_jsonls = true,
   lspconfig = true,
   pathStrict = true,
 })

@@ -1,5 +1,6 @@
 local ok, twilight = pcall(require, "twilight")
 if not ok then return end
+local MainConfig = require("dharmx")
 
 local config = {
   dimming = {
@@ -15,7 +16,7 @@ local config = {
     "table",
     "if_statement",
   },
-  exclude = {},
+  exclude = MainConfig.black.filetype,
 }
 
 twilight.setup(config)

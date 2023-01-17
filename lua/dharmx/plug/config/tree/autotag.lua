@@ -1,7 +1,7 @@
 local ok, autotag = pcall(require, "nvim-ts-autotag")
 if not ok then return end
 
-local config = {
+autotag.setup({
   filetypes = {
     "html",
     "javascript",
@@ -40,8 +40,6 @@ local config = {
     "wbr",
     "menuitem",
   },
-}
-
-autotag.setup(config)
+})
 
 -- vim:filetype=lua
