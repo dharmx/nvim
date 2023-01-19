@@ -9,9 +9,7 @@ for _, spec_file in ipairs(scanned) do
   if not vim.tbl_contains(MainConfig.disable.spec, spec) then
     local plugs = require("dharmx.plug.spec." .. spec)
     for _, plug in ipairs(plugs) do
-      if not vim.tbl_contains(MainConfig.disable.plug, plug[1]) then
-        table.insert(specs, plug)
-      end
+      if not vim.tbl_contains(MainConfig.disable.plug, plug[1]) then table.insert(specs, plug) end
     end
   end
 end

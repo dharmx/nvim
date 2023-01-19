@@ -1,30 +1,9 @@
 local ok, mason_null = pcall(require, "mason-null-ls")
 if not ok then return end
+local MainConfig = require("dharmx")
 
 mason_null.setup({
-  ensure_installed = {
-    "stylua",
-    "autopep8",
-    "eslint_d",
-    "fixjson",
-    "isort",
-    "markdownlint",
-    "sqlfluff",
-    "stylelint",
-    "editorconfig_checker",
-    "ec",
-    "shellcheck",
-    "vint",
-    "write_good",
-    "prettier",
-    "black",
-    "shellharden",
-    "codespell",
-    "proselint",
-    "gitlint",
-    "prettierd",
-    "shfmt",
-  },
+  ensure_installed = MainConfig.tools.null,
   automatic_installation = true,
   automatic_setup = true,
 })

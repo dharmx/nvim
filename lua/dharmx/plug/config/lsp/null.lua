@@ -75,7 +75,7 @@ null.setup({
     null.builtins.formatting.codespell,
     null.builtins.code_actions.statix,
     null.builtins.code_actions.proselint,
-    null.builtins.code_actions.gitsigns,
+    -- null.builtins.code_actions.gitsigns,
   },
 })
 

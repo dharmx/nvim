@@ -1,9 +1,6 @@
--- depends on https://github.com/MunifTanjim/nui.nvim
 local Menu = require("nui.menu")
 local NuiText = require("nui.text")
 
--- behaviour of the global elements of the window
--- like heading position size borders
 local popup_options = {
   size = { width = 20, height = 4 },
   position = {
@@ -80,7 +77,6 @@ local function normal_quit(item)
   end
 end
 
--- where the magic happens
 return function()
   local cur_winnr = vim.fn.winnr()
   local cur_bufnr = vim.fn.bufnr()
@@ -96,7 +92,6 @@ return function()
     return
   end
 
-  ---@diagnostic disable-next-line: param-type-mismatch
   for _, winid in ipairs(vim.fn.getbufinfo(cur_bufnr)[1].windows) do
     if vim.bo.modified then
       menu_options.on_submit = normal_quit

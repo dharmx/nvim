@@ -41,7 +41,7 @@ M.filetype = {
 
 M.buftype = {
   "terminal",
-  "nofile"
+  "nofile",
 }
 
 return M

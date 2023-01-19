@@ -1,6 +1,9 @@
 local M = {}
 
 M.plug = {
+  "akinsho/bufferline.nvim",
+  "SmiteshP/nvim-navic",
+  "vijaymarupudi/nvim-fzf",
   "hinell/move.nvim",
   "MattesGroeger/vim-bookmarks",
   "rcarriga/nvim-notify",

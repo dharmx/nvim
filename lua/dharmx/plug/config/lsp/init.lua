@@ -2,8 +2,8 @@ local ok, lspconfig = pcall(require, "lspconfig")
 if not ok then return end
 
 local MainConfig = require("dharmx")
-local servers = require("dharmx.supply.server")
-local navic = require("nvim-navic")
+local servers = MainConfig.tools.lsp
+local navic_ok, navic = pcall(require, "nvim-navic")
 local cmp_ok, cmp = pcall(require, "cmp_nvim_lsp")
 
 local autocmd = require("dharmx.plug.config.lsp.presets.autocmd")
@@ -22,7 +22,12 @@ local function on_attach(client, buffer)
   vim.keymap.set("n", "<leader>'", vim.diagnostic.goto_next, options)
   vim.keymap.set("n", "<leader>;", vim.diagnostic.goto_prev, options)
   vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, options)
-  vim.keymap.set("n", "<leader>wl", function() vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, options)
+  vim.keymap.set(
+    "n",
+    "<leader>wl",
+    function() vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+    options
+  )
   vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, options)
   vim.keymap.set("n", "<leader>rn", require("dharmx.plug.config.lsp.handlers.rename").lsp_rename, options)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, options)
@@ -35,7 +40,7 @@ local function on_attach(client, buffer)
   if MainConfig.lsp.cmd then cmd.setup(client, buffer) end
   if MainConfig.kind then protocol.CompletionItemKind = MainConfig.kind end
   if client.config.flags then client.config.flags.allow_incremental_sync = true end
-  if client.server_capabilities.documentSymbolProvider then navic.attach(client, buffer) end
+  if navic_ok and client.server_capabilities.documentSymbolProvider then navic.attach(client, buffer) end
 end
 
 local function capabilities(client_name)
@@ -48,7 +53,8 @@ local function capabilities(client_name)
   capability.textDocument.completion.completionItem.commitCharactersSupport = true
   capability.textDocument.semanticHighlighting = true
   capability.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
-  capability.textDocument.completion.completionItem.resolveSupport = { properties = { "documentation", "detail", "additionalTextEdits" } }
+  capability.textDocument.completion.completionItem.resolveSupport =
+    { properties = { "documentation", "detail", "additionalTextEdits" } }
   capability.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
 
   if client_name == "clangd" then capability.offsetEncoding = "utf-8" end
@@ -61,7 +67,10 @@ local function handlers()
     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = MainConfig.ui.border, focusable = false }),
     ["textDocument/definition"] = require("dharmx.plug.config.lsp.handlers.definition").goto_definition("vs"),
     ["textDocument/references"] = vim.lsp.with(vim.lsp.handlers["textDocument/references"], { loclist = true }),
-    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = MainConfig.ui.border, focusable = false }),
+    ["textDocument/signatureHelp"] = vim.lsp.with(
+      vim.lsp.handlers.signature_help,
+      { border = MainConfig.ui.border, focusable = false }
+    ),
     ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
       virtual_text = { prefix = "■ ", spacing = 1 },
       signs = true,

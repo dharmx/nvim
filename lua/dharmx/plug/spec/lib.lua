@@ -8,6 +8,9 @@ return {
   {
     "MunifTanjim/nui.nvim",
   },
+  {
+    "vijaymarupudi/nvim-fzf",
+  },
 }
 
 -- vim:filetype=lua

@@ -2,6 +2,29 @@
 local util = require("dharmx.util.nvim")
 local alias = util.alias
 
+alias("Sabotage", function(args)
+  local option = args.args
+  if vim.tbl_contains({ "live_grep", "grep_string", "find_files" }, option) then
+    local state = require("telescope.actions.state")
+    require("telescope.builtin")[option]({
+      attach_mappings = function(buffer, map)
+        map({ "i", "n" }, "<CR>", function()
+          local path = vim.split(state.get_selected_entry().value, ":", { plain = true })[1]
+          require("telescope.actions").close(buffer)
+          vim.cmd.edit(path)
+          vim.cmd.chdir(vim.fn.fnamemodify(path, ":h"))
+        end)
+        return true
+      end,
+    })
+    return
+  end
+  vim.api.nvim_notify("Choose among these options: live_grep/grep_string/find_files", vim.log.levels.WARN, {
+    title = "Sabotage!",
+    icon = " ",
+  })
+end, { nargs = 1, desc = "Change CWD.", complete = function() return { "live_grep", "grep_string", "find_files" } end })
+
 alias("LineWidthColumn", function()
   if vim.wo.colorcolumn == "0" then
     vim.wo.colorcolumn = vim.bo.textwidth .. ""

@@ -1,37 +1,9 @@
 local ok, tree = pcall(require, "nvim-treesitter.configs")
 if not ok then return end
+local MainConfig = require("dharmx")
 
 local config = {
-  ensure_installed = {
-    "lua",
-    "rust",
-    "zig",
-    "http",
-    "java",
-    "latex",
-    "json",
-    "python",
-    "html",
-    "json5",
-    "markdown",
-    "rasi",
-    "regex",
-    "scheme",
-    "scss",
-    "vim",
-    "css",
-    "toml",
-    "query",
-    "bash",
-    "help",
-    "yaml",
-    "comment",
-    "make",
-    "markdown_inline",
-    "meson",
-    "ninja",
-    "commonlisp",
-  },
+  ensure_installed = MainConfig.tools.tree,
   sync_install = false,
   highlight = {
     enable = true,

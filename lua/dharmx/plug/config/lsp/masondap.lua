@@ -1,10 +1,10 @@
 local ok, mason_dap = pcall(require, "mason-nvim-dap")
 if not ok then return end
-
+local MainConfig = require("dharmx")
 local dap = require("dap")
 
 mason_dap.setup({
-  ensure_installed = { "python", "cppdbg", "bash", "javadbg", "javatest" },
+  ensure_installed = MainConfig.tools.dap,
   automatic_installation = true,
   automatic_setup = true,
 })

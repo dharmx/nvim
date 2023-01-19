@@ -17,7 +17,7 @@ colo.setup({
       enable = true,
     },
     bufferline = {
-      enable = true,
+      enable = false,
     },
     devicons = {
       enable = true,
