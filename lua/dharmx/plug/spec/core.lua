@@ -5,9 +5,13 @@ return {
     "folke/lazy.nvim",
   },
   {
+    "sheerun/vim-polyglot",
+    event = { "CursorHold", "CursorMoved", "InsertEnter", "CmdlineEnter" },
+  },
+  {
     "dharmx/nvim-colo",
     config = function() req("colo") end,
-    event = "BufWinEnter",
+    lazy = false,
   },
 }
 

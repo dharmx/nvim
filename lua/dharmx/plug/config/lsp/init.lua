@@ -1,11 +1,11 @@
-local ok, lspconfig = pcall(require, "lspconfig")
-if not ok then return end
+local _lsp, lsp = pcall(require, "lspconfig")
+if not _lsp then return end
 
-local MainConfig = require("dharmx")
-local servers = MainConfig.tools.lsp
-local navic_ok, navic = pcall(require, "nvim-navic")
-local cmp_ok, cmp = pcall(require, "cmp_nvim_lsp")
+local kind = require("dharmx.util.kind")
+local _navic, navic = pcall(require, "nvim-navic")
+local _cmp, cmp = pcall(require, "cmp_nvim_lsp")
 
+local servers = require("dharmx.util.servers")
 local autocmd = require("dharmx.plug.config.lsp.presets.autocmd")
 local cmd = require("dharmx.plug.config.lsp.presets.cmd")
 local protocol = require("vim.lsp.protocol")
@@ -36,11 +36,11 @@ local function on_attach(client, buffer)
   vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, options)
   vim.keymap.set("n", "<leader>d", vim.diagnostic.setloclist, options)
 
-  if MainConfig.lsp.autocmd.enable then autocmd.setup(client, buffer, MainConfig.lsp.autocmd) end
-  if MainConfig.lsp.cmd then cmd.setup(client, buffer) end
-  if MainConfig.kind then protocol.CompletionItemKind = MainConfig.kind end
+  -- autocmd.setup(client, buffer)
+  -- cmd.setup(client, buffer)
+  -- protocol.CompletionItemKind = kind
   if client.config.flags then client.config.flags.allow_incremental_sync = true end
-  if navic_ok and client.server_capabilities.documentSymbolProvider then navic.attach(client, buffer) end
+  if _navic and client.server_capabilities.documentSymbolProvider then navic.attach(client, buffer) end
 end
 
 local function capabilities(client_name)
@@ -58,18 +58,18 @@ local function capabilities(client_name)
   capability.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
 
   if client_name == "clangd" then capability.offsetEncoding = "utf-8" end
-  if cmp_ok then cmp.default_capabilities() end
+  if _cmp then cmp.default_capabilities() end
   return capability
 end
 
 local function handlers()
-  local items = {
-    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = MainConfig.ui.border, focusable = false }),
+  return {
+    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "solid", focusable = false }),
     ["textDocument/definition"] = require("dharmx.plug.config.lsp.handlers.definition").goto_definition("vs"),
     ["textDocument/references"] = vim.lsp.with(vim.lsp.handlers["textDocument/references"], { loclist = true }),
     ["textDocument/signatureHelp"] = vim.lsp.with(
       vim.lsp.handlers.signature_help,
-      { border = MainConfig.ui.border, focusable = false }
+      { border = "solid", focusable = false }
     ),
     ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
       virtual_text = { prefix = "■ ", spacing = 1 },
@@ -79,7 +79,6 @@ local function handlers()
       severity_sort = true,
     }),
   }
-  if MainConfig.lsp.handlers then return items end
 end
 
 local function configure(server_name)
@@ -97,7 +96,7 @@ local function configure(server_name)
 end
 
 for _, name in ipairs(servers) do
-  local server = lspconfig[name]
+  local server = lsp[name]
   if name == "rust_analyzer" then
     pcall(
       function()
@@ -105,7 +104,7 @@ for _, name in ipairs(servers) do
           server = vim.tbl_deep_extend("keep", {
             root_dir = require("lspconfig.util").root_pattern({ "Cargo.toml", "rust-project.json" }) or vim.loop.cwd(),
           }, configure(name)),
-          tools = { hover_actions = { border = MainConfig.ui.border } },
+          tools = { hover_actions = { border = "solid" } },
         })
       end
     )

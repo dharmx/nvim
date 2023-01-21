@@ -1,36 +1,35 @@
 local present, gitsigns = pcall(require, "gitsigns")
 if not present then return end
-local MainConfig = require("dharmx")
 
 local config = {
   signs = {
     add = {
       texthl = "GitSignsAdd",
-      text = MainConfig.ui.gitsigns.add,
+      text = "▌",
       numhl = "GitSignsAddNr",
       linehl = "GitSignsAddLn",
     },
     change = {
       texthl = "GitSignsChange",
-      text = MainConfig.ui.gitsigns.change,
+      text = "▌",
       numhl = "GitSignsChangeNr",
       linehl = "GitSignsChangeLn",
     },
     delete = {
       texthl = "GitSignsDelete",
-      text = MainConfig.ui.gitsigns.delete,
+      text = " ",
       numhl = "GitSignsDeleteNr",
       linehl = "GitSignsDeleteLn",
     },
     topdelete = {
       texthl = "GitSignsDelete",
-      text = MainConfig.ui.gitsigns.topdelete,
+      text = " ",
       numhl = "GitSignsDeleteNr",
       linehl = "GitSignsDeleteLn",
     },
     changedelete = {
       texthl = "GitSignsChange",
-      text = MainConfig.ui.gitsigns.changedelete,
+      text = "▌",
       numhl = "GitSignsChangeNr",
       linehl = "GitSignsChangeLn",
     },

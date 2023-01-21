@@ -1,6 +1,5 @@
 local ok, grapple = pcall(require, "grapple")
 if not ok then return end
-local MainConfig = require("dharmx")
 
 grapple.setup({
   log_level = "warn",
@@ -11,7 +10,7 @@ grapple.setup({
     height = 12,
     style = "minimal",
     focusable = true,
-    border = MainConfig.ui.border,
+    border = "solid",
   },
   integrations = {
     resession = false,

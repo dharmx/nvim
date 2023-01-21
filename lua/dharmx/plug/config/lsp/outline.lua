@@ -1,6 +1,6 @@
 local ok, outline = pcall(require, "symbols-outline")
 if not ok then return end
-local MainConfig = require("dharmx")
+local kind = require("dharmx.util.kind").sleek
 
 local symbols = {
   File = { hl = "TSURI" },
@@ -32,7 +32,7 @@ local symbols = {
 }
 
 for kind_name, _ in pairs(symbols) do
-  symbols[kind_name].icon = MainConfig.kind.type[kind_name]
+  symbols[kind_name].icon = kind[kind_name]
 end
 
 outline.setup({

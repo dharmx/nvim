@@ -48,10 +48,6 @@ return {
     event = { "CursorMoved", "CursorHold", "InsertEnter", "CmdlineEnter" },
   },
   {
-    "NvChad/nvim-colorizer.lua",
-    keys = { "<F3>", { mode = "i", "<F3>" } },
-  },
-  {
     "yamatsum/nvim-cursorline",
     config = function() req("cursorline") end,
   },

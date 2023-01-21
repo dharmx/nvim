@@ -3,7 +3,7 @@ if not ok then return end
 
 tree.setup({
   tree_docs = {
-    enable = false,
+    enable = true,
   },
 })
 

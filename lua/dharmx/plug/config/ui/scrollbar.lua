@@ -1,6 +1,5 @@
 local ok, scrollbar = pcall(require, "scrollbar")
 if not ok then return end
-local MainConfig = require("dharmx")
 
 scrollbar.setup({
   show = true,
@@ -14,44 +13,86 @@ scrollbar.setup({
   },
   marks = {
     Search = {
-      text = MainConfig.ui.scrollbar.Search,
+      text = { "-", "=" },
       priority = 0,
     },
     Error = {
-      text = MainConfig.ui.scrollbar.Error,
+      text = { "-", "=" },
       priority = 1,
     },
     Warn = {
-      text = MainConfig.ui.scrollbar.Warn,
+      text = { "-", "=" },
       priority = 2,
     },
     Info = {
-      text = MainConfig.ui.scrollbar.Info,
+      text = { "-", "=" },
       priority = 3,
     },
     Hint = {
-      text = MainConfig.ui.scrollbar.Hint,
+      text = { "-", "=" },
       priority = 4,
     },
     Misc = {
-      text = MainConfig.ui.scrollbar.Misc,
+      text = { "-", "=" },
       priority = 5,
     },
     GitAdd = {
-      text = MainConfig.ui.scrollbar.GitAdd,
+      text = "▁",
       priority = 5,
     },
     GitChange = {
-      text = MainConfig.ui.scrollbar.Change,
+      text = "▁",
       priority = 5,
     },
     GitDelete = {
-      text = MainConfig.ui.scrollbar.Delete,
+      text = "▁",
       priority = 5,
     },
   },
-  excluded_buftypes = MainConfig.black.buftype,
-  excluded_filetypes = MainConfig.black.filetype,
+  excluded_buftypes = {
+    "TelescopeResults",
+    "query",
+    "tsplayground",
+    "lazy",
+    "lsp-installer",
+    "markdown",
+    "mason",
+    "txt",
+    "dashboard",
+    "alpha",
+    "NvimTree",
+    "undotree",
+    "diff",
+    "fugitive",
+    "fugitiveblame",
+    "Outline",
+    "SidebarNvim",
+    "packer",
+    "lsp-installer",
+    "TelescopePrompt",
+    "help",
+    "telescope",
+    "lspinfo",
+    "Trouble",
+    "null-ls-info",
+    "quickfix",
+    "chadtree",
+    "fzf",
+    "NeogitStatus",
+    "terminal",
+    "console",
+    "term://*",
+    "Term://*",
+    "toggleterm",
+    "qf",
+    "prompt",
+    "noice",
+    "",
+  },
+  excluded_filetypes = {
+    "terminal",
+    "nofile",
+  },
   autocmd = {
     render = {
       "BufWinEnter",

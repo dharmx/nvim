@@ -1,6 +1,5 @@
 local ok, term = pcall(require, "toggleterm")
 if not ok then return end
-local MainConfig = require("dharmx")
 
 term.setup({
   hide_numbers = true,
@@ -15,7 +14,7 @@ term.setup({
   close_on_exit = true,
   shell = vim.o.shell,
   float_opts = {
-    border = MainConfig.ui.border,
+    border = "solid",
     winblend = 0,
   },
   highlights = {

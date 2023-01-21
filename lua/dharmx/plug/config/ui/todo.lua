@@ -1,6 +1,5 @@
 local ok, todo = pcall(require, "todo-comments")
 if not ok then return end
-local MainConfig = require("dharmx")
 
 local config = {
   signs = true,
@@ -29,7 +28,46 @@ local config = {
     pattern = [[.*<(KEYWORDS)\s*:]],
     comments_only = true,
     max_line_len = 2500,
-    exclude = MainConfig.black.filetype,
+    exclude = {
+      "TelescopeResults",
+      "query",
+      "tsplayground",
+      "lazy",
+      "lsp-installer",
+      "markdown",
+      "mason",
+      "txt",
+      "dashboard",
+      "alpha",
+      "NvimTree",
+      "undotree",
+      "diff",
+      "fugitive",
+      "fugitiveblame",
+      "Outline",
+      "SidebarNvim",
+      "packer",
+      "lsp-installer",
+      "TelescopePrompt",
+      "help",
+      "telescope",
+      "lspinfo",
+      "Trouble",
+      "null-ls-info",
+      "quickfix",
+      "chadtree",
+      "fzf",
+      "NeogitStatus",
+      "terminal",
+      "console",
+      "term://*",
+      "Term://*",
+      "toggleterm",
+      "qf",
+      "prompt",
+      "noice",
+      "",
+    },
   },
   search = {
     command = "rg",
@@ -43,10 +81,6 @@ local config = {
     pattern = [[\b(KEYWORDS):]],
   },
 }
-
-for name, _ in ipairs(config.keywords) do
-  config.keywords[name].icon = vim.F.if_nil(MainConfig.ui.todo[name], "+")
-end
 
 todo.setup(config)
 

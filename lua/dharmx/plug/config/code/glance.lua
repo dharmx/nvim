@@ -1,6 +1,5 @@
 local ok, glance = pcall(require, "glance")
 if not ok then return end
-local MainConfig = require("dharmx")
 local actions = glance.actions
 
 glance.setup({
@@ -13,8 +12,8 @@ glance.setup({
   },
   border = {
     enable = true,
-    top_char = MainConfig.ui.glance.top_char,
-    bottom_char = MainConfig.ui.glance.bottom_char,
+    top_char = " ",
+    bottom_char = " ",
   },
   list = {
     position = "right",
@@ -53,7 +52,7 @@ glance.setup({
   },
   indent_lines = {
     enable = true,
-    icon = MainConfig.ui.glance.indent,
+    icon = "┃",
   },
   winbar = {
     enable = true,

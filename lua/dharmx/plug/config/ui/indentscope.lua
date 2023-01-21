@@ -1,6 +1,5 @@
 local ok, mini = pcall(require, "mini.indentscope")
 if not ok then return end
-local MainConfig = require("dharmx")
 
 mini.setup({
   draw = {
@@ -13,7 +12,7 @@ mini.setup({
     indent_at_cursor = true,
     try_as_border = false,
   },
-  symbol = MainConfig.ui.small.scope,
+  symbol = "┃",
 })
 
 -- vim:filetype=lua

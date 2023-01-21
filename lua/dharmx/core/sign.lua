@@ -1,78 +1,77 @@
-local MainConfig = require("dharmx")
 local sign = vim.fn.sign_define
 
 sign("DiagnosticSignError", {
-  text = MainConfig.ui.sign.errors,
+  text = "",
   linehl = "LspDiagnosticsSignError",
   texthl = "LspDiagnosticsSignError",
   numhl = "LspDiagnosticsSignError",
 })
 
 sign("DiagnosticSignHint", {
-  text = MainConfig.ui.sign.hints,
+  text = "",
   linehl = "LspDiagnosticsSignHint",
   texthl = "LspDiagnosticsSignHint",
   numhl = "LspDiagnosticsSignHint",
 })
 
 sign("DiagnosticSignInfo", {
-  text = MainConfig.ui.sign.info,
+  text = "",
   linehl = "LspDiagnosticsSignInfo",
   texthl = "LspDiagnosticsSignInfo",
   numhl = "LspDiagnosticsSignInfo",
 })
 
 sign("DiagnosticSignWarn", {
-  text = MainConfig.ui.sign.warning,
+  text = "",
   linehl = "LspDiagnosticsSignWarn",
   texthl = "LspDiagnosticsSignWarn",
   numhl = "LspDiagnosticsSignWarn",
 })
 
 sign("LightBulbSign", {
-  text = MainConfig.ui.sign.bulb,
+  text = " ",
   linehl = "LspDiagnosticsSignHint",
   texthl = "LspDiagnosticsSignHint",
   numhl = "LspDiagnosticsSignHint",
 })
 
 sign("DapBreakpoint", {
-  text = MainConfig.ui.sign.breakpoint,
+  text = "",
   texthl = "ErrorMsg",
   linehl = "ErrorMsg",
   numhl = "ErrorMsg",
 })
 
 sign("DapLogPoint", {
-  text = MainConfig.ui.sign.logpoint,
+  text = "",
   texthl = "ErrorMsg",
   linehl = "ErrorMsg",
   numhl = "ErrorMsg",
 })
 
 sign("DapBreakpointCondition", {
-  text = MainConfig.ui.sign.condition,
+  text = "",
   texthl = "ErrorMsg",
   linehl = "ErrorMsg",
   numhl = "ErrorMsg",
 })
 
 sign("DapBreakpointRejected", {
-  text = MainConfig.ui.sign.rejected,
+  text = "",
   texthl = "ErrorMsg",
   linehl = "ErrorMsg",
   numhl = "ErrorMsg",
 })
 
 sign("DapStopped", {
-  text = MainConfig.ui.sign.stopped,
+  text = "",
   texthl = "ErrorMsg",
   linehl = "ErrorMsg",
   numhl = "ErrorMsg",
 })
 
 vim.diagnostic.config({
-  virtual_text = { prefix = MainConfig.ui.sign.diagnostic, source = "always" },
+  virtual_text = { prefix = "", source = "always" },
   signs = true,
   underline = true,
   update_in_insert = false,

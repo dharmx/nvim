@@ -1,6 +1,5 @@
 local ok, presence = pcall(require, "presence")
 if not ok then return end
-local MainConfig = require("dharmx")
 
 local config = {
   auto_update = true,
@@ -8,7 +7,46 @@ local config = {
   main_image = "file",
   debounce_timeout = 30,
   enable_line_number = true,
-  blacklist = MainConfig.black.filetype,
+  blacklist = {
+    "TelescopeResults",
+    "query",
+    "tsplayground",
+    "lazy",
+    "lsp-installer",
+    "markdown",
+    "mason",
+    "txt",
+    "dashboard",
+    "alpha",
+    "NvimTree",
+    "undotree",
+    "diff",
+    "fugitive",
+    "fugitiveblame",
+    "Outline",
+    "SidebarNvim",
+    "packer",
+    "lsp-installer",
+    "TelescopePrompt",
+    "help",
+    "telescope",
+    "lspinfo",
+    "Trouble",
+    "null-ls-info",
+    "quickfix",
+    "chadtree",
+    "fzf",
+    "NeogitStatus",
+    "terminal",
+    "console",
+    "term://*",
+    "Term://*",
+    "toggleterm",
+    "qf",
+    "prompt",
+    "noice",
+    "",
+  },
   buttons = true,
   editing_text = "Forging %s",
   file_explorer_text = "Browsing %s",
@@ -17,7 +55,7 @@ local config = {
   reading_text = "Mastering %s",
   workspace_text = "Conjuring %s",
   line_number_text = "Verse %s out of %s",
-  file_assets = require("dharmx.supply.presence"),
+  file_assets = require("dharmx.util.presence"),
 }
 
 presence:setup(config)

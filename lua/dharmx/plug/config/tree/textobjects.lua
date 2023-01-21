@@ -1,6 +1,5 @@
 local ok, tree = pcall(require, "nvim-treesitter.configs")
 if not ok then return end
-local MainConfig = require("dharmx")
 
 tree.setup({
   textobjects = {
@@ -41,7 +40,7 @@ tree.setup({
     },
     lsp_interop = {
       enable = true,
-      border = MainConfig.ui.border,
+      border = "solid",
       peek_definition_code = {
         ["<leader>df"] = "@function.outer",
         ["<leader>dF"] = "@class.outer",

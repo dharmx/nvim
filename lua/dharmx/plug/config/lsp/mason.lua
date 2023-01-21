@@ -1,15 +1,16 @@
 local ok, mason = pcall(require, "mason")
 if not ok then return end
-local MainConfig = require("dharmx")
 
 mason.setup({
-  pip = {
-    upgrade_pip = true,
-  },
-  max_concurrent_installers = 5,
-  border = MainConfig.ui.border,
+  max_concurrent_installers = 10,
+  border = "solid",
+  pip = { upgrade_pip = true },
   ui = {
-    icons = MainConfig.ui.mason,
+    icons = {
+      package_installed = " ",
+      package_pending = " ",
+      package_uninstalled = "◍ ",
+    },
   },
 })
 

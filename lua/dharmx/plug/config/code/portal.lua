@@ -1,6 +1,5 @@
 local ok, portal = pcall(require, "portal")
 if not ok then return end
-local MainConfig = require("dharmx")
 
 portal.setup(require("portal").setup({
   log_level = "warn",
@@ -20,7 +19,7 @@ portal.setup(require("portal").setup({
         col = 2,
         style = "minimal",
         focusable = false,
-        border = MainConfig.ui.border,
+        border = "solid",
         noautocmd = true,
         zindex = 98,
       },
@@ -33,7 +32,7 @@ portal.setup(require("portal").setup({
         height = 3,
         col = 2,
         focusable = true,
-        border = MainConfig.ui.border,
+        border = "solid",
         noautocmd = true,
         zindex = 99,
       },

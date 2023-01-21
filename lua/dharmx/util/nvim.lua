@@ -1,12 +1,16 @@
 local M = {}
-
-local F = vim.fn
 local A = vim.api
-local cmd = A.nvim_command
+
+function M.abridge(src, dest)
+  for index, item in ipairs(src) do
+    if vim.tbl_contains(dest, item) then table.remove(src, index) end
+  end
+  return src
+end
 
 function M.abbrev(buffer, command, expression)
-  local formatted = string.format("cnoreabbrev %s %s %s", expression and "<expr>" or "", buffer, command)
-  cmd(formatted)
+  local formatted = string.format("%s %s %s", expression and "<expr>" or "", buffer, command)
+  vim.cmd.cnoreabbrev(formatted)
 end
 
 function M.alias(alias, command, options)

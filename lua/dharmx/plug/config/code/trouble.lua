@@ -1,6 +1,5 @@
 local ok, trouble = pcall(require, "trouble")
 if not ok then return end
-local MainConfig = require("dharmx")
 
 local config = {
   position = "bottom",
@@ -8,8 +7,8 @@ local config = {
   width = 50,
   icons = true,
   mode = "document_diagnostics",
-  fold_open = MainConfig.ui.trouble.fold_opened,
-  fold_closed = MainConfig.ui.trouble.fold_closed,
+  fold_open = "",
+  fold_closed = "",
   group = true,
   padding = true,
   action_keys = {
@@ -37,7 +36,13 @@ local config = {
   auto_preview = true,
   auto_fold = true,
   auto_jump = { "lsp_definitions" },
-  signs = MainConfig.ui.trouble.sign,
+  signs = {
+    error = "",
+    warning = "",
+    hint = "",
+    information = "",
+    other = "﫠",
+  },
   use_diagnostic_signs = false,
 }
 

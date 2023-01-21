@@ -1,9 +1,22 @@
 local ok, tree = pcall(require, "nvim-treesitter.configs")
 if not ok then return end
-local MainConfig = require("dharmx")
+vim.opt.runtimepath:append(vim.fn.stdpath("data") .. "/parsers")
 
-local config = {
-  ensure_installed = MainConfig.tools.tree,
+tree.setup({
+  ensure_installed = {
+    "lua",
+    "rust",
+    "http",
+    "json",
+    "python",
+    "html",
+    "json5",
+    "markdown",
+    "bash",
+    "comment",
+    "markdown_inline",
+  },
+  parser_install_dir = vim.fn.stdpath("data") .. "/parsers",
   sync_install = false,
   highlight = {
     enable = true,
@@ -21,8 +34,6 @@ local config = {
       node_decremental = "grm",
     },
   },
-}
-
-tree.setup(config)
+})
 
 -- vim:filetype=lua

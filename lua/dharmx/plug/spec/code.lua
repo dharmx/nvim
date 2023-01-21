@@ -1,6 +1,10 @@
-local function req(file) require("dharmx.plug.config.work." .. file) end
+local function req(file) require("dharmx.plug.config.code." .. file) end
 
 return {
+  {
+    "NvChad/nvim-colorizer.lua",
+    cmd = "ColorizerToggle",
+  },
   {
     "kevinhwang91/rnvimr",
     init = function() req("ranger") end,
@@ -89,7 +93,7 @@ return {
   {
     "numToStr/Comment.nvim",
     config = function() req("comments") end,
-    keys = { "gc", "gb" },
+    keys = { "g", { mode = "v", "g" }, { mode = "i", "g" }, { mode = "x", "g" } },
   },
   {
     "folke/trouble.nvim",

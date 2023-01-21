@@ -1,9 +1,18 @@
 local ok, tool = pcall(require, "mason-tool-installer")
 if not ok then return end
-local MainConfig = require("dharmx")
 
 tool.setup({
-  ensure_installed = MainConfig.tools.tool,
+  ensure_installed = {
+    "bash-language-server",
+    "lua-language-server",
+    "vim-language-server",
+    "stylua",
+    "shellcheck",
+    "editorconfig-checker",
+    "shellcheck",
+    "shfmt",
+    "vint",
+  },
   auto_update = true,
   run_on_start = true,
   start_delay = 3000,

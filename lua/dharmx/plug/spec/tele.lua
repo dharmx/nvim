@@ -5,6 +5,7 @@ return {
     "nvim-telescope/telescope.nvim",
     config = function() req("init") end,
     cmd = "Telescope",
+    dependencies = { "nvim-telescope/telescope-symbols.nvim" },
     keys = { "<leader>" },
   },
   {
@@ -20,7 +21,6 @@ return {
   },
   {
     "nvim-telescope/telescope-symbols.nvim",
-    event = "BufWinEnter",
   },
   {
     "nvim-telescope/telescope-dap.nvim",

@@ -22,7 +22,7 @@ return {
   {
     "hrsh7th/nvim-cmp",
     config = function() req("init") end,
-    event = { "InsertCharPre", "CmdlineEnter" },
+    event = { "InsertEnter", "CmdlineEnter" },
   },
   {
     "windwp/nvim-autopairs",

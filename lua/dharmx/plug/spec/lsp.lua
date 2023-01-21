@@ -7,7 +7,6 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "jayp0521/mason-null-ls.nvim",
-      "jayp0521/mason-nvim-dap.nvim",
     },
     config = function() req("mason") end,
   },
@@ -81,6 +80,7 @@ return {
   },
   {
     "mfussenegger/nvim-dap",
+    dependencies = { "jayp0521/mason-nvim-dap.nvim" },
   },
   {
     "jayp0521/mason-nvim-dap.nvim",

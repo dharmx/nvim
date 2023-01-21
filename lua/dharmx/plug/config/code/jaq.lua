@@ -1,6 +1,5 @@
 local ok, jaq = pcall(require, "jaq")
 if not ok then return end
-local MainConfig = require("dharmx")
 
 jaq.setup({
   cmds = {
@@ -23,7 +22,7 @@ jaq.setup({
   },
   ui = {
     float = {
-      border = MainConfig.ui.border,
+      border = "solid",
       winhl = "JaqWin",
       borderhl = "JaqBorder",
       winblend = 0,

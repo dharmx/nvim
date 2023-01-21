@@ -1,9 +1,8 @@
 local ok, dapui = pcall(require, "dapui")
 if not ok then return end
-local MainConfig = require("dharmx")
 
 dapui.setup({
-  icons = MainConfig.ui.dap.main,
+  icons = { expanded = "", collapsed = "", current_frame = "" },
   mappings = {
     expand = { "<CR>", "<2-LeftMouse>" },
     open = "o",
@@ -42,7 +41,16 @@ dapui.setup({
   controls = {
     enabled = true,
     element = "repl",
-    icons = MainConfig.ui.dap.controls,
+    icons = {
+      pause = "",
+      play = "",
+      step_into = "",
+      step_over = "",
+      step_out = "",
+      step_back = "",
+      run_last = "",
+      terminate = "",
+    },
   },
   floating = {
     max_height = nil,

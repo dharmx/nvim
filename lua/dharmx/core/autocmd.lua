@@ -3,7 +3,7 @@ local util = require("dharmx.util.nvim")
 local autocmd = util.autocmd
 
 autocmd({ "CursorHold", "CursorMoved", "CmdlineEnter", "TextChanged", "ModeChanged" }, ":silent! LspStart", { desc = "Lazy load LSP.", once = true })
-autocmd("FileType", [[nnoremap <buffer><silent> q :quit<CR>]], { patterns = { "man" } })
+autocmd("FileType", [[nnoremap <buffer><silent> q :quit<CR>]], { patterns = { "man", "qf" } })
 autocmd("TextYankPost", function() vim.highlight.on_yank({ higroup = "Include", on_visual = true }) end, "Provide a visual color feedback on yanking.")
 
 autocmd({ "TermOpen", "BufReadCmd" }, function()
