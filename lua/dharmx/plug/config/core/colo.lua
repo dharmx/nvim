@@ -3,28 +3,16 @@ if not ok then return end
 
 colo.setup({
   theme = "radium_dark",
-  cycle = true,
-  aggregates = {
+  reload = {
     enable = true,
     items = {
-      bold = true,
-      underline = true,
+      "colo.groups",
+      { "colo.extensions.feline", import = true },
+      { "dharmx.plug.config.ui.feline", import = true },
+      { "dharmx.plug.config.ui.bufferline", import = true },
+      { "dharmx.plug.config.ui.alpha", import = true },
     },
-  },
-  extensions = {
-    feline = {
-      enable = true,
-    },
-    bufferline = {
-      enable = false,
-    },
-    devicons = {
-      enable = true,
-    },
-  },
-  mappings = {
-    enable = true,
-  },
+  }
 })
 
 -- vim:filetype=lua

@@ -1,8 +1,3 @@
---[[
-  set texlab.latexFormatter = "texlab" if you don't want to install latexindent deps
-  yay -S latex-mk texlive-most perl-yaml-tiny perl-file-homedir perl-unicode-string perl-unicode-linebreak
-  applicable only for arch systems
---]]
 local schema = {
   texlab = {
     auxDirectory = ".",

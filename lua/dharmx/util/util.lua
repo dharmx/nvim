@@ -1,5 +1,8 @@
 local M = {}
 
+local F = vim.fn
+local A = vim.api
+
 function M.input(options, actions)
   local Input = require("nui.input")
   local autocmd = require("nui.utils.autocmd")
@@ -31,7 +34,7 @@ function M.input(options, actions)
 
   local keyword = vim.opt.iskeyword - "_" - "-"
   vim.bo.iskeyword = table.concat(keyword:get(), ",")
-  vim.schedule(function() vim.api.nvim_command("stopinsert") end)
+  vim.schedule(function() A.nvim_command("stopinsert") end)
 
   -- TODO: Return the input object so that mappings can be defined separately.
   input:map("n", "<esc>", input.input_props.on_close, { noremap = true })
@@ -72,6 +75,25 @@ function M.shorten()
       end
     end,
   })
+end
+
+-- NOTE: Stolen from https://github.com/asrul10/readable-number.nvim.
+function M.readable_numbers()
+  local current = F.expand("<cword>")
+
+  if tonumber(current) then
+    if #current < 3 then return end
+    local formatted = ""
+    for i = #current, 1, -3 do
+      if i - 3 <= 0 then
+        formatted = current:sub(1, i) .. formatted
+        break
+      end
+      formatted = "_" .. current:sub(i - 2, i) .. formatted
+    end
+    ---@diagnostic disable-next-line: param-type-mismatch
+    A.nvim_set_current_line(F.substitute(F.getline("."), current, formatted, ""))
+  end
 end
 
 return M

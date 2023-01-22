@@ -16,8 +16,8 @@ return {
   {
     "dharmx/telescope-media.nvim",
     config = function() require("telescope").load_extension("media") end,
-    dev = true,
     keys = { "<leader>i" },
+    dev = true,
   },
   {
     "nvim-telescope/telescope-symbols.nvim",

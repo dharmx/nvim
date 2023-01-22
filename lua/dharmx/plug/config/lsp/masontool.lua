@@ -4,11 +4,6 @@ if not ok then return end
 tool.setup({
   ensure_installed = {
     "bash-language-server",
-    "lua-language-server",
-    "vim-language-server",
-    "stylua",
-    "shellcheck",
-    "editorconfig-checker",
     "shellcheck",
     "shfmt",
     "vint",

@@ -1,6 +1,5 @@
 local ok, null = pcall(require, "null-ls")
 if not ok then return end
-
 local helpers = require("null-ls.helpers")
 
 null.register({

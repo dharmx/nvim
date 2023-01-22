@@ -17,6 +17,7 @@ indentline.setup({
     "markdown",
     "mason",
     "txt",
+    "text",
     "dashboard",
     "alpha",
     "NvimTree",

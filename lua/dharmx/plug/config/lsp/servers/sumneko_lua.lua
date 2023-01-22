@@ -3,7 +3,6 @@ local schema = {
   filetypes = { "lua" },
   log_level = 2,
   root_dir = require("lspconfig.util").root_pattern({
-    ".git",
     "stylua.toml",
     ".stylua.toml",
     ".styluaignore",
@@ -13,6 +12,7 @@ local schema = {
     ".luacheckrc",
     "selene.toml",
     ".selene.toml",
+    ".git",
   }) or vim.loop.cwd(),
   single_file_support = true,
   settings = {

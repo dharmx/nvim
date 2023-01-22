@@ -3,7 +3,6 @@ if not ok then return end
 
 mason_null.setup({
   ensure_installed = {
-    "stylua",
     "autopep8",
     "eslint_d",
     "fixjson",
@@ -11,11 +10,8 @@ mason_null.setup({
     "markdownlint",
     "sqlfluff",
     "stylelint",
-    "editorconfig_checker",
-    "ec",
     "shellcheck",
     "vint",
-    "write_good",
     "prettier",
     "black",
     "shellharden",

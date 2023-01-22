@@ -8,7 +8,7 @@ return {
   {
     "kevinhwang91/rnvimr",
     init = function() req("ranger") end,
-    lazy = false,
+    cmd = "RnvimrToggle"
   },
   {
     "cbochs/portal.nvim",
@@ -99,11 +99,6 @@ return {
     "folke/trouble.nvim",
     config = function() req("trouble") end,
     event = "LspAttach",
-  },
-  {
-    "NFrid/due.nvim",
-    config = function() req("due") end,
-    cmd = "Due",
   },
   {
     "phelipetls/vim-hugo",

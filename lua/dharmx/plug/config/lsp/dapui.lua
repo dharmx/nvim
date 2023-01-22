@@ -55,7 +55,7 @@ dapui.setup({
   floating = {
     max_height = nil,
     max_width = nil,
-    border = "single",
+    border = "solid",
     mappings = {
       close = { "q", "<Esc>" },
     },

@@ -73,7 +73,7 @@ local function normal_quit(item)
       icon = " ",
     })
   else
-    error("Invalid option!", vim.log.levels.ERROR)
+    vim.api.nvim_notify("Invalid option!", vim.log.levels.ERROR, {})
   end
 end
 

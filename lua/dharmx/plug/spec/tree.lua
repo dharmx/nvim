@@ -22,7 +22,7 @@ return {
     event = { "CursorHold", "CursorMoved", "InsertEnter" },
   },
   {
-    "p00f/nvim-ts-rainbow",
+    "mrjones2014/nvim-ts-rainbow",
     config = function() req("rainbow") end,
     event = { "CursorHold", "CursorMoved", "InsertEnter" },
   },
@@ -30,6 +30,11 @@ return {
     "RRethy/nvim-treesitter-textsubjects",
     config = function() req("textsubjects") end,
     keys = { { mode = "v", "." }, { mode = "v", ";" } },
+  },
+  {
+    "ckolkey/ts-node-action",
+    config = function() req("nodeaction") end,
+    event = { "CursorHold", "CursorMoved", "InsertEnter" },
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",

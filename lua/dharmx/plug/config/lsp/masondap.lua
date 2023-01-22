@@ -3,7 +3,7 @@ if not ok then return end
 local dap = require("dap")
 
 mason_dap.setup({
-  ensure_installed = true,
+  ensure_installed = { "python", "cppdbg", "bash", "javadbg", "javatest" },
   automatic_installation = true,
   automatic_setup = true,
 })

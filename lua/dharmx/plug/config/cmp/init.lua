@@ -3,11 +3,10 @@ if not ok then return end
 
 local kind = require("dharmx.util.kind").sleek
 local luasnip = require("luasnip")
-local A = vim.api
 
 local function has_words_before()
-  local line, col = unpack(A.nvim_win_get_cursor(0))
-  return col ~= 0 and A.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
 local function comparator(entry1, entry2)
@@ -30,6 +29,7 @@ local config = {
     ["<C-B>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
     ["<C-F>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
     ["<C-Y>"] = cmp.config.disable,
+    ---@diagnostic disable-next-line: missing-parameter
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
     ["<C-E>"] = cmp.mapping({
       i = cmp.mapping.abort(),
@@ -43,7 +43,7 @@ local config = {
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
-        A.nvim_feedkeys(A.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "i", true)
+        luasnip.jump_prev()
       else
         fallback()
       end
@@ -51,8 +51,8 @@ local config = {
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        A.nvim_feedkeys(A.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "i", true)
+      elseif luasnip.expand_or_locally_jumpable() then
+        luasnip.expand_or_jump()
       elseif has_words_before() then
         cmp.complete()
       else
@@ -213,6 +213,8 @@ local config = {
     completion = {
       border = "none",
       completeopt = "menu,menuone,noinsert",
+      col_offset = 0,
+      side_padding = 1,
       keyword_length = 1,
     },
   },
@@ -236,14 +238,14 @@ local config = {
   },
   sorting = {
     comparators = {
-      cmp.config.compare.offset,
-      cmp.config.compare.exact,
-      cmp.config.compare.score,
+      -- cmp.config.compare.offset,
+      -- cmp.config.compare.exact,
       comparator,
-      cmp.config.compare.kind,
-      cmp.config.compare.sort_text,
-      cmp.config.compare.length,
-      cmp.config.compare.order,
+      -- cmp.config.compare.score,
+      -- cmp.config.compare.kind,
+      -- cmp.config.compare.sort_text,
+      -- cmp.config.compare.length,
+      -- cmp.config.compare.order,
     },
   },
 }
@@ -257,11 +259,11 @@ local cmdlines = {
       keyword_length = 2,
       priority = 3,
     },
-    -- {
-    --   name = "buffer",
-    --   keyword_length = 3,
-    --   priority = 2,
-    -- },
+    {
+      name = "buffer",
+      keyword_length = 5,
+      priority = 4,
+    },
     {
       name = "cmdline_history",
       keyword_length = 5,

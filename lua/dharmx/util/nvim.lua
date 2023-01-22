@@ -1,13 +1,6 @@
 local M = {}
 local A = vim.api
 
-function M.abridge(src, dest)
-  for index, item in ipairs(src) do
-    if vim.tbl_contains(dest, item) then table.remove(src, index) end
-  end
-  return src
-end
-
 function M.abbrev(buffer, command, expression)
   local formatted = string.format("%s %s %s", expression and "<expr>" or "", buffer, command)
   vim.cmd.cnoreabbrev(formatted)
@@ -19,14 +12,7 @@ function M.alias(alias, command, options)
   A.nvim_create_user_command(alias, command, options)
 end
 
-function M.unalias(command) A.nvim_del_user_command(command) end
-
-function M.balias(buffer, alias, command, options)
-  options = options or {}
-  A.nvim_buf_create_user_command(buffer, alias, command, options)
-end
-
-function M.autocmd(events, command, options)
+function M.aucmd(events, command, options)
   options = vim.F.if_nil(options, {})
   if type(options) == "string" then options = { desc = options } end
   local autocmd_options = {}
@@ -40,13 +26,13 @@ function M.autocmd(events, command, options)
   return options.group, A.nvim_create_autocmd(events, autocmd_options)
 end
 
-function M.augroup(name, autocmds, clear)
+function M.au(name, autocmds, clear)
   if type(autocmds) == "boolean" then return A.nvim_create_augroup(name, { clear = autocmds }) end
   local group = A.nvim_create_augroup(name, { clear = clear == false and false or true })
   for _, autocmd in ipairs(autocmds) do
     autocmd.options = vim.F.if_nil(autocmd.options, {})
     autocmd.options.group = group
-    M.autocmd(autocmd.events, autocmd.command, autocmd.options)
+    M.aucmd(autocmd.events, autocmd.command, autocmd.options)
   end
   return group
 end

@@ -8,7 +8,6 @@ local function nui_lsp_rename()
 
   local function on_submit(new_name)
     if not new_name or #new_name == 0 then
-      -- do nothing if `new_name` is empty or not changed.
       vim.api.nvim_notify("Cancelled: New name is empty!", vim.log.levels.INFO, {
         icon = "ﰸ",
         title = " LSP",
@@ -38,7 +37,6 @@ local function nui_lsp_rename()
   end
 
   local popup_options = {
-    -- border for the window
     border = {
       style = {
         top_left = NuiText(" ", "NUINormal"),
@@ -55,25 +53,19 @@ local function nui_lsp_rename()
         top_align = "left",
       },
     },
-    -- highlight for the window.
     winblend = 0,
     highlight = "NUIText:NUIText",
-    -- place the popup window relative to the
-    -- buffer position of the identifier
     relative = {
       type = "buf",
       position = {
-        -- this is the same `params` we got earlier
         row = params.position.line,
         col = params.position.character,
       },
     },
-    -- position the popup window on the line below identifier
     position = {
       row = 1,
       col = 0,
     },
-    -- 25 cells wide, should be enough for most identifier names
     size = {
       width = 25,
       height = 1,
@@ -81,20 +73,14 @@ local function nui_lsp_rename()
   }
 
   local input = Input(popup_options, {
-    -- set the default value to current name
     default_value = curr_name,
-    -- pass the `on_submit` callback function we wrote earlier
     on_submit = on_submit,
     prompt = NuiText(" ﬦ ", "NUIPrompt"),
   })
 
   input:mount()
   vim.schedule(function() vim.api.nvim_command("stopinsert") end)
-
-  -- close on <esc> in normal mode
   input:map("n", "<esc>", input.input_props.on_close, { noremap = true })
-
-  -- close when cursor leaves the buffer
   input:on(event.BufLeave, input.input_props.on_close, { once = true })
 end
 

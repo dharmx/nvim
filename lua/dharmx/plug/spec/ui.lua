@@ -15,8 +15,6 @@ return {
   },
   {
     "b0o/incline.nvim",
-    config = function() require("dharmx.plug.config.ui.incline") end,
-    event = { "InsertEnter", "CursorHold", "CursorMoved" },
   },
   {
     "lukas-reineke/virt-column.nvim",
@@ -36,6 +34,7 @@ return {
   {
     "Pocco81/TrueZen.nvim",
     cmd = { "TZAtaraxis", "TZFocus", "TZMinimalist", "TZNarrow" },
+    config = function() req("truezen") end,
   },
   {
     "rcarriga/nvim-notify",
@@ -60,7 +59,6 @@ return {
     "doums/monark.nvim",
     config = function() req("monark") end,
     event = "InsertEnter",
-    dev = true,
   },
   {
     "lukas-reineke/indent-blankline.nvim",

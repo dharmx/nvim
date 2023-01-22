@@ -5,6 +5,7 @@ vim.opt.runtimepath:append(vim.fn.stdpath("data") .. "/parsers")
 tree.setup({
   ensure_installed = {
     "lua",
+    "query",
     "rust",
     "http",
     "json",

@@ -22,6 +22,11 @@ formatter.setup({
         }
       end,
     },
+    ["python"] = {
+      require("formatter.filetypes.python").autopep8,
+      require("formatter.filetypes.python").black,
+      require("formatter.filetypes.python").isort,
+    },
     ["*"] = {
       require("formatter.filetypes.any").remove_trailing_whitespace,
     },
