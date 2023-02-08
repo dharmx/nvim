@@ -12,7 +12,7 @@ colo.setup({
       { "dharmx.plug.config.ui.bufferline", import = true },
       { "dharmx.plug.config.ui.alpha", import = true },
     },
-  }
+  },
 })
 
 -- vim:filetype=lua

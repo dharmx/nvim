@@ -22,7 +22,12 @@ local function on_attach(client, buffer)
   vim.keymap.set("n", "<leader>'", vim.diagnostic.goto_next, options)
   vim.keymap.set("n", "<leader>;", vim.diagnostic.goto_prev, options)
   vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, options)
-  vim.keymap.set("n", "<leader>wl", function() vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, options)
+  vim.keymap.set(
+    "n",
+    "<leader>wl",
+    function() vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+    options
+  )
   vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, options)
   vim.keymap.set("n", "<leader>rn", require("dharmx.plug.config.lsp.handlers.rename").lsp_rename, options)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, options)
@@ -49,7 +54,8 @@ local function capabilities(name)
   capability.textDocument.completion.completionItem.commitCharactersSupport = true
   capability.textDocument.semanticHighlighting = true
   capability.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
-  capability.textDocument.completion.completionItem.resolveSupport = { properties = { "documentation", "detail", "additionalTextEdits" } }
+  capability.textDocument.completion.completionItem.resolveSupport =
+    { properties = { "documentation", "detail", "additionalTextEdits" } }
   capability.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
 
   if name == "clangd" then capability.offsetEncoding = "utf-8" end
@@ -71,7 +77,10 @@ local function configure(name)
       ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "solid", focusable = false }),
       ["textDocument/definition"] = require("dharmx.plug.config.lsp.handlers.definition").goto_definition("vs"),
       ["textDocument/references"] = vim.lsp.with(vim.lsp.handlers["textDocument/references"], { loclist = true }),
-      ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "solid", focusable = false }),
+      ["textDocument/signatureHelp"] = vim.lsp.with(
+        vim.lsp.handlers.signature_help,
+        { border = "solid", focusable = false }
+      ),
       ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
         virtual_text = { prefix = "● ", spacing = 1 },
         signs = true,

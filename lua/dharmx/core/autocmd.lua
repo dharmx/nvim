@@ -20,8 +20,11 @@ local aucmd = util.aucmd
 
 -- aucmd({ "CursorHold", "CursorMoved", "CmdlineEnter", "TextChanged", "ModeChanged" }, ":silent! LspStart", { desc = "Lazy load LSP.", once = true })
 aucmd("FileType", function()
-  if vim.tbl_contains({ "help" }, vim.bo.filetype) then
-    vim.keymap.set("n", "q", vim.cmd.quit, { silent = true, buffer = vim.api.nvim_get_current_buf() })
+  local filetype = vim.bo.filetype
+  if vim.tbl_contains({ "help", "alpha" }, filetype) then
+    local callback = vim.cmd.quit
+    if filetype == "alpha" then callback = vim.cmd.Alpha end
+    vim.keymap.set("n", "q", callback, { silent = true, buffer = vim.api.nvim_get_current_buf() })
   end
 end)
 aucmd("TextYankPost", function() vim.highlight.on_yank({ higroup = "Include", on_visual = true }) end, "Provide a visual color feedback on yanking.")
