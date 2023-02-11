@@ -21,8 +21,9 @@ local aucmd = util.aucmd
 -- aucmd({ "CursorHold", "CursorMoved", "CmdlineEnter", "TextChanged", "ModeChanged" }, ":silent! LspStart", { desc = "Lazy load LSP.", once = true })
 aucmd("FileType", function()
   local filetype = vim.bo.filetype
-  if vim.tbl_contains({ "help", "alpha" }, filetype) then
+  if vim.tbl_contains({ "qf", "help", "alpha", "checkhealth", "TelescopePrompt", "notify", "playground", "query" }, filetype) then
     local callback = vim.cmd.quit
+    if filetype == "checkhealth" then callback = vim.cmd.bd end
     if filetype == "alpha" then callback = vim.cmd.Alpha end
     vim.keymap.set("n", "q", callback, { silent = true, buffer = vim.api.nvim_get_current_buf() })
   end

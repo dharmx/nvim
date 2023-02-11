@@ -4,7 +4,7 @@ local NuiText = require("nui.text")
 
 local function nui_lsp_rename()
   local curr_name = vim.fn.expand("<cword>")
-  local params = vim.lsp.util.make_position_params()
+  local params = vim.lsp.util.make_position_params(0, vim.bo.fileencoding)
 
   local function on_submit(new_name)
     if not new_name or #new_name == 0 then

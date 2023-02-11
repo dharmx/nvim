@@ -1,5 +1,6 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
+-- auto-clone lazy.nvim if it does not exist on install path
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -12,20 +13,27 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+---Convenience function to disable plugins via their name.
+---@param items string[]?
 local function exclude(items)
   items = vim.F.if_nil(items, {})
   local spec = {}
+  -- scan directory for plugin specifications and merge them into a monolithic table
   local files = vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/dharmx/plug/spec")
   for _, file in ipairs(files) do
+    -- fnamemodify("example.lua") -> "example"
     local chunk = require("dharmx.plug.spec." .. vim.fn.fnamemodify(file, ":r"))
     for _, plug in ipairs(chunk) do
+      -- add enabled key to all found matches (plugins that should be excluded)
       if vim.tbl_contains(items, plug[1]) then plug.enabled = false end
       table.insert(spec, plug)
     end
   end
 
+  -- load and setup lazy so that it can start managing plugins
   require("lazy").setup({
-    spec = spec,
+    spec = { spec, { import = "dharmx.plug.spec" } },
+    lockfile = vim.fn.stdpath("config") .. "/lock.json",
     root = vim.fn.fnamemodify(lazypath, ":h"),
     concurrency = 50,
     defaults = { lazy = true },
@@ -121,6 +129,7 @@ local function exclude(items)
   })
 end
 
+-- see nvim/init.lua for usage
 return { exclude = exclude }
 
 -- vim:filetype=lua

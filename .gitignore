@@ -52,6 +52,5 @@ lua/dharmx/plugin/spec/local.lua
 
 .sourcery
 log.txt
-scratch/
-plugin/
 lazy-lock.json
+lock.json

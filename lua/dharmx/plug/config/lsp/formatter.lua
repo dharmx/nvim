@@ -27,9 +27,8 @@ formatter.setup({
       require("formatter.filetypes.python").black,
       require("formatter.filetypes.python").isort,
     },
-    ["*"] = {
-      require("formatter.filetypes.any").remove_trailing_whitespace,
-    },
+    ["c"] = require("formatter.filetypes.c").clangformat,
+    ["*"] = require("formatter.filetypes.any").remove_trailing_whitespace,
   },
 })
 

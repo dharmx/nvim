@@ -72,7 +72,7 @@ return {
   {
     "RRethy/vim-illuminate",
     config = function() req("illuminate") end,
-    event = { "InsertEnter", "CursorHold", "CursorMoved" },
+    event = { "InsertEnter", "CursorMoved" },
   },
   {
     "gorbit99/codewindow.nvim",

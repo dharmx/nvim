@@ -10,6 +10,13 @@ require("dharmx.plug").exclude({
   "echasnovski/mini.indentscope",
   "kyazdani42/nvim-tree.lua",
   "hrsh7th/cmp-nvim-lua",
+  "RRethy/vim-illuminate",
+})
+
+require("scratch.node").setup({
+  cmd = true,
+  heavy = true,
+  map = { enable = true },
 })
 
 -- vim:filetype=lua

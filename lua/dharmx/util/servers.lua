@@ -4,7 +4,7 @@ return {
   "jsonls",
   "yamlls",
   "pyright",
-  "sumneko_lua",
+  "lua_ls",
   "cssls",
   "stylelint_lsp",
   "emmet_ls",

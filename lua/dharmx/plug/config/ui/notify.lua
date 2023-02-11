@@ -20,8 +20,12 @@ local config = {
   },
 }
 
-vim.notify = notify
-vim.notify_once = notify
+vim.notify = function(message, ...)
+  if message ~= "nvim-treesitter.ts_utils.is_in_node_range is deprecated: use vim.treesitter.is_in_node_range" then
+    notify(message, ...)
+  end
+end
+vim.notify_once = vim.notify
 notify.setup(config)
 
 -- vim:filetype=lua

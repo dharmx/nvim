@@ -1,3 +1,4 @@
+---@diagnostic disable: unused-local
 local _lsp, lsp = pcall(require, "lspconfig")
 if not _lsp then return end
 
@@ -22,17 +23,13 @@ local function on_attach(client, buffer)
   vim.keymap.set("n", "<leader>'", vim.diagnostic.goto_next, options)
   vim.keymap.set("n", "<leader>;", vim.diagnostic.goto_prev, options)
   vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, options)
-  vim.keymap.set(
-    "n",
-    "<leader>wl",
-    function() vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-    options
-  )
+  vim.keymap.set("n", "<leader>wl", function() vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, options)
   vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, options)
   vim.keymap.set("n", "<leader>rn", require("dharmx.plug.config.lsp.handlers.rename").lsp_rename, options)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, options)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, options)
   vim.keymap.set("n", "<leader>f", vim.cmd.Format, options)
+  vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, options)
   vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, options)
   vim.keymap.set("n", "<leader>d", vim.diagnostic.setloclist, options)
 
@@ -55,7 +52,7 @@ local function capabilities(name)
   capability.textDocument.semanticHighlighting = true
   capability.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
   capability.textDocument.completion.completionItem.resolveSupport =
-    { properties = { "documentation", "detail", "additionalTextEdits" } }
+  { properties = { "documentation", "detail", "additionalTextEdits" } }
   capability.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
 
   if name == "clangd" then capability.offsetEncoding = "utf-8" end

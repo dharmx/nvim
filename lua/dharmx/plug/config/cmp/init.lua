@@ -47,7 +47,7 @@ local config = {
       else
         fallback()
       end
-    end, { "i", "s" }),
+    end),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
