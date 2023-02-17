@@ -1,5 +1,4 @@
 -- TODO:
--- + Use namespaces and nvim_buf_add_highlight instead of matchadd.
 -- + Implement range edits.
 -- + Implement cycle-step hooks. Example on_next and on_prev.
 -- + Implement incremental selection.
@@ -13,6 +12,7 @@ local Q = vim.treesitter.query
 local L = vim.lsp.buf
 local A = vim.api
 local util = nil
+local NAMESPACE = nil
 
 local M = {}
 M._internal = {}
@@ -27,6 +27,22 @@ M._config = {
       "identifier",
       "property_identifier",
     },
+  },
+  ignore = {
+    "chunk",
+    "variable_declaration",
+    "assignment_statement",
+    "table_constructor",
+    "block",
+    "while_statement",
+    "unary_expression",
+    "if_statement",
+    "function_declaration",
+    "arguments",
+    "for_statement",
+    "return_statement",
+    "dot_index_expression",
+    "field",
   },
   map = {
     enable = false,
@@ -73,11 +89,14 @@ end
 
 function M.heavy()
   M._internal.autocmd = vim.F.if_nil(M._internal.autocmd, {})
-  if M._internal.autocmd.heavy then A.nvim_del_autocmd(M._internal.autocmd.heavy) end
-  M._internal.autocmd.heavy = A.nvim_create_autocmd(
-    { "CursorMoved", "CursorMovedI" },
-    { callback = function() pcall(M.match) end }
-  )
+  M._internal.autocmd.heavy = vim.F.if_nil(M._internal.autocmd.heavy, {})
+  if M._internal.autocmd.heavy then
+    for _, item in ipairs(M._internal.autocmd.heavy) do
+      A.nvim_del_autocmd(item)
+    end
+  end
+  table.insert(M._internal.autocmd.heavy, A.nvim_create_autocmd("CursorHold", { callback = function() pcall(M.match) end }))
+  table.insert(M._internal.autocmd.heavy, A.nvim_create_autocmd({ "CursorMoved", "InsertEnter" }, { callback = function() M.unmatch() end }))
 end
 -- }}}
 
@@ -162,7 +181,6 @@ end
 
 -- Cycle functions. {{{
 function M.cycle_next()
-  if not M._internal.state or #M._internal.match < 1 then return end
   if not M._internal.state.current then return end
   local position, total = _cycle(false)
   if position == total then position = 0 end
@@ -170,7 +188,6 @@ function M.cycle_next()
 end
 
 function M.cycle_prev()
-  if not M._internal.state or #M._internal.match < 1 then return end
   if not M._internal.state.current then return end
   local position, total = _cycle(false)
   if position == 1 then position = total + 1 end
@@ -189,9 +206,6 @@ end
 
 -- Match and Unmatch {{{
 function M.match(match_string)
-  if M._internal.match and #M._internal.match > 0 then M.unmatch() end
-  if M._internal.state and #M._internal.state > 0 then M.unmatch() end
-
   local search_node = T.get_node_at_cursor(0)
   if not search_node then return end
 
@@ -203,20 +217,23 @@ function M.match(match_string)
       data = Q.get_node_text(curse, 1),
     }
   end
+  if vim.tbl_contains(M._config.ignore, curse.type) then return end
 
   local query = string.format(M._config.query, search_node)
   local root = T.get_parser(0):parse()[1]:root()
   local parsed = Q.parse_query(vim.bo.filetype, query)
   M._internal.state = { nodes = {}, current = curse }
-  M._internal.match = vim.F.if_nil(M._internal.match, {})
 
   ---@diagnostic disable-next-line: missing-parameter
   for _, node, _ in parsed:iter_captures(root, query) do
     if not curse then break end
     local data = Q.get_node_text(node, 0)
     if match_string == curse.data or data == curse.data then
-      table.insert(M._internal.state.nodes, { node:range() })
-      table.insert(M._internal.match, vim.fn.matchadd(M._config.match, data))
+      local range = { node:range() }
+      table.insert(M._internal.state.nodes, range)
+
+      ---@diagnostic disable-next-line: param-type-mismatch
+      vim.highlight.range(0, NAMESPACE, M._config.match, { range[1], range[2] }, { range[3], range[4] }, {})
     end
   end
 
@@ -236,12 +253,8 @@ function M.match(match_string)
 end
 
 function M.unmatch()
-  M._internal.match = vim.F.if_nil(M._internal.match, {})
   M._internal.state = vim.F.if_nil(M._internal.state, {})
-  for _, identity in ipairs(M._internal.match) do
-    vim.fn.matchdelete(identity, 0)
-  end
-  M._internal.match = nil
+  A.nvim_buf_clear_namespace(0, NAMESPACE, 0, -1)
   M._internal.state = nil
 end
 -- }}}
@@ -282,10 +295,13 @@ end
 
 function M.setup(options)
   util = require("nvim-treesitter.ts_utils")
+  NAMESPACE = A.nvim_create_namespace("NODE")
+  A.nvim_set_hl_ns(NAMESPACE)
+
   options = vim.F.if_nil(options, {})
   M._config = vim.tbl_deep_extend("keep", options, M._config)
-  local present, _ = pcall(A.nvim_get_hl, M._config.match, true)
-  if not present then A.nvim_set_hl(0, M._config.match, { underline = true }) end
+  local present, _ = pcall(A.nvim_get_hl_by_name, M._config.match, true)
+  if not present then A.nvim_set_hl(0, M._config.match, { background = "#16191F", bold = true }) end
   if M._config.word.enable then M.word() end
   if M._config.heavy then M.heavy() end
   if M._config.cmd then M.cmd() end
