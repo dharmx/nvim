@@ -1,8 +1,8 @@
 -- stylua: ignore start
 local util = require("dharmx.util.nvim")
-local alias = util.alias
+local cmd = util.cmd
 
-alias("Sabotage", function(args)
+cmd("Sabotage", function(args)
   local option = args.args
   if vim.tbl_contains({ "live_grep", "grep_string", "find_files" }, option) then
     local state = require("telescope.actions.state")
@@ -25,7 +25,7 @@ alias("Sabotage", function(args)
   })
 end, { nargs = 1, desc = "Change CWD.", complete = function() return { "live_grep", "grep_string", "find_files" } end })
 
-alias("LineWidthColumn", function()
+cmd("LineWidthColumn", function()
   if vim.wo.colorcolumn == "0" then
     vim.wo.colorcolumn = vim.bo.textwidth .. ""
   else
@@ -33,7 +33,7 @@ alias("LineWidthColumn", function()
   end
 end, "Virtual column for measuring text line length.")
 
--- alias("HugoServer", function()
+-- cmd("HugoServer", function()
 --   if _G.HUGO_JOBS then
 --     local SIGKILL = 9
 --     ---@diagnostic disable-next-line: deprecated

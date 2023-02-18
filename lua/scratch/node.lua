@@ -26,6 +26,7 @@ M._config = {
     items = {
       "identifier",
       "property_identifier",
+      "else_statement",
     },
   },
   ignore = {

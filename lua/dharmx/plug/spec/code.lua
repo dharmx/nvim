@@ -8,7 +8,7 @@ return {
   {
     "kevinhwang91/rnvimr",
     init = function() req("ranger") end,
-    cmd = "RnvimrToggle",
+    lazy = false,
   },
   {
     "cbochs/portal.nvim",

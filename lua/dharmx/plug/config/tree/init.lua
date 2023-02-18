@@ -3,20 +3,7 @@ if not ok then return end
 vim.opt.runtimepath:append(vim.fn.stdpath("data") .. "/parsers")
 
 tree.setup({
-  ensure_installed = {
-    "lua",
-    "query",
-    "rust",
-    "http",
-    "json",
-    "python",
-    "html",
-    "json5",
-    "markdown",
-    "bash",
-    "comment",
-    "markdown_inline",
-  },
+  ensure_installed = "all",
   parser_install_dir = vim.fn.stdpath("data") .. "/parsers",
   sync_install = false,
   highlight = {

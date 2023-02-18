@@ -6,13 +6,13 @@ function M.abbrev(buffer, command, expression)
   vim.cmd.cnoreabbrev(formatted)
 end
 
-function M.alias(alias, command, options)
+function M.cmd(alias, command, options)
   if type(options) == "string" then options = { desc = options } end
   options = vim.F.if_nil(options, {})
   A.nvim_create_user_command(alias, command, options)
 end
 
-function M.aucmd(events, command, options)
+function M.on(events, command, options)
   options = vim.F.if_nil(options, {})
   if type(options) == "string" then options = { desc = options } end
   local autocmd_options = {}
@@ -26,13 +26,13 @@ function M.aucmd(events, command, options)
   return options.group, A.nvim_create_autocmd(events, autocmd_options)
 end
 
-function M.au(name, autocmds, clear)
+function M.group(name, autocmds, clear)
   if type(autocmds) == "boolean" then return A.nvim_create_augroup(name, { clear = autocmds }) end
   local group = A.nvim_create_augroup(name, { clear = clear == false and false or true })
   for _, autocmd in ipairs(autocmds) do
     autocmd.options = vim.F.if_nil(autocmd.options, {})
     autocmd.options.group = group
-    M.aucmd(autocmd.events, autocmd.command, autocmd.options)
+    M.on(autocmd.events, autocmd.command, autocmd.options)
   end
   return group
 end
