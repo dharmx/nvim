@@ -6,6 +6,16 @@ return {
     cmd = "ColorizerToggle",
   },
   {
+    "aurum77/live-server.nvim",
+    build = function()
+      require("live_server.util").install()
+    end,
+    config = function()
+      req("live")
+    end,
+    cmd = { "LiveServer", "LiveServerStart", "LiveServerStop" },
+  },
+  {
     "kevinhwang91/rnvimr",
     init = function() req("ranger") end,
     lazy = false,
@@ -172,5 +182,3 @@ return {
     cmd = "SignatureToggleSigns",
   },
 }
-
--- vim:filetype=lua

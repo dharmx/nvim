@@ -53,5 +53,3 @@ code.setup({
   show_cursor = true,
   window_border = "none",
 })
-
--- vim:filetype=lua

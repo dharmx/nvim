@@ -83,5 +83,3 @@ local config = {
 }
 
 todo.setup(config)
-
--- vim:filetype=lua

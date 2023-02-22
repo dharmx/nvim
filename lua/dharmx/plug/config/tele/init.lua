@@ -249,6 +249,5 @@ for _, file in ipairs(scanned) do
   local name = vim.fn.fnamemodify(file, ":r")
   config.extensions[name] = require("dharmx.plug.config.tele.extras." .. name)
 end
-tele.setup(config)
 
--- vim:filetype=lua
+tele.setup(config)

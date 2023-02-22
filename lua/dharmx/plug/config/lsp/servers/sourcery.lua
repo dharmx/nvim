@@ -15,5 +15,3 @@ if env then
 end
 
 return schema
-
--- vim:filetype=lua

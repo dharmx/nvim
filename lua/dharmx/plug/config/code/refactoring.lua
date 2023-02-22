@@ -23,5 +23,3 @@ refactoring.setup({
   printf_statements = {},
   print_var_statements = {},
 })
-
--- vim:filetype=lua

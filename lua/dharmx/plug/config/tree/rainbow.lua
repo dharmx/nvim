@@ -8,5 +8,3 @@ tree.setup({
     max_file_lines = 2500,
   },
 })
-
--- vim:filetype=lua

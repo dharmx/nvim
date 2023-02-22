@@ -6,5 +6,3 @@ flit.setup({
   labeled_modes = "v",
   multiline = true,
 })
-
--- vim:filetype=lua

@@ -14,5 +14,3 @@ mini.setup({
   },
   symbol = "┃",
 })
-
--- vim:filetype=lua

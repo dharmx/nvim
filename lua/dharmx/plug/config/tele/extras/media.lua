@@ -4,5 +4,3 @@ return {
   backend = "ueberzug",
   on_confirm = canned.single.set_wallpaper,
 }
-
--- vim:filetype=lua

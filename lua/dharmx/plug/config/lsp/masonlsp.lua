@@ -6,5 +6,3 @@ mason_lsp.setup({
   ensure_installed = servers,
   automatic_installation = true,
 })
-
--- vim:filetype=lua

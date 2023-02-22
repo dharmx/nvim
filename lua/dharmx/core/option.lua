@@ -85,5 +85,3 @@ vim.opt.whichwrap:append("<>[]hl")
 vim.opt.shortmess:append("sI")
 vim.opt.diffopt:append("algorithm:patience")
 vim.opt.formatoptions:remove({ "c", "r", "o" })
-
--- vim:filetype=lua

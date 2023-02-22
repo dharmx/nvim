@@ -40,5 +40,3 @@ return {
     Copilot = " ",
   },
 }
-
--- vim:filetype=lua

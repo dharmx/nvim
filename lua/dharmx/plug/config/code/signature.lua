@@ -21,5 +21,3 @@ vim.g.SignatureMap = {
   ListBufferMarks = "m/",
   ListBufferMarkers = "m?",
 }
-
--- vim:filetype=lua

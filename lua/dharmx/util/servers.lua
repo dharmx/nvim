@@ -17,5 +17,3 @@ return {
   "rust_analyzer",
   "sourcery",
 }
-
--- vim:filetype=lua

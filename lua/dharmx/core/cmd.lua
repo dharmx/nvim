@@ -54,5 +54,3 @@ end, "Virtual column for measuring text line length.")
 --     _G.HUGO_JOBS = _G.HUGO_JOBS and table.insert(_G.HUGO_JOBS, hugo) or { hugo }
 --   end
 -- end, "Launch/Stop Hugo live server.")
-
--- vim:filetype=lua

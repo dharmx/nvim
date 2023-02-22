@@ -13,5 +13,3 @@ mason.setup({
     },
   },
 })
-
--- vim:filetype=lua

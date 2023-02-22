@@ -61,5 +61,3 @@ aerial.setup({
     border = "solid",
   },
 })
-
--- vim:filetype=lua

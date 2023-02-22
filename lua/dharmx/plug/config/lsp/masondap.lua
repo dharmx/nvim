@@ -29,5 +29,3 @@ mason_dap.setup_handlers({
     }
   end,
 })
-
--- vim:filetype=lua

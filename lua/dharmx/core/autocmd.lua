@@ -61,5 +61,3 @@ end)
 --   vim.opt_local.listchars = { tab = " ", trail = "˽", space = "·", eol = "" }
 -- end, "Show escape characters on Insert Mode.")
 -- on("InsertLeave", function() vim.opt_local.listchars = {} end, "Hide escape characters on leaving the Insert Mode.")
-
--- vim:filetype=lua

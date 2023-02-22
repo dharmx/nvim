@@ -42,5 +42,3 @@ autopairs.add_rules({
 })
 
 autopairs.add_rule(Rule("$", "$", "tex"))
-
--- vim:filetype=lua

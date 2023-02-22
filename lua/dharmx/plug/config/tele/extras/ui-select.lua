@@ -68,5 +68,3 @@ return {
     },
   },
 }
-
--- vim:filetype=lua

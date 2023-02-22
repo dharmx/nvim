@@ -14,5 +14,3 @@ colo.setup({
     },
   },
 })
-
--- vim:filetype=lua

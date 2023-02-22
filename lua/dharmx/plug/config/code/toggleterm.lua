@@ -29,5 +29,3 @@ term.setup({
     },
   },
 })
-
--- vim:filetype=lua

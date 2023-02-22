@@ -26,5 +26,3 @@ function M.goto_definition(split_cmd)
 end
 
 return M
-
--- vim:filetype=lua

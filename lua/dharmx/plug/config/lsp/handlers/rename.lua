@@ -87,5 +87,3 @@ end
 return {
   lsp_rename = nui_lsp_rename,
 }
-
--- vim:filetype=lua

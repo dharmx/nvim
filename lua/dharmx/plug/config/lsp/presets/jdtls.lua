@@ -98,5 +98,3 @@ function M.load_telescope(options)
 end
 
 return M
-
--- vim:filetype=lua

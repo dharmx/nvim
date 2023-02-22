@@ -61,5 +61,3 @@ illuminate.configure({
   large_file_overrides = nil,
   min_count_to_highlight = 1,
 })
-
--- vim:filetype=lua

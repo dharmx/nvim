@@ -106,5 +106,3 @@ return function()
     end
   end
 end
-
--- vim:filetype=lua

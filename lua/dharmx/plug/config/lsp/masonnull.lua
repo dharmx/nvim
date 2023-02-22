@@ -26,5 +26,3 @@ mason_null.setup({
 })
 
 mason_null.setup_handlers()
-
--- vim:filetype=lua

@@ -17,5 +17,3 @@ dapvirtual.setup({
   virt_lines = false,
   virt_text_win_col = nil,
 })
-
--- vim:filetype=lua

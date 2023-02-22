@@ -16,5 +16,3 @@ grapple.setup({
     resession = false,
   },
 })
-
--- vim:filetype=lua

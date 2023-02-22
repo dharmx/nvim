@@ -59,5 +59,3 @@ local config = {
 }
 
 presence:setup(config)
-
--- vim:filetype=lua

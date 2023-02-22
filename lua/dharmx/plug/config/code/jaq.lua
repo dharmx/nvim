@@ -42,5 +42,3 @@ jaq.setup({
     },
   },
 })
-
--- vim:filetype=lua

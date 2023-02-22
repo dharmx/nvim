@@ -75,5 +75,3 @@ context.setup({
   mode = "cursor",
   separator = nil,
 })
-
--- vim:filetype=lua

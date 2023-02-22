@@ -29,5 +29,3 @@ resession.setup({
     quickfix = {},
   },
 })
-
--- vim:filetype=lua

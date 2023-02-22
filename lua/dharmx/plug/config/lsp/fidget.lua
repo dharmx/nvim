@@ -37,5 +37,3 @@ fidget.setup({
     strict = false,
   },
 })
-
--- vim:filetype=lua

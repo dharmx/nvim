@@ -20,5 +20,3 @@ monark.setup({
   hl_mode = "combine",
   ignore = { "c" },
 })
-
--- vim:filetype=lua

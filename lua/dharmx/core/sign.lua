@@ -78,5 +78,3 @@ vim.diagnostic.config({
   severity_sort = true,
   float = { source = "always", border = "solid" },
 })
-
--- vim:filetype=lua

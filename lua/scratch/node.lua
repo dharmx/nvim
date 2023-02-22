@@ -64,6 +64,7 @@ local function any(key, items)
   end
   return false
 end
+
 -- }}}
 
 -- Auto-commands {{{
@@ -96,9 +97,16 @@ function M.heavy()
       A.nvim_del_autocmd(item)
     end
   end
-  table.insert(M._internal.autocmd.heavy, A.nvim_create_autocmd("CursorHold", { callback = function() pcall(M.match) end }))
-  table.insert(M._internal.autocmd.heavy, A.nvim_create_autocmd({ "CursorMoved", "InsertEnter" }, { callback = function() M.unmatch() end }))
+  table.insert(
+    M._internal.autocmd.heavy,
+    A.nvim_create_autocmd("CursorHold", { callback = function() pcall(M.match) end })
+  )
+  table.insert(
+    M._internal.autocmd.heavy,
+    A.nvim_create_autocmd({ "CursorMoved", "InsertEnter" }, { callback = function() M.unmatch() end })
+  )
 end
+
 -- }}}
 
 -- Helper functions. {{{
@@ -178,6 +186,7 @@ local function _cycle(apply, position)
   local node = M._internal.state.nodes[position]
   A.nvim_win_set_cursor(0, { node[1] + 1, node[2] })
 end
+
 -- }}}
 
 -- Cycle functions. {{{
@@ -194,6 +203,7 @@ function M.cycle_prev()
   if position == 1 then position = total + 1 end
   _cycle(true, position - 1)
 end
+
 -- }}}
 
 -- Functions related to M._internal manipulation {{{
@@ -203,6 +213,7 @@ function M.replace(replacement)
   end
   M.unmatch()
 end
+
 -- }}}
 
 -- Match and Unmatch {{{
@@ -258,6 +269,7 @@ function M.unmatch()
   A.nvim_buf_clear_namespace(0, NAMESPACE, 0, -1)
   M._internal.state = nil
 end
+
 -- }}}
 
 -- Plugin utils {{{
@@ -308,6 +320,7 @@ function M.setup(options)
   if M._config.cmd then M.cmd() end
   if M._config.map.enable then M.map() end
 end
+
 -- }}}
 
 return M

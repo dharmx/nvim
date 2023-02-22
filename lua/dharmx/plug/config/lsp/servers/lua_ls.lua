@@ -13,6 +13,8 @@ local schema = {
     "selene.toml",
     ".selene.toml",
     ".git",
+    "neoconf.json",
+    ".neoconf.json",
   }) or vim.loop.cwd(),
   single_file_support = true,
   settings = {
@@ -24,5 +26,3 @@ local schema = {
 }
 
 return schema
-
--- vim:filetype=lua

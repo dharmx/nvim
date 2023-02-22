@@ -11,7 +11,7 @@ return {
     "goolord/alpha-nvim",
   },
   {
-    "feline-nvim/feline.nvim",
+    "freddiehaddad/feline.nvim",
   },
   {
     "b0o/incline.nvim",
@@ -80,5 +80,3 @@ return {
     event = "LspAttach",
   },
 }
-
--- vim:filetype=lua

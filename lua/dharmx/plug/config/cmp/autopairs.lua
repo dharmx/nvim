@@ -61,5 +61,3 @@ autopairs.setup({
   enable_check_bracket_line = true,
 })
 require("dharmx.plug.config.cmp.rules")
-
--- vim:filetype=lua

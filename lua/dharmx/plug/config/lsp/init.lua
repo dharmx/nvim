@@ -23,7 +23,12 @@ local function on_attach(client, buffer)
   vim.keymap.set("n", "<leader>'", vim.diagnostic.goto_next, options)
   vim.keymap.set("n", "<leader>;", vim.diagnostic.goto_prev, options)
   vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, options)
-  vim.keymap.set("n", "<leader>wl", function() vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, options)
+  vim.keymap.set(
+    "n",
+    "<leader>wl",
+    function() vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+    options
+  )
   vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, options)
   vim.keymap.set("n", "<leader>rn", require("dharmx.plug.config.lsp.handlers.rename").lsp_rename, options)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, options)
@@ -33,8 +38,8 @@ local function on_attach(client, buffer)
   vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, options)
   vim.keymap.set("n", "<leader>d", vim.diagnostic.setloclist, options)
 
-  -- autocmd.setup(client, buffer)
-  -- cmd.setup(client, buffer)
+  autocmd.setup(client, buffer)
+  cmd.setup(client, buffer)
 
   vim.lsp.protocol.CompletionItemKind = kind
   if client.config.flags then client.config.flags.allow_incremental_sync = true end
@@ -52,7 +57,7 @@ local function capabilities(name)
   capability.textDocument.semanticHighlighting = true
   capability.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
   capability.textDocument.completion.completionItem.resolveSupport =
-  { properties = { "documentation", "detail", "additionalTextEdits" } }
+    { properties = { "documentation", "detail", "additionalTextEdits" } }
   capability.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
 
   if name == "clangd" then capability.offsetEncoding = "utf-8" end
@@ -71,12 +76,12 @@ local function configure(name)
     flags = { debounce_text_changes = 150 },
     capabilities = capabilities(name),
     handlers = {
-      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "solid", focusable = false }),
+      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "solid", focusable = true }),
       ["textDocument/definition"] = require("dharmx.plug.config.lsp.handlers.definition").goto_definition("vs"),
       ["textDocument/references"] = vim.lsp.with(vim.lsp.handlers["textDocument/references"], { loclist = true }),
       ["textDocument/signatureHelp"] = vim.lsp.with(
         vim.lsp.handlers.signature_help,
-        { border = "solid", focusable = false }
+        { border = "solid", focusable = true }
       ),
       ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
         virtual_text = { prefix = "● ", spacing = 1 },
@@ -89,9 +94,12 @@ local function configure(name)
   }, defaults)
 end
 
+require("dharmx.plug.config.lsp.neoconf")
+if vim.bo.filetype == "lua" then require("dharmx.plug.config.lsp.neodev") end
+
 for _, name in ipairs(servers) do
   local server = lsp[name]
-  if vim.bo.filetype == "lua" and name == "rust_analyzer" then
+  if vim.bo.filetype == "rust" and name == "rust_analyzer" then
     local root_dir = require("lspconfig.util").root_pattern({ "Cargo.toml", "rust-project.json" }) or vim.loop.cwd()
     local _rust, rust = pcall(require, "rust-tools")
     if _rust then
@@ -110,5 +118,3 @@ for _, name in ipairs(servers) do
     server.setup(configure(name))
   end
 end
-
--- vim:filetype=lua

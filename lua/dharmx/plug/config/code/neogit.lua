@@ -8,5 +8,3 @@ neogit.setup({
     hunk = { "", "" },
   },
 })
-
----vim:filetype=lua

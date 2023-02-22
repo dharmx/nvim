@@ -131,5 +131,3 @@ end
 
 -- see nvim/init.lua for usage
 return { exclude = exclude }
-
--- vim:filetype=lua

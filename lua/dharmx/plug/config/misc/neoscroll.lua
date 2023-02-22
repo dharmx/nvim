@@ -29,5 +29,3 @@ local config = {
 }
 
 neoscroll.setup(config)
-
--- vim:filetype=lua

@@ -23,5 +23,3 @@ local config = {
 vim.notify = notify
 vim.notify_once = notify
 notify.setup(config)
-
--- vim:filetype=lua

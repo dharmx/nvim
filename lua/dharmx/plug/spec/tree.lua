@@ -57,5 +57,3 @@ return {
     ft = { "html", "markdown" },
   },
 }
-
--- vim:filetype=lua

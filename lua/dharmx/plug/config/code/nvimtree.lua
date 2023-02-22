@@ -302,5 +302,3 @@ nvimtree.setup({
     threshold = vim.log.levels.WARN,
   },
 })
-
--- vim:filetype=lua

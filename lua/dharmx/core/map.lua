@@ -31,5 +31,3 @@ inmap("<F3>", vim.cmd.ColorizerToggle, "Toggle colorizer highlights.")
 inmap("<F4>", vim.cmd.SignatureToggleSigns, "Mark representation in signcolumn.")
 inmap([[<C-\>]], vim.cmd.ToggleTerm, "Open floating terminal.")
 inmap("<F5>", vim.cmd.BookmarkToggle, "Bookmark current line.")
-
--- vim:filetype=lua

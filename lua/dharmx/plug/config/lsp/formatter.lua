@@ -31,5 +31,3 @@ formatter.setup({
     ["*"] = require("formatter.filetypes.any").remove_trailing_whitespace,
   },
 })
-
--- vim:filetype=lua

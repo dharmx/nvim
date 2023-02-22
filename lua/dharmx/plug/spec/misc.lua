@@ -26,5 +26,3 @@ return {
     cmd = { "Luapad", "LuaRun" },
   },
 }
-
--- vim:filetype=lua

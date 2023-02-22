@@ -17,5 +17,3 @@ vim.g.undotree_HighlightSyntaxChange = "DiffChange"
 vim.g.undotree_HighlightSyntaxDel = "DiffDelete"
 vim.g.undotree_HelpLine = 1
 vim.g.undotree_CursorLine = 1
-
--- vim:filetype=lua

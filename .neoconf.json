@@ -3,7 +3,9 @@
     "library": {
       "enabled": true,
       "plugins": [
-        "plenary.nvim"
+        "plenary.nvim",
+        "nvim-treesitter",
+        "LuaSnip"
       ]
     }
   },

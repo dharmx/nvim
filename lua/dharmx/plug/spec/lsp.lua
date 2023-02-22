@@ -3,20 +3,13 @@ local function req(file) require("dharmx.plug.config.lsp." .. file) end
 return {
   {
     "williamboman/mason.nvim",
-    dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
-      "jayp0521/mason-null-ls.nvim",
-    },
     config = function() req("mason") end,
   },
   {
     "folke/neoconf.nvim",
-    config = function() req("neoconf") end,
   },
   {
     "folke/neodev.nvim",
-    config = function() req("neodev") end,
   },
   {
     "b0o/schemastore.nvim",
@@ -37,15 +30,12 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim" },
     config = function() req("masonlsp") end,
   },
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      "williamboman/mason.nvim",
-      "folke/neodev.nvim",
-      "folke/neoconf.nvim",
-    },
+    dependencies = { "williamboman/mason-lspconfig.nvim" },
     config = function() req("init") end,
     cmd = "LspStart",
   },
@@ -92,5 +82,3 @@ return {
     event = "LspAttach",
   },
 }
-
--- vim:filetype=lua

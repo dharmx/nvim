@@ -68,5 +68,3 @@ fold.setup({
     "",
   },
 })
-
--- vim:filetype=lua

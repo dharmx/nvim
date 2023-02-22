@@ -41,5 +41,3 @@ autotag.setup({
     "menuitem",
   },
 })
-
--- vim:filetype=lua

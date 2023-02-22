@@ -67,5 +67,3 @@ outline.setup({
   },
   symbols = symbols,
 })
-
--- vim:filetype=lua

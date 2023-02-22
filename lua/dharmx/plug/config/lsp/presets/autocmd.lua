@@ -16,26 +16,24 @@ M.setup = function(client, buffer, config)
     vim.lsp.codelens.refresh()
   end
 
-  if client.supports_method("textDocument/documentHighlight") then
-    group("LspDocumentHighlight", {
-      {
-        events = { "CursorHold", "CursorHoldI" },
-        command = vim.lsp.buf.document_highlight,
-        options = { buffer = buffer },
-      },
-      {
-        events = { "CursorMoved", "InsertEnter", "CursorMovedI" },
-        command = vim.lsp.buf.clear_references,
-        options = { buffer = buffer },
-      },
-    })
-  end
+  -- if client.supports_method("textDocument/documentHighlight") then
+  --   group("LspDocumentHighlight", {
+  --     {
+  --       events = { "CursorHold", "CursorHoldI" },
+  --       command = vim.lsp.buf.document_highlight,
+  --       options = { buffer = buffer },
+  --     },
+  --     {
+  --       events = { "CursorMoved", "InsertEnter", "CursorMovedI" },
+  --       command = vim.lsp.buf.clear_references,
+  --       options = { buffer = buffer },
+  --     },
+  --   })
+  -- end
 
-  on("InsertLeave", function() vim.diagnostic.disable(0) end)
-  on("InsertEnter", function() vim.diagnostic.enable(0) end)
-  if ok and config.bulb then on("CursorHold", lightbulb.update_lightbulb, { buffer = buffer }) end
+  on("InsertLeave", function() vim.diagnostic.enable(0) end)
+  on("InsertEnter", function() vim.diagnostic.disable(0) end)
+  on("CursorHold", lightbulb.update_lightbulb, { buffer = buffer })
 end
 
 return M
-
--- vim:filetype=lua

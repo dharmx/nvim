@@ -17,5 +17,3 @@ neoconf.setup({
     },
   },
 })
-
--- vim:filetype=lua

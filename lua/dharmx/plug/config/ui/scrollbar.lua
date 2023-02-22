@@ -117,5 +117,3 @@ scrollbar.setup({
     gitsigns = true,
   },
 })
-
--- vim:filetype=lua

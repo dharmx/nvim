@@ -42,5 +42,3 @@ local config = {
 }
 
 comments.setup(config)
-
--- vim:filetype=lua

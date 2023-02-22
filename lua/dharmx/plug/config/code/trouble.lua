@@ -47,5 +47,3 @@ local config = {
 }
 
 trouble.setup(config)
-
--- vim:filetype=lua

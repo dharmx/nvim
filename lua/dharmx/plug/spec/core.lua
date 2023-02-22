@@ -16,5 +16,3 @@ return {
     lazy = false,
   },
 }
-
--- vim:filetype=lua

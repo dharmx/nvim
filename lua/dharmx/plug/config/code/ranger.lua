@@ -66,5 +66,3 @@ g.rnvimr_layout = {
   ["row"] = 0,
   ["style"] = "minimal",
 }
-
--- vim:filetype=lua

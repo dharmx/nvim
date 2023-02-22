@@ -17,11 +17,11 @@ local schema = {
   filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
   log_level = 2,
   root_dir = require("lspconfig.util").root_pattern({
+    "compile_flags.txt",
     ".clangd",
     ".clang-tidy",
     ".clang-format",
     "compile_commands.json",
-    "compile_flags.txt",
     "configure.ac",
     ".git",
   }) or vim.loop.cwd(),
@@ -29,5 +29,3 @@ local schema = {
 }
 
 return schema
-
--- vim:filetype=lua

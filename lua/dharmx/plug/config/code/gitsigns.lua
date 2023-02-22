@@ -80,5 +80,3 @@ local config = {
 }
 
 gitsigns.setup(config)
-
--- vim:ft=lua

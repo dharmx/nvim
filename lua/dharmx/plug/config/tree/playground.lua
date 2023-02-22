@@ -20,5 +20,3 @@ tree.setup({
     },
   },
 })
-
--- vim:filetype=lua

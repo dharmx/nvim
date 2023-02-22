@@ -58,5 +58,3 @@ glance.setup({
     enable = true,
   },
 })
-
--- vim:filetype=lua

@@ -58,5 +58,3 @@ local config = {
 }
 
 twilight.setup(config)
-
--- vim:filetype=lua

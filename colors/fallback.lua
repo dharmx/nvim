@@ -130,5 +130,3 @@ HL("WildMenu", { background = "#7AB0DF", foreground = "#101317" })
 HL("WinBar", { bold = true })
 HL("WinBarNC", { bold = true })
 HL("WinSeparator", { foreground = "#171C21" })
-
----vim:filetype=lua

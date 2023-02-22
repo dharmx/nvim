@@ -97,5 +97,3 @@ function M.readable_numbers()
 end
 
 return M
-
--- vim:filetype=lua

@@ -82,5 +82,3 @@ indentline.setup({
     "operation_type",
   },
 })
-
--- vim:filetype=lua

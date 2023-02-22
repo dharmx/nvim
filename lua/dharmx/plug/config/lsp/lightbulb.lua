@@ -25,5 +25,3 @@ lightbulb.setup({
     text_unavailable = "None",
   },
 })
-
--- vim:filetype=lua

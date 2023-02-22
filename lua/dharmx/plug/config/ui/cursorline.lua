@@ -13,5 +13,3 @@ cursorline.setup({
     hl = { underline = true },
   },
 })
-
--- vim:filetype=lua

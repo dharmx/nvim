@@ -12,5 +12,3 @@ truezen.setup({
     },
   },
 })
-
--- vim:filetype=lua

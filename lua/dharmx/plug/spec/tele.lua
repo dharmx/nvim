@@ -34,5 +34,3 @@ return {
     keys = { "<F9>" },
   },
 }
-
--- vim:filetype=lua

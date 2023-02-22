@@ -8,5 +8,3 @@ tree.setup({
     lint_events = { "BufWrite", "CursorHold" },
   },
 })
-
--- vim:filetype=lua

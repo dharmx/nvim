@@ -88,5 +88,3 @@ local schema = {
 }
 
 return schema
-
--- vim:filetype=lua

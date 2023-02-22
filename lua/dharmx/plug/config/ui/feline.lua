@@ -32,5 +32,3 @@ feline.setup({
   theme = options.theme,
   vi_mode_colors = options.colors,
 })
-
--- vim:filetype=lua

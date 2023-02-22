@@ -12,5 +12,3 @@ return {
     "vijaymarupudi/nvim-fzf",
   },
 }
-
--- vim:filetype=lua

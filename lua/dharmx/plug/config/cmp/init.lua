@@ -9,7 +9,7 @@ local function has_words_before()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local function comparator(entry1, entry2)
+local function custom_compare(entry1, entry2)
   local _, entry1_under = entry1.completion_item.label:find("^_+")
   local _, entry2_under = entry2.completion_item.label:find("^_+")
   entry1_under = entry1_under or 0
@@ -43,7 +43,7 @@ local config = {
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
-        luasnip.jump_prev()
+        luasnip.jump(-1)
       else
         fallback()
       end
@@ -238,14 +238,14 @@ local config = {
   },
   sorting = {
     comparators = {
-      -- cmp.config.compare.offset,
-      -- cmp.config.compare.exact,
-      comparator,
-      -- cmp.config.compare.score,
-      -- cmp.config.compare.kind,
-      -- cmp.config.compare.sort_text,
-      -- cmp.config.compare.length,
-      -- cmp.config.compare.order,
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      custom_compare,
+      cmp.config.compare.score,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
     },
   },
 }
@@ -294,5 +294,3 @@ end
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
-
--- vim:filetype=lua

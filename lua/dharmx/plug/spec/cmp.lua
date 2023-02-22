@@ -54,5 +54,3 @@ return {
     event = "LspAttach",
   },
 }
-
--- vim:filetype=lua

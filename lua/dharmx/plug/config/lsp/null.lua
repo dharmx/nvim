@@ -77,5 +77,3 @@ null.setup({
     -- null.builtins.code_actions.gitsigns,
   },
 })
-
--- vim:filetype=lua

@@ -39,5 +39,3 @@ portal.setup(require("portal").setup({
     },
   },
 }))
-
--- vim:filetype=lua

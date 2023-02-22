@@ -12,5 +12,3 @@ tool.setup({
   run_on_start = true,
   start_delay = 3000,
 })
-
--- vim:filetype=lua

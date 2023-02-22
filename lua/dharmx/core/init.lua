@@ -19,5 +19,3 @@ vim.schedule(function()
 end)
 
 return { exclude = exclude }
-
--- vim:filetype=lua

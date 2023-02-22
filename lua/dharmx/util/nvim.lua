@@ -38,5 +38,3 @@ function M.group(name, autocmds, clear)
 end
 
 return M
-
--- vim:filetype=lua

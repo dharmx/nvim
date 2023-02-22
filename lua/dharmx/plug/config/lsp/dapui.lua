@@ -66,5 +66,3 @@ dapui.setup({
     max_value_lines = 100,
   },
 })
-
--- vim:filetype=lua
