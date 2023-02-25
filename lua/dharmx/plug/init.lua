@@ -1,4 +1,4 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath("data") .. "/plugins/lazy.nvim"
 
 -- auto-clone lazy.nvim if it does not exist on install path
 if not vim.loop.fs_stat(lazypath) then

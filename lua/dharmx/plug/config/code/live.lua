@@ -6,4 +6,5 @@ live.setup({
   browser_command = "firefox",
   quiet = true,
   no_css_inject = true,
+  install_path = vim.fn.stdpath("state") .. "/live",
 })

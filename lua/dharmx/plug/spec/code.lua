@@ -14,6 +14,7 @@ return {
       req("live")
     end,
     cmd = { "LiveServer", "LiveServerStart", "LiveServerStop" },
+    dev = true,
   },
   {
     "kevinhwang91/rnvimr",
