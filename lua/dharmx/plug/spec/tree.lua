@@ -47,6 +47,11 @@ return {
     event = "LspAttach",
   },
   {
+    "danymat/neogen",
+    config = function() req("neogen") end,
+    cmd = "Neogen",
+  },
+  {
     "nvim-treesitter/playground",
     config = function() req("playground") end,
     cmd = "TSPlaygroundToggle",

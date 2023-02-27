@@ -7,14 +7,9 @@ return {
   },
   {
     "aurum77/live-server.nvim",
-    build = function()
-      require("live_server.util").install()
-    end,
-    config = function()
-      req("live")
-    end,
+    build = function() require("live_server.util").install() end,
+    config = function() req("live") end,
     cmd = { "LiveServer", "LiveServerStart", "LiveServerStop" },
-    dev = true,
   },
   {
     "kevinhwang91/rnvimr",
@@ -48,11 +43,6 @@ return {
   {
     "ThePrimeagen/refactoring.nvim",
     config = function() req("refactoring") end,
-  },
-  {
-    "is0n/jaq-nvim",
-    config = function() req("jaq") end,
-    cmd = "Jaq",
   },
   {
     "sindrets/diffview.nvim",
@@ -149,7 +139,7 @@ return {
     cmd = "BookmarkToggle",
   },
   {
-    "kyazdani42/nvim-tree.lua",
+    "nvim-tree/nvim-tree.lua",
     config = function() req("nvimtree") end,
     cmd = {
       "NvimTreeOpen",
@@ -171,9 +161,11 @@ return {
     cmd = "UndotreeToggle",
   },
   {
-    "iamcco/markdown-preview.nvim",
-    init = function() req("markdown") end,
-    build = "cd app && yarn install",
+    "toppair/peek.nvim",
+    build = "deno task --quiet build:fast",
+    config = function()
+      req("peek")
+    end,
     ft = "markdown",
   },
   {

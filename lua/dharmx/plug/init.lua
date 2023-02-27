@@ -130,4 +130,7 @@ local function exclude(items)
 end
 
 -- see nvim/init.lua for usage
-return { exclude = exclude }
+return {
+  exclude = exclude,
+  setup = exclude,
+}

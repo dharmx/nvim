@@ -19,15 +19,6 @@ local on = util.on
 -- end)
 
 -- on({ "CursorHold", "CursorMoved", "CmdlineEnter", "TextChanged", "ModeChanged" }, ":silent! LspStart", { desc = "Lazy load LSP.", once = true })
-on("FileType", function()
-  local filetype = vim.bo.filetype
-  if vim.tbl_contains({ "qf", "help", "alpha", "checkhealth", "TelescopePrompt", "notify", "playground", "query" }, filetype) then
-    local callback = vim.cmd.quit
-    if filetype == "checkhealth" then callback = vim.cmd.bd end
-    if filetype == "alpha" then callback = vim.cmd.Alpha end
-    vim.keymap.set("n", "q", callback, { silent = true, buffer = vim.api.nvim_get_current_buf() })
-  end
-end)
 on("TextYankPost", function() vim.highlight.on_yank({ higroup = "Include", on_visual = true }) end, "Provide a visual color feedback on yanking.")
 
 on({ "TermOpen", "BufReadCmd" }, function()

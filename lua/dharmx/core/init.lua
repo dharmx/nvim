@@ -18,4 +18,7 @@ vim.schedule(function()
   vim.cmd("silent! rsh")
 end)
 
-return { exclude = exclude }
+return {
+  exclude = exclude,
+  setup = exclude,
+}

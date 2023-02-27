@@ -12,7 +12,6 @@ tree.setup({
     "gitcommit",
     "gitattributes",
     "sxhkdrc",
-    "gitattributes",
     "python",
     "make",
     "json",

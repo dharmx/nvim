@@ -2,6 +2,9 @@
 local util = require("dharmx.util.nvim")
 local cmd = util.cmd
 
+cmd("PeekOpen", function() require("peek").open() end, { desc = "Open peek window." })
+cmd("PeekClose", function() require("peek").close() end, { desc = "Close peek window." })
+
 cmd("Sabotage", function(args)
   local option = args.args
   if vim.tbl_contains({ "live_grep", "grep_string", "find_files" }, option) then

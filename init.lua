@@ -1,6 +1,5 @@
 vim.cmd.colorscheme("fallback")
-
-require("dharmx.core").exclude()
+require("dharmx.core").setup()
 require("dharmx.plug").exclude({
   "simrat39/symbols-outline.nvim",
   "sheerun/vim-polyglot",
@@ -8,6 +7,6 @@ require("dharmx.plug").exclude({
   "nvim-treesitter/nvim-tree-docs",
   "windwp/nvim-ts-autotag",
   "echasnovski/mini.indentscope",
-  "kyazdani42/nvim-tree.lua",
+  "nvim-tree/nvim-tree.lua",
   "hrsh7th/cmp-nvim-lua",
 })
