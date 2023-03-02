@@ -1,15 +1,7 @@
+local util = require("dharmx.util.util")
+
 for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
   vim.g["loaded_" .. provider .. "_provider"] = 0
-end
-
-local function exclude(items)
-  items = vim.F.if_nil(items, {})
-  local files = vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/dharmx/core")
-  for _, file in ipairs(files) do
-    if file ~= "init.lua" and not vim.tbl_contains(items, file) then
-      require("dharmx.core." .. vim.fn.fnamemodify(file, ":r"))
-    end
-  end
 end
 
 vim.opt.shadafile = "NONE"
@@ -19,6 +11,10 @@ vim.schedule(function()
 end)
 
 return {
-  exclude = exclude,
-  setup = exclude,
+  setup = function(items)
+    items = vim.tbl_flatten({ "init.lua", items })
+    local config = vim.fn.stdpath("config") .. "/lua/dharmx/core"
+    local on_entry = function(file) require("dharmx.core." .. vim.fn.fnamemodify(file, ":r")) end
+    util.exclude(items, config, on_entry)
+  end,
 }

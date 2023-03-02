@@ -1,6 +1,7 @@
 local ok, tele = pcall(require, "telescope")
 if not ok then return end
 
+local util = require("dharmx.util.util")
 local actions = require("telescope.actions")
 local actions_state = require("telescope.actions.state")
 local layout = require("telescope.actions.layout")
@@ -243,11 +244,10 @@ local config = {
   },
 }
 
-local scanned = vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/dharmx/plug/config/tele/extras")
 config.extensions = {}
-for _, file in ipairs(scanned) do
+util.exclude({}, vim.fn.stdpath("config") .. "/lua/dharmx/plug/config/tele/extras", function(file)
   local name = vim.fn.fnamemodify(file, ":r")
   config.extensions[name] = require("dharmx.plug.config.tele.extras." .. name)
-end
+end)
 
 tele.setup(config)

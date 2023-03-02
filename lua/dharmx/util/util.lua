@@ -3,6 +3,12 @@ local M = {}
 local F = vim.fn
 local A = vim.api
 
+function M.exclude(items, path, on_entry)
+  for entry, entry_type in vim.fs.dir(path) do
+    if not vim.tbl_contains(items, entry) then on_entry(entry, entry_type, items, path) end
+  end
+end
+
 function M.input(options, actions)
   local Input = require("nui.input")
   local autocmd = require("nui.utils.autocmd")

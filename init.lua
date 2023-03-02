@@ -1,6 +1,7 @@
 vim.cmd.colorscheme("fallback")
+
 require("dharmx.core").setup()
-require("dharmx.plug").exclude({
+require("dharmx.plug").setup({
   "simrat39/symbols-outline.nvim",
   "sheerun/vim-polyglot",
   "andweeb/presence.nvim",
