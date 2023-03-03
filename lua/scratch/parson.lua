@@ -1,59 +1,92 @@
-local Task = require("plenary.job")
 local M = {}
-local OPN = {}
+vim.opt.rtp:prepend(vim.fn.stdpath("data") .. "/plugins/plenary.nvim") -- need to drop this
+local Task = require("plenary.job")
 
-M._defaults = { pack_path = vim.fn.stdpath("data") .. "/site" }
+M._defaults = {
+  parson_path = vim.fn.stdpath("data") .. "/site/pack/parson",
+  repo_site = "https://github.com/%s.git",
+  clone = function(link, location) return { "git", "clone", "--depth=1", "--recurse-submodules", "--shallow-submodules", link, location } end,
+  pull = function(location) return { "git", "pull", "--recurse-submodules", "--update-shallow", location } end,
+  quiet = false,
+}
 M._config = M._defaults
-M._db = {}
+M._database = setmetatable({}, {
+  __add = function(database, new)
+    new.name = vim.F.if_nil(new.name, table.remove(new, 1))
+    new.lazy = vim.F.if_nil(new.lazy, false)
+    new.config = vim.F.if_nil(new.config, function() end)
+    new.build = vim.F.if_nil(new.build, function() end)
+    new.username, new.repo = unpack(vim.split(new.name, "/", { plain = true }))
+    new.location = string.format("%s/%s/%s", M._config.parson_path, new.lazy and "opt" or "start", new.repo)
+    new.link = vim.F.if_nil(new.link, string.format(M._config.repo_site, new.name))
+    new.installed = not not vim.loop.fs_realpath(new.location)
+    new.loaded = false
+    new.on_download_begin = vim.F.if_nil(new.on_download_begin, function() end)
+    new.on_download_end = vim.F.if_nil(new.on_download_end, function() end)
+    new.on_update = vim.F.if_nil(new.on_update, function() end)
+    new.on_load = vim.F.if_nil(new.on_load, function() end)
+    if new.installed and not new.lazy then new.config() end
+    function new.load()
+      vim.cmd.packadd(new.repo)
+      new.loaded = true
+      new.on_load(new)
+      new.config()
+    end
+    function new.download()
+      local config = M._config.clone(new.link)
+      function config.on_start()
+        if not M._config.quiet then vim.notify("Started downloading " .. new.repo .. "...") end
+        new.on_download_begin(new)
+      end
+      function config.on_exit(task, code, _)
+        if code == 0 then
+          new.installed = true
+          if not M._config.quiet then vim.notify("Downloaded " .. new.repo .. ".") end
+        else
+          if not M._config.quiet then vim.notify("Download ERROR[" .. new.repo .. "]") end
+        end
+        new.build(new)
+        new.on_download_end(new, task)
+      end
+      config.cwd = vim.fn.fnamemodify(new.location, ":h")
+      config.skip_validation = true
+      Task:new(config):start()
+    end
+    function new.update()
+      local config = M._config.pull()
+      function config.on_exit(task, code, _)
+        if code == 0 then new.installed = true end
+        new.on_update(new, task)
+      end
+      config.cwd = new.location
+      config.skip_validation = true
+      Task:new(config):start()
+    end
+    M._database[new.repo] = new
+    return database
+  end,
+  __call = function(database, action)
+    if action then
+      local items = {}
+      for _, plugin in pairs(database) do table.insert(items, plugin[action]) end
+      return items
+    end
+    return database
+  end,
+})
 
-local function install(link, path)
-  -- TODO: Use on_start and on_exit for tracking progress.
-  Task:new({
-    "git", "clone", "--depth", "1", link, path,
-  }):start()
-end
-
-local function packadd(plugin)
-  vim.cmd.packadd(plugin.tail)
-  plugin.config()
-end
-
-function OPN.__add(self, new)
-  setmetatable(new, { __call = packadd })
-  new.link = vim.F.if_nil(new.link, string.format("https://github.com/%s.git", new.name))
-  new.tail = vim.fn.fnamemodify(new.name, ":t")
-  new.path = M._config.pack_path .. "/pack/parson/"
-
-  if new.opt then new.path = string.format("%s/opt/%s", new.path, new.tail)
-  else new.path = string.format("%s/start/%s", new.path, new.tail) end
-  new.sync = vim.F.if_nil(new.sync, function() install(new.link, new.path) end)
-  self._db[new.name] = new
-
-  if new.init then new.init() end
-  if new.on then vim.api.nvim_create_autocmd(new.on, {
-    callback = function() packadd(new) end,
-    once = true
-  }) end
-  return self
-end
-
-function OPN.__call(self, plugins)
-  for _, plugin in ipairs(plugins) do self = OPN.__add(self, plugin) end
-  return self
-end
-
-function M.sync()
-  for _, plugin in pairs(M._db) do
-    print("Cloning " .. plugin.tail .. "...")
-    plugin.sync()
-  end
+local function mkparents(path)
+  local directory = vim.fn.fnamemodify(path, ":p")
+  if directory:find("%l+://") == 1 then return end
+  if vim.fn.isdirectory(directory) == 0 then vim.fn.mkdir(directory, "p") end
 end
 
 function M.setup(options)
   options = vim.F.if_nil(options, {})
   M._config = vim.tbl_deep_extend("keep", options, M._config)
-  vim.opt.packpath:append(M._config.pack_path)
+  mkparents(M._config.parson_path .. "/opt")
+  mkparents(M._config.parson_path .. "/start")
+  vim.opt.packpath:append(vim.fn.fnamemodify(M._config.parson_path, ":h:h"))
 end
 
-setmetatable(M, OPN)
 return M

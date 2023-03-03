@@ -1,7 +1,7 @@
 local M = {}
 
 local ok, lightbulb = pcall(require, "nvim-lightbulb")
-local util = require("dharmx.util.nvim")
+local util = require("dharmx.util").nvim
 local group = util.group
 local on = util.on
 

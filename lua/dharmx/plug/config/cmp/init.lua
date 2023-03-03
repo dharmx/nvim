@@ -1,7 +1,7 @@
 local ok, cmp = pcall(require, "cmp")
 if not ok then return end
 
-local kind = require("dharmx.util.kind").sleek
+local kind = require("dharmx.util").kind.sleek
 local luasnip = require("luasnip")
 
 local function has_words_before()
@@ -64,7 +64,7 @@ local config = {
       fallback()
     end, { "i", "c" }),
   }),
-  sources = cmp.config.sources({
+  sources = cmp.config.sources({-- {{{
     {
       name = "plugins",
       max_item_count = 3,
@@ -204,7 +204,7 @@ local config = {
         },
       },
     },
-  }),
+  }),-- }}}
   preselect = cmp.PreselectMode.Item,
   window = {
     documentation = {
@@ -253,7 +253,7 @@ local config = {
 cmp.setup(config)
 
 local cmdlines = {
-  sources = cmp.config.sources({
+  sources = cmp.config.sources({-- {{{
     {
       name = "cmdline",
       keyword_length = 2,
@@ -275,7 +275,7 @@ local cmdlines = {
       keyword_length = 4,
       priority = 3,
     },
-  }),
+  }),-- }}}
   mapping = cmp.mapping.preset.cmdline(),
   formatting = {
     fields = { "abbr", "kind", "menu" },

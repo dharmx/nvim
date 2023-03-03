@@ -17,10 +17,10 @@ local schema = {
   filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
   log_level = 2,
   root_dir = require("lspconfig.util").root_pattern({
-    "compile_flags.txt",
     ".clangd",
     ".clang-tidy",
     ".clang-format",
+    "compile_flags.txt",
     "compile_commands.json",
     "configure.ac",
     ".git",

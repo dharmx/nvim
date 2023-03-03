@@ -1,6 +1,6 @@
 local ok, outline = pcall(require, "symbols-outline")
 if not ok then return end
-local kind = require("dharmx.util.kind").sleek
+local kind = require("dharmx.util").kind.sleek
 
 local symbols = {
   File = { hl = "TSURI" },

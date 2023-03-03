@@ -1,7 +1,7 @@
 local ok, tele = pcall(require, "telescope")
 if not ok then return end
 
-local util = require("dharmx.util.util")
+local util = require("dharmx.util").nvim
 local actions = require("telescope.actions")
 local actions_state = require("telescope.actions.state")
 local layout = require("telescope.actions.layout")

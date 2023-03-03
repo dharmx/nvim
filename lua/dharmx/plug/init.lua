@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/plugins/lazy.nvim"
-local util = require("dharmx.util.util")
+local util = require("dharmx.util").nvim
 
 -- auto-clone lazy.nvim if it does not exist on install path
 if not vim.loop.fs_stat(lazypath) then

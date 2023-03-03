@@ -1,5 +1,5 @@
 -- stylua: ignore start
-local util = require("dharmx.util.nvim")
+local util = require("dharmx.util").nvim
 local on = util.on
 
 -- on("BufWritePost", function()

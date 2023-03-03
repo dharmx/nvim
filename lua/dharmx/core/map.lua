@@ -1,12 +1,12 @@
-local util = require("dharmx.util.map")
+local util = require("dharmx.util").map
 local nmap = util.nmap
 local inmap = util.inmap
 
 nmap("<leader>y", ":%yank+<CR>", "Copy an entire buffer.")
 nmap("<C-S>", vim.cmd.update, "Write changes only if the buffer is modified.")
 
-nmap("<leader>q", function() require("dharmx.util.close")() end, "Delete buffer.")
-nmap("<leader>r", require("dharmx.util.util").readable_numbers, "Delete buffer.")
+nmap("<leader>q", function() require("dharmx.util").close() end, "Delete buffer.")
+nmap("<leader>r", require("dharmx.util").nvim.readable_numbers, "Delete buffer.")
 nmap("<leader>]", vim.cmd.bnext, "Goto next buffer.")
 nmap("<leader>[", vim.cmd.bprev, "Goto prev buffer.")
 

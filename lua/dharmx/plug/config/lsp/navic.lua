@@ -1,6 +1,6 @@
 local ok, navic = pcall(require, "nvim-navic")
 if not ok then return end
-local kind = require("dharmx.util.kind")
+local kind = require("dharmx.util").kind
 
 navic.setup({
   icons = kind,

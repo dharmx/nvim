@@ -5,11 +5,17 @@ return {
     "nvim-treesitter/nvim-treesitter",
     config = function() req("init") end,
     build = ":TSUpdate",
+    event = { "BufWinEnter" },
   },
   {
     "romgrk/nvim-treesitter-context",
     config = function() req("context") end,
-    lazy = false,
+    event = { "CursorHold", "CursorMoved", "InsertEnter" },
+  },
+  {
+    "chrisgrieser/nvim-various-textobjs",
+    config = function() req("textobjs") end,
+    event = { "CursorMoved", "CursorHold" },
   },
   {
     "andymass/vim-matchup",
@@ -44,10 +50,12 @@ return {
   {
     "theHamsta/nvim-dap-virtual-text",
     config = function() req("dapvirtual") end,
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     event = "LspAttach",
   },
   {
     "danymat/neogen",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function() req("neogen") end,
     cmd = "Neogen",
   },

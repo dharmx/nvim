@@ -5,8 +5,8 @@ if not _lsp then return end
 local _navic, navic = pcall(require, "nvim-navic")
 local _cmp, cmp = pcall(require, "cmp_nvim_lsp")
 
-local servers = require("dharmx.util.servers")
-local kind = require("dharmx.util.kind")
+local servers = require("dharmx.util").servers
+local kind = require("dharmx.util").kind
 
 local autocmd = require("dharmx.plug.config.lsp.presets.autocmd")
 local cmd = require("dharmx.plug.config.lsp.presets.cmd")

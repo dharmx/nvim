@@ -1,4 +1,4 @@
-local util = require("dharmx.util.util")
+local util = require("dharmx.util").nvim
 
 for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
   vim.g["loaded_" .. provider .. "_provider"] = 0
