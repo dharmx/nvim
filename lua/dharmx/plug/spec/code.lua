@@ -175,9 +175,7 @@ return {
   {
     "toppair/peek.nvim",
     build = "deno task --quiet build:fast",
-    config = function()
-      req("peek")
-    end,
+    config = function() req("peek") end,
     ft = "markdown",
   },
   {

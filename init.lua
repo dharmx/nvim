@@ -10,12 +10,4 @@ require("dharmx.plug").setup({
   "echasnovski/mini.indentscope",
   "nvim-tree/nvim-tree.lua",
   "hrsh7th/cmp-nvim-lua",
-  -- "akinsho/bufferline.nvim",
-  -- "tpope/vim-repeat",
-  -- "goolord/alpha-nvim",
-  -- "doums/monark.nvim",
-  -- "stevearc/aerial.nvim",
-  -- "sindrets/diffview.nvim",
 })
-
--- require("scratch.minimal")

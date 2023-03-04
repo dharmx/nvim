@@ -22,49 +22,19 @@ local function custom_compare(entry1, entry2)
 end
 
 local config = {
-  snippet = {
-    expand = function(args) require("luasnip").lsp_expand(args.body) end,
-  },
+  snippet = { expand = function(args) require("luasnip").lsp_expand(args.body) end },
   mapping = cmp.mapping.preset.insert({
-    ["<C-B>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-    ["<C-F>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-    ["<C-Y>"] = cmp.config.disable,
-    ---@diagnostic disable-next-line: missing-parameter
-    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-    ["<C-E>"] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
-    ["<CR>"] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end),
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_locally_jumpable() then
-        luasnip.expand_or_jump()
-      elseif has_words_before() then
-        cmp.complete()
-      else
-        fallback()
-      end
-    end),
+    ["<C-B>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-F>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-E>"] = cmp.mapping.abort(),
+    ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
     ["<C-L>"] = cmp.mapping(function(fallback)
       if cmp.visible() then return cmp.complete_common_string() end
       fallback()
     end, { "i", "c" }),
   }),
-  sources = cmp.config.sources({-- {{{
+  sources = cmp.config.sources({ -- {{{
     {
       name = "plugins",
       max_item_count = 3,
@@ -204,7 +174,7 @@ local config = {
         },
       },
     },
-  }),-- }}}
+  }), -- }}}
   preselect = cmp.PreselectMode.Item,
   window = {
     documentation = {
@@ -234,7 +204,8 @@ local config = {
     ghost_text = true,
   },
   completion = {
-    completeopt = "menu,menuone,noselect",
+    completeopt = "menu,menuone,noselect,preview",
+    autocomplete = false,
   },
   sorting = {
     comparators = {
@@ -253,7 +224,7 @@ local config = {
 cmp.setup(config)
 
 local cmdlines = {
-  sources = cmp.config.sources({-- {{{
+  sources = cmp.config.sources({ -- {{{
     {
       name = "cmdline",
       keyword_length = 2,
@@ -275,7 +246,7 @@ local cmdlines = {
       keyword_length = 4,
       priority = 3,
     },
-  }),-- }}}
+  }), -- }}}
   mapping = cmp.mapping.preset.cmdline(),
   formatting = {
     fields = { "abbr", "kind", "menu" },

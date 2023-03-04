@@ -14,8 +14,6 @@ function M.nmap(key, action, describe)
   })
 end
 
-function M.vim(items) return "vim" end
-
 function M.xmap(key, action, describe)
   vim.keymap.set("x", key, action, {
     desc = describe,
@@ -36,6 +34,12 @@ end
 
 function M.vmap(key, action, describe)
   vim.keymap.set("v", key, action, {
+    desc = describe,
+  })
+end
+
+function M.nvmap(key, action, describe)
+  vim.keymap.set({ "n", "v" }, key, action, {
     desc = describe,
   })
 end

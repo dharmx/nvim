@@ -28,7 +28,7 @@ A.nvim_create_autocmd("BufEnter", {
       return
     end
     vim.opt_local.laststatus = 0
-  end
+  end,
 })
 A.nvim_win_set_hl_ns(sidewin, SIDE)
 A.nvim_set_hl(SIDE, "Normal", { background = "#151A1F" })

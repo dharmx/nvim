@@ -1,27 +1,25 @@
-local A = vim.api
+local F = vim.fn
 local util = require("dharmx.util").nvim
-local format = [[!curl --silent "https://is.gd/create.php?format=simple&url=%s"]]
 
-util.input({
-  position = { row = 5, col = 5 },
-  size = 50,
-  border = { style = "solid" },
-}, {
-  prompt = "   ",
-  default_value = "Your URL...",
-  on_submit = function(value)
-    local raw = vim.split(A.nvim_exec(string.format(format, value), true), "\n", { plain = true })
-    if value == "Your URL..." then
-      vim.api.nvim_notify("ERROR: Couldn't fetch the shortened URL!", vim.log.levels.ERROR, {
-        icon = " ",
-        title = "URL Shortner",
-      })
-    else
-      vim.fn.setreg(vim.v.register, raw[#raw])
-      vim.api.nvim_notify("Saved link to system clipboard!", vim.log.levels.INFO, {
-        icon = " ",
-        title = "URL Shortner",
-      })
+local function open(value)
+  if not value:match("^https://.+") then
+    vim.notify("Invalid entry.")
+  else
+    local raw = F.system({ "curl", "--silent", "https://is.gd/create.php?format=simple&url=" .. value })
+    if F.setreg(vim.v.register, raw) == 0 then vim.notify([["0 ]] .. raw) end
+  end
+end
+
+return {
+  open = function(value)
+    if value then
+      open(value == "<cword>" and vim.fn.expand(value) or value)
+      return
     end
+    util.input({ size = 50 }, {
+      prompt = "   ",
+      default_value = "Your URL...",
+      on_submit = open,
+    })
   end,
-})
+}
