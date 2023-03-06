@@ -24,15 +24,58 @@ end
 local config = {
   snippet = { expand = function(args) require("luasnip").lsp_expand(args.body) end },
   mapping = cmp.mapping.preset.insert({
-    ["<C-B>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-D>"] = cmp.mapping.scroll_docs(-4),
     ["<C-F>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-I>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_locally_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end),
+    ["<C-O>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end),
     ["<C-E>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
     ["<C-L>"] = cmp.mapping(function(fallback)
       if cmp.visible() then return cmp.complete_common_string() end
       fallback()
     end, { "i", "c" }),
+    ["<C-Y>"] = cmp.mapping(
+      cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Insert,
+        select = true,
+      }),
+      { "i", "c" }
+    ),
+    ["<M-Y>"] = cmp.mapping(
+      cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = false,
+      }),
+      { "i", "c" }
+    ),
+    ["<C-Space>"] = cmp.mapping({
+      i = cmp.mapping.complete(),
+      c = function()
+        if cmp.visible() then
+          if not cmp.confirm({ select = true }) then return end
+        else
+          cmp.complete()
+        end
+      end,
+    }),
   }),
   sources = cmp.config.sources({ -- {{{
     {

@@ -16,7 +16,7 @@ mason_null.setup({
     "black",
     "shellharden",
     "codespell",
-    "proselint",
+    -- "proselint",
     "gitlint",
     "prettierd",
     "shfmt",

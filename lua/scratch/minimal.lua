@@ -1,5 +1,3 @@
----@diagnostic disable: cast-local-type, param-type-mismatch, unused-local
-
 local cmd = vim.api.nvim_create_user_command
 local parson = require("scratch.parson")
 local db = parson._database
@@ -33,29 +31,13 @@ local lazy = {
 for name, plugin in pairs(db) do
   if not plugin.installed then
     plugin.download()
-  elseif lazy[name] and plugin.lazy then
-    lazy[name](plugin)
-  end
+  elseif lazy[name] and plugin.lazy then lazy[name](plugin) end
 end
 
 cmd("Parson", function(args)
-  if args.args == "update" then
-    for _, plugin in pairs(db) do
-      plugin.update()
-    end
-    return
-  elseif args.args == "download" then
-    for _, plugin in pairs(db) do
-      plugin.download()
-    end
-    return
-  elseif args.args == "load" then
-    for _, plugin in pairs(db) do
-      plugin.load()
-    end
-    return
-  end
-  vim.pretty_print(db)
+  if vim.tbl_contains({ "update", "download", "load" }, args.args) then
+    for _, plugin in pairs(db) do plugin[args.args]() end
+  else vim.pretty_print(db) end
 end, {
   nargs = "?",
   complete = function() return { "update", "download", "list", "load" } end,

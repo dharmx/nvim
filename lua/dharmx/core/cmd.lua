@@ -2,59 +2,39 @@
 local util = require("dharmx.util").nvim
 local cmd = util.cmd
 
-cmd("PeekOpen", function() require("peek").open() end, { desc = "Open peek window." })
-cmd("PeekClose", function() require("peek").close() end, { desc = "Close peek window." })
-cmd("SyntaxIDUnderCursor", ":echo synIDattr(synID(line('.'), col('.'), 1), 'name')", { desc = "synIDattr under cursor." })
+vim.api.nvim_create_user_command("Paste", function(args)
+  local curl = require("plenary.curl")
+  local Path = require("plenary.path")
+  args.line1 = (args.range == 2 and args.line1 or 1) - 1
+  args.line2 = args.range == 2 and args.line2 or -1
 
-cmd("Sabotage", function(args)
-  local option = args.args
-  if vim.tbl_contains({ "live_grep", "grep_string", "find_files" }, option) then
-    local state = require("telescope.actions.state")
-    require("telescope.builtin")[option]({
-      attach_mappings = function(buffer, map)
-        map({ "i", "n" }, "<CR>", function()
-          local path = vim.split(state.get_selected_entry().value, ":", { plain = true })[1]
-          require("telescope.actions").close(buffer)
-          vim.cmd.edit(path)
-          vim.cmd.chdir(vim.fn.fnamemodify(path, ":h"))
-        end)
-        return true
-      end,
-    })
-    return
-  end
-  vim.api.nvim_notify("Choose among these options: live_grep/grep_string/find_files", vim.log.levels.WARN, {
-    title = "Sabotage!",
-    icon = " ",
+  local contents = vim.api.nvim_buf_get_lines(0, args.line1, args.line2, false)
+  local file = vim.fs.basename(vim.api.nvim_buf_get_name(0))
+  if file == "" then file = "/tmp/paste.txt"
+  else file = string.format("/tmp/%s", file) end
+
+  local path = Path:new(file)
+  path:touch()
+  path:write(table.concat(contents, "\n"), "w")
+
+  curl.post("https://0x0.st", {
+    form = { file = string.format("@%s", path.filename) },
+    dry_run = false,
+    callback = function(response)
+      path:rm()
+      vim.schedule(function()
+        vim.fn.setreg("+", response.body)
+        vim.api.nvim_notify("+pastebin: " .. response.body, vim.log.levels.INFO, { title = "pastebin", icon = " " })
+      end)
+    end,
   })
-end, { nargs = 1, desc = "Change CWD.", complete = function() return { "live_grep", "grep_string", "find_files" } end })
+end, { desc = "Create a new pastebin link. Powered by 0x0.st.", range = true })
 
+cmd("SyntaxIDUnderCursor", ":echo synIDattr(synID(line('.'), col('.'), 1), 'name')", "synIDattr under cursor.")
 cmd("LineWidthColumn", function()
   if vim.wo.colorcolumn == "0" then
     vim.wo.colorcolumn = vim.bo.textwidth .. ""
-  else
-    vim.wo.colorcolumn = "0"
+    return
   end
+  vim.wo.colorcolumn = "0"
 end, "Virtual column for measuring text line length.")
-
--- cmd("HugoServer", function()
---   if _G.HUGO_JOBS then
---     local SIGKILL = 9
---     ---@diagnostic disable-next-line: deprecated
---     table.foreachi(_G.HUGO_JOBS, function(_, job) vim.loop.kill(job.pid, SIGKILL) end)
---     _G.HUGO_JOBS = nil
---     return
---   end
-
---   local Job = require("plenary.job")
---   local path = vim.fn.bufname()
---   if vim.fn.fnamemodify(path, ":t") == "config.toml" then
---     local hugo = Job:new({
---       "hugo",
---       "server",
---       cwd = vim.fn.fnamemodify(path, ":h"),
---     })
---     hugo:start()
---     _G.HUGO_JOBS = _G.HUGO_JOBS and table.insert(_G.HUGO_JOBS, hugo) or { hugo }
---   end
--- end, "Launch/Stop Hugo live server.")

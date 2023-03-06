@@ -5,6 +5,7 @@ require("dharmx.plug").setup({
   "simrat39/symbols-outline.nvim",
   "sheerun/vim-polyglot",
   "andweeb/presence.nvim",
+  "rktjmp/paperplanes.nvim",
   "nvim-treesitter/nvim-tree-docs",
   "windwp/nvim-ts-autotag",
   "echasnovski/mini.indentscope",

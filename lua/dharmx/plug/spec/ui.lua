@@ -64,6 +64,7 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     config = function() req("indentline") end,
     event = { "CursorMoved", "CursorHold", "InsertEnter" },
+    enabled = false,
   },
   {
     "echasnovski/mini.indentscope",
