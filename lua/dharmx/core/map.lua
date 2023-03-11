@@ -5,8 +5,8 @@ local nvmap = util.nvmap
 
 nmap("<C-S>", vim.cmd.update, "Write changes only if the buffer is modified.")
 nmap("<leader>l", ":%yank+<CR>", "Copy an entire buffer.")
-nmap("<leader>Y", [["+Y]])
-nvmap("<leader>y", [["+y]])
+nmap("<leader>Y", [["+Y]], "Copy a line with to system clipboard.")
+nvmap("<leader>y", [["+y]], "Copy a line without the newline to system clipboard.")
 
 nmap("<leader>q", function() require("dharmx.util").close() end, "Delete buffer.")
 nmap("<leader>r", require("dharmx.util").nvim.readable_numbers, "Delete buffer.")

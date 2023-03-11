@@ -10,11 +10,33 @@
 -- + Add depends.
 -- + Add keys.
 -- + Add cmd.
--- + Drop plenary.job dependency.
+-- + Add build.
+-- + Add cmd.
+-- + Add on_download.
+-- + Add on_load.
+--  Drop plenary.job dependency.
 
 local M = {}
-vim.opt.runtimepath:prepend(vim.fn.stdpath("data") .. "/plugins/plenary.nvim")
-local Task = require("plenary.job")
+
+local function Task(options)
+  local pipes = { stdin = vim.loop.new_pipe(), stdout = vim.loop.new_pipe(), stderr = vim.loop.new_pipe() }
+  if options.before then options.before() end
+  local handle, process = vim.loop.spawn(table.remove(options.cmd, 1), {
+    args = #options.cmd == 0 and nil or options.cmd,
+    cwd = options.directory,
+    stdio = vim.tbl_values(pipes),
+  }, function(code, signal)
+    if options.callback then options.callback(code, signal, vim.tbl_values(pipes)) end
+  end)
+  local function readstd(pipe, callback)
+    vim.loop.read_start(pipe, function(errors, data)
+      assert(not errors, errors)
+      if callback and data then callback(errors, data, { task = handle, process = process }) end
+    end)
+  end
+  readstd(pipes.stdout, options.on_errors)
+  readstd(pipes.stdout, options.on_outputs)
+end
 
 M._defaults = {
   parson_path = vim.fn.stdpath("data") .. "/site/pack/parson",
@@ -34,48 +56,37 @@ M._database = setmetatable({}, {
     new.installed = not not vim.loop.fs_realpath(new.location)
     new.loaded = false
     new.config = vim.F.if_nil(new.config, function() end)
-    new.build = vim.F.if_nil(new.build, function() end)
-    new.on_download_begin = vim.F.if_nil(new.on_download_begin, function() end)
-    new.on_download_end = vim.F.if_nil(new.on_download_end, function() end)
-    new.on_update = vim.F.if_nil(new.on_update, function() end)
-    new.on_load = vim.F.if_nil(new.on_load, function() end)
+    new.after_download = vim.F.if_nil(new.after_download, function() end)
+    new.after_update = vim.F.if_nil(new.after_update, function() end)
     if new.installed and not new.lazy then new.config() end
 
     function new.load()
       vim.cmd.packadd(new.repo)
       new.loaded = true
-      new.on_load(new)
       new.config()
     end
 
     function new.download()
-      local config = M._config.clone(new.link)
-      function config.on_start()
-        if not M._config.quiet then vim.notify("Started downloading " .. new.repo .. "...") end
-        new.on_download_begin(new)
-      end
-      function config.on_exit(task, code, _)
+      local config = { cmd = M._config.clone(new.link) }
+      function config.callback(code, _, pipes)
         if code == 0 then
           new.installed = true
           if not M._config.quiet then vim.notify("Downloaded " .. new.repo .. ".") end
         else if not M._config.quiet then vim.notify("Download ERROR[" .. new.repo .. "]") end end
-        new.build(new)
-        new.on_download_end(new, task)
+        new.after_download(new, pipes)
       end
-      config.cwd = vim.fn.fnamemodify(new.location, ":h")
-      config.skip_validation = true
-      Task:new(config):start()
+      config.directory = vim.fn.fnamemodify(new.location, ":h")
+      Task(config)
     end
 
     function new.update()
-      local config = M._config.pull()
-      function config.on_exit(task, code, _)
+      local config = { cmd = M._config.pull() }
+      function config.callback(code, _, pipes)
         if code == 0 then new.installed = true end
-        new.on_update(new, task)
+        new.after_update(new, pipes)
       end
-      config.cwd = new.location
-      config.skip_validation = true
-      Task:new(config):start()
+      config.directory = new.location
+      Task(config)
     end
     M._database[new.repo] = new
     return database
