@@ -1,9 +1,50 @@
-local M = {}
 local A = vim.api
 
-function M.abbrev(buffer, command, expression)
-  local formatted = string.format("%s %s %s", expression and "<expr>" or "", buffer, command)
-  vim.cmd.cnoreabbrev(formatted)
+local M = {}
+M.abbreviation = {}
+
+function M.abbreviation.create(word, abbrev, options)
+  local args = {}
+  options = vim.F.if_nil(options, {})
+
+  local command = "abbrev"
+  if options.overwrite then command = "nore" .. command end
+  if options.mode then command = options.mode .. command end
+  if options.buffer then table.insert(args, "<buffer>") end
+  if options.silent then table.insert(args, "<silent>") end
+  if options.expression then table.insert(args, "<expr>") end
+
+  table.insert(args, word)
+  table.insert(args, abbrev)
+  if options.dry then return table.concat(vim.tbl_flatten({ command, args }), " ") end
+  vim.cmd[command](args)
+end
+
+function M.abbreviation.delete(abbrev, options)
+  local args = {}
+  options = vim.F.if_nil(options, {})
+  local command = "unabbrev"
+
+  if options.mode then command = options.mode .. command end
+  if options.silent then table.insert(args, "<silent>") end
+  if options.buffer then table.insert(args, "<buffer>") end
+
+  table.insert(args, abbrev)
+  if options.dry then return table.concat(vim.tbl_flatten({ command, args }), " ") end
+  vim.cmd[command](args)
+end
+
+function M.abbreviation.clear(options)
+  local args = {}
+  options = vim.F.if_nil(options, {})
+  local command = "abclear"
+
+  if options.mode then command = options.mode .. command end
+  if options.silent then table.insert(args, "<silent>") end
+  if options.buffer then table.insert(args, "<buffer>") end
+
+  if options.dry then return table.concat(vim.tbl_flatten({ command, args }), " ") end
+  vim.cmd[command](args)
 end
 
 function M.cmd(alias, command, options)

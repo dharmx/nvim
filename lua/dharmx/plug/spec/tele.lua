@@ -9,6 +9,11 @@ return {
     keys = { "<leader>" },
   },
   {
+    "dharmx/telescope-track.nvim",
+    config = function() require("telescope").load_extension("track") end,
+    dev = true,
+  },
+  {
     "nvim-telescope/telescope-ui-select.nvim",
     config = function() require("telescope").load_extension("ui-select") end,
     event = "LspAttach",
@@ -26,11 +31,5 @@ return {
     "nvim-telescope/telescope-dap.nvim",
     config = function() require("telescope").load_extension("dap") end,
     event = "LspAttach",
-  },
-  {
-    "tom-anders/telescope-vim-bookmarks.nvim",
-    config = function() require("telescope").load_extension("vim_bookmarks") end,
-    cmd = "BookmarkToggle",
-    keys = { "<F9>" },
   },
 }

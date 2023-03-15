@@ -47,6 +47,8 @@ local config = {
       end
     end),
     ["<C-E>"] = cmp.mapping.abort(),
+    ["<Tab>"] = cmp.mapping.abort(),
+    ["<S-Tab>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
     ["<C-L>"] = cmp.mapping(function(fallback)
       if cmp.visible() then return cmp.complete_common_string() end

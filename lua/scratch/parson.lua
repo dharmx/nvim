@@ -19,23 +19,14 @@
 local M = {}
 
 local function Task(options)
-  local pipes = { stdin = vim.loop.new_pipe(), stdout = vim.loop.new_pipe(), stderr = vim.loop.new_pipe() }
-  if options.before then options.before() end
-  local handle, process = vim.loop.spawn(table.remove(options.cmd, 1), {
+  local pipes = { stdout = vim.loop.new_pipe(), stderr = vim.loop.new_pipe() }
+  vim.loop.spawn(table.remove(options.cmd, 1), {
     args = #options.cmd == 0 and nil or options.cmd,
     cwd = options.directory,
     stdio = vim.tbl_values(pipes),
   }, function(code, signal)
-    if options.callback then options.callback(code, signal, vim.tbl_values(pipes)) end
+    if options.on_exit then options.on_exit(code, signal, pipes) end
   end)
-  local function readstd(pipe, callback)
-    vim.loop.read_start(pipe, function(errors, data)
-      assert(not errors, errors)
-      if callback and data then callback(errors, data, { task = handle, process = process }) end
-    end)
-  end
-  readstd(pipes.stdout, options.on_errors)
-  readstd(pipes.stdout, options.on_outputs)
 end
 
 M._defaults = {
@@ -43,8 +34,8 @@ M._defaults = {
   repo_site = "https://github.com/%s.git",
   clone = function(link, location) return { "git", "clone", "--depth=1", "--recurse-submodules", "--shallow-submodules", link, location } end,
   pull = function(location) return { "git", "pull", "--recurse-submodules", "--update-shallow", location } end,
-  quiet = false,
 }
+
 M._config = M._defaults
 M._database = setmetatable({}, {
   __add = function(database, new)
@@ -68,11 +59,8 @@ M._database = setmetatable({}, {
 
     function new.download()
       local config = { cmd = M._config.clone(new.link) }
-      function config.callback(code, _, pipes)
-        if code == 0 then
-          new.installed = true
-          if not M._config.quiet then vim.notify("Downloaded " .. new.repo .. ".") end
-        else if not M._config.quiet then vim.notify("Download ERROR[" .. new.repo .. "]") end end
+      function config.on_exit(code, _, pipes)
+        if code == 0 then new.installed = true end
         new.after_download(new, pipes)
       end
       config.directory = vim.fn.fnamemodify(new.location, ":h")
@@ -81,7 +69,7 @@ M._database = setmetatable({}, {
 
     function new.update()
       local config = { cmd = M._config.pull() }
-      function config.callback(code, _, pipes)
+      function config.on_exit(code, _, pipes)
         if code == 0 then new.installed = true end
         new.after_update(new, pipes)
       end

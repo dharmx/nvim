@@ -1,4 +1,5 @@
 local cmd = vim.api.nvim_create_user_command
+
 local parson = require("scratch.parson")
 local db = parson._database
 parson.setup()

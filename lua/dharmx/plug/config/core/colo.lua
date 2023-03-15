@@ -14,3 +14,5 @@ colo.setup({
     },
   },
 })
+
+vim.cmd.ColoToggle("bold", "underline")

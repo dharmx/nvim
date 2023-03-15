@@ -45,10 +45,6 @@ return {
     config = function() req("resession") end,
   },
   {
-    "ThePrimeagen/harpoon",
-    config = function() req("harpoon") end,
-  },
-  {
     "stevearc/aerial.nvim",
     config = function() req("aerial") end,
   },
@@ -146,11 +142,6 @@ return {
     event = { "CursorHold", "CursorMoved", "InsertEnter", "CmdlineEnter" },
   },
   {
-    "MattesGroeger/vim-bookmarks",
-    init = function() req("bookmarks") end,
-    cmd = "BookmarkToggle",
-  },
-  {
     "nvim-tree/nvim-tree.lua",
     config = function() req("nvimtree") end,
     cmd = {
@@ -179,9 +170,8 @@ return {
     ft = "markdown",
   },
   {
-    "kshenoy/vim-signature",
-    init = function() req("signature") end,
-    keys = { "<F4>", { mode = "i", "<F4>" } },
-    cmd = "SignatureToggleSigns",
+    "chentoast/marks.nvim",
+    config = function() req("marks") end,
+    event = { "CursorHold", "CursorMoved" },
   },
 }

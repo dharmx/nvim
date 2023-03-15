@@ -47,6 +47,7 @@ luac.out
 .startup-time.log
 .luarc.json
 test.lua
+spell/*.spl
 node_modules/
 lua/dharmx/plugin/spec/local.lua
 

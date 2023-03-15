@@ -12,7 +12,7 @@ return {
   },
   {
     "karb94/neoscroll.nvim",
-    keys = { "zz", "zt" },
+    keys = { "zz", "zt", "zh", "zH", "zl", "zL", "z.", "zs", "ze" },
     config = function() req("neoscroll") end,
   },
   {
