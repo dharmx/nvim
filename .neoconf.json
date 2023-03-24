@@ -3,7 +3,8 @@
     "library": {
       "enabled": true,
       "plugins": [
-        "harpoon"
+        "formatter.nvim",
+        "dial.nvim"
       ]
     }
   },

@@ -6,6 +6,8 @@ formatter.setup({
   logging = true,
   log_level = vim.log.levels.WARN,
   filetype = {
+    json = require("formatter.filetypes.json").fixjson,
+    cmake = require("formatter.filetypes.cmake").cmakeformat,
     lua = {
       require("formatter.filetypes.lua").stylua,
       function()

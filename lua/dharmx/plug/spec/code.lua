@@ -2,6 +2,26 @@ local function req(file) require("dharmx.plug.config.code." .. file) end
 
 return {
   {
+    "monaqa/dial.nvim",
+    config = function() req("dial") end,
+    keys = { mode = "n", { "<C-a>", "<C-x>", "<C-a>", "<C-x>" } }
+  },
+  {
+    "johmsalas/text-case.nvim",
+  },
+  {
+    "Wansmer/treesj",
+  },
+  {
+    "tversteeg/registers.nvim",
+    config = function() req("registers") end,
+    keys = {
+      { "\"",    mode = { "n", "v" } },
+      { "<C-R>", mode = "i" }
+    },
+    cmd = "Registers",
+  },
+  {
     "NvChad/nvim-colorizer.lua",
     cmd = "ColorizerToggle",
   },
@@ -29,14 +49,6 @@ return {
     lazy = false,
   },
   {
-    "cbochs/portal.nvim",
-    config = function() req("portal") end,
-  },
-  {
-    "cbochs/grapple.nvim",
-    config = function() req("grapple") end,
-  },
-  {
     "stevearc/overseer.nvim",
     config = function() req("overseer") end,
   },
@@ -47,6 +59,17 @@ return {
   {
     "stevearc/aerial.nvim",
     config = function() req("aerial") end,
+    cmd = {
+      "AerialToggle",
+      "AerialOpen",
+      "AerialOpenAll",
+      "AerialClose",
+      "AerialCloseAll",
+      "AerialNext",
+      "AerialPrev",
+      "AerialGo",
+      "AerialInfo",
+    },
   },
   {
     "ThePrimeagen/refactoring.nvim",

@@ -12,7 +12,8 @@ return {
     "dharmx/nvim-colo",
     dependencies = { "b0o/incline.nvim" },
     config = function() req("colo") end,
-    dev = true,
+    branch = "dev",
+    -- dev = true,
     lazy = false,
   },
 }

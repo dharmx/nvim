@@ -5,7 +5,6 @@ function M.goto_definition(split_cmd)
   local log = require("vim.lsp.log").info
 
   return function(_, result, context)
-    vim.notify(vim.inspect(result))
     if result == nil or vim.tbl_isempty(result) then
       _ = log() and log(context.method, "No location found")
       return
@@ -13,7 +12,7 @@ function M.goto_definition(split_cmd)
 
     if split_cmd then vim.cmd(split_cmd) end
     if vim.tbl_islist(result) then
-      util.jump_to_location(result[1], "utf8", true)
+      util.jump_to_location(result[1], vim.bo.fileencoding, true)
       if #result > 1 then
         util.set_qflist(util.locations_to_items(result, "utf8"))
         vim.cmd.copen()

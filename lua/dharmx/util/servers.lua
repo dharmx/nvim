@@ -1,5 +1,6 @@
 return {
   "bashls",
+  "cmake",
   "jdtls",
   "jsonls",
   "yamlls",

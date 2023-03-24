@@ -3,7 +3,7 @@ local event = require("nui.utils.autocmd").event
 local NuiText = require("nui.text")
 
 local function nui_lsp_rename()
-  local curr_name = vim.fn.expand("<cword>")
+  local current_name = vim.fn.expand("<cword>")
   local params = vim.lsp.util.make_position_params(0, vim.bo.fileencoding)
 
   local function on_submit(new_name)
@@ -13,7 +13,7 @@ local function nui_lsp_rename()
         title = " LSP",
       })
       return
-    elseif new_name == curr_name then
+    elseif new_name == current_name then
       vim.api.nvim_notify("Cancelled: New and current names are the same!", vim.log.levels.INFO, {
         icon = "",
         title = " LSP",
@@ -22,14 +22,14 @@ local function nui_lsp_rename()
     end
 
     params.newName = new_name
-    vim.lsp.buf_request(0, "textDocument/rename", params, function(_, result, ctx, _)
+    vim.lsp.buf_request(0, "textDocument/rename", params, function(_, result, context, _)
       if not result then return end
-      local client = vim.lsp.get_client_by_id(ctx.client_id)
+      local client = vim.lsp.get_client_by_id(context.client_id)
       vim.lsp.util.apply_workspace_edit(result, client.offset_encoding)
 
       local total_files = vim.tbl_count(result.changes)
       print(string.format("Changed %s file%s. To save them run ':wa'", total_files, total_files > 1 and "s" or ""))
-      vim.api.nvim_notify("Renamed " .. curr_name .. " into " .. new_name .. ".", vim.log.levels.INFO, {
+      vim.api.nvim_notify("Renamed " .. current_name .. " into " .. new_name .. ".", vim.log.levels.INFO, {
         icon = "",
         title = " LSP",
       })
@@ -73,7 +73,7 @@ local function nui_lsp_rename()
   }
 
   local input = Input(popup_options, {
-    default_value = curr_name,
+    default_value = current_name,
     on_submit = on_submit,
     prompt = NuiText(" ﬦ ", "NUIPrompt"),
   })

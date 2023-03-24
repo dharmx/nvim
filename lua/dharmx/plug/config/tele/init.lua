@@ -251,3 +251,8 @@ util.exclude({}, vim.fn.stdpath("config") .. "/lua/dharmx/plug/config/tele/extra
 end)
 
 tele.setup(config)
+
+require("telescope").load_extension("media")
+require("telescope").load_extension("track")
+require("telescope").load_extension("dap")
+require("telescope").load_extension("ui-select")

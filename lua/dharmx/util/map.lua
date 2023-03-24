@@ -8,6 +8,14 @@ function M.nnoremap(key, action, describe)
   })
 end
 
+function M.vnoremap(key, action, describe)
+  vim.keymap.set("v", key, action, {
+    desc = describe,
+    noremap = true,
+    silent = true,
+  })
+end
+
 function M.nmap(key, action, describe)
   vim.keymap.set("n", key, action, {
     desc = describe,
