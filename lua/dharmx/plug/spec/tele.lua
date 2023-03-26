@@ -4,20 +4,21 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     config = function() req("init") end,
+    dependencies = { "nvim-telescope/telescope-symbols.nvim" },
     cmd = "Telescope",
   },
   {
     "dharmx/track.nvim",
     config = function() req("track") end,
-    cmd = { "Track", "MarkFile", "UnmarkFile", "MarkPosition", "UnmarkPosition" },
-    -- dev = true,
+    cmd = { "Track", "TrackPick", "TrackMark", "TrackBundleAlternate", "TrackUnmark", "TrackStashBundle", "TrackRestoreBundle" },
+    dev = true,
   },
   {
     "nvim-telescope/telescope-ui-select.nvim",
   },
   {
     "dharmx/telescope-media.nvim",
-    -- dev = true,
+    dev = true,
   },
   {
     "nvim-telescope/telescope-symbols.nvim",

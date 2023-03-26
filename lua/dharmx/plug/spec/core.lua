@@ -13,7 +13,7 @@ return {
     dependencies = { "b0o/incline.nvim" },
     config = function() req("colo") end,
     branch = "dev",
-    -- dev = true,
+    dev = true,
     lazy = false,
   },
 }

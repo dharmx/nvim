@@ -13,11 +13,7 @@ function M.goto_definition(split_cmd)
     if split_cmd then vim.cmd(split_cmd) end
     if vim.tbl_islist(result) then
       util.jump_to_location(result[1], vim.bo.fileencoding, true)
-      if #result > 1 then
-        util.set_qflist(util.locations_to_items(result, "utf8"))
-        vim.cmd.copen()
-        vim.cmd.wincmd("p")
-      end
+      if #result > 1 then vim.cmd.wincmd("p") end
     else
       util.jump_to_location(result, "utf8", true)
     end
