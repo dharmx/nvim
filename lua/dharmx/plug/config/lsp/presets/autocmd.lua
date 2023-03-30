@@ -33,7 +33,7 @@ M.setup = function(client, buffer, config)
 
   on("InsertLeave", function() vim.diagnostic.enable(0) end)
   on("InsertEnter", function() vim.diagnostic.disable(0) end)
-  on("CursorHold", lightbulb.update_lightbulb, { buffer = buffer })
+  if ok then on("CursorHold", lightbulb.update_lightbulb, { buffer = buffer }) end
 end
 
 return M

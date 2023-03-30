@@ -5,6 +5,7 @@ local util = require("dharmx.util").nvim
 local actions = require("telescope.actions")
 local actions_state = require("telescope.actions.state")
 local layout = require("telescope.actions.layout")
+local _config = require("telescope.config")
 
 local function vmultiple(prompt_buffer, cmd)
   local picker = actions_state.get_current_picker(prompt_buffer)
@@ -46,6 +47,15 @@ local config = {
         ["i"] = {
           ["<C-K>"] = actions.preview_scrolling_up,
           ["<C-J>"] = actions.preview_scrolling_down,
+          ["<C-Space>"] = function(prompt_buffer)
+            actions.close(prompt_buffer)
+            vim.ui.input({ prompt = "glob patterns(comma sep): " }, function(input)
+              if not input then return end
+              require("telescope.builtin").find_files({
+                file_ignore_patterns = vim.split(vim.trim(input), ",", { plain = true })
+              })
+            end)
+          end,
         },
         ["n"] = {
           ["v"] = function(prompt_buffer) vmultiple(prompt_buffer, "vsplit") end,

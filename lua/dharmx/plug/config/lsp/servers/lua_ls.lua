@@ -19,8 +19,9 @@ local schema = {
   single_file_support = true,
   settings = {
     Lua = {
-      runtime = {},
-      workspace = {},
+      workspace = {
+        checkThirdParty = false,
+      },
     },
   },
 }

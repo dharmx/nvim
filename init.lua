@@ -2,6 +2,25 @@ vim.cmd.colorscheme("fallback")
 
 require("dharmx.core").setup()
 require("dharmx.plug").setup({
+  "lukas-reineke/virt-column.nvim",
+  "doums/monark.nvim",
+  "b0o/schemastore.nvim",
+  "kosayoda/nvim-lightbulb",
+  "simrat39/rust-tools.nvim",
+  "mfussenegger/nvim-jdtls",
+  "stevearc/resession.nvim",
+  "stevearc/overseer.nvim",
+  "ThePrimeagen/refactoring.nvim",
+  "stevearc/aerial.nvim",
+  "dnlhc/glance.nvim",
+  "Fymyte/rasi.vim",
+  "elkowar/yuck.vim",
+  "folke/trouble.nvim",
+  "gorbit99/codewindow.nvim",
+  "yamatsum/nvim-cursorline",
+  "b0o/incline.nvim",
+  "goolord/alpha-nvim",
+  "akinsho/bufferline.nvim",
   "simrat39/symbols-outline.nvim",
   "sheerun/vim-polyglot",
   "andweeb/presence.nvim",
@@ -10,5 +29,7 @@ require("dharmx.plug").setup({
   "windwp/nvim-ts-autotag",
   "echasnovski/mini.indentscope",
   "nvim-tree/nvim-tree.lua",
+  "wakatime/vim-wakatime",
   "hrsh7th/cmp-nvim-lua",
+  "windwp/nvim-ts-autotag",
 })

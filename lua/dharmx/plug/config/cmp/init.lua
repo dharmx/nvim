@@ -1,6 +1,7 @@
 local ok, cmp = pcall(require, "cmp")
 if not ok then return end
 
+-- IMPORTS/UTILS {{{
 local kind = require("dharmx.util").kind.sleek
 local luasnip = require("luasnip")
 
@@ -20,6 +21,7 @@ local function custom_compare(entry1, entry2)
     return true
   end
 end
+-- }}}
 
 local config = {
   snippet = { expand = function(args) require("luasnip").lsp_expand(args.body) end },
@@ -36,7 +38,7 @@ local config = {
       else
         fallback()
       end
-    end),
+    end, { "i", "c" }),
     ["<C-O>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -45,7 +47,7 @@ local config = {
       else
         fallback()
       end
-    end),
+    end, { "i", "c" }),
     ["<C-E>"] = cmp.mapping.abort(),
     ["<Tab>"] = cmp.mapping.abort(),
     ["<S-Tab>"] = cmp.mapping.abort(),
@@ -54,20 +56,14 @@ local config = {
       if cmp.visible() then return cmp.complete_common_string() end
       fallback()
     end, { "i", "c" }),
-    ["<C-Y>"] = cmp.mapping(
-      cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Insert,
-        select = true,
-      }),
-      { "i", "c" }
-    ),
-    ["<M-Y>"] = cmp.mapping(
-      cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = false,
-      }),
-      { "i", "c" }
-    ),
+    ["<C-Y>"] = cmp.mapping(cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = true,
+    }), { "i", "c" }),
+    ["<M-Y>"] = cmp.mapping(cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = false,
+    }), { "i", "c" }),
     ["<C-Space>"] = cmp.mapping({
       i = cmp.mapping.complete(),
       c = function()
@@ -79,7 +75,8 @@ local config = {
       end,
     }),
   }),
-  sources = cmp.config.sources({ -- {{{
+  preselect = cmp.PreselectMode.Item,
+  sources = cmp.config.sources({ -- SOURCES {{{
     {
       name = "plugins",
       max_item_count = 3,
@@ -220,8 +217,7 @@ local config = {
       },
     },
   }), -- }}}
-  preselect = cmp.PreselectMode.Item,
-  window = {
+  window = { -- UI {{{
     documentation = {
       border = "solid",
     },
@@ -251,8 +247,8 @@ local config = {
   completion = {
     completeopt = "menu,menuone,noselect,preview",
     autocomplete = false,
-  },
-  sorting = {
+  }, -- }}}
+  sorting = { -- SORTERS {{{
     comparators = {
       cmp.config.compare.offset,
       cmp.config.compare.exact,
@@ -263,22 +259,18 @@ local config = {
       cmp.config.compare.length,
       cmp.config.compare.order,
     },
-  },
+  }, -- }}}
 }
 
 cmp.setup(config)
 
-local cmdlines = {
-  sources = cmp.config.sources({ -- {{{
+-- CMDLINES -- {{{
+local cmdline = {
+  sources = cmp.config.sources({
     {
       name = "cmdline",
       keyword_length = 2,
       priority = 3,
-    },
-    {
-      name = "buffer",
-      keyword_length = 5,
-      priority = 4,
     },
     {
       name = "cmdline_history",
@@ -291,8 +283,8 @@ local cmdlines = {
       keyword_length = 4,
       priority = 3,
     },
-  }), -- }}}
-  mapping = cmp.mapping.preset.cmdline(),
+  }),
+  mapping = config.mapping,
   formatting = {
     fields = { "abbr", "kind", "menu" },
     format = function(_, item)
@@ -304,9 +296,38 @@ local cmdlines = {
   preselect = cmp.PreselectMode.Item,
 }
 
-for _, cmdtype in ipairs({ ":", "/", "?", "@", "=" }) do
-  cmp.setup.cmdline(cmdtype, cmdlines)
+for _, cmdtype in ipairs({ ":", "@", "=" }) do
+  cmp.setup.cmdline(cmdtype, cmdline)
 end
+
+cmp.setup.cmdline("/", {
+  {
+    name = "buffer",
+    keyword_length = 5,
+    priority = 4,
+  },
+  {
+    name = "nvim_lsp_document_symbol",
+    keyword_length = 4,
+    priority = 3,
+  },
+  mapping = config.mapping,
+})
+
+cmp.setup.cmdline("?", {
+  {
+    name = "buffer",
+    keyword_length = 5,
+    priority = 4,
+  },
+  {
+    name = "nvim_lsp_document_symbol",
+    keyword_length = 4,
+    priority = 3,
+  },
+  mapping = config.mapping,
+})
+-- }}}
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
