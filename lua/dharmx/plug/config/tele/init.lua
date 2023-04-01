@@ -5,7 +5,6 @@ local util = require("dharmx.util").nvim
 local actions = require("telescope.actions")
 local actions_state = require("telescope.actions.state")
 local layout = require("telescope.actions.layout")
-local _config = require("telescope.config")
 
 local function vmultiple(prompt_buffer, cmd)
   local picker = actions_state.get_current_picker(prompt_buffer)
@@ -34,11 +33,6 @@ local config = {
         height = 0.4,
       },
     },
-    file_browser = {
-      prompt_prefix = "   ",
-      hidden = true,
-      initial_mode = "normal",
-    },
     find_files = {
       no_ignore = true,
       hidden = true,
@@ -52,7 +46,7 @@ local config = {
             vim.ui.input({ prompt = "glob patterns(comma sep): " }, function(input)
               if not input then return end
               require("telescope.builtin").find_files({
-                file_ignore_patterns = vim.split(vim.trim(input), ",", { plain = true })
+                file_ignore_patterns = vim.split(vim.trim(input), ",", { plain = true }),
               })
             end)
           end,
@@ -158,6 +152,13 @@ local config = {
     },
   },
   defaults = {
+    preview = {
+      treesitter = {
+        disable = {
+          "lua",
+        },
+      },
+    },
     file_ignore_patterns = {
       "steam",
       ".git",

@@ -17,7 +17,7 @@ tree.setup({
     "json",
     "todotxt",
     "c",
-    "help",
+    "vimdoc",
     "rust",
     "awk",
     "jq",

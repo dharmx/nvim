@@ -1,7 +1,6 @@
 -- stylua: ignore start
 local util = require("dharmx.util").nvim
 local cmd = util.cmd
-local abbrev = util.abbreviation.create
 
 cmd("Q", function()
   if vim.bo.filetype == "" then vim.cmd("confirm quit") end
@@ -16,6 +15,22 @@ cmd("Q", function()
   end
   vim.cmd("confirm bdelete")
 end, "Smart quit.")
+
+cmd("PickColor", function()
+  local Task = require("plenary.job")
+  Task:new({
+    "xcolor",
+    on_exit = vim.schedule_wrap(function(self, code, _)
+      if code ~= 0 then
+        vim.notify("Could not run xcolor.")
+        return
+      end
+      local result = self:result()
+      vim.notify("Copied " .. result[1] .. " into +.")
+      vim.fn.setreg("+", result)
+    end)
+  }):start()
+end, "Pick a color and copy it into +register.")
 
 cmd("Paste", function(args)
   local curl = require("plenary.curl")

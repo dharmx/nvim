@@ -7,6 +7,11 @@ return {
     keys = { mode = "n", { "<C-a>", "<C-x>", "<C-a>", "<C-x>" } }
   },
   {
+    "max397574/better-escape.nvim",
+    config = function() req("escape") end,
+    event = { "CmdlineEnter", "InsertEnter", "CursorHold", "CursorMoved" },
+  },
+  {
     "johmsalas/text-case.nvim",
   },
   {
@@ -24,6 +29,7 @@ return {
   {
     "NvChad/nvim-colorizer.lua",
     cmd = "ColorizerToggle",
+    config = true,
   },
   {
     "AndrewRadev/linediff.vim",
@@ -141,14 +147,13 @@ return {
     ft = "markdown",
   },
   {
-    "hinell/move.nvim",
-    config = function() req("move") end,
-    cmd = {
-      "MoveLine",
-      "MoveBlock",
-      "MoveHChar",
-      "MoveHBlock",
-    },
+    "matze/vim-move",
+    init = function()
+      -- vim.g.move_map_keys = 0
+      vim.g.move_key_modifier = "M"
+      vim.g.move_key_modifier_visualmode = "M"
+    end,
+    event = { "CursorHold", "CursorMoved", "InsertEnter", "CmdlineEnter" },
   },
   {
     "tpope/vim-repeat",

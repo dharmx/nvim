@@ -7,7 +7,7 @@ nmap("<C-S>", "<CMD>update<CR>", "Write changes only if the buffer is modified."
 nmap("<leader>Y", [["+Y]], "Copy a line with to system clipboard.")
 nvmap("<leader>y", [["+y]], "Copy a line without the newline to system clipboard.")
 
-nmap("<leader>xx", "<CMD>TrackPick views<CR>", { desc = "Show/Hide trackmenu.", silent = true })
+nmap("<leader>xx", "<CMD>Telescope track views<CR>", { desc = "Show/Hide trackmenu.", silent = true })
 nmap("<leader>xm", "<CMD>TrackMark<CR>", { desc = "Add file to tracklist.", silent = true })
 nmap("<leader>xu", "<CMD>TrackUnmark<CR>", { desc = "Remove file from tracklist.", silent = true })
 nmap("<leader>bb", "<CMD>Telescope buffers<CR>", "Telescope find buffers.")
@@ -16,10 +16,6 @@ nmap("<leader>ii", "<CMD>lua require'telescope'.extensions.media.media()<CR>", "
 nmap("<leader>q", "<CMD>lua require'dharmx.util'.close()<CR>", "Delete buffer.")
 nmap("<leader>]", "<CMD>bnext<CR>", "Goto next buffer.")
 nmap("<leader>[", "<CMD>bprev<CR>", "Goto prev buffer.")
-
-nmap("<leader>pp", "<CMD>Lazy<CR>", "List all plugins.")
-nmap("<C-k>", "<CMD>cnext<CR>zz", "Display next error.")
-nmap("<C-j>", "<CMD>cprev<CR>zz", "Display previous error.")
 
 nmap("<leader>ff", "<CMD>Telescope find_files<CR>", "Telescope find files.")
 nmap("<leader>fg", "<CMD>Telescope live_grep<CR>", "Telescope looks for strings in a file.")

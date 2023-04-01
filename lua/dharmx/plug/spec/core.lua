@@ -14,6 +14,7 @@ return {
     config = function() req("colo") end,
     branch = "dev",
     dev = true,
-    lazy = false,
+    lazy = true,
+    event = { "CursorHold", "CursorMoved", "InsertEnter", "CmdlineEnter" },
   },
 }
