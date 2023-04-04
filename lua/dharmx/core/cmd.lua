@@ -1,6 +1,7 @@
 -- stylua: ignore start
 local util = require("dharmx.util").nvim
 local cmd = util.cmd
+require("scratch.permalink").commands()
 
 cmd("Q", function()
   if vim.bo.filetype == "" then vim.cmd("confirm quit") end

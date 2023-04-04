@@ -170,23 +170,6 @@ return {
     event = { "CursorHold", "CursorMoved", "InsertEnter", "CmdlineEnter" },
   },
   {
-    "nvim-tree/nvim-tree.lua",
-    config = function() req("nvimtree") end,
-    cmd = {
-      "NvimTreeOpen",
-      "NvimTreeClose",
-      "NvimTreeFocus",
-      "NvimTreeResize",
-      "NvimTreeToggle",
-      "NvimTreeRefresh",
-      "NvimTreeCollapse",
-      "NvimTreeFindFile",
-      "NvimTreeClipboard",
-      "NvimTreeFindFileToggle",
-      "NvimTreeCollapseKeepBuffers",
-    },
-  },
-  {
     "mbbill/undotree",
     config = function() req("undotree") end,
     cmd = "UndotreeToggle",

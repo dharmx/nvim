@@ -3,8 +3,7 @@
     "library": {
       "enabled": true,
       "plugins": [
-        "formatter.nvim",
-        "dial.nvim"
+        "plenary.nvim"
       ]
     }
   },

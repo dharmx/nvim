@@ -76,6 +76,14 @@ local config = {
         ["i"] = {
           ["<C-K>"] = actions.preview_scrolling_up,
           ["<C-J>"] = actions.preview_scrolling_down,
+          ["<C-S>"] = function(prompt_buffer)
+            local current_picker = actions_state.get_current_picker(prompt_buffer)
+            local previewers = current_picker.all_previewers
+            local current_previewer_index = current_picker.current_previewer_index
+            local current_previewer = previewers[current_previewer_index]
+            local previewer_buffer = current_previewer.state.bufnr
+            vim.api.nvim_buf_set_option(previewer_buffer, "filetype", "")
+          end,
         },
         ["n"] = {
           ["v"] = function(prompt_buffer) vmultiple(prompt_buffer, "vsplit") end,

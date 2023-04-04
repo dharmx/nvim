@@ -1,11 +1,11 @@
 local util = require("dharmx.util").map
 local nmap = util.nmap
 local inmap = util.inmap
-local nvmap = util.nvmap
+local vnmap = util.nvmap
 
 nmap("<C-S>", "<CMD>update<CR>", "Write changes only if the buffer is modified.")
 nmap("<leader>Y", [["+Y]], "Copy a line with to system clipboard.")
-nvmap("<leader>y", [["+y]], "Copy a line without the newline to system clipboard.")
+vnmap("<leader>y", [["+y]], "Copy a line without the newline to system clipboard.")
 
 nmap("<leader>xx", "<CMD>Telescope track views<CR>", { desc = "Show/Hide trackmenu.", silent = true })
 nmap("<leader>xm", "<CMD>TrackMark<CR>", { desc = "Add file to tracklist.", silent = true })

@@ -7,7 +7,7 @@ truezen.setup({
       options = {
         statusline = "%{%v:lua.require'feline'.generate_statusline()%}",
         cmdheight = 0,
-        laststatus = 3,
+        laststatus = 0,
       },
     },
   },
