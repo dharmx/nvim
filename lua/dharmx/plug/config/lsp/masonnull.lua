@@ -17,12 +17,7 @@ mason_null.setup({
     "shellharden",
     "gitlint",
     "shfmt",
-    -- "prettierd",
-    -- "codespell",
-    -- "proselint",
   },
   automatic_installation = true,
   automatic_setup = true,
 })
-
-mason_null.setup_handlers()

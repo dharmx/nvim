@@ -9,12 +9,11 @@ return {
     event = { "CursorHold", "CursorMoved", "InsertEnter", "CmdlineEnter" },
   },
   {
-    "dharmx/nvim-colo",
+    "dharmx/colo.nvim",
     dependencies = { "b0o/incline.nvim" },
     config = function() req("colo") end,
     branch = "dev",
     dev = true,
-    lazy = true,
-    event = { "CursorHold", "CursorMoved", "InsertEnter", "CmdlineEnter" },
+    lazy = false,
   },
 }

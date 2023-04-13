@@ -65,13 +65,16 @@ function M.setup(options)
 end
 
 function M.load_telescope(options)
+  local _ui, ui = pcall(require, "jdtls.ui")
+  if not _ui then return end
   options = vim.F.if_nil(options, {})
+
   local finders = require("telescope.finders")
   local sorters = require("telescope.sorters")
   local actions = require("telescope.actions")
   local pickers = require("telescope.pickers")
 
-  require("jdtls.ui").pick_one_async = function(items, prompt, label, callback)
+  ui.pick_one_async = function(items, prompt, label, callback)
     pickers.new(options, {
       prompt_title = prompt,
       finder = finders.new_table({

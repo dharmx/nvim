@@ -3,6 +3,8 @@ vim.cmd.colorscheme("fallback")
 require("dharmx.core").setup()
 require("dharmx.plug").setup({
   "lukas-reineke/virt-column.nvim",
+  "ggandor/leap.nvim",
+  "ggandor/flit.nvim",
   "akinsho/bufferline.nvim",
   "goolord/alpha-nvim",
   "doums/monark.nvim",

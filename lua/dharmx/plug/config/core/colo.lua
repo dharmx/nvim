@@ -9,8 +9,8 @@ colo.setup({
       "colo.groups",
       { "colo.extensions.feline", import = true },
       { "dharmx.plug.config.ui.feline", import = true },
-      { "dharmx.plug.config.ui.bufferline", import = true },
-      { "dharmx.plug.config.ui.alpha", import = true },
+      -- { "dharmx.plug.config.ui.bufferline", import = true },
+      -- { "dharmx.plug.config.ui.alpha", import = true },
     },
   },
 })

@@ -1,11 +1,12 @@
----@diagnostic disable: unused-local
+local _mason, mason = pcall(require, "mason-lspconfig")
+if not _mason then return end
+
 local _lsp, lsp = pcall(require, "lspconfig")
 if not _lsp then return end
 
+-- {{{
 local _navic, navic = pcall(require, "nvim-navic")
 local _cmp, cmp = pcall(require, "cmp_nvim_lsp")
-
-local servers = require("dharmx.util").servers
 local kind = require("dharmx.util").kind
 
 local autocmd = require("dharmx.plug.config.lsp.presets.autocmd")
@@ -54,7 +55,7 @@ local function capabilities(name)
   capability.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
 
   if name == "clangd" then capability.offsetEncoding = "utf-8" end
-  if _cmp then cmp.default_capabilities() end
+  if _cmp then capability = cmp.default_capabilities() end
   return capability
 end
 
@@ -88,26 +89,32 @@ local function configure(name)
 end
 
 require("dharmx.plug.config.lsp.neoconf")
-if vim.bo.filetype == "lua" then require("dharmx.plug.config.lsp.neodev") end
+require("dharmx.plug.config.lsp.neodev")
+-- }}}
 
-for _, name in ipairs(servers) do
-  local server = lsp[name]
-  if vim.bo.filetype == "rust" and name == "rust_analyzer" then
-    local root_dir = require("lspconfig.util").root_pattern({ "Cargo.toml", "rust-project.json" }) or vim.loop.cwd()
-    local _rust, rust = pcall(require, "rust-tools")
-    if _rust then
-      rust.setup({
-        server = vim.tbl_deep_extend("keep", { root_dir = root_dir }, configure(name)),
-        tools = { hover_actions = { border = "solid" } },
-      })
-    else
-      server.setup({ root_dir = root_dir })
-    end
-  elseif vim.bo.filetype == "java" and name == "jdtls" then
+local ignore = { "rust_analyzer", "jdtls" }
+mason.setup_handlers({
+  function(name)
+    if vim.tbl_contains(ignore, name) then return end
+    lsp[name].setup(configure(name))
+  end,
+  jdtls = function()
+    if vim.bo.filetype ~= "java" then return end
     local jdtls = require("dharmx.plug.config.lsp.presets.jdtls")
-    jdtls.setup(configure(name))
+    jdtls.setup(configure("jdtls"))
     jdtls.load_telescope()
-  else
-    server.setup(configure(name))
-  end
-end
+  end,
+  rust_analyzer = function()
+    if vim.bo.filetype ~= "rust" then return end
+    local root_dir = require("lspconfig.util").root_pattern({ "Cargo.toml", "rust-project.json" }) or vim.loop.cwd()
+    local _rust_tools, rust_tools = pcall(require, "rust-tools")
+    if not _rust_tools then
+      lsp.rust_analyzer.setup({ root_dir = root_dir })
+      return
+    end
+    rust_tools.setup({
+      server = vim.tbl_deep_extend("keep", { root_dir = root_dir }, configure("rust_analyzer")),
+      tools = { hover_actions = { border = "solid" } },
+    })
+  end,
+})

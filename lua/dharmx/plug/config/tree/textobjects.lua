@@ -15,8 +15,8 @@ tree.setup({
     },
     swap = {
       enable = true,
-      swap_next = { ["<leader>a"] = "@parameter.inner" },
-      swap_previous = { ["<leader>A"] = "@parameter.inner" },
+      swap_next = { [";a"] = "@parameter.inner" },
+      swap_previous = { [";A"] = "@parameter.inner" },
     },
     move = {
       enable = true,
@@ -42,8 +42,8 @@ tree.setup({
       enable = true,
       border = "solid",
       peek_definition_code = {
-        ["<leader>df"] = "@function.outer",
-        ["<leader>dF"] = "@class.outer",
+        [";df"] = "@function.outer",
+        [";dF"] = "@class.outer",
       },
     },
   },

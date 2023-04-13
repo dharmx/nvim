@@ -8,24 +8,29 @@ mason_dap.setup({
   automatic_setup = true,
 })
 
-mason_dap.setup_handlers({
-  function(source_name) require("mason-nvim-dap.automatic_setup")(source_name) end,
-  python = function()
-    dap.adapters.python = {
-      type = "executable",
-      command = "/usr/bin/python3",
-      args = {
-        "-m",
-        "debugpy.adapter",
-      },
-    }
-    dap.configurations.python = {
-      {
-        type = "python",
-        request = "launch",
-        name = "Launch file",
-        program = "${file}",
-      },
-    }
-  end,
+mason_dap.setup({
+  handlers = {
+    function(source_name)
+      local auto_setup = require("mason-nvim-dap.automatic_setup")
+      auto_setup(source_name)
+    end,
+    python = function()
+      dap.adapters.python = {
+        type = "executable",
+        command = "/usr/bin/python3",
+        args = {
+          "-m",
+          "debugpy.adapter",
+        },
+      }
+      dap.configurations.python = {
+        {
+          type = "python",
+          request = "launch",
+          name = "Launch file",
+          program = "${file}",
+        },
+      }
+    end,
+  }
 })
