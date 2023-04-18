@@ -10,7 +10,15 @@ return {
   {
     "dharmx/track.nvim",
     config = function() req("track") end,
-    cmd = { "Track", "TrackPick", "TrackMark", "TrackBundleAlternate", "TrackUnmark", "TrackStashBundle", "TrackRestoreBundle" },
+    cmd = {
+      "Track",
+      "TrackPick",
+      "TrackMark",
+      "TrackBundleAlternate",
+      "TrackUnmark",
+      "TrackStashBundle",
+      "TrackRestoreBundle",
+    },
     dev = true,
   },
   {

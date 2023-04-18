@@ -35,7 +35,6 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "williamboman/mason-lspconfig.nvim" },
     config = function() req("init") end,
     cmd = "LspStart",
   },
@@ -61,7 +60,10 @@ return {
   {
     "jose-elias-alvarez/null-ls.nvim",
     config = function() req("null") end,
-    dependencies = { "WhoIsSethDaniel/mason-tool-installer.nvim", "jayp0521/mason-null-ls.nvim" },
+    dependencies = {
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      "jayp0521/mason-null-ls.nvim"
+    },
     event = "LspAttach",
   },
   {

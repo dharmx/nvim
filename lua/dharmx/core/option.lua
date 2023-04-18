@@ -25,7 +25,7 @@ vim.opt.foldcolumn = "auto"
 vim.opt.foldmethod = "marker"
 vim.opt.ignorecase = false
 vim.opt.smartcase = true
-vim.opt.mouse = "a"
+vim.opt.mouse = "nv"
 vim.opt.undolevels = 10000
 vim.opt.number = true
 vim.opt.numberwidth = 1
@@ -64,6 +64,11 @@ vim.opt.magic = true
 vim.opt.icon = true
 vim.opt.omnifunc = "syntaxcomplete#Complete"
 vim.opt.background = "dark"
+vim.opt.iskeyword = "@,48-57,_,192-255"
+vim.opt.whichwrap:append("<>[]hl")
+vim.opt.shortmess:append("sI")
+vim.opt.diffopt:append("algorithm:patience")
+vim.opt.formatoptions:remove({ "c", "r", "o" })
 vim.opt.fillchars = {
   eob = " ",
   stlnc = " ",
@@ -81,9 +86,3 @@ vim.opt.fillchars = {
   verthoriz = "╋",
   fold = "─",
 }
-
-vim.opt.iskeyword = "@,48-57,_,192-255"
-vim.opt.whichwrap:append("<>[]hl")
-vim.opt.shortmess:append("sI")
-vim.opt.diffopt:append("algorithm:patience")
-vim.opt.formatoptions:remove({ "c", "r", "o" })
