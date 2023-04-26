@@ -21,7 +21,20 @@ nmap("<leader>ff", "<CMD>Telescope find_files<CR>", "Telescope find files.")
 nmap("<leader>fg", "<CMD>Telescope live_grep<CR>", "Telescope looks for strings in a file.")
 nmap("<leader>gc", "<CMD>Telescope git_commits<CR>", "Telescope find git commits.")
 
-nmap("<C-N>", "<CMD>RnvimrToggle<CR>", "Open RNVIMR file manager.")
+nmap("<C-N>", function()
+  local oil = require("oil")
+  if vim.bo.filetype == "oil" then
+    oil.close()
+    vim.cmd.quit()
+    return
+  end
+
+  local old_value = vim.opt.splitright:get()
+  if old_value then vim.opt.splitright = false end
+  vim.cmd(":30vsplit")
+  oil.open()
+  vim.opt.splitright = old_value
+end, "Open Oil file manager.")
 nmap("<leader>uu", "<CMD>UndotreeToggle<CR>", "Track undo items.")
 
 inmap("<F2>", "<CMD>set spell!<CR>", "Toggle spellchecker.")

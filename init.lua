@@ -2,12 +2,12 @@ vim.cmd.colorscheme("fallback")
 
 require("dharmx.core").setup()
 require("dharmx.plug").setup({
+  "rafcamlet/nvim-luapad",
   "karb94/neoscroll.nvim",
   "vijaymarupudi/nvim-fzf",
   "Wansmer/treesj",
   "ckolkey/ts-node-action",
   "chrisgrieser/nvim-various-textobjs",
-  "rafcamlet/nvim-luapad",
   "petertriho/nvim-scrollbar",
   "lukas-reineke/virt-column.nvim",
   "ggandor/leap.nvim",
@@ -18,6 +18,8 @@ require("dharmx.plug").setup({
   "mbbill/undotree",
   "akinsho/bufferline.nvim",
   "danymat/neogen",
+  "anuvyklack/pretty-fold.nvim",
+  "kevinhwang91/rnvimr",
   "kevinhwang91/nvim-hlslens",
   "goolord/alpha-nvim",
   "doums/monark.nvim",

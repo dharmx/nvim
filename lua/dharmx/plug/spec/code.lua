@@ -55,6 +55,11 @@ return {
     lazy = false,
   },
   {
+    "stevearc/oil.nvim",
+    config = function() req("oil") end,
+    lazy = false,
+  },
+  {
     "stevearc/overseer.nvim",
     config = function() req("overseer") end,
   },
