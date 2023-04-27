@@ -47,10 +47,6 @@ return {
     event = { "CursorMoved", "CursorHold", "InsertEnter", "CmdlineEnter" },
   },
   {
-    "yamatsum/nvim-cursorline",
-    config = function() req("cursorline") end,
-  },
-  {
     "anuvyklack/pretty-fold.nvim",
     config = function() req("fold") end,
     keys = { "zf", "zd", "za" },
@@ -66,17 +62,8 @@ return {
     event = { "CursorMoved", "CursorHold", "InsertEnter" },
   },
   {
-    "echasnovski/mini.indentscope",
-    config = function() req("indentscope") end,
-  },
-  {
     "RRethy/vim-illuminate",
     config = function() req("illuminate") end,
     event = { "InsertEnter", "CursorMoved" },
-  },
-  {
-    "gorbit99/codewindow.nvim",
-    config = function() req("codewindow") end,
-    event = "LspAttach",
   },
 }

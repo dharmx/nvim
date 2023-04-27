@@ -15,11 +15,6 @@ return {
     event = "InsertCharPre",
   },
   {
-    "hrsh7th/cmp-nvim-lua",
-    ft = "lua",
-    event = "InsertCharPre",
-  },
-  {
     "hrsh7th/nvim-cmp",
     config = function() req("init") end,
     event = { "InsertEnter", "CmdlineEnter" },

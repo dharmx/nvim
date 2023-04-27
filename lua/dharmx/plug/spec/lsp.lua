@@ -39,11 +39,6 @@ return {
     cmd = "LspStart",
   },
   {
-    "simrat39/symbols-outline.nvim",
-    init = function() req("outline") end,
-    event = "LspAttach",
-  },
-  {
     "j-hui/fidget.nvim",
     config = function() req("fidget") end,
     event = "LspAttach",

@@ -4,4 +4,4 @@ vim.keymap.set("n", "q", vim.cmd.quit, {
 })
 
 vim.opt_local.number = true
-vim.opt_local.winhighlight = "Normal:NvimTreeNormal,VertSplit:NvimTreeVertSplit"
+vim.opt_local.winhighlight = "Normal:NvimTreeNormal,VertSplit:NvimTreeVertSplit,WinBar:NvimTreeNormal,WinBarNC:NvimTreeNormal,LineNr:NvimTreeVertSplit"

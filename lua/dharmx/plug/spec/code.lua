@@ -55,38 +55,6 @@ return {
     lazy = false,
   },
   {
-    "stevearc/oil.nvim",
-    config = function() req("oil") end,
-    lazy = false,
-  },
-  {
-    "stevearc/overseer.nvim",
-    config = function() req("overseer") end,
-  },
-  {
-    "stevearc/resession.nvim",
-    config = function() req("resession") end,
-  },
-  {
-    "stevearc/aerial.nvim",
-    config = function() req("aerial") end,
-    cmd = {
-      "AerialToggle",
-      "AerialOpen",
-      "AerialOpenAll",
-      "AerialClose",
-      "AerialCloseAll",
-      "AerialNext",
-      "AerialPrev",
-      "AerialGo",
-      "AerialInfo",
-    },
-  },
-  {
-    "ThePrimeagen/refactoring.nvim",
-    config = function() req("refactoring") end,
-  },
-  {
     "sindrets/diffview.nvim",
     config = function() req("diffview") end,
     event = "CmdlineEnter",
@@ -103,17 +71,8 @@ return {
     keys = { "n", "N" },
   },
   {
-    "dnlhc/glance.nvim",
-    config = function() req("glance") end,
-    event = "LspAttach",
-  },
-  {
     "Fymyte/rasi.vim",
     ft = "rasi",
-  },
-  {
-    "elkowar/yuck.vim",
-    ft = "yuck",
   },
   {
     "kovetskiy/sxhkd-vim",
@@ -165,16 +124,6 @@ return {
     event = { "CursorHold", "CursorMoved", "InsertEnter", "CmdlineEnter" },
   },
   {
-    "ggandor/leap.nvim",
-    config = function() req("leap") end,
-    event = { "CursorHold", "CursorMoved", "InsertEnter", "CmdlineEnter" },
-  },
-  {
-    "ggandor/flit.nvim",
-    config = function() req("flit") end,
-    event = { "CursorHold", "CursorMoved", "InsertEnter", "CmdlineEnter" },
-  },
-  {
     "mbbill/undotree",
     config = function() req("undotree") end,
     cmd = "UndotreeToggle",
@@ -184,10 +133,5 @@ return {
     build = "deno task --quiet build:fast",
     config = function() req("peek") end,
     ft = "markdown",
-  },
-  {
-    "chentoast/marks.nvim",
-    config = function() req("marks") end,
-    event = { "CursorHold", "CursorMoved" },
   },
 }
