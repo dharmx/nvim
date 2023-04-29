@@ -2,6 +2,7 @@ vim.cmd.colorscheme("fallback")
 
 require("dharmx.core").setup()
 require("dharmx.plug").setup({
+  "mfussenegger/nvim-jdtls",
   "hrsh7th/cmp-nvim-lsp-document-symbol",
   "rafcamlet/nvim-luapad",
   "karb94/neoscroll.nvim",
@@ -24,7 +25,6 @@ require("dharmx.plug").setup({
   "b0o/schemastore.nvim",
   "kosayoda/nvim-lightbulb",
   "simrat39/rust-tools.nvim",
-  "mfussenegger/nvim-jdtls",
   "Fymyte/rasi.vim",
   "folke/trouble.nvim",
   "yamatsum/nvim-cursorline",

@@ -21,6 +21,8 @@ local function on_attach(client, buffer)
   vim.lsp.protocol.CompletionItemKind = kind
   if client.config.flags then client.config.flags.allow_incremental_sync = true end
   if _navic and client.server_capabilities.documentSymbolProvider then navic.attach(client, buffer) end
+  -- TODO: Remove after colo.nvim rewrite.
+  client.server_capabilities.semanticTokensProvider = false
 end
 
 local function capabilities(name)
