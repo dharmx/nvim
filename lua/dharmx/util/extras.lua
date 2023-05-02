@@ -1,23 +1,6 @@
--- stylua: ignore start
-local util = require("dharmx.util").nvim
-local cmd = util.cmd
-require("scratch.permalink").commands()
+local M = {}
 
-cmd("Q", function()
-  if vim.bo.filetype == "" then vim.cmd("confirm quit") end
-  local buffers = vim.fn.getbufinfo({ buflisted = 1 })
-  if #buffers < 2 then
-    if vim.bo.filetype ~= "alpha" and #buffers[1].windows == 1 then
-      vim.cmd("confirm bdelete | Alpha")
-    elseif vim.bo.filetype == "alpha" then
-      vim.cmd("confirm quit")
-    else vim.api.nvim_win_close(buffers[1].windows[1], true) end
-    return
-  end
-  vim.cmd("confirm bdelete")
-end, "Smart quit.")
-
-cmd("PickColor", function()
+function M.pick_colors()
   local Task = require("plenary.job")
   Task:new({
     "xcolor",
@@ -31,9 +14,9 @@ cmd("PickColor", function()
       vim.fn.setreg("+", result)
     end)
   }):start()
-end, "Pick a color and copy it into +register.")
+end
 
-cmd("Paste", function(args)
+function M.paste(args)
   local curl = require("plenary.curl")
   local Path = require("plenary.path")
   args.line1 = (args.range == 2 and args.line1 or 1) - 1
@@ -59,13 +42,14 @@ cmd("Paste", function(args)
       end)
     end,
   })
-end, { desc = "Create a new pastebin link. Powered by 0x0.st.", range = true })
+end
 
-cmd("SyntaxIDUnderCursor", ":echo synIDattr(synID(line('.'), col('.'), 1), 'name')", "synIDattr under cursor.")
-cmd("LineWidthColumn", function()
+function M.column()
   if vim.wo.colorcolumn == "0" then
     vim.wo.colorcolumn = vim.bo.textwidth .. ""
     return
   end
   vim.wo.colorcolumn = "0"
-end, "Virtual column for measuring text line length.")
+end
+
+return M

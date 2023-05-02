@@ -39,7 +39,7 @@ local function capabilities(name)
     { properties = { "documentation", "detail", "additionalTextEdits" } }
   capability.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
 
-  if name == "clangd" then capability.offsetEncoding = "utf-8" end
+  if name == "clangd" then capability.offsetEncoding = "UTF-8" end
   if _cmp then capability = cmp.default_capabilities() end
   return capability
 end
@@ -63,7 +63,7 @@ local function merge(name)
         { border = "solid", focusable = true }
       ),
       ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = { prefix = "● ", spacing = 1 },
+        virtual_text = false,
         signs = true,
         underline = true,
         update_in_insert = false,
@@ -72,6 +72,15 @@ local function merge(name)
     },
   }, custom_options)
 end
+
+vim.diagnostic.config({
+  virtual_text = { prefix = " ", source = "always" },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+  float = { source = "always", border = "solid" },
+})
 
 require("dharmx.plug.config.lsp.neoconf")
 require("dharmx.plug.config.lsp.neodev")

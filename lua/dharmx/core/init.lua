@@ -14,7 +14,7 @@ return {
   setup = function(items)
     items = vim.tbl_flatten({ "init.lua", items })
     local config = vim.fn.stdpath("config") .. "/lua/dharmx/core"
-    local on_entry = function(file) require("dharmx.core." .. vim.fn.fnamemodify(file, ":r")) end
+    local function on_entry(file) vim.cmd.source(config .. "/" .. file) end
     util.exclude(items, config, on_entry)
   end,
 }
