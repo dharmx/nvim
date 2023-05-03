@@ -1,4 +1,4 @@
-local util = require("dharmx.util").nvim
+local util = require("dharmx.utils.nvim")
 
 util.cmd("PeekOpen", function() require("peek").open() end, "Open peek window.")
 util.cmd("PeekClose", function() require("peek").close() end, "Close peek window.")

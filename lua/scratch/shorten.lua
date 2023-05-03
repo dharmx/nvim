@@ -1,7 +1,7 @@
 ---@diagnostic disable: param-type-mismatch
 local M = {}
 
-local util = require("dharmx.util").nvim
+local util = require("dharmx.utils.nvim")
 local curl = require("plenary.curl")
 local ts_utils = require("nvim-treesitter.ts_utils")
 

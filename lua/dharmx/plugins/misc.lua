@@ -1,0 +1,32 @@
+local function req(file) require("dharmx.configs.misc." .. file) end
+
+return {
+  {
+    "rktjmp/paperplanes.nvim",
+    opts = {
+      register = "+",
+      provider = "dpaste.org",
+      notifier = vim.notify
+    },
+    cmd = "PP",
+  },
+  {
+    "wakatime/vim-wakatime",
+    event = "InsertCharPre",
+  },
+  {
+    "karb94/neoscroll.nvim",
+    keys = { "zz", "zt", "zh", "zH", "zl", "zL", "z.", "zs", "ze" },
+    config = function() req("neoscroll") end,
+  },
+  {
+    "andweeb/presence.nvim",
+    event = "InsertEnter",
+    config = function() req("presence") end,
+  },
+  {
+    "rafcamlet/nvim-luapad",
+    ft = "lua",
+    cmd = { "Luapad", "LuaRun" },
+  },
+}

@@ -1,0 +1,72 @@
+local function req(file) require("dharmx.configs.tree." .. file) end
+
+return {
+  {
+    "nvim-treesitter/nvim-treesitter",
+    config = function() req("init") end,
+    build = ":TSUpdate",
+    event = { "BufWinEnter" },
+  },
+  {
+    "romgrk/nvim-treesitter-context",
+    config = function() req("context") end,
+    event = { "CursorHold", "CursorMoved", "InsertEnter" },
+  },
+  {
+    "chrisgrieser/nvim-various-textobjs",
+    opts = { useDefaultKeymaps = true },
+    event = { "CursorMoved", "CursorHold" },
+  },
+  {
+    "andymass/vim-matchup",
+    config = function() req("matchup") end,
+    event = { "CursorHold", "CursorMoved", "InsertEnter" },
+  },
+  {
+    "nvim-treesitter/nvim-tree-docs",
+    config = function() req("docs") end,
+    event = { "CursorHold", "CursorMoved", "InsertEnter" },
+  },
+  {
+    "mrjones2014/nvim-ts-rainbow",
+    config = function() req("rainbow") end,
+    event = { "CursorHold", "CursorMoved", "InsertEnter" },
+  },
+  {
+    "RRethy/nvim-treesitter-textsubjects",
+    config = function() req("textsubjects") end,
+    keys = { { mode = "v", "." }, { mode = "v", ";" } },
+  },
+  {
+    "ckolkey/ts-node-action",
+    config = true,
+    event = { "CursorHold", "CursorMoved", "InsertEnter" },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    config = function() req("textobjects") end,
+    event = { "CursorHold", "CursorMoved", "InsertEnter" },
+  },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    config = function() req("dapvirtual") end,
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    event = "LspAttach",
+  },
+  {
+    "danymat/neogen",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = true,
+    cmd = "Neogen",
+  },
+  {
+    "nvim-treesitter/playground",
+    config = function() req("playground") end,
+    cmd = "TSPlaygroundToggle",
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    config = function() req("autotag") end,
+    ft = { "html", "markdown" },
+  },
+}
