@@ -1,3 +1,8 @@
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+
 nmap <leader>Y "+Y
 nmap <leader>y "+y
 vnoremap <leader>y "+y

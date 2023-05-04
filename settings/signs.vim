@@ -11,4 +11,4 @@ sign define DapBreakpointCondition   text=  texthl=ErrorMsg                 l
 sign define DapBreakpointRejected    text=  texthl=ErrorMsg                 linehl=ErrorMsg numhl=ErrorMsg
 sign define DapStopped               text=  texthl=ErrorMsg                 linehl=ErrorMsg numhl=ErrorMsg
 
-sign define LightBulbSign            text=  texthl=LspDiagnosticsSignHint   linehl=LspDiagnosticsSignHint   numhl=LspDiagnosticsSignHint
+sign define LightBulbSign            text=  texthl=LspDiagnosticsSignHint   numhl=LspDiagnosticsSignHint

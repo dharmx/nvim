@@ -25,14 +25,6 @@ return {
     event = "InsertCharPre",
   },
   {
-    "hrsh7th/cmp-nvim-lsp-document-symbol",
-    event = "LspAttach",
-  },
-  {
-    "hrsh7th/cmp-nvim-lsp-signature-help",
-    event = "LspAttach",
-  },
-  {
     "hrsh7th/cmp-cmdline",
     event = "CmdlineEnter",
   },

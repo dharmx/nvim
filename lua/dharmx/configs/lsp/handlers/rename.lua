@@ -27,7 +27,7 @@ local function nui_lsp_rename()
       local client = vim.lsp.get_client_by_id(context.client_id)
       vim.lsp.util.apply_workspace_edit(result, client.offset_encoding)
 
-      local total_files = vim.tbl_count(result.changes)
+      local total_files = vim.tbl_count(vim.F.if_nil(result.changes, {}))
       print(string.format("Changed %s file%s. To save them run ':wa'", total_files, total_files > 1 and "s" or ""))
       vim.api.nvim_notify("Renamed " .. current_name .. " into " .. new_name .. ".", vim.log.levels.INFO, {
         icon = "",

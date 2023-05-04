@@ -1,5 +1,3 @@
-local function req(file) require("dharmx.configs.core." .. file) end
-
 return {
   {
     "folke/lazy.nvim",
@@ -14,6 +12,8 @@ return {
         items = {
           "colo.groups",
           { "colo.extensions.feline", import = true },
+          { "dharmx.configs.interface.incline", import = true },
+          { "dharmx.configs.interface.bufferline", import = true },
           { "dharmx.configs.interface.feline", import = true },
         },
       },

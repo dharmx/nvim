@@ -11,5 +11,3 @@ Startuptime: 21.36ms
     LazyDone  18.79ms (+8.02ms)
     UIEnter   21.36ms (+2.57ms)
 ```
-
-<!--vim:filetype=markdown-->
