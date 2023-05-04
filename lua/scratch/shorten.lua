@@ -26,7 +26,7 @@ function M.line()
 end
 
 function M.dialog()
-  util.input({ size = 50 }, {
+  util.popup({ size = 50 }, {
     prompt = "   ",
     default_value = "URL",
     on_submit = function(entry)

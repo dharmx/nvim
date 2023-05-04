@@ -4,7 +4,7 @@ return {
   {
     "monaqa/dial.nvim",
     config = function() req("dial") end,
-    keys = { mode = "n", { "<C-a>", "<C-x>", "<C-a>", "<C-x>" } }
+    keys = { mode = "n", { "<C-a>", "<C-x>", "<C-a>", "<C-x>" } },
   },
   {
     "max397574/better-escape.nvim",
@@ -23,8 +23,8 @@ return {
     "tversteeg/registers.nvim",
     config = function() req("registers") end,
     keys = {
-      { "\"",    mode = { "n", "v" } },
-      { "<C-R>", mode = "i" }
+      { '"', mode = { "n", "v" } },
+      { "<C-R>", mode = "i" },
     },
     cmd = "Registers",
   },

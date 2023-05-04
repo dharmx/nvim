@@ -60,4 +60,5 @@ autopairs.setup({
   },
   enable_check_bracket_line = true,
 })
-require("dharmx.configs.cmp.rules")
+
+require("dharmx.configs.completions.rules")

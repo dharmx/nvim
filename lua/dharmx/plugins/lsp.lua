@@ -57,7 +57,7 @@ return {
     config = function() req("null") end,
     dependencies = {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-      "jayp0521/mason-null-ls.nvim"
+      "jayp0521/mason-null-ls.nvim",
     },
     event = "LspAttach",
   },

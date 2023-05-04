@@ -1,6 +1,9 @@
-vmap <leader>y "+y
-nmap <leader>y "+y
 nmap <leader>Y "+Y
+nmap <leader>y "+y
+vnoremap <leader>y "+y
+
+nmap ]q :cnext<CR>
+nmap [q :cprev<CR>
 
 nmap <leader>s :Track<CR>
 nmap <leader>aa :TrackMark<CR>

@@ -1,4 +1,4 @@
-local function req(file) require("dharmx.configs.tree." .. file) end
+local function req(file) require("dharmx.configs.treesitter." .. file) end
 
 return {
   {

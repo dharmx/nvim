@@ -24,7 +24,7 @@ local function exclude_and_load(items)
     if file == "init.lua" then return end
     -- fnamemodify("example.lua") -> "example"
     local mod_path = "dharmx.plugins." .. vim.fn.fnamemodify(file, ":r")
-    table.insert(spec, { import = mod_path  })
+    table.insert(spec, { import = mod_path })
     local chunk = require(mod_path)
 
     for _, plugin in ipairs(chunk) do

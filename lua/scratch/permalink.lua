@@ -50,12 +50,14 @@ function M.fetch_permalink(file, starting, ending, options)
     "browse",
     "--no-browser",
     _create_ranges(file, starting, ending),
-    on_start = wrap(function()
-      A.nvim_notify("Fetching permalink. Please wait... ", vim.log.levels.INFO, {
-        icon = " ",
-        title = "permalink.lua",
-      })
-    end),
+    on_start = wrap(
+      function()
+        A.nvim_notify("Fetching permalink. Please wait... ", vim.log.levels.INFO, {
+          icon = " ",
+          title = "permalink.lua",
+        })
+      end
+    ),
     on_exit = wrap(function(self, code, _)
       local result = self:result()
       if code ~= 0 then
@@ -73,15 +75,17 @@ function M.fetch_permalink(file, starting, ending, options)
           options.browser,
           result[1],
           detached = true,
-          on_start = wrap(function()
-            A.nvim_notify("Opened fetched link in " .. options.browser .. ".", vim.log.levels.INFO, {
-              icon = " ",
-              title = "permalink.lua",
-            })
-          end)
+          on_start = wrap(
+            function()
+              A.nvim_notify("Opened fetched link in " .. options.browser .. ".", vim.log.levels.INFO, {
+                icon = " ",
+                title = "permalink.lua",
+              })
+            end
+          ),
         }):start()
       end
-    end)
+    end),
   }):start()
 end
 

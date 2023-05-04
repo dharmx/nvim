@@ -56,14 +56,20 @@ local config = {
       if cmp.visible() then return cmp.complete_common_string() end
       fallback()
     end, { "i", "c" }),
-    ["<C-Y>"] = cmp.mapping(cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
-    }), { "i", "c" }),
-    ["<M-Y>"] = cmp.mapping(cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = false,
-    }), { "i", "c" }),
+    ["<C-Y>"] = cmp.mapping(
+      cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Insert,
+        select = true,
+      }),
+      { "i", "c" }
+    ),
+    ["<M-Y>"] = cmp.mapping(
+      cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = false,
+      }),
+      { "i", "c" }
+    ),
     ["<C-Space>"] = cmp.mapping({
       i = cmp.mapping.complete(),
       c = function()

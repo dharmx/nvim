@@ -26,5 +26,5 @@ mason_dap.setup({
         },
       }
     end,
-  }
+  },
 })

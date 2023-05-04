@@ -8,9 +8,13 @@ function M.setup(options)
 
   local schema = {
     cmd = {
-      mason_root .. "/bin/jdtls", "-jar", vim.fn.glob(mason_root .. "/packages/jdtls/plugins/*.jar"),
-      "-configuration", mason_root .. "/packages/jdtls/config_linux",
-      "-data", workspace,
+      mason_root .. "/bin/jdtls",
+      "-jar",
+      vim.fn.glob(mason_root .. "/packages/jdtls/plugins/*.jar"),
+      "-configuration",
+      mason_root .. "/packages/jdtls/config_linux",
+      "-data",
+      workspace,
     },
     root_dir = root,
     settings = {
@@ -75,22 +79,24 @@ function M.load_telescope(options)
   local pickers = require("telescope.pickers")
 
   ui.pick_one_async = function(items, prompt, label, callback)
-    pickers.new(options, {
-      prompt_title = prompt,
-      finder = finders.new_table({
-        results = items,
-        entry_maker = function(entry) return { value = entry, display = label(entry), ordinal = label(entry) } end,
-      }),
-      sorter = sorters.get_generic_fuzzy_sorter(),
-      attach_mappings = function(buffer)
-        actions.goto_file_selection_edit:replace(function()
-          local selection = actions.get_selected_entry(buffer)
-          actions.close(buffer)
-          callback(selection.value)
-        end)
-        return true
-      end,
-    }):find()
+    pickers
+      .new(options, {
+        prompt_title = prompt,
+        finder = finders.new_table({
+          results = items,
+          entry_maker = function(entry) return { value = entry, display = label(entry), ordinal = label(entry) } end,
+        }),
+        sorter = sorters.get_generic_fuzzy_sorter(),
+        attach_mappings = function(buffer)
+          actions.goto_file_selection_edit:replace(function()
+            local selection = actions.get_selected_entry(buffer)
+            actions.close(buffer)
+            callback(selection.value)
+          end)
+          return true
+        end,
+      })
+      :find()
   end
 end
 

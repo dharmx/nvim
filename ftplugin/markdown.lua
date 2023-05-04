@@ -18,9 +18,9 @@ if vim.loop.fs_realpath(vim.loop.cwd() .. "/config.toml") then
       command = "hugo",
       args = { "server", "--port", "1313", "--quiet" },
       skip_validation = true,
-      on_start = vim.schedule_wrap(function()
-        vim.api.nvim_notify("Started Hugo.", vim.log.levels.INFO, { title = "Hugo", icon = " " })
-      end),
+      on_start = vim.schedule_wrap(
+        function() vim.api.nvim_notify("Started Hugo.", vim.log.levels.INFO, { title = "Hugo", icon = " " }) end
+      ),
       on_exit = vim.schedule_wrap(function(...)
         local code = select(2, ...)
         local message = "Hugo exited successfully."

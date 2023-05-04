@@ -1,9 +1,7 @@
-local function req(file) require("dharmx.configs.tele." .. file) end
-
 return {
   {
     "nvim-telescope/telescope.nvim",
-    config = function() req("init") end,
+    config = function() require("dharmx.configs.telescope") end,
     dependencies = { "nvim-telescope/telescope-symbols.nvim" },
     cmd = "Telescope",
   },

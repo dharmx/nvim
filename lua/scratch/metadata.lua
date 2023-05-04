@@ -38,9 +38,7 @@ function M.generate(language, params, metadata, on_complete)
   })
 
   language = vim.F.if_nil(language, vim.bo.filetype)
-  if not M._config[language] then
-    assert(params and params.body, "params.[_|body] ~= nil.")
-  end
+  if not M._config[language] then assert(params and params.body, "params.[_|body] ~= nil.") end
   params = vim.F.if_nil(params, M._config[language])
   params.spacing = vim.F.if_nil(params.spacing, "")
 

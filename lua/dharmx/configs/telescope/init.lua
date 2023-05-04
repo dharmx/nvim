@@ -264,13 +264,12 @@ local config = {
 }
 
 config.extensions = {}
-util.exclude({}, vim.fn.stdpath("config") .. "/lua/dharmx/configs/tele/extras", function(file)
+util.exclude({}, vim.fn.stdpath("config") .. "/lua/dharmx/configs/telescope/extensions", function(file)
   local name = vim.fn.fnamemodify(file, ":r")
-  config.extensions[name] = require("dharmx.configs.tele.extras." .. name)
+  config.extensions[name] = require("dharmx.configs.telescope.extensions." .. name)
 end)
 
 tele.setup(config)
-
 require("telescope").load_extension("media")
 require("telescope").load_extension("track")
 require("telescope").load_extension("dap")

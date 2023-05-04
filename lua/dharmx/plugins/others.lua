@@ -1,4 +1,4 @@
-local function req(file) require("dharmx.configs.misc." .. file) end
+local function req(file) require("dharmx.configs.others." .. file) end
 
 return {
   {
@@ -6,7 +6,7 @@ return {
     opts = {
       register = "+",
       provider = "dpaste.org",
-      notifier = vim.notify
+      notifier = vim.notify,
     },
     cmd = "PP",
   },

@@ -1,51 +1,5 @@
 local A = vim.api
-
 local M = {}
-M.abbreviation = {}
-
-function M.abbreviation.create(word, abbrev, options)
-  local args = {}
-  options = vim.F.if_nil(options, {})
-
-  local command = "abbrev"
-  if options.overwrite then command = "nore" .. command end
-  if options.mode then command = options.mode .. command end
-  if options.buffer then table.insert(args, "<buffer>") end
-  if options.silent then table.insert(args, "<silent>") end
-  if options.expression then table.insert(args, "<expr>") end
-
-  table.insert(args, word)
-  table.insert(args, abbrev)
-  if options.dry then return table.concat(vim.tbl_flatten({ command, args }), " ") end
-  vim.cmd[command](args)
-end
-
-function M.abbreviation.delete(abbrev, options)
-  local args = {}
-  options = vim.F.if_nil(options, {})
-  local command = "unabbrev"
-
-  if options.mode then command = options.mode .. command end
-  if options.silent then table.insert(args, "<silent>") end
-  if options.buffer then table.insert(args, "<buffer>") end
-
-  table.insert(args, abbrev)
-  if options.dry then return table.concat(vim.tbl_flatten({ command, args }), " ") end
-  vim.cmd[command](args)
-end
-
-function M.abbreviation.clear(options)
-  local args = {}
-  options = vim.F.if_nil(options, {})
-  local command = "abclear"
-
-  if options.mode then command = options.mode .. command end
-  if options.silent then table.insert(args, "<silent>") end
-  if options.buffer then table.insert(args, "<buffer>") end
-
-  if options.dry then return table.concat(vim.tbl_flatten({ command, args }), " ") end
-  vim.cmd[command](args)
-end
 
 function M.cmd(alias, command, options)
   if type(options) == "string" then options = { desc = options } end
@@ -84,7 +38,7 @@ function M.exclude(items, path, on_entry)
   end
 end
 
-function M.input(options, actions)
+function M.popup(options, actions)
   local Input = require("nui.input")
   local autocmd = require("nui.utils.autocmd")
   local event = autocmd.event

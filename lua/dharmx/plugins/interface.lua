@@ -1,4 +1,4 @@
-local function req(file) require("dharmx.configs.ui." .. file) end
+local function req(file) require("dharmx.configs.interface." .. file) end
 
 return {
   {

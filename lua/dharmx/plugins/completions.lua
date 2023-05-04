@@ -1,4 +1,4 @@
-local function req(file) require("dharmx.configs.cmp." .. file) end
+local function req(file) require("dharmx.configs.completions." .. file) end
 
 return {
   {

@@ -14,7 +14,7 @@ return {
         items = {
           "colo.groups",
           { "colo.extensions.feline", import = true },
-          { "dharmx.configs.ui.feline", import = true },
+          { "dharmx.configs.interface.feline", import = true },
         },
       },
     },

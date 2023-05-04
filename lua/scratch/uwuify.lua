@@ -13,9 +13,10 @@ end
 
 function M.line()
   local line = vim.api.nvim_get_current_line()
-  M.uwuify(line, vim.schedule_wrap(function(this, _)
-    vim.api.nvim_set_current_line(table.concat(this:result(), " "))
-  end))
+  M.uwuify(
+    line,
+    vim.schedule_wrap(function(this, _) vim.api.nvim_set_current_line(table.concat(this:result(), " ")) end)
+  )
 end
 
 function M.setup(options)
