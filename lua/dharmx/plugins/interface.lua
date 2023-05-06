@@ -2,19 +2,7 @@ local function req(file) require("dharmx.configs.interface." .. file) end
 
 return {
   {
-    "akinsho/bufferline.nvim",
-  },
-  {
     "nvim-tree/nvim-web-devicons",
-  },
-  {
-    "goolord/alpha-nvim",
-  },
-  {
-    "freddiehaddad/feline.nvim",
-  },
-  {
-    "b0o/incline.nvim",
   },
   {
     "lukas-reineke/virt-column.nvim",

@@ -28,9 +28,6 @@ null.register({
 
 null.setup({
   sources = {
-    null.builtins.formatting.stylua.with({
-      condition = function(utils) return utils.root_has_file({ "stylua.toml", ".stylua.toml" }) end,
-    }),
     null.builtins.formatting.google_java_format.with({ extra_args = { "--aosp" } }),
     null.builtins.formatting.shfmt.with({
       extra_args = function(params)
@@ -44,18 +41,14 @@ null.setup({
         }
       end,
     }),
-    null.builtins.formatting.autopep8,
     null.builtins.formatting.eslint_d,
     null.builtins.formatting.fixjson,
-    null.builtins.formatting.isort,
     null.builtins.formatting.json_tool,
     null.builtins.formatting.latexindent,
     null.builtins.formatting.markdownlint,
-    null.builtins.formatting.rustfmt,
     null.builtins.formatting.rustywind,
     null.builtins.formatting.sqlfluff,
     null.builtins.formatting.stylelint,
-    null.builtins.formatting.trim_whitespace,
     null.builtins.code_actions.shellcheck,
     null.builtins.diagnostics.chktex,
     null.builtins.diagnostics.stylelint,
@@ -63,13 +56,17 @@ null.setup({
     null.builtins.diagnostics.vint,
     null.builtins.formatting.fish_indent,
     null.builtins.formatting.prettier,
-    null.builtins.formatting.black,
     null.builtins.formatting.cmake_format,
     null.builtins.formatting.nginx_beautifier,
     null.builtins.formatting.shellharden,
-    null.builtins.formatting.uncrustify,
     null.builtins.formatting.astyle,
     null.builtins.code_actions.statix,
+    -- null.builtins.formatting.uncrustify,
+    -- null.builtins.formatting.rustfmt,
+    -- null.builtins.formatting.isort,
+    -- null.builtins.formatting.autopep8,
+    -- null.builtins.formatting.trim_whitespace,
+    -- null.builtins.formatting.black,
     -- null.builtins.formatting.codespell,
     -- null.builtins.diagnostics.write_good,
     -- null.builtins.formatting.prettierd,

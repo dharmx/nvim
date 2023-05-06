@@ -2,6 +2,11 @@ local function req(file) require("dharmx.configs.code." .. file) end
 
 return {
   {
+    "kylechui/nvim-surround",
+    event = { "CmdlineEnter", "InsertEnter", "CursorHold", "CursorMoved" },
+    config = true,
+  },
+  {
     "monaqa/dial.nvim",
     config = function() req("dial") end,
     keys = { mode = "n", { "<C-a>", "<C-x>", "<C-a>", "<C-x>" } },
@@ -85,10 +90,6 @@ return {
   {
     "kovetskiy/sxhkd-vim",
     ft = "sxhkd",
-  },
-  {
-    "MTDL9/vim-log-highlighting",
-    ft = { "txt", "text", "log" },
   },
   {
     "TimUntersberger/neogit",

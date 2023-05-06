@@ -35,8 +35,7 @@ local function capabilities(name)
   capability.textDocument.completion.completionItem.commitCharactersSupport = true
   capability.textDocument.semanticHighlighting = true
   capability.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
-  capability.textDocument.completion.completionItem.resolveSupport =
-    { properties = { "documentation", "detail", "additionalTextEdits" } }
+  capability.textDocument.completion.completionItem.resolveSupport = { properties = { "documentation", "detail", "additionalTextEdits" } }
   capability.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
 
   if name == "clangd" then capability.offsetEncoding = "UTF-8" end

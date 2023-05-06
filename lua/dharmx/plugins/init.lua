@@ -44,7 +44,7 @@ local function exclude_and_load(items)
     dev = { path = vim.env.HOME .. "/Dotfiles/neovim" },
     install = {
       missing = true,
-      colorscheme = { "fallback" },
+      colorscheme = { "radium" },
     },
     ui = {
       size = { width = 0.8, height = 0.8 },
