@@ -1,18 +1,15 @@
 local ok, dial = pcall(require, "dial.config")
 if not ok then return end
 
-local util = require("dharmx.utils.map")
-local nnoremap = util.nnoremap
-local vnoremap = util.vnoremap
 local map = require("dial.map")
 local augend = require("dial.augend")
 
-nnoremap("<C-a>", map.inc_normal())
-nnoremap("<C-x>", map.dec_normal())
-vnoremap("<C-a>", map.inc_visual())
-vnoremap("<C-x>", map.dec_visual())
-vnoremap("g<C-a>", map.inc_gvisual())
-vnoremap("g<C-x>", map.dec_gvisual())
+vim.keymap.set("n", "<C-a>", map.inc_normal())
+vim.keymap.set("n", "<C-x>", map.dec_normal())
+vim.keymap.set("v", "<C-a>", map.inc_visual())
+vim.keymap.set("v", "<C-x>", map.dec_visual())
+vim.keymap.set("v", "g<C-a>", map.inc_gvisual())
+vim.keymap.set("v", "g<C-x>", map.dec_gvisual())
 
 dial.augends:register_group({
   default = {

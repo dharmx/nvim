@@ -1,11 +1,14 @@
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-nnoremap <up> <nop>
-nnoremap <down> <nop>
+for mode in ['v', 'i', 'n']
+  exe mode . 'noremap <up> <nop>'
+  exe mode . 'noremap <down> <nop>'
+  exe mode . 'noremap <left> <nop>'
+  exe mode . 'noremap <right> <nop>'
+endfor
 
 nmap <leader>Y "+Y
 nmap <leader>y "+y
 vnoremap <leader>y "+y
+nnoremap <leader>f :g/<C-R><C-W>/#<CR>:
 
 nmap ]q :cnext<CR>
 nmap [q :cprev<CR>

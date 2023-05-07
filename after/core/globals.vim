@@ -3,7 +3,7 @@ let g:python3_host_prog = 'python3'
 
 if exists('g:neovide') == 0 | finish | endif
 set guifont=Iosevka\ Nerd\ Font,Cooper\ Hewitt:h13
-set linespace=2
+set linespace=8
 
 let g:neovide_refresh_rate = 60
 let g:neovide_transparency = 1.0

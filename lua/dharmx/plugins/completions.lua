@@ -15,9 +15,14 @@ return {
     event = "InsertCharPre",
   },
   {
+    "gelguy/wilder.nvim",
+    config = function() req("wilder") end,
+    event = { "CmdlineEnter" },
+  },
+  {
     "hrsh7th/nvim-cmp",
     config = function() req("init") end,
-    event = { "InsertEnter", "CmdlineEnter" },
+    event = { "InsertEnter" },
   },
   {
     "windwp/nvim-autopairs",
@@ -25,12 +30,8 @@ return {
     event = "InsertCharPre",
   },
   {
-    "hrsh7th/cmp-cmdline",
-    event = "CmdlineEnter",
-  },
-  {
     "hrsh7th/cmp-buffer",
-    event = { "InsertCharPre", "CmdlineEnter" },
+    event = { "InsertCharPre" },
   },
   {
     "hrsh7th/cmp-path",

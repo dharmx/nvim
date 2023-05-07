@@ -223,7 +223,7 @@ hi DiffviewStatusLineNC guifg=#7AB0DF
 hi DiffviewWinSeparator guifg=#171C21
 hi Directory guifg=#FFE59E
 hi EndOfBuffer guifg=#C397D8
-hi Error guifg=#F76262
+hi Error guifg=#F76262 guibg=NONE
 hi ErrorMsg guifg=#F87070
 hi Exception guifg=#36C692
 hi FidgetTask guifg=#1A1E27
@@ -344,7 +344,6 @@ hi luaStringDelimiter guifg=#79DCAA
 hi luaString guifg=#79DCAA
 hi luaSymbolOperator guifg=#70C0BA
 hi luaTable guifg=#5FB0FC
-hi luaTodo guifg=#FFE59E
 hi Macro guifg=#F98989
 hi MatchBackground guibg=#111419 guifg=#171A20
 hi MatchParenCur guibg=#202530 gui=bold
@@ -596,7 +595,7 @@ hi TodoFgTODO guifg=#C397D8
 hi TodoFgUPDATE guifg=#B77EE0
 hi TodoFgWANTS guifg=#FFEDA6
 hi TodoFgWARN guifg=#E17272
-hi Todo guifg=#FFE59E
+hi Todo guifg=#FFE59E guibg=NONE
 hi TodoSignBUG guibg=#101317 guifg=#F87070
 hi TodoSignCHORE guibg=#101317 guifg=#70C0BA
 hi TodoSignCLEAN guibg=#101317 guifg=#7AB0DF

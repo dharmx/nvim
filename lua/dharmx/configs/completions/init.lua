@@ -177,59 +177,5 @@ local config = {
 
 cmp.setup(config)
 
--- CMDLINES -- {{{
-local cmdline = {
-  sources = cmp.config.sources({
-    {
-      name = "cmdline",
-      keyword_length = 2,
-      priority = 3,
-    },
-  }),
-  mapping = config.mapping,
-  formatting = {
-    fields = { "abbr", "kind", "menu" },
-    format = function(_, item)
-      item.kind = kind[item.kind] .. " " .. item.kind
-      return item
-    end,
-  },
-  entries = { name = "custom", selection_order = "near_cursor" },
-  preselect = cmp.PreselectMode.Item,
-}
-
-for _, cmdtype in ipairs({ ":", "@", "=" }) do
-  cmp.setup.cmdline(cmdtype, cmdline)
-end
-
-cmp.setup.cmdline("/", {
-  {
-    name = "buffer",
-    keyword_length = 5,
-    priority = 4,
-  },
-  {
-    name = "nvim_lsp_document_symbol",
-    keyword_length = 4,
-    priority = 3,
-  },
-  mapping = config.mapping,
-})
-
-cmp.setup.cmdline("?", {
-  {
-    name = "buffer",
-    keyword_length = 5,
-    priority = 4,
-  },
-  {
-    name = "nvim_lsp_document_symbol",
-    keyword_length = 4,
-    priority = 3,
-  },
-  mapping = config.mapping,
-})
--- }}}
-
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))

@@ -1,3 +1,4 @@
+vim.loader.enable()
 local lazypath = vim.fn.stdpath("data") .. "/plugins/lazy.nvim"
 local util = require("dharmx.utils.nvim")
 

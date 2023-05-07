@@ -7,6 +7,7 @@ mason_null.setup({
     "eslint_d",
     "fixjson",
     "isort",
+    "stylua",
     "markdownlint",
     "sqlfluff",
     "stylelint",

@@ -66,7 +66,6 @@ set menuitems=30
 set magic
 set icon
 
-set omnifunc=syntaxcomplete#Complete
 set background=dark
 set whichwrap+=<>[]hl
 set shortmess+=sI

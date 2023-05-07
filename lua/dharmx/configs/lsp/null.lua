@@ -26,7 +26,22 @@ null.register({
   }),
 })
 
+local kind = require("dharmx.utils.kind")
+local autocmd = require("dharmx.configs.lsp.presets.autocmd")
+local cmd = require("dharmx.configs.lsp.presets.cmd")
+local map = require("dharmx.configs.lsp.presets.map")
+
 null.setup({
+  on_attach = function(client, buffer)
+    vim.api.nvim_buf_set_option(buffer, "omnifunc", "v:lua.vim.lsp.omnifunc")
+    autocmd.setup(client, buffer)
+    cmd.setup(client, buffer)
+    map.setup(client, buffer)
+    vim.lsp.protocol.CompletionItemKind = kind
+    if client.config.flags then client.config.flags.allow_incremental_sync = true end
+    -- TODO: Remove after colo.nvim rewrite.
+    client.server_capabilities.semanticTokensProvider = false
+  end,
   sources = {
     null.builtins.formatting.google_java_format.with({ extra_args = { "--aosp" } }),
     null.builtins.formatting.shfmt.with({
@@ -59,8 +74,10 @@ null.setup({
     null.builtins.formatting.cmake_format,
     null.builtins.formatting.nginx_beautifier,
     null.builtins.formatting.shellharden,
-    null.builtins.formatting.astyle,
     null.builtins.code_actions.statix,
+    null.builtins.formatting.astyle.with({
+      disabled_filetypes = { "c", "cpp" },
+    }),
     -- null.builtins.formatting.uncrustify,
     -- null.builtins.formatting.rustfmt,
     -- null.builtins.formatting.isort,

@@ -32,7 +32,7 @@ function M.paste(args)
 end
 
 function M.commands()
-  require("dharmx.utils.nvim").cmd("Paste", function(args) M.paste(args) end)
+  require("dharmx.utils.nvim").cmd("Paste", function(args) M.paste(args) end, { range = true })
 end
 
 return M
