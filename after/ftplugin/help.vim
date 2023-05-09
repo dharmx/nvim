@@ -1,2 +1,2 @@
-set signcolumn=no
+setlocal signcolumn=no
 wincmd L

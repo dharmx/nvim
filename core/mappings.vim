@@ -5,6 +5,7 @@ for mode in ['v', 'i', 'n']
   exe mode . 'noremap <right> <nop>'
 endfor
 
+nmap <F5> :make<CR>
 nmap <leader>Y "+Y
 nmap <leader>y "+y
 vnoremap <leader>y "+y

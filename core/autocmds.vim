@@ -9,4 +9,5 @@ augroup DharmxGroup
   autocmd FileType checkhealth,help,notify,oil,qf,query nmap <buffer> q :q<CR>
   autocmd FileType alpha nmap <buffer> q :Alpha<CR>
   autocmd FileType tsplayground nmap <buffer> q :TSPlaygroundToggle<CR>
+  autocmd FileType qf setlocal number
 augroup END
