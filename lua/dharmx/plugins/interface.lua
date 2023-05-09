@@ -5,11 +5,6 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   {
-    "lukas-reineke/virt-column.nvim",
-    opts = { char = "┃" },
-    event = { "CursorMoved", "CursorHold" },
-  },
-  {
     "petertriho/nvim-scrollbar",
     config = function() req("scrollbar") end,
     event = { "InsertEnter", "CursorMoved" },
@@ -43,11 +38,6 @@ return {
     "folke/todo-comments.nvim",
     config = function() req("todo") end,
     event = { "CursorMoved", "CursorHold", "InsertEnter", "CmdlineEnter" },
-  },
-  {
-    "anuvyklack/pretty-fold.nvim",
-    config = function() req("fold") end,
-    keys = { "zf", "zd", "za" },
   },
   {
     "doums/monark.nvim",

@@ -1,5 +1,4 @@
 scriptencoding UTF-8
-
 let &backupdir=stdpath('state') . '/backup'
 let &spellfile=stdpath('config') . '/spell/words.add'
 

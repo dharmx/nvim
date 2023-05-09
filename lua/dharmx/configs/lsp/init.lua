@@ -1,3 +1,4 @@
+vim.lsp.set_log_level("warn")
 -- Boilerplate. {{{
 local _mason, mason = pcall(require, "mason-lspconfig")
 if not _mason then return end

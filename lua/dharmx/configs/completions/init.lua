@@ -155,7 +155,7 @@ local config = {
     end,
   },
   experimental = {
-    ghost_text = true,
+    ghost_text = { "Comment" },
   },
   completion = {
     completeopt = "menu,menuone,noselect,preview",

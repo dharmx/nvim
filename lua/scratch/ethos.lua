@@ -1,4 +1,4 @@
----@diagnostic disable: cast-local-type, param-type-mismatch, assign-type-mismatch
+---@diagnostic disable: cast-local-type, param-type-mismatch, assign-type-mismatch, need-check-nil, undefined-field
 
 -- TODO:
 -- + Add UI, HL and mapping options.

@@ -84,10 +84,6 @@ return {
     keys = { "n", "N" },
   },
   {
-    "Fymyte/rasi.vim",
-    ft = "rasi",
-  },
-  {
     "kovetskiy/sxhkd-vim",
     ft = "sxhkd",
   },

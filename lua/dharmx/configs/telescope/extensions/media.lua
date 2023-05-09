@@ -1,4 +1,5 @@
+require("telescope._extensions.media.rifle").bullets.pxv = { "pxv" }
+
 return {
   backend = "ueberzug",
-  cache_path = vim.fn.stdpath("cache") .. "/media",
 }
