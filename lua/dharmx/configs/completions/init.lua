@@ -25,10 +25,18 @@ end
 
 local config = {
   snippet = { expand = function(args) require("luasnip").lsp_expand(args.body) end },
+  -- use <C-X><C-F> for path
   mapping = cmp.mapping.preset.insert({
-    ["<C-D>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-F>"] = cmp.mapping.scroll_docs(4),
-    ["<C-I>"] = cmp.mapping(function(fallback)
+    ["<Tab>"] = cmp.mapping.scroll_docs(-4),
+    ["<S-Tab>"] = cmp.mapping.scroll_docs(4),
+    ["<C-E>"] = cmp.mapping.abort(),
+
+    ["<C-Y>"] = cmp.mapping(cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = true,
+    }), { "i", "s" }),
+
+    ["<C-N>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_locally_jumpable() then
@@ -38,8 +46,9 @@ local config = {
       else
         fallback()
       end
-    end, { "i", "c" }),
-    ["<C-O>"] = cmp.mapping(function(fallback)
+    end, { "i", "s" }),
+
+    ["<C-P>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
@@ -47,32 +56,11 @@ local config = {
       else
         fallback()
       end
-    end, { "i", "c" }),
-    ["<C-E>"] = cmp.mapping.abort(),
-    ["<Tab>"] = cmp.mapping.abort(),
-    ["<S-Tab>"] = cmp.mapping.abort(),
-    ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-    ["<C-L>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then return cmp.complete_common_string() end
-      fallback()
-    end, { "i", "c" }),
-    ["<C-Y>"] = cmp.mapping(
-      cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Insert,
-        select = true,
-      }),
-      { "i", "c" }
-    ),
-    ["<M-Y>"] = cmp.mapping(
-      cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = false,
-      }),
-      { "i", "c" }
-    ),
+    end, { "i", "s" }),
+
     ["<C-Space>"] = cmp.mapping({
       i = cmp.mapping.complete(),
-      c = function()
+      s = function()
         if cmp.visible() then
           if not cmp.confirm({ select = true }) then return end
         else
@@ -106,27 +94,8 @@ local config = {
       name = "nvim_lsp_signature_help",
     },
     {
-      name = "path",
-      max_item_count = 10,
-      priority = 2,
-    },
-    {
       name = "emoji",
       max_item_count = 10,
-    },
-    { name = "greek" },
-    {
-      name = "tmux",
-      option = {
-        all_panes = true,
-        label = "TMX",
-        trigger_characters = {
-          ".",
-        },
-        trigger_characters_ft = {
-          ".",
-        },
-      },
     },
   }), -- }}}
   window = { -- UI {{{
@@ -176,6 +145,3 @@ local config = {
 }
 
 cmp.setup(config)
-
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))

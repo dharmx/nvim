@@ -5,7 +5,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     config = function() req("init") end,
     build = ":TSUpdate",
-    event = { "BufWinEnter" },
+    event = "BufWinEnter",
   },
   {
     "romgrk/nvim-treesitter-context",

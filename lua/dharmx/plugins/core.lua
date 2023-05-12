@@ -1,5 +1,0 @@
-return {
-  {
-    "folke/lazy.nvim",
-  },
-}

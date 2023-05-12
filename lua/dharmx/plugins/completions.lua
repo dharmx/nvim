@@ -12,17 +12,17 @@ return {
   },
   {
     "saadparwaiz1/cmp_luasnip",
-    event = "InsertCharPre",
   },
   {
     "gelguy/wilder.nvim",
     config = function() req("wilder") end,
-    event = { "CmdlineEnter" },
+    event = "CmdlineEnter",
   },
   {
     "hrsh7th/nvim-cmp",
     config = function() req("init") end,
-    event = { "InsertEnter" },
+    keys = { mode = "i", "<C-Space>" },
+    event = "InsertEnter",
   },
   {
     "windwp/nvim-autopairs",
@@ -31,11 +31,7 @@ return {
   },
   {
     "hrsh7th/cmp-buffer",
-    event = { "InsertCharPre" },
-  },
-  {
-    "hrsh7th/cmp-path",
-    keys = { { mode = "i", "/" } },
+    event = "InsertCharPre",
   },
   {
     "hrsh7th/cmp-nvim-lsp",

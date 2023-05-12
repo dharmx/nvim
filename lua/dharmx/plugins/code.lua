@@ -48,7 +48,7 @@ return {
   },
   {
     "tyru/open-browser.vim",
-    event = "CursorMoved",
+    event = "CmdlineEnter"
   },
   {
     "aurum77/live-server.nvim",

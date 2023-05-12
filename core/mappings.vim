@@ -9,7 +9,7 @@ nmap <F5> :make<CR>
 nmap <leader>Y "+Y
 nmap <leader>y "+y
 vnoremap <leader>y "+y
-nnoremap <leader>f :g/<C-R><C-W>/#<CR>:
+nnoremap <leader>w :g/<C-R><C-W>/#<CR>
 
 nmap ]q :cnext<CR>
 nmap [q :cprev<CR>
@@ -29,7 +29,6 @@ nmap <C-S> :update<CR>
 nmap <C-N> :RnvimrToggle<CR>
 nmap <C-\> :ToggleTerm<CR>
 
-nmap <leader>bb :Telescope buffers<CR>
-nmap <leader>ff :Telescope media media<CR>
-nmap <leader>fg :Telescope live_grep<CR>
-nmap <leader>gc :Telescope git_commits<CR>
+nmap <leader>b :Telescope buffers<CR>
+nmap <leader>e :Telescope media media<CR>
+nmap <leader>l :Telescope live_grep<CR>

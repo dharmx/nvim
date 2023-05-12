@@ -1,5 +1,8 @@
-require("telescope._extensions.media.rifle").bullets.pxv = { "pxv" }
-
 return {
-  backend = "ueberzug",
+  backend = "chafa",
+  backend_options = {
+    chafa = {
+      move = true,
+    },
+  },
 }

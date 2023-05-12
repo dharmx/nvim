@@ -3,6 +3,7 @@ local function req(file) require("dharmx.configs.interface." .. file) end
 return {
   {
     "nvim-tree/nvim-web-devicons",
+    config = true,
   },
   {
     "petertriho/nvim-scrollbar",
