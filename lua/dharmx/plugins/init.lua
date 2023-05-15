@@ -15,8 +15,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
----Convenience function to disable plugins via their name.
-local function exclude_and_load(items)
+local M = {}
+
+---Convenience function to disable plugins via their names.
+function M.exclude_load(items)
   items = vim.F.if_nil(items, {})
   local plugins = {}
   local spec = { plugins } -- reference: adding items to plugins will add items to spec[1]
@@ -24,9 +26,9 @@ local function exclude_and_load(items)
   util.exclude(items, vim.fn.stdpath("config") .. "/lua/dharmx/plugins", function(file)
     if file == "init.lua" then return end
     -- fnamemodify("example.lua") -> "example"
-    local mod_path = "dharmx.plugins." .. vim.fn.fnamemodify(file, ":r")
-    table.insert(spec, { import = mod_path })
-    local chunk = require(mod_path)
+    local module_path = "dharmx.plugins." .. vim.fn.fnamemodify(file, ":r")
+    table.insert(spec, { import = module_path })
+    local chunk = require(module_path)
 
     for _, plugin in ipairs(chunk) do
       -- add enabled key to all found matches (plugins that should be excluded)
@@ -42,7 +44,7 @@ local function exclude_and_load(items)
     root = vim.fn.fnamemodify(lazypath, ":h"),
     concurrency = 50,
     defaults = { lazy = true },
-    dev = { path = vim.env.HOME .. "/Dotfiles/neovim" },
+    dev = { path = vim.env.HOME .. "/Dotfiles/neovim" }, -- local plugins
     install = {
       missing = true,
       colorscheme = { "radium" },
@@ -129,4 +131,4 @@ local function exclude_and_load(items)
 end
 
 -- see init.vim for usage
-return { exclude_and_load = exclude_and_load }
+return M

@@ -1,7 +1,7 @@
 " Radium
 " A radioactive colorscheme.
 " Authored by: https://github.com/dharmx
-" Liscense: GPL-3.0
+" License: GPL-3.0
 
 " GNU GENERAL PUBLIC LICENSE
 " Version 3, 29 June 2007
@@ -546,8 +546,8 @@ hi StorageClass guifg=#F75858
 hi String guifg=#79DCAA
 hi Structure guifg=#5FB0FC
 hi Substitute guibg=#B77EE0 guifg=#101317
-hi TabLineFill guibg=#101317 guifg=#7AB0DF
 hi TabLine guibg=#101317 gui=bold guifg=#2C3640
+hi TabLineFill guifg=#101317 guibg=#7AB0DF
 hi TabLineSel guibg=#7AB0DF gui=bold guifg=#101317
 hi Tag guifg=#7AB0DF
 hi TelescopeMatching gui=bold guifg=#DC97CA

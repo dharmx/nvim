@@ -56,3 +56,4 @@ log.txt
 lazy-lock.json
 lock.json
 queries/
+*.swp
