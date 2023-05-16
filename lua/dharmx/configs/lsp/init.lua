@@ -23,7 +23,7 @@ local function on_attach(client, buffer)
   if client.config.flags then client.config.flags.allow_incremental_sync = true end
   if _navic and client.server_capabilities.documentSymbolProvider then navic.attach(client, buffer) end
   -- TODO: Remove after colo.nvim rewrite.
-  client.server_capabilities.semanticTokensProvider = false
+  client.server_capabilities.semanticTokensProvider = nil
 end
 
 local function capabilities(name)
