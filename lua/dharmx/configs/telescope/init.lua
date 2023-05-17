@@ -59,13 +59,9 @@ local config = {
     },
     oldfiles = {
       prompt_prefix = "   ",
-      theme = "ivy",
-      previewer = false,
     },
     colorscheme = {
       prompt_prefix = "   ",
-      previewer = false,
-      theme = "ivy",
     },
     highlights = {
       prompt_prefix = " קּ  ",
@@ -118,29 +114,15 @@ local config = {
     },
     commands = {
       prompt_prefix = "   ",
-      theme = "dropdown",
-      layout_config = {
-        height = 0.7,
-        width = 0.7,
-      },
     },
     registers = {
       prompt_prefix = "   ",
-      theme = "ivy",
     },
     spell_suggests = {
       prompt_prefix = "   ",
-      theme = "ivy",
-      layout_config = {
-        height = 15,
-      },
     },
     keymaps = {
       prompt_prefix = "   ",
-      theme = "ivy",
-      layout_config = {
-        height = 10,
-      },
     },
     lsp_code_actions = {
       prompt_prefix = "   ",
@@ -148,15 +130,12 @@ local config = {
     },
     lsp_references = {
       prompt_prefix = "   ",
-      theme = "ivy",
     },
     lsp_implementations = {
       prompt_prefix = "   ",
-      theme = "ivy",
     },
     lsp_document_diagnostics = {
       prompt_prefix = " 律 ",
-      theme = "ivy",
     },
   },
   defaults = {

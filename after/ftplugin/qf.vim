@@ -1,0 +1,1 @@
+setlocal winhighlight=Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,SignColumn:NormalFloat,WinSeparator:NormalFloat,ColorColumn:NormalFloat
