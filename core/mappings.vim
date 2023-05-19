@@ -5,7 +5,6 @@ for mode in ['v', 'i', 'n']
   execute mode . 'noremap <right> <nop>'
 endfor
 
-nnoremap <leader>F mfgggqG`fzz
 nnoremap <silent> <leader>q :copen<CR>
 vnoremap < <gv
 vnoremap > >gv

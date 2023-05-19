@@ -64,8 +64,8 @@ set list
 set menuitems=30
 set magic
 set icon
-
 set background=dark
+
 set whichwrap+=<>[]hl
 set shortmess+=sI
 set diffopt+=algorithm:patience
