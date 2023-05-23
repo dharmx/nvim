@@ -1,8 +1,9 @@
-<h1><samp>NEOVIM CONFIG</samp></h1>
+NEOVIM CONFIG
+=============
 
-<samp>Just drop this in your ~/.config. And screenshots can be found <a href="https://imgur.com/a/ICzwXbg">here</a>.</samp>
+Just drop this in your ~/.config.
+Screenshots can be found at https://imgur.com/a/ICzwXbg.
 
-```txt
 Startuptime: 21.36ms
 
   Based on the actual CPU time of the Neovim process till UIEnter.
@@ -10,4 +11,3 @@ Startuptime: 21.36ms
     LazyStart 10.77ms
     LazyDone  18.79ms (+8.02ms)
     UIEnter   21.36ms (+2.57ms)
-```

@@ -27,8 +27,8 @@ local config = {
   snippet = { expand = function(args) require("luasnip").lsp_expand(args.body) end },
   -- use <C-X><C-F> for path
   mapping = cmp.mapping.preset.insert({
-    ["<Tab>"] = cmp.mapping.scroll_docs(-4),
-    ["<S-Tab>"] = cmp.mapping.scroll_docs(4),
+    ["<S-Tab>"] = cmp.mapping.scroll_docs(-4),
+    ["<Tab>"] = cmp.mapping.scroll_docs(4),
     ["<C-E>"] = cmp.mapping.abort(),
 
     ["<C-Y>"] = cmp.mapping(cmp.mapping.confirm({
