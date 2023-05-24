@@ -18,7 +18,7 @@ function M.paste(args)
   path:touch()
   path:write(table.concat(contents, "\n"), "w")
 
-  curl.post("https://0x0.st", {
+  curl.post("0x0.st", {
     form = { file = string.format("@%s", path.filename) },
     dry_run = false,
     callback = function(response)
