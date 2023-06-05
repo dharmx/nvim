@@ -59,4 +59,5 @@ nnoremap <leader>rr :Telescope registers<CR>
 nnoremap <leader>jj :Telescope jumplist<CR>
 nnoremap <leader>ll :Telescope loclist<CR>
 
+nnoremap <leader>s mm$F r<CR>`m
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') .. '/' : '%%'

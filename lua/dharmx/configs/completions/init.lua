@@ -23,7 +23,7 @@ local function custom_compare(entry1, entry2)
 end
 -- }}}
 
-local config = {
+cmp.setup({
   snippet = { expand = function(args) require("luasnip").lsp_expand(args.body) end },
   -- use <C-X><C-F> for path
   mapping = cmp.mapping.preset.insert({
@@ -70,38 +70,16 @@ local config = {
     }),
   }),
   preselect = cmp.PreselectMode.Item,
-  sources = cmp.config.sources({ -- SOURCES {{{
-    {
-      name = "zsh",
-      max_item_count = 5,
-    },
-    {
-      name = "luasnip",
-      max_item_count = 3,
-    },
-    {
-      name = "nvim_lsp",
-      keyword_length = 2,
-      group_index = 1,
-    },
-    {
-      name = "buffer",
-      keyword_length = 5,
-      max_item_count = 5,
-      group_index = 2,
-    },
-    {
-      name = "nvim_lsp_signature_help",
-    },
-    {
-      name = "emoji",
-      max_item_count = 10,
-    },
-  }), -- }}}
-  window = { -- UI {{{
-    documentation = {
-      border = "solid",
-    },
+  sources = cmp.config.sources({
+    { name = "luasnip", max_item_count = 3 },
+    { name = "nvim_lsp", keyword_length = 2, group_index = 1 },
+    { name = "nvim_lsp_signature_help" },
+    { name = "zsh", max_item_count = 5 },
+    { name = "emoji", max_item_count = 10 },
+    { name = "buffer", keyword_length = 5, max_item_count = 5, group_index = 2 },
+  }),
+  window = {
+    documentation = { border = "solid" },
     completion = {
       border = "none",
       completeopt = "menu,menuone,noinsert",
@@ -110,27 +88,20 @@ local config = {
       keyword_length = 1,
     },
   },
-  view = {
-    entries = {
-      name = "custom",
-    },
-  },
-  formatting = {
-    fields = { "abbr", "kind", "menu" },
-    format = function(entry, item)
-      -- item.menu = entry.source.name
-      item.kind = kind[item.kind] .. " " .. item.kind
-      return item
-    end,
-  },
-  experimental = {
-    ghost_text = { "Comment" },
-  },
+  view = { entries = { name = "custom" } },
+formatting = {
+  fields = { "abbr", "kind", "menu" },
+  format = function(entry, item)
+    item.kind = kind[item.kind] .. " " .. item.kind
+    return item
+  end,
+},
+  experimental = { ghost_text = { "Comment" } },
   completion = {
     completeopt = "menu,menuone,noselect,preview",
     autocomplete = false,
-  }, -- }}}
-  sorting = { -- SORTERS {{{
+  },
+  sorting = {
     comparators = {
       cmp.config.compare.offset,
       cmp.config.compare.exact,
@@ -141,7 +112,5 @@ local config = {
       cmp.config.compare.length,
       cmp.config.compare.order,
     },
-  }, -- }}}
-}
-
-cmp.setup(config)
+  },
+})

@@ -15,8 +15,8 @@ tree.setup({
     },
     swap = {
       enable = true,
-      swap_next = { [";a"] = "@parameter.inner" },
-      swap_previous = { [";A"] = "@parameter.inner" },
+      swap_next = { ["sn"] = "@parameter.inner" },
+      swap_previous = { ["sp"] = "@parameter.inner" },
     },
     move = {
       enable = true,

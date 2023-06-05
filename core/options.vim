@@ -4,6 +4,7 @@ let &spellfile=stdpath('config') . '/spell/words.add'
 
 set backup
 set nospell
+set wildmode=longest,list,full
 set spelllang=en_us,en_gb,cjk
 set spellsuggest=best,9
 set spelloptions=camel,noplainbuffer
@@ -27,7 +28,6 @@ set expandtab
 set shiftwidth=2
 set smartindent
 set wildignore=*/cache/*,*/tmp/*
-set errorformat=%f\|%l\ col\ %c\|%m
 set foldcolumn=auto
 set foldmethod=marker
 set noignorecase

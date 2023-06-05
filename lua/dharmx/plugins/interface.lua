@@ -10,26 +10,6 @@ return {
     event = { "InsertEnter", "CursorMoved" },
   },
   {
-    "folke/twilight.nvim",
-    config = function() req("twilight") end,
-    cmd = "Twilight",
-  },
-  {
-    "Pocco81/TrueZen.nvim",
-    cmd = { "TZAtaraxis", "TZFocus", "TZMinimalist", "TZNarrow" },
-    opts = {
-      modes = {
-        minimalist = {
-          options = {
-            statusline = "%{%v:lua.require'feline'.generate_statusline()%}",
-            cmdheight = 0,
-            laststatus = 0,
-          },
-        },
-      },
-    },
-  },
-  {
     "rcarriga/nvim-notify",
     config = function() req("notify") end,
     event = { "CursorMoved", "CursorHold", "InsertEnter", "CmdlineEnter" },

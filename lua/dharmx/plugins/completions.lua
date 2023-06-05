@@ -8,10 +8,7 @@ return {
   {
     "L3MON4D3/LuaSnip",
     config = function() req("luasnip") end,
-    event = "InsertCharPre",
-  },
-  {
-    "saadparwaiz1/cmp_luasnip",
+    event = "InsertEnter",
   },
   {
     "gelguy/wilder.nvim",
@@ -19,22 +16,32 @@ return {
     event = "CmdlineEnter",
   },
   {
-    "hrsh7th/nvim-cmp",
-    config = function() req("init") end,
-    keys = { mode = "i", "<C-Space>" },
+    "windwp/nvim-autopairs",
+    config = function() req("autopairs") end,
     event = "InsertEnter",
   },
   {
-    "windwp/nvim-autopairs",
-    config = function() req("autopairs") end,
-    event = "InsertCharPre",
+    "hrsh7th/nvim-cmp",
+    config = function() req("init") end,
+    keys = { mode = "i", "<C-Space>" },
+    dependencies = {
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-nvim-lsp",
+    },
+    event = "InsertEnter",
+  },
+  {
+    "saadparwaiz1/cmp_luasnip",
+  },
+  { 
+    "hrsh7th/cmp-nvim-lsp-signature-help"
   },
   {
     "hrsh7th/cmp-buffer",
-    event = "InsertCharPre",
   },
   {
     "hrsh7th/cmp-nvim-lsp",
-    event = "LspAttach",
   },
 }
