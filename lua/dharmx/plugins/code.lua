@@ -34,9 +34,8 @@ return {
     cmd = "Registers",
   },
   {
-    "NvChad/nvim-colorizer.lua",
-    cmd = "ColorizerToggle",
-    config = true,
+    "chrisbra/Colorizer",
+    cmd = "ColorToggle",
   },
   {
     "AndrewRadev/linediff.vim",
@@ -117,11 +116,7 @@ return {
     ft = "markdown",
   },
   {
-    "matze/vim-move",
-    init = function()
-      vim.g.move_key_modifier = "M"
-      vim.g.move_key_modifier_visualmode = "M"
-    end,
+    "fedepujol/move.nvim",
     event = { "CursorHold", "CursorMoved", "InsertEnter", "CmdlineEnter" },
   },
   {

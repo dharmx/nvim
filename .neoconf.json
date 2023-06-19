@@ -4,7 +4,7 @@
       "enabled": true,
       "plugins": [
         "plenary.nvim",
-        "nvim-cmp"
+        "Comment.nvim"
       ]
     }
   },

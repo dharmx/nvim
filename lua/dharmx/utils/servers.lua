@@ -2,6 +2,7 @@ return {
   "bashls",
   "cmake",
   "jdtls",
+  "texlab",
   "jsonls",
   "yamlls",
   "pyright",

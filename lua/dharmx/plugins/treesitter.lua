@@ -38,9 +38,4 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     event = "LspAttach",
   },
-  {
-    "nvim-treesitter/playground",
-    config = function() req("playground") end,
-    cmd = "TSPlaygroundToggle",
-  },
 }

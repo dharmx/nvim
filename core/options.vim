@@ -50,7 +50,7 @@ set showcmd
 set showtabline=1
 set hlsearch
 set conceallevel=2
-set swapfile
+set noswapfile
 set nocursorline
 set cursorlineopt=both
 set pumheight=25

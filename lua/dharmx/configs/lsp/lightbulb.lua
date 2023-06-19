@@ -2,7 +2,9 @@ local ok, lightbulb = pcall(require, "nvim-lightbulb")
 if not ok then return end
 
 lightbulb.setup({
-  ignore = { "null-ls" },
+  ignore = {
+    actions_without_kind = false,
+  },
   sign = {
     enabled = true,
     priority = 10,

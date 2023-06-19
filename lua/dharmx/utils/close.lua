@@ -66,7 +66,7 @@ local function normal_quit(item)
     vim.cmd.write()
     vim.cmd.bdelete()
   elseif result == "No" then
-    vim.cmd.bdelete()
+    vim.cmd("bdelete!")
   elseif result == "Cancel" then
     vim.api.nvim_notify("Cancelled.", vim.log.levels.INFO, {
       title = "bufclose.lua",

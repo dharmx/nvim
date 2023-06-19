@@ -59,5 +59,17 @@ nnoremap <leader>rr :Telescope registers<CR>
 nnoremap <leader>jj :Telescope jumplist<CR>
 nnoremap <leader>ll :Telescope loclist<CR>
 
+nnoremap <silent> <A-k> :MoveLine(-1)<CR>
+nnoremap <silent> <A-j> :MoveLine(1)<CR>
+nnoremap <silent> <A-l> :MoveHChar(1)<CR>
+nnoremap <silent> <A-h> :MoveHChar(-1)<CR>
+nnoremap <silent> <leader>wf :MoveWord(1)<CR>
+nnoremap <silent> <leader>wb :MoveWord(-1)<CR>
+
+vnoremap <silent> <A-j> :MoveBlock(1)<CR>
+vnoremap <silent> <A-k> :MoveBlock(-1)<CR>
+vnoremap <silent> <A-h> :MoveHBlock(-1)<CR>
+vnoremap <silent> <A-l> :MoveHBlock(1)<CR>
+
 nnoremap <leader>s mm$F r<CR>`m
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') .. '/' : '%%'
