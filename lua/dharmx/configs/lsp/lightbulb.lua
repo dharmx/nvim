@@ -8,17 +8,18 @@ lightbulb.setup({
   sign = {
     enabled = true,
     priority = 10,
+    text = "┃"
   },
   float = {
     enabled = false,
-    text = "ﯦ Code actions available",
+    text = " Code actions available",
     win_opts = {
       border = "solid",
     },
   },
   virtual_text = {
     enabled = true,
-    text = "ﮠ",
+    text = "",
     hl_mode = "replace",
   },
   status_text = {
