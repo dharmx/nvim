@@ -43,7 +43,7 @@ nnoremap <leader>dd :TrackUnmark<CR>
 nnoremap <leader>c :lua require'dharmx.utils'.close()<CR>
 nnoremap <leader>u :UndotreeToggle<CR>
 
-nnoremap <F1> :ColorizerToggle<CR>
+nnoremap <F1> :ColorToggle<CR>
 nnoremap <F2> :setlocal spell!<CR>
 nnoremap <F3> :make<CR>
 

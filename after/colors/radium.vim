@@ -659,7 +659,7 @@ if has('nvim')
   hi @constructor guifg=#5FB0FC
   hi @debug guifg=#7AAFC5
   hi @define guifg=#C397D8
-  hi @exception guifg=#36C692
+  hi @exception guifg=#6AA6DF
   hi @field guifg=#36C692
   hi @float guifg=#F3A4F1
   hi @function.builtin gui=bold guifg=#36C692
