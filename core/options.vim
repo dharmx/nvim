@@ -11,7 +11,7 @@ set spelloptions=camel,noplainbuffer
 set noexrc
 set termguicolors
 set textwidth=120
-set colorcolumn=120
+set colorcolumn=
 set laststatus=3
 set backspace=indent,eol,start
 set completeopt=menuone,noselect

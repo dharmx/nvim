@@ -14,7 +14,7 @@ local config = {
     CLEAN = { icon = " ", alt = { "ORGANISE", "ORGANIZE", "CLEANED" } },
     WARN = { icon = " ", alt = { "WARNING", "XXX" } },
     PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-    NOTE = { icon = " ", alt = { "INFO" } },
+    NOTE = { icon = " ", alt = { "INFO", "DEBUG" } },
     UPDATE = { icon = " ", alt = { "MIGRATE" } },
     DEMO = { icon = " ", alt = { "SHOW" } },
     IMPROVE = { icon = " ", alt = { "REFINE", "ENHANCE" } },

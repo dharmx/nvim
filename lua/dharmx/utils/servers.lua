@@ -1,4 +1,5 @@
 return {
+  "phpactor",
   "bashls",
   "cmake",
   "jdtls",

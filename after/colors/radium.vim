@@ -610,8 +610,6 @@ hi TodoSignTODO guibg=#101317 guifg=#C397D8
 hi TodoSignUPDATE guibg=#101317 guifg=#B77EE0
 hi TodoSignWANTS guibg=#101317 guifg=#FFEDA6
 hi TodoSignWARN guibg=#101317 guifg=#E17272
-hi ToggleTerm1FloatBorder guibg=#151A1F guifg=#151A1F
-hi ToggleTerm1NormalFloat guibg=#151A1F guifg=#BABABE
 hi TreesitterContext guibg=#171A20
 hi TroubleNormal guibg=#0C0E11
 hi Typedef guifg=#C397D8

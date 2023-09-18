@@ -40,6 +40,7 @@ return {
   },
   {
     "j-hui/fidget.nvim",
+    tag = "legacy",
     config = function() req("fidget") end,
     event = "LspAttach",
   },

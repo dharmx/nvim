@@ -3,6 +3,18 @@ local function req(file) require("dharmx.configs.interface." .. file) end
 return {
   {
     "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("nvim-web-devicons").setup({
+        override = {
+          yue = {
+            icon = "󰀘",
+            color = "#B7AE8F",
+            cterm_color = "65",
+            name = "Yue"
+          },
+        }
+      })
+    end,
   },
   {
     "petertriho/nvim-scrollbar",

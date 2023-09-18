@@ -111,4 +111,9 @@ mason.setup_handlers({
       tools = { hover_actions = { border = "solid" } },
     })
   end,
+  phpactor = function()
+    local copy = vim.deepcopy(merge("phpactor"))
+    copy.init_options.documentFormatting = nil
+    lsp.phpactor.setup(copy)
+  end,
 })

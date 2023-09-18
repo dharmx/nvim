@@ -108,6 +108,10 @@ return {
     keys = { "g", { mode = "v", "g" }, { mode = "i", "g" }, { mode = "x", "g" } },
   },
   {
+    "pigpigyyy/yuescript-vim",
+    ft = "yue",
+  },
+  {
     "phelipetls/vim-hugo",
     ft = "markdown",
   },

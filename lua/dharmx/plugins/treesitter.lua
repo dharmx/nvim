@@ -18,7 +18,7 @@ return {
     event = { "CursorHold", "CursorMoved", "InsertEnter" },
   },
   {
-    "mrjones2014/nvim-ts-rainbow",
+    "HiPhish/nvim-ts-rainbow2",
     config = function() req("rainbow") end,
     event = { "CursorHold", "CursorMoved", "InsertEnter" },
   },

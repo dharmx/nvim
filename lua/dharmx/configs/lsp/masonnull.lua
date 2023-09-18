@@ -18,6 +18,7 @@ mason_null.setup({
     "shellharden",
     "gitlint",
     "shfmt",
+    "php-cs-fixer",
   },
   automatic_installation = true,
   automatic_setup = true,

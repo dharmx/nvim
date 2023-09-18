@@ -7,6 +7,7 @@ formatter.setup({
   filetype = {
     ["*"] = require("formatter.filetypes.any").remove_trailing_whitespace,
     c = require("formatter.filetypes.c").clangformat,
+    php = require("formatter.filetypes.php").php_cs_fixer,
     lua = require("formatter.filetypes.lua").stylua,
     json = require("formatter.filetypes.json").fixjson,
     cmake = require("formatter.filetypes.cmake").cmakeformat,
