@@ -22,4 +22,9 @@ luasnip.config.set_config({
   },
 })
 
-require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load({
+  paths = {
+    require("lazy.core.config").options.root .. "/friendly-snippets",
+    vim.fn.stdpath("config") .. "/snippets",
+  },
+})

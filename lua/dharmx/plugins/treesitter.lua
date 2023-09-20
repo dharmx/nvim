@@ -38,4 +38,22 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     event = "LspAttach",
   },
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        autotag = {
+          enable = true,
+        },
+      })
+    end,
+    event = "BufWinEnter",
+  },
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    config = function()
+      require("ts_context_commentstring").setup()
+    end,
+    event = "BufWinEnter",
+  },
 }

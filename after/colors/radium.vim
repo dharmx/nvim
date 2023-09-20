@@ -85,6 +85,7 @@ let $FZF_DEFAULT_OPTS = "
  \  --cycle
  \  --height=40"
 
+hi LazyProp guibg=#151a1f guifg=#5FB0FC
 hi AlphaButtonLabelText guifg=#FFE59E
 hi AlphaFooting gui=bold guifg=#C397D8
 hi AlphaHeading guifg=#1A1F25
@@ -494,13 +495,13 @@ hi PreCondit guifg=#F96262
 hi PreProc guifg=#F96262
 hi Question guifg=#79DCAA
 hi QuickFixLine guibg=#FFE59E guifg=#101317
-hi rainbowcol1 guifg=#D098FF
-hi rainbowcol2 guifg=#79CAFF
-hi rainbowcol3 guifg=#94CAF9
-hi rainbowcol4 guifg=#50E0AC
-hi rainbowcol5 guifg=#FFE981
-hi rainbowcol6 guifg=#FF9393
-hi rainbowcol7 guifg=#FF8D8D
+hi TSRainbowBlue guifg=#94CAF9
+hi TSRainbowCyan guifg=#79CAFF
+hi TSRainbowGreen guifg=#50E0AC
+hi TSRainbowOrange guifg=#FF9393 
+hi TSRainbowRed guifg=#F96262
+hi TSRainbowViolet guifg=#D098FF
+hi TSRainbowYellow guifg=#FFE981
 hi RedrawDebugClear guibg=#FFFF00
 hi RedrawDebugComposed guibg=#008000
 hi RedrawDebugNormal gui=reverse
