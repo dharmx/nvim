@@ -85,6 +85,7 @@ let $FZF_DEFAULT_OPTS = "
  \  --cycle
  \  --height=40"
 
+hi Title gui=bold guifg=#66b3ff
 hi LazyProp guibg=#151a1f guifg=#5FB0FC
 hi AlphaButtonLabelText guifg=#FFE59E
 hi AlphaFooting gui=bold guifg=#C397D8
@@ -567,7 +568,6 @@ hi TelescopeResultsTitle guibg=#79DCAA guifg=#101317
 hi TelescopeSelectionCaret guibg=#101317 guifg=#FB7373
 hi TelescopeSelection guibg=#101317 guifg=#54CED6
 hi TermCursor gui=reverse
-hi Title gui=bold guifg=#4B5259
 hi TodoBgBUG guibg=#F87070 gui=bold guifg=#171C21
 hi TodoBgCHORE guibg=#70C0BA gui=bold guifg=#171C21
 hi TodoBgCLEAN guibg=#7AB0DF gui=bold guifg=#171C21

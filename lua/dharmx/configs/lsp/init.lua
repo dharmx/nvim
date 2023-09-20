@@ -36,7 +36,8 @@ local function capabilities(name)
   capability.textDocument.completion.completionItem.commitCharactersSupport = true
   capability.textDocument.semanticHighlighting = true
   capability.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
-  capability.textDocument.completion.completionItem.resolveSupport = { properties = { "documentation", "detail", "additionalTextEdits" } }
+  capability.textDocument.completion.completionItem.resolveSupport =
+    { properties = { "documentation", "detail", "additionalTextEdits" } }
   capability.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
 
   if name == "clangd" then capability.offsetEncoding = "UTF-8" end
@@ -100,30 +101,27 @@ mason.setup_handlers({
   end,
   rust_analyzer = function()
     if vim.bo.filetype ~= "rust" then return end
-    local root_dir = require("lspconfig.util").root_pattern({ "Cargo.toml", "rust-project.json" }) or vim.loop.cwd()
+    local copy = merge("rust_analyzer")
+    local root_dir = require("lspconfig.util").root_pattern({ "Cargo.toml", "rust-project.json" })
     local _rust_tools, rust_tools = pcall(require, "rust-tools")
     if not _rust_tools then
-      lsp.rust_analyzer.setup({ root_dir = root_dir })
+      lsp.rust_analyzer.setup(copy)
       return
     end
     rust_tools.setup({
-      server = vim.tbl_deep_extend("keep", { root_dir = root_dir }, merge("rust_analyzer")),
+      server = vim.tbl_deep_extend("keep", { root_dir = root_dir }, copy),
       tools = { hover_actions = { border = "solid" } },
     })
   end,
   phpactor = function()
     local copy = vim.deepcopy(merge("phpactor"))
     copy.init_options.documentFormatting = nil
-    -- Only enable when https://github.com/windwp/nvim-ts-autotag/issues/19 occurs. {{{
-    -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    --   underline = true,
-    --   virtual_text = {
-    --     spacing = 5,
-    --     severity_limit = "Warning",
-    --   },
-    --   update_in_insert = true,
-    -- })
-    -- }}}
     lsp.phpactor.setup(copy)
+    -- do not use diagnostics for blade files
+    vim.api.nvim_create_autocmd("Filetype", {
+      callback = function()
+        if vim.bo.filetype == "blade" then vim.diagnostic.disable(0) end
+      end,
+    })
   end,
 })

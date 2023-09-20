@@ -4,8 +4,6 @@ if not ok then return end
 mason_null.setup({
   ensure_installed = {
     "autopep8",
-    "eslint_d",
-    "fixjson",
     "isort",
     "stylua",
     "markdownlint",
