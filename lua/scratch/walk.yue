@@ -1,0 +1,64 @@
+import "plenary.job" as Task
+import "plenary.path" as Path
+import "nui.menu" as Menu
+import "nui.utils.autocmd" as :event
+import "gitsigns"
+
+defaults =
+  menu:
+    position: "50%"
+    size:
+      width: 25
+      height: 5
+    border:
+      style: "single"
+      text:
+        top: "Walk"
+        top_align: "center"
+    win_options:
+      winhighlight: "Normal:Normal,FloatBorder:Normal"
+
+make_menu = (file, items = {}, options = {}) ->
+  options = vim.tbl_deep_extend("keep", options, defaults.menu)
+  params =
+    lines: vim.tbl_map(Menu.item, items)
+    max_width: 20
+    keymap:
+      focus_next: { "j", "<Down>", "<Tab>" }
+      focus_prev: { "k", "<Up>", "<S-Tab>" }
+      close: { "<Esc>", "<C-c>" }
+      submit: { "<CR>", "<Space>" }
+    on_change: (hash) ->
+      vim.fn.system
+        * "git"
+        * "checkout"
+        * hash
+        * file
+        vim.cmd.edit!
+    on_submit: (hash) ->
+      vim.fn.system
+        * "git"
+        * "checkout"
+        * hash
+        * file
+      vim.cmd.edit!
+    on_close: vim.fn.system("git checkout")
+  Menu(options, params)
+
+export walk = ->
+  file = vim.fn.expand("%")
+  task = Task::new
+    * "git"
+    * "log"
+    * "--pretty=format:%h"
+    * "--no-notes"
+    * "--no-color"
+    * "--no-decorate"
+    * "--ignore-submodules"
+    * file
+    on_exit: (self, code) ->
+      if code ~= 0 then return
+      vim.schedule(-> make_menu(file, self\result!)::mount!)
+  task::start!
+
+walk!

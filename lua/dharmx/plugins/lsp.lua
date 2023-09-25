@@ -54,7 +54,7 @@ return {
     config = function() req("masonnull") end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     config = function() req("null") end,
     dependencies = {
       "WhoIsSethDaniel/mason-tool-installer.nvim",

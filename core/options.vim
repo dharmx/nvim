@@ -8,7 +8,7 @@ set wildmode=longest,list,full
 set spelllang=en_us,en_gb,cjk
 set spellsuggest=best,9
 set spelloptions=camel,noplainbuffer
-set noexrc
+set exrc
 set termguicolors
 set textwidth=120
 set colorcolumn=

@@ -1,5 +1,5 @@
 return {
-  "phpactor",
+  "intelephense",
   "bashls",
   "cmake",
   "jdtls",

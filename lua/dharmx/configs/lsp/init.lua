@@ -113,15 +113,15 @@ mason.setup_handlers({
       tools = { hover_actions = { border = "solid" } },
     })
   end,
-  phpactor = function()
-    local copy = vim.deepcopy(merge("phpactor"))
-    copy.init_options.documentFormatting = nil
-    lsp.phpactor.setup(copy)
+  intelephense = function()
+    local copy = vim.deepcopy(merge("intelephense"))
+    -- copy.init_options.documentFormatting = nil
+    lsp.intelephense.setup(copy)
     -- do not use diagnostics for blade files
-    vim.api.nvim_create_autocmd("Filetype", {
-      callback = function()
-        if vim.bo.filetype == "blade" then vim.diagnostic.disable(0) end
-      end,
-    })
+    -- vim.api.nvim_create_autocmd("Filetype", {
+    --   callback = function()
+    --     if vim.bo.filetype == "blade" then vim.diagnostic.disable(0) end
+    --   end,
+    -- })
   end,
 })
