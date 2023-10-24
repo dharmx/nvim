@@ -8,7 +8,7 @@ local ts_utils = require("nvim-treesitter.ts_utils")
 function M.tree()
   local node = ts_utils.get_node_at_cursor(0)
   if node and not node:type() then return end
-  local word = vim.fn.trim(vim.treesitter.query.get_node_text(node, 0), '"')
+  local word = vim.fn.trim(vim.treesitter.get_node_text(node, 0), '"')
   if not word:match("^https://.+") then return end
   M.shorten(word, function(response)
     vim.fn.setreg("+", response.body)

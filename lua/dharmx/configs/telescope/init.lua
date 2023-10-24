@@ -32,6 +32,17 @@ local config = {
         width = 0.3,
         height = 0.4,
       },
+      mappings = {
+        ["i"] = {
+          ["<C-K>"] = actions.preview_scrolling_up,
+          ["<C-J>"] = actions.preview_scrolling_down,
+          ["<C-D>"] = actions.delete_buffer + actions.move_to_top,
+        },
+        ["n"] = {
+          ["v"] = function(prompt_buffer) vmultiple(prompt_buffer, "vsplit") end,
+          ["dd"] = actions.delete_buffer + actions.move_to_top,
+        },
+      },
     },
     find_files = {
       no_ignore = true,
@@ -139,6 +150,11 @@ local config = {
     },
   },
   defaults = {
+    mappings = {
+      i = {
+        ["<C-[>"] = actions.close,
+      },
+    },
     preview = {
       treesitter = {
         disable = {

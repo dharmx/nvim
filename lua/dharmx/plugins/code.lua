@@ -87,7 +87,7 @@ return {
     ft = "sxhkd",
   },
   {
-    "TimUntersberger/neogit",
+    "NeogitOrg/neogit",
     opts = {
       signs = {
         section = { "", "" },
