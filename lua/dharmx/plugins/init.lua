@@ -44,7 +44,7 @@ function M.exclude_load(items)
     root = vim.fn.fnamemodify(lazypath, ":h"),
     concurrency = 50,
     defaults = { lazy = true },
-    dev = { path = vim.env.HOME .. "/Dotfiles/neovim" }, -- local plugins
+    dev = { path = vim.env.HOME .. "/Projects/neovim" }, -- local plugins
     install = {
       missing = true,
       colorscheme = { "radium" },

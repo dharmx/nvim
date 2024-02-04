@@ -2,6 +2,11 @@ local function req(file) require("dharmx.configs.interface." .. file) end
 
 return {
   {
+    "freddiehaddad/feline.nvim",
+    config = function() req("feline-lone") end,
+    event = { "CursorMoved", "CursorHold", "InsertEnter", "CmdlineEnter" },
+  },
+  {
     "nvim-tree/nvim-web-devicons",
     config = function()
       require("nvim-web-devicons").setup({

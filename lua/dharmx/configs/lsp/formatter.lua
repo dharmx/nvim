@@ -14,6 +14,7 @@ formatter.setup({
         ignore_exitcode = true,
       }
     end,
+    javascript = require("formatter.filetypes.javascript").prettier,
     c = require("formatter.filetypes.c").clangformat,
     php = require("formatter.filetypes.php").php_cs_fixer,
     lua = require("formatter.filetypes.lua").stylua,

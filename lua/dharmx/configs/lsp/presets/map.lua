@@ -14,8 +14,6 @@ function M.setup(_, buffer)
   vim.keymap.set("n", "<leader>rn", require("dharmx.configs.lsp.handlers.rename").lsp_rename, options)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, options)
   vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, options)
-  vim.keymap.set("n", "<leader>f", vim.cmd.Format, options)
-  vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, options)
   vim.keymap.set("n", "<leader>ge", vim.diagnostic.open_float, options)
   vim.keymap.set("n", "<leader>gl", vim.diagnostic.setloclist, options)
 end

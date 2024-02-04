@@ -10,6 +10,7 @@ illuminate.configure({
   delay = 100,
   filetype_overrides = {},
   filetypes_denylist = {
+    "lube",
     "TelescopeResults",
     "query",
     "gitrebase",

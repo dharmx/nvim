@@ -7,7 +7,7 @@ local A = vim.api
 local wrap = vim.schedule_wrap
 local cmd = A.nvim_create_user_command
 
-local function _create_ranges(file, starting, ending)
+local function create_ranges(file, starting, ending)
   local tokens = {}
   table.insert(tokens, file)
   if starting and ending then
@@ -20,13 +20,10 @@ local function _create_ranges(file, starting, ending)
   return table.concat(tokens)
 end
 
-local function _print_errors(errors)
+local function print_errors(errors)
   local store = {}
   table.insert(store, "# An ERROR occured.\n")
-  for _, line in ipairs(errors) do
-    table.insert(store, "- " .. line)
-  end
-
+  for _, line in ipairs(errors) do table.insert(store, "- " .. line) end
   A.nvim_notify(table.concat(store, "\n"), vim.log.levels.ERROR, {
     icon = " ",
     title = "permalink.lua",
@@ -41,27 +38,27 @@ function M.fetch_permalink(file, starting, ending, options)
 
   if options.open_brower then assert(options.browser) end
   if not U.fs_realpath(file) then
-    _print_errors({ file .. " does not exist!" })
+    print_errors({ file .. " does not exist!" })
     return
   end
 
   Task:new({
-    "gh",
-    "browse",
-    "--no-browser",
-    _create_ranges(file, starting, ending),
-    on_start = wrap(
-      function()
-        A.nvim_notify("Fetching permalink. Please wait... ", vim.log.levels.INFO, {
-          icon = " ",
-          title = "permalink.lua",
-        })
-      end
-    ),
+    command = "gh",
+    args = {
+      "browse",
+      "--no-browser",
+      create_ranges(file, starting, ending),
+    },
+    on_start = wrap(function()
+      A.nvim_notify("Fetching permalink. Please wait... ", vim.log.levels.INFO, {
+        icon = " ",
+        title = "permalink.lua",
+      })
+    end),
     on_exit = wrap(function(self, code, _)
       local result = self:result()
       if code ~= 0 then
-        _print_errors(result)
+        print_errors(result)
         return
       end
 
@@ -72,17 +69,15 @@ function M.fetch_permalink(file, starting, ending, options)
       })
       if options.open_browser then
         Task:new({
-          options.browser,
-          result[1],
+          command = options.browser,
+          args = { result[1] },
           detached = true,
-          on_start = wrap(
-            function()
-              A.nvim_notify("Opened fetched link in " .. options.browser .. ".", vim.log.levels.INFO, {
-                icon = " ",
-                title = "permalink.lua",
-              })
-            end
-          ),
+          on_start = wrap(function()
+            A.nvim_notify("Opened fetched link in " .. options.browser .. ".", vim.log.levels.INFO, {
+              icon = " ",
+              title = "permalink.lua",
+            })
+          end),
         }):start()
       end
     end),
@@ -98,9 +93,7 @@ function M.commands()
       starting = args.line1
       ending = args.line2
     end
-    M.fetch_permalink(file, starting, ending, {
-      open_browser = true,
-    })
+    M.fetch_permalink(file, starting, ending, { open_browser = true })
   end, {
     range = true,
     desc = "Browse GH.",

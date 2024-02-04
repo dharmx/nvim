@@ -161,7 +161,7 @@ hi CmpItemKindVariable guifg=#36C692
 hi CmpItemMenu guifg=#7AB0DF
 hi ColorColumn guibg=#111419 guifg=#171A20
 hi Comment guifg=#515C68
-hi Conceal guifg=#353E47
+hi Conceal guifg=#353E47 guibg=NONE
 hi Conditional guifg=#F87070
 hi Constant guifg=#FF6666
 hi CursorColumn guibg=#191D21

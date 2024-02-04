@@ -55,9 +55,6 @@ nnoremap <leader>bb :Telescope buffers<CR>
 nnoremap <leader>ff :Telescope media<CR>
 nnoremap <leader>gg :Telescope live_grep<CR>
 nnoremap <leader>mm :Telescope marks<CR>
-nnoremap <leader>rr :Telescope registers<CR>
-nnoremap <leader>jj :Telescope jumplist<CR>
-nnoremap <leader>ll :Telescope loclist<CR>
 
 nnoremap <silent> <A-k> :MoveLine(-1)<CR>
 nnoremap <silent> <A-j> :MoveLine(1)<CR>

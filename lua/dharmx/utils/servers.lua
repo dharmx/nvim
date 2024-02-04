@@ -1,5 +1,6 @@
 return {
   "intelephense",
+  "tsserver",
   "bashls",
   "cmake",
   "jdtls",

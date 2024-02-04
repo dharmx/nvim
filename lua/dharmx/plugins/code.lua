@@ -2,6 +2,14 @@ local function req(file) require("dharmx.configs.code." .. file) end
 
 return {
   {
+    "TheBallsUp/lube.nvim",
+    dev = true,
+  },
+  {
+    "stevearc/oil.nvim",
+    config = true,
+  },
+  {
     "kylechui/nvim-surround",
     event = { "CmdlineEnter", "InsertEnter", "CursorHold", "CursorMoved" },
     config = true,
@@ -10,6 +18,30 @@ return {
     "monaqa/dial.nvim",
     config = function() req("dial") end,
     keys = { mode = "n", { "<C-a>", "<C-x>", "<C-a>", "<C-x>" } },
+  },
+  {
+    "lervag/vimtex",
+    ft = "tex",
+    init = function()
+      vim.g.vimtex_view_method = "zathura"
+      vim.g.vimtex_context_pdf_viewer = "zathura"
+      vim.g.vimtex_compiler_latexmk = {
+        aux_dir = "",
+        out_dir = "",
+        callback = 1,
+        continuous = 1,
+        executable = "latexmk",
+        hooks = {},
+        options = {
+          "-shell-escape",
+          "-verbose",
+          "-file-line-error",
+          "-synctex=1",
+          "-interaction=nonstopmode",
+          "-pdf",
+        },
+      }
+    end,
   },
   {
     "max397574/better-escape.nvim",
@@ -121,6 +153,7 @@ return {
   },
   {
     "fedepujol/move.nvim",
+    config = true,
     event = { "CursorHold", "CursorMoved", "InsertEnter", "CmdlineEnter" },
   },
   {
