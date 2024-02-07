@@ -2,6 +2,19 @@ local function req(file) require("dharmx.configs.interface." .. file) end
 
 return {
   {
+    "Bekaboo/deadcolumn.nvim",
+    opts = {
+      scope = "line",
+      blending = {
+        hlgroup = { "ColorColumn", "bg" },
+      },
+      warning = {
+        hlgroup = { "CursorLine", "bg" },
+      },
+    },
+    event = { "CursorMoved", "CursorHold", "InsertEnter", "CmdlineEnter" },
+  },
+  {
     "freddiehaddad/feline.nvim",
     config = function() req("feline-lone") end,
     event = { "CursorMoved", "CursorHold", "InsertEnter", "CmdlineEnter" },

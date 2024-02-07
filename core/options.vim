@@ -11,7 +11,7 @@ set spelloptions=camel,noplainbuffer
 set exrc
 set termguicolors
 set textwidth=120
-set colorcolumn=
+set colorcolumn=120
 set laststatus=3
 set backspace=indent,eol,start
 set completeopt=menuone,noselect
@@ -70,4 +70,4 @@ set whichwrap+=<>[]hl
 set shortmess+=sI
 set diffopt+=algorithm:patience
 set formatoptions-=cro
-set fillchars=eob:\ ,stlnc:\ ,diff:░,msgsep:━,foldopen:,foldsep:│,foldclose:,horiz:━,horizup:┻,horizdown:┳,vert:┃,vertleft:┫,vertright:┣,verthoriz:╋,fold:─
+set fillchars=stlnc:\ ,diff:░,msgsep:━,foldopen:,foldsep:│,foldclose:,horiz:━,horizup:┻,horizdown:┳,vert:┃,vertleft:┫,vertright:┣,verthoriz:╋,fold:─
