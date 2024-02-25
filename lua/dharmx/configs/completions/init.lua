@@ -30,12 +30,10 @@ cmp.setup({
     ["<S-Tab>"] = cmp.mapping.scroll_docs(-4),
     ["<Tab>"] = cmp.mapping.scroll_docs(4),
     ["<C-E>"] = cmp.mapping.abort(),
-
     ["<C-Y>"] = cmp.mapping(cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     }), { "i", "s" }),
-
     ["<C-N>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -47,7 +45,6 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s" }),
-
     ["<C-P>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -57,7 +54,6 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s" }),
-
     ["<C-Space>"] = cmp.mapping({
       i = cmp.mapping.complete(),
       s = function()
@@ -71,8 +67,8 @@ cmp.setup({
   }),
   preselect = cmp.PreselectMode.Item,
   sources = cmp.config.sources({
-    { name = "luasnip", max_item_count = 3 },
     { name = "nvim_lsp", keyword_length = 2, group_index = 1 },
+    { name = "luasnip", max_item_count = 3 },
     { name = "nvim_lsp_signature_help" },
     { name = "zsh", max_item_count = 5 },
     { name = "emoji", max_item_count = 10 },
@@ -89,13 +85,13 @@ cmp.setup({
     },
   },
   view = { entries = { name = "custom" } },
-formatting = {
-  fields = { "abbr", "kind", "menu" },
-  format = function(entry, item)
-    item.kind = kind[item.kind] .. " " .. item.kind
-    return item
-  end,
-},
+  formatting = {
+    fields = { "abbr", "kind", "menu" },
+    format = function(entry, item)
+      item.kind = kind[item.kind] .. " " .. item.kind
+      return item
+    end,
+  },
   experimental = { ghost_text = { "Comment" } },
   completion = {
     completeopt = "menu,menuone,noselect,preview",

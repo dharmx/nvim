@@ -47,7 +47,7 @@ set scrolloff=8
 set sidescrolloff=8
 set showmode
 set showcmd
-set showtabline=1
+set showtabline=2
 set hlsearch
 set conceallevel=2
 set noswapfile

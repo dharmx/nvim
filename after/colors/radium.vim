@@ -226,7 +226,7 @@ hi DiffviewWinSeparator guifg=#171C21
 hi Directory guifg=#FFE59E
 hi EndOfBuffer guifg=#C397D8
 hi Error guifg=#F76262 guibg=NONE
-hi ErrorMsg guifg=#F87070
+hi ErrorMsg guifg=#F87070 guibg=#151A1F
 hi Exception guifg=#36C692
 hi FidgetTask guifg=#1A1E27
 hi FidgetTitle gui=bold guifg=#36C692
@@ -562,6 +562,7 @@ hi TelescopePromptCounter guibg=#12151B gui=bold guifg=#D997C8
 hi TelescopePromptNormal guibg=#12151B guifg=#BABABE
 hi TelescopePromptPrefix guibg=#12151B guifg=#F87070
 hi TelescopePromptTitle guibg=#F87070 guifg=#101317
+hi TelescopePromptBorder guibg=#12151B guifg=#2E7DC2
 hi TelescopeResultsBorder guibg=#0C0E11 guifg=#0C0E11
 hi TelescopeResultsNormal guibg=#0C0E11 guifg=#BABABE
 hi TelescopeResultsTitle guibg=#79DCAA guifg=#101317
