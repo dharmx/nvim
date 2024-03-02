@@ -1,25 +1,96 @@
 vim.cmd.colorscheme("radium")
-local core_path = vim.fn.stdpath("config") .. "/core"
+require("core.commands")
+require("core.options")
+require("core.mappings")
 
-for _, file in ipairs(vim.fn.readdir(core_path)) do
-  vim.cmd.source(core_path .. "/" .. file)
+local data = vim.fn.stdpath("data")
+local lazypath = data .. "/plugins/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
 end
+vim.opt.runtimepath:prepend(lazypath)
 
-for _, prov in ipairs({ 'node', 'perl', 'python3', 'ruby' }) do
-  vim.g["loaded_" .. prov .. "_provider"] = 0
-end
-
-require("dharmx.plugins").exclude_load()
-require("scratch.ethos").setup()
-vim.env.PATH = vim.env.PATH .. ":./node_modules/.bin"
-
-require("nvim-treesitter.parsers").get_parser_configs().lube = {
-  install_info = {
-    url = vim.env.HOME .. "/Projects/neovim/tree-sitter-lube",
-    files = { "src/parser.c" },
-    branch = "main",
-    generate_requires_npm = false,
-    requires_generate_from_grammar = false,
+require("lazy").setup("plugins", {
+  root = vim.fn.fnamemodify(lazypath, ":h"),
+  defaults = { lazy = true },
+  dev = { path = vim.env.HOME .. "/Projects/neovim" },
+  install = {
+    missing = true,
+    colorscheme = { "radium" },
   },
-  filetype = "lube",
-}
+  ui = {
+    size = { width = 0.8, height = 0.8 },
+    border = "solid",
+    icons = {
+      cmd = " ",
+      config = "",
+      event = "",
+      ft = " ",
+      init = " ",
+      import = " ",
+      keys = " ",
+      lazy = "鈴 ",
+      loaded = "●",
+      not_loaded = "○",
+      plugin = " ",
+      runtime = " ",
+      source = " ",
+      start = "",
+      task = "✔ ",
+      list = { "●", "➜", "★", "‒" },
+    },
+    throttle = 20,
+  },
+  diff = {
+    cmd = "diffview.nvim",
+  },
+  performance = {
+    cache = {
+      enabled = true,
+      path = vim.fn.stdpath("cache") .. "/lazy/cache",
+      ttl = 3600 * 24 * 5,
+      disable_events = { "VimEnter", "BufReadPre", "UIEnter" },
+    },
+    reset_packpath = true,
+    rtp = {
+      disabled_plugins = {
+        "netrwPlugin",
+        "netrwSettings",
+        "netrwFileHandlers",
+        "netrw",
+        "matchparen",
+        "2html_plugin",
+        "getscript",
+        "getscriptPlugin",
+        "gzip",
+        "logipat",
+        "matchit",
+        "tar",
+        "tarPlugin",
+        "rrhelper",
+        "vimball",
+        "vimballPlugin",
+        "zip",
+        "zipPlugin",
+        "tutor",
+        "rplugin",
+        "bugreport",
+        "tutor_mode_plugin",
+        "fzf",
+        "sleuth",
+      },
+    },
+  },
+  readme = {
+    root = vim.fn.stdpath("state") .. "/lazy/readme",
+    files = { "README.md", "lua/**/README.md", ".github/README.md" },
+    skip_if_doc_exists = true,
+  },
+})

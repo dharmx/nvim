@@ -1,9 +1,8 @@
 vim.opt_local.shiftwidth = 4
 vim.opt_local.tabstop = 4
 
-local nvim = require("dharmx.utils.nvim")
 local saved_channel
-nvim.cmd("DevHelp", function(args)
+vim.api.nvim_create_user_command("DevHelp", function(args)
   if saved_channel then
     vim.fn.jobstop(saved_channel)
     saved_channel = nil
