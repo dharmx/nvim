@@ -17,6 +17,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
+-- LAZY {{{
 require("lazy").setup("plugins", {
   root = vim.fn.fnamemodify(lazypath, ":h"),
   defaults = { lazy = true },
@@ -94,3 +95,6 @@ require("lazy").setup("plugins", {
     skip_if_doc_exists = true,
   },
 })
+-- }}}
+
+require("scratch.ethos").setup()

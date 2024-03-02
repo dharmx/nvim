@@ -94,3 +94,7 @@ command("PickColors", function()
       end),
     }):start()
 end, { nargs = 0 })
+
+command("Paste", function(args)
+  require("scratch.paste").paste(args)
+end, { range = true })
