@@ -1,0 +1,11 @@
+NEOVIM CONFIG
+=============
+
+Startuptime: 25.25ms
+Just drop this in your ~/.config.
+Screenshots can be found at https://imgur.com/a/ICzwXbg.
+
+Screenshots can be found here: 
+  LazyStart 8.28ms
+  LazyDone  15.94ms (+7.66ms)
+  UIEnter   25.25ms (+9.31ms)

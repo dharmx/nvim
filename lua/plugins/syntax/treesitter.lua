@@ -44,16 +44,16 @@ treesitter.setup({
   ignore_install = { "comment" },
   parser_install_dir = vim.fn.stdpath("data") .. "/parsers",
   highlight = {
-    enable = true,
-    use_languagetree = true,
-    additional_vim_regex_highlighting = true,
+    enable = false,
+    use_languagetree = false,
+    additional_vim_regex_highlighting = false,
   },
-  indent = { enable = true },
+  indent = { enable = false },
   incremental_selection = { enable = true },
   playground = {
-    enable = true,
+    enable = false,
     updatetime = 25,
-    persist_queries = true,
+    persist_queries = false,
     keybindings = {
       toggle_query_editor = "o",
       toggle_hl_groups = "i",
@@ -116,7 +116,7 @@ treesitter.setup({
     },
   },
   rainbow = {
-    enable = true,
+    enable = false,
     query = "rainbow-parens",
   },
   matchup = {
@@ -126,7 +126,7 @@ treesitter.setup({
     },
   },
   querylinter = {
-    enable = true,
+    enable = false,
     use_virtual_text = true,
     lint_events = { "BufWrite", "CursorHold" },
   },

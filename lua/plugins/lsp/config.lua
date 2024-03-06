@@ -7,9 +7,7 @@ if not (mason_ok and cmp_ok and lsp_ok and navic_ok) then return end
 local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
 
-local kinds = require("core.kinds")
 vim.lsp.set_log_level("warn")
-
 vim.lsp.protocol.CompletionItemKind = require("core.kinds")
 vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 vim.diagnostic.config({
@@ -64,7 +62,6 @@ local opts = {
       })
     end
 
-    vim.lsp.protocol.CompletionItemKind = kinds
     if client.config.flags then client.config.flags.allow_incremental_sync = true end
     if client.server_capabilities.documentSymbolProvider then navic.attach(client, buffer) end
     client.server_capabilities.semanticTokensProvider = nil

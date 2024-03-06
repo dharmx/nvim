@@ -281,6 +281,7 @@ telescope.setup({
     ["ui-select"] = {
       themes.get_dropdown({
         layout_strategy = "cursor",
+        borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
       }),
       specific_opts = {
         codeaction = {

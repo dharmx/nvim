@@ -10,15 +10,7 @@ return {
   {
     "dharmx/track.nvim",
     config = true,
-    cmd = {
-      "Track",
-      "TrackPick",
-      "TrackMark",
-      "TrackBundleAlternate",
-      "TrackUnmark",
-      "TrackStashBundle",
-      "TrackRestoreBundle",
-    },
+    cmd = { "Track", "Mark", "Unmark" },
     dev = true,
   },
   {

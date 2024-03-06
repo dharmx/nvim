@@ -1,15 +1,18 @@
 return {
   {
     "andymass/vim-matchup",
+    enabled = false,
     event = { "CursorHold", "CursorMoved", "InsertEnter" },
   },
   {
     "HiPhish/nvim-ts-rainbow2",
+    enabled = false,
     event = { "CursorHold", "CursorMoved", "InsertEnter" },
   },
   {
     "windwp/nvim-ts-autotag",
     event = "BufWinEnter",
+    enabled = false,
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
@@ -18,6 +21,7 @@ return {
   {
     "RRethy/vim-illuminate",
     event = { "CursorHold", "CursorMoved", "InsertEnter" },
+    enabled = false,
     config = function()
       require("plugins.syntax.illuminate")
     end,
@@ -33,6 +37,7 @@ return {
   {
     "romgrk/nvim-treesitter-context",
     event = { "CursorHold", "CursorMoved", "InsertEnter" },
+    enabled = false,
     config = function()
       require("plugins.syntax.context")
     end,

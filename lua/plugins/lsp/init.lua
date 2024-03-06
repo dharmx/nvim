@@ -62,6 +62,26 @@ return {
     },
   },
   {
+    "folke/neoconf.nvim",
+    event = "LspAttach",
+    opts = {
+      local_settings = ".lua.json",
+      global_settings = "lua.json",
+      import = {
+        vscode = true,
+        coc = true,
+        nlsp = true,
+      },
+      live_reload = true,
+      filetype_jsonc = true,
+      plugins = {
+        lspconfig = {
+          enabled = true,
+        },
+      },
+    },
+  },
+  {
     "folke/neodev.nvim",
     opts = {
       library = {

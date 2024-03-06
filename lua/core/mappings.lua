@@ -19,8 +19,8 @@ set("v", "<C-K>", "<C-W>k")
 set("v", "<C-L>", "<C-W>l")
 
 set("n", "<leader><leader>", "<cmd>Track<cr>", silent)
-set("n", "<leader>aa", "<cmd>TrackMark<cr>", silent)
-set("n", "<leader>dd", "<cmd>TrackUnmark<cr>", silent)
+set("n", "<leader>aa", "<cmd>Mark<cr>", silent)
+set("n", "<leader>dd", "<cmd>Unmark<cr>", silent)
 
 set("n", "<F1>", "<cmd>ColorToggle<cr>", remap)
 set("n", "<F2>", "<cmd>setlocal spell!<cr>", remap)

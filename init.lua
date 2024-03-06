@@ -3,6 +3,7 @@ require("core.commands")
 require("core.options")
 require("core.mappings")
 
+function P(...) vim.notify(vim.inspect(...)) end
 local data = vim.fn.stdpath("data")
 local lazypath = data .. "/plugins/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -66,8 +67,8 @@ require("lazy").setup("plugins", {
         "netrwSettings",
         "netrwFileHandlers",
         "netrw",
-        "matchparen",
         "2html_plugin",
+        "tohtml",
         "getscript",
         "getscriptPlugin",
         "gzip",
@@ -84,7 +85,6 @@ require("lazy").setup("plugins", {
         "rplugin",
         "bugreport",
         "tutor_mode_plugin",
-        "fzf",
         "sleuth",
       },
     },
@@ -97,4 +97,8 @@ require("lazy").setup("plugins", {
 })
 -- }}}
 
-require("scratch.ethos").setup()
+vim.schedule(function()
+  require("scratch.ethos").setup()
+  vim.cmd.TSEnable("highlight")
+  vim.cmd.TSEnable("indent")
+end)
