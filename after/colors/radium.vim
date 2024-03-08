@@ -704,6 +704,7 @@ if has('nvim')
   hi @type.definition guifg=#C397D8
   hi @type guifg=#F87070
   hi @variable guifg=#D4D4D5
+  hi @module.builtin guifg=#54CED6 gui=bold
 
   hi link @lsp.type.boolean @boolean 
   hi link @lsp.type.builtinType @type.builtin 
@@ -733,5 +734,5 @@ if has('nvim')
   hi link @lsp.typemod.string.injected @string 
   hi link @lsp.typemod.type.defaultLibrary @type.builtin 
   hi link @lsp.typemod.variable.defaultLibrary @variable.builtin 
-  hi link @lsp.typemod.variable.injected @variable 
+  hi link @lsp.typemod.variable.injected @variable
 endif

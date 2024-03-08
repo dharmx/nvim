@@ -1,5 +1,10 @@
 return {
   {
+    "NvChad/nvim-colorizer.lua",
+    config = true,
+    event = { "CursorMoved", "CursorHold", "InsertEnter" },
+  },
+  {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
       require("plugins.ui.indents")

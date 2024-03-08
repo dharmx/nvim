@@ -99,6 +99,7 @@ require("lazy").setup("plugins", {
 
 vim.schedule(function()
   require("scratch.ethos").setup()
+  require("scratch.overview").setup()
   vim.cmd.TSEnable("highlight")
   vim.cmd.TSEnable("indent")
 end)

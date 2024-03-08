@@ -200,3 +200,10 @@ end, {
   complete = "file",
   nargs = "?",
 })
+
+command("Overview", function()
+  require("scratch.overview").toggle()
+end, {
+  desc = "Open keymap overview.",
+  nargs = 0,
+})
