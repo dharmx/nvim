@@ -2,6 +2,7 @@ local mason_ok, mason = pcall(require, "mason-lspconfig")
 local cmp_ok, cmp = pcall(require, "cmp_nvim_lsp")
 local lsp_ok, lsp = pcall(require, "lspconfig")
 local navic_ok, navic = pcall(require, "nvim-navic")
+pcall(require, "mason-null-ls")
 
 if not (mason_ok and cmp_ok and lsp_ok and navic_ok) then return end
 local map = vim.keymap.set

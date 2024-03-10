@@ -1,9 +1,9 @@
+function P(...) vim.notify(vim.inspect(...)) end
 vim.cmd.colorscheme("radium")
 require("core.commands")
 require("core.options")
 require("core.mappings")
 
-function P(...) vim.notify(vim.inspect(...)) end
 local data = vim.fn.stdpath("data")
 local lazypath = data .. "/plugins/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -100,6 +100,8 @@ require("lazy").setup("plugins", {
 vim.schedule(function()
   require("scratch.ethos").setup()
   require("scratch.overview").setup()
+  require("scratch.view").setup()
+  require("scratch.paste").setup()
   vim.cmd.TSEnable("highlight")
   vim.cmd.TSEnable("indent")
 end)

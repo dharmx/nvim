@@ -42,26 +42,6 @@ return {
     },
   },
   {
-    "jayp0521/mason-null-ls.nvim",
-    dependencies = "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "autopep8",
-        "isort",
-        "stylua",
-        "markdownlint",
-        "shellcheck",
-        "vint",
-        "black",
-        "shellharden",
-        "gitlint",
-        "shfmt",
-      },
-      automatic_installation = true,
-      automatic_setup = true,
-    },
-  },
-  {
     "folke/neoconf.nvim",
     event = "LspAttach",
     opts = {

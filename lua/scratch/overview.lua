@@ -1,6 +1,7 @@
 ---@diagnostic disable: need-check-nil
 local M = {}
 local A = vim.api
+local truncate = require("plenary.strings").truncate
 
 M._line = -1
 M._structure = {}
@@ -238,6 +239,17 @@ function M.toggle()
     M.PUT("s", info, "CursorLine")
     M.PUT()
   end
+
+  M.PUT("t", info, "Commands", { left = 1, right = 1 }, { centered = "CursorLine", titled = "TodoBgTEST" })
+  M.PUT("s", info, "CursorLine")
+  for _, command in pairs(A.nvim_get_commands({})) do
+    command.definition = command.definition == "" and "no definition" or truncate(command.definition, 50)
+    if command.definition:match("^:?lua require") or command.definition:match("^:?call ") then command.definition = "no definition" end
+    M.PUT("e", info, command.name, vim.trim(command.definition), { left = 2, right = 2 }, { key = "Directory", value = "MsgArea", background = "CursorLine" })
+  end
+  M.PUT("s", info, "CursorLine")
+  M.PUT()
+
   M.draw(info)
   M._info = info
 end

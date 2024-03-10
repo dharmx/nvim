@@ -735,4 +735,17 @@ if has('nvim')
   hi link @lsp.typemod.type.defaultLibrary @type.builtin 
   hi link @lsp.typemod.variable.defaultLibrary @variable.builtin 
   hi link @lsp.typemod.variable.injected @variable
+
+  hi link @markup.heading.1.markdown Type
+  hi link @markup.heading.2.markdown Type
+  hi link @markup.heading.3.markdown Type
+  hi link @markup.heading.4.markdown Type
+  hi link @markup.heading.5.markdown Type
+  hi link @markup.heading.6.markdown Type
+  hi link @markup.heading.1.marker.markdown Title
+  hi link @markup.heading.2.marker.markdown Title
+  hi link @markup.heading.3.marker.markdown Title
+  hi link @markup.heading.4.marker.markdown Title
+  hi link @markup.heading.5.marker.markdown Title
+  hi link @markup.heading.6.marker.markdown Title
 endif
