@@ -12,7 +12,10 @@ vim.lsp.set_log_level("warn")
 vim.lsp.protocol.CompletionItemKind = require("core.kinds")
 vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 vim.diagnostic.config({
-  virtual_text = { prefix = " ", source = "always" },
+  virtual_text = {
+    prefix = " ",
+    source = "always",
+  },
   signs = true,
   underline = true,
   update_in_insert = false,

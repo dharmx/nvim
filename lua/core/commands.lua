@@ -82,7 +82,7 @@ autocmd("InsertEnter", {
 command("PickColors", function()
   local Task = require("plenary.job")
     Task:new({
-      "xcolor",
+      command = "xcolor",
       on_exit = vim.schedule_wrap(function(self, code, _)
         if code ~= 0 then
           vim.notify("Could not run xcolor.")
@@ -97,7 +97,19 @@ end, { nargs = 0 })
 
 command("Paste", function(args)
   require("scratch.paste").command(args)
-end, { range = true })
+end, {
+  desc = "Upload/delete files/snippets to a pastebin site.",
+  range = true,
+  bang = true,
+  nargs = "?",
+  complete = function(arg, name, _)
+    if name:match("^'<,'>Paste") then return {} end
+    if name:match("^Paste!") then
+      return vim.tbl_keys(require("scratch.paste")._responses)
+    end
+    return vim.fn.getcompletion(arg, "file")
+  end,
+})
 
 command("GHBrowse", function(args)
   local starting
