@@ -4,8 +4,7 @@
       "enabled": true,
       "plugins": [
         "plenary.nvim",
-        "telescope.nvim",
-        "telescope-media.nvim"
+        "dial.nvim"
       ]
     }
   },
