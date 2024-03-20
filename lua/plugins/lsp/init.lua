@@ -1,6 +1,7 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    dependencies = "nvimtools/none-ls.nvim",
     config = function()
       require("plugins.lsp.config")
     end,
@@ -23,6 +24,14 @@ return {
     },
   },
   {
+    "nvimtools/none-ls.nvim",
+    config = function() require("plugins.lsp.none") end,
+    dependencies = {
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      "jayp0521/mason-null-ls.nvim",
+    },
+  },
+  {
     "williamboman/mason-lspconfig.nvim",
     dependencies = "williamboman/mason.nvim",
     opts = {
@@ -39,6 +48,42 @@ return {
         "sourcery",
       },
       automatic_installation = true,
+    },
+  },
+  {
+    "jayp0521/mason-null-ls.nvim",
+    opts = {
+      ensure_installed = {
+        "autopep8",
+        "isort",
+        "stylua",
+        "markdownlint",
+        "sqlfluff",
+        "stylelint",
+        "shellcheck",
+        "vint",
+        "prettier",
+        "black",
+        "shellharden",
+        "gitlint",
+        "shfmt",
+      },
+      automatic_installation = true,
+      automatic_setup = true,
+    },
+  },
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    opts = {
+      ensure_installed = {
+        "bash-language-server",
+        "shellcheck",
+        "shfmt",
+        "vint",
+      },
+      auto_update = true,
+      run_on_start = true,
+      start_delay = 3000,
     },
   },
   {
@@ -84,15 +129,6 @@ return {
       separator = "  ",
       depth_limit_indicator = "… ",
       safe_output = true,
-    },
-  },
-  {
-    "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {
-        lua = { "stylua" },
-        python = { "isort", "black" },
-      },
     },
   },
 }

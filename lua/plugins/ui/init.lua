@@ -35,7 +35,7 @@ return {
     event = { "CursorMoved", "CursorHold", "InsertEnter", "CmdlineEnter" },
   },
   {
-    "gelguy/wilder.nvim",
+    "ogaken-1/wilder.nvim",
     config = function()
       local wilder = require("wilder")
       wilder.setup({ modes = { ":", "/", "?" } })
