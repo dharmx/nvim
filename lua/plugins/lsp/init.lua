@@ -66,6 +66,7 @@ return {
         "prettier",
         "black",
         "shellharden",
+        "proselint",
         "gitlint",
         "shfmt",
       },

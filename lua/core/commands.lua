@@ -80,8 +80,8 @@ autocmd("InsertEnter", {
 })
 
 command("PickColors", function()
-  local Task = require("plenary.job")
-    Task:new({
+  local J = require("plenary.job")
+    J:new({
       command = "xcolor",
       on_exit = vim.schedule_wrap(function(self, code, _)
         if code ~= 0 then

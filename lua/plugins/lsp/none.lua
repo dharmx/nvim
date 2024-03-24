@@ -35,10 +35,15 @@ none.register({
 local B = none.builtins
 none.setup({
   sources = {
+    B.code_actions.proselint,
     B.code_actions.statix,
+    B.code_actions.ts_node_action,
+    B.completion.spell,
+    B.diagnostics.markdownlint,
+    B.diagnostics.proselint,
     B.diagnostics.stylelint,
     B.diagnostics.vint,
-    B.diagnostics.markdownlint,
+    B.diagnostics.zsh,
     B.formatting.astyle.with({ disabled_filetypes = { "c", "cpp" } }),
     B.formatting.cmake_format,
     B.formatting.markdownlint,
@@ -46,11 +51,10 @@ none.setup({
     B.formatting.prettier,
     B.formatting.rustywind,
     B.formatting.shellharden,
+    B.formatting.sql_formatter,
     B.formatting.sqlfluff,
     B.formatting.stylelint,
     B.formatting.stylua,
-    B.formatting.sql_formatter,
-
     B.formatting.google_java_format.with({ extra_args = { "--aosp" } }),
     B.formatting.shfmt.with({
       extra_args = function(params)

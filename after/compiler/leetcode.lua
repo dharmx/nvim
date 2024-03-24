@@ -24,14 +24,14 @@ end
 
 vim.api.nvim_create_user_command("Run", function()
   local popup = new_popup()
-  local Task = require("plenary.job")
+  local J = require("plenary.job")
   local file = vim.fn.expand("%")
   local stem = vim.fn.fnamemodify(file, ":t:r")
   local window, _ = popup.open()
 
   local channel = vim.api.nvim_open_term(popup.buffer, {})
   vim.api.nvim_win_set_option(window, "number", true)
-  local task = Task:new({
+  local task = J:new({
     "./" .. stem,
     skip_validation = true,
     on_stdout = vim.schedule_wrap(function(errors, data, _)
@@ -40,7 +40,7 @@ vim.api.nvim_create_user_command("Run", function()
       pcall(vim.api.nvim_chan_send, channel, data .. "\r\n")
     end),
   })
-  Task:new({
+  J:new({
     "gcc", "-o", stem, file,
     on_exit = function(_, code)
       if code ~= 0 then return end

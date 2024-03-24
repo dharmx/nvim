@@ -1,6 +1,6 @@
 local M = {}
 local Path = require("plenary.path")
-local Job = require("plenary.job")
+local J = require("plenary.job")
 
 M.config = {
   db_path = vim.fn.stdpath("state") .. "/paste.db.json",
@@ -20,7 +20,7 @@ end
 
 function M.paste(contents)
   M._path:write(table.concat(contents, "\n"), "w")
-  Job:new({
+  J:new({
     command = "0x0",
     args = { "--upload", M._path.filename },
     on_exit = vim.schedule_wrap(function(self, code, _)
@@ -44,7 +44,7 @@ function M.delete(response)
     M._db:write(vim.json.encode(M._responses), "w")
     return
   end
-  Job:new({
+  J:new({
     command = "0x0",
     args = { "--delete", response.headers["x-token"], response.body },
     on_exit = vim.schedule_wrap(function(self, code, _)

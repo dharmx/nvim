@@ -13,7 +13,7 @@ local M = {}
 
 local _PROXY = {}
 
-local Task = require("plenary.job")
+local J = require("plenary.job")
 local F = vim.fn
 local A = vim.api
 
@@ -148,7 +148,7 @@ function M.get(word, options)
   table.insert(args, word)
 
   -- maybe allow a way to configure this? I have not thought that far ahead
-  local task = Task:new({
+  local task = J:new({
     command = "dict",
     enabled_recording = true,
     skip_validation = true,
