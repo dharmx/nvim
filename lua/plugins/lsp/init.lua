@@ -55,6 +55,7 @@ return {
     opts = {
       ensure_installed = {
         "autopep8",
+        "sql-formatter",
         "isort",
         "stylua",
         "markdownlint",

@@ -147,3 +147,10 @@ end, {
   desc = "Close image view backend.",
   nargs = 0,
 })
+
+command("FormatNode", function()
+  require("scratch.node").apply()
+end, {
+  desc = "Format node under the cursor.",
+  nargs = 0,
+})
