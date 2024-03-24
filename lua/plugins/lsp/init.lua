@@ -26,11 +26,9 @@ return {
   {
     "nvimtools/none-ls.nvim",
     config = function() require("plugins.lsp.none") end,
-    dependencies = {
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
-      "jayp0521/mason-null-ls.nvim",
-    },
+    dependencies = "jayp0521/mason-null-ls.nvim",
   },
+  "mfussenegger/nvim-jdtls",
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = "williamboman/mason.nvim",
@@ -45,7 +43,10 @@ return {
         "grammarly",
         "vimls",
         "clangd",
+        "gopls",
+        "jdtls",
         "sourcery",
+        "gradle_ls",
       },
       automatic_installation = true,
     },
@@ -59,7 +60,6 @@ return {
         "isort",
         "stylua",
         "markdownlint",
-        "sqlfluff",
         "stylelint",
         "shellcheck",
         "vint",
@@ -72,20 +72,6 @@ return {
       },
       automatic_installation = true,
       automatic_setup = true,
-    },
-  },
-  {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-    opts = {
-      ensure_installed = {
-        "bash-language-server",
-        "shellcheck",
-        "shfmt",
-        "vint",
-      },
-      auto_update = true,
-      run_on_start = true,
-      start_delay = 3000,
     },
   },
   {

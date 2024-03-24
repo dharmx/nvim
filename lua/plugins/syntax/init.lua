@@ -10,6 +10,10 @@ return {
     event = { "CursorHold", "CursorMoved", "InsertEnter" },
   },
   {
+    "ckolkey/ts-node-action",
+    config = true,
+  },
+  {
     "windwp/nvim-ts-autotag",
     event = "BufWinEnter",
     enabled = false,

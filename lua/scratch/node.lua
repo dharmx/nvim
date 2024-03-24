@@ -72,7 +72,7 @@ function M._choose(on_complete, ...)
 end
 
 function M.apply()
-  M.choose(function(item)
+  M._choose(function(item)
     if handlers[item.text] then handlers[item.text]() end
   end, vim.tbl_keys(handlers))
 end
