@@ -4,7 +4,7 @@
       "enabled": true,
       "plugins": [
         "plenary.nvim",
-        "none-ls.nvim"
+        "telescope.nvim"
       ]
     }
   },

@@ -39,6 +39,7 @@ local handlers = {
 function M._choose(on_complete, ...)
   local choices = { ... }
   if type(choices[1]) == "table" then choices = choices[1] end
+  local Text = require("nui.text")
   local Menu = require("nui.menu") -- {{{
   local options = {
     relative = "editor",
@@ -49,7 +50,7 @@ function M._choose(on_complete, ...)
     border = {
       style = "solid",
       text = {
-        top = "Handlers",
+        top = Text(" Handlers ", "TelescopePromptTitle"),
         top_align = "center",
       },
     },

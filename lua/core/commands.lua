@@ -46,6 +46,17 @@ autocmd("FileType", {
 })
 
 autocmd("FileType", {
+  callback = function()
+    if not vim.loop.fs_realpath("./gradlew") then return end
+    vim.keymap.set("n", "<C-P>", "<cmd>Telescope gradle<CR>", {
+      buffer = true,
+      silent = true,
+    })
+  end,
+  group = GROUP,
+})
+
+autocmd("FileType", {
   pattern = "notify",
   command = "set ft=markdown",
   group = GROUP,
