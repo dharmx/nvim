@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local J = require("plenary.job")
 local Path = require("plenary.path")
 
@@ -5,25 +6,26 @@ local finders = require("telescope.finders")
 local sorters = require("telescope.sorters")
 local actions = require("telescope.actions")
 local pickers = require("telescope.pickers")
+local state = require("telescope.state")
+
+local make_entry = require("telescope.make_entry")
+local previewer = require("telescope.previewers.buffer_previewer")
+local entry_display = require("telescope.pickers.entry_display")
 
 local actions_layout = require("telescope.actions.layout")
-local previewer = require("telescope.previewers.buffer_previewer")
-local state = require("telescope.actions.state")
-local entry_display = require("telescope.pickers.entry_display")
-local make_entry = require("telescope.make_entry")
+local actions_state = require("telescope.actions.state")
 
 local dialog = require("telescope.previewers.utils").set_preview_message
 
+-- TODO: Implement recents.
 local defaults = {
   separator = " ",
   gradle_icon = "",
-  layout_strategy = "cursor",
   results_title = "",
   fill = "=",
   prompt_title = "Gradle Tasks",
   on_choice = function(entry)
-    if not entry.value.command then return end
-    vim.cmd.terminal(table.concat(entry.value.command, " "))
+    vim.cmd.terminal(table.concat(entry.command, " "))
   end,
   cache_filename = ".cached-tasks",
   previewer = false,
@@ -64,10 +66,12 @@ local function gen_from_gradle_cmds(opts)
   end
 
   return function(entry)
+    local heading = ""
+    if entry.heading then heading = entry.heading .. ":" end
     return make_entry.set_default_entry_mt({
       value = entry,
       display = make_display,
-      ordinal = entry.category .. ":" .. entry.task,
+      ordinal = heading .. entry.category .. ":" .. entry.task,
     }, opts)
   end
 end
@@ -126,7 +130,8 @@ local function get_tasks(on_success, title)
       local tasks = {}
       for _, section in ipairs(sectioned) do
         local cmds = vim.split(section, "\n", { plain = true })
-        table.insert(tasks, { task = table.remove(cmds, 1), category = "<head>" })
+        local heading = table.remove(cmds, 1)
+        table.insert(tasks, { task = heading, category = "<head>" })
         table.remove(cmds, 1) -- rm cosmetic dash-underline sep
 
         for _, cmd in ipairs(cmds) do
@@ -141,6 +146,7 @@ local function get_tasks(on_success, title)
             entry.category = category
             entry.description = description
             entry.task = task
+            entry.heading = heading
           else
             found, _, category, task = string.find(trimmed, "^(%w+):(%w+)$")
             if found then
@@ -148,6 +154,7 @@ local function get_tasks(on_success, title)
               entry.category = category
               entry.description = "No description."
               entry.task = task
+              entry.heading = heading
             else
               found, _, task, description = string.find(trimmed, "^(%w+) - (.*)$")
               if found then
@@ -155,12 +162,14 @@ local function get_tasks(on_success, title)
                 entry.category = "<main>"
                 entry.description = description:sub(3, #description)
                 entry.task = task
+                entry.heading = heading
               else
                 found, _, task = string.find(trimmed, "^(%w+)$")
                 if found then
                   entry.task = task
                   entry.category = "<none>"
                   entry.description = "No description."
+                  entry.heading = heading
                 end
               end
             end
@@ -180,6 +189,7 @@ local function get_tasks(on_success, title)
         end
       end
 
+      -- WARN: this will cause problems when implementing recents
       vim.schedule(function()
         if tasks_cache and equal then return end -- only refresh if the cache and new tasks aren't equal
         tasks_path:write(vim.json.encode(tasks), "w")
@@ -210,18 +220,47 @@ return require("telescope").register_extension({
           sorter = sorters.get_fzy_sorter(opts),
           previewer = previewer.new_buffer_previewer({
             define_preview = function(self, entry)
-              dialog(self.state.bufnr, self.state.winid, entry.value.description or "NOT APPLICABLE", opts.fill)
+              local description = vim.F.if_nil(entry.value.description, "NOT APPLICABLE")
+              dialog(self.state.bufnr, self.state.winid, description, opts.fill)
             end,
           }),
           attach_mappings = function(buffer, map)
             map("n", "<C-P>", actions_layout.toggle_preview)
-            map("i", "<C-P>", function(...)
-              actions_layout.toggle_preview(...)
-            end)
+            map("i", "<C-P>", actions_layout.toggle_preview)
+
+            local function smart_move(move_type)
+              return function(...)
+                local entry = actions_state.get_selected_entry().value
+                if entry.category ~= "<head>" then return end
+
+                -- HACK: having all entries as <head>s will result in a infinite loop
+                -- so we just get the current sorter state and see what was in the prompt
+                -- and if the prompt matches a case where only heads are viewed then we
+                -- do not move the current selection
+                -- TODO: Is there a better way to do this?
+                local move = true
+                local sorter = state.get_status(...).picker.sorter
+                if
+                  sorter
+                  and sorter._discard_state
+                  and sorter._discard_state.prompt:len() > 3 -- hack case
+                  and sorter._discard_state.prompt:match("^<hea") -- hack case
+                then
+                  move = false
+                end
+                if move then actions["move_selection_" .. move_type](...) end
+              end
+            end
+
+            actions.move_selection_next:enhance({ post = smart_move("next") })
+            actions.move_selection_previous:enhance({ post = smart_move("previous") })
             actions.select_default:replace(function()
-              actions.close(buffer)
-              local entry = state.get_selected_entry()
-              opts.on_choice(entry)
+              local entry = actions_state.get_selected_entry().value
+              -- do not allow the users to use <head> entries
+              if entry.category ~= "<head>" then
+                actions.close(buffer)
+                opts.on_choice(entry)
+              end
             end)
             return true
           end,
