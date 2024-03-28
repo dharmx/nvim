@@ -12,13 +12,6 @@ return {
     event = { "CursorMoved", "CursorHold", "InsertEnter" },
   },
   {
-    "freddiehaddad/feline.nvim",
-    event = { "CursorMoved", "CursorHold", "InsertEnter", "CmdlineEnter" },
-    config = function()
-      require("plugins.ui.feline")
-    end,
-  },
-  {
     "akinsho/bufferline.nvim",
     version = "*",
     dependencies = "nvim-tree/nvim-web-devicons",
@@ -28,6 +21,13 @@ return {
     event = { "CursorMoved", "CursorHold", "InsertEnter", "CmdlineEnter" },
   },
   {
+    "freddiehaddad/feline.nvim",
+    event = { "CursorMoved", "CursorHold", "InsertEnter", "CmdlineEnter" },
+    config = function()
+      require("plugins.ui.feline")
+    end,
+  },
+  {
     "folke/todo-comments.nvim",
     config = function()
       require("plugins.ui.todo")
@@ -35,26 +35,10 @@ return {
     event = { "CursorMoved", "CursorHold", "InsertEnter", "CmdlineEnter" },
   },
   {
-    "ogaken-1/wilder.nvim",
-    config = function()
-      local wilder = require("wilder")
-      wilder.setup({ modes = { ":", "/", "?" } })
-      wilder.set_option("pipeline", {
-        wilder.branch(wilder.cmdline_pipeline({ fuzzy = 0, set_pcre2_pattern = 1 }), wilder.search_pipeline({
-          pattern = wilder.python_fuzzy_pattern(),
-          sorter = wilder.python_difflib_sorter(),
-          engine = "re",
-        }))
-      })
-      wilder.set_option("renderer", wilder.wildmenu_renderer({ highlighter = wilder.basic_highlighter() }))
-    end,
-    event = "CmdlineEnter",
-  },
-  {
     "kevinhwang91/nvim-hlslens",
     config = true,
     event = "CmdlineEnter",
-    keys = { "n", "N" },
+    keys = { "n", "N", "/" },
   },
   {
     "petertriho/nvim-scrollbar",

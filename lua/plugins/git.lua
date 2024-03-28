@@ -1,10 +1,5 @@
 return {
   {
-    "sindrets/diffview.nvim",
-    config = true,
-    event = "CmdlineEnter",
-  },
-  {
     "NeogitOrg/neogit",
     opts = {
       signs = {

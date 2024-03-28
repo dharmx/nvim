@@ -2,6 +2,7 @@ _G.GROUP = vim.api.nvim_create_augroup("DharmxGroup", {})
 local autocmd = vim.api.nvim_create_autocmd
 local command = vim.api.nvim_create_user_command
 
+-- Auto Commands {{{
 autocmd("TextYankPost", {
   callback = function()
     vim.highlight.on_yank({
@@ -90,6 +91,19 @@ autocmd("InsertEnter", {
   group = GROUP,
 })
 
+-- these saved my life
+autocmd("CmdlineEnter", {
+  command = "set cmdheight=1",
+  group = GROUP,
+})
+
+autocmd("CmdlineLeave", {
+  command = "set cmdheight=0",
+  group = GROUP,
+})
+-- }}}
+
+-- Commands {{{
 command("PickColors", function()
   local J = require("plenary.job")
     J:new({
@@ -165,3 +179,4 @@ end, {
   desc = "Format node under the cursor.",
   nargs = 0,
 })
+-- }}}

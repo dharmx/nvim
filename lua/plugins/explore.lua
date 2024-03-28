@@ -1,9 +1,5 @@
 return {
   {
-    "TheBallsUp/lube.nvim",
-    dev = true,
-  },
-  {
     "akinsho/toggleterm.nvim",
     opts = {
       hide_numbers = true,

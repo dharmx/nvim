@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local J = require("plenary.job")
 local Path = require("plenary.path")
 
@@ -5,26 +6,30 @@ local finders = require("telescope.finders")
 local sorters = require("telescope.sorters")
 local actions = require("telescope.actions")
 local pickers = require("telescope.pickers")
+local state = require("telescope.state")
+
+local make_entry = require("telescope.make_entry")
+local previewer = require("telescope.previewers.buffer_previewer")
+local entry_display = require("telescope.pickers.entry_display")
 
 local actions_layout = require("telescope.actions.layout")
-local previewer = require("telescope.previewers.buffer_previewer")
-local state = require("telescope.actions.state")
-local entry_display = require("telescope.pickers.entry_display")
-local make_entry = require("telescope.make_entry")
+local actions_state = require("telescope.actions.state")
 
 local dialog = require("telescope.previewers.utils").set_preview_message
 
+local HEAD = "<head>"
+local NORM = "<norm>"
+local LONE = "<lone>"
+local MAIN = "<main>"
+
+-- TODO: Implement recents.
 local defaults = {
   separator = " ",
   gradle_icon = "",
-  layout_strategy = "cursor",
   results_title = "",
   fill = "=",
   prompt_title = "Gradle Tasks",
-  on_choice = function(entry)
-    if not entry.value.command then return end
-    vim.cmd.terminal(table.concat(entry.value.command, " "))
-  end,
+  on_choice = function(entry) vim.cmd.terminal(entry.cmd) end,
   cache_filename = ".cached-tasks",
   previewer = false,
   layout_config = {
@@ -47,31 +52,79 @@ local function gen_from_gradle_cmds(opts)
 
   local function make_display(entry)
     local entries = {}
-    if entry.value.category == "<head>" then -- make this non-interactive
+    if entry.value.type == HEAD then -- make this non-interactive
       table.insert(entries, { opts.gradle_icon, "@constant" })
-      table.insert(entries, { entry.value.task, "@constant" })
-    elseif entry.value.category == "<main>" then
+      if entry.value.main then
+        table.insert(entries, { entry.value.label, "@constant" })
+      else
+        table.insert(entries, { entry.value.label, "@include" })
+      end
+    elseif entry.value.type == NORM then
       table.insert(entries, " ")
-      table.insert(entries, { entry.value.task, "@float" })
-    elseif entry.value.category == "<none>" then
+      table.insert(entries, { entry.value.label, "@float" })
+    elseif entry.value.type == LONE then
       table.insert(entries, " ")
-      table.insert(entries, { entry.value.task, "@debug" })
+      table.insert(entries, { entry.value.label, "@debug" })
     else
       table.insert(entries, " ")
-      table.insert(entries, { entry.value.category .. ":" .. entry.value.task, "@define" })
+      table.insert(entries, { entry.value.label, "@define" })
     end
     return displayer(entries)
   end
 
   return function(entry)
+    local head = ""
+    if entry.head then heading = entry.head .. ":" end
     return make_entry.set_default_entry_mt({
       value = entry,
       display = make_display,
-      ordinal = entry.category .. ":" .. entry.task,
+      ordinal = head .. entry.type .. ":" .. entry.label,
     }, opts)
   end
 end
 -- }}}
+
+local function parse_lines(lines, ignore_lines)
+  local items = {}
+  local will_break = false
+  local head
+  for index, line in ipairs(lines) do
+    line = vim.trim(line)
+    if not vim.tbl_contains(ignore_lines, index) and not line:match("^-+$") then
+      local item = {}
+      if line == "" then
+        will_break = true
+      elseif line:match("^%w") then
+        if will_break then
+          item.type = HEAD
+          item.label = line
+          item.about = line
+          head = line
+          will_break = false
+        else
+          local tokens = vim.split(line, " - ", { plain = true })
+          if #tokens ~= 0 and #tokens > 1 then
+            item.head = head
+            item.type = tokens[1]:match("^%w+:") and NORM or LONE
+            item.label = table.remove(tokens, 1)
+            item.about = table.concat(tokens, " - ")
+            item.cmd = "./gradlew " .. item.label
+          else
+            item.head = head
+            item.type = tokens[1]:match("^%w+:") and LONE or MAIN
+            item.label = table.remove(tokens, 1)
+            item.about = "No description."
+            item.cmd = "./gradlew " .. item.label
+          end
+        end
+      end
+      if item.type then table.insert(items, item) end
+    end
+  end
+  items[1].main = true
+  items[1].type = HEAD
+  return items
+end
 
 local function get_tasks(on_success, title)
   ---@type Path
@@ -98,88 +151,20 @@ local function get_tasks(on_success, title)
     args = { "tasks", "--all" },
     on_exit = function(self, code, _)
       if code ~= 0 then return end
-      local lines = self:result()
-      -- rm unneeded lines
-      table.remove(lines, 1)
-      table.remove(lines, 1)
-      table.remove(lines, 1)
-      table.remove(lines, 1)
-      table.remove(lines, 1)
-      table.remove(lines, 1)
-      table.remove(lines, 1)
-      table.remove(lines)
-      table.remove(lines)
-      table.remove(lines)
-      local joined = table.concat(lines, "\n")
-      local sectioned = vim.split(joined, "\n\n")
-
-      local function make_command(task, category)
-        local command_list = { "./gradlew" }
-        if not category then
-          table.insert(command_list, task)
-        else
-          table.insert(command_list, category .. ":" .. task)
-        end
-        return command_list
-      end
-
-      local tasks = {}
-      for _, section in ipairs(sectioned) do
-        local cmds = vim.split(section, "\n", { plain = true })
-        table.insert(tasks, { task = table.remove(cmds, 1), category = "<head>" })
-        table.remove(cmds, 1) -- rm cosmetic dash-underline sep
-
-        for _, cmd in ipairs(cmds) do
-          local trimmed = vim.trim(cmd)
-          local found, _, category, task, description = string.find(trimmed, "^(%w+):(%w+) - (.*)$")
-          if description then description = description:sub(3, #description) end
-
-          -- Parse line {{{
-          local entry = {}
-          if found then
-            entry.command = make_command(task, category)
-            entry.category = category
-            entry.description = description
-            entry.task = task
-          else
-            found, _, category, task = string.find(trimmed, "^(%w+):(%w+)$")
-            if found then
-              entry.command = make_command(task, category)
-              entry.category = category
-              entry.description = "No description."
-              entry.task = task
-            else
-              found, _, task, description = string.find(trimmed, "^(%w+) - (.*)$")
-              if found then
-                entry.command = make_command(task)
-                entry.category = "<main>"
-                entry.description = description:sub(3, #description)
-                entry.task = task
-              else
-                found, _, task = string.find(trimmed, "^(%w+)$")
-                if found then
-                  entry.task = task
-                  entry.category = "<none>"
-                  entry.description = "No description."
-                end
-              end
-            end
-          end
-          -- }}}
-          if not vim.tbl_isempty(entry) then table.insert(tasks, entry) end
-        end
-      end
+      local tasks = self:result()
+      tasks = parse_lines(tasks, { 1, 2, 3, #tasks - 2, #tasks - 1, #tasks })
 
       local equal = #tasks == #tasks_cache
       if equal then -- deep array equal
         for index, item in ipairs(tasks) do
           local cache_item = tasks_cache[index]
-          if cache_item and item.category == cache_item.category then
-            if item.description ~= cache_item.description or item.task ~= cache_item.task then equal = true end
+          if cache_item and item.type == cache_item.type then
+            if item.about ~= cache_item.about or item.label ~= cache_item.label then equal = true end
           end
         end
       end
 
+      -- WARN: this will cause problems when implementing recents
       vim.schedule(function()
         if tasks_cache and equal then return end -- only refresh if the cache and new tasks aren't equal
         tasks_path:write(vim.json.encode(tasks), "w")
@@ -210,18 +195,47 @@ return require("telescope").register_extension({
           sorter = sorters.get_fzy_sorter(opts),
           previewer = previewer.new_buffer_previewer({
             define_preview = function(self, entry)
-              dialog(self.state.bufnr, self.state.winid, entry.value.description or "NOT APPLICABLE", opts.fill)
+              local about = vim.F.if_nil(entry.value.about, "NOT APPLICABLE")
+              dialog(self.state.bufnr, self.state.winid, about, opts.fill)
             end,
           }),
           attach_mappings = function(buffer, map)
             map("n", "<C-P>", actions_layout.toggle_preview)
-            map("i", "<C-P>", function(...)
-              actions_layout.toggle_preview(...)
-            end)
+            map("i", "<C-P>", actions_layout.toggle_preview)
+
+            local function smart_move(move_type)
+              return function(...)
+                local entry = actions_state.get_selected_entry().value
+                if entry.type ~= "<head>" then return end
+
+                -- HACK: having all entries as <head>s will result in a infinite loop
+                -- so we just get the current sorter state and see what was in the prompt
+                -- and if the prompt matches a case where only heads are viewed then we
+                -- do not move the current selection
+                -- TODO: Is there a better way to do this?
+                local move = true
+                local sorter = state.get_status(...).picker.sorter
+                if
+                  sorter
+                  and sorter._discard_state
+                  and sorter._discard_state.prompt:len() > 3 -- hack case
+                  and sorter._discard_state.prompt:match("^<hea") -- hack case
+                then
+                  move = false
+                end
+                if move then actions["move_selection_" .. move_type](...) end
+              end
+            end
+
+            actions.move_selection_next:enhance({ post = smart_move("next") })
+            actions.move_selection_previous:enhance({ post = smart_move("previous") })
             actions.select_default:replace(function()
-              actions.close(buffer)
-              local entry = state.get_selected_entry()
-              opts.on_choice(entry)
+              local entry = actions_state.get_selected_entry().value
+              -- do not allow the users to use <head> entries
+              if entry.type ~= "<head>" then
+                actions.close(buffer)
+                opts.on_choice(entry)
+              end
             end)
             return true
           end,

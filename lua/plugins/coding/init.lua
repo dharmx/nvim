@@ -14,29 +14,12 @@ return {
     end,
   },
   {
-    "AndrewRadev/linediff.vim",
-    cmd = "Linediff",
-  },
-  {
     "itchyny/vim-highlighturl",
     event = "CursorMoved",
   },
   {
     "tyru/open-browser.vim",
     event = "CmdlineEnter"
-  },
-  {
-    "aurum77/live-server.nvim",
-    build = function() require("live_server.util").install() end,
-    opts = {
-      port = 8080,
-      browser_command = "firefox",
-      quiet = true,
-      no_css_inject = true,
-      install_path = vim.fn.stdpath("state") .. "/live",
-    },
-    dev = true,
-    cmd = { "LiveServer", "LiveServerStart", "LiveServerStop" },
   },
   {
     "fedepujol/move.nvim",
@@ -56,10 +39,6 @@ return {
         enable = true,
       }
     },
-    event = { "CursorHold", "CursorMoved", "InsertEnter", "CmdlineEnter" },
-  },
-  {
-    "tpope/vim-repeat",
     event = { "CursorHold", "CursorMoved", "InsertEnter", "CmdlineEnter" },
   },
   {
@@ -110,21 +89,5 @@ return {
         },
       }
     end,
-  },
-  {
-    "toppair/peek.nvim",
-    build = "deno task --quiet build:fast",
-    opts = {
-      auto_load = true,
-      close_on_bdelete = true,
-      syntax = true,
-      theme = "dark",
-      update_on_change = true,
-      app = vim.env.BROWSER,
-      filetype = { "markdown" },
-      throttle_at = 200000,
-      throttle_time = "auto",
-    },
-    ft = "markdown",
   },
 }

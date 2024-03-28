@@ -1,4 +1,5 @@
 return {
+  "mfussenegger/nvim-jdtls",
   {
     "neovim/nvim-lspconfig",
     dependencies = "nvimtools/none-ls.nvim",
@@ -28,7 +29,6 @@ return {
     config = function() require("plugins.lsp.none") end,
     dependencies = "jayp0521/mason-null-ls.nvim",
   },
-  "mfussenegger/nvim-jdtls",
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = "williamboman/mason.nvim",
