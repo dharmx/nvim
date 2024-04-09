@@ -29,7 +29,7 @@ set("n", "<F3>", "<cmd>make<cr>", remap)
 
 set("n", "<C-S>", "<cmd>update<cr>", remap)
 set("n", "<C-N>", "<cmd>RnvimrToggle<cr>", remap)
-set("n", "<C-\\>", "<cmd>ToggleTerm<cr>", remap)
+set("n", "<C-\\>", "<cmd>Terminal<cr>", remap)
 
 set("n", "[q", "<cmdcprevious<cr>", remap)
 set("n", "]q", "<cmd>cnext<cr>", remap)

@@ -63,10 +63,10 @@ require("lazy").setup("plugins", {
     reset_packpath = true,
     rtp = {
       disabled_plugins = {
-        "netrwPlugin",
-        "netrwSettings",
-        "netrwFileHandlers",
-        "netrw",
+        -- "netrwPlugin",
+        -- "netrwSettings",
+        -- "netrwFileHandlers",
+        -- "netrw",
         "2html_plugin",
         "tohtml",
         "getscript",

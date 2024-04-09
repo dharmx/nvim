@@ -179,4 +179,37 @@ end, {
   desc = "Format node under the cursor.",
   nargs = 0,
 })
+
+command("Terminal", function(args)
+  local command = args.args == "" and vim.env.SHELL or args.args
+  local width = 150
+  local height = 20
+  local config = {
+    relative = "editor",
+    width = width,
+    height = height,
+    border = "solid",
+    title = string.format(" Terminal (%s) ", command),
+    title_pos = "left",
+    style = "minimal",
+    row = (vim.o.lines - height - 2) / 2,
+    col = (vim.o.columns - width) / 2,
+  }
+
+  local buffer = vim.api.nvim_create_buf(true, false)
+  local window = vim.api.nvim_open_win(buffer, true, config)
+  vim.api.nvim_win_set_option(window, "winhighlight", "FloatTitle:HarpoonTitle,FloatBorder:NormalFloat")
+
+  vim.keymap.set("n", "q", function()
+    if vim.api.nvim_win_is_valid(window) then vim.api.nvim_win_close(window, true) end
+    if vim.api.nvim_buf_is_valid(buffer) then vim.api.nvim_buf_delete(buffer, { force = true }) end
+  end, { buffer = buffer })
+  vim.api.nvim_buf_set_option(buffer, "filetype", "terminal")
+  vim.api.nvim_feedkeys("i", "n", true)
+  vim.fn.termopen(command)
+end, {
+  desc = "Home-made terminal command.",
+  nargs = "*",
+  complete = "shellcmd",
+})
 -- }}}
