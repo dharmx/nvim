@@ -20,6 +20,7 @@ set("n", "<C-K>", "<C-W>k")
 set("n", "<C-L>", "<C-W>l")
 
 set("n", "<leader><leader>", "<cmd>Track<cr>", silent)
+set("n", "<leader>ee", "<cmd>Track bundles<cr>", silent)
 set("n", "<leader>aa", "<cmd>Mark<cr>", silent)
 set("n", "<leader>dd", "<cmd>Unmark<cr>", silent)
 

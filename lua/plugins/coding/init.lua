@@ -90,4 +90,13 @@ return {
       }
     end,
   },
+  {
+    "sindrets/diffview.nvim",
+    config = true,
+    event = "CmdlineEnter",
+  },
+  {
+    "tpope/vim-repeat",
+    event = { "CursorHold", "CursorMoved", "InsertEnter", "CmdlineEnter" },
+  },
 }

@@ -5,21 +5,6 @@ bufferline.setup({
   options = {
     offsets = {
       {
-        filetype = "NvimTree",
-        text = "",
-        padding = 1,
-      },
-      {
-        filetype = "Outline",
-        text = "",
-        padding = 0,
-      },
-      {
-        filetype = "SidebarNvim",
-        text = "",
-        padding = 0,
-      },
-      {
         filetype = "undotree",
         text = "",
         padding = 0,

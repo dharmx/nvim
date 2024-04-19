@@ -115,10 +115,6 @@ treesitter.setup({
       },
     },
   },
-  rainbow = {
-    enable = true,
-    query = "rainbow-parens",
-  },
   matchup = {
     enable = true,
     disable = {

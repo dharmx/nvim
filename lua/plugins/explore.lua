@@ -1,5 +1,25 @@
 return {
   {
+    "TheBallsUp/lube.nvim",
+    dev = true,
+  },
+  {
+    "toppair/peek.nvim",
+    build = "deno task --quiet build:fast",
+    opts = {
+      auto_load = true,
+      close_on_bdelete = true,
+      syntax = true,
+      theme = "dark",
+      update_on_change = true,
+      app = vim.env.BROWSER,
+      filetype = { "markdown" },
+      throttle_at = 200000,
+      throttle_time = "auto",
+    },
+    ft = "markdown",
+  },
+  {
     "kevinhwang91/rnvimr",
     init = function()
       local g = vim.g

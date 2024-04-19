@@ -6,8 +6,61 @@ local actions_state = require("telescope.actions.state")
 local layout = require("telescope.actions.layout")
 
 local strings = require("plenary.strings")
-local entry_display = require("telescope.pickers.entry_display")
 local themes = require("telescope.themes")
+
+local ignore_files = {
+  "steam",
+  ".git",
+  "node_modules",
+  "venv",
+  ".venv",
+  "dosdevices",
+  "drive_c",
+  "compatdata",
+  "cargo",
+  ".conan",
+  "gem",
+  "Brave",
+  ".paradox-launcher",
+  ".cache",
+  "Trash",
+  "unity3d",
+  "Paradox Interactive",
+  "autostart",
+  "pulse",
+  "droidcam",
+  "swap",
+  "kdeconnect",
+  "OpenTabletDriver",
+  ".icons",
+  "downloads",
+  "secret",
+  ".librewolf",
+  "kernel",
+  "dic",
+  "vivaldi",
+  "krita",
+  "mime",
+  "chromium",
+  "inkscape",
+  "syncthing",
+  "xournalpp",
+  ".ssh",
+  "feh",
+  "discord",
+  "BetterDiscord",
+  "lutris",
+  "secrets",
+  ".var",
+  "pictures",
+  "easyeffects",
+  ".android",
+  ".cmake",
+  ".dotnet",
+  ".nuget",
+  ".vnc",
+  ".themes",
+}
 
 local function vmultiple(prompt_buffer, cmd)
   local picker = actions_state.get_current_picker(prompt_buffer)
@@ -27,9 +80,15 @@ end
 telescope.setup({
   dynamic_preview_title = true,
   pickers = {
+    command_history = {
+      prompt_prefix = "   ",
+    },
+    symbols = {
+      prompt_prefix = "   ",
+    },
     buffers = {
       sort_lastused = true,
-      prompt_prefix = "   ",
+      prompt_prefix = "   ",
       previewer = false,
       layout_config = {
         width = 0.3,
@@ -50,7 +109,7 @@ telescope.setup({
     find_files = {
       no_ignore = true,
       hidden = true,
-      prompt_prefix = "   ",
+      prompt_prefix = "   ",
       mappings = {
         ["i"] = {
           ["<C-K>"] = actions.preview_scrolling_up,
@@ -72,16 +131,16 @@ telescope.setup({
       },
     },
     oldfiles = {
-      prompt_prefix = "   ",
+      prompt_prefix = "   ",
     },
     colorscheme = {
-      prompt_prefix = "   ",
+      prompt_prefix = "   ",
     },
     highlights = {
-      prompt_prefix = " קּ  ",
+      prompt_prefix = "   ",
     },
     live_grep = {
-      prompt_prefix = "   ",
+      prompt_prefix = "   ",
       mappings = {
         ["i"] = {
           ["<C-K>"] = actions.preview_scrolling_up,
@@ -103,16 +162,16 @@ telescope.setup({
       },
     },
     git_commits = {
-      prompt_prefix = " ﰖ  ",
+      prompt_prefix = "  ",
     },
     git_bcommits = {
-      prompt_prefix = " ﰖ  ",
+      prompt_prefix = "  ",
     },
     git_branches = {
-      prompt_prefix = " שׂ  ",
+      prompt_prefix = " שׂ ",
     },
     git_status = {
-      prompt_prefix = "   ",
+      prompt_prefix = "   ",
       git_icons = {
         added = "+",
         changed = "~",
@@ -124,10 +183,10 @@ telescope.setup({
       },
     },
     git_files = {
-      prompt_prefix = " שׂ  ",
+      prompt_prefix = " שׂ ",
     },
     commands = {
-      prompt_prefix = "   ",
+      prompt_prefix = "   ",
     },
     registers = {
       prompt_prefix = "   ",
@@ -136,88 +195,24 @@ telescope.setup({
       prompt_prefix = "   ",
     },
     keymaps = {
-      prompt_prefix = "   ",
+      prompt_prefix = "   ",
     },
     lsp_code_actions = {
-      prompt_prefix = "   ",
+      prompt_prefix = "  ",
       theme = "cursor",
     },
     lsp_references = {
-      prompt_prefix = "   ",
+      prompt_prefix = "   ",
     },
     lsp_implementations = {
-      prompt_prefix = "   ",
+      prompt_prefix = "   ",
     },
     lsp_document_diagnostics = {
-      prompt_prefix = " 律 ",
+      prompt_prefix = "   ",
     },
   },
   defaults = {
-    mappings = {
-      i = {
-        ["<C-[>"] = actions.close,
-      },
-    },
-    preview = {
-      treesitter = {
-        disable = {
-          "lua",
-        },
-      },
-    },
-    file_ignore_patterns = {
-      "steam",
-      ".git",
-      "node_modules",
-      "venv",
-      ".venv",
-      "dosdevices",
-      "drive_c",
-      "compatdata",
-      "cargo",
-      ".conan",
-      "gem",
-      "Brave",
-      ".paradox-launcher",
-      ".cache",
-      "Trash",
-      "unity3d",
-      "Paradox Interactive",
-      "autostart",
-      "pulse",
-      "droidcam",
-      "swap",
-      "kdeconnect",
-      "OpenTabletDriver",
-      ".icons",
-      "downloads",
-      "secret",
-      ".librewolf",
-      "kernel",
-      "dic",
-      "vivaldi",
-      "krita",
-      "mime",
-      "chromium",
-      "inkscape",
-      "syncthing",
-      "xournalpp",
-      ".ssh",
-      "feh",
-      "discord",
-      "BetterDiscord",
-      "lutris",
-      "secrets",
-      ".var",
-      "pictures",
-      "easyeffects",
-      ".android",
-      ".cmake",
-      ".dotnet",
-      ".nuget",
-      ".vnc",
-      ".themes",
-    },
+    file_ignore_patterns = ignore_files,
     vimgrep_arguments = {
       "rg",
       "--color=never",
@@ -227,8 +222,8 @@ telescope.setup({
       "--column",
       "--smart-case",
     },
-    prompt_prefix = "   ",
-    selection_caret = "   ",
+    prompt_prefix = "   ",
+    selection_caret = " |  ",
     entry_prefix = "    ",
     initial_mode = "insert",
     selection_strategy = "reset",
@@ -261,20 +256,11 @@ telescope.setup({
   },
   extensions = {
     media = {
+      prompt_prefix = "   ",
       backend = "ueberzug",
       backend_options = {
         chafa = {
           move = true,
-        },
-      },
-    },
-    track = {
-      views = {
-        prompt_title = "",
-        results_title = "",
-        borderchars = { " ", " ", "▂", " ", " ", " ", "▂", "▂" },
-        layout_config = {
-          prompt_position = "top",
         },
       },
     },
@@ -322,26 +308,6 @@ telescope.setup({
             end
             return indexed_items, widths
           end,
-          make_displayer = function(widths)
-            return entry_display.create({
-              separator = " ",
-              items = {
-                { width = widths.idx + 1 }, -- +1 for ":" suffix
-                { width = widths.command_title },
-                { width = widths.client_name },
-              },
-            })
-          end,
-          make_display = function(displayer)
-            return function(e)
-              return displayer({
-                { e.value.idx .. ":", "TelescopePromptPrefix" },
-                { e.value.add.command_title },
-                { e.value.add.client_name, "TelescopeResultsComment" },
-              })
-            end
-          end,
-          make_ordinal = function(e) return e.idx .. e.add["command_title"] end,
         },
       },
     }
