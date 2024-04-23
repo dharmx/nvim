@@ -53,6 +53,7 @@ set("n", "<leader>bb", "<cmd>Telescope buffers<cr>", silent)
 set("n", "<leader>ff", "<cmd>Telescope media<cr>", silent)
 set("n", "<leader>gg", "<cmd>Telescope live_grep<cr>", silent)
 set("n", "<leader>mm", "<cmd>Telescope marks<cr>", silent)
+set("n", '"', "<cmd>Telescope registers<cr>", silent)
 
 set("n", "<A-k>", "<cmd>MoveLine(-1)<cr>", silent)
 set("n", "<A-j>", "<cmd>MoveLine(1)<cr>", silent)

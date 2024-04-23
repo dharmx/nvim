@@ -1,4 +1,4 @@
-_G.GROUP = vim.api.nvim_create_augroup("DharmxGroup", {})
+GROUP = vim.api.nvim_create_augroup("DharmxGroup", {})
 local autocmd = vim.api.nvim_create_autocmd
 local command = vim.api.nvim_create_user_command
 
@@ -88,17 +88,6 @@ autocmd("InsertLeave", {
 
 autocmd("InsertEnter", {
   callback = function() vim.diagnostic.disable(0) end,
-  group = GROUP,
-})
-
--- these saved my life
-autocmd("CmdlineEnter", {
-  command = "set cmdheight=1",
-  group = GROUP,
-})
-
-autocmd("CmdlineLeave", {
-  command = "set cmdheight=0",
   group = GROUP,
 })
 -- }}}

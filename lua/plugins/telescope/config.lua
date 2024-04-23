@@ -1,12 +1,9 @@
 local ok, telescope = pcall(require, "telescope")
 if not ok then return end
 
+local actions_custom = require("plugins.telescope.actions")
 local actions = require("telescope.actions")
-local actions_state = require("telescope.actions.state")
 local layout = require("telescope.actions.layout")
-
-local strings = require("plenary.strings")
-local themes = require("telescope.themes")
 
 local ignore_files = {
   "steam",
@@ -62,21 +59,6 @@ local ignore_files = {
   ".themes",
 }
 
-local function vmultiple(prompt_buffer, cmd)
-  local picker = actions_state.get_current_picker(prompt_buffer)
-  local selections = picker:get_multi_selection()
-  local entry = actions_state.get_selected_entry()
-
-  actions.close(prompt_buffer)
-  if #selections < 2 then
-    vim.cmd[cmd](vim.split(entry.value, ":", { plain = true })[1])
-  else
-    for _, selection in ipairs(selections) do
-      vim.cmd[cmd](vim.split(selection.value, ":", { plain = true })[1])
-    end
-  end
-end
-
 telescope.setup({
   dynamic_preview_title = true,
   pickers = {
@@ -98,11 +80,11 @@ telescope.setup({
         ["i"] = {
           ["<C-K>"] = actions.preview_scrolling_up,
           ["<C-J>"] = actions.preview_scrolling_down,
-          ["<C-D>"] = actions.delete_buffer + actions.move_to_top,
+          ["<C-D>"] = actions_custom.delete_buffer + actions.move_to_top,
         },
         ["n"] = {
-          ["v"] = function(prompt_buffer) vmultiple(prompt_buffer, "vsplit") end,
-          ["dd"] = actions.delete_buffer + actions.move_to_top,
+          ["v"] = actions_custom.vertical,
+          ["dd"] = actions_custom.delete_buffer + actions.move_to_top,
         },
       },
     },
@@ -114,18 +96,10 @@ telescope.setup({
         ["i"] = {
           ["<C-K>"] = actions.preview_scrolling_up,
           ["<C-J>"] = actions.preview_scrolling_down,
-          ["<C-Space>"] = function(prompt_buffer)
-            actions.close(prompt_buffer)
-            vim.ui.input({ prompt = "glob patterns(comma sep): " }, function(input)
-              if not input then return end
-              require("telescope.builtin").find_files({
-                file_ignore_patterns = vim.split(vim.trim(input), ",", { plain = true }),
-              })
-            end)
-          end,
+          ["<C-Space>"] = actions_custom.interactive_regex,
         },
         ["n"] = {
-          ["v"] = function(prompt_buffer) vmultiple(prompt_buffer, "vsplit") end,
+          ["v"] = actions_custom.vertical,
           ["p"] = layout.toggle_preview,
         },
       },
@@ -145,19 +119,11 @@ telescope.setup({
         ["i"] = {
           ["<C-K>"] = actions.preview_scrolling_up,
           ["<C-J>"] = actions.preview_scrolling_down,
-          ["<C-S>"] = function(prompt_buffer)
-            local current_picker = actions_state.get_current_picker(prompt_buffer)
-            local previewers = current_picker.all_previewers
-            local current_previewer_index = current_picker.current_previewer_index
-            local current_previewer = previewers[current_previewer_index]
-            local previewer_buffer = current_previewer.state.bufnr
-            vim.api.nvim_buf_set_option(previewer_buffer, "filetype", "")
-          end,
+          ["<C-S>"] = actions_custom.set_preview_filetype,
         },
         ["n"] = {
-          ["v"] = function(prompt_buffer) vmultiple(prompt_buffer, "vsplit") end,
+          ["v"] = actions_custom.vertical,
           ["p"] = layout.toggle_preview,
-          ["V"] = function(prompt_buffer) vmultiple(prompt_buffer, "edit") end,
         },
       },
     },
@@ -190,6 +156,14 @@ telescope.setup({
     },
     registers = {
       prompt_prefix = "   ",
+      initial_mode = "normal",
+      theme = "cursor",
+      borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+      layout_config = {
+        preview_cutoff = 1,
+        width = function(_, max_col, _) return math.min(max_col, 70) end,
+        height = function(_, _, max_line) return math.min(max_line, 15) end,
+      },
     },
     spell_suggests = {
       prompt_prefix = "   ",
@@ -213,22 +187,10 @@ telescope.setup({
   },
   defaults = {
     file_ignore_patterns = ignore_files,
-    vimgrep_arguments = {
-      "rg",
-      "--color=never",
-      "--no-heading",
-      "--with-filename",
-      "--line-number",
-      "--column",
-      "--smart-case",
-    },
     prompt_prefix = "   ",
     selection_caret = " |  ",
     entry_prefix = "    ",
     initial_mode = "insert",
-    selection_strategy = "reset",
-    sorting_strategy = "ascending",
-    layout_strategy = "horizontal",
     layout_config = {
       horizontal = {
         prompt_position = "bottom",
@@ -240,19 +202,10 @@ telescope.setup({
       height = 0.9,
       preview_cutoff = 120,
     },
-    file_sorter = require("telescope.sorters").get_fuzzy_file,
-    generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-    path_display = { "truncate" },
     winblend = 0,
     border = {},
     borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
-    color_devicons = true,
-    use_less = true,
     set_env = { ["COLORTERM"] = "truecolor" },
-    file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-    grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-    qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-    buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
   },
   extensions = {
     media = {
@@ -265,51 +218,10 @@ telescope.setup({
       },
     },
     ["ui-select"] = {
-      themes.get_dropdown({
+      require("telescope.themes").get_dropdown({
         layout_strategy = "cursor",
         borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
       }),
-      specific_opts = {
-        codeaction = {
-          make_indexed = function(items)
-            local indexed_items = {}
-            local null_ls = {}
-            local widths = {
-              idx = 0,
-              command_title = 0,
-              client_name = 0,
-            }
-
-            for idx, item in ipairs(items) do
-              local client = vim.lsp.get_client_by_id(item[1])
-              local entry = {
-                idx = idx,
-                ["add"] = {
-                  command_title = item[2].title:gsub("\r\n", "\\r\\n"):gsub("\n", "\\n"),
-                  client_name = client and client.name or "",
-                },
-                text = item,
-              }
-
-              -- magic
-              if client.name == "null-ls" then
-                table.insert(null_ls, entry)
-              else
-                table.insert(indexed_items, entry)
-              end
-
-              widths.idx = math.max(widths.idx, strings.strdisplaywidth(entry.idx))
-              widths.command_title = math.max(widths.command_title, strings.strdisplaywidth(entry.add.command_title))
-              widths.client_name = math.max(widths.client_name, strings.strdisplaywidth(entry.add.client_name))
-            end
-
-            for _, entry in ipairs(null_ls) do
-              table.insert(indexed_items, entry)
-            end
-            return indexed_items, widths
-          end,
-        },
-      },
     }
   },
 })
