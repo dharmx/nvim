@@ -45,10 +45,14 @@ treesitter.setup({
   parser_install_dir = vim.fn.stdpath("data") .. "/parsers",
   highlight = {
     enable = true,
+    disable = { "latex" },
     use_languagetree = true,
     additional_vim_regex_highlighting = true,
   },
-  indent = { enable = true },
+  indent = {
+    enable = true,
+    disable = { "latex" },
+  },
   incremental_selection = { enable = true },
   playground = {
     enable = true,

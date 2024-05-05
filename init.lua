@@ -28,6 +28,7 @@ require("lazy").setup("plugins", {
     colorscheme = { "radium" },
   },
   ui = {
+    backdrop = 100,
     size = { width = 0.8, height = 0.8 },
     border = "solid",
     icons = {
@@ -100,6 +101,5 @@ require("lazy").setup("plugins", {
 vim.schedule(function()
   require("scratch.ethos").setup()
   require("scratch.overview").setup()
-  require("scratch.view").setup()
   require("scratch.paste").setup()
 end)

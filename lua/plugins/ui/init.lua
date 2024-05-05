@@ -13,7 +13,6 @@ return {
   },
   {
     "akinsho/bufferline.nvim",
-    version = "*",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       require("plugins.ui.bufferline")
@@ -86,6 +85,7 @@ return {
       vim.notify = notify
       vim.notify_once = notify
     end,
+    enabled = false,
     event = { "CursorMoved", "CursorHold", "InsertEnter", "CmdlineEnter" },
   },
 }

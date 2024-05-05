@@ -36,9 +36,7 @@ return {
       g.rnvimr_shadow_winblend = 70
 
       g.rnvimr_action = {
-        ["<C-t>"] = "NvimEdit tabedit",
-        ["<C-x>"] = "NvimEdit split",
-        ["<C-v>"] = "NvimEdit vsplit",
+        ["<C-t>"] = "NvimEdit Mark true",
         ["gw"] = "JumpNvimCwd",
         ["yw"] = "EmitRangerCwd",
       }

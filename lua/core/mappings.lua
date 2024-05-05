@@ -20,7 +20,7 @@ set("n", "<C-K>", "<C-W>k")
 set("n", "<C-L>", "<C-W>l")
 
 set("n", "<leader><leader>", "<cmd>Track<cr>", silent)
-set("n", "<leader>ee", "<cmd>Track bundles<cr>", silent)
+set("n", "<leader>ee", "<cmd>Track branches<cr>", silent)
 set("n", "<leader>aa", "<cmd>Mark<cr>", silent)
 set("n", "<leader>dd", "<cmd>Unmark<cr>", silent)
 
@@ -48,12 +48,12 @@ set("n", "<C-Down>", "<cmd>resize +2<cr>", silent)
 set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", silent)
 set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", silent)
 
-set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", silent)
+set("n", "<leader>uu", "<cmd>UndotreeToggle<cr>", silent)
 set("n", "<leader>bb", "<cmd>Telescope buffers<cr>", silent)
 set("n", "<leader>ff", "<cmd>Telescope media<cr>", silent)
 set("n", "<leader>gg", "<cmd>Telescope live_grep<cr>", silent)
 set("n", "<leader>mm", "<cmd>Telescope marks<cr>", silent)
-set("n", '"', "<cmd>Telescope registers<cr>", silent)
+set("n", "<leader>rr", "<cmd>Telescope registers<cr>", silent)
 
 set("n", "<A-k>", "<cmd>MoveLine(-1)<cr>", silent)
 set("n", "<A-j>", "<cmd>MoveLine(1)<cr>", silent)

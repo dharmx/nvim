@@ -9,8 +9,30 @@ return {
   },
   {
     "dharmx/track.nvim",
-    config = true,
-    cmd = { "Track", "Mark", "Unmark" },
+    opts = {
+      pad = {
+        config = { title_pos = "center" },
+        serial_map = true,
+        disable_devicons = false,
+        disable_status = false,
+      },
+      pickers = {
+        bundles = {
+          disable_devicons = false,
+          serial_map = true,
+        },
+        views = {
+          disable_devicons = false,
+          serial_map = true,
+        },
+      },
+    },
+    cmd = {
+      "Track",
+      "Mark",
+      "Unmark",
+      "MarkOpened",
+    },
     dev = true,
   },
   {

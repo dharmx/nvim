@@ -644,8 +644,8 @@ hi WhichKeySeparator guifg=#7AB0DF
 hi WhichKeyValue guifg=#929299
 hi Whitespace guifg=#1E222A
 hi WildMenu guibg=#7AB0DF guifg=#101317
-hi WinBar gui=bold
-hi WinBarNC gui=bold
+hi WinBar guibg=#101317
+hi WinBarNC guibg=#101317
 hi WinSeparator guifg=#171C21
 
 if has('nvim')

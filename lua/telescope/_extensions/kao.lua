@@ -8,8 +8,8 @@ local make_entry = require("telescope.make_entry")
 local actions_state = require("telescope.actions.state")
 
 local curl = require("plenary.curl")
-local Path = require("plenary.path")
-local db = Path:new(vim.fn.stdpath("state") .. "/kao.db.json")
+local P = require("plenary.path")
+local db = P:new(vim.fn.stdpath("state") .. "/kao.db.json")
 local results = nil
 
 if not db:exists() then-- {{{
@@ -38,10 +38,10 @@ local function gen_from_kao(options)
     },
   })
 
-  return function(entry)
+  return function(value)
     return make_entry.set_default_entry_mt({
-      value = entry,
-      ordinal = entry.annotation .. ":" .. entry.emoji,
+      value = value,
+      ordinal = value.annotation .. ":" .. value.emoji,
       display = function(entry)
         return displayer({
           { entry.value.annotation, "Question" },

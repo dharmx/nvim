@@ -211,7 +211,7 @@ telescope.setup({
     media = {
       prompt_prefix = "   ",
       backend = "ueberzug",
-      backend_options = {
+      flags = {
         chafa = {
           move = true,
         },

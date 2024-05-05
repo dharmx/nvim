@@ -13,9 +13,10 @@ local function formatting(buffer)
   return function()
     vim.lsp.buf.format({
       async = true,
+      ---@param client vim.lsp.Client
       filter = function(client)
         if vim.bo[buffer].filetype ~= "lua" and client.supports_method("textDocument/formatting") then
-          return client.name
+          return not not client.name
         end
         return client.name == "null-ls"
       end,

@@ -155,14 +155,14 @@ component.lsp = {
       return ""
     end
 
-    local progress = vim.lsp.util.get_progress_messages()[1]
+    local indexing = vim.lsp.status() ~= ""
     if vim.o.columns < 120 then
       return ""
     end
 
-    local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
     if #clients ~= 0 then
-      if progress then
+      if indexing then
         local spinners = {
           "◜ ",
           "◠ ",
@@ -182,9 +182,9 @@ component.lsp = {
     return ""
   end,
   hl = function()
-    local progress = vim.lsp.util.get_progress_messages()[1]
+    local indexing = vim.lsp.status() ~= ""
     return {
-      fg = progress and "yellow" or "green",
+      fg = indexing and "yellow" or "green",
       bg = "gray",
       style = "bold",
     }

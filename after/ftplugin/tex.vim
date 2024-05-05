@@ -1,2 +1,2 @@
-syntax off
-TSDisable highlight indent illuminate rainbow matchup
+" syntax off
+" TSDisable highlight indent illuminate rainbow matchup
