@@ -23,6 +23,22 @@ function M.setup(options)
     root_dir = root,
     settings = {
       java = {
+        configuration = {
+          runtimes = {
+            {
+              name = "JavaSE-15",
+              path = "/usr/lib/jvm/java-15-openjdk/",
+            },
+            {
+              name = "JavaSE-11",
+              path = "/usr/lib/jvm/java-11-openjdk/",
+            },
+            {
+              name = "JavaSE-22",
+              path = "/usr/lib/jvm/java-22-openjdk/",
+            },
+          },
+        },
         saveActions = { organizeImports = true },
         signatureHelp = { enabled = true },
         completion = {
@@ -75,22 +91,24 @@ function M.load_telescope(options)
   local pickers = require("telescope.pickers")
 
   ui.pick_one_async = function(items, prompt, label, callback)
-    pickers.new(options, {
-      prompt_title = prompt,
-      finder = finders.new_table({
-        results = items,
-        entry_maker = function(entry) return { value = entry, display = label(entry), ordinal = label(entry) } end,
-      }),
-      sorter = sorters.get_generic_fuzzy_sorter(),
-      attach_mappings = function(buffer)
-        actions.goto_file_selection_edit:replace(function()
-          local selection = actions.get_selected_entry(buffer)
-          actions.close(buffer)
-          callback(selection.value)
-        end)
-        return true
-      end,
-    }):find()
+    pickers
+      .new(options, {
+        prompt_title = prompt,
+        finder = finders.new_table({
+          results = items,
+          entry_maker = function(entry) return { value = entry, display = label(entry), ordinal = label(entry) } end,
+        }),
+        sorter = sorters.get_generic_fuzzy_sorter(),
+        attach_mappings = function(buffer)
+          actions.goto_file_selection_edit:replace(function()
+            local selection = actions.get_selected_entry(buffer)
+            actions.close(buffer)
+            callback(selection.value)
+          end)
+          return true
+        end,
+      })
+      :find()
   end
 end
 

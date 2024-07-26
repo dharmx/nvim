@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-
-if [ ! -f $2 ]; then
-  curl -sSL $1 | htmlq '#cover' .lazyload -a 'data-src' | xargs -I{} curl {} -o $2
-fi
-echo $2
