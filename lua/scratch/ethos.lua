@@ -122,7 +122,7 @@ function M.get(word, options)
   options = vim.F.if_nil(options, {})
   -- This is just option validation. You may skip this.
   vim.validate({
-    database = { options.database, validators.database, "Valid options are: " .. table.concat(M._database, "|") },
+    -- database = { options.database, validators.database, "Valid options are: " .. table.concat(M._database, "|") },
     strategy = { options.strategy, validators.strategy, "Valid options are: " .. table.concat(M._strategy, "|") },
     formatted = { options.formatted, "boolean", true },
     on_stdout = { options.on_stdout, "function", true },
@@ -265,20 +265,24 @@ function M.setup(options)
   M._config = vim.tbl_deep_extend("keep", options, M._defaults)
 
   -- WARN: High risk of UI blockage. Maybe use Job.sync with a timeout?
-  local db = F.system({ "dict", "--dbs" })
-  db = vim.split(db, "\n", { plain = true })
-  table.remove(db, 1)
-  table.remove(db, #db)
-
-  for index, item in ipairs(db) do
-    db[index] = vim.split(vim.trim(item), " ", { plain = true })[1]
-    if db[index] == "" then table.remove(db, index) end
-  end
-  if #db > 0 then
-    M._database = db
-  else
-    error("No databases found. See https://github.com/cheusov/dictd.")
-  end
+  -- BUG: Fix delay in dict utility calls first.
+  --
+  -- local db = F.system({ "dict", "--dbs" })
+  -- db = vim.split(db, "\n", { plain = true })
+  -- table.remove(db, 1)
+  -- table.remove(db, #db)
+  --
+  -- for index, item in ipairs(db) do
+  --   db[index] = vim.split(vim.trim(item), " ", { plain = true })[1]
+  --   if db[index] == "" then table.remove(db, index) end
+  -- end
+  -- if #db > 0 then
+  --   M._database = db
+  -- else
+  --   error("No databases found. See https://github.com/cheusov/dictd.")
+  -- end
+  -- NOTE: delete the following line after dictd issue is resolved
+  M._database = "wn"
 
   -- TODO: Allow customizations.
   vim.keymap.set("n", ";f", function()

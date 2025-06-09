@@ -1,5 +1,9 @@
 return {
   {
+    "sheerun/vim-polyglot",
+    lazy = false,
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     lazy = false,

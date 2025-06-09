@@ -25,6 +25,7 @@ return {
     config = function()
       require("plugins.ui.feline")
     end,
+    dev = true,
   },
   {
     "folke/todo-comments.nvim",

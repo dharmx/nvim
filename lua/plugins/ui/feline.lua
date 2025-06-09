@@ -149,6 +149,13 @@ component.diagnostic_info = {
   provider = "diagnostic_info",
 }
 
+-- לּ
+          -- "◜ ",
+          -- "◠ ",
+          -- "◝ ",
+          -- "◞ ",
+          -- "◡ ",
+          -- "◟ ",
 component.lsp = {
   provider = function()
     if not rawget(vim, "lsp") then
